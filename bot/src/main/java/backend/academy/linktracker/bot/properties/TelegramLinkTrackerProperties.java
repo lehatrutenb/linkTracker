@@ -12,13 +12,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.convert.DurationUnit;
 import org.springframework.validation.annotation.Validated;
 
-@ConfigurationProperties(prefix = "app.telegram")
+@ConfigurationProperties(prefix = "app.telegram.link.tracker")
 @Validated
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class TelegramProperties {
+public class TelegramLinkTrackerProperties {
 
     @NotEmpty
     @URL
@@ -29,6 +29,8 @@ public class TelegramProperties {
 
     @DurationUnit(ChronoUnit.MILLIS)
     private Duration updateListenerSleep = Duration.ofSeconds(1);
+
+    private long maxMessagesBatchSize = 100;
 
     private boolean debug;
 }

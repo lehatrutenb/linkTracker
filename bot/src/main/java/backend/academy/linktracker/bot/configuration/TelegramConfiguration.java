@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.configuration;
 
-import backend.academy.linktracker.bot.properties.TelegramProperties;
+import backend.academy.linktracker.bot.properties.TelegramLinkTrackerProperties;
 import com.pengrad.telegrambot.TelegramBot;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class TelegramConfiguration {
 
     @Bean
-    public TelegramBot telegramBot(TelegramProperties properties) {
+    public TelegramBot telegramBot(TelegramLinkTrackerProperties properties) {
         var builder = new TelegramBot.Builder(properties.getToken())
                 .apiUrl(properties.getUrl())
                 .updateListenerSleep(properties.getUpdateListenerSleep().toMillis());

@@ -7,7 +7,10 @@ spring:
 
 app:
   telegram:
-    url: https://api.telegram.org/bot
-    token: ${TELEGRAM_TOKEN} # Use env variable. DO NOT KEEP TOKEN HERE
-    update-listener-sleep: 1s
-    debug: false
+    link:
+      tracker:
+        url: https://api.telegram.org/bot
+        token: ${TELEGRAM_TOKEN} # Must be set in env
+        max-messages-batch-size: 100
+        update-listener-sleep: 1s
+        debug: false
