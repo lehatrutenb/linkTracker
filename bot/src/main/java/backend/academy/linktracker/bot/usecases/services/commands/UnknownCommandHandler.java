@@ -1,31 +1,37 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
-import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import jakarta.annotation.Priority;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-@CommandHandler(command = "/start")
-public class StartCommandHandler {
-    private static final String BASIC_REPLY = "Добро пожаловать! Используйте /help, чтобы посмотреть доступные команды.";
+public class UnknownCommandHandler {
+    private static final String BASIC_REPLY = "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
 
     private final EventsStateWatcher eventsStateWatcher;
+    private final CommandsMetaDataService commandsMetaDataService;
 
-    @EventListener(condition = "#event.getMessage().message().strip().equals('/start')")
+    @EventListener(condition = "#event.getMessage().message().strip().startsWith('/')")
     public void handle(LinkTracerNewMessageEvent event) {
         LinkTracerMessage message = event.getMessage();
-        log.atInfo()
+        if (commandsMetaDataService.getCommandHandlerByCommand(message.message().strip()).isPresent()) {
+            return;
+        }
+
+        log.atInfo() // TODO Check how to move such logging to shared part
             .addKeyValue("chat id", message.chat().id())
             .addKeyValue("message id", message.messageId())
             .addKeyValue("message date", message.date())
-            .log("Handle /start user command");
+            .log("Handle unknown user command");
 
         event.getReplier().sendMessage(message.chat().id(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
