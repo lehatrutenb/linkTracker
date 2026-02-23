@@ -1,12 +1,12 @@
 package backend.academy.linktracker.bot.usecases.services;
 
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-import org.springframework.context.ApplicationContext;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -16,8 +16,8 @@ public class CommandsMetaDataService {
     public Collection<CommandHandler> getCommandList() {
         Map<String, Object> nameToBean = applicationContext.getBeansWithAnnotation(CommandHandler.class);
         return nameToBean.keySet().stream()
-            .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
-            .toList();
+                .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
+                .toList();
     }
 
     /**
@@ -27,7 +27,7 @@ public class CommandsMetaDataService {
      */
     public Optional<CommandHandler> getCommandHandlerByCommand(String command) {
         return getCommandList().stream()
-            .filter(commandHandler -> commandHandler.command().equals(command))
-            .findAny();
+                .filter(commandHandler -> commandHandler.command().equals(command))
+                .findAny();
     }
 }

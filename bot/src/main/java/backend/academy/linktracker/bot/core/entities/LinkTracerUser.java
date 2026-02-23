@@ -1,9 +1,5 @@
 package backend.academy.linktracker.bot.core.entities;
 
-public record LinkTracerUser(
-    long userId,
-    String userName,
-    String firstName,
-    boolean isBot
-) {
-}
+import java.io.Serializable;
+
+public record LinkTracerUser(long userId, String userName, String firstName, boolean isBot) implements Serializable {}

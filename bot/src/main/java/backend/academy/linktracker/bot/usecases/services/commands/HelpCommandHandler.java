@@ -7,9 +7,9 @@ import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-
 
 @Slf4j
 @Service
@@ -21,17 +21,18 @@ public class HelpCommandHandler {
 
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
+    private final ApplicationContext applicationContext;
 
     @EventListener(condition = "#event.getMessage().message().strip().equals('/help')")
     public void handle(LinkTracerNewMessageEvent event) {
         LinkTracerMessage message = event.getMessage();
         log.atInfo()
-            .addKeyValue("chat id", message.chat().id())
-            .addKeyValue("message id", message.messageId())
-            .addKeyValue("message date", message.date())
-            .log("Handle /help user command");
+                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("message id", message.messageId())
+                .addKeyValue("message date", message.date())
+                .log("Handle /help user command");
 
-        event.getReplier().sendMessage(message.chat().id(), addCommandsToReply(BASIC_REPLY));
+        event.getReplyService(applicationContext).sendMessage(message.chat().id(), addCommandsToReply(BASIC_REPLY));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
@@ -39,16 +40,14 @@ public class HelpCommandHandler {
         stringBuilder.append(commandHandler.command());
         if (!commandHandler.shortDescription().isBlank()) {
             stringBuilder.append(BASIC_COMMAND_DESCRIPTION_SEPARATOR);
-            stringBuilder.append(commandHandler.shortDescription() );
+            stringBuilder.append(commandHandler.shortDescription());
         }
         stringBuilder.append(System.lineSeparator());
     }
 
     public String addCommandsToReply(String reply) {
         StringBuilder stringBuilder = new StringBuilder(reply);
-        commandsMetaDataService.getCommandList().forEach(
-            commandHandler -> HelpCommandHandler.addCommand(stringBuilder, commandHandler)
-        );
+        commandsMetaDataService.getCommandList().forEach(commandHandler -> addCommand(stringBuilder, commandHandler));
         return stringBuilder.toString();
     }
 }

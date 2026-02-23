@@ -1,7 +1,6 @@
 package backend.academy.linktracker.bot.core.entities;
 
 import backend.academy.linktracker.bot.core.enums.CurrentCommandFlowState;
-import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +11,8 @@ public class CommandsSharedState {
     private CurrentCommandFlowState commandFlowState;
 
     public synchronized boolean setCommandFlowState(CurrentCommandFlowState newCommandFlowState) {
-        if (commandFlowState == CurrentCommandFlowState.WAITING_USER_INPUT && newCommandFlowState == CurrentCommandFlowState.WAITING_USER_INPUT) {
+        if (commandFlowState == CurrentCommandFlowState.WAITING_USER_INPUT
+                && newCommandFlowState == CurrentCommandFlowState.WAITING_USER_INPUT) {
             return false;
         }
         commandFlowState = newCommandFlowState;

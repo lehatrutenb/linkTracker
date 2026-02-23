@@ -1,27 +1,27 @@
 package backend.academy.linktracker.bot;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
-import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
 public class TelegramBotTestUtils {
     private static final Duration DEFAULT_POLLING_TIMEOUT = Duration.ofSeconds(10);
+
     @Autowired
     TelegramBot telegramBot;
 
@@ -48,7 +48,8 @@ public class TelegramBotTestUtils {
      *
      * @return ResponseDefinitionBuilder with constructed body
      */
-    public ResponseDefinitionBuilder writeMessageToBot(ResponseDefinitionBuilder responseDefinitionBuilder, long messageId, String messageText) {
+    public ResponseDefinitionBuilder writeMessageToBot(
+            ResponseDefinitionBuilder responseDefinitionBuilder, long messageId, String messageText) {
         return responseDefinitionBuilder.withBody(String.format("""
                                 {
                                   "ok": true,
@@ -74,19 +75,19 @@ public class TelegramBotTestUtils {
                                   ]
                                 }
                                 """, messageId, messageText));
-
     }
 
-    public void writeMessageToBot(String scenario, String fromState, String toState, long messageId, String messageText) {
+    public void writeMessageToBot(
+            String scenario, String fromState, String toState, long messageId, String messageText) {
         stubFor(post(urlMatching("/bot[^/]+/getUpdates"))
-            .inScenario(scenario)
-            .whenScenarioStateIs(fromState)
-            .willReturn(writeMessageToBot(
-                aResponse()
-                .withStatus(200)
-                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE),
-                messageId, messageText)
-            )
-            .willSetStateTo(toState));
+                .inScenario(scenario)
+                .whenScenarioStateIs(fromState)
+                .willReturn(writeMessageToBot(
+                        aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE),
+                        messageId,
+                        messageText))
+                .willSetStateTo(toState));
     }
 }

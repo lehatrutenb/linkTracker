@@ -7,27 +7,30 @@ import backend.academy.linktracker.bot.core.entities.LinkTracerUser;
 import com.pengrad.telegrambot.model.Chat;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.User;
-import lombok.NonNull;
-import lombok.experimental.UtilityClass;
-import org.springframework.stereotype.Service;
 import java.time.Instant;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class TelegramUpdatesMapper {
     public static LinkTracerMessage map(Update update) {
         var message = update.message();
-        return new LinkTracerMessage(message.text(), message.messageId(), mapInstant(message.date()), map(message.chat()), map(message.from()));
+        return new LinkTracerMessage(
+                message.text(),
+                message.messageId(),
+                mapInstant(message.date()),
+                map(message.chat()),
+                map(message.from()));
     }
 
-    public static Instant mapInstant(long epochSec)  {
+    public static Instant mapInstant(long epochSec) {
         return Instant.ofEpochSecond(epochSec);
     }
 
-    public static EventId mapUpdateId(Integer id)  {
+    public static EventId mapUpdateId(Integer id) {
         return new EventId(id.toString());
     }
 
-    public static Integer mapUpdateId(EventId id)  {
+    public static Integer mapUpdateId(EventId id) {
         return Integer.valueOf(id.id());
     }
 

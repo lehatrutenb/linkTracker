@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class ResponseExceptionHandler {
     public void handle(SendResponse response) {
         log.atWarn()
-            .addKeyValue("error code", response.errorCode())
-            .addKeyValue("description", response.description())
-            .log("Failed to send response");
+                .addKeyValue("error code", response.errorCode())
+                .addKeyValue("description", response.description())
+                .log("Failed to send response");
     }
 }

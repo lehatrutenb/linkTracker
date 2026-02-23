@@ -4,9 +4,9 @@ import backend.academy.linktracker.bot.adapters.repository.EventsRepository;
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventId;
 import backend.academy.linktracker.bot.core.enums.EventState;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
 // We don't need any stateful disk repo to handle events states cause tg
 @Service
@@ -16,7 +16,10 @@ public class EventsStateWatcher {
 
     public boolean toProcessEvent(EventId eventId) {
         var event = eventsRepository.getEvent(eventId);
-        return event.isEmpty() || event.get().state().equals(EventState.NOT_INITED); // TODO add new initiation of events processing on timeout
+        return event.isEmpty()
+                || event.orElseThrow()
+                        .state()
+                        .equals(EventState.NOT_INITED); // TODO add new initiation of events processing on timeout
     }
 
     public void markEventAsDone(EventId eventId) {
