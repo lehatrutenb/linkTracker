@@ -22,8 +22,9 @@ public class LinkTracerFacade {
             EventId eventId = TelegramUpdatesMapper.mapUpdateId(update.updateId());
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);
-                applicationEventPublisher.publishEvent(new LinkTracerNewMessageEvent(
-                        this, TelegramUpdatesMapper.map(update), replyServiceQualifier, eventId));
+                var event = new LinkTracerNewMessageEvent(
+                        this, TelegramUpdatesMapper.map(update), replyServiceQualifier, eventId);
+                applicationEventPublisher.publishEvent(event);
             }
         });
     }

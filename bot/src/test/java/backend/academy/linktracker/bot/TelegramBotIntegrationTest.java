@@ -1,37 +1,24 @@
 package backend.academy.linktracker.bot;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
-import static com.github.tomakehurst.wiremock.client.WireMock.urlPathTemplate;
-import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import backend.academy.linktracker.bot.properties.TelegramProperties;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.pengrad.telegrambot.TelegramBot;
-import com.pengrad.telegrambot.UpdatesListener;
-import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.model.User;
-import com.pengrad.telegrambot.request.GetUpdates;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.wiremock.spring.EnableWireMock;
 
@@ -39,108 +26,89 @@ import org.wiremock.spring.EnableWireMock;
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
 @EnableWireMock
+@DirtiesContext(
+        classMode =
+                DirtiesContext.ClassMode
+                        .AFTER_EACH_TEST_METHOD) // Need cause has repository bean that serves requests statuses
 class TelegramBotIntegrationTest implements WithAssertions {
-
     @Autowired
     TelegramBot telegramBot;
-
-    @Autowired
-    TelegramProperties telegramProperties;
 
     @AfterEach
     void clearUpdatesListener() {
         telegramBot.removeGetUpdatesListener();
     }
 
-    @Test
-    void nonExistingTokenRequest() {
-        stubFor(post(urlMatching("/bot[^/]+/getUpdates"))
-                .willReturn(aResponse()
-                        .withStatus(404)
-                        .withBody("{\"ok\":false,\"error_code\":404,\"description\":\"Not Found\"}")));
+    @BeforeEach
+    void setupWireMock() {
+        stubFor(post(urlMatching(".*/setMyCommands"))
+                .willReturn(aResponse().withStatus(200).withBody("{ok:true,result:true}")));
+    }
 
-        var getUpdatesRequest = new GetUpdates();
-        var getUpdatesResponse = telegramBot.execute(getUpdatesRequest);
+    @AfterEach
+    void cleanWireMock() {
+        WireMock.reset();
+        WireMock.resetAllRequests();
+        WireMock.resetAllScenarios();
+        WireMock.resetToDefault();
 
-        assertFalse(getUpdatesResponse.isOk());
-        assertEquals(404, getUpdatesResponse.errorCode());
-
-        verify(
-                1,
-                postRequestedFor(urlPathTemplate("/bot{token}/getUpdates"))
-                        .withPathParam("token", equalTo(telegramProperties.getToken())));
+        stubFor(post(urlMatching(".*/setMyCommands"))
+                .willReturn(aResponse().withStatus(200).withBody("{ok:true,result:true}")));
     }
 
     @Test
-    void updatesListenerReceivesUpdates() throws InterruptedException {
-        stubFor(post(urlMatching("/bot[^/]+/getUpdates"))
-                .inScenario("Updates Listener")
-                .whenScenarioStateIs(STARTED)
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .withBody("""
-                                {
-                                  "ok": true,
-                                  "result": [
-                                    {
-                                      "update_id": 123456,
-                                      "message": {
-                                        "message_id": 1,
-                                        "from": {
-                                          "id": 987654321,
-                                          "is_bot": false,
-                                          "first_name": "Test",
-                                          "username": "testuser"
-                                        },
-                                        "chat": {
-                                          "id": 987654321,
-                                          "type": "private"
-                                        },
-                                        "date": 1234567890,
-                                        "text": "Hello Bot"
-                                      }
-                                    }
-                                  ]
-                                }
-                                """))
-                .willSetStateTo("Updates Received"));
+    @Timeout(10)
+    void startSendsResievesReply() {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
 
-        stubFor(post(urlMatching("/bot[^/]+/getUpdates"))
-                .inScenario("Updates Listener")
-                .whenScenarioStateIs("Updates Received")
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                        .withBody("""
-                                {
-                                  "ok": true,
-                                  "result": []
-                                }
-                                """)));
+        testUtils.writeMessageToBot("start_command_works", STARTED, "start_command_resieved", 1, "/start");
+        var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
-        List<Update> receivedUpdates = new CopyOnWriteArrayList<>();
-        CountDownLatch latch = new CountDownLatch(1);
+        assertThat(response).isNotEmpty();
+        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
+                .contains("/help")
+                .contains("Добро пожаловать!");
+    }
 
-        telegramBot.setUpdatesListener(updates -> {
-            receivedUpdates.addAll(updates);
-            latch.countDown();
-            return UpdatesListener.CONFIRMED_UPDATES_ALL;
-        });
+    @Test
+    @Timeout(10)
+    void helpSendsResievesCommands() {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
 
-        boolean received = latch.await(10, TimeUnit.SECONDS);
+        testUtils.writeMessageToBot("help_command_works", STARTED, "help_command_resieved", 1, "/help");
+        var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
-        assertTrue(received);
-        assertThat(receivedUpdates)
-                .hasSize(1)
-                .first()
-                .returns(123456, Update::updateId)
-                .extracting(Update::message)
-                .returns("Hello Bot", Message::text)
-                .extracting(Message::from)
-                .returns("testuser", User::username);
+        assertThat(response).isNotEmpty();
+        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
+                .contains("/help")
+                .contains("/start");
+    }
 
-        verify(postRequestedFor(urlPathTemplate("/bot{token}/getUpdates"))
-                .withPathParam("token", equalTo(telegramProperties.getToken())));
+    @Test
+    @Timeout(10)
+    void unknownCommandSendsResievesMessageWithHelp() {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+
+        testUtils.writeMessageToBot(
+                "unknown_command_handling", STARTED, "unknown_command_resieved", 1, "/unknownCommand");
+        var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
+
+        assertThat(response).isNotEmpty();
+        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
+                .contains("/help");
+    }
+
+    @Test
+    @Timeout(10)
+    void unexpectedMessageSendsResievesMessageWithHelp() {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+
+        testUtils.writeMessageToBot(
+                "unexpected_message_handling", STARTED, "unexpected_message_resieved", 1, "unexpected message");
+        var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
+
+        assertThat(response).isNotEmpty();
+        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
+                .contains("/help");
     }
 }

@@ -11,6 +11,7 @@ app:
       tracker:
         url: https://api.telegram.org/bot
         token: ${TELEGRAM_TOKEN} # Must be set in env
+        init-state-try-set-fixed-rate: 1s
         max-messages-batch-size: 100
         update-listener-sleep: 1s
         debug: false

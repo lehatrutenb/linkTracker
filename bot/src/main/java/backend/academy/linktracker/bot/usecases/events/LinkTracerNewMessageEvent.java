@@ -5,6 +5,7 @@ import backend.academy.linktracker.bot.core.entities.EventId;
 import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Map;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -32,6 +33,14 @@ public class LinkTracerNewMessageEvent extends ApplicationEvent implements Seria
     }
 
     public LinkTracerTelegramBotReplier getReplyService(ApplicationContext applicationContext) {
-        return applicationContext.getBean(replyServiceQualifier, LinkTracerTelegramBotReplier.class);
+        return (LinkTracerTelegramBotReplier)
+                applicationContext.getBeansWithAnnotation(Qualifier.class).entrySet().stream()
+                        .filter(bean -> applicationContext
+                                .findAnnotationOnBean(bean.getKey(), Qualifier.class)
+                                .value()
+                                .equals(replyServiceQualifier))
+                        .map(Map.Entry::getValue)
+                        .findAny()
+                        .orElseThrow();
     }
 }

@@ -1,46 +1,37 @@
 package backend.academy.linktracker.bot;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.getAllServeEvents;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 
 import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
-import com.pengrad.telegrambot.TelegramBot;
-import com.pengrad.telegrambot.UpdatesListener;
-import com.pengrad.telegrambot.model.Update;
-import java.time.Duration;
+import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
+import com.github.tomakehurst.wiremock.verification.LoggedRequest;
 import java.util.Collection;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+@RequiredArgsConstructor
 public class TelegramBotTestUtils {
-    private static final Duration DEFAULT_POLLING_TIMEOUT = Duration.ofSeconds(10);
-
-    @Autowired
-    TelegramBot telegramBot;
-
-    public Collection<Update> waitAndGetUpdates() {
-        List<Update> receivedUpdates = new CopyOnWriteArrayList<>();
-        CountDownLatch latch = new CountDownLatch(1);
-
-        telegramBot.setUpdatesListener(updates -> {
-            receivedUpdates.addAll(updates);
-            latch.countDown();
-            return UpdatesListener.CONFIRMED_UPDATES_ALL;
-        });
-
-        try {
-            latch.await(DEFAULT_POLLING_TIMEOUT.toSeconds(), TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    public Collection<LoggedRequest> waitAndGetUpdates(int amtUpdatesToWait) {
+        List<LoggedRequest> gotRequests;
+        while (true) {
+            Collection<ServeEvent> events = getAllServeEvents();
+            gotRequests = events.stream()
+                    .map(ServeEvent::getRequest)
+                    .filter(request -> urlMatching(".*/sendMessage")
+                            .match(request.getUrl())
+                            .isExactMatch())
+                    .toList();
+            if (amtUpdatesToWait <= gotRequests.size()) {
+                break;
+            }
         }
-        return receivedUpdates;
+        return gotRequests;
     }
 
     /**
@@ -79,7 +70,7 @@ public class TelegramBotTestUtils {
 
     public void writeMessageToBot(
             String scenario, String fromState, String toState, long messageId, String messageText) {
-        stubFor(post(urlMatching("/bot[^/]+/getUpdates"))
+        stubFor(post(urlMatching("/bot/.*/getUpdates"))
                 .inScenario(scenario)
                 .whenScenarioStateIs(fromState)
                 .willReturn(writeMessageToBot(
