@@ -1,15 +1,15 @@
 package backend.academy.linktracker.bot.adapters.repository;
 
 import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventId;
+import backend.academy.linktracker.bot.core.entities.EventID;
 import java.util.Optional;
 
 public interface EventsRepository {
-    Optional<Event> getEvent(EventId eventId);
+    Optional<Event> getEvent(EventID eventId);
 
-    Optional<EventId> getNumericFirstNotDoneEvent();
+    Optional<EventID> getNumericFirstNotDoneEvent();
 
-    Optional<EventId> getNumericLastOfPrefixOfDone();
+    Optional<EventID> getNumericLastOfPrefixOfDone();
 
     void updateEvent(Event event); // TODO is it fine to use core event structure there?
 }

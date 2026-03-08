@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.usecases.events;
 
 import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
-import backend.academy.linktracker.bot.core.entities.EventId;
-import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
+import backend.academy.linktracker.bot.core.entities.EventID;
+import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Map;
@@ -16,16 +16,16 @@ public class LinkTracerNewMessageEvent extends ApplicationEvent implements Seria
     private static final long serialVersionUID = 1L; // Set such version to fit linters
 
     @Getter
-    private final LinkTracerMessage message;
+    private final TelegramBotMessage message;
 
     @Getter
     private final String replyServiceQualifier; // Used additional qualifier logic to fit many input controllers
 
     @Getter
-    private final EventId eventId;
+    private final EventID eventId;
 
     public LinkTracerNewMessageEvent(
-            Object source, LinkTracerMessage message, Qualifier replyServiceQualifier, EventId eventId) {
+        Object source, TelegramBotMessage message, Qualifier replyServiceQualifier, EventID eventId) {
         super(source);
         this.message = message;
         this.replyServiceQualifier = replyServiceQualifier.value();

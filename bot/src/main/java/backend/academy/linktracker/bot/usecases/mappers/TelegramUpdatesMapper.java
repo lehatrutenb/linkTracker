@@ -1,10 +1,13 @@
 package backend.academy.linktracker.bot.usecases.mappers;
 
-import backend.academy.linktracker.bot.core.entities.EventId;
-import backend.academy.linktracker.bot.core.entities.LinkTracerChat;
-import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
-import backend.academy.linktracker.bot.core.entities.LinkTracerUser;
+import backend.academy.linktracker.bot.core.entities.EventID;
+import backend.academy.linktracker.bot.core.entities.TelegramBotChat;
+import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
+import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
+import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
 import com.pengrad.telegrambot.model.Chat;
+import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.User;
 import java.time.Instant;
@@ -12,13 +15,13 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class TelegramUpdatesMapper {
-    public static LinkTracerMessage map(Update update) {
+    public static TelegramBotMessage map(Update update) {
         var message = update.message();
-        return new LinkTracerMessage(
+        return new TelegramBotMessage(
                 message.text(),
-                message.messageId(),
+                mapMessageID(update),
                 mapInstant(message.date()),
-                map(message.chat()),
+                mapToChat(update),
                 map(message.from()));
     }
 
@@ -26,19 +29,27 @@ public class TelegramUpdatesMapper {
         return Instant.ofEpochSecond(epochSec);
     }
 
-    public static EventId mapUpdateId(Integer id) {
-        return new EventId(id.toString());
+    public static EventID mapUpdateId(Integer id) {
+        return new EventID(id.toString());
     }
 
-    public static Integer mapUpdateId(EventId id) {
+    public static Integer mapUpdateId(EventID id) {
         return Integer.valueOf(id.id());
     }
 
-    public static LinkTracerUser map(User user) {
-        return new LinkTracerUser(user.id(), user.username(), user.firstName(), user.isBot());
+    public static TelegramBotChatID mapChatId(Update update) {
+        return new TelegramBotChatID(update.message().chat().id());
     }
 
-    public static LinkTracerChat map(Chat chat) {
-        return new LinkTracerChat(chat.id(), chat.type());
+    public static TelegramBotMessageID mapMessageID(Update update) {
+        return new TelegramBotMessageID(update.message().messageId(), mapChatId(update));
+    }
+
+    public static TelegramBotUser map(User user) {
+        return new TelegramBotUser(user.id(), user.username(), user.firstName(), user.isBot());
+    }
+
+    public static TelegramBotChat mapToChat(Update update) {
+        return new TelegramBotChat(mapChatId(update), update.message().chat().type());
     }
 }

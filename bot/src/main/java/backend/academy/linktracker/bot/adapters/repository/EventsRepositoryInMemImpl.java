@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapters.repository;
 
 import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventId;
+import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.enums.EventState;
 import java.util.Map;
 import java.util.Optional;
@@ -10,27 +10,27 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EventsRepositoryInMemImpl implements EventsRepository {
-    Map<EventId, Event> events = new ConcurrentHashMap<>();
+    Map<EventID, Event> events = new ConcurrentHashMap<>();
 
     @Override
-    public Optional<Event> getEvent(EventId eventId) {
+    public Optional<Event> getEvent(EventID eventId) {
         return Optional.ofNullable(events.get(eventId));
     }
 
     @Override
-    public Optional<EventId> getNumericFirstNotDoneEvent() {
+    public Optional<EventID> getNumericFirstNotDoneEvent() {
         return events.entrySet().stream()
                 .filter(entry -> !entry.getValue().state().equals(EventState.DONE))
                 .map(Map.Entry::getKey)
-                .min(EventId::numericComparing);
+                .min(EventID::numericComparing);
     }
 
     @Override
-    public Optional<EventId> getNumericLastOfPrefixOfDone() {
+    public Optional<EventID> getNumericLastOfPrefixOfDone() {
         var firstNotDone = getNumericFirstNotDoneEvent();
         return firstNotDone.flatMap(id -> events.keySet().stream()
                 .filter(eventId -> eventId.numericComparing(id) < 0)
-                .max(EventId::numericComparing));
+                .max(EventID::numericComparing));
     }
 
     @Override

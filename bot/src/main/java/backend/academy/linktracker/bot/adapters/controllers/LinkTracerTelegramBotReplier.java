@@ -14,8 +14,8 @@ public class LinkTracerTelegramBotReplier {
     private final TelegramBot telegramBot;
     private final ResponseExceptionHandler responseExceptionHandler;
 
-    public void sendMessage(long charId, String message) {
-        var request = new SendMessage(charId, message);
+    public void sendMessage(long chatID, String message) {
+        var request = new SendMessage(chatID, message);
         SendResponse response = telegramBot.execute(request); // TODO rewrite with callback to exc handler
         if (!response.isOk()) {
             responseExceptionHandler.handle(response);

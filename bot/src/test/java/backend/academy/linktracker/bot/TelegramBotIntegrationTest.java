@@ -2,8 +2,10 @@ package backend.academy.linktracker.bot;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -54,6 +56,14 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         stubFor(post(urlMatching(".*/setMyCommands"))
                 .willReturn(aResponse().withStatus(200).withBody("{ok:true,result:true}")));
+    }
+
+    @Test
+    @Timeout(10)
+    void initializingSendsCommandMenuSet() throws InterruptedException {
+        Thread.sleep(3000);
+
+        verify(postRequestedFor(urlMatching(".*/setMyCommands")));
     }
 
     @Test

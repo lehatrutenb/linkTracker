@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.core.enums;
 
-public enum CurrentCommandFlowState {
+public enum ChatCommandFlowState {
     INITIAL,
     WAITING_USER_INPUT
 }

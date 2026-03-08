@@ -1,10 +1,11 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
-import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
+import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
@@ -21,19 +22,21 @@ public class HelpCommandHandler {
 
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
+    private final TelegramBotMessagesService messagesService;
     private final ApplicationContext applicationContext;
 
     @EventListener(condition = "#event.getMessage().message().strip().equals('/help')")
     public void handle(LinkTracerNewMessageEvent event) {
-        LinkTracerMessage message = event.getMessage();
+        TelegramBotMessage message = event.getMessage();
         log.atInfo()
                 .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.messageId())
+                .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle /help user command");
 
-        event.getReplyService(applicationContext).sendMessage(message.chat().id(), addCommandsToReply(BASIC_REPLY));
+        event.getReplyService(applicationContext).sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));
         eventsStateWatcher.markEventAsDone(event.getEventId());
+        messagesService.addProcessedMessage(message);
     }
 
     private static void addCommand(StringBuilder stringBuilder, CommandHandler commandHandler) {
