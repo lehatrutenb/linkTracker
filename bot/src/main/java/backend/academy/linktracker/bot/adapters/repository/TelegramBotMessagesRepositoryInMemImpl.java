@@ -3,11 +3,11 @@ package backend.academy.linktracker.bot.adapters.repository;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
-import org.springframework.stereotype.Repository;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessagesRepository {
@@ -21,8 +21,8 @@ public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessag
     @Override
     public Optional<TelegramBotMessage> getLastMessageInChat(TelegramBotChatID telegramBotChatID) {
         return messageRepo.values().stream()
-            .filter(message -> message.chat().id().equals(telegramBotChatID))
-            .max(Comparator.comparing(message -> message.chat().id().getID()));
+                .filter(message -> message.chat().id().equals(telegramBotChatID))
+                .max(Comparator.comparing(message -> message.chat().id().getID()));
     }
 
     @Override

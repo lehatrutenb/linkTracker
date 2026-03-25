@@ -12,3 +12,22 @@ cd bot
 ../mvnw spring-boot:run
 ```
 
+## Какие ссылки подразумеваются для скраппинга?
+
+### Github
+
+- Ссылки на репозиторий - будет выхватывать все события над ним
+
+Примеры
+
+https://github.com/openclaw/openclaw
+
+### Stackoverflow
+
+- Ссылки на вопросы - будет выхватывать ответы на вопросы
+
+Примеры
+
+https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals
+
+https://stackoverflow.com/questions/4568645

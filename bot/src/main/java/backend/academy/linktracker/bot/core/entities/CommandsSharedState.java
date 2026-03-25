@@ -1,12 +1,11 @@
 package backend.academy.linktracker.bot.core.entities;
 
-import backend.academy.linktracker.bot.core.enums.CurrentCommandFlowState;
-import org.springframework.stereotype.Component;
-
-/**
+/*
+/* *
  * Commands shared class to handle shared state in parallel requests
- */
+ * /
 @Component
+@Scope("singleton")
 public class CommandsSharedState {
     private CurrentCommandFlowState commandFlowState;
 
@@ -23,3 +22,4 @@ public class CommandsSharedState {
         return commandFlowState;
     }
 }
+*/

@@ -6,8 +6,19 @@ spring:
     name: scrapper
 
 app:
+  telegram:
+    link:
+      tracker:
+        api-path: http://127.0.0.1:8080
+        paths:
+          updates: /updates
+  snowflake:
+    worker-id: 1
+    datacenter-id: 1
+  global:
   stackoverflow:
     key: ${STACKOVERFLOW_KEY} # Use env variable. DO NOT KEEP TOKEN HERE
     access-token: ${STACKOVERFLOW_ACCESS_KEY} # Use env variable. DO NOT KEEP TOKEN HERE
   github:
     token: ${GITHUB_TOKEN} # Use env variable. DO NOT KEEP TOKEN HERE
+    user-agent: github-events-scrapping-service

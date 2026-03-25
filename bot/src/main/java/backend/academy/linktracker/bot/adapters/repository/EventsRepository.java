@@ -2,6 +2,10 @@ package backend.academy.linktracker.bot.adapters.repository;
 
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
+import backend.academy.linktracker.bot.core.enums.EventState;
+import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import java.time.Instant;
+import java.util.Collection;
 import java.util.Optional;
 
 public interface EventsRepository {
@@ -10,6 +14,9 @@ public interface EventsRepository {
     Optional<EventID> getNumericFirstNotDoneEvent();
 
     Optional<EventID> getNumericLastOfPrefixOfDone();
+
+    Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+            OwnerIDType ownerIDType, EventState eventState, Instant updateAt);
 
     void updateEvent(Event event); // TODO is it fine to use core event structure there?
 }

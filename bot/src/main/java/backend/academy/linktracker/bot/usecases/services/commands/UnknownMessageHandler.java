@@ -1,36 +1,39 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
-import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.event.EventListener;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UnknownMessageHandler {
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
             "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
 
     private final EventsStateWatcher eventsStateWatcher;
-    private final TelegramBotMessagesService messagesService;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ApplicationContext applicationContext;
 
-    @EventListener(condition = "!#event.getMessage().message().strip().startsWith('/')")
-    public void handle(LinkTracerNewMessageEvent event) {
+    @Override
+    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+        if (event.getMessage().message().strip().startsWith("/")) {
+            return;
+        }
         TelegramBotMessage message = event.getMessage();
 
-        if (commandsSharedStateService.getChatSharedState(message.chat().id()).getCommandFlowState() == ChatCommandFlowState.WAITING_USER_INPUT) {
+        if (commandsSharedStateService.getChatSharedState(message.chat().id()).getCommandFlowState()
+                == ChatCommandFlowState.WAITING_USER_INPUT) {
             return;
         }
 
@@ -40,9 +43,13 @@ public class UnknownMessageHandler {
                 .addKeyValue("message date", message.date())
                 .log("Handle unexpected user message");
 
-
-        event.getReplyService(applicationContext).sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        event.getReplyService(applicationContext)
+                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
-        messagesService.addProcessedMessage(message);
+    }
+
+    @Override
+    public boolean supportsAsyncExecution() {
+        return false;
     }
 }

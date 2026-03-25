@@ -3,6 +3,9 @@ package backend.academy.linktracker.bot.adapters.repository;
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.enums.EventState;
+import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import java.time.Instant;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -28,9 +31,22 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     @Override
     public Optional<EventID> getNumericLastOfPrefixOfDone() {
         var firstNotDone = getNumericFirstNotDoneEvent();
+        if (firstNotDone.isEmpty()) {
+            return events.keySet().stream().max(EventID::numericComparing);
+        }
         return firstNotDone.flatMap(id -> events.keySet().stream()
                 .filter(eventId -> eventId.numericComparing(id) < 0)
                 .max(EventID::numericComparing));
+    }
+
+    @Override
+    public Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+            OwnerIDType ownerIDType, EventState eventState, Instant maxUpdatedAt) {
+        return events.values().stream()
+                .filter(event -> event.state() == eventState)
+                .filter(event -> event.id().getOwnerIDType() == ownerIDType)
+                .filter(event -> event.updatedAt().isBefore(maxUpdatedAt))
+                .toList();
     }
 
     @Override

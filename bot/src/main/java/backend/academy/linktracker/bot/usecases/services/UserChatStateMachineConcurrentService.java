@@ -3,9 +3,9 @@ package backend.academy.linktracker.bot.usecases.services;
 import backend.academy.linktracker.bot.adapters.repository.UserChatStateRepository;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

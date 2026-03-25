@@ -1,9 +1,13 @@
 package backend.academy.linktracker.bot.usecases.services;
 
 import backend.academy.linktracker.bot.adapters.repository.EventsRepository;
+import backend.academy.linktracker.bot.common.TimeUtils;
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.enums.EventState;
+import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.properties.TelegramLinkTrackerProperties;
+import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EventsStateWatcher {
     private final EventsRepository eventsRepository;
+    private final TimeUtils timeUtils;
+    private final TelegramLinkTrackerProperties telegramLinkTrackerProperties;
 
     public boolean toProcessEvent(EventID eventId) {
         var event = eventsRepository.getEvent(eventId);
@@ -23,11 +29,22 @@ public class EventsStateWatcher {
     }
 
     public void markEventAsDone(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.DONE));
+        eventsRepository.updateEvent(new Event(eventId, EventState.DONE, timeUtils.now()));
+    }
+
+    public void markEventAsSkipped(EventID eventId) {
+        eventsRepository.updateEvent(new Event(eventId, EventState.SKIPPED, timeUtils.now()));
     }
 
     public void markEventAsProcessing(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING));
+        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
+    }
+
+    public Collection<Event> getElderlyProcessingEvents(OwnerIDType ownerIDType) {
+        return eventsRepository.getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+                ownerIDType,
+                EventState.PROCESSING,
+                timeUtils.now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
     public Optional<EventID> getNumericLastOfPrefixOfDone() {

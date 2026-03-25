@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface TelegramBotMessagesRepository {
     Optional<TelegramBotMessage> getMessage(TelegramBotMessageID messageID);
+
     Optional<TelegramBotMessage> getLastMessageInChat(TelegramBotChatID telegramBotChatID);
+
     void setMessage(TelegramBotMessage message);
 }

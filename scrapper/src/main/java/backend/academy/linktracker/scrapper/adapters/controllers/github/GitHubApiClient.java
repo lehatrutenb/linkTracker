@@ -1,0 +1,179 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github;
+
+import backend.academy.linktracker.scrapper.adapters.controllers.github.models.Event;
+import backend.academy.linktracker.scrapper.properties.GithubProperties;
+import backend.academy.linktracker.scrapper.properties.ScrapperGlobalProperties;
+import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkUpdateEvent;
+import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkUpdateEventDescription;
+import backend.academy.linktracker.scrapper.usecases.services.ScrapperRateLimitService;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.Link;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriTemplate;
+
+@Slf4j
+@Component
+public class GitHubApiClient {
+    private GithubProperties githubProperties;
+    private ScrapperGlobalProperties globalProperties;
+    private static final String CURRENT_API_VERSION = "2026-03-10";
+    private static final String GET_EVENTS_UPDATES_PATH = "/repos/{owner}/{repo}/events";
+    private ScrapperRateLimitService rateLimitService;
+    private UriTemplate getEventsUriTemplate;
+    // As i understood - github api requires RFC1123 that requires ENGLISH locale // TODO recheck locale info
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
+                    "EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
+            .withZone(ZoneId.of("GMT"));
+
+    @Qualifier("githubRestClient")
+    @Autowired
+    private RestClient restClient;
+
+    @Autowired
+    public void setGithubProperties(GithubProperties githubProperties) {
+        this.githubProperties = githubProperties;
+        getEventsUriTemplate = new UriTemplate(githubProperties.getGithubRoot().toString() + GET_EVENTS_UPDATES_PATH);
+    }
+
+    @Autowired
+    public void setScrapperGlobalProperties(ScrapperGlobalProperties globalProperties) {
+        this.globalProperties = globalProperties;
+        rateLimitService = new ScrapperRateLimitService(globalProperties);
+    }
+
+    /**
+     *
+     * @param since
+     * @return (?,  Instant of last read event + 1 sec (cause github api has sec precision)
+     */
+    public Pair<Collection<ScrapperLinkUpdateEvent>, Instant> getEventUpdates(
+            Instant since, String repo, String repoOwner) {
+        Optional<String> etagHeader = Optional.empty();
+        var response = getEventUpdatesPage(since, repoOwner, repo, etagHeader, 1);
+        var events = response.getBody();
+        var headers = response.getHeaders();
+        var eventsDescriptions = new ArrayList<>(mapEventUpdates(events));
+
+        if (events == null) {
+            log.atError()
+                    .addKeyValue("uri", GET_EVENTS_UPDATES_PATH)
+                    .addKeyValue("controller", "Github events controller")
+                    .log("Got unexpectedly null body response");
+            throw new RuntimeException("Got unexpectedly null body response");
+        }
+
+        if (events.length == 0) {
+            return Pair.of(List.of(), since);
+        }
+
+        int lastUpdatesPage = getLastUpdatesPage(headers);
+        var newSince = updateSince(headers, since);
+
+        if (lastUpdatesPage == 1) {
+            return Pair.of(eventsDescriptions, newSince);
+        }
+
+        IntStream.range(2, lastUpdatesPage + 1).forEach(page -> {
+            eventsDescriptions.addAll(mapEventUpdates(getEventUpdatesPage(since, repoOwner, repo, etagHeader, page)
+                    .getBody()));
+        });
+
+        return Pair.of(eventsDescriptions, newSince);
+    }
+
+    private int getLastUpdatesPage(HttpHeaders headers) {
+        return headers.get("Link").stream() // TODO add check
+                .map(Link::of)
+                .filter(link -> link.getRel().value().equals("last"))
+                .findAny()
+                .map(link -> UriComponentsBuilder.fromUriString(link.getHref())
+                        .build()
+                        .getQueryParams()
+                        .get("page"))
+                .map(List::getFirst)
+                .map(Integer::parseInt)
+                .orElse(1);
+    }
+
+    private Instant updateSince(HttpHeaders headers, Instant since) {
+        var curLastModified =
+                Instant.from(formatter.parse(headers.get("Last-Modified").getFirst())); // TODO add check
+        if (curLastModified.isAfter(since) || curLastModified.equals(since)) {
+            since = curLastModified.plusSeconds(1);
+        }
+        return since;
+    }
+
+    public Collection<ScrapperLinkUpdateEvent> mapEventUpdates(Event[] events) {
+        return Arrays.stream(events)
+                .map(event -> new ScrapperLinkUpdateEvent(
+                        event.getRepo().getUrl(),
+                        new ScrapperLinkUpdateEventDescription(
+                                event.getActor().getDisplayLogin() + " did " + event.getType())))
+                .toList();
+    }
+
+    public ResponseEntity<Event[]> getEventUpdatesPage(
+            Instant since, String owner, String repo, Optional<String> etagHeader, Integer page) {
+        if (rateLimitService.isReachedRateLimit()) {
+            return ResponseEntity.of(Optional.of(new Event[0]));
+        }
+
+        RestClient client =
+                restClient.mutate().baseUrl(githubProperties.getApiRoot()).build();
+        var request = client.get().uri(uriBuilder -> uriBuilder
+                .path(GET_EVENTS_UPDATES_PATH)
+                .queryParam("per_page", githubProperties.getApiPageSize())
+                .queryParam("page", page)
+                .build(owner, repo));
+        request = request.header(
+                "X-GitHub-Api-Version",
+                CURRENT_API_VERSION); // TODO recheck , in moment cant find reason why can't use in one expr
+        request = request.header("Authorization", "Bearer " + githubProperties.getToken());
+        request = request.header("User-Agent", githubProperties.getUserAgent());
+        request = request.header("if-modified-since", formatter.format(since));
+        if (etagHeader.isPresent()) {
+            request = request.header("if-none-match", etagHeader.orElseThrow());
+        }
+        var response = request.retrieve().toEntity(Event[].class); // Стоило ли оно того?:)
+        var headers = response.getHeaders();
+        rateLimitService.setUpdateRateLimitData(getQuotaMax(headers), getQuotaRemaining(headers));
+        if (!response.hasBody()) {
+            return ResponseEntity.of(Optional.of(new Event[0]));
+        }
+        return response;
+    }
+
+    public Optional<Long> getQuotaMax(HttpHeaders headers) {
+        var maxLimit = headers.get("X-RateLimit-Limit");
+        if (maxLimit == null) {
+            return Optional.empty();
+        }
+        return maxLimit.stream().findFirst().map(Long::valueOf);
+    }
+
+    public Optional<Long> getQuotaRemaining(HttpHeaders headers) {
+        var remaining = headers.get("X-RateLimit-Remaining");
+        if (remaining == null) {
+            return Optional.empty();
+        }
+        return remaining.stream().findFirst().map(Long::valueOf);
+    }
+}

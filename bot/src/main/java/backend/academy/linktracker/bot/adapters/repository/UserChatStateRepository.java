@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface UserChatStateRepository {
     Optional<ChatSharedState> getChatSharedState(TelegramBotChatID userChatID);
+
     void setChatSharedState(TelegramBotChatID userChatID, ChatSharedState commandFlowState);
 }

@@ -26,7 +26,8 @@ public class LinkTracerUserEventController implements UpdatesListener {
 
     @Override
     public int process(List<Update> list) {
-        linkTracerFacade.processUpdates(list, LinkTracerTelegramBotReplier.class.getAnnotation(Qualifier.class));
+        linkTracerFacade.processLinkTrackerUpdates(
+                list, LinkTracerTelegramBotReplier.class.getAnnotation(Qualifier.class));
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDone()
                 .map(TelegramUpdatesMapper::mapUpdateId)

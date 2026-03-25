@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.usecases.events;
 import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
+import jakarta.annotation.PostConstruct;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Map;
@@ -18,14 +19,18 @@ public class LinkTracerNewMessageEvent extends ApplicationEvent implements Seria
     @Getter
     private final TelegramBotMessage message;
 
-    @Getter
+    @Getter // TODO remove cause no longer need cause have now alternative using replyServiceMatcher
     private final String replyServiceQualifier; // Used additional qualifier logic to fit many input controllers
 
     @Getter
     private final EventID eventId;
 
+    @PostConstruct
+    public void init() { // TODO rm?
+    }
+
     public LinkTracerNewMessageEvent(
-        Object source, TelegramBotMessage message, Qualifier replyServiceQualifier, EventID eventId) {
+            Object source, TelegramBotMessage message, Qualifier replyServiceQualifier, EventID eventId) {
         super(source);
         this.message = message;
         this.replyServiceQualifier = replyServiceQualifier.value();

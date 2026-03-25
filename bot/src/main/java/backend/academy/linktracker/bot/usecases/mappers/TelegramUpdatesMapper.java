@@ -6,8 +6,7 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
-import com.pengrad.telegrambot.model.Chat;
-import com.pengrad.telegrambot.model.Message;
+import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.User;
 import java.time.Instant;
@@ -18,7 +17,7 @@ public class TelegramUpdatesMapper {
     public static TelegramBotMessage map(Update update) {
         var message = update.message();
         return new TelegramBotMessage(
-                message.text(),
+                message.text() == null ? "" : message.text(),
                 mapMessageID(update),
                 mapInstant(message.date()),
                 mapToChat(update),
@@ -29,16 +28,24 @@ public class TelegramUpdatesMapper {
         return Instant.ofEpochSecond(epochSec);
     }
 
-    public static EventID mapUpdateId(Integer id) {
-        return new EventID(id.toString());
+    public static EventID mapScrapperUpdateId(Long id) {
+        return new EventID(id.toString(), OwnerIDType.SCRAPPER);
+    }
+
+    public static EventID mapLinkTrackerUpdateId(Integer id) {
+        return new EventID(id.toString(), OwnerIDType.LINK_TRACKER);
     }
 
     public static Integer mapUpdateId(EventID id) {
-        return Integer.valueOf(id.id());
+        return Integer.valueOf(id.getRawId());
     }
 
     public static TelegramBotChatID mapChatId(Update update) {
         return new TelegramBotChatID(update.message().chat().id());
+    }
+
+    public static TelegramBotChatID mapScrapperChatId(Long scrapperChatID) {
+        return new TelegramBotChatID(scrapperChatID);
     }
 
     public static TelegramBotMessageID mapMessageID(Update update) {

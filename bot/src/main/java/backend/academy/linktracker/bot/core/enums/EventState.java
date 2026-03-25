@@ -4,4 +4,5 @@ public enum EventState {
     NOT_INITED,
     PROCESSING,
     DONE,
+    SKIPPED,
 }

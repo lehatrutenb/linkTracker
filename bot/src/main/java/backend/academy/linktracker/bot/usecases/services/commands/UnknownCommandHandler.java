@@ -4,17 +4,20 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesService;
+import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.event.EventListener;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UnknownCommandHandler {
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
             "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it
     // makes sense to
@@ -22,14 +25,19 @@ public class UnknownCommandHandler {
 
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
-    private final TelegramBotMessagesService messagesService;
     private final ApplicationContext applicationContext;
 
-    @EventListener(condition = "#event.getMessage().message().strip().startsWith('/')")
-    public void handle(LinkTracerNewMessageEvent event) {
+    @Override
+    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/")) {
+            return;
+        }
         TelegramBotMessage message = event.getMessage();
         if (commandsMetaDataService
-                .getCommandHandlerByCommand(message.message().strip())
+                .getCommandHandlerByCommand(
+                        Arrays.stream(message.message().strip().split(" "))
+                                .findFirst()
+                                .orElseThrow())
                 .isPresent()) {
             return;
         }
@@ -40,8 +48,13 @@ public class UnknownCommandHandler {
                 .addKeyValue("message date", message.date())
                 .log("Handle unknown user command");
 
-        event.getReplyService(applicationContext).sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        event.getReplyService(applicationContext)
+                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
-        messagesService.addProcessedMessage(message);
+    }
+
+    @Override
+    public boolean supportsAsyncExecution() {
+        return false;
     }
 }

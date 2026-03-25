@@ -1,10 +1,12 @@
 package backend.academy.linktracker.bot.core.entities;
 
+import java.io.Serializable;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import java.io.Serializable;
 
 @RequiredArgsConstructor
+@EqualsAndHashCode
 public class TelegramBotMessageID implements Serializable, Comparable<TelegramBotMessageID> {
     private final long id;
     private final TelegramBotChatID chatID;

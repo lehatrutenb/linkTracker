@@ -6,6 +6,14 @@ spring:
     name: bot
 
 app:
+  scrapper:
+    api-path: http://127.0.0.1:8081
+    paths:
+      addChat: /tg-chat/{id}
+      deleteChat: /tg-chat/{id}
+      listLinks: /links
+      trackLink: /links
+      untrackLink: /links
   telegram:
     link:
       tracker:
@@ -15,3 +23,5 @@ app:
         max-messages-batch-size: 100
         update-listener-sleep: 1s
         debug: false
+        update-notifier-before-retry: 10s
+        processing-message-timeout: 10s

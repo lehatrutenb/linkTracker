@@ -35,6 +35,12 @@ public class TelegramLinkTrackerProperties {
     @DurationUnit(ChronoUnit.MILLIS)
     private Duration initStateTrySetFixedRate = Duration.ofSeconds(1);
 
+    @DurationUnit(ChronoUnit.MILLIS)
+    private Duration updateNotifierBeforeRetry = Duration.ofSeconds(10);
+
+    @DurationUnit(ChronoUnit.MILLIS)
+    private Duration processingMessageTimeout = Duration.ofSeconds(10);
+
     private long maxMessagesBatchSize = 100;
 
     private boolean debug;
