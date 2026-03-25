@@ -1,0 +1,558 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import java.net.URI;
+import java.time.OffsetDateTime;
+import java.util.*;
+import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
+
+/**
+ * The security alert of the vulnerable dependency.
+ */
+@Schema(name = "webhooks_alert", description = "The security alert of the vulnerable dependency.")
+@JsonTypeName("webhooks_alert")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class WebhooksAlert {
+
+    private String affectedPackageName;
+
+    private String affectedRange;
+
+    private String createdAt;
+
+    private String dismissReason;
+
+    private String dismissedAt;
+
+    private User2 dismisser = null;
+
+    private String externalIdentifier;
+
+    private URI externalReference = null;
+
+    private String fixReason;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private OffsetDateTime fixedAt;
+
+    private String fixedIn;
+
+    private String ghsaId;
+
+    private Long id;
+
+    private String nodeId;
+
+    private Long number;
+
+    private String severity;
+
+    /**
+     * Gets or Sets state
+     */
+    public enum StateEnum {
+        AUTO_DISMISSED("auto_dismissed"),
+
+        OPEN("open");
+
+        private final String value;
+
+        StateEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static StateEnum fromValue(String value) {
+            for (StateEnum b : StateEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    private StateEnum state;
+
+    public WebhooksAlert() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public WebhooksAlert(
+            String affectedPackageName,
+            String affectedRange,
+            String createdAt,
+            String externalIdentifier,
+            URI externalReference,
+            String ghsaId,
+            Long id,
+            String nodeId,
+            Long number,
+            String severity,
+            StateEnum state) {
+        this.affectedPackageName = affectedPackageName;
+        this.affectedRange = affectedRange;
+        this.createdAt = createdAt;
+        this.externalIdentifier = externalIdentifier;
+        this.externalReference = externalReference;
+        this.ghsaId = ghsaId;
+        this.id = id;
+        this.nodeId = nodeId;
+        this.number = number;
+        this.severity = severity;
+        this.state = state;
+    }
+
+    public WebhooksAlert affectedPackageName(String affectedPackageName) {
+        this.affectedPackageName = affectedPackageName;
+        return this;
+    }
+
+    /**
+     * Get affectedPackageName
+     * @return affectedPackageName
+     */
+    @NotNull
+    @Schema(name = "affected_package_name", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("affected_package_name")
+    public String getAffectedPackageName() {
+        return affectedPackageName;
+    }
+
+    public void setAffectedPackageName(String affectedPackageName) {
+        this.affectedPackageName = affectedPackageName;
+    }
+
+    public WebhooksAlert affectedRange(String affectedRange) {
+        this.affectedRange = affectedRange;
+        return this;
+    }
+
+    /**
+     * Get affectedRange
+     * @return affectedRange
+     */
+    @NotNull
+    @Schema(name = "affected_range", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("affected_range")
+    public String getAffectedRange() {
+        return affectedRange;
+    }
+
+    public void setAffectedRange(String affectedRange) {
+        this.affectedRange = affectedRange;
+    }
+
+    public WebhooksAlert createdAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     * @return createdAt
+     */
+    @NotNull
+    @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("created_at")
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public WebhooksAlert dismissReason(String dismissReason) {
+        this.dismissReason = dismissReason;
+        return this;
+    }
+
+    /**
+     * Get dismissReason
+     * @return dismissReason
+     */
+    @Schema(name = "dismiss_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("dismiss_reason")
+    public String getDismissReason() {
+        return dismissReason;
+    }
+
+    public void setDismissReason(String dismissReason) {
+        this.dismissReason = dismissReason;
+    }
+
+    public WebhooksAlert dismissedAt(String dismissedAt) {
+        this.dismissedAt = dismissedAt;
+        return this;
+    }
+
+    /**
+     * Get dismissedAt
+     * @return dismissedAt
+     */
+    @Schema(name = "dismissed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("dismissed_at")
+    public String getDismissedAt() {
+        return dismissedAt;
+    }
+
+    public void setDismissedAt(String dismissedAt) {
+        this.dismissedAt = dismissedAt;
+    }
+
+    public WebhooksAlert dismisser(User2 dismisser) {
+        this.dismisser = dismisser;
+        return this;
+    }
+
+    /**
+     * Get dismisser
+     * @return dismisser
+     */
+    @Valid
+    @Schema(name = "dismisser", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("dismisser")
+    public User2 getDismisser() {
+        return dismisser;
+    }
+
+    public void setDismisser(User2 dismisser) {
+        this.dismisser = dismisser;
+    }
+
+    public WebhooksAlert externalIdentifier(String externalIdentifier) {
+        this.externalIdentifier = externalIdentifier;
+        return this;
+    }
+
+    /**
+     * Get externalIdentifier
+     * @return externalIdentifier
+     */
+    @NotNull
+    @Schema(name = "external_identifier", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("external_identifier")
+    public String getExternalIdentifier() {
+        return externalIdentifier;
+    }
+
+    public void setExternalIdentifier(String externalIdentifier) {
+        this.externalIdentifier = externalIdentifier;
+    }
+
+    public WebhooksAlert externalReference(URI externalReference) {
+        this.externalReference = externalReference;
+        return this;
+    }
+
+    /**
+     * Get externalReference
+     * @return externalReference
+     */
+    @NotNull
+    @Valid
+    @Schema(name = "external_reference", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("external_reference")
+    public URI getExternalReference() {
+        return externalReference;
+    }
+
+    public void setExternalReference(URI externalReference) {
+        this.externalReference = externalReference;
+    }
+
+    public WebhooksAlert fixReason(String fixReason) {
+        this.fixReason = fixReason;
+        return this;
+    }
+
+    /**
+     * Get fixReason
+     * @return fixReason
+     */
+    @Schema(name = "fix_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("fix_reason")
+    public String getFixReason() {
+        return fixReason;
+    }
+
+    public void setFixReason(String fixReason) {
+        this.fixReason = fixReason;
+    }
+
+    public WebhooksAlert fixedAt(OffsetDateTime fixedAt) {
+        this.fixedAt = fixedAt;
+        return this;
+    }
+
+    /**
+     * Get fixedAt
+     * @return fixedAt
+     */
+    @Valid
+    @Schema(name = "fixed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("fixed_at")
+    public OffsetDateTime getFixedAt() {
+        return fixedAt;
+    }
+
+    public void setFixedAt(OffsetDateTime fixedAt) {
+        this.fixedAt = fixedAt;
+    }
+
+    public WebhooksAlert fixedIn(String fixedIn) {
+        this.fixedIn = fixedIn;
+        return this;
+    }
+
+    /**
+     * Get fixedIn
+     * @return fixedIn
+     */
+    @Schema(name = "fixed_in", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("fixed_in")
+    public String getFixedIn() {
+        return fixedIn;
+    }
+
+    public void setFixedIn(String fixedIn) {
+        this.fixedIn = fixedIn;
+    }
+
+    public WebhooksAlert ghsaId(String ghsaId) {
+        this.ghsaId = ghsaId;
+        return this;
+    }
+
+    /**
+     * Get ghsaId
+     * @return ghsaId
+     */
+    @NotNull
+    @Schema(name = "ghsa_id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("ghsa_id")
+    public String getGhsaId() {
+        return ghsaId;
+    }
+
+    public void setGhsaId(String ghsaId) {
+        this.ghsaId = ghsaId;
+    }
+
+    public WebhooksAlert id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get id
+     * @return id
+     */
+    @NotNull
+    @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public WebhooksAlert nodeId(String nodeId) {
+        this.nodeId = nodeId;
+        return this;
+    }
+
+    /**
+     * Get nodeId
+     * @return nodeId
+     */
+    @NotNull
+    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public WebhooksAlert number(Long number) {
+        this.number = number;
+        return this;
+    }
+
+    /**
+     * Get number
+     * @return number
+     */
+    @NotNull
+    @Schema(name = "number", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("number")
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public WebhooksAlert severity(String severity) {
+        this.severity = severity;
+        return this;
+    }
+
+    /**
+     * Get severity
+     * @return severity
+     */
+    @NotNull
+    @Schema(name = "severity", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("severity")
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    public WebhooksAlert state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * Get state
+     * @return state
+     */
+    @NotNull
+    @Schema(name = "state", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("state")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WebhooksAlert webhooksAlert = (WebhooksAlert) o;
+        return Objects.equals(this.affectedPackageName, webhooksAlert.affectedPackageName)
+                && Objects.equals(this.affectedRange, webhooksAlert.affectedRange)
+                && Objects.equals(this.createdAt, webhooksAlert.createdAt)
+                && Objects.equals(this.dismissReason, webhooksAlert.dismissReason)
+                && Objects.equals(this.dismissedAt, webhooksAlert.dismissedAt)
+                && Objects.equals(this.dismisser, webhooksAlert.dismisser)
+                && Objects.equals(this.externalIdentifier, webhooksAlert.externalIdentifier)
+                && Objects.equals(this.externalReference, webhooksAlert.externalReference)
+                && Objects.equals(this.fixReason, webhooksAlert.fixReason)
+                && Objects.equals(this.fixedAt, webhooksAlert.fixedAt)
+                && Objects.equals(this.fixedIn, webhooksAlert.fixedIn)
+                && Objects.equals(this.ghsaId, webhooksAlert.ghsaId)
+                && Objects.equals(this.id, webhooksAlert.id)
+                && Objects.equals(this.nodeId, webhooksAlert.nodeId)
+                && Objects.equals(this.number, webhooksAlert.number)
+                && Objects.equals(this.severity, webhooksAlert.severity)
+                && Objects.equals(this.state, webhooksAlert.state);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                affectedPackageName,
+                affectedRange,
+                createdAt,
+                dismissReason,
+                dismissedAt,
+                dismisser,
+                externalIdentifier,
+                externalReference,
+                fixReason,
+                fixedAt,
+                fixedIn,
+                ghsaId,
+                id,
+                nodeId,
+                number,
+                severity,
+                state);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class WebhooksAlert {\n");
+        sb.append("    affectedPackageName: ")
+                .append(toIndentedString(affectedPackageName))
+                .append("\n");
+        sb.append("    affectedRange: ").append(toIndentedString(affectedRange)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("    dismissReason: ").append(toIndentedString(dismissReason)).append("\n");
+        sb.append("    dismissedAt: ").append(toIndentedString(dismissedAt)).append("\n");
+        sb.append("    dismisser: ").append(toIndentedString(dismisser)).append("\n");
+        sb.append("    externalIdentifier: ")
+                .append(toIndentedString(externalIdentifier))
+                .append("\n");
+        sb.append("    externalReference: ")
+                .append(toIndentedString(externalReference))
+                .append("\n");
+        sb.append("    fixReason: ").append(toIndentedString(fixReason)).append("\n");
+        sb.append("    fixedAt: ").append(toIndentedString(fixedAt)).append("\n");
+        sb.append("    fixedIn: ").append(toIndentedString(fixedIn)).append("\n");
+        sb.append("    ghsaId: ").append(toIndentedString(ghsaId)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
+        sb.append("    number: ").append(toIndentedString(number)).append("\n");
+        sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

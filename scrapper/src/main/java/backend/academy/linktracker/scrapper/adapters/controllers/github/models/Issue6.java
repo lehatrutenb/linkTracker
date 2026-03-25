@@ -1,0 +1,1109 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import java.net.URI;
+import java.time.OffsetDateTime;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import org.springframework.format.annotation.DateTimeFormat;
+
+/**
+ * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+ */
+@Schema(name = "Issue_6", description = "The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.")
+@JsonTypeName("Issue_6")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class Issue6 {
+
+    /**
+     * Gets or Sets activeLockReason
+     */
+    public enum ActiveLockReasonEnum {
+        RESOLVED("resolved"),
+
+        OFF_TOPIC("off-topic"),
+
+        TOO_HEATED("too heated"),
+
+        SPAM("spam");
+
+        private final String value;
+
+        ActiveLockReasonEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ActiveLockReasonEnum fromValue(String value) {
+            for (ActiveLockReasonEnum b : ActiveLockReasonEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            return null;
+        }
+    }
+
+    private ActiveLockReasonEnum activeLockReason = null;
+
+    private User assignee = null;
+
+    @Valid
+    private List<@Valid User> assignees = new ArrayList<>();
+
+    /**
+     * How the author is associated with the repository.
+     */
+    public enum AuthorAssociationEnum {
+        COLLABORATOR("COLLABORATOR"),
+
+        CONTRIBUTOR("CONTRIBUTOR"),
+
+        FIRST_TIMER("FIRST_TIMER"),
+
+        FIRST_TIME_CONTRIBUTOR("FIRST_TIME_CONTRIBUTOR"),
+
+        MANNEQUIN("MANNEQUIN"),
+
+        MEMBER("MEMBER"),
+
+        NONE("NONE"),
+
+        OWNER("OWNER");
+
+        private final String value;
+
+        AuthorAssociationEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static AuthorAssociationEnum fromValue(String value) {
+            for (AuthorAssociationEnum b : AuthorAssociationEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    private AuthorAssociationEnum authorAssociation;
+
+    private String body = null;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private OffsetDateTime closedAt = null;
+
+    private Long comments;
+
+    private URI commentsUrl;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private OffsetDateTime createdAt;
+
+    private Boolean draft;
+
+    private URI eventsUrl;
+
+    private URI htmlUrl;
+
+    private Long id;
+
+    @Valid
+    private List<@Valid Label> labels = new ArrayList<>();
+
+    private String labelsUrl;
+
+    private Boolean locked;
+
+    private Milestone1 milestone = null;
+
+    private String nodeId;
+
+    private Long number;
+
+    private App1 performedViaGithubApp = null;
+
+    private WebhooksIssuePullRequest pullRequest;
+
+    private Reactions reactions;
+
+    private URI repositoryUrl;
+
+    private SubIssuesSummary subIssuesSummary;
+
+    private IssueDependenciesSummary issueDependenciesSummary;
+
+    @Valid
+    private List<@Valid IssueFieldValue> issueFieldValues = new ArrayList<>();
+
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
+    public enum StateEnum {
+        OPEN("open"),
+
+        CLOSED("closed");
+
+        private final String value;
+
+        StateEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static StateEnum fromValue(String value) {
+            for (StateEnum b : StateEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    private StateEnum state;
+
+    private String stateReason = null;
+
+    private URI timelineUrl;
+
+    private String title;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private OffsetDateTime updatedAt;
+
+    private URI url;
+
+    private NullableIssueComment pinnedComment = null;
+
+    private User1 user = null;
+
+    private IssueType type = null;
+
+    public Issue6() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public Issue6(Long id, Long number) {
+        this.id = id;
+        this.number = number;
+    }
+
+    public Issue6 activeLockReason(ActiveLockReasonEnum activeLockReason) {
+        this.activeLockReason = activeLockReason;
+        return this;
+    }
+
+    /**
+     * Get activeLockReason
+     * @return activeLockReason
+     */
+    @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("active_lock_reason")
+    public ActiveLockReasonEnum getActiveLockReason() {
+        return activeLockReason;
+    }
+
+    public void setActiveLockReason(ActiveLockReasonEnum activeLockReason) {
+        this.activeLockReason = activeLockReason;
+    }
+
+    public Issue6 assignee(User assignee) {
+        this.assignee = assignee;
+        return this;
+    }
+
+    /**
+     * Get assignee
+     * @return assignee
+     */
+    @Valid
+    @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("assignee")
+    public User getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
+    }
+
+    public Issue6 assignees(List<@Valid User> assignees) {
+        this.assignees = assignees;
+        return this;
+    }
+
+    public Issue6 addAssigneesItem(User assigneesItem) {
+        if (this.assignees == null) {
+            this.assignees = new ArrayList<>();
+        }
+        this.assignees.add(assigneesItem);
+        return this;
+    }
+
+    /**
+     * Get assignees
+     * @return assignees
+     */
+    @Valid
+    @Schema(name = "assignees", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("assignees")
+    public List<@Valid User> getAssignees() {
+        return assignees;
+    }
+
+    public void setAssignees(List<@Valid User> assignees) {
+        this.assignees = assignees;
+    }
+
+    public Issue6 authorAssociation(AuthorAssociationEnum authorAssociation) {
+        this.authorAssociation = authorAssociation;
+        return this;
+    }
+
+    /**
+     * How the author is associated with the repository.
+     * @return authorAssociation
+     */
+    @Schema(
+            name = "author_association",
+            description = "How the author is associated with the repository.",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("author_association")
+    public AuthorAssociationEnum getAuthorAssociation() {
+        return authorAssociation;
+    }
+
+    public void setAuthorAssociation(AuthorAssociationEnum authorAssociation) {
+        this.authorAssociation = authorAssociation;
+    }
+
+    public Issue6 body(String body) {
+        this.body = body;
+        return this;
+    }
+
+    /**
+     * Contents of the issue
+     * @return body
+     */
+    @Schema(name = "body", description = "Contents of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("body")
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public Issue6 closedAt(OffsetDateTime closedAt) {
+        this.closedAt = closedAt;
+        return this;
+    }
+
+    /**
+     * Get closedAt
+     * @return closedAt
+     */
+    @Valid
+    @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("closed_at")
+    public OffsetDateTime getClosedAt() {
+        return closedAt;
+    }
+
+    public void setClosedAt(OffsetDateTime closedAt) {
+        this.closedAt = closedAt;
+    }
+
+    public Issue6 comments(Long comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    /**
+     * Get comments
+     * @return comments
+     */
+    @Schema(name = "comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("comments")
+    public Long getComments() {
+        return comments;
+    }
+
+    public void setComments(Long comments) {
+        this.comments = comments;
+    }
+
+    public Issue6 commentsUrl(URI commentsUrl) {
+        this.commentsUrl = commentsUrl;
+        return this;
+    }
+
+    /**
+     * Get commentsUrl
+     * @return commentsUrl
+     */
+    @Valid
+    @Schema(name = "comments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("comments_url")
+    public URI getCommentsUrl() {
+        return commentsUrl;
+    }
+
+    public void setCommentsUrl(URI commentsUrl) {
+        this.commentsUrl = commentsUrl;
+    }
+
+    public Issue6 createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     * @return createdAt
+     */
+    @Valid
+    @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("created_at")
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Issue6 draft(Boolean draft) {
+        this.draft = draft;
+        return this;
+    }
+
+    /**
+     * Get draft
+     * @return draft
+     */
+    @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("draft")
+    public Boolean getDraft() {
+        return draft;
+    }
+
+    public void setDraft(Boolean draft) {
+        this.draft = draft;
+    }
+
+    public Issue6 eventsUrl(URI eventsUrl) {
+        this.eventsUrl = eventsUrl;
+        return this;
+    }
+
+    /**
+     * Get eventsUrl
+     * @return eventsUrl
+     */
+    @Valid
+    @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("events_url")
+    public URI getEventsUrl() {
+        return eventsUrl;
+    }
+
+    public void setEventsUrl(URI eventsUrl) {
+        this.eventsUrl = eventsUrl;
+    }
+
+    public Issue6 htmlUrl(URI htmlUrl) {
+        this.htmlUrl = htmlUrl;
+        return this;
+    }
+
+    /**
+     * Get htmlUrl
+     * @return htmlUrl
+     */
+    @Valid
+    @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("html_url")
+    public URI getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    public void setHtmlUrl(URI htmlUrl) {
+        this.htmlUrl = htmlUrl;
+    }
+
+    public Issue6 id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get id
+     * @return id
+     */
+    @NotNull
+    @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Issue6 labels(List<@Valid Label> labels) {
+        this.labels = labels;
+        return this;
+    }
+
+    public Issue6 addLabelsItem(Label labelsItem) {
+        if (this.labels == null) {
+            this.labels = new ArrayList<>();
+        }
+        this.labels.add(labelsItem);
+        return this;
+    }
+
+    /**
+     * Get labels
+     * @return labels
+     */
+    @Valid
+    @Schema(name = "labels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("labels")
+    public List<@Valid Label> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<@Valid Label> labels) {
+        this.labels = labels;
+    }
+
+    public Issue6 labelsUrl(String labelsUrl) {
+        this.labelsUrl = labelsUrl;
+        return this;
+    }
+
+    /**
+     * Get labelsUrl
+     * @return labelsUrl
+     */
+    @Schema(name = "labels_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("labels_url")
+    public String getLabelsUrl() {
+        return labelsUrl;
+    }
+
+    public void setLabelsUrl(String labelsUrl) {
+        this.labelsUrl = labelsUrl;
+    }
+
+    public Issue6 locked(Boolean locked) {
+        this.locked = locked;
+        return this;
+    }
+
+    /**
+     * Get locked
+     * @return locked
+     */
+    @Schema(name = "locked", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("locked")
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    public Issue6 milestone(Milestone1 milestone) {
+        this.milestone = milestone;
+        return this;
+    }
+
+    /**
+     * Get milestone
+     * @return milestone
+     */
+    @Valid
+    @Schema(name = "milestone", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("milestone")
+    public Milestone1 getMilestone() {
+        return milestone;
+    }
+
+    public void setMilestone(Milestone1 milestone) {
+        this.milestone = milestone;
+    }
+
+    public Issue6 nodeId(String nodeId) {
+        this.nodeId = nodeId;
+        return this;
+    }
+
+    /**
+     * Get nodeId
+     * @return nodeId
+     */
+    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public Issue6 number(Long number) {
+        this.number = number;
+        return this;
+    }
+
+    /**
+     * Get number
+     * @return number
+     */
+    @NotNull
+    @Schema(name = "number", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("number")
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Issue6 performedViaGithubApp(App1 performedViaGithubApp) {
+        this.performedViaGithubApp = performedViaGithubApp;
+        return this;
+    }
+
+    /**
+     * Get performedViaGithubApp
+     * @return performedViaGithubApp
+     */
+    @Valid
+    @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("performed_via_github_app")
+    public App1 getPerformedViaGithubApp() {
+        return performedViaGithubApp;
+    }
+
+    public void setPerformedViaGithubApp(App1 performedViaGithubApp) {
+        this.performedViaGithubApp = performedViaGithubApp;
+    }
+
+    public Issue6 pullRequest(WebhooksIssuePullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+        return this;
+    }
+
+    /**
+     * Get pullRequest
+     * @return pullRequest
+     */
+    @Valid
+    @Schema(name = "pull_request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("pull_request")
+    public WebhooksIssuePullRequest getPullRequest() {
+        return pullRequest;
+    }
+
+    public void setPullRequest(WebhooksIssuePullRequest pullRequest) {
+        this.pullRequest = pullRequest;
+    }
+
+    public Issue6 reactions(Reactions reactions) {
+        this.reactions = reactions;
+        return this;
+    }
+
+    /**
+     * Get reactions
+     * @return reactions
+     */
+    @Valid
+    @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("reactions")
+    public Reactions getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(Reactions reactions) {
+        this.reactions = reactions;
+    }
+
+    public Issue6 repositoryUrl(URI repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+        return this;
+    }
+
+    /**
+     * Get repositoryUrl
+     * @return repositoryUrl
+     */
+    @Valid
+    @Schema(name = "repository_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("repository_url")
+    public URI getRepositoryUrl() {
+        return repositoryUrl;
+    }
+
+    public void setRepositoryUrl(URI repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+    }
+
+    public Issue6 subIssuesSummary(SubIssuesSummary subIssuesSummary) {
+        this.subIssuesSummary = subIssuesSummary;
+        return this;
+    }
+
+    /**
+     * Get subIssuesSummary
+     * @return subIssuesSummary
+     */
+    @Valid
+    @Schema(name = "sub_issues_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("sub_issues_summary")
+    public SubIssuesSummary getSubIssuesSummary() {
+        return subIssuesSummary;
+    }
+
+    public void setSubIssuesSummary(SubIssuesSummary subIssuesSummary) {
+        this.subIssuesSummary = subIssuesSummary;
+    }
+
+    public Issue6 issueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
+        this.issueDependenciesSummary = issueDependenciesSummary;
+        return this;
+    }
+
+    /**
+     * Get issueDependenciesSummary
+     * @return issueDependenciesSummary
+     */
+    @Valid
+    @Schema(name = "issue_dependencies_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("issue_dependencies_summary")
+    public IssueDependenciesSummary getIssueDependenciesSummary() {
+        return issueDependenciesSummary;
+    }
+
+    public void setIssueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
+        this.issueDependenciesSummary = issueDependenciesSummary;
+    }
+
+    public Issue6 issueFieldValues(List<@Valid IssueFieldValue> issueFieldValues) {
+        this.issueFieldValues = issueFieldValues;
+        return this;
+    }
+
+    public Issue6 addIssueFieldValuesItem(IssueFieldValue issueFieldValuesItem) {
+        if (this.issueFieldValues == null) {
+            this.issueFieldValues = new ArrayList<>();
+        }
+        this.issueFieldValues.add(issueFieldValuesItem);
+        return this;
+    }
+
+    /**
+     * Get issueFieldValues
+     * @return issueFieldValues
+     */
+    @Valid
+    @Schema(name = "issue_field_values", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("issue_field_values")
+    public List<@Valid IssueFieldValue> getIssueFieldValues() {
+        return issueFieldValues;
+    }
+
+    public void setIssueFieldValues(List<@Valid IssueFieldValue> issueFieldValues) {
+        this.issueFieldValues = issueFieldValues;
+    }
+
+    public Issue6 state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * State of the issue; either 'open' or 'closed'
+     * @return state
+     */
+    @Schema(
+            name = "state",
+            description = "State of the issue; either 'open' or 'closed'",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("state")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    public Issue6 stateReason(String stateReason) {
+        this.stateReason = stateReason;
+        return this;
+    }
+
+    /**
+     * Get stateReason
+     * @return stateReason
+     */
+    @Schema(name = "state_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("state_reason")
+    public String getStateReason() {
+        return stateReason;
+    }
+
+    public void setStateReason(String stateReason) {
+        this.stateReason = stateReason;
+    }
+
+    public Issue6 timelineUrl(URI timelineUrl) {
+        this.timelineUrl = timelineUrl;
+        return this;
+    }
+
+    /**
+     * Get timelineUrl
+     * @return timelineUrl
+     */
+    @Valid
+    @Schema(name = "timeline_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("timeline_url")
+    public URI getTimelineUrl() {
+        return timelineUrl;
+    }
+
+    public void setTimelineUrl(URI timelineUrl) {
+        this.timelineUrl = timelineUrl;
+    }
+
+    public Issue6 title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    /**
+     * Title of the issue
+     * @return title
+     */
+    @Schema(name = "title", description = "Title of the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Issue6 updatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    /**
+     * Get updatedAt
+     * @return updatedAt
+     */
+    @Valid
+    @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("updated_at")
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Issue6 url(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    /**
+     * URL for the issue
+     * @return url
+     */
+    @Valid
+    @Schema(name = "url", description = "URL for the issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("url")
+    public URI getUrl() {
+        return url;
+    }
+
+    public void setUrl(URI url) {
+        this.url = url;
+    }
+
+    public Issue6 pinnedComment(NullableIssueComment pinnedComment) {
+        this.pinnedComment = pinnedComment;
+        return this;
+    }
+
+    /**
+     * Get pinnedComment
+     * @return pinnedComment
+     */
+    @Valid
+    @Schema(name = "pinned_comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("pinned_comment")
+    public NullableIssueComment getPinnedComment() {
+        return pinnedComment;
+    }
+
+    public void setPinnedComment(NullableIssueComment pinnedComment) {
+        this.pinnedComment = pinnedComment;
+    }
+
+    public Issue6 user(User1 user) {
+        this.user = user;
+        return this;
+    }
+
+    /**
+     * Get user
+     * @return user
+     */
+    @Valid
+    @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("user")
+    public User1 getUser() {
+        return user;
+    }
+
+    public void setUser(User1 user) {
+        this.user = user;
+    }
+
+    public Issue6 type(IssueType type) {
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Get type
+     * @return type
+     */
+    @Valid
+    @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("type")
+    public IssueType getType() {
+        return type;
+    }
+
+    public void setType(IssueType type) {
+        this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Issue6 issue6 = (Issue6) o;
+        return Objects.equals(this.activeLockReason, issue6.activeLockReason)
+                && Objects.equals(this.assignee, issue6.assignee)
+                && Objects.equals(this.assignees, issue6.assignees)
+                && Objects.equals(this.authorAssociation, issue6.authorAssociation)
+                && Objects.equals(this.body, issue6.body)
+                && Objects.equals(this.closedAt, issue6.closedAt)
+                && Objects.equals(this.comments, issue6.comments)
+                && Objects.equals(this.commentsUrl, issue6.commentsUrl)
+                && Objects.equals(this.createdAt, issue6.createdAt)
+                && Objects.equals(this.draft, issue6.draft)
+                && Objects.equals(this.eventsUrl, issue6.eventsUrl)
+                && Objects.equals(this.htmlUrl, issue6.htmlUrl)
+                && Objects.equals(this.id, issue6.id)
+                && Objects.equals(this.labels, issue6.labels)
+                && Objects.equals(this.labelsUrl, issue6.labelsUrl)
+                && Objects.equals(this.locked, issue6.locked)
+                && Objects.equals(this.milestone, issue6.milestone)
+                && Objects.equals(this.nodeId, issue6.nodeId)
+                && Objects.equals(this.number, issue6.number)
+                && Objects.equals(this.performedViaGithubApp, issue6.performedViaGithubApp)
+                && Objects.equals(this.pullRequest, issue6.pullRequest)
+                && Objects.equals(this.reactions, issue6.reactions)
+                && Objects.equals(this.repositoryUrl, issue6.repositoryUrl)
+                && Objects.equals(this.subIssuesSummary, issue6.subIssuesSummary)
+                && Objects.equals(this.issueDependenciesSummary, issue6.issueDependenciesSummary)
+                && Objects.equals(this.issueFieldValues, issue6.issueFieldValues)
+                && Objects.equals(this.state, issue6.state)
+                && Objects.equals(this.stateReason, issue6.stateReason)
+                && Objects.equals(this.timelineUrl, issue6.timelineUrl)
+                && Objects.equals(this.title, issue6.title)
+                && Objects.equals(this.updatedAt, issue6.updatedAt)
+                && Objects.equals(this.url, issue6.url)
+                && Objects.equals(this.pinnedComment, issue6.pinnedComment)
+                && Objects.equals(this.user, issue6.user)
+                && Objects.equals(this.type, issue6.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                activeLockReason,
+                assignee,
+                assignees,
+                authorAssociation,
+                body,
+                closedAt,
+                comments,
+                commentsUrl,
+                createdAt,
+                draft,
+                eventsUrl,
+                htmlUrl,
+                id,
+                labels,
+                labelsUrl,
+                locked,
+                milestone,
+                nodeId,
+                number,
+                performedViaGithubApp,
+                pullRequest,
+                reactions,
+                repositoryUrl,
+                subIssuesSummary,
+                issueDependenciesSummary,
+                issueFieldValues,
+                state,
+                stateReason,
+                timelineUrl,
+                title,
+                updatedAt,
+                url,
+                pinnedComment,
+                user,
+                type);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Issue6 {\n");
+        sb.append("    activeLockReason: ")
+                .append(toIndentedString(activeLockReason))
+                .append("\n");
+        sb.append("    assignee: ").append(toIndentedString(assignee)).append("\n");
+        sb.append("    assignees: ").append(toIndentedString(assignees)).append("\n");
+        sb.append("    authorAssociation: ")
+                .append(toIndentedString(authorAssociation))
+                .append("\n");
+        sb.append("    body: ").append(toIndentedString(body)).append("\n");
+        sb.append("    closedAt: ").append(toIndentedString(closedAt)).append("\n");
+        sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
+        sb.append("    commentsUrl: ").append(toIndentedString(commentsUrl)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("    draft: ").append(toIndentedString(draft)).append("\n");
+        sb.append("    eventsUrl: ").append(toIndentedString(eventsUrl)).append("\n");
+        sb.append("    htmlUrl: ").append(toIndentedString(htmlUrl)).append("\n");
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
+        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+        sb.append("    labelsUrl: ").append(toIndentedString(labelsUrl)).append("\n");
+        sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
+        sb.append("    milestone: ").append(toIndentedString(milestone)).append("\n");
+        sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
+        sb.append("    number: ").append(toIndentedString(number)).append("\n");
+        sb.append("    performedViaGithubApp: ")
+                .append(toIndentedString(performedViaGithubApp))
+                .append("\n");
+        sb.append("    pullRequest: ").append(toIndentedString(pullRequest)).append("\n");
+        sb.append("    reactions: ").append(toIndentedString(reactions)).append("\n");
+        sb.append("    repositoryUrl: ").append(toIndentedString(repositoryUrl)).append("\n");
+        sb.append("    subIssuesSummary: ")
+                .append(toIndentedString(subIssuesSummary))
+                .append("\n");
+        sb.append("    issueDependenciesSummary: ")
+                .append(toIndentedString(issueDependenciesSummary))
+                .append("\n");
+        sb.append("    issueFieldValues: ")
+                .append(toIndentedString(issueFieldValues))
+                .append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    stateReason: ").append(toIndentedString(stateReason)).append("\n");
+        sb.append("    timelineUrl: ").append(toIndentedString(timelineUrl)).append("\n");
+        sb.append("    title: ").append(toIndentedString(title)).append("\n");
+        sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
+        sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    pinnedComment: ").append(toIndentedString(pinnedComment)).append("\n");
+        sb.append("    user: ").append(toIndentedString(user)).append("\n");
+        sb.append("    type: ").append(toIndentedString(type)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

@@ -1,0 +1,92 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.*;
+import java.util.*;
+import java.util.Objects;
+
+/**
+ * OrgMembershipPermissions
+ */
+@JsonTypeName("org_membership_permissions")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class OrgMembershipPermissions {
+
+    private Boolean canCreateRepository;
+
+    public OrgMembershipPermissions() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public OrgMembershipPermissions(Boolean canCreateRepository) {
+        this.canCreateRepository = canCreateRepository;
+    }
+
+    public OrgMembershipPermissions canCreateRepository(Boolean canCreateRepository) {
+        this.canCreateRepository = canCreateRepository;
+        return this;
+    }
+
+    /**
+     * Get canCreateRepository
+     * @return canCreateRepository
+     */
+    @NotNull
+    @Schema(name = "can_create_repository", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("can_create_repository")
+    public Boolean getCanCreateRepository() {
+        return canCreateRepository;
+    }
+
+    public void setCanCreateRepository(Boolean canCreateRepository) {
+        this.canCreateRepository = canCreateRepository;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        OrgMembershipPermissions orgMembershipPermissions = (OrgMembershipPermissions) o;
+        return Objects.equals(this.canCreateRepository, orgMembershipPermissions.canCreateRepository);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(canCreateRepository);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OrgMembershipPermissions {\n");
+        sb.append("    canCreateRepository: ")
+                .append(toIndentedString(canCreateRepository))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

@@ -1,0 +1,218 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import java.net.URI;
+import java.util.*;
+import java.util.Objects;
+
+/**
+ * License Simple
+ */
+@Schema(name = "license-simple", description = "License Simple")
+@JsonTypeName("license-simple")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class LicenseSimple {
+
+    private String key;
+
+    private String name;
+
+    private URI url = null;
+
+    private String spdxId = null;
+
+    private String nodeId;
+
+    private URI htmlUrl;
+
+    public LicenseSimple() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public LicenseSimple(String key, String name, URI url, String spdxId, String nodeId) {
+        this.key = key;
+        this.name = name;
+        this.url = url;
+        this.spdxId = spdxId;
+        this.nodeId = nodeId;
+    }
+
+    public LicenseSimple key(String key) {
+        this.key = key;
+        return this;
+    }
+
+    /**
+     * Get key
+     * @return key
+     */
+    @NotNull
+    @Schema(name = "key", example = "mit", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("key")
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public LicenseSimple name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     * @return name
+     */
+    @NotNull
+    @Schema(name = "name", example = "MIT License", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LicenseSimple url(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    /**
+     * Get url
+     * @return url
+     */
+    @NotNull
+    @Valid
+    @Schema(name = "url", example = "https://api.github.com/licenses/mit", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("url")
+    public URI getUrl() {
+        return url;
+    }
+
+    public void setUrl(URI url) {
+        this.url = url;
+    }
+
+    public LicenseSimple spdxId(String spdxId) {
+        this.spdxId = spdxId;
+        return this;
+    }
+
+    /**
+     * Get spdxId
+     * @return spdxId
+     */
+    @NotNull
+    @Schema(name = "spdx_id", example = "MIT", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("spdx_id")
+    public String getSpdxId() {
+        return spdxId;
+    }
+
+    public void setSpdxId(String spdxId) {
+        this.spdxId = spdxId;
+    }
+
+    public LicenseSimple nodeId(String nodeId) {
+        this.nodeId = nodeId;
+        return this;
+    }
+
+    /**
+     * Get nodeId
+     * @return nodeId
+     */
+    @NotNull
+    @Schema(name = "node_id", example = "MDc6TGljZW5zZW1pdA==", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
+    }
+
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
+
+    public LicenseSimple htmlUrl(URI htmlUrl) {
+        this.htmlUrl = htmlUrl;
+        return this;
+    }
+
+    /**
+     * Get htmlUrl
+     * @return htmlUrl
+     */
+    @Valid
+    @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("html_url")
+    public URI getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    public void setHtmlUrl(URI htmlUrl) {
+        this.htmlUrl = htmlUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LicenseSimple licenseSimple = (LicenseSimple) o;
+        return Objects.equals(this.key, licenseSimple.key)
+                && Objects.equals(this.name, licenseSimple.name)
+                && Objects.equals(this.url, licenseSimple.url)
+                && Objects.equals(this.spdxId, licenseSimple.spdxId)
+                && Objects.equals(this.nodeId, licenseSimple.nodeId)
+                && Objects.equals(this.htmlUrl, licenseSimple.htmlUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, name, url, spdxId, nodeId, htmlUrl);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class LicenseSimple {\n");
+        sb.append("    key: ").append(toIndentedString(key)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    spdxId: ").append(toIndentedString(spdxId)).append("\n");
+        sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
+        sb.append("    htmlUrl: ").append(toIndentedString(htmlUrl)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

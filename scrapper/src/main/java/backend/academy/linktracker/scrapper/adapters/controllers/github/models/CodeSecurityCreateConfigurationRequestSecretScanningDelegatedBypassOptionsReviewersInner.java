@@ -1,0 +1,169 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.constraints.*;
+import java.util.*;
+import java.util.Objects;
+
+/**
+ * CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner
+ */
+@JsonTypeName("code_security_create_configuration_request_secret_scanning_delegated_bypass_options_reviewers_inner")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner {
+
+    private Long reviewerId;
+
+    /**
+     * The type of the bypass reviewer
+     */
+    public enum ReviewerTypeEnum {
+        TEAM("TEAM"),
+
+        ROLE("ROLE");
+
+        private final String value;
+
+        ReviewerTypeEnum(String value) {
+            this.value = value;
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        @JsonCreator
+        public static ReviewerTypeEnum fromValue(String value) {
+            for (ReviewerTypeEnum b : ReviewerTypeEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+    }
+
+    private ReviewerTypeEnum reviewerType;
+
+    public CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner(
+            Long reviewerId, ReviewerTypeEnum reviewerType) {
+        this.reviewerId = reviewerId;
+        this.reviewerType = reviewerType;
+    }
+
+    public CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner reviewerId(
+            Long reviewerId) {
+        this.reviewerId = reviewerId;
+        return this;
+    }
+
+    /**
+     * The ID of the team or role selected as a bypass reviewer
+     * @return reviewerId
+     */
+    @NotNull
+    @Schema(
+            name = "reviewer_id",
+            description = "The ID of the team or role selected as a bypass reviewer",
+            requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("reviewer_id")
+    public Long getReviewerId() {
+        return reviewerId;
+    }
+
+    public void setReviewerId(Long reviewerId) {
+        this.reviewerId = reviewerId;
+    }
+
+    public CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner reviewerType(
+            ReviewerTypeEnum reviewerType) {
+        this.reviewerType = reviewerType;
+        return this;
+    }
+
+    /**
+     * The type of the bypass reviewer
+     * @return reviewerType
+     */
+    @NotNull
+    @Schema(
+            name = "reviewer_type",
+            description = "The type of the bypass reviewer",
+            requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("reviewer_type")
+    public ReviewerTypeEnum getReviewerType() {
+        return reviewerType;
+    }
+
+    public void setReviewerType(ReviewerTypeEnum reviewerType) {
+        this.reviewerType = reviewerType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner
+                codeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner =
+                        (CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner) o;
+        return Objects.equals(
+                        this.reviewerId,
+                        codeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner
+                                .reviewerId)
+                && Objects.equals(
+                        this.reviewerType,
+                        codeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner
+                                .reviewerType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(reviewerId, reviewerType);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CodeSecurityCreateConfigurationRequestSecretScanningDelegatedBypassOptionsReviewersInner {\n");
+        sb.append("    reviewerId: ").append(toIndentedString(reviewerId)).append("\n");
+        sb.append("    reviewerType: ").append(toIndentedString(reviewerType)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

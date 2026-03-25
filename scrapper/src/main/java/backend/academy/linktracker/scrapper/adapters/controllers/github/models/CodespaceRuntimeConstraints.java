@@ -1,0 +1,95 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * CodespaceRuntimeConstraints
+ */
+@JsonTypeName("codespace_runtime_constraints")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class CodespaceRuntimeConstraints {
+
+    @Valid
+    private List<String> allowedPortPrivacySettings;
+
+    public CodespaceRuntimeConstraints allowedPortPrivacySettings(List<String> allowedPortPrivacySettings) {
+        this.allowedPortPrivacySettings = allowedPortPrivacySettings;
+        return this;
+    }
+
+    public CodespaceRuntimeConstraints addAllowedPortPrivacySettingsItem(String allowedPortPrivacySettingsItem) {
+        if (this.allowedPortPrivacySettings == null) {
+            this.allowedPortPrivacySettings = new ArrayList<>();
+        }
+        this.allowedPortPrivacySettings.add(allowedPortPrivacySettingsItem);
+        return this;
+    }
+
+    /**
+     * The privacy settings a user can select from when forwarding a port.
+     * @return allowedPortPrivacySettings
+     */
+    @Schema(
+            name = "allowed_port_privacy_settings",
+            description = "The privacy settings a user can select from when forwarding a port.",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("allowed_port_privacy_settings")
+    public List<String> getAllowedPortPrivacySettings() {
+        return allowedPortPrivacySettings;
+    }
+
+    public void setAllowedPortPrivacySettings(List<String> allowedPortPrivacySettings) {
+        this.allowedPortPrivacySettings = allowedPortPrivacySettings;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CodespaceRuntimeConstraints codespaceRuntimeConstraints = (CodespaceRuntimeConstraints) o;
+        return Objects.equals(this.allowedPortPrivacySettings, codespaceRuntimeConstraints.allowedPortPrivacySettings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(allowedPortPrivacySettings);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class CodespaceRuntimeConstraints {\n");
+        sb.append("    allowedPortPrivacySettings: ")
+                .append(toIndentedString(allowedPortPrivacySettings))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}

@@ -1,0 +1,177 @@
+package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+import java.util.*;
+import java.util.Objects;
+
+/**
+ * ActionsRepositoryPermissions
+ */
+@JsonTypeName("actions-repository-permissions")
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class ActionsRepositoryPermissions {
+
+    private Boolean enabled;
+
+    private AllowedActions allowedActions;
+
+    private String selectedActionsUrl;
+
+    private Boolean shaPinningRequired;
+
+    public ActionsRepositoryPermissions() {
+        super();
+    }
+
+    /**
+     * Constructor with only required parameters
+     */
+    public ActionsRepositoryPermissions(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public ActionsRepositoryPermissions enabled(Boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    /**
+     * Whether GitHub Actions is enabled on the repository.
+     * @return enabled
+     */
+    @NotNull
+    @Schema(
+            name = "enabled",
+            description = "Whether GitHub Actions is enabled on the repository.",
+            requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("enabled")
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public ActionsRepositoryPermissions allowedActions(AllowedActions allowedActions) {
+        this.allowedActions = allowedActions;
+        return this;
+    }
+
+    /**
+     * Get allowedActions
+     * @return allowedActions
+     */
+    @Valid
+    @Schema(name = "allowed_actions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("allowed_actions")
+    public AllowedActions getAllowedActions() {
+        return allowedActions;
+    }
+
+    public void setAllowedActions(AllowedActions allowedActions) {
+        this.allowedActions = allowedActions;
+    }
+
+    public ActionsRepositoryPermissions selectedActionsUrl(String selectedActionsUrl) {
+        this.selectedActionsUrl = selectedActionsUrl;
+        return this;
+    }
+
+    /**
+     * The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.
+     * @return selectedActionsUrl
+     */
+    @Schema(
+            name = "selected_actions_url",
+            description =
+                    "The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("selected_actions_url")
+    public String getSelectedActionsUrl() {
+        return selectedActionsUrl;
+    }
+
+    public void setSelectedActionsUrl(String selectedActionsUrl) {
+        this.selectedActionsUrl = selectedActionsUrl;
+    }
+
+    public ActionsRepositoryPermissions shaPinningRequired(Boolean shaPinningRequired) {
+        this.shaPinningRequired = shaPinningRequired;
+        return this;
+    }
+
+    /**
+     * Whether actions must be pinned to a full-length commit SHA.
+     * @return shaPinningRequired
+     */
+    @Schema(
+            name = "sha_pinning_required",
+            description = "Whether actions must be pinned to a full-length commit SHA.",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("sha_pinning_required")
+    public Boolean getShaPinningRequired() {
+        return shaPinningRequired;
+    }
+
+    public void setShaPinningRequired(Boolean shaPinningRequired) {
+        this.shaPinningRequired = shaPinningRequired;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ActionsRepositoryPermissions actionsRepositoryPermissions = (ActionsRepositoryPermissions) o;
+        return Objects.equals(this.enabled, actionsRepositoryPermissions.enabled)
+                && Objects.equals(this.allowedActions, actionsRepositoryPermissions.allowedActions)
+                && Objects.equals(this.selectedActionsUrl, actionsRepositoryPermissions.selectedActionsUrl)
+                && Objects.equals(this.shaPinningRequired, actionsRepositoryPermissions.shaPinningRequired);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(enabled, allowedActions, selectedActionsUrl, shaPinningRequired);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ActionsRepositoryPermissions {\n");
+        sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+        sb.append("    allowedActions: ")
+                .append(toIndentedString(allowedActions))
+                .append("\n");
+        sb.append("    selectedActionsUrl: ")
+                .append(toIndentedString(selectedActionsUrl))
+                .append("\n");
+        sb.append("    shaPinningRequired: ")
+                .append(toIndentedString(shaPinningRequired))
+                .append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private String toIndentedString(Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+}
