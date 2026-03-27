@@ -2,6 +2,7 @@ package backend.academy.linktracker.scrapper.usecases.wrappers;
 
 import backend.academy.linktracker.scrapper.adapters.controllers.stackoverflow.StackOverflowApiClient;
 import backend.academy.linktracker.scrapper.common.TimeUtils;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.properties.StackoverflowProperties;
 import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkStackOverflowUpdateEvent;
 import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkUpdateEvent;
@@ -42,6 +43,10 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
         return stackOverflowUpdateEvent.stream()
                 .map(update -> new ScrapperLinkUpdateEvent(uri, update.description()))
                 .toList();
+    }
+
+    public boolean checkCanScrap(ScrapperLink link) {
+        return checkCanScrap(link.uri());
     }
 
     public boolean checkCanScrap(URI uri) {

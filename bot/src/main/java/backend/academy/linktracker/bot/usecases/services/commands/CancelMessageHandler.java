@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @CommandHandler(command = "/cancel")
 public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY = "";
+    private static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final ApplicationContext applicationContext;
@@ -38,6 +39,20 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         event.getReplyService(applicationContext)
                 .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventId());
+    }
+
+    public void onBotError(LinkTracerNewMessageEvent event, boolean useEmptyMessage) {
+        TelegramBotMessage message = event.getMessage();
+        log.atInfo()
+            .addKeyValue("chat id", message.chat().id())
+            .addKeyValue("message id", message.id())
+            .addKeyValue("message date", message.date())
+            .log("Handle bot internal error");
+
+        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+        event.getReplyService(applicationContext)
+            .sendMessage(message.chat().id().getNumericID(), useEmptyMessage ? "" : ERROR_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 

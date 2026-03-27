@@ -36,8 +36,8 @@ public class TelegramUpdatesMapper {
         return new EventID(id.toString(), OwnerIDType.LINK_TRACKER);
     }
 
-    public static Integer mapUpdateId(EventID id) {
-        return Integer.valueOf(id.getRawId());
+    public static int mapUpdateId(EventID id) {
+        return Integer.parseInt(id.getRawId());
     }
 
     public static TelegramBotChatID mapChatId(Update update) {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ScrappedUpdatesPublishService {
-    private final ScrappingLinkListenersService linkListenersService;
+    private final ScrappingLinkService linkListenersService;
     private final TelegramBotUpdatesHTTPClient updatesClient;
     private final Snowflake
             updateIDGenerator; // TODO Currently just used to set unique IDS, later should be used by repo inside

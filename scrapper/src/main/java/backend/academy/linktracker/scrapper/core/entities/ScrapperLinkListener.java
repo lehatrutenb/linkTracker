@@ -1,3 +1,5 @@
 package backend.academy.linktracker.scrapper.core.entities;
 
-public record ScrapperLinkListener(String listenerID) {}
+import backend.academy.linktracker.scrapper.core.enums.ScrapperLinkListenerType;
+
+public record ScrapperLinkListener(String listenerID, ScrapperLinkListenerType listenerType) {}

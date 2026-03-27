@@ -1,6 +1,7 @@
 package backend.academy.linktracker.scrapper.usecases.wrappers;
 
 import backend.academy.linktracker.scrapper.adapters.controllers.github.GitHubApiClient;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.properties.GithubProperties;
 import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkUpdateEvent;
 import java.net.URI;
@@ -28,6 +29,10 @@ public class GithubControllerWrapper implements OuterServiceScrapper {
         }
         return apiClient.getEventUpdates(
                 since, getRepoOwner(uri).orElseThrow(), getRepo(uri).orElseThrow());
+    }
+
+    public boolean checkCanScrap(ScrapperLink link) {
+        return checkCanScrap(link.uri());
     }
 
     public boolean checkCanScrap(URI uri) {

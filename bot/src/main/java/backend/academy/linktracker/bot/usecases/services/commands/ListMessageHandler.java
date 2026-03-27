@@ -5,6 +5,8 @@ import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.LinkTag;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
+import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecases.dtos.ListLinksResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
@@ -16,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -29,6 +32,8 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
+    private final CancelMessageHandler cancelMessageHandler;
+    private static final String NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -48,21 +53,31 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
                 .skip(1)
                 .findFirst()
                 .map(LinkTag::new);
+
+        var response = updatesService.listLinks(message.chat().id());
+        if (response.isRight()) {
+            handleErrorScrapperResponse(event, response.get());
+            return;
+        }
+
         event.getReplyService(applicationContext)
                 .sendMessage(
                         message.chat().id().getNumericID(),
-                        BASIC_REPLY + getFormattedLinks(message.chat().id(), tag));
+                    getReply(response.getLeft(), tag));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
-    public String getFormattedLinks(TelegramBotChatID chatID, Optional<LinkTag> tag) {
-        var links = updatesService.listLinks(chatID).getLinks();
+    public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
+        var links = response.getLinks();
+        if (links.isEmpty()) {
+            return NO_LINKS_TRACKED_URL_REPLY;
+        }
         if (tag.isPresent()) {
             links = links.stream()
                     .filter(link -> link.getTags().contains(tag.orElseThrow().tag()))
                     .toList();
         }
-        return String.join(
+        return BASIC_REPLY + String.join(
                 "\n",
                 links.stream()
                         .map(link -> link.getUrl() + " - " + Strings.join(link.getTags(), ','))
@@ -72,5 +87,18 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     @Override
     public boolean supportsAsyncExecution() {
         return false;
+    }
+
+    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
+        // It was hard decision to use http codes inside business - but alternatives are hard to implement
+        String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
+            case HttpStatus.NOT_FOUND -> NO_LINKS_TRACKED_URL_REPLY;
+            default -> "";
+        };
+        if (!reply.isBlank()) {
+            event.getReplyService(applicationContext)
+                .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+        }
+        cancelMessageHandler.onBotError(event, !reply.isBlank());
     }
 }

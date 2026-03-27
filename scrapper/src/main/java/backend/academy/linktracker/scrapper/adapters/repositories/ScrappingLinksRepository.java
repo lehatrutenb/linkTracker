@@ -19,9 +19,11 @@ public interface ScrappingLinksRepository {
 
     Optional<ScrapperLinkID> getScrapperLinkIDByURI(URI uri);
 
+    Optional<ScrapperLinkListener> getScrapperLinkListener(String id);
+
     void addScrapperLink(ScrapperLink scrapperLink) throws SQLException;
 
-    void updateScrapperLink(ScrapperLink scrapperLink);
+    Optional<ScrapperLink> updateScrapperLink(ScrapperLink scrapperLink);
 
     void addScrapperLinkListener(ScrapperLinkListener scrapperLinkListener);
 

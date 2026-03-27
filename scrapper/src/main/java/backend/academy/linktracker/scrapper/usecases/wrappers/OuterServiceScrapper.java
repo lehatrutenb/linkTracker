@@ -1,5 +1,6 @@
 package backend.academy.linktracker.scrapper.usecases.wrappers;
 
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.usecases.dtos.ScrapperLinkUpdateEvent;
 import java.net.URI;
 import java.time.Instant;
@@ -9,5 +10,5 @@ import org.apache.commons.lang3.tuple.Pair;
 public interface OuterServiceScrapper {
     public Pair<Collection<ScrapperLinkUpdateEvent>, Instant> scrap(URI uri, Instant since);
 
-    boolean checkCanScrap(URI uri);
+    boolean checkCanScrap(ScrapperLink link);
 }

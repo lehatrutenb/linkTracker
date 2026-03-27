@@ -59,6 +59,11 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
     }
 
     @Override
+    public Optional<ScrapperLinkListener> getScrapperLinkListener(String id) {
+        return scrapperLinkListeners.stream().filter(listener -> listener.listenerID().equals(id)).findAny();
+    }
+
+    @Override
     public void addScrapperLink(ScrapperLink scrapperLink) throws SQLException {
         if (scrapperLinks.stream().anyMatch(link -> link.id().equals(scrapperLink.id()))) {
             throw new SQLException("Repository already have entity with same id");
@@ -67,15 +72,19 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
     }
 
     @Override
-    public void updateScrapperLink(ScrapperLink scrapperLink) {
+    /**
+     * Returns previous link if found
+     */
+    public Optional<ScrapperLink> updateScrapperLink(ScrapperLink scrapperLink) {
         var prevLink = scrapperLinks.stream()
                 .filter(link -> scrapperLink.id().equals(link.id()))
                 .findAny();
         if (prevLink.isEmpty()) {
-            throw new RuntimeException("Failed to update link cause no such link exists");
+           return Optional.empty();
         }
         scrapperLinks.remove(prevLink.get());
         scrapperLinks.add(scrapperLink);
+        return prevLink;
     }
 
     @Override

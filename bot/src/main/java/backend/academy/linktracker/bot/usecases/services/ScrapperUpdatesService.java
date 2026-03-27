@@ -3,11 +3,14 @@ package backend.academy.linktracker.bot.usecases.services;
 import backend.academy.linktracker.bot.adapters.controllers.UpdatesScrapperHTTPClient;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import backend.academy.linktracker.bot.usecases.dtos.AddLinkRequest;
+import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.dtos.LinkResponse;
 import backend.academy.linktracker.bot.usecases.dtos.ListLinksResponse;
 import backend.academy.linktracker.bot.usecases.dtos.RemoveLinkRequest;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
+import io.github.resilience4j.core.functions.Either;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,26 +19,29 @@ import org.springframework.stereotype.Service;
 public class ScrapperUpdatesService {
     private final UpdatesScrapperHTTPClient scrapperHTTPClient;
 
-    public void registerChat(TelegramBotChatID chatID) {
-        scrapperHTTPClient.registerChat(chatID.getID());
+    public Optional<ApiErrorResponse> registerChat(TelegramBotChatID chatID) {
+        return scrapperHTTPClient.registerChat(chatID.getID());
     }
 
-    public void deleteChat(TelegramBotChatID chatID) {
-        scrapperHTTPClient.deleteChat(chatID.getID());
+    public Optional<ApiErrorResponse> deleteChat(TelegramBotChatID chatID) {
+        return scrapperHTTPClient.deleteChat(chatID.getID());
     }
 
-    public ListLinksResponse listLinks(TelegramBotChatID chatID) {
+    public Either<ListLinksResponse, ApiErrorResponse> listLinks(TelegramBotChatID chatID) {
         return scrapperHTTPClient.listLinks(chatID.getID());
     }
 
-    public LinkResponse trackLink(TelegramBotChatID chatID, String link, List<String> tags, List<String> filters) {
-        registerChat(chatID);
+    public Either<LinkResponse, ApiErrorResponse> trackLink(TelegramBotChatID chatID, String link, List<String> tags, List<String> filters) {
+        var errResponse = registerChat(chatID);
+        if (errResponse.isPresent()) {
+            return Either.right(errResponse.orElseThrow());
+        }
         return scrapperHTTPClient.trackLink(
                 chatID.getID(),
                 new AddLinkRequest().link(URI.create(link)).tags(tags).filters(filters)); // TODO add uri check
     }
 
-    public LinkResponse untrackLink(TelegramBotChatID chatID, String link) {
+    public Either<LinkResponse, ApiErrorResponse> untrackLink(TelegramBotChatID chatID, String link) {
         return scrapperHTTPClient.untrackLink(chatID.getID(), new RemoveLinkRequest().link(URI.create(link)));
     }
 }

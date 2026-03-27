@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
+import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,40 +21,28 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 // TODO USE mapper not new ScrapperLinkListener(listenerID)
-public class ScrappingLinkListenersService {
+public class ScrappingLinkService {
     private final ScrappingLinksRepository linksRepository;
     private final ScrapperLinkFactory scrapperLinkFactory;
 
-    public void addLinkListener(String id) {
-        linksRepository.addScrapperLinkListener(new ScrapperLinkListener(id));
-    }
-
-    public void deleteLinkListener(String id) {
-        linksRepository.deleteScrapperLinkListener(new ScrapperLinkListener(id));
-    }
-
-    public void deleteLinkForLinkListener(RemoveLinkRequest removeLinkRequest, String listenerID) {
-        var linkID = linksRepository.getScrapperLinkIDByURI(removeLinkRequest.getLink());
-        if (linkID.isEmpty()) {
-            log.atWarn().addKeyValue("linkID", linkID).log("Attempt to remove non scheduling link");
-            return;
-        }
-        linksRepository.deleteScrapperLinkListenerLink(
-                new ScrapperLinkListener(listenerID),
-                linkID.orElseThrow()); // TODO won't work if run in parallel - need to do as atomic op
-        if (linksRepository.getScrapperLinkListeners(linkID.orElseThrow()).isEmpty()) {
-            linksRepository.deleteScrapperLink(linkID.orElseThrow());
+    public void deleteLinkForLinkListener(ScrapperLinkID linkID, ScrapperLinkListener listener) {
+        linksRepository.deleteScrapperLinkListenerLink(listener, linkID); // TODO won't work if run in parallel - need to do as atomic op
+        if (linksRepository.getScrapperLinkListeners(linkID).isEmpty()) {
+            linksRepository.deleteScrapperLink(linkID);
         }
     }
 
-    public ScrapperLink addLinkToListen(AddLinkRequest addLinkRequest, String listenerID) {
+    public ScrapperLink addLinkToListen(AddLinkRequest addLinkRequest, ScrapperLinkListener listener) {
         var link = scrapperLinkFactory.createScrapperLink(
                 addLinkRequest.getLink(), Instant.EPOCH); // Not min cause cant format to date string in request it
+        if (getListenersOfLink(link.id()).contains(listener)) {
+            throw new DuplicateEntityException(ScrapperLink.class, link.id().uri().toString());
+        }
         try {
             linksRepository.addScrapperLink(link);
         } catch (SQLException _) { // TODO recheck
         }
-        linksRepository.addLinkToScrapperLinkListener(new ScrapperLinkListener(listenerID), link.id());
+        linksRepository.addLinkToScrapperLinkListener(listener, link.id());
         return link;
     }
 
@@ -66,7 +55,7 @@ public class ScrappingLinkListenersService {
     }
 
     public void setFreshUpdatedTag(ScrapperLink scrapperLink, Instant updatedAt) {
-        linksRepository.updateScrapperLink(new ScrapperLink(scrapperLink.id(), scrapperLink.uri(), updatedAt));
+       linksRepository.updateScrapperLink(new ScrapperLink(scrapperLink.id(), scrapperLink.uri(), updatedAt));
     }
 
     public Collection<ScrapperLink> getAllListeningLinks() {

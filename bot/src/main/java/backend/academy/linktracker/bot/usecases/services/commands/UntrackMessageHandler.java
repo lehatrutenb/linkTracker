@@ -4,6 +4,7 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
+import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -26,12 +28,13 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
     // move to
     // storage
     private static final String BASIC_URL_REPLY = "Ссылка больше не будет отслеживаться";
-    private static final String BASIC_UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
+    private static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
+    private final CancelMessageHandler cancelMessageHandler;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -93,9 +96,26 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
     }
 
     private void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message) {
-        scrapper.untrackLink(event.getMessage().chat().id(), message.message());
+        var response = scrapper.untrackLink(event.getMessage().chat().id(), message.message());
+        if (response.isRight()) {
+            handleErrorScrapperResponse(event, response.get());
+            return;
+        }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         event.getReplyService(applicationContext)
                 .sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
+    }
+
+    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
+        // It was hard decision to use http codes inside business - but alternatives are hard to implement
+        String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
+            case HttpStatus.NOT_FOUND -> UNTRACKED_URL_REPLY;
+            default -> "";
+        };
+        if (!reply.isBlank()) {
+            event.getReplyService(applicationContext)
+                .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+        }
+        cancelMessageHandler.onBotError(event, !reply.isBlank());
     }
 }
