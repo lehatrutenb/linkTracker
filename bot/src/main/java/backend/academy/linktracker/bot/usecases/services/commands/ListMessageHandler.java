@@ -25,15 +25,19 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @CommandHandler(command = "/list")
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
 public class ListMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private static final String BASIC_REPLY = "Список отслеживаемых ссылок:\n";
+    public static final String _BASIC_REPLY = "Список отслеживаемых ссылок:\n";
+    public static final String _NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
     private final CancelMessageHandler cancelMessageHandler;
-    private static final String NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -70,14 +74,14 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
         var links = response.getLinks();
         if (links.isEmpty()) {
-            return NO_LINKS_TRACKED_URL_REPLY;
+            return _NO_LINKS_TRACKED_URL_REPLY;
         }
         if (tag.isPresent()) {
             links = links.stream()
                     .filter(link -> link.getTags().contains(tag.orElseThrow().tag()))
                     .toList();
         }
-        return BASIC_REPLY + String.join(
+        return _BASIC_REPLY + String.join(
                 "\n",
                 links.stream()
                         .map(link -> link.getUrl() + " - " + Strings.join(link.getTags(), ','))
@@ -92,13 +96,13 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
         // It was hard decision to use http codes inside business - but alternatives are hard to implement
         String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
-            case HttpStatus.NOT_FOUND -> NO_LINKS_TRACKED_URL_REPLY;
+            case HttpStatus.NOT_FOUND -> _NO_LINKS_TRACKED_URL_REPLY;
             default -> "";
         };
         if (!reply.isBlank()) {
             event.getReplyService(applicationContext)
                 .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
-        cancelMessageHandler.onBotError(event, !reply.isBlank());
+        cancelMessageHandler.onBotError(event, reply.isBlank());
     }
 }

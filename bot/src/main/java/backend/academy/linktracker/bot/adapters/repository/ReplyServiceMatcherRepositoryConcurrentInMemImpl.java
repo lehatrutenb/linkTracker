@@ -4,8 +4,10 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
+@RefreshScope
 @Repository
 public class ReplyServiceMatcherRepositoryConcurrentInMemImpl implements ReplyServiceMatcherRepository {
     private final Map<String, String> replyServiceQualifiers = new HashMap<>();

@@ -42,7 +42,7 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
-    public void onBotError(LinkTracerNewMessageEvent event, boolean useEmptyMessage) {
+    public void onBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
             .addKeyValue("chat id", message.chat().id())
@@ -51,8 +51,11 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
             .log("Handle bot internal error");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        event.getReplyService(applicationContext)
-            .sendMessage(message.chat().id().getNumericID(), useEmptyMessage ? "" : ERROR_REPLY);
+
+        if (sendClientMessage) {
+            event.getReplyService(applicationContext)
+                .sendMessage(message.chat().id().getNumericID(), ERROR_REPLY);
+        }
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 

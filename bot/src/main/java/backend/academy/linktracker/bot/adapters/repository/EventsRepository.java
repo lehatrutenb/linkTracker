@@ -11,9 +11,9 @@ import java.util.Optional;
 public interface EventsRepository {
     Optional<Event> getEvent(EventID eventId);
 
-    Optional<EventID> getNumericFirstNotDoneEvent();
+    Optional<EventID> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type);
 
-    Optional<EventID> getNumericLastOfPrefixOfDone();
+    Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type);
 
     Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType ownerIDType, EventState eventState, Instant updateAt);

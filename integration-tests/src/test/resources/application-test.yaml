@@ -1,0 +1,34 @@
+app:
+  scrapper:
+    api-path: http://127.0.0.1:8081
+    paths:
+      addChat: /tg-chat/{id}
+      deleteChat: /tg-chat/{id}
+      listLinks: /links
+      trackLink: /links
+      untrackLink: /links
+  telegram:
+    link:
+      tracker:
+        url: ${wiremock.server.baseUrl}/bot/
+        init-state-try-set-fixed-rate: 1s
+        token: test-token
+        update-listener-sleep: 1s
+        debug: true
+        update-notifier-before-retry: 1s
+        api-path: http://127.0.0.1:8080
+        paths:
+          updates: /updates
+  snowflake:
+    worker-id: 1
+    datacenter-id: 1
+  global:
+    scrapping-fixed-rate: 100
+  stackoverflow:
+    key: test-token
+    access-token: test-token
+    api-root: ${wiremock.server.baseUrl}/stack-overflow-api/
+  github:
+    token: test-token
+    user-agent: github-events-scrapping-service
+    api-root: ${wiremock.server.baseUrl}/github-api/

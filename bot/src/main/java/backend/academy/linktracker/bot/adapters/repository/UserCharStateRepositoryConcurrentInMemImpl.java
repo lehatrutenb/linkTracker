@@ -5,8 +5,10 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
+@RefreshScope
 @Repository
 public class UserCharStateRepositoryConcurrentInMemImpl implements UserChatStateRepository {
     private final ConcurrentMap<String, ChatSharedState> currentCommandFlowStates = new ConcurrentHashMap<>();

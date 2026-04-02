@@ -7,8 +7,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
+@RefreshScope
 @Repository
 public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessagesRepository {
     private final Map<String, TelegramBotMessage> messageRepo = new HashMap<>();

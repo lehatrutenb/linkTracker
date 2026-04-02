@@ -8,6 +8,7 @@ import backend.academy.linktracker.bot.usecases.dtos.ListLinksResponse;
 import backend.academy.linktracker.bot.usecases.dtos.RemoveLinkRequest;
 import io.github.resilience4j.core.functions.Either;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -24,6 +25,7 @@ import java.util.function.Supplier;
 
 @Slf4j
 @Component
+@RefreshScope
 // TODO is either fine in such context? Перейду чуть на русский - вот действительно интересный вопрос
 // просто на конкретно java код я не мега насмотрен, но разница между использование ex vs Either/Optional
 // в данном случае в том, что приходится везде прописывать эти контексты объекта, но мы меняем это

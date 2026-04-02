@@ -177,12 +177,10 @@
         <dependency>
             <groupId>org.wiremock.integrations</groupId>
             <artifactId>wiremock-spring-boot-standalone</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.wiremock</groupId>
             <artifactId>wiremock-grpc-extension</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>net.datafaker</groupId>

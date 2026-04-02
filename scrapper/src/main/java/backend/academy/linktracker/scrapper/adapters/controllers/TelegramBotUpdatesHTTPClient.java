@@ -2,10 +2,12 @@ package backend.academy.linktracker.scrapper.adapters.controllers;
 
 import backend.academy.linktracker.scrapper.properties.ScrapperTelegramBotLinkTrackerProperties;
 import backend.academy.linktracker.scrapper.usecases.dtos.LinkUpdate;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 @Component
+@RefreshScope
 public class TelegramBotUpdatesHTTPClient {
     private ScrapperTelegramBotLinkTrackerProperties trackerProperties;
     private RestClient restClient;

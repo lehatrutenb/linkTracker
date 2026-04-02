@@ -31,7 +31,7 @@ public class TelegramBotInitStateSetterService {
             return;
         }
 
-        var commands = commandsMetaDataService.getCommandList().stream()
+        var commands = commandsMetaDataService.getUserCommandList().stream()
                 .map(TelegramBotInitStateSetterService::mapToTgBotCommand)
                 .toArray(BotCommand[]::new);
         Optional<BaseResponse> response = Optional.empty();

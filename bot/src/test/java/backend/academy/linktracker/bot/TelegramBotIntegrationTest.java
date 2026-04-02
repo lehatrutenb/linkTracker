@@ -8,6 +8,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
+
+import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils.Message;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.pengrad.telegrambot.TelegramBot;
 import java.net.URLDecoder;
@@ -22,6 +25,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.wiremock.spring.EnableWireMock;
 
 @SpringBootTest
@@ -33,18 +38,12 @@ import org.wiremock.spring.EnableWireMock;
                 DirtiesContext.ClassMode
                         .AFTER_EACH_TEST_METHOD) // Need cause has repository bean that serves requests statuses
 class TelegramBotIntegrationTest implements WithAssertions {
-    @Autowired
-    TelegramBot telegramBot;
-
-    @AfterEach
-    void clearUpdatesListener() {
-        telegramBot.removeGetUpdatesListener();
-    }
-
     @BeforeEach
     void setupWireMock() {
-        stubFor(post(urlMatching(".*/setMyCommands"))
-                .willReturn(aResponse().withStatus(200).withBody("{ok:true,result:true}")));
+        stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)?
+            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
+        stubFor(post(urlMatching(".*/sendMessage"))
+            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
     }
 
     @AfterEach
@@ -53,9 +52,6 @@ class TelegramBotIntegrationTest implements WithAssertions {
         WireMock.resetAllRequests();
         WireMock.resetAllScenarios();
         WireMock.resetToDefault();
-
-        stubFor(post(urlMatching(".*/setMyCommands"))
-                .willReturn(aResponse().withStatus(200).withBody("{ok:true,result:true}")));
     }
 
     @Test
@@ -69,9 +65,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Test
     @Timeout(10)
     void startSendsResievesReply() {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("startSendsResievesReply");
 
-        testUtils.writeMessageToBot("start_command_works", STARTED, "start_command_resieved", 1, "/start");
+        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, "/start"));
         var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
         assertThat(response).isNotEmpty();
@@ -83,9 +79,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Test
     @Timeout(10)
     void helpSendsResievesCommands() {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("helpSendsResievesCommands");
 
-        testUtils.writeMessageToBot("help_command_works", STARTED, "help_command_resieved", 1, "/help");
+        testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message(1, "/help"));
         var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
         assertThat(response).isNotEmpty();
@@ -97,10 +93,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Test
     @Timeout(10)
     void unknownCommandSendsResievesMessageWithHelp() {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unknownCommandSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(
-                "unknown_command_handling", STARTED, "unknown_command_resieved", 1, "/unknownCommand");
+        testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message(1, "/unknownCommand"));
         var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
         assertThat(response).isNotEmpty();
@@ -111,10 +106,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Test
     @Timeout(10)
     void unexpectedMessageSendsResievesMessageWithHelp() {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils();
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unexpectedMessageSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(
-                "unexpected_message_handling", STARTED, "unexpected_message_resieved", 1, "unexpected message");
+        testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message(1, "unexpected message"));
         var response = testUtils.waitAndGetUpdates(1).stream().findFirst();
 
         assertThat(response).isNotEmpty();

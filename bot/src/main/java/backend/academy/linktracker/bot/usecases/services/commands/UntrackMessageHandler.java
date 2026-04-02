@@ -116,6 +116,6 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
             event.getReplyService(applicationContext)
                 .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
-        cancelMessageHandler.onBotError(event, !reply.isBlank());
+        cancelMessageHandler.onBotError(event, reply.isBlank());
     }
 }

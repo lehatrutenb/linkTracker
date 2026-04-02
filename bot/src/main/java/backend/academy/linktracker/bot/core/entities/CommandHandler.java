@@ -11,4 +11,6 @@ public @interface CommandHandler {
     String command();
 
     String shortDescription() default "";
+
+    boolean showToUser() default true;
 }

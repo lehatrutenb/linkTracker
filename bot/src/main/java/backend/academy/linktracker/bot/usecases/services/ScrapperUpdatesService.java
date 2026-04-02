@@ -32,10 +32,7 @@ public class ScrapperUpdatesService {
     }
 
     public Either<LinkResponse, ApiErrorResponse> trackLink(TelegramBotChatID chatID, String link, List<String> tags, List<String> filters) {
-        var errResponse = registerChat(chatID);
-        if (errResponse.isPresent()) {
-            return Either.right(errResponse.orElseThrow());
-        }
+        registerChat(chatID);
         return scrapperHTTPClient.trackLink(
                 chatID.getID(),
                 new AddLinkRequest().link(URI.create(link)).tags(tags).filters(filters)); // TODO add uri check

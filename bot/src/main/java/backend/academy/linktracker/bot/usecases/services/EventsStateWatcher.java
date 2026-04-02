@@ -28,6 +28,14 @@ public class EventsStateWatcher {
                         .equals(EventState.NOT_INITED); // TODO add new initiation of events processing on timeout
     }
 
+    public boolean isEventDone(EventID eventId) {
+        var event = eventsRepository.getEvent(eventId);
+        return event.isPresent()
+            && event.orElseThrow()
+            .state()
+            .equals(EventState.DONE);
+    }
+
     public void markEventAsDone(EventID eventId) {
         eventsRepository.updateEvent(new Event(eventId, EventState.DONE, timeUtils.now()));
     }
@@ -47,7 +55,7 @@ public class EventsStateWatcher {
                 timeUtils.now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
-    public Optional<EventID> getNumericLastOfPrefixOfDone() {
-        return eventsRepository.getNumericLastOfPrefixOfDone();
+    public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+        return eventsRepository.getNumericLastOfPrefixOfDoneByOwnerType(type);
     }
 }

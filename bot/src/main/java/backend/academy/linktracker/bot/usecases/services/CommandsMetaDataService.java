@@ -13,11 +13,15 @@ import org.springframework.stereotype.Component;
 public class CommandsMetaDataService {
     private final ApplicationContext applicationContext;
 
-    public Collection<CommandHandler> getCommandList() {
+    public Collection<CommandHandler> getAllCommandList() {
         Map<String, Object> nameToBean = applicationContext.getBeansWithAnnotation(CommandHandler.class);
         return nameToBean.keySet().stream()
-                .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
-                .toList();
+            .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
+            .toList();
+    }
+
+    public Collection<CommandHandler> getUserCommandList() {
+        return getAllCommandList().stream().filter(CommandHandler::showToUser).toList();
     }
 
     /**
@@ -26,7 +30,7 @@ public class CommandsMetaDataService {
      * @return : Optional.empty() if no such CommandHandler found, Optional.of(CommandHandler) otherwise
      */
     public Optional<CommandHandler> getCommandHandlerByCommand(String command) {
-        return getCommandList().stream()
+        return getAllCommandList().stream()
                 .filter(commandHandler -> commandHandler.command().equals(command))
                 .findAny();
     }

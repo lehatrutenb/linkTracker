@@ -22,17 +22,21 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @CommandHandler(command = "/track")
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
 public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private static final String BASIC_TRACK_REPLY =
+    public static final String _BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите отслеживать";
     // sense to move to
     // storage
-    private static final String BASIC_TAGS_REPLY =
+    public static final String _BASIC_TAGS_REPLY =
             "Ссылка принята к отслеживанию"; // TODO check if it makes sense to move to storage
-    private static final String BASIC_URL_REPLY = "Введите теги к данной ссылке разделённые запятыми";
-    private static final String INVALID_URL_REPLY =
+    public static final String _BASIC_URL_REPLY = "Введите теги к данной ссылке разделённые запятыми";
+    public static final String _INVALID_URL_REPLY =
         "Полученная ссылка не поддерживается к отслеживанию";
-    private static final String URL_ALREADY_TRACKED_REPLY =
+    public static final String _URL_ALREADY_TRACKED_REPLY =
         "Данная ссылка уже отслеживается. Отпишитесь для начала";
 
     private final EventsStateWatcher eventsStateWatcher;
@@ -67,7 +71,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                         .withProcessingCommand("/track")
                         .withProcessingCommandStep(0));
         event.getReplyService(applicationContext)
-                .sendMessage(message.chat().id().getNumericID(), BASIC_TRACK_REPLY);
+                .sendMessage(message.chat().id().getNumericID(), _BASIC_TRACK_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
@@ -110,7 +114,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
         commandsSharedStateService.setChatSharedState(
                 message.chat().id(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
         event.getReplyService(applicationContext)
-                .sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
+                .sendMessage(message.chat().id().getNumericID(), _BASIC_URL_REPLY);
     }
 
     public void handleTagsSet(
@@ -128,21 +132,21 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
         }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         event.getReplyService(applicationContext)
-                .sendMessage(message.chat().id().getNumericID(), BASIC_TAGS_REPLY);
+                .sendMessage(message.chat().id().getNumericID(), _BASIC_TAGS_REPLY);
     }
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
         // It was hard decision to use http codes inside business - but alternatives are hard to implement
         String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
-            case HttpStatus.CONFLICT -> URL_ALREADY_TRACKED_REPLY;
-            case HttpStatus.BAD_REQUEST -> INVALID_URL_REPLY;
+            case HttpStatus.CONFLICT -> _URL_ALREADY_TRACKED_REPLY;
+            case HttpStatus.BAD_REQUEST -> _INVALID_URL_REPLY;
             default -> "";
         };
         if (!reply.isBlank()) {
             event.getReplyService(applicationContext)
                 .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
-        cancelMessageHandler.onBotError(event, !reply.isBlank());
+        cancelMessageHandler.onBotError(event, reply.isBlank());
     }
 
     @Override

@@ -2,6 +2,7 @@ package backend.academy.linktracker.bot.usecases;
 
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.usecases.dtos.LinkUpdate;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
@@ -11,6 +12,7 @@ import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleSe
 import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesOrderService;
 import com.pengrad.telegrambot.model.Update;
 import java.util.Collection;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,22 +30,38 @@ public class LinkTracerFacade {
     private final ScrapperUpdatesHandleService scrapperUpdatesHandleService;
 
     // Need transactional here not to be inconsistent between event and message states
-    public void processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
+
+    /**
+     *
+     * @param updates
+     * @param replyServiceQualifier
+     * @return last fully processed eventID on prefix if exists such
+     */
+    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
+        log.error("HERE");
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
             EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
             TelegramBotMessage message = TelegramUpdatesMapper.map(update);
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 if (messagesOrderService.toProcessMessage(message)) {
+                    log.error("ACCEPT UPDATE");
                     replyServiceMatcher.setReplyService(message.chat().id(), replyServiceQualifier);
                     eventsStateWatcher.markEventAsProcessing(eventId);
                     var event = new LinkTracerNewMessageEvent(this, message, replyServiceQualifier, eventId);
                     applicationEventPublisher.publishEvent(event);
+                } else {
+                    log.error("SKIP UPDATE");
                 }
-            } else {
+            } else if (!eventsStateWatcher.isEventDone(eventId)) {
+                log.error("SKIP UPDATE");
+                // We currently do some staff with that event
                 messagesOrderService.addProcessingMessage(message);
             }
         });
         messagesOrderService.clear();
+        return eventsStateWatcher
+            .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
+            .map(TelegramUpdatesMapper::mapUpdateId);
     }
 
     public void processScrapperUpdates(Collection<LinkUpdate> updates) {

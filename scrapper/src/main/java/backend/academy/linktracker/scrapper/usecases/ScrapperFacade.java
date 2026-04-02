@@ -17,11 +17,13 @@ import backend.academy.linktracker.scrapper.usecases.services.ScrapperLinkMetaDa
 import backend.academy.linktracker.scrapper.usecases.services.ScrappingLinkListenerService;
 import backend.academy.linktracker.scrapper.usecases.services.ScrappingLinkService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.json.JsonMapper;
 
 @Service
 @RequiredArgsConstructor
+@RefreshScope
 public class ScrapperFacade {
     private final ScrappingLinkService linksService;
     private final ScrappingLinkListenerService linkListenersService;

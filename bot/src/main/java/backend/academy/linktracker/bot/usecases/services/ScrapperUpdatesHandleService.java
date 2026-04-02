@@ -15,8 +15,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ScrapperUpdatesHandleService {
-    private static final String BASIC_REPLY =
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
+public class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I see, that there is some problems - but it not that hard
+    public static final String _BASIC_REPLY =
             "Получено обновление по url: %s:\n%s"; // TODO check if it makes sense to move to storage
 
     private final EventsStateWatcher eventsStateWatcher;
@@ -49,7 +53,7 @@ public class ScrapperUpdatesHandleService {
             }
             replyService
                     .orElseThrow()
-                    .sendMessage(chatId, String.format(BASIC_REPLY, update.getUrl(), update.getDescription()));
+                    .sendMessage(chatId, String.format(_BASIC_REPLY, update.getUrl(), update.getDescription()));
         });
         eventsStateWatcher.markEventAsDone(
                 eventID); // TODO currently may repeat message twice cause may process only part of chats - but let it

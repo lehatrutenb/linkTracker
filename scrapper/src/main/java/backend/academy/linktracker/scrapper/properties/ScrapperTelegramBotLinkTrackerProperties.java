@@ -1,5 +1,6 @@
 package backend.academy.linktracker.scrapper.properties;
 
+import backend.academy.linktracker.bot.properties.RefreshScopeProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -20,6 +21,7 @@ import org.springframework.validation.annotation.Validated;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Component
+@RefreshScopeProperty // TODO make somehow not dependant on bot app - may be move to shared utils
 public class ScrapperTelegramBotLinkTrackerProperties {
     @NotEmpty
     @URL

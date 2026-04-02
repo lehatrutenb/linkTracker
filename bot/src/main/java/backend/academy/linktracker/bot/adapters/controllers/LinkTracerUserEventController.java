@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
 public class LinkTracerUserEventController implements UpdatesListener {
     private final TelegramBot telegramBot;
     private final LinkTracerFacade linkTracerFacade;
-    private final EventsStateWatcher eventsStateWatcher;
 
     @PostConstruct
     private void setEventListener() {
@@ -26,11 +25,9 @@ public class LinkTracerUserEventController implements UpdatesListener {
 
     @Override
     public int process(List<Update> list) {
-        linkTracerFacade.processLinkTrackerUpdates(
+        var lastProcessedID = linkTracerFacade.processLinkTrackerUpdates(
                 list, LinkTracerTelegramBotReplier.class.getAnnotation(Qualifier.class));
-        return eventsStateWatcher
-                .getNumericLastOfPrefixOfDone()
-                .map(TelegramUpdatesMapper::mapUpdateId)
-                .orElse(CONFIRMED_UPDATES_NONE);
+        return lastProcessedID
+            .orElse(CONFIRMED_UPDATES_NONE);
     }
 }

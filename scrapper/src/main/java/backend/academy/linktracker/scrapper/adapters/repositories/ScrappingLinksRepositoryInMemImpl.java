@@ -12,9 +12,11 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RefreshScope
 public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksRepository {
     private final Set<ScrapperLink> scrapperLinks = new HashSet<>();
     private final Set<ScrapperLinkListener> scrapperLinkListeners = new HashSet<>();
