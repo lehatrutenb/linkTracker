@@ -34,42 +34,45 @@ public class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as han
             return;
         }
 
-        var linkUpdateOptional = linkUpdatesRepository.getLinkUpdate(eventID);
-        if (linkUpdateOptional.isPresent()) {
-            log.atWarn().addKeyValue("event id", eventID).log("Attempt to handle link update event twice");
-            scrapperEventsProcessingLock.unlock();
-            return;
-        }
-        linkUpdatesRepository.setLinkUpdate(eventID, update);
-        log.atInfo().addKeyValue("event id", eventID).log("Handle link update event");
-
-        update.getTgChatIds().forEach(chatId -> {
-            var replyService = replyServiceMatcher.getReplyService(TelegramUpdatesMapper.mapScrapperChatId(chatId));
-            if (replyService.isEmpty()) {
-                log.atWarn().addKeyValue("event id", eventID).log("Found no replier service for such event");
-                eventsStateWatcher.markEventAsSkipped(eventID);
-                scrapperEventsProcessingLock.unlock();
+        try {
+            var linkUpdateOptional = linkUpdatesRepository.getLinkUpdate(eventID);
+            if (linkUpdateOptional.isPresent()) {
+                log.atWarn().addKeyValue("event id", eventID).log("Attempt to handle link update event twice");
                 return;
             }
-            replyService
+            linkUpdatesRepository.setLinkUpdate(eventID, update);
+            log.atInfo().addKeyValue("event id", eventID).log("Handle link update event");
+
+            update.getTgChatIds().forEach(chatId -> {
+                var replyService = replyServiceMatcher.getReplyService(TelegramUpdatesMapper.mapScrapperChatId(chatId));
+                if (replyService.isEmpty()) {
+                    log.atWarn().addKeyValue("event id", eventID).log("Found no replier service for such event");
+                    eventsStateWatcher.markEventAsSkipped(eventID);
+                    return;
+                }
+                replyService
                     .orElseThrow()
                     .sendMessage(chatId, String.format(_BASIC_REPLY, update.getUrl(), update.getDescription()));
-        });
-        eventsStateWatcher.markEventAsDone(
+            });
+            eventsStateWatcher.markEventAsDone(
                 eventID); // TODO currently may repeat message twice cause may process only part of chats - but let it
-        // currently be
-
-        scrapperEventsProcessingLock.unlock();
+            // currently be
+        } finally {
+            scrapperEventsProcessingLock.unlock();
+        }
     }
 
     @Scheduled(fixedDelayString = "#{@telegramLinkTrackerProperties.initStateTrySetFixedRate}")
     public void processScrapperScheduledUpdates() {
         scrapperEventsProcessingLock.lock();
-        eventsStateWatcher.getElderlyProcessingEvents(OwnerIDType.SCRAPPER).forEach(event -> {
-            if (eventsStateWatcher.toProcessEvent(event.id())) {
-                handle(linkUpdatesRepository.getLinkUpdate(event.id()).orElseThrow(), event.id()); // TODO add check
-            }
-        });
-        scrapperEventsProcessingLock.unlock();
+        try {
+            eventsStateWatcher.getElderlyProcessingEvents(OwnerIDType.SCRAPPER).forEach(event -> {
+                if (eventsStateWatcher.toProcessEvent(event.id())) {
+                    handle(linkUpdatesRepository.getLinkUpdate(event.id()).orElseThrow(), event.id()); // TODO add check
+                }
+            });
+        } finally {
+            scrapperEventsProcessingLock.unlock();
+        }
     }
 }

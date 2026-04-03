@@ -26,10 +26,14 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "links", description = "the links API")
 @Controller
 @RequiredArgsConstructor
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
 public class LinksApi {
     private final ScrapperFacade scrapperFacade;
 
-    static final String PATH_LINKS_DELETE = "/links";
+    public static final String _PATH_LINKS_DELETE = "/links";
     /**
      * DELETE /links : Убрать отслеживание ссылки
      *
@@ -70,7 +74,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = LinksApi.PATH_LINKS_DELETE,
+            value = LinksApi._PATH_LINKS_DELETE,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksDelete(
@@ -84,7 +88,7 @@ public class LinksApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    static final String PATH_LINKS_GET = "/links";
+    public static final String _PATH_LINKS_GET = "/links";
     /**
      * GET /links : Получить все отслеживаемые ссылки
      *
@@ -124,7 +128,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.GET,
-            value = LinksApi.PATH_LINKS_GET,
+            value = LinksApi._PATH_LINKS_GET,
             produces = {"application/json"})
     public ResponseEntity<ListLinksResponse> linksGet(
             @NotNull
@@ -134,7 +138,7 @@ public class LinksApi {
         return new ResponseEntity<>(scrapperFacade.getSchedulingLinks(tgChatId), HttpStatus.OK);
     }
 
-    static final String PATH_LINKS_POST = "/links";
+    public static final String _PATH_LINKS_POST = "/links";
     /**
      * POST /links : Добавить отслеживание ссылки
      *
@@ -184,7 +188,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = LinksApi.PATH_LINKS_POST,
+            value = LinksApi._PATH_LINKS_POST,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksPost(

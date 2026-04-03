@@ -22,6 +22,10 @@ import org.springframework.web.context.request.NativeWebRequest;
 @Tag(name = "tg-chat", description = "the tg-chat API")
 @Controller
 @RequiredArgsConstructor
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
 public class TgChatApi {
     private final ScrapperFacade scrapperFacade;
 
@@ -29,7 +33,7 @@ public class TgChatApi {
         return Optional.empty();
     }
 
-    static final String PATH_TG_CHAT_ID_DELETE = "/tg-chat/{id}";
+    public static final String _PATH_TG_CHAT_ID_DELETE = "/tg-chat/{id}";
     /**
      * DELETE /tg-chat/{id} : Удалить чат
      *
@@ -62,7 +66,7 @@ public class TgChatApi {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = TgChatApi.PATH_TG_CHAT_ID_DELETE,
+            value = TgChatApi._PATH_TG_CHAT_ID_DELETE,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdDelete(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")
@@ -71,7 +75,7 @@ public class TgChatApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    static final String PATH_TG_CHAT_ID_POST = "/tg-chat/{id}";
+    public static final String _PATH_TG_CHAT_ID_POST = "/tg-chat/{id}";
     /**
      * POST /tg-chat/{id} : Зарегистрировать чат
      *
@@ -104,7 +108,7 @@ public class TgChatApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = TgChatApi.PATH_TG_CHAT_ID_POST,
+            value = TgChatApi._PATH_TG_CHAT_ID_POST,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdPost(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")

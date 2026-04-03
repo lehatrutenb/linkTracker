@@ -38,22 +38,18 @@ public class LinkTracerFacade {
      * @return last fully processed eventID on prefix if exists such
      */
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
-        log.error("HERE");
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
             EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
             TelegramBotMessage message = TelegramUpdatesMapper.map(update);
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 if (messagesOrderService.toProcessMessage(message)) {
-                    log.error("ACCEPT UPDATE");
                     replyServiceMatcher.setReplyService(message.chat().id(), replyServiceQualifier);
                     eventsStateWatcher.markEventAsProcessing(eventId);
                     var event = new LinkTracerNewMessageEvent(this, message, replyServiceQualifier, eventId);
                     applicationEventPublisher.publishEvent(event);
                 } else {
-                    log.error("SKIP UPDATE");
                 }
             } else if (!eventsStateWatcher.isEventDone(eventId)) {
-                log.error("SKIP UPDATE");
                 // We currently do some staff with that event
                 messagesOrderService.addProcessingMessage(message);
             }

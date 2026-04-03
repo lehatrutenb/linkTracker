@@ -44,7 +44,6 @@ public class StatelessApplicationTestExtension implements BeforeAllCallback, Aft
     }
 
     @Override
-
     public void beforeAll(ExtensionContext context) throws Exception {
         addWiremockArgs(context);
         applicationContext = SpringApplication.run(applicationClass, args.toArray(new String[0]));

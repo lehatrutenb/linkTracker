@@ -22,10 +22,14 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "updates", description = "the updates API")
 @RequiredArgsConstructor
 @Controller
+/**
+ * Public methods and fields started with `_` for testing purposes only.
+ * Do not use in production code.
+ */
 public class UpdatesApi {
     private final LinkTracerFacade facade;
 
-    static final String PATH_UPDATES_POST = "/updates";
+    public static final String _PATH_UPDATES_POST = "/updates";
     /**
      * POST /updates : Отправить обновление
      *
@@ -49,7 +53,7 @@ public class UpdatesApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = UpdatesApi.PATH_UPDATES_POST,
+            value = UpdatesApi._PATH_UPDATES_POST,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<Void> updatesPost(

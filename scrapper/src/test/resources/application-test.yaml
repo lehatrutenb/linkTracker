@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: scrapper
+
+app:
+  telegram:
+    link:
+      tracker:
+        api-path: http://127.0.0.1:8080
+        paths:
+          updates: /updates
+  snowflake:
+    worker-id: 1
+    datacenter-id: 1
+  global:
+    scrapping-fixed-rate: 100
+  stackoverflow:
+    key: test-token
+    access-token: test-token
+    api-root: ${wiremock.server.baseUrl}/stack-overflow-api/
+  github:
+    token: test-token
+    user-agent: github-events-scrapping-service
+    api-root: ${wiremock.server.baseUrl}/github-api/

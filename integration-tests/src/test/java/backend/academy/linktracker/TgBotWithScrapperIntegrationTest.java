@@ -21,8 +21,10 @@ import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
@@ -93,8 +95,8 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @Timeout(10)
     @ParameterizedTest
     @ValueSource(strings = {"tbank://github.com/user/repo","https://github.com/openclaw/openclaw/issues/56480","https://stackoverflow.com/users/23469470/lehatr"})
-    void trackSendsInvalidURLReceivesErrReply(String invalidURL) {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsInvalidURLReceivesErrReply");
+    void trackSendsInvalidURLReceivesErrorReply(String invalidURL) {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsInvalidURLReceivesErrorReply");
 
         testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
         testUtils.writeMessageToBot("track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, invalidURL));
@@ -129,8 +131,8 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @Timeout(10)
     @ParameterizedTest
     @ValueSource(strings = {"https://stackoverflow.com/questions/4568645", "https://github.com/openclaw/openclaw"})
-    void trackSendsTwiceReceivesErrReply(String validURL) {
-        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsTwiceReceivesErrReply");
+    void trackSendsTwiceReceivesErrorReply(String validURL) {
+        TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsTwiceReceivesErrorReply");
 
         testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
         testUtils.writeMessageToBot("track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, validURL));
