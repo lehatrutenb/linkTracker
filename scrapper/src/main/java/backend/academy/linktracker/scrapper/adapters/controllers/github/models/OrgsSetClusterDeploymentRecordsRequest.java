@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsSetClusterDeploymentRecordsRequest
@@ -17,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("orgs_set_cluster_deployment_records_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsSetClusterDeploymentRecordsRequest {
 
     private String logicalEnvironment;
 
-    private String physicalEnvironment;
+    private Optional<@Size(max = 128) String> physicalEnvironment = Optional.empty();
 
     @Valid
     private List<@Valid OrgsSetClusterDeploymentRecordsRequestDeploymentsInner> deployments = new ArrayList<>();
@@ -67,7 +68,7 @@ public class OrgsSetClusterDeploymentRecordsRequest {
     }
 
     public OrgsSetClusterDeploymentRecordsRequest physicalEnvironment(String physicalEnvironment) {
-        this.physicalEnvironment = physicalEnvironment;
+        this.physicalEnvironment = Optional.ofNullable(physicalEnvironment);
         return this;
     }
 
@@ -75,17 +76,16 @@ public class OrgsSetClusterDeploymentRecordsRequest {
      * The physical region of the deployment.
      * @return physicalEnvironment
      */
-    @Size(max = 128)
     @Schema(
             name = "physical_environment",
             description = "The physical region of the deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("physical_environment")
-    public String getPhysicalEnvironment() {
+    public Optional<@Size(max = 128) String> getPhysicalEnvironment() {
         return physicalEnvironment;
     }
 
-    public void setPhysicalEnvironment(String physicalEnvironment) {
+    public void setPhysicalEnvironment(Optional<String> physicalEnvironment) {
         this.physicalEnvironment = physicalEnvironment;
     }
 

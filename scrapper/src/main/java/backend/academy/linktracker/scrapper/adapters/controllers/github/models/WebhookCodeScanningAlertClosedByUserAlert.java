@@ -7,15 +7,16 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 /**
  * The code scanning alert involved in the event.
@@ -26,7 +27,7 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("webhook_code_scanning_alert_closed_by_user_alert")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertClosedByUserAlert {
 
@@ -39,9 +40,9 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime dismissedAt;
 
-    private User dismissedBy = null;
+    private JsonNullable<User> dismissedBy = JsonNullable.<User>undefined();
 
-    private String dismissedComment = null;
+    private JsonNullable<@Size(max = 280) String> dismissedComment = JsonNullable.<String>undefined();
 
     /**
      * The reason for dismissing or closing the alert.
@@ -80,13 +81,13 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
         }
     }
 
-    private DismissedReasonEnum dismissedReason = null;
+    private JsonNullable<DismissedReasonEnum> dismissedReason = JsonNullable.<DismissedReasonEnum>undefined();
 
-    private @Nullable Object fixedAt = null;
+    private JsonNullable<Object> fixedAt = JsonNullable.<Object>undefined();
 
     private URI htmlUrl;
 
-    private AlertInstance mostRecentInstance = null;
+    private JsonNullable<AlertInstance> mostRecentInstance = JsonNullable.<AlertInstance>undefined();
 
     private Long number;
 
@@ -133,7 +134,7 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
 
     private URI url;
 
-    private User dismissalApprovedBy = null;
+    private JsonNullable<User> dismissalApprovedBy = JsonNullable.<User>undefined();
 
     public WebhookCodeScanningAlertClosedByUserAlert() {
         super();
@@ -155,8 +156,8 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
             URI url) {
         this.createdAt = createdAt;
         this.dismissedAt = dismissedAt;
-        this.dismissedBy = dismissedBy;
-        this.dismissedReason = dismissedReason;
+        this.dismissedBy = JsonNullable.of(dismissedBy);
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         this.htmlUrl = htmlUrl;
         this.number = number;
         this.rule = rule;
@@ -242,7 +243,7 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlert dismissedBy(User dismissedBy) {
-        this.dismissedBy = dismissedBy;
+        this.dismissedBy = JsonNullable.of(dismissedBy);
         return this;
     }
 
@@ -254,16 +255,16 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     @Valid
     @Schema(name = "dismissed_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_by")
-    public User getDismissedBy() {
+    public JsonNullable<User> getDismissedBy() {
         return dismissedBy;
     }
 
-    public void setDismissedBy(User dismissedBy) {
+    public void setDismissedBy(JsonNullable<User> dismissedBy) {
         this.dismissedBy = dismissedBy;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlert dismissedComment(String dismissedComment) {
-        this.dismissedComment = dismissedComment;
+        this.dismissedComment = JsonNullable.of(dismissedComment);
         return this;
     }
 
@@ -271,22 +272,21 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
      * The dismissal comment associated with the dismissal of the alert.
      * @return dismissedComment
      */
-    @Size(max = 280)
     @Schema(
             name = "dismissed_comment",
             description = "The dismissal comment associated with the dismissal of the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_comment")
-    public String getDismissedComment() {
+    public JsonNullable<@Size(max = 280) String> getDismissedComment() {
         return dismissedComment;
     }
 
-    public void setDismissedComment(String dismissedComment) {
+    public void setDismissedComment(JsonNullable<String> dismissedComment) {
         this.dismissedComment = dismissedComment;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlert dismissedReason(DismissedReasonEnum dismissedReason) {
-        this.dismissedReason = dismissedReason;
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         return this;
     }
 
@@ -300,16 +300,16 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
             description = "The reason for dismissing or closing the alert.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_reason")
-    public DismissedReasonEnum getDismissedReason() {
+    public JsonNullable<DismissedReasonEnum> getDismissedReason() {
         return dismissedReason;
     }
 
-    public void setDismissedReason(DismissedReasonEnum dismissedReason) {
+    public void setDismissedReason(JsonNullable<DismissedReasonEnum> dismissedReason) {
         this.dismissedReason = dismissedReason;
     }
 
-    public WebhookCodeScanningAlertClosedByUserAlert fixedAt(@Nullable Object fixedAt) {
-        this.fixedAt = fixedAt;
+    public WebhookCodeScanningAlertClosedByUserAlert fixedAt(Object fixedAt) {
+        this.fixedAt = JsonNullable.of(fixedAt);
         return this;
     }
 
@@ -322,11 +322,11 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
             description = "The time that the alert was fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fixed_at")
-    public @Nullable Object getFixedAt() {
+    public JsonNullable<Object> getFixedAt() {
         return fixedAt;
     }
 
-    public void setFixedAt(@Nullable Object fixedAt) {
+    public void setFixedAt(JsonNullable<Object> fixedAt) {
         this.fixedAt = fixedAt;
     }
 
@@ -355,7 +355,7 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlert mostRecentInstance(AlertInstance mostRecentInstance) {
-        this.mostRecentInstance = mostRecentInstance;
+        this.mostRecentInstance = JsonNullable.of(mostRecentInstance);
         return this;
     }
 
@@ -366,11 +366,11 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     @Valid
     @Schema(name = "most_recent_instance", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("most_recent_instance")
-    public AlertInstance getMostRecentInstance() {
+    public JsonNullable<AlertInstance> getMostRecentInstance() {
         return mostRecentInstance;
     }
 
-    public void setMostRecentInstance(AlertInstance mostRecentInstance) {
+    public void setMostRecentInstance(JsonNullable<AlertInstance> mostRecentInstance) {
         this.mostRecentInstance = mostRecentInstance;
     }
 
@@ -484,7 +484,7 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlert dismissalApprovedBy(User dismissalApprovedBy) {
-        this.dismissalApprovedBy = dismissalApprovedBy;
+        this.dismissalApprovedBy = JsonNullable.of(dismissalApprovedBy);
         return this;
     }
 
@@ -495,11 +495,11 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
     @Valid
     @Schema(name = "dismissal_approved_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_approved_by")
-    public User getDismissalApprovedBy() {
+    public JsonNullable<User> getDismissalApprovedBy() {
         return dismissalApprovedBy;
     }
 
-    public void setDismissalApprovedBy(User dismissalApprovedBy) {
+    public void setDismissalApprovedBy(JsonNullable<User> dismissalApprovedBy) {
         this.dismissalApprovedBy = dismissalApprovedBy;
     }
 
@@ -517,18 +517,23 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
                 && Objects.equals(this.createdAt, webhookCodeScanningAlertClosedByUserAlert.createdAt)
                 && Objects.equals(this.dismissedAt, webhookCodeScanningAlertClosedByUserAlert.dismissedAt)
                 && Objects.equals(this.dismissedBy, webhookCodeScanningAlertClosedByUserAlert.dismissedBy)
-                && Objects.equals(this.dismissedComment, webhookCodeScanningAlertClosedByUserAlert.dismissedComment)
+                && equalsNullable(this.dismissedComment, webhookCodeScanningAlertClosedByUserAlert.dismissedComment)
                 && Objects.equals(this.dismissedReason, webhookCodeScanningAlertClosedByUserAlert.dismissedReason)
-                && Objects.equals(this.fixedAt, webhookCodeScanningAlertClosedByUserAlert.fixedAt)
+                && equalsNullable(this.fixedAt, webhookCodeScanningAlertClosedByUserAlert.fixedAt)
                 && Objects.equals(this.htmlUrl, webhookCodeScanningAlertClosedByUserAlert.htmlUrl)
-                && Objects.equals(this.mostRecentInstance, webhookCodeScanningAlertClosedByUserAlert.mostRecentInstance)
+                && equalsNullable(this.mostRecentInstance, webhookCodeScanningAlertClosedByUserAlert.mostRecentInstance)
                 && Objects.equals(this.number, webhookCodeScanningAlertClosedByUserAlert.number)
                 && Objects.equals(this.rule, webhookCodeScanningAlertClosedByUserAlert.rule)
                 && Objects.equals(this.state, webhookCodeScanningAlertClosedByUserAlert.state)
                 && Objects.equals(this.tool, webhookCodeScanningAlertClosedByUserAlert.tool)
                 && Objects.equals(this.url, webhookCodeScanningAlertClosedByUserAlert.url)
-                && Objects.equals(
+                && equalsNullable(
                         this.dismissalApprovedBy, webhookCodeScanningAlertClosedByUserAlert.dismissalApprovedBy);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -538,17 +543,24 @@ public class WebhookCodeScanningAlertClosedByUserAlert {
                 createdAt,
                 dismissedAt,
                 dismissedBy,
-                dismissedComment,
+                hashCodeNullable(dismissedComment),
                 dismissedReason,
-                fixedAt,
+                hashCodeNullable(fixedAt),
                 htmlUrl,
-                mostRecentInstance,
+                hashCodeNullable(mostRecentInstance),
                 number,
                 rule,
                 state,
                 tool,
                 url,
-                dismissalApprovedBy);
+                hashCodeNullable(dismissalApprovedBy));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

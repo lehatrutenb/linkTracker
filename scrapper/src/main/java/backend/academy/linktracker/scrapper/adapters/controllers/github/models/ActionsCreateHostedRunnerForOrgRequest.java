@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsCreateHostedRunnerForOrgRequest
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("actions_create_hosted_runner_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsCreateHostedRunnerForOrgRequest {
 
@@ -27,11 +27,11 @@ public class ActionsCreateHostedRunnerForOrgRequest {
 
     private Long runnerGroupId;
 
-    private Long maximumRunners;
+    private Optional<Long> maximumRunners = Optional.empty();
 
-    private Boolean enableStaticIp;
+    private Optional<Boolean> enableStaticIp = Optional.empty();
 
-    private Boolean imageGen = false;
+    private Optional<Boolean> imageGen = Optional.of(false);
 
     public ActionsCreateHostedRunnerForOrgRequest() {
         super();
@@ -141,7 +141,7 @@ public class ActionsCreateHostedRunnerForOrgRequest {
     }
 
     public ActionsCreateHostedRunnerForOrgRequest maximumRunners(Long maximumRunners) {
-        this.maximumRunners = maximumRunners;
+        this.maximumRunners = Optional.ofNullable(maximumRunners);
         return this;
     }
 
@@ -155,16 +155,16 @@ public class ActionsCreateHostedRunnerForOrgRequest {
                     "The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maximum_runners")
-    public Long getMaximumRunners() {
+    public Optional<Long> getMaximumRunners() {
         return maximumRunners;
     }
 
-    public void setMaximumRunners(Long maximumRunners) {
+    public void setMaximumRunners(Optional<Long> maximumRunners) {
         this.maximumRunners = maximumRunners;
     }
 
     public ActionsCreateHostedRunnerForOrgRequest enableStaticIp(Boolean enableStaticIp) {
-        this.enableStaticIp = enableStaticIp;
+        this.enableStaticIp = Optional.ofNullable(enableStaticIp);
         return this;
     }
 
@@ -178,16 +178,16 @@ public class ActionsCreateHostedRunnerForOrgRequest {
                     "Whether this runner should be created with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enable_static_ip")
-    public Boolean getEnableStaticIp() {
+    public Optional<Boolean> getEnableStaticIp() {
         return enableStaticIp;
     }
 
-    public void setEnableStaticIp(Boolean enableStaticIp) {
+    public void setEnableStaticIp(Optional<Boolean> enableStaticIp) {
         this.enableStaticIp = enableStaticIp;
     }
 
     public ActionsCreateHostedRunnerForOrgRequest imageGen(Boolean imageGen) {
-        this.imageGen = imageGen;
+        this.imageGen = Optional.ofNullable(imageGen);
         return this;
     }
 
@@ -200,11 +200,11 @@ public class ActionsCreateHostedRunnerForOrgRequest {
             description = "Whether this runner should be used to generate custom images.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("image_gen")
-    public Boolean getImageGen() {
+    public Optional<Boolean> getImageGen() {
         return imageGen;
     }
 
-    public void setImageGen(Boolean imageGen) {
+    public void setImageGen(Optional<Boolean> imageGen) {
         this.imageGen = imageGen;
     }
 

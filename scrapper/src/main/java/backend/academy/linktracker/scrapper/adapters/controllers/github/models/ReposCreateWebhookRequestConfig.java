@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Key/value pairs to provide settings for this webhook.
@@ -19,20 +18,20 @@ import java.util.Objects;
 @JsonTypeName("repos_create_webhook_request_config")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateWebhookRequestConfig {
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private String contentType;
+    private Optional<String> contentType = Optional.empty();
 
-    private String secret;
+    private Optional<String> secret = Optional.empty();
 
-    private WebhookConfigInsecureSsl insecureSsl;
+    private Optional<WebhookConfigInsecureSsl> insecureSsl = Optional.empty();
 
     public ReposCreateWebhookRequestConfig url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -47,16 +46,16 @@ public class ReposCreateWebhookRequestConfig {
             description = "The URL to which the payloads will be delivered.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public ReposCreateWebhookRequestConfig contentType(String contentType) {
-        this.contentType = contentType;
+        this.contentType = Optional.ofNullable(contentType);
         return this;
     }
 
@@ -71,16 +70,16 @@ public class ReposCreateWebhookRequestConfig {
                     "The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_type")
-    public String getContentType() {
+    public Optional<String> getContentType() {
         return contentType;
     }
 
-    public void setContentType(String contentType) {
+    public void setContentType(Optional<String> contentType) {
         this.contentType = contentType;
     }
 
     public ReposCreateWebhookRequestConfig secret(String secret) {
-        this.secret = secret;
+        this.secret = Optional.ofNullable(secret);
         return this;
     }
 
@@ -95,16 +94,16 @@ public class ReposCreateWebhookRequestConfig {
                     "If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret")
-    public String getSecret() {
+    public Optional<String> getSecret() {
         return secret;
     }
 
-    public void setSecret(String secret) {
+    public void setSecret(Optional<String> secret) {
         this.secret = secret;
     }
 
     public ReposCreateWebhookRequestConfig insecureSsl(WebhookConfigInsecureSsl insecureSsl) {
-        this.insecureSsl = insecureSsl;
+        this.insecureSsl = Optional.ofNullable(insecureSsl);
         return this;
     }
 
@@ -115,11 +114,11 @@ public class ReposCreateWebhookRequestConfig {
     @Valid
     @Schema(name = "insecure_ssl", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("insecure_ssl")
-    public WebhookConfigInsecureSsl getInsecureSsl() {
+    public Optional<WebhookConfigInsecureSsl> getInsecureSsl() {
         return insecureSsl;
     }
 
-    public void setInsecureSsl(WebhookConfigInsecureSsl insecureSsl) {
+    public void setInsecureSsl(Optional<WebhookConfigInsecureSsl> insecureSsl) {
         this.insecureSsl = insecureSsl;
     }
 

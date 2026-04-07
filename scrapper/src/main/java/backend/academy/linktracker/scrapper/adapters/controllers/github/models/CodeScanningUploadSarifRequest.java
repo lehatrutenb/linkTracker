@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code_scanning_upload_sarif_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningUploadSarifRequest {
 
@@ -28,14 +30,14 @@ public class CodeScanningUploadSarifRequest {
 
     private String sarif;
 
-    private URI checkoutUri;
+    private Optional<URI> checkoutUri = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt;
+    private Optional<OffsetDateTime> startedAt = Optional.empty();
 
-    private String toolName;
+    private Optional<String> toolName = Optional.empty();
 
-    private Boolean validate;
+    private Optional<Boolean> validate = Optional.empty();
 
     public CodeScanningUploadSarifRequest() {
         super();
@@ -126,7 +128,7 @@ public class CodeScanningUploadSarifRequest {
     }
 
     public CodeScanningUploadSarifRequest checkoutUri(URI checkoutUri) {
-        this.checkoutUri = checkoutUri;
+        this.checkoutUri = Optional.ofNullable(checkoutUri);
         return this;
     }
 
@@ -142,16 +144,16 @@ public class CodeScanningUploadSarifRequest {
                     "The base directory used in the analysis, as it appears in the SARIF file. This property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("checkout_uri")
-    public URI getCheckoutUri() {
+    public Optional<URI> getCheckoutUri() {
         return checkoutUri;
     }
 
-    public void setCheckoutUri(URI checkoutUri) {
+    public void setCheckoutUri(Optional<URI> checkoutUri) {
         this.checkoutUri = checkoutUri;
     }
 
     public CodeScanningUploadSarifRequest startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = Optional.ofNullable(startedAt);
         return this;
     }
 
@@ -166,16 +168,16 @@ public class CodeScanningUploadSarifRequest {
                     "The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public Optional<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(Optional<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public CodeScanningUploadSarifRequest toolName(String toolName) {
-        this.toolName = toolName;
+        this.toolName = Optional.ofNullable(toolName);
         return this;
     }
 
@@ -189,16 +191,16 @@ public class CodeScanningUploadSarifRequest {
                     "The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to \"API\". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tool_name")
-    public String getToolName() {
+    public Optional<String> getToolName() {
         return toolName;
     }
 
-    public void setToolName(String toolName) {
+    public void setToolName(Optional<String> toolName) {
         this.toolName = toolName;
     }
 
     public CodeScanningUploadSarifRequest validate(Boolean validate) {
-        this.validate = validate;
+        this.validate = Optional.ofNullable(validate);
         return this;
     }
 
@@ -212,11 +214,11 @@ public class CodeScanningUploadSarifRequest {
                     "Whether the SARIF file will be validated according to the code scanning specifications. This parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("validate")
-    public Boolean getValidate() {
+    public Optional<Boolean> getValidate() {
         return validate;
     }
 
-    public void setValidate(Boolean validate) {
+    public void setValidate(Optional<Boolean> validate) {
         this.validate = validate;
     }
 

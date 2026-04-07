@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * License
  */
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class License {
 
@@ -26,7 +26,7 @@ public class License {
 
     private String spdxId;
 
-    private URI url = null;
+    private JsonNullable<URI> url = JsonNullable.<URI>undefined();
 
     public License() {
         super();
@@ -40,7 +40,7 @@ public class License {
         this.name = name;
         this.nodeId = nodeId;
         this.spdxId = spdxId;
-        this.url = url;
+        this.url = JsonNullable.of(url);
     }
 
     public License key(String key) {
@@ -124,7 +124,7 @@ public class License {
     }
 
     public License url(URI url) {
-        this.url = url;
+        this.url = JsonNullable.of(url);
         return this;
     }
 
@@ -136,11 +136,11 @@ public class License {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public JsonNullable<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(JsonNullable<URI> url) {
         this.url = url;
     }
 

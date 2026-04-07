@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,27 +21,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Webhook", description = "The webhook that is being pinged")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Webhook {
 
     private Boolean active;
 
-    private Long appId;
+    private Optional<Long> appId = Optional.empty();
 
     private WebhookConfig config;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private URI deliveriesUrl;
+    private Optional<URI> deliveriesUrl = Optional.empty();
 
     @Valid
     private List<String> events = new ArrayList<>();
 
     private Long id;
 
-    private HookResponse lastResponse;
+    private Optional<HookResponse> lastResponse = Optional.empty();
 
     /**
      * The type of webhook. The only valid value is 'web'.
@@ -78,16 +78,16 @@ public class Webhook {
 
     private NameEnum name;
 
-    private URI pingUrl;
+    private Optional<URI> pingUrl = Optional.empty();
 
-    private URI testUrl;
+    private Optional<URI> testUrl = Optional.empty();
 
     private String type;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
     public Webhook() {
         super();
@@ -139,7 +139,7 @@ public class Webhook {
     }
 
     public Webhook appId(Long appId) {
-        this.appId = appId;
+        this.appId = Optional.ofNullable(appId);
         return this;
     }
 
@@ -153,11 +153,11 @@ public class Webhook {
                     "Only included for GitHub Apps. When you register a new GitHub App, GitHub sends a ping event to the webhook URL you specified during registration. The GitHub App ID sent in this field is required for authenticating an app.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("app_id")
-    public Long getAppId() {
+    public Optional<Long> getAppId() {
         return appId;
     }
 
-    public void setAppId(Long appId) {
+    public void setAppId(Optional<Long> appId) {
         this.appId = appId;
     }
 
@@ -204,7 +204,7 @@ public class Webhook {
     }
 
     public Webhook deliveriesUrl(URI deliveriesUrl) {
-        this.deliveriesUrl = deliveriesUrl;
+        this.deliveriesUrl = Optional.ofNullable(deliveriesUrl);
         return this;
     }
 
@@ -215,11 +215,11 @@ public class Webhook {
     @Valid
     @Schema(name = "deliveries_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deliveries_url")
-    public URI getDeliveriesUrl() {
+    public Optional<URI> getDeliveriesUrl() {
         return deliveriesUrl;
     }
 
-    public void setDeliveriesUrl(URI deliveriesUrl) {
+    public void setDeliveriesUrl(Optional<URI> deliveriesUrl) {
         this.deliveriesUrl = deliveriesUrl;
     }
 
@@ -275,7 +275,7 @@ public class Webhook {
     }
 
     public Webhook lastResponse(HookResponse lastResponse) {
-        this.lastResponse = lastResponse;
+        this.lastResponse = Optional.ofNullable(lastResponse);
         return this;
     }
 
@@ -286,11 +286,11 @@ public class Webhook {
     @Valid
     @Schema(name = "last_response", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_response")
-    public HookResponse getLastResponse() {
+    public Optional<HookResponse> getLastResponse() {
         return lastResponse;
     }
 
-    public void setLastResponse(HookResponse lastResponse) {
+    public void setLastResponse(Optional<HookResponse> lastResponse) {
         this.lastResponse = lastResponse;
     }
 
@@ -318,7 +318,7 @@ public class Webhook {
     }
 
     public Webhook pingUrl(URI pingUrl) {
-        this.pingUrl = pingUrl;
+        this.pingUrl = Optional.ofNullable(pingUrl);
         return this;
     }
 
@@ -329,16 +329,16 @@ public class Webhook {
     @Valid
     @Schema(name = "ping_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ping_url")
-    public URI getPingUrl() {
+    public Optional<URI> getPingUrl() {
         return pingUrl;
     }
 
-    public void setPingUrl(URI pingUrl) {
+    public void setPingUrl(Optional<URI> pingUrl) {
         this.pingUrl = pingUrl;
     }
 
     public Webhook testUrl(URI testUrl) {
-        this.testUrl = testUrl;
+        this.testUrl = Optional.ofNullable(testUrl);
         return this;
     }
 
@@ -349,11 +349,11 @@ public class Webhook {
     @Valid
     @Schema(name = "test_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("test_url")
-    public URI getTestUrl() {
+    public Optional<URI> getTestUrl() {
         return testUrl;
     }
 
-    public void setTestUrl(URI testUrl) {
+    public void setTestUrl(Optional<URI> testUrl) {
         this.testUrl = testUrl;
     }
 
@@ -399,7 +399,7 @@ public class Webhook {
     }
 
     public Webhook url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -410,11 +410,11 @@ public class Webhook {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 

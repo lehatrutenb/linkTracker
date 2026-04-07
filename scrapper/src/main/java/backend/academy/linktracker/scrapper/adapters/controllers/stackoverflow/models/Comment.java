@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -16,29 +15,29 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Comment", description = "Represents a Comment.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Comment {
 
-    private Long commentId;
+    private Optional<Long> commentId = Optional.empty();
 
-    private Long postId;
+    private Optional<Long> postId = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime creationDate;
+    private Optional<OffsetDateTime> creationDate = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private ShallowUser owner;
+    private Optional<ShallowUser> owner = Optional.empty();
 
-    private ShallowUser replyToUser;
+    private Optional<ShallowUser> replyToUser = Optional.empty();
 
-    private Boolean edited;
+    private Optional<Boolean> edited = Optional.empty();
 
-    private Long score;
+    private Optional<Long> score = Optional.empty();
 
     public Comment commentId(Long commentId) {
-        this.commentId = commentId;
+        this.commentId = Optional.ofNullable(commentId);
         return this;
     }
 
@@ -48,16 +47,16 @@ public class Comment {
      */
     @Schema(name = "comment_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comment_id")
-    public Long getCommentId() {
+    public Optional<Long> getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Long commentId) {
+    public void setCommentId(Optional<Long> commentId) {
         this.commentId = commentId;
     }
 
     public Comment postId(Long postId) {
-        this.postId = postId;
+        this.postId = Optional.ofNullable(postId);
         return this;
     }
 
@@ -70,16 +69,16 @@ public class Comment {
             description = "The ID of the post (question or answer) this comment belongs to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("post_id")
-    public Long getPostId() {
+    public Optional<Long> getPostId() {
         return postId;
     }
 
-    public void setPostId(Long postId) {
+    public void setPostId(Optional<Long> postId) {
         this.postId = postId;
     }
 
     public Comment creationDate(OffsetDateTime creationDate) {
-        this.creationDate = creationDate;
+        this.creationDate = Optional.ofNullable(creationDate);
         return this;
     }
 
@@ -90,16 +89,16 @@ public class Comment {
     @Valid
     @Schema(name = "creation_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creation_date")
-    public OffsetDateTime getCreationDate() {
+    public Optional<OffsetDateTime> getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(OffsetDateTime creationDate) {
+    public void setCreationDate(Optional<OffsetDateTime> creationDate) {
         this.creationDate = creationDate;
     }
 
     public Comment body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -109,16 +108,16 @@ public class Comment {
      */
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public Comment owner(ShallowUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -129,16 +128,16 @@ public class Comment {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public ShallowUser getOwner() {
+    public Optional<ShallowUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(ShallowUser owner) {
+    public void setOwner(Optional<ShallowUser> owner) {
         this.owner = owner;
     }
 
     public Comment replyToUser(ShallowUser replyToUser) {
-        this.replyToUser = replyToUser;
+        this.replyToUser = Optional.ofNullable(replyToUser);
         return this;
     }
 
@@ -149,16 +148,16 @@ public class Comment {
     @Valid
     @Schema(name = "reply_to_user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reply_to_user")
-    public ShallowUser getReplyToUser() {
+    public Optional<ShallowUser> getReplyToUser() {
         return replyToUser;
     }
 
-    public void setReplyToUser(ShallowUser replyToUser) {
+    public void setReplyToUser(Optional<ShallowUser> replyToUser) {
         this.replyToUser = replyToUser;
     }
 
     public Comment edited(Boolean edited) {
-        this.edited = edited;
+        this.edited = Optional.ofNullable(edited);
         return this;
     }
 
@@ -171,16 +170,16 @@ public class Comment {
             description = "True if this comment has been edited.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("edited")
-    public Boolean getEdited() {
+    public Optional<Boolean> getEdited() {
         return edited;
     }
 
-    public void setEdited(Boolean edited) {
+    public void setEdited(Optional<Boolean> edited) {
         this.edited = edited;
     }
 
     public Comment score(Long score) {
-        this.score = score;
+        this.score = Optional.ofNullable(score);
         return this;
     }
 
@@ -190,11 +189,11 @@ public class Comment {
      */
     @Schema(name = "score", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("score")
-    public Long getScore() {
+    public Optional<Long> getScore() {
         return score;
     }
 
-    public void setScore(Long score) {
+    public void setScore(Optional<Long> score) {
         this.score = score;
     }
 

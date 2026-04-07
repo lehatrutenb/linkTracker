@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitHub Actions cache storage policy for a repository.
@@ -17,14 +16,14 @@ import java.util.Objects;
 @JsonTypeName("actions-cache-storage-limit-for-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsCacheStorageLimitForRepository {
 
-    private Long maxCacheSizeGb;
+    private Optional<Long> maxCacheSizeGb = Optional.empty();
 
     public ActionsCacheStorageLimitForRepository maxCacheSizeGb(Long maxCacheSizeGb) {
-        this.maxCacheSizeGb = maxCacheSizeGb;
+        this.maxCacheSizeGb = Optional.ofNullable(maxCacheSizeGb);
         return this;
     }
 
@@ -38,11 +37,11 @@ public class ActionsCacheStorageLimitForRepository {
             description = "The maximum total cache size for this repository, in gigabytes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("max_cache_size_gb")
-    public Long getMaxCacheSizeGb() {
+    public Optional<Long> getMaxCacheSizeGb() {
         return maxCacheSizeGb;
     }
 
-    public void setMaxCacheSizeGb(Long maxCacheSizeGb) {
+    public void setMaxCacheSizeGb(Optional<Long> maxCacheSizeGb) {
         this.maxCacheSizeGb = maxCacheSizeGb;
     }
 

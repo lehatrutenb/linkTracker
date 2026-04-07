@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Details of a Personal Access Token Request.
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("personal-access-token-request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PersonalAccessTokenRequest {
 
@@ -73,10 +73,11 @@ public class PersonalAccessTokenRequest {
 
     private RepositorySelectionEnum repositorySelection;
 
-    private Long repositoryCount = null;
+    private JsonNullable<Long> repositoryCount = JsonNullable.<Long>undefined();
 
     @Valid
-    private List<@Valid WebhooksRepositoriesInner> repositories;
+    private JsonNullable<List<@Valid WebhooksRepositoriesInner>> repositories =
+            JsonNullable.<List<@Valid WebhooksRepositoriesInner>>undefined();
 
     private String createdAt;
 
@@ -86,9 +87,9 @@ public class PersonalAccessTokenRequest {
 
     private Boolean tokenExpired;
 
-    private String tokenExpiresAt = null;
+    private JsonNullable<String> tokenExpiresAt = JsonNullable.<String>undefined();
 
-    private String tokenLastUsedAt = null;
+    private JsonNullable<String> tokenLastUsedAt = JsonNullable.<String>undefined();
 
     public PersonalAccessTokenRequest() {
         super();
@@ -118,14 +119,14 @@ public class PersonalAccessTokenRequest {
         this.permissionsUpgraded = permissionsUpgraded;
         this.permissionsResult = permissionsResult;
         this.repositorySelection = repositorySelection;
-        this.repositoryCount = repositoryCount;
-        this.repositories = repositories;
+        this.repositoryCount = JsonNullable.of(repositoryCount);
+        this.repositories = JsonNullable.of(repositories);
         this.createdAt = createdAt;
         this.tokenId = tokenId;
         this.tokenName = tokenName;
         this.tokenExpired = tokenExpired;
-        this.tokenExpiresAt = tokenExpiresAt;
-        this.tokenLastUsedAt = tokenLastUsedAt;
+        this.tokenExpiresAt = JsonNullable.of(tokenExpiresAt);
+        this.tokenLastUsedAt = JsonNullable.of(tokenLastUsedAt);
     }
 
     public PersonalAccessTokenRequest id(Long id) {
@@ -261,7 +262,7 @@ public class PersonalAccessTokenRequest {
     }
 
     public PersonalAccessTokenRequest repositoryCount(Long repositoryCount) {
-        this.repositoryCount = repositoryCount;
+        this.repositoryCount = JsonNullable.of(repositoryCount);
         return this;
     }
 
@@ -276,24 +277,24 @@ public class PersonalAccessTokenRequest {
                     "The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repository_count")
-    public Long getRepositoryCount() {
+    public JsonNullable<Long> getRepositoryCount() {
         return repositoryCount;
     }
 
-    public void setRepositoryCount(Long repositoryCount) {
+    public void setRepositoryCount(JsonNullable<Long> repositoryCount) {
         this.repositoryCount = repositoryCount;
     }
 
     public PersonalAccessTokenRequest repositories(List<@Valid WebhooksRepositoriesInner> repositories) {
-        this.repositories = repositories;
+        this.repositories = JsonNullable.of(repositories);
         return this;
     }
 
     public PersonalAccessTokenRequest addRepositoriesItem(WebhooksRepositoriesInner repositoriesItem) {
-        if (this.repositories == null) {
-            this.repositories = new ArrayList<>();
+        if (this.repositories == null || !this.repositories.isPresent()) {
+            this.repositories = JsonNullable.of(new ArrayList<>());
         }
-        this.repositories.add(repositoriesItem);
+        this.repositories.get().add(repositoriesItem);
         return this;
     }
 
@@ -309,11 +310,11 @@ public class PersonalAccessTokenRequest {
                     "An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repositories")
-    public List<@Valid WebhooksRepositoriesInner> getRepositories() {
+    public JsonNullable<List<@Valid WebhooksRepositoriesInner>> getRepositories() {
         return repositories;
     }
 
-    public void setRepositories(List<@Valid WebhooksRepositoriesInner> repositories) {
+    public void setRepositories(JsonNullable<List<@Valid WebhooksRepositoriesInner>> repositories) {
         this.repositories = repositories;
     }
 
@@ -412,7 +413,7 @@ public class PersonalAccessTokenRequest {
     }
 
     public PersonalAccessTokenRequest tokenExpiresAt(String tokenExpiresAt) {
-        this.tokenExpiresAt = tokenExpiresAt;
+        this.tokenExpiresAt = JsonNullable.of(tokenExpiresAt);
         return this;
     }
 
@@ -426,16 +427,16 @@ public class PersonalAccessTokenRequest {
             description = "Date and time when the associated fine-grained personal access token expires.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("token_expires_at")
-    public String getTokenExpiresAt() {
+    public JsonNullable<String> getTokenExpiresAt() {
         return tokenExpiresAt;
     }
 
-    public void setTokenExpiresAt(String tokenExpiresAt) {
+    public void setTokenExpiresAt(JsonNullable<String> tokenExpiresAt) {
         this.tokenExpiresAt = tokenExpiresAt;
     }
 
     public PersonalAccessTokenRequest tokenLastUsedAt(String tokenLastUsedAt) {
-        this.tokenLastUsedAt = tokenLastUsedAt;
+        this.tokenLastUsedAt = JsonNullable.of(tokenLastUsedAt);
         return this;
     }
 
@@ -450,11 +451,11 @@ public class PersonalAccessTokenRequest {
                     "Date and time when the associated fine-grained personal access token was last used for authentication.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("token_last_used_at")
-    public String getTokenLastUsedAt() {
+    public JsonNullable<String> getTokenLastUsedAt() {
         return tokenLastUsedAt;
     }
 
-    public void setTokenLastUsedAt(String tokenLastUsedAt) {
+    public void setTokenLastUsedAt(JsonNullable<String> tokenLastUsedAt) {
         this.tokenLastUsedAt = tokenLastUsedAt;
     }
 

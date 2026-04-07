@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Pattern;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PrivateRegistriesUpdateOrgPrivateRegistryRequest
@@ -20,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("private_registries_update_org_private_registry_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
 
@@ -85,17 +83,21 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
         }
     }
 
-    private RegistryTypeEnum registryType;
+    private Optional<RegistryTypeEnum> registryType = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private String username = null;
+    private JsonNullable<String> username = JsonNullable.<String>undefined();
 
-    private Boolean replacesBase = false;
+    private Optional<Boolean> replacesBase = Optional.of(false);
 
-    private String encryptedValue;
+    private Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            encryptedValue = Optional.empty();
 
-    private String keyId;
+    private Optional<String> keyId = Optional.empty();
 
     /**
      * Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.
@@ -134,13 +136,13 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
     @Valid
     private List<Long> selectedRepositoryIds = new ArrayList<>();
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest registryType(RegistryTypeEnum registryType) {
-        this.registryType = registryType;
+        this.registryType = Optional.ofNullable(registryType);
         return this;
     }
 
@@ -150,16 +152,16 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
      */
     @Schema(name = "registry_type", description = "The registry type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("registry_type")
-    public RegistryTypeEnum getRegistryType() {
+    public Optional<RegistryTypeEnum> getRegistryType() {
         return registryType;
     }
 
-    public void setRegistryType(RegistryTypeEnum registryType) {
+    public void setRegistryType(Optional<RegistryTypeEnum> registryType) {
         this.registryType = registryType;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -173,16 +175,16 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
             description = "The URL of the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest username(String username) {
-        this.username = username;
+        this.username = JsonNullable.of(username);
         return this;
     }
 
@@ -196,16 +198,16 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
                     "The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public JsonNullable<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(JsonNullable<String> username) {
         this.username = username;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest replacesBase(Boolean replacesBase) {
-        this.replacesBase = replacesBase;
+        this.replacesBase = Optional.ofNullable(replacesBase);
         return this;
     }
 
@@ -219,16 +221,16 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
                     "Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("replaces_base")
-    public Boolean getReplacesBase() {
+    public Optional<Boolean> getReplacesBase() {
         return replacesBase;
     }
 
-    public void setReplacesBase(Boolean replacesBase) {
+    public void setReplacesBase(Optional<Boolean> replacesBase) {
         this.replacesBase = replacesBase;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest encryptedValue(String encryptedValue) {
-        this.encryptedValue = encryptedValue;
+        this.encryptedValue = Optional.ofNullable(encryptedValue);
         return this;
     }
 
@@ -236,23 +238,26 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
      * The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.
      * @return encryptedValue
      */
-    @Pattern(regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
     @Schema(
             name = "encrypted_value",
             description =
                     "The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encrypted_value")
-    public String getEncryptedValue() {
+    public Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            getEncryptedValue() {
         return encryptedValue;
     }
 
-    public void setEncryptedValue(String encryptedValue) {
+    public void setEncryptedValue(Optional<String> encryptedValue) {
         this.encryptedValue = encryptedValue;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest keyId(String keyId) {
-        this.keyId = keyId;
+        this.keyId = Optional.ofNullable(keyId);
         return this;
     }
 
@@ -265,16 +270,16 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
             description = "The ID of the key you used to encrypt the secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("key_id")
-    public String getKeyId() {
+    public Optional<String> getKeyId() {
         return keyId;
     }
 
-    public void setKeyId(String keyId) {
+    public void setKeyId(Optional<String> keyId) {
         this.keyId = keyId;
     }
 
     public PrivateRegistriesUpdateOrgPrivateRegistryRequest visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -288,11 +293,11 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
                     "Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
@@ -340,7 +345,7 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
                 (PrivateRegistriesUpdateOrgPrivateRegistryRequest) o;
         return Objects.equals(this.registryType, privateRegistriesUpdateOrgPrivateRegistryRequest.registryType)
                 && Objects.equals(this.url, privateRegistriesUpdateOrgPrivateRegistryRequest.url)
-                && Objects.equals(this.username, privateRegistriesUpdateOrgPrivateRegistryRequest.username)
+                && equalsNullable(this.username, privateRegistriesUpdateOrgPrivateRegistryRequest.username)
                 && Objects.equals(this.replacesBase, privateRegistriesUpdateOrgPrivateRegistryRequest.replacesBase)
                 && Objects.equals(this.encryptedValue, privateRegistriesUpdateOrgPrivateRegistryRequest.encryptedValue)
                 && Objects.equals(this.keyId, privateRegistriesUpdateOrgPrivateRegistryRequest.keyId)
@@ -350,10 +355,29 @@ public class PrivateRegistriesUpdateOrgPrivateRegistryRequest {
                         privateRegistriesUpdateOrgPrivateRegistryRequest.selectedRepositoryIds);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                registryType, url, username, replacesBase, encryptedValue, keyId, visibility, selectedRepositoryIds);
+                registryType,
+                url,
+                hashCodeNullable(username),
+                replacesBase,
+                encryptedValue,
+                keyId,
+                visibility,
+                selectedRepositoryIds);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

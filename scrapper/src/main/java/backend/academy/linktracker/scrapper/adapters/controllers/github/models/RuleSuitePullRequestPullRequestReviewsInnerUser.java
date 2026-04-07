@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The user who submitted the review.
@@ -17,18 +16,18 @@ import java.util.Objects;
 @JsonTypeName("rule_suite_pull_request_pull_request_reviews_inner_user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuitePullRequestPullRequestReviewsInnerUser {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
     public RuleSuitePullRequestPullRequestReviewsInnerUser id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -41,16 +40,16 @@ public class RuleSuitePullRequestPullRequestReviewsInnerUser {
             description = "The unique identifier of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuitePullRequestPullRequestReviewsInnerUser login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -63,16 +62,16 @@ public class RuleSuitePullRequestPullRequestReviewsInnerUser {
             description = "The handle for the GitHub user account.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 
     public RuleSuitePullRequestPullRequestReviewsInnerUser type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -82,11 +81,11 @@ public class RuleSuitePullRequestPullRequestReviewsInnerUser {
      */
     @Schema(name = "type", description = "The type of the user.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Verification
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("verification")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Verification {
 
@@ -22,11 +22,11 @@ public class Verification {
 
     private String reason;
 
-    private String payload = null;
+    private JsonNullable<String> payload = JsonNullable.<String>undefined();
 
-    private String signature = null;
+    private JsonNullable<String> signature = JsonNullable.<String>undefined();
 
-    private String verifiedAt = null;
+    private JsonNullable<String> verifiedAt = JsonNullable.<String>undefined();
 
     public Verification() {
         super();
@@ -38,9 +38,9 @@ public class Verification {
     public Verification(Boolean verified, String reason, String payload, String signature, String verifiedAt) {
         this.verified = verified;
         this.reason = reason;
-        this.payload = payload;
-        this.signature = signature;
-        this.verifiedAt = verifiedAt;
+        this.payload = JsonNullable.of(payload);
+        this.signature = JsonNullable.of(signature);
+        this.verifiedAt = JsonNullable.of(verifiedAt);
     }
 
     public Verification verified(Boolean verified) {
@@ -84,7 +84,7 @@ public class Verification {
     }
 
     public Verification payload(String payload) {
-        this.payload = payload;
+        this.payload = JsonNullable.of(payload);
         return this;
     }
 
@@ -95,16 +95,16 @@ public class Verification {
     @NotNull
     @Schema(name = "payload", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("payload")
-    public String getPayload() {
+    public JsonNullable<String> getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(JsonNullable<String> payload) {
         this.payload = payload;
     }
 
     public Verification signature(String signature) {
-        this.signature = signature;
+        this.signature = JsonNullable.of(signature);
         return this;
     }
 
@@ -115,16 +115,16 @@ public class Verification {
     @NotNull
     @Schema(name = "signature", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("signature")
-    public String getSignature() {
+    public JsonNullable<String> getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(JsonNullable<String> signature) {
         this.signature = signature;
     }
 
     public Verification verifiedAt(String verifiedAt) {
-        this.verifiedAt = verifiedAt;
+        this.verifiedAt = JsonNullable.of(verifiedAt);
         return this;
     }
 
@@ -135,11 +135,11 @@ public class Verification {
     @NotNull
     @Schema(name = "verified_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("verified_at")
-    public String getVerifiedAt() {
+    public JsonNullable<String> getVerifiedAt() {
         return verifiedAt;
     }
 
-    public void setVerifiedAt(String verifiedAt) {
+    public void setVerifiedAt(JsonNullable<String> verifiedAt) {
         this.verifiedAt = verifiedAt;
     }
 

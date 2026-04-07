@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("_package")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ModelPackage {
 
@@ -116,9 +117,9 @@ public class ModelPackage {
 
     private VisibilityEnum visibility;
 
-    private NullableSimpleUser owner = null;
+    private JsonNullable<NullableSimpleUser> owner = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableMinimalRepository repository = null;
+    private JsonNullable<NullableMinimalRepository> repository = JsonNullable.<NullableMinimalRepository>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -313,7 +314,7 @@ public class ModelPackage {
     }
 
     public ModelPackage owner(NullableSimpleUser owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -324,16 +325,16 @@ public class ModelPackage {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public NullableSimpleUser getOwner() {
+    public JsonNullable<NullableSimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(NullableSimpleUser owner) {
+    public void setOwner(JsonNullable<NullableSimpleUser> owner) {
         this.owner = owner;
     }
 
     public ModelPackage repository(NullableMinimalRepository repository) {
-        this.repository = repository;
+        this.repository = JsonNullable.of(repository);
         return this;
     }
 
@@ -344,11 +345,11 @@ public class ModelPackage {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public NullableMinimalRepository getRepository() {
+    public JsonNullable<NullableMinimalRepository> getRepository() {
         return repository;
     }
 
-    public void setRepository(NullableMinimalRepository repository) {
+    public void setRepository(JsonNullable<NullableMinimalRepository> repository) {
         this.repository = repository;
     }
 
@@ -410,16 +411,38 @@ public class ModelPackage {
                 && Objects.equals(this.htmlUrl, _package.htmlUrl)
                 && Objects.equals(this.versionCount, _package.versionCount)
                 && Objects.equals(this.visibility, _package.visibility)
-                && Objects.equals(this.owner, _package.owner)
-                && Objects.equals(this.repository, _package.repository)
+                && equalsNullable(this.owner, _package.owner)
+                && equalsNullable(this.repository, _package.repository)
                 && Objects.equals(this.createdAt, _package.createdAt)
                 && Objects.equals(this.updatedAt, _package.updatedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, name, packageType, url, htmlUrl, versionCount, visibility, owner, repository, createdAt, updatedAt);
+                id,
+                name,
+                packageType,
+                url,
+                htmlUrl,
+                versionCount,
+                visibility,
+                hashCodeNullable(owner),
+                hashCodeNullable(repository),
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

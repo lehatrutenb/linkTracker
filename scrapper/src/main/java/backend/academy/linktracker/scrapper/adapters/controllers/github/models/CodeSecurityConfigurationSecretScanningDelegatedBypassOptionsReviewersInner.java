@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersInner
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("code_security_configuration_secret_scanning_delegated_bypass_options_reviewers_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersInner {
 
@@ -59,7 +59,7 @@ public class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReview
 
     private ReviewerTypeEnum reviewerType;
 
-    private Long securityConfigurationId;
+    private Optional<Long> securityConfigurationId = Optional.empty();
 
     public CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersInner() {
         super();
@@ -123,7 +123,7 @@ public class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReview
 
     public CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReviewersInner securityConfigurationId(
             Long securityConfigurationId) {
-        this.securityConfigurationId = securityConfigurationId;
+        this.securityConfigurationId = Optional.ofNullable(securityConfigurationId);
         return this;
     }
 
@@ -136,11 +136,11 @@ public class CodeSecurityConfigurationSecretScanningDelegatedBypassOptionsReview
             description = "The ID of the security configuration associated with this bypass reviewer",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_configuration_id")
-    public Long getSecurityConfigurationId() {
+    public Optional<Long> getSecurityConfigurationId() {
         return securityConfigurationId;
     }
 
-    public void setSecurityConfigurationId(Long securityConfigurationId) {
+    public void setSecurityConfigurationId(Optional<Long> securityConfigurationId) {
         this.securityConfigurationId = securityConfigurationId;
     }
 

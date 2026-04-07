@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MarketplacePurchase1
@@ -15,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("Marketplace_Purchase_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplacePurchase1 {
 
@@ -23,9 +24,9 @@ public class MarketplacePurchase1 {
 
     private String billingCycle;
 
-    private String freeTrialEndsOn = null;
+    private JsonNullable<String> freeTrialEndsOn = JsonNullable.<String>undefined();
 
-    private String nextBillingDate = null;
+    private JsonNullable<String> nextBillingDate = JsonNullable.<String>undefined();
 
     private Boolean onFreeTrial;
 
@@ -49,7 +50,7 @@ public class MarketplacePurchase1 {
             Long unitCount) {
         this.account = account;
         this.billingCycle = billingCycle;
-        this.freeTrialEndsOn = freeTrialEndsOn;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
         this.onFreeTrial = onFreeTrial;
         this.plan = plan;
         this.unitCount = unitCount;
@@ -97,7 +98,7 @@ public class MarketplacePurchase1 {
     }
 
     public MarketplacePurchase1 freeTrialEndsOn(String freeTrialEndsOn) {
-        this.freeTrialEndsOn = freeTrialEndsOn;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
         return this;
     }
 
@@ -108,16 +109,16 @@ public class MarketplacePurchase1 {
     @NotNull
     @Schema(name = "free_trial_ends_on", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("free_trial_ends_on")
-    public String getFreeTrialEndsOn() {
+    public JsonNullable<String> getFreeTrialEndsOn() {
         return freeTrialEndsOn;
     }
 
-    public void setFreeTrialEndsOn(String freeTrialEndsOn) {
+    public void setFreeTrialEndsOn(JsonNullable<String> freeTrialEndsOn) {
         this.freeTrialEndsOn = freeTrialEndsOn;
     }
 
     public MarketplacePurchase1 nextBillingDate(String nextBillingDate) {
-        this.nextBillingDate = nextBillingDate;
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
         return this;
     }
 
@@ -127,11 +128,11 @@ public class MarketplacePurchase1 {
      */
     @Schema(name = "next_billing_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("next_billing_date")
-    public String getNextBillingDate() {
+    public JsonNullable<String> getNextBillingDate() {
         return nextBillingDate;
     }
 
-    public void setNextBillingDate(String nextBillingDate) {
+    public void setNextBillingDate(JsonNullable<String> nextBillingDate) {
         this.nextBillingDate = nextBillingDate;
     }
 
@@ -208,15 +209,34 @@ public class MarketplacePurchase1 {
         return Objects.equals(this.account, marketplacePurchase1.account)
                 && Objects.equals(this.billingCycle, marketplacePurchase1.billingCycle)
                 && Objects.equals(this.freeTrialEndsOn, marketplacePurchase1.freeTrialEndsOn)
-                && Objects.equals(this.nextBillingDate, marketplacePurchase1.nextBillingDate)
+                && equalsNullable(this.nextBillingDate, marketplacePurchase1.nextBillingDate)
                 && Objects.equals(this.onFreeTrial, marketplacePurchase1.onFreeTrial)
                 && Objects.equals(this.plan, marketplacePurchase1.plan)
                 && Objects.equals(this.unitCount, marketplacePurchase1.unitCount);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(account, billingCycle, freeTrialEndsOn, nextBillingDate, onFreeTrial, plan, unitCount);
+        return Objects.hash(
+                account,
+                billingCycle,
+                freeTrialEndsOn,
+                hashCodeNullable(nextBillingDate),
+                onFreeTrial,
+                plan,
+                unitCount);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

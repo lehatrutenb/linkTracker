@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GistSimpleFilesValue
@@ -14,28 +13,28 @@ import java.util.Objects;
 @JsonTypeName("gist_simple_files_value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistSimpleFilesValue {
 
-    private String filename;
+    private Optional<String> filename = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String language;
+    private Optional<String> language = Optional.empty();
 
-    private String rawUrl;
+    private Optional<String> rawUrl = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private Boolean truncated;
+    private Optional<Boolean> truncated = Optional.empty();
 
-    private String content;
+    private Optional<String> content = Optional.empty();
 
-    private String encoding = "utf-8";
+    private Optional<String> encoding = Optional.of("utf-8");
 
     public GistSimpleFilesValue filename(String filename) {
-        this.filename = filename;
+        this.filename = Optional.ofNullable(filename);
         return this;
     }
 
@@ -45,16 +44,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "filename", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filename")
-    public String getFilename() {
+    public Optional<String> getFilename() {
         return filename;
     }
 
-    public void setFilename(String filename) {
+    public void setFilename(Optional<String> filename) {
         this.filename = filename;
     }
 
     public GistSimpleFilesValue type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -64,16 +63,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public GistSimpleFilesValue language(String language) {
-        this.language = language;
+        this.language = Optional.ofNullable(language);
         return this;
     }
 
@@ -83,16 +82,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public Optional<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Optional<String> language) {
         this.language = language;
     }
 
     public GistSimpleFilesValue rawUrl(String rawUrl) {
-        this.rawUrl = rawUrl;
+        this.rawUrl = Optional.ofNullable(rawUrl);
         return this;
     }
 
@@ -102,16 +101,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "raw_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("raw_url")
-    public String getRawUrl() {
+    public Optional<String> getRawUrl() {
         return rawUrl;
     }
 
-    public void setRawUrl(String rawUrl) {
+    public void setRawUrl(Optional<String> rawUrl) {
         this.rawUrl = rawUrl;
     }
 
     public GistSimpleFilesValue size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -121,16 +120,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public GistSimpleFilesValue truncated(Boolean truncated) {
-        this.truncated = truncated;
+        this.truncated = Optional.ofNullable(truncated);
         return this;
     }
 
@@ -140,16 +139,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "truncated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("truncated")
-    public Boolean getTruncated() {
+    public Optional<Boolean> getTruncated() {
         return truncated;
     }
 
-    public void setTruncated(Boolean truncated) {
+    public void setTruncated(Optional<Boolean> truncated) {
         this.truncated = truncated;
     }
 
     public GistSimpleFilesValue content(String content) {
-        this.content = content;
+        this.content = Optional.ofNullable(content);
         return this;
     }
 
@@ -159,16 +158,16 @@ public class GistSimpleFilesValue {
      */
     @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content")
-    public String getContent() {
+    public Optional<String> getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Optional<String> content) {
         this.content = content;
     }
 
     public GistSimpleFilesValue encoding(String encoding) {
-        this.encoding = encoding;
+        this.encoding = Optional.ofNullable(encoding);
         return this;
     }
 
@@ -181,11 +180,11 @@ public class GistSimpleFilesValue {
             description = "The encoding used for `content`. Currently, `\"utf-8\"` and `\"base64\"` are supported.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encoding")
-    public String getEncoding() {
+    public Optional<String> getEncoding() {
         return encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(Optional<String> encoding) {
         this.encoding = encoding;
     }
 

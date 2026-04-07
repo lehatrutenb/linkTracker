@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitCreateTreeRequest
@@ -17,14 +17,14 @@ import java.util.Objects;
 @JsonTypeName("git_create_tree_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateTreeRequest {
 
     @Valid
     private List<@Valid GitCreateTreeRequestTreeInner> tree = new ArrayList<>();
 
-    private String baseTree;
+    private Optional<String> baseTree = Optional.empty();
 
     public GitCreateTreeRequest() {
         super();
@@ -70,7 +70,7 @@ public class GitCreateTreeRequest {
     }
 
     public GitCreateTreeRequest baseTree(String baseTree) {
-        this.baseTree = baseTree;
+        this.baseTree = Optional.ofNullable(baseTree);
         return this;
     }
 
@@ -84,11 +84,11 @@ public class GitCreateTreeRequest {
                     "The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on. If not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("base_tree")
-    public String getBaseTree() {
+    public Optional<String> getBaseTree() {
         return baseTree;
     }
 
-    public void setBaseTree(String baseTree) {
+    public void setBaseTree(Optional<String> baseTree) {
         this.baseTree = baseTree;
     }
 

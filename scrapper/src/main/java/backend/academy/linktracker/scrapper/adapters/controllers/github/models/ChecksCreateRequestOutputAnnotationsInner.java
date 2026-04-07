@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ChecksCreateRequestOutputAnnotationsInner
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("checks_create_request_output_annotations_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ChecksCreateRequestOutputAnnotationsInner {
 
@@ -26,9 +26,9 @@ public class ChecksCreateRequestOutputAnnotationsInner {
 
     private Long endLine;
 
-    private Long startColumn;
+    private Optional<Long> startColumn = Optional.empty();
 
-    private Long endColumn;
+    private Optional<Long> endColumn = Optional.empty();
 
     /**
      * The level of the annotation.
@@ -71,9 +71,9 @@ public class ChecksCreateRequestOutputAnnotationsInner {
 
     private String message;
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
-    private String rawDetails;
+    private Optional<String> rawDetails = Optional.empty();
 
     public ChecksCreateRequestOutputAnnotationsInner() {
         super();
@@ -161,7 +161,7 @@ public class ChecksCreateRequestOutputAnnotationsInner {
     }
 
     public ChecksCreateRequestOutputAnnotationsInner startColumn(Long startColumn) {
-        this.startColumn = startColumn;
+        this.startColumn = Optional.ofNullable(startColumn);
         return this;
     }
 
@@ -175,16 +175,16 @@ public class ChecksCreateRequestOutputAnnotationsInner {
                     "The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_column")
-    public Long getStartColumn() {
+    public Optional<Long> getStartColumn() {
         return startColumn;
     }
 
-    public void setStartColumn(Long startColumn) {
+    public void setStartColumn(Optional<Long> startColumn) {
         this.startColumn = startColumn;
     }
 
     public ChecksCreateRequestOutputAnnotationsInner endColumn(Long endColumn) {
-        this.endColumn = endColumn;
+        this.endColumn = Optional.ofNullable(endColumn);
         return this;
     }
 
@@ -198,11 +198,11 @@ public class ChecksCreateRequestOutputAnnotationsInner {
                     "The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("end_column")
-    public Long getEndColumn() {
+    public Optional<Long> getEndColumn() {
         return endColumn;
     }
 
-    public void setEndColumn(Long endColumn) {
+    public void setEndColumn(Optional<Long> endColumn) {
         this.endColumn = endColumn;
     }
 
@@ -253,7 +253,7 @@ public class ChecksCreateRequestOutputAnnotationsInner {
     }
 
     public ChecksCreateRequestOutputAnnotationsInner title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -266,16 +266,16 @@ public class ChecksCreateRequestOutputAnnotationsInner {
             description = "The title that represents the annotation. The maximum size is 255 characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
     public ChecksCreateRequestOutputAnnotationsInner rawDetails(String rawDetails) {
-        this.rawDetails = rawDetails;
+        this.rawDetails = Optional.ofNullable(rawDetails);
         return this;
     }
 
@@ -288,11 +288,11 @@ public class ChecksCreateRequestOutputAnnotationsInner {
             description = "Details about this annotation. The maximum size is 64 KB.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("raw_details")
-    public String getRawDetails() {
+    public Optional<String> getRawDetails() {
         return rawDetails;
     }
 
-    public void setRawDetails(String rawDetails) {
+    public void setRawDetails(Optional<String> rawDetails) {
         this.rawDetails = rawDetails;
     }
 

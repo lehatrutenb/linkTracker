@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("page-build")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PageBuild {
 
@@ -29,7 +29,7 @@ public class PageBuild {
 
     private PageBuildError error;
 
-    private NullableSimpleUser pusher = null;
+    private JsonNullable<NullableSimpleUser> pusher = JsonNullable.<NullableSimpleUser>undefined();
 
     private String commit;
 
@@ -60,7 +60,7 @@ public class PageBuild {
         this.url = url;
         this.status = status;
         this.error = error;
-        this.pusher = pusher;
+        this.pusher = JsonNullable.of(pusher);
         this.commit = commit;
         this.duration = duration;
         this.createdAt = createdAt;
@@ -130,7 +130,7 @@ public class PageBuild {
     }
 
     public PageBuild pusher(NullableSimpleUser pusher) {
-        this.pusher = pusher;
+        this.pusher = JsonNullable.of(pusher);
         return this;
     }
 
@@ -142,11 +142,11 @@ public class PageBuild {
     @Valid
     @Schema(name = "pusher", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pusher")
-    public NullableSimpleUser getPusher() {
+    public JsonNullable<NullableSimpleUser> getPusher() {
         return pusher;
     }
 
-    public void setPusher(NullableSimpleUser pusher) {
+    public void setPusher(JsonNullable<NullableSimpleUser> pusher) {
         this.pusher = pusher;
     }
 

@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("org-hook")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgHook {
 
@@ -31,7 +31,7 @@ public class OrgHook {
 
     private URI pingUrl;
 
-    private URI deliveriesUrl;
+    private Optional<URI> deliveriesUrl = Optional.empty();
 
     private String name;
 
@@ -149,7 +149,7 @@ public class OrgHook {
     }
 
     public OrgHook deliveriesUrl(URI deliveriesUrl) {
-        this.deliveriesUrl = deliveriesUrl;
+        this.deliveriesUrl = Optional.ofNullable(deliveriesUrl);
         return this;
     }
 
@@ -163,11 +163,11 @@ public class OrgHook {
             example = "https://api.github.com/orgs/octocat/hooks/1/deliveries",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deliveries_url")
-    public URI getDeliveriesUrl() {
+    public Optional<URI> getDeliveriesUrl() {
         return deliveriesUrl;
     }
 
-    public void setDeliveriesUrl(URI deliveriesUrl) {
+    public void setDeliveriesUrl(Optional<URI> deliveriesUrl) {
         this.deliveriesUrl = deliveriesUrl;
     }
 

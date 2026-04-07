@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CollectiveExternalLinksInner
@@ -18,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("Collective_external_links_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CollectiveExternalLinksInner {
 
@@ -67,12 +66,12 @@ public class CollectiveExternalLinksInner {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
-    private URI link;
+    private Optional<URI> link = Optional.empty();
 
     public CollectiveExternalLinksInner type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -82,16 +81,16 @@ public class CollectiveExternalLinksInner {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
     public CollectiveExternalLinksInner link(URI link) {
-        this.link = link;
+        this.link = Optional.ofNullable(link);
         return this;
     }
 
@@ -102,11 +101,11 @@ public class CollectiveExternalLinksInner {
     @Valid
     @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("link")
-    public URI getLink() {
+    public Optional<URI> getLink() {
         return link;
     }
 
-    public void setLink(URI link) {
+    public void setLink(Optional<URI> link) {
         this.link = link;
     }
 

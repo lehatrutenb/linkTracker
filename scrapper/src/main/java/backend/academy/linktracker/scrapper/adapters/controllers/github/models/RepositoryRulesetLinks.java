@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RepositoryRulesetLinks
@@ -15,16 +16,16 @@ import java.util.Objects;
 @JsonTypeName("repository_ruleset__links")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRulesetLinks {
 
-    private RepositoryRulesetLinksSelf self;
+    private Optional<RepositoryRulesetLinksSelf> self = Optional.empty();
 
-    private RepositoryRulesetLinksHtml html = null;
+    private JsonNullable<RepositoryRulesetLinksHtml> html = JsonNullable.<RepositoryRulesetLinksHtml>undefined();
 
     public RepositoryRulesetLinks self(RepositoryRulesetLinksSelf self) {
-        this.self = self;
+        this.self = Optional.ofNullable(self);
         return this;
     }
 
@@ -35,16 +36,16 @@ public class RepositoryRulesetLinks {
     @Valid
     @Schema(name = "self", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("self")
-    public RepositoryRulesetLinksSelf getSelf() {
+    public Optional<RepositoryRulesetLinksSelf> getSelf() {
         return self;
     }
 
-    public void setSelf(RepositoryRulesetLinksSelf self) {
+    public void setSelf(Optional<RepositoryRulesetLinksSelf> self) {
         this.self = self;
     }
 
     public RepositoryRulesetLinks html(RepositoryRulesetLinksHtml html) {
-        this.html = html;
+        this.html = JsonNullable.of(html);
         return this;
     }
 
@@ -55,11 +56,11 @@ public class RepositoryRulesetLinks {
     @Valid
     @Schema(name = "html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html")
-    public RepositoryRulesetLinksHtml getHtml() {
+    public JsonNullable<RepositoryRulesetLinksHtml> getHtml() {
         return html;
     }
 
-    public void setHtml(RepositoryRulesetLinksHtml html) {
+    public void setHtml(JsonNullable<RepositoryRulesetLinksHtml> html) {
         this.html = html;
     }
 
@@ -73,12 +74,24 @@ public class RepositoryRulesetLinks {
         }
         RepositoryRulesetLinks repositoryRulesetLinks = (RepositoryRulesetLinks) o;
         return Objects.equals(this.self, repositoryRulesetLinks.self)
-                && Objects.equals(this.html, repositoryRulesetLinks.html);
+                && equalsNullable(this.html, repositoryRulesetLinks.html);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(self, html);
+        return Objects.hash(self, hashCodeNullable(html));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

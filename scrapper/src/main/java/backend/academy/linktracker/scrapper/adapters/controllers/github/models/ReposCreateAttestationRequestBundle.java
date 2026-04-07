@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The attestation&#39;s Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information.
@@ -21,11 +20,11 @@ import java.util.Objects;
 @JsonTypeName("repos_create_attestation_request_bundle")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateAttestationRequestBundle {
 
-    private String mediaType;
+    private Optional<String> mediaType = Optional.empty();
 
     @Valid
     private Map<String, Object> verificationMaterial = new HashMap<>();
@@ -34,7 +33,7 @@ public class ReposCreateAttestationRequestBundle {
     private Map<String, Object> dsseEnvelope = new HashMap<>();
 
     public ReposCreateAttestationRequestBundle mediaType(String mediaType) {
-        this.mediaType = mediaType;
+        this.mediaType = Optional.ofNullable(mediaType);
         return this;
     }
 
@@ -44,11 +43,11 @@ public class ReposCreateAttestationRequestBundle {
      */
     @Schema(name = "mediaType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mediaType")
-    public String getMediaType() {
+    public Optional<String> getMediaType() {
         return mediaType;
     }
 
-    public void setMediaType(String mediaType) {
+    public void setMediaType(Optional<String> mediaType) {
         this.mediaType = mediaType;
     }
 

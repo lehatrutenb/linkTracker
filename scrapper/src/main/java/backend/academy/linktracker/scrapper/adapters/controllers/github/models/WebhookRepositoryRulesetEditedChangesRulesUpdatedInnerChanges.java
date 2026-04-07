@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges
@@ -15,19 +14,19 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_ruleset_edited_changes_rules_updated_inner_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges {
 
-    private WebhookOrganizationRenamedChangesLogin _configuration;
+    private Optional<WebhookOrganizationRenamedChangesLogin> _configuration = Optional.empty();
 
-    private WebhookOrganizationRenamedChangesLogin ruleType;
+    private Optional<WebhookOrganizationRenamedChangesLogin> ruleType = Optional.empty();
 
-    private WebhookOrganizationRenamedChangesLogin pattern;
+    private Optional<WebhookOrganizationRenamedChangesLogin> pattern = Optional.empty();
 
     public WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges _configuration(
             WebhookOrganizationRenamedChangesLogin _configuration) {
-        this._configuration = _configuration;
+        this._configuration = Optional.ofNullable(_configuration);
         return this;
     }
 
@@ -38,17 +37,17 @@ public class WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges {
     @Valid
     @Schema(name = "configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("configuration")
-    public WebhookOrganizationRenamedChangesLogin getConfiguration() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getConfiguration() {
         return _configuration;
     }
 
-    public void setConfiguration(WebhookOrganizationRenamedChangesLogin _configuration) {
+    public void setConfiguration(Optional<WebhookOrganizationRenamedChangesLogin> _configuration) {
         this._configuration = _configuration;
     }
 
     public WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges ruleType(
             WebhookOrganizationRenamedChangesLogin ruleType) {
-        this.ruleType = ruleType;
+        this.ruleType = Optional.ofNullable(ruleType);
         return this;
     }
 
@@ -59,17 +58,17 @@ public class WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges {
     @Valid
     @Schema(name = "rule_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rule_type")
-    public WebhookOrganizationRenamedChangesLogin getRuleType() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getRuleType() {
         return ruleType;
     }
 
-    public void setRuleType(WebhookOrganizationRenamedChangesLogin ruleType) {
+    public void setRuleType(Optional<WebhookOrganizationRenamedChangesLogin> ruleType) {
         this.ruleType = ruleType;
     }
 
     public WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges pattern(
             WebhookOrganizationRenamedChangesLogin pattern) {
-        this.pattern = pattern;
+        this.pattern = Optional.ofNullable(pattern);
         return this;
     }
 
@@ -80,11 +79,11 @@ public class WebhookRepositoryRulesetEditedChangesRulesUpdatedInnerChanges {
     @Valid
     @Schema(name = "pattern", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern")
-    public WebhookOrganizationRenamedChangesLogin getPattern() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getPattern() {
         return pattern;
     }
 
-    public void setPattern(WebhookOrganizationRenamedChangesLogin pattern) {
+    public void setPattern(Optional<WebhookOrganizationRenamedChangesLogin> pattern) {
         this.pattern = pattern;
     }
 

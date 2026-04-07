@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReposCreateCommitStatusRequest
@@ -16,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_commit_status_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateCommitStatusRequest {
 
@@ -61,11 +63,11 @@ public class ReposCreateCommitStatusRequest {
 
     private StateEnum state;
 
-    private String targetUrl = null;
+    private JsonNullable<String> targetUrl = JsonNullable.<String>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String context = "default";
+    private Optional<String> context = Optional.of("default");
 
     public ReposCreateCommitStatusRequest() {
         super();
@@ -99,7 +101,7 @@ public class ReposCreateCommitStatusRequest {
     }
 
     public ReposCreateCommitStatusRequest targetUrl(String targetUrl) {
-        this.targetUrl = targetUrl;
+        this.targetUrl = JsonNullable.of(targetUrl);
         return this;
     }
 
@@ -113,16 +115,16 @@ public class ReposCreateCommitStatusRequest {
                     "The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.   For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:   `http://ci.example.com/user/repo/build/sha`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_url")
-    public String getTargetUrl() {
+    public JsonNullable<String> getTargetUrl() {
         return targetUrl;
     }
 
-    public void setTargetUrl(String targetUrl) {
+    public void setTargetUrl(JsonNullable<String> targetUrl) {
         this.targetUrl = targetUrl;
     }
 
     public ReposCreateCommitStatusRequest description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -135,16 +137,16 @@ public class ReposCreateCommitStatusRequest {
             description = "A short description of the status.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public ReposCreateCommitStatusRequest context(String context) {
-        this.context = context;
+        this.context = Optional.ofNullable(context);
         return this;
     }
 
@@ -158,11 +160,11 @@ public class ReposCreateCommitStatusRequest {
                     "A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("context")
-    public String getContext() {
+    public Optional<String> getContext() {
         return context;
     }
 
-    public void setContext(String context) {
+    public void setContext(Optional<String> context) {
         this.context = context;
     }
 
@@ -176,14 +178,26 @@ public class ReposCreateCommitStatusRequest {
         }
         ReposCreateCommitStatusRequest reposCreateCommitStatusRequest = (ReposCreateCommitStatusRequest) o;
         return Objects.equals(this.state, reposCreateCommitStatusRequest.state)
-                && Objects.equals(this.targetUrl, reposCreateCommitStatusRequest.targetUrl)
-                && Objects.equals(this.description, reposCreateCommitStatusRequest.description)
+                && equalsNullable(this.targetUrl, reposCreateCommitStatusRequest.targetUrl)
+                && equalsNullable(this.description, reposCreateCommitStatusRequest.description)
                 && Objects.equals(this.context, reposCreateCommitStatusRequest.context);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, targetUrl, description, context);
+        return Objects.hash(state, hashCodeNullable(targetUrl), hashCodeNullable(description), context);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

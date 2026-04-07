@@ -5,13 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPackageUpdatedPackagePackageVersion
@@ -19,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_updated_package_package_version")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackageUpdatedPackagePackageVersion {
 
-    private User author = null;
+    private JsonNullable<User> author = JsonNullable.<User>undefined();
 
     private String body;
 
@@ -37,7 +34,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     private List<@Valid WebhookPackagePublishedPackagePackageVersionDockerMetadataInner> dockerMetadata =
             new ArrayList<>();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private URI htmlUrl;
 
@@ -45,7 +42,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
 
     private String installationCommand;
 
-    private String manifest;
+    private Optional<String> manifest = Optional.empty();
 
     @Valid
     private List<Map<String, Object>> metadata = new ArrayList<>();
@@ -55,20 +52,20 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     @Valid
     private List<@Valid WebhookPackageUpdatedPackagePackageVersionPackageFilesInner> packageFiles = new ArrayList<>();
 
-    private String packageUrl;
+    private Optional<String> packageUrl = Optional.empty();
 
-    private Boolean prerelease;
+    private Optional<Boolean> prerelease = Optional.empty();
 
-    private WebhookPackageUpdatedPackagePackageVersionRelease release;
+    private Optional<WebhookPackageUpdatedPackagePackageVersionRelease> release = Optional.empty();
 
     @Valid
     private List<@Valid WebhookRubygemsMetadata> rubygemsMetadata = new ArrayList<>();
 
-    private URI sourceUrl;
+    private Optional<URI> sourceUrl = Optional.empty();
 
     private String summary;
 
-    private String tagName;
+    private Optional<String> tagName = Optional.empty();
 
     private String targetCommitish;
 
@@ -102,7 +99,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
             String targetOid,
             String updatedAt,
             String version) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         this.body = body;
         this.bodyHtml = bodyHtml;
         this.createdAt = createdAt;
@@ -121,7 +118,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion author(User author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -133,11 +130,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public User getAuthor() {
+    public JsonNullable<User> getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(JsonNullable<User> author) {
         this.author = author;
     }
 
@@ -253,7 +250,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -263,11 +260,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -333,7 +330,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion manifest(String manifest) {
-        this.manifest = manifest;
+        this.manifest = Optional.ofNullable(manifest);
         return this;
     }
 
@@ -343,11 +340,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
      */
     @Schema(name = "manifest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("manifest")
-    public String getManifest() {
+    public Optional<String> getManifest() {
         return manifest;
     }
 
-    public void setManifest(String manifest) {
+    public void setManifest(Optional<String> manifest) {
         this.manifest = manifest;
     }
 
@@ -432,7 +429,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion packageUrl(String packageUrl) {
-        this.packageUrl = packageUrl;
+        this.packageUrl = Optional.ofNullable(packageUrl);
         return this;
     }
 
@@ -442,16 +439,16 @@ public class WebhookPackageUpdatedPackagePackageVersion {
      */
     @Schema(name = "package_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("package_url")
-    public String getPackageUrl() {
+    public Optional<String> getPackageUrl() {
         return packageUrl;
     }
 
-    public void setPackageUrl(String packageUrl) {
+    public void setPackageUrl(Optional<String> packageUrl) {
         this.packageUrl = packageUrl;
     }
 
     public WebhookPackageUpdatedPackagePackageVersion prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -461,17 +458,17 @@ public class WebhookPackageUpdatedPackagePackageVersion {
      */
     @Schema(name = "prerelease", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public WebhookPackageUpdatedPackagePackageVersion release(
             WebhookPackageUpdatedPackagePackageVersionRelease release) {
-        this.release = release;
+        this.release = Optional.ofNullable(release);
         return this;
     }
 
@@ -482,11 +479,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     @Valid
     @Schema(name = "release", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("release")
-    public WebhookPackageUpdatedPackagePackageVersionRelease getRelease() {
+    public Optional<WebhookPackageUpdatedPackagePackageVersionRelease> getRelease() {
         return release;
     }
 
-    public void setRelease(WebhookPackageUpdatedPackagePackageVersionRelease release) {
+    public void setRelease(Optional<WebhookPackageUpdatedPackagePackageVersionRelease> release) {
         this.release = release;
     }
 
@@ -521,7 +518,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion sourceUrl(URI sourceUrl) {
-        this.sourceUrl = sourceUrl;
+        this.sourceUrl = Optional.ofNullable(sourceUrl);
         return this;
     }
 
@@ -532,11 +529,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     @Valid
     @Schema(name = "source_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source_url")
-    public URI getSourceUrl() {
+    public Optional<URI> getSourceUrl() {
         return sourceUrl;
     }
 
-    public void setSourceUrl(URI sourceUrl) {
+    public void setSourceUrl(Optional<URI> sourceUrl) {
         this.sourceUrl = sourceUrl;
     }
 
@@ -561,7 +558,7 @@ public class WebhookPackageUpdatedPackagePackageVersion {
     }
 
     public WebhookPackageUpdatedPackagePackageVersion tagName(String tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -571,11 +568,11 @@ public class WebhookPackageUpdatedPackagePackageVersion {
      */
     @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public String getTagName() {
+    public Optional<String> getTagName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName(Optional<String> tagName) {
         this.tagName = tagName;
     }
 

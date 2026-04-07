@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The EPSS scores as calculated by the [Exploit Prediction Scoring System](https://www.first.org/epss).
@@ -20,16 +21,16 @@ import java.util.Objects;
 @JsonTypeName("security-advisory-epss")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecurityAdvisoryEpss {
 
-    private BigDecimal percentage;
+    private Optional<@DecimalMin(value = "0") @DecimalMax(value = "100") BigDecimal> percentage = Optional.empty();
 
-    private BigDecimal percentile;
+    private Optional<@DecimalMin(value = "0") @DecimalMax(value = "100") BigDecimal> percentile = Optional.empty();
 
     public SecurityAdvisoryEpss percentage(BigDecimal percentage) {
-        this.percentage = percentage;
+        this.percentage = Optional.ofNullable(percentage);
         return this;
     }
 
@@ -40,20 +41,18 @@ public class SecurityAdvisoryEpss {
      * @return percentage
      */
     @Valid
-    @DecimalMin(value = "0")
-    @DecimalMax(value = "100")
     @Schema(name = "percentage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("percentage")
-    public BigDecimal getPercentage() {
+    public Optional<@DecimalMin(value = "0") @DecimalMax(value = "100") BigDecimal> getPercentage() {
         return percentage;
     }
 
-    public void setPercentage(BigDecimal percentage) {
+    public void setPercentage(Optional<BigDecimal> percentage) {
         this.percentage = percentage;
     }
 
     public SecurityAdvisoryEpss percentile(BigDecimal percentile) {
-        this.percentile = percentile;
+        this.percentile = Optional.ofNullable(percentile);
         return this;
     }
 
@@ -64,15 +63,13 @@ public class SecurityAdvisoryEpss {
      * @return percentile
      */
     @Valid
-    @DecimalMin(value = "0")
-    @DecimalMax(value = "100")
     @Schema(name = "percentile", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("percentile")
-    public BigDecimal getPercentile() {
+    public Optional<@DecimalMin(value = "0") @DecimalMax(value = "100") BigDecimal> getPercentile() {
         return percentile;
     }
 
-    public void setPercentile(BigDecimal percentile) {
+    public void setPercentile(Optional<BigDecimal> percentile) {
         this.percentile = percentile;
     }
 

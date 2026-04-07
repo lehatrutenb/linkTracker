@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateReleaseRequest
@@ -16,25 +16,25 @@ import java.util.Objects;
 @JsonTypeName("repos_create_release_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateReleaseRequest {
 
     private String tagName;
 
-    private String targetCommitish;
+    private Optional<String> targetCommitish = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private Boolean draft = false;
+    private Optional<Boolean> draft = Optional.of(false);
 
-    private Boolean prerelease = false;
+    private Optional<Boolean> prerelease = Optional.of(false);
 
-    private String discussionCategoryName;
+    private Optional<String> discussionCategoryName = Optional.empty();
 
-    private Boolean generateReleaseNotes = false;
+    private Optional<Boolean> generateReleaseNotes = Optional.of(false);
 
     /**
      * Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
@@ -73,7 +73,7 @@ public class ReposCreateReleaseRequest {
         }
     }
 
-    private MakeLatestEnum makeLatest = MakeLatestEnum.TRUE;
+    private Optional<MakeLatestEnum> makeLatest = Optional.of(MakeLatestEnum.TRUE);
 
     public ReposCreateReleaseRequest() {
         super();
@@ -107,7 +107,7 @@ public class ReposCreateReleaseRequest {
     }
 
     public ReposCreateReleaseRequest targetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish;
+        this.targetCommitish = Optional.ofNullable(targetCommitish);
         return this;
     }
 
@@ -121,16 +121,16 @@ public class ReposCreateReleaseRequest {
                     "Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_commitish")
-    public String getTargetCommitish() {
+    public Optional<String> getTargetCommitish() {
         return targetCommitish;
     }
 
-    public void setTargetCommitish(String targetCommitish) {
+    public void setTargetCommitish(Optional<String> targetCommitish) {
         this.targetCommitish = targetCommitish;
     }
 
     public ReposCreateReleaseRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -140,16 +140,16 @@ public class ReposCreateReleaseRequest {
      */
     @Schema(name = "name", description = "The name of the release.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposCreateReleaseRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -162,16 +162,16 @@ public class ReposCreateReleaseRequest {
             description = "Text describing the contents of the tag.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public ReposCreateReleaseRequest draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -184,16 +184,16 @@ public class ReposCreateReleaseRequest {
             description = "`true` to create a draft (unpublished) release, `false` to create a published one.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
     public ReposCreateReleaseRequest prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -207,16 +207,16 @@ public class ReposCreateReleaseRequest {
                     "`true` to identify the release as a prerelease. `false` to identify the release as a full release.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public ReposCreateReleaseRequest discussionCategoryName(String discussionCategoryName) {
-        this.discussionCategoryName = discussionCategoryName;
+        this.discussionCategoryName = Optional.ofNullable(discussionCategoryName);
         return this;
     }
 
@@ -230,16 +230,16 @@ public class ReposCreateReleaseRequest {
                     "If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. For more information, see \"[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("discussion_category_name")
-    public String getDiscussionCategoryName() {
+    public Optional<String> getDiscussionCategoryName() {
         return discussionCategoryName;
     }
 
-    public void setDiscussionCategoryName(String discussionCategoryName) {
+    public void setDiscussionCategoryName(Optional<String> discussionCategoryName) {
         this.discussionCategoryName = discussionCategoryName;
     }
 
     public ReposCreateReleaseRequest generateReleaseNotes(Boolean generateReleaseNotes) {
-        this.generateReleaseNotes = generateReleaseNotes;
+        this.generateReleaseNotes = Optional.ofNullable(generateReleaseNotes);
         return this;
     }
 
@@ -253,16 +253,16 @@ public class ReposCreateReleaseRequest {
                     "Whether to automatically generate the name and body for this release. If `name` is specified, the specified name will be used; otherwise, a name will be automatically generated. If `body` is specified, the body will be pre-pended to the automatically generated notes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("generate_release_notes")
-    public Boolean getGenerateReleaseNotes() {
+    public Optional<Boolean> getGenerateReleaseNotes() {
         return generateReleaseNotes;
     }
 
-    public void setGenerateReleaseNotes(Boolean generateReleaseNotes) {
+    public void setGenerateReleaseNotes(Optional<Boolean> generateReleaseNotes) {
         this.generateReleaseNotes = generateReleaseNotes;
     }
 
     public ReposCreateReleaseRequest makeLatest(MakeLatestEnum makeLatest) {
-        this.makeLatest = makeLatest;
+        this.makeLatest = Optional.ofNullable(makeLatest);
         return this;
     }
 
@@ -276,11 +276,11 @@ public class ReposCreateReleaseRequest {
                     "Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("make_latest")
-    public MakeLatestEnum getMakeLatest() {
+    public Optional<MakeLatestEnum> getMakeLatest() {
         return makeLatest;
     }
 
-    public void setMakeLatest(MakeLatestEnum makeLatest) {
+    public void setMakeLatest(Optional<MakeLatestEnum> makeLatest) {
         this.makeLatest = makeLatest;
     }
 

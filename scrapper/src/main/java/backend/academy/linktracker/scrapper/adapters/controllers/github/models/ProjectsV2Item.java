@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,21 +20,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2Item {
 
     private BigDecimal id;
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String projectNodeId;
+    private Optional<String> projectNodeId = Optional.empty();
 
     private String contentNodeId;
 
     private ProjectsV2ItemContentType contentType;
 
-    private SimpleUser creator;
+    private Optional<SimpleUser> creator = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -42,7 +43,7 @@ public class ProjectsV2Item {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime archivedAt = null;
+    private JsonNullable<OffsetDateTime> archivedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public ProjectsV2Item() {
         super();
@@ -63,7 +64,7 @@ public class ProjectsV2Item {
         this.contentType = contentType;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
     }
 
     public ProjectsV2Item id(BigDecimal id) {
@@ -91,7 +92,7 @@ public class ProjectsV2Item {
     }
 
     public ProjectsV2Item nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -104,16 +105,16 @@ public class ProjectsV2Item {
             description = "The node ID of the project item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public ProjectsV2Item projectNodeId(String projectNodeId) {
-        this.projectNodeId = projectNodeId;
+        this.projectNodeId = Optional.ofNullable(projectNodeId);
         return this;
     }
 
@@ -126,11 +127,11 @@ public class ProjectsV2Item {
             description = "The node ID of the project that contains this item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_node_id")
-    public String getProjectNodeId() {
+    public Optional<String> getProjectNodeId() {
         return projectNodeId;
     }
 
-    public void setProjectNodeId(String projectNodeId) {
+    public void setProjectNodeId(Optional<String> projectNodeId) {
         this.projectNodeId = projectNodeId;
     }
 
@@ -179,7 +180,7 @@ public class ProjectsV2Item {
     }
 
     public ProjectsV2Item creator(SimpleUser creator) {
-        this.creator = creator;
+        this.creator = Optional.ofNullable(creator);
         return this;
     }
 
@@ -190,11 +191,11 @@ public class ProjectsV2Item {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creator")
-    public SimpleUser getCreator() {
+    public Optional<SimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(SimpleUser creator) {
+    public void setCreator(Optional<SimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -249,7 +250,7 @@ public class ProjectsV2Item {
     }
 
     public ProjectsV2Item archivedAt(OffsetDateTime archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -265,11 +266,11 @@ public class ProjectsV2Item {
             description = "The time when the item was archived.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("archived_at")
-    public OffsetDateTime getArchivedAt() {
+    public JsonNullable<OffsetDateTime> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(OffsetDateTime archivedAt) {
+    public void setArchivedAt(JsonNullable<OffsetDateTime> archivedAt) {
         this.archivedAt = archivedAt;
     }
 

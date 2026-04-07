@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookIssueDependenciesBlockingAdded
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-issue-dependencies-blocking-added")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookIssueDependenciesBlockingAdded {
 
@@ -57,17 +57,17 @@ public class WebhookIssueDependenciesBlockingAdded {
 
     private ActionEnum action;
 
-    private BigDecimal blockedIssueId;
+    private Optional<BigDecimal> blockedIssueId = Optional.empty();
 
-    private Issue blockedIssue;
+    private Optional<Issue> blockedIssue = Optional.empty();
 
-    private Repository blockedIssueRepo;
+    private Optional<Repository> blockedIssueRepo = Optional.empty();
 
-    private BigDecimal blockingIssueId;
+    private Optional<BigDecimal> blockingIssueId = Optional.empty();
 
-    private Issue blockingIssue;
+    private Optional<Issue> blockingIssue = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private OrganizationSimpleWebhooks organization;
 
@@ -114,7 +114,7 @@ public class WebhookIssueDependenciesBlockingAdded {
     }
 
     public WebhookIssueDependenciesBlockingAdded blockedIssueId(BigDecimal blockedIssueId) {
-        this.blockedIssueId = blockedIssueId;
+        this.blockedIssueId = Optional.ofNullable(blockedIssueId);
         return this;
     }
 
@@ -128,16 +128,16 @@ public class WebhookIssueDependenciesBlockingAdded {
             description = "The ID of the blocked issue.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blocked_issue_id")
-    public BigDecimal getBlockedIssueId() {
+    public Optional<BigDecimal> getBlockedIssueId() {
         return blockedIssueId;
     }
 
-    public void setBlockedIssueId(BigDecimal blockedIssueId) {
+    public void setBlockedIssueId(Optional<BigDecimal> blockedIssueId) {
         this.blockedIssueId = blockedIssueId;
     }
 
     public WebhookIssueDependenciesBlockingAdded blockedIssue(Issue blockedIssue) {
-        this.blockedIssue = blockedIssue;
+        this.blockedIssue = Optional.ofNullable(blockedIssue);
         return this;
     }
 
@@ -148,16 +148,16 @@ public class WebhookIssueDependenciesBlockingAdded {
     @Valid
     @Schema(name = "blocked_issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blocked_issue")
-    public Issue getBlockedIssue() {
+    public Optional<Issue> getBlockedIssue() {
         return blockedIssue;
     }
 
-    public void setBlockedIssue(Issue blockedIssue) {
+    public void setBlockedIssue(Optional<Issue> blockedIssue) {
         this.blockedIssue = blockedIssue;
     }
 
     public WebhookIssueDependenciesBlockingAdded blockedIssueRepo(Repository blockedIssueRepo) {
-        this.blockedIssueRepo = blockedIssueRepo;
+        this.blockedIssueRepo = Optional.ofNullable(blockedIssueRepo);
         return this;
     }
 
@@ -168,16 +168,16 @@ public class WebhookIssueDependenciesBlockingAdded {
     @Valid
     @Schema(name = "blocked_issue_repo", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blocked_issue_repo")
-    public Repository getBlockedIssueRepo() {
+    public Optional<Repository> getBlockedIssueRepo() {
         return blockedIssueRepo;
     }
 
-    public void setBlockedIssueRepo(Repository blockedIssueRepo) {
+    public void setBlockedIssueRepo(Optional<Repository> blockedIssueRepo) {
         this.blockedIssueRepo = blockedIssueRepo;
     }
 
     public WebhookIssueDependenciesBlockingAdded blockingIssueId(BigDecimal blockingIssueId) {
-        this.blockingIssueId = blockingIssueId;
+        this.blockingIssueId = Optional.ofNullable(blockingIssueId);
         return this;
     }
 
@@ -191,16 +191,16 @@ public class WebhookIssueDependenciesBlockingAdded {
             description = "The ID of the blocking issue.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blocking_issue_id")
-    public BigDecimal getBlockingIssueId() {
+    public Optional<BigDecimal> getBlockingIssueId() {
         return blockingIssueId;
     }
 
-    public void setBlockingIssueId(BigDecimal blockingIssueId) {
+    public void setBlockingIssueId(Optional<BigDecimal> blockingIssueId) {
         this.blockingIssueId = blockingIssueId;
     }
 
     public WebhookIssueDependenciesBlockingAdded blockingIssue(Issue blockingIssue) {
-        this.blockingIssue = blockingIssue;
+        this.blockingIssue = Optional.ofNullable(blockingIssue);
         return this;
     }
 
@@ -211,16 +211,16 @@ public class WebhookIssueDependenciesBlockingAdded {
     @Valid
     @Schema(name = "blocking_issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blocking_issue")
-    public Issue getBlockingIssue() {
+    public Optional<Issue> getBlockingIssue() {
         return blockingIssue;
     }
 
-    public void setBlockingIssue(Issue blockingIssue) {
+    public void setBlockingIssue(Optional<Issue> blockingIssue) {
         this.blockingIssue = blockingIssue;
     }
 
     public WebhookIssueDependenciesBlockingAdded installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -231,11 +231,11 @@ public class WebhookIssueDependenciesBlockingAdded {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 

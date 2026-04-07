@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pull-request-webhook")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestWebhook {
 
@@ -95,14 +93,14 @@ public class PullRequestWebhook {
 
     private SimpleUser user;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid PullRequestLabelsInner> labels = new ArrayList<>();
 
-    private NullableMilestone milestone = null;
+    private JsonNullable<NullableMilestone> milestone = JsonNullable.<NullableMilestone>undefined();
 
-    private String activeLockReason = null;
+    private JsonNullable<String> activeLockReason = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -111,10 +109,10 @@ public class PullRequestWebhook {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt = null;
+    private JsonNullable<OffsetDateTime> mergedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @Valid
     private List<@Valid SimpleUser> assignees = new ArrayList<>();
@@ -133,19 +131,19 @@ public class PullRequestWebhook {
 
     private AuthorAssociation authorAssociation;
 
-    private AutoMerge autoMerge = null;
+    private JsonNullable<AutoMerge> autoMerge = JsonNullable.<AutoMerge>undefined();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private Boolean merged;
 
-    private Boolean mergeable = null;
+    private JsonNullable<Boolean> mergeable = JsonNullable.<Boolean>undefined();
 
-    private Boolean rebaseable = null;
+    private JsonNullable<Boolean> rebaseable = JsonNullable.<Boolean>undefined();
 
     private String mergeableState;
 
-    private NullableSimpleUser mergedBy = null;
+    private JsonNullable<NullableSimpleUser> mergedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     private Long comments;
 
@@ -161,11 +159,11 @@ public class PullRequestWebhook {
 
     private Long changedFiles;
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean allowUpdateBranch;
+    private Optional<Boolean> allowUpdateBranch = Optional.empty();
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
     /**
      * The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
@@ -204,7 +202,7 @@ public class PullRequestWebhook {
         }
     }
 
-    private MergeCommitMessageEnum mergeCommitMessage;
+    private Optional<MergeCommitMessageEnum> mergeCommitMessage = Optional.empty();
 
     /**
      * The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., \"Merge pull request #123 from branch-name\").
@@ -241,7 +239,7 @@ public class PullRequestWebhook {
         }
     }
 
-    private MergeCommitTitleEnum mergeCommitTitle;
+    private Optional<MergeCommitTitleEnum> mergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
@@ -280,7 +278,7 @@ public class PullRequestWebhook {
         }
     }
 
-    private SquashMergeCommitMessageEnum squashMergeCommitMessage;
+    private Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage = Optional.empty();
 
     /**
      * The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -317,9 +315,9 @@ public class PullRequestWebhook {
         }
     }
 
-    private SquashMergeCommitTitleEnum squashMergeCommitTitle;
+    private Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle = Optional.empty();
 
-    private Boolean useSquashPrTitleAsDefault = false;
+    private Optional<Boolean> useSquashPrTitleAsDefault = Optional.of(false);
 
     public PullRequestWebhook() {
         super();
@@ -386,22 +384,22 @@ public class PullRequestWebhook {
         this.locked = locked;
         this.title = title;
         this.user = user;
-        this.body = body;
+        this.body = JsonNullable.of(body);
         this.labels = labels;
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.closedAt = closedAt;
-        this.mergedAt = mergedAt;
+        this.closedAt = JsonNullable.of(closedAt);
+        this.mergedAt = JsonNullable.of(mergedAt);
         this.head = head;
         this.base = base;
         this.links = links;
         this.authorAssociation = authorAssociation;
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         this.merged = merged;
-        this.mergeable = mergeable;
+        this.mergeable = JsonNullable.of(mergeable);
         this.mergeableState = mergeableState;
-        this.mergedBy = mergedBy;
+        this.mergedBy = JsonNullable.of(mergedBy);
         this.comments = comments;
         this.reviewComments = reviewComments;
         this.maintainerCanModify = maintainerCanModify;
@@ -805,7 +803,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -816,11 +814,11 @@ public class PullRequestWebhook {
     @NotNull
     @Schema(name = "body", example = "Please pull these awesome changes", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -854,7 +852,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook milestone(NullableMilestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -866,16 +864,16 @@ public class PullRequestWebhook {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public NullableMilestone getMilestone() {
+    public JsonNullable<NullableMilestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(NullableMilestone milestone) {
+    public void setMilestone(JsonNullable<NullableMilestone> milestone) {
         this.milestone = milestone;
     }
 
     public PullRequestWebhook activeLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -885,11 +883,11 @@ public class PullRequestWebhook {
      */
     @Schema(name = "active_lock_reason", example = "too heated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
+    public JsonNullable<String> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(String activeLockReason) {
+    public void setActiveLockReason(JsonNullable<String> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
@@ -936,7 +934,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -948,16 +946,16 @@ public class PullRequestWebhook {
     @Valid
     @Schema(name = "closed_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
     public PullRequestWebhook mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -969,11 +967,11 @@ public class PullRequestWebhook {
     @Valid
     @Schema(name = "merged_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public JsonNullable<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(JsonNullable<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
@@ -1146,7 +1144,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook autoMerge(AutoMerge autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         return this;
     }
 
@@ -1158,16 +1156,16 @@ public class PullRequestWebhook {
     @Valid
     @Schema(name = "auto_merge", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("auto_merge")
-    public AutoMerge getAutoMerge() {
+    public JsonNullable<AutoMerge> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(AutoMerge autoMerge) {
+    public void setAutoMerge(JsonNullable<AutoMerge> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
     public PullRequestWebhook draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -1181,11 +1179,11 @@ public class PullRequestWebhook {
             description = "Indicates whether or not the pull request is a draft.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -1210,7 +1208,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook mergeable(Boolean mergeable) {
-        this.mergeable = mergeable;
+        this.mergeable = JsonNullable.of(mergeable);
         return this;
     }
 
@@ -1221,16 +1219,16 @@ public class PullRequestWebhook {
     @NotNull
     @Schema(name = "mergeable", example = "true", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mergeable")
-    public Boolean getMergeable() {
+    public JsonNullable<Boolean> getMergeable() {
         return mergeable;
     }
 
-    public void setMergeable(Boolean mergeable) {
+    public void setMergeable(JsonNullable<Boolean> mergeable) {
         this.mergeable = mergeable;
     }
 
     public PullRequestWebhook rebaseable(Boolean rebaseable) {
-        this.rebaseable = rebaseable;
+        this.rebaseable = JsonNullable.of(rebaseable);
         return this;
     }
 
@@ -1240,11 +1238,11 @@ public class PullRequestWebhook {
      */
     @Schema(name = "rebaseable", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rebaseable")
-    public Boolean getRebaseable() {
+    public JsonNullable<Boolean> getRebaseable() {
         return rebaseable;
     }
 
-    public void setRebaseable(Boolean rebaseable) {
+    public void setRebaseable(JsonNullable<Boolean> rebaseable) {
         this.rebaseable = rebaseable;
     }
 
@@ -1269,7 +1267,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook mergedBy(NullableSimpleUser mergedBy) {
-        this.mergedBy = mergedBy;
+        this.mergedBy = JsonNullable.of(mergedBy);
         return this;
     }
 
@@ -1281,11 +1279,11 @@ public class PullRequestWebhook {
     @Valid
     @Schema(name = "merged_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_by")
-    public NullableSimpleUser getMergedBy() {
+    public JsonNullable<NullableSimpleUser> getMergedBy() {
         return mergedBy;
     }
 
-    public void setMergedBy(NullableSimpleUser mergedBy) {
+    public void setMergedBy(JsonNullable<NullableSimpleUser> mergedBy) {
         this.mergedBy = mergedBy;
     }
 
@@ -1434,7 +1432,7 @@ public class PullRequestWebhook {
     }
 
     public PullRequestWebhook allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -1447,16 +1445,16 @@ public class PullRequestWebhook {
             description = "Whether to allow auto-merge for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public PullRequestWebhook allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -1469,16 +1467,16 @@ public class PullRequestWebhook {
             description = "Whether to allow updating the pull request's branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
     public PullRequestWebhook deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -1491,16 +1489,16 @@ public class PullRequestWebhook {
             description = "Whether to delete head branches when pull requests are merged.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public PullRequestWebhook mergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
-        this.mergeCommitMessage = mergeCommitMessage;
+        this.mergeCommitMessage = Optional.ofNullable(mergeCommitMessage);
         return this;
     }
 
@@ -1514,16 +1512,16 @@ public class PullRequestWebhook {
                     "The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_message")
-    public MergeCommitMessageEnum getMergeCommitMessage() {
+    public Optional<MergeCommitMessageEnum> getMergeCommitMessage() {
         return mergeCommitMessage;
     }
 
-    public void setMergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
+    public void setMergeCommitMessage(Optional<MergeCommitMessageEnum> mergeCommitMessage) {
         this.mergeCommitMessage = mergeCommitMessage;
     }
 
     public PullRequestWebhook mergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
-        this.mergeCommitTitle = mergeCommitTitle;
+        this.mergeCommitTitle = Optional.ofNullable(mergeCommitTitle);
         return this;
     }
 
@@ -1537,16 +1535,16 @@ public class PullRequestWebhook {
                     "The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., \"Merge pull request #123 from branch-name\").",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_title")
-    public MergeCommitTitleEnum getMergeCommitTitle() {
+    public Optional<MergeCommitTitleEnum> getMergeCommitTitle() {
         return mergeCommitTitle;
     }
 
-    public void setMergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
+    public void setMergeCommitTitle(Optional<MergeCommitTitleEnum> mergeCommitTitle) {
         this.mergeCommitTitle = mergeCommitTitle;
     }
 
     public PullRequestWebhook squashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
-        this.squashMergeCommitMessage = squashMergeCommitMessage;
+        this.squashMergeCommitMessage = Optional.ofNullable(squashMergeCommitMessage);
         return this;
     }
 
@@ -1560,16 +1558,16 @@ public class PullRequestWebhook {
                     "The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_message")
-    public SquashMergeCommitMessageEnum getSquashMergeCommitMessage() {
+    public Optional<SquashMergeCommitMessageEnum> getSquashMergeCommitMessage() {
         return squashMergeCommitMessage;
     }
 
-    public void setSquashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
+    public void setSquashMergeCommitMessage(Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage) {
         this.squashMergeCommitMessage = squashMergeCommitMessage;
     }
 
     public PullRequestWebhook squashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
-        this.squashMergeCommitTitle = squashMergeCommitTitle;
+        this.squashMergeCommitTitle = Optional.ofNullable(squashMergeCommitTitle);
         return this;
     }
 
@@ -1583,16 +1581,16 @@ public class PullRequestWebhook {
                     "The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_title")
-    public SquashMergeCommitTitleEnum getSquashMergeCommitTitle() {
+    public Optional<SquashMergeCommitTitleEnum> getSquashMergeCommitTitle() {
         return squashMergeCommitTitle;
     }
 
-    public void setSquashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
+    public void setSquashMergeCommitTitle(Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle) {
         this.squashMergeCommitTitle = squashMergeCommitTitle;
     }
 
     public PullRequestWebhook useSquashPrTitleAsDefault(Boolean useSquashPrTitleAsDefault) {
-        this.useSquashPrTitleAsDefault = useSquashPrTitleAsDefault;
+        this.useSquashPrTitleAsDefault = Optional.ofNullable(useSquashPrTitleAsDefault);
         return this;
     }
 
@@ -1606,11 +1604,11 @@ public class PullRequestWebhook {
                     "Whether a squash merge commit can use the pull request title as default. **This property is closing down. Please use `squash_merge_commit_title` instead.**",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("use_squash_pr_title_as_default")
-    public Boolean getUseSquashPrTitleAsDefault() {
+    public Optional<Boolean> getUseSquashPrTitleAsDefault() {
         return useSquashPrTitleAsDefault;
     }
 
-    public void setUseSquashPrTitleAsDefault(Boolean useSquashPrTitleAsDefault) {
+    public void setUseSquashPrTitleAsDefault(Optional<Boolean> useSquashPrTitleAsDefault) {
         this.useSquashPrTitleAsDefault = useSquashPrTitleAsDefault;
     }
 
@@ -1643,7 +1641,7 @@ public class PullRequestWebhook {
                 && Objects.equals(this.body, pullRequestWebhook.body)
                 && Objects.equals(this.labels, pullRequestWebhook.labels)
                 && Objects.equals(this.milestone, pullRequestWebhook.milestone)
-                && Objects.equals(this.activeLockReason, pullRequestWebhook.activeLockReason)
+                && equalsNullable(this.activeLockReason, pullRequestWebhook.activeLockReason)
                 && Objects.equals(this.createdAt, pullRequestWebhook.createdAt)
                 && Objects.equals(this.updatedAt, pullRequestWebhook.updatedAt)
                 && Objects.equals(this.closedAt, pullRequestWebhook.closedAt)
@@ -1659,7 +1657,7 @@ public class PullRequestWebhook {
                 && Objects.equals(this.draft, pullRequestWebhook.draft)
                 && Objects.equals(this.merged, pullRequestWebhook.merged)
                 && Objects.equals(this.mergeable, pullRequestWebhook.mergeable)
-                && Objects.equals(this.rebaseable, pullRequestWebhook.rebaseable)
+                && equalsNullable(this.rebaseable, pullRequestWebhook.rebaseable)
                 && Objects.equals(this.mergeableState, pullRequestWebhook.mergeableState)
                 && Objects.equals(this.mergedBy, pullRequestWebhook.mergedBy)
                 && Objects.equals(this.comments, pullRequestWebhook.comments)
@@ -1677,6 +1675,11 @@ public class PullRequestWebhook {
                 && Objects.equals(this.squashMergeCommitMessage, pullRequestWebhook.squashMergeCommitMessage)
                 && Objects.equals(this.squashMergeCommitTitle, pullRequestWebhook.squashMergeCommitTitle)
                 && Objects.equals(this.useSquashPrTitleAsDefault, pullRequestWebhook.useSquashPrTitleAsDefault);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1702,7 +1705,7 @@ public class PullRequestWebhook {
                 body,
                 labels,
                 milestone,
-                activeLockReason,
+                hashCodeNullable(activeLockReason),
                 createdAt,
                 updatedAt,
                 closedAt,
@@ -1718,7 +1721,7 @@ public class PullRequestWebhook {
                 draft,
                 merged,
                 mergeable,
-                rebaseable,
+                hashCodeNullable(rebaseable),
                 mergeableState,
                 mergedBy,
                 comments,
@@ -1736,6 +1739,13 @@ public class PullRequestWebhook {
                 squashMergeCommitMessage,
                 squashMergeCommitTitle,
                 useSquashPrTitleAsDefault);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

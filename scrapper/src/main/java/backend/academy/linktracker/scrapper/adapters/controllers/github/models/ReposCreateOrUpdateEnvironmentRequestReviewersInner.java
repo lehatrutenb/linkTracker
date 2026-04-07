@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateOrUpdateEnvironmentRequestReviewersInner
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("repos_create_or_update_environment_request_reviewers_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateOrUpdateEnvironmentRequestReviewersInner {
 
-    private DeploymentReviewerType type;
+    private Optional<DeploymentReviewerType> type = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
     public ReposCreateOrUpdateEnvironmentRequestReviewersInner type(DeploymentReviewerType type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class ReposCreateOrUpdateEnvironmentRequestReviewersInner {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public DeploymentReviewerType getType() {
+    public Optional<DeploymentReviewerType> getType() {
         return type;
     }
 
-    public void setType(DeploymentReviewerType type) {
+    public void setType(Optional<DeploymentReviewerType> type) {
         this.type = type;
     }
 
     public ReposCreateOrUpdateEnvironmentRequestReviewersInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -58,11 +57,11 @@ public class ReposCreateOrUpdateEnvironmentRequestReviewersInner {
             description = "The id of the user or team who can review the deployment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 

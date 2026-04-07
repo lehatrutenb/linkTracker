@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesPublishForAuthenticatedUserRequest
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("codespaces_publish_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesPublishForAuthenticatedUserRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Boolean _private = false;
+    private Optional<Boolean> _private = Optional.of(false);
 
     public CodespacesPublishForAuthenticatedUserRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class CodespacesPublishForAuthenticatedUserRequest {
             description = "A name for the new repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CodespacesPublishForAuthenticatedUserRequest _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -58,11 +57,11 @@ public class CodespacesPublishForAuthenticatedUserRequest {
             description = "Whether the new repository should be private.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 

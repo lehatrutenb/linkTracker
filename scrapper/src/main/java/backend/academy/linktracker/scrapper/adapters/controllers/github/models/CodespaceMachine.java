@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A description of the machine powering a codespace.
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("codespace-machine")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespaceMachine {
 
@@ -70,7 +70,8 @@ public class CodespaceMachine {
         }
     }
 
-    private PrebuildAvailabilityEnum prebuildAvailability = null;
+    private JsonNullable<PrebuildAvailabilityEnum> prebuildAvailability =
+            JsonNullable.<PrebuildAvailabilityEnum>undefined();
 
     public CodespaceMachine() {
         super();
@@ -93,7 +94,7 @@ public class CodespaceMachine {
         this.storageInBytes = storageInBytes;
         this.memoryInBytes = memoryInBytes;
         this.cpus = cpus;
-        this.prebuildAvailability = prebuildAvailability;
+        this.prebuildAvailability = JsonNullable.of(prebuildAvailability);
     }
 
     public CodespaceMachine name(String name) {
@@ -241,7 +242,7 @@ public class CodespaceMachine {
     }
 
     public CodespaceMachine prebuildAvailability(PrebuildAvailabilityEnum prebuildAvailability) {
-        this.prebuildAvailability = prebuildAvailability;
+        this.prebuildAvailability = JsonNullable.of(prebuildAvailability);
         return this;
     }
 
@@ -257,11 +258,11 @@ public class CodespaceMachine {
                     "Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be \"null\" if prebuilds are not supported or prebuild availability could not be determined. Value will be \"none\" if no prebuild is available. Latest values \"ready\" and \"in_progress\" indicate the prebuild availability status.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("prebuild_availability")
-    public PrebuildAvailabilityEnum getPrebuildAvailability() {
+    public JsonNullable<PrebuildAvailabilityEnum> getPrebuildAvailability() {
         return prebuildAvailability;
     }
 
-    public void setPrebuildAvailability(PrebuildAvailabilityEnum prebuildAvailability) {
+    public void setPrebuildAvailability(JsonNullable<PrebuildAvailabilityEnum> prebuildAvailability) {
         this.prebuildAvailability = prebuildAvailability;
     }
 

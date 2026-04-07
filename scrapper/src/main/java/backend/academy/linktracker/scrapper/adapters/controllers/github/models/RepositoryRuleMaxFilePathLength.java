@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Prevent commits that include file paths that exceed the specified character limit from being pushed to the commit graph.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-max-file-path-length")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleMaxFilePathLength implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleMaxFilePathLength implements OrgRules, RepositoryRule
 
     private TypeEnum type;
 
-    private RepositoryRuleMaxFilePathLengthParameters parameters;
+    private Optional<RepositoryRuleMaxFilePathLengthParameters> parameters = Optional.empty();
 
     public RepositoryRuleMaxFilePathLength() {
         super();
@@ -94,7 +94,7 @@ public class RepositoryRuleMaxFilePathLength implements OrgRules, RepositoryRule
     }
 
     public RepositoryRuleMaxFilePathLength parameters(RepositoryRuleMaxFilePathLengthParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class RepositoryRuleMaxFilePathLength implements OrgRules, RepositoryRule
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleMaxFilePathLengthParameters getParameters() {
+    public Optional<RepositoryRuleMaxFilePathLengthParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleMaxFilePathLengthParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleMaxFilePathLengthParameters> parameters) {
         this.parameters = parameters;
     }
 

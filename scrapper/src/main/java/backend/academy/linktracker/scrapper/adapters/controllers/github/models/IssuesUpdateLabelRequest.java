@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * IssuesUpdateLabelRequest
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("issues_update_label_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesUpdateLabelRequest {
 
-    private String newName;
+    private Optional<String> newName = Optional.empty();
 
-    private String color;
+    private Optional<String> color = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     public IssuesUpdateLabelRequest newName(String newName) {
-        this.newName = newName;
+        this.newName = Optional.ofNullable(newName);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class IssuesUpdateLabelRequest {
                     "The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png \":strawberry:\"). For a full list of available emoji and codes, see \"[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("new_name")
-    public String getNewName() {
+    public Optional<String> getNewName() {
         return newName;
     }
 
-    public void setNewName(String newName) {
+    public void setNewName(Optional<String> newName) {
         this.newName = newName;
     }
 
     public IssuesUpdateLabelRequest color(String color) {
-        this.color = color;
+        this.color = Optional.ofNullable(color);
         return this;
     }
 
@@ -62,16 +61,16 @@ public class IssuesUpdateLabelRequest {
                     "The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public String getColor() {
+    public Optional<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Optional<String> color) {
         this.color = color;
     }
 
     public IssuesUpdateLabelRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -84,11 +83,11 @@ public class IssuesUpdateLabelRequest {
             description = "A short description of the label. Must be 100 characters or fewer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 

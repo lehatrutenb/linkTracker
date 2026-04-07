@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * An option for a single select field
@@ -15,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("projects-v2-single-select-option")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom {
 
@@ -23,9 +24,9 @@ public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEdited
 
     private String name;
 
-    private String color = null;
+    private JsonNullable<String> color = JsonNullable.<String>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     public ProjectsV2SingleSelectOption() {
         super();
@@ -83,7 +84,7 @@ public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEdited
     }
 
     public ProjectsV2SingleSelectOption color(String color) {
-        this.color = color;
+        this.color = JsonNullable.of(color);
         return this;
     }
 
@@ -96,16 +97,16 @@ public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEdited
             description = "The color associated with the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public String getColor() {
+    public JsonNullable<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(JsonNullable<String> color) {
         this.color = color;
     }
 
     public ProjectsV2SingleSelectOption description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -118,11 +119,11 @@ public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEdited
             description = "A short description of the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -137,13 +138,25 @@ public class ProjectsV2SingleSelectOption implements WebhookProjectsV2ItemEdited
         ProjectsV2SingleSelectOption projectsV2SingleSelectOption = (ProjectsV2SingleSelectOption) o;
         return Objects.equals(this.id, projectsV2SingleSelectOption.id)
                 && Objects.equals(this.name, projectsV2SingleSelectOption.name)
-                && Objects.equals(this.color, projectsV2SingleSelectOption.color)
-                && Objects.equals(this.description, projectsV2SingleSelectOption.description);
+                && equalsNullable(this.color, projectsV2SingleSelectOption.color)
+                && equalsNullable(this.description, projectsV2SingleSelectOption.description);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, color, description);
+        return Objects.hash(id, name, hashCodeNullable(color), hashCodeNullable(description));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

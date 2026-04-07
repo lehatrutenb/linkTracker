@@ -5,12 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * WebhookRegistryPackageUpdatedRegistryPackagePackageVersion
@@ -18,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_updated_registry_package_package_version")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
 
@@ -36,7 +32,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     private List<@Valid WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadataInner> dockerMetadata =
             new ArrayList<>();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private String htmlUrl;
 
@@ -44,7 +40,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
 
     private String installationCommand;
 
-    private String manifest;
+    private Optional<String> manifest = Optional.empty();
 
     @Valid
     private List<Map<String, Object>> metadata = new ArrayList<>();
@@ -57,16 +53,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
 
     private String packageUrl;
 
-    private Boolean prerelease;
+    private Optional<Boolean> prerelease = Optional.empty();
 
-    private WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease release;
+    private Optional<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease> release = Optional.empty();
 
     @Valid
     private List<@Valid WebhookRubygemsMetadata> rubygemsMetadata = new ArrayList<>();
 
     private String summary;
 
-    private String tagName;
+    private Optional<String> tagName = Optional.empty();
 
     private String targetCommitish;
 
@@ -255,7 +251,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersion draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -265,11 +261,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -334,7 +330,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersion manifest(String manifest) {
-        this.manifest = manifest;
+        this.manifest = Optional.ofNullable(manifest);
         return this;
     }
 
@@ -344,11 +340,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
      */
     @Schema(name = "manifest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("manifest")
-    public String getManifest() {
+    public Optional<String> getManifest() {
         return manifest;
     }
 
-    public void setManifest(String manifest) {
+    public void setManifest(Optional<String> manifest) {
         this.manifest = manifest;
     }
 
@@ -455,7 +451,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersion prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -465,17 +461,17 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
      */
     @Schema(name = "prerelease", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersion release(
             WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease release) {
-        this.release = release;
+        this.release = Optional.ofNullable(release);
         return this;
     }
 
@@ -486,11 +482,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "release", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("release")
-    public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease getRelease() {
+    public Optional<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease> getRelease() {
         return release;
     }
 
-    public void setRelease(WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease release) {
+    public void setRelease(Optional<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease> release) {
         this.release = release;
     }
 
@@ -545,7 +541,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersion tagName(String tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -555,11 +551,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
      */
     @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public String getTagName() {
+    public Optional<String> getTagName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName(Optional<String> tagName) {
         this.tagName = tagName;
     }
 

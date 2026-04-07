@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectsV2ItemEdited
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-projects-v2-item-edited")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ItemEdited {
 
@@ -56,9 +56,9 @@ public class WebhookProjectsV2ItemEdited {
 
     private ActionEnum action;
 
-    private WebhookProjectsV2ItemEditedChanges changes;
+    private Optional<WebhookProjectsV2ItemEditedChanges> changes = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private OrganizationSimpleWebhooks organization;
 
@@ -105,7 +105,7 @@ public class WebhookProjectsV2ItemEdited {
     }
 
     public WebhookProjectsV2ItemEdited changes(WebhookProjectsV2ItemEditedChanges changes) {
-        this.changes = changes;
+        this.changes = Optional.ofNullable(changes);
         return this;
     }
 
@@ -116,16 +116,16 @@ public class WebhookProjectsV2ItemEdited {
     @Valid
     @Schema(name = "changes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("changes")
-    public WebhookProjectsV2ItemEditedChanges getChanges() {
+    public Optional<WebhookProjectsV2ItemEditedChanges> getChanges() {
         return changes;
     }
 
-    public void setChanges(WebhookProjectsV2ItemEditedChanges changes) {
+    public void setChanges(Optional<WebhookProjectsV2ItemEditedChanges> changes) {
         this.changes = changes;
     }
 
     public WebhookProjectsV2ItemEdited installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -136,11 +136,11 @@ public class WebhookProjectsV2ItemEdited {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 

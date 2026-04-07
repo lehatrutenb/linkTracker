@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,11 +20,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Workflow_Run_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WorkflowRun1 {
 
-    private User2 actor = null;
+    private JsonNullable<User2> actor = JsonNullable.<User2>undefined();
 
     private URI artifactsUrl;
 
@@ -85,14 +83,14 @@ public class WorkflowRun1 {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
     private String event;
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
     private SimpleCommit headCommit;
 
@@ -108,19 +106,20 @@ public class WorkflowRun1 {
 
     private URI logsUrl;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
     private String nodeId;
 
     private String path;
 
-    private URI previousAttemptUrl = null;
+    private JsonNullable<URI> previousAttemptUrl = JsonNullable.<URI>undefined();
 
     @Valid
     private List<@Valid WorkflowRunPullRequestsInner> pullRequests = new ArrayList<>();
 
     @Valid
-    private List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows;
+    private JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> referencedWorkflows =
+            JsonNullable.<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>>undefined();
 
     private RepositoryLite2 repository;
 
@@ -176,7 +175,7 @@ public class WorkflowRun1 {
 
     private StatusEnum status;
 
-    private User2 triggeringActor = null;
+    private JsonNullable<User2> triggeringActor = JsonNullable.<User2>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
@@ -228,16 +227,16 @@ public class WorkflowRun1 {
             URI url,
             Long workflowId,
             URI workflowUrl) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         this.artifactsUrl = artifactsUrl;
         this.cancelUrl = cancelUrl;
         this.checkSuiteId = checkSuiteId;
         this.checkSuiteNodeId = checkSuiteNodeId;
         this.checkSuiteUrl = checkSuiteUrl;
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
         this.event = event;
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         this.headCommit = headCommit;
         this.headRepository = headRepository;
         this.headSha = headSha;
@@ -245,10 +244,10 @@ public class WorkflowRun1 {
         this.id = id;
         this.jobsUrl = jobsUrl;
         this.logsUrl = logsUrl;
-        this.name = name;
+        this.name = JsonNullable.of(name);
         this.nodeId = nodeId;
         this.path = path;
-        this.previousAttemptUrl = previousAttemptUrl;
+        this.previousAttemptUrl = JsonNullable.of(previousAttemptUrl);
         this.pullRequests = pullRequests;
         this.repository = repository;
         this.rerunUrl = rerunUrl;
@@ -256,7 +255,7 @@ public class WorkflowRun1 {
         this.runNumber = runNumber;
         this.runStartedAt = runStartedAt;
         this.status = status;
-        this.triggeringActor = triggeringActor;
+        this.triggeringActor = JsonNullable.of(triggeringActor);
         this.updatedAt = updatedAt;
         this.url = url;
         this.workflowId = workflowId;
@@ -264,7 +263,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 actor(User2 actor) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         return this;
     }
 
@@ -276,11 +275,11 @@ public class WorkflowRun1 {
     @Valid
     @Schema(name = "actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("actor")
-    public User2 getActor() {
+    public JsonNullable<User2> getActor() {
         return actor;
     }
 
-    public void setActor(User2 actor) {
+    public void setActor(JsonNullable<User2> actor) {
         this.actor = actor;
     }
 
@@ -388,7 +387,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -399,11 +398,11 @@ public class WorkflowRun1 {
     @NotNull
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -449,7 +448,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -460,11 +459,11 @@ public class WorkflowRun1 {
     @NotNull
     @Schema(name = "head_branch", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 
@@ -614,7 +613,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -625,11 +624,11 @@ public class WorkflowRun1 {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
@@ -674,7 +673,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 previousAttemptUrl(URI previousAttemptUrl) {
-        this.previousAttemptUrl = previousAttemptUrl;
+        this.previousAttemptUrl = JsonNullable.of(previousAttemptUrl);
         return this;
     }
 
@@ -686,11 +685,11 @@ public class WorkflowRun1 {
     @Valid
     @Schema(name = "previous_attempt_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("previous_attempt_url")
-    public URI getPreviousAttemptUrl() {
+    public JsonNullable<URI> getPreviousAttemptUrl() {
         return previousAttemptUrl;
     }
 
-    public void setPreviousAttemptUrl(URI previousAttemptUrl) {
+    public void setPreviousAttemptUrl(JsonNullable<URI> previousAttemptUrl) {
         this.previousAttemptUrl = previousAttemptUrl;
     }
 
@@ -725,16 +724,16 @@ public class WorkflowRun1 {
 
     public WorkflowRun1 referencedWorkflows(
             List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows) {
-        this.referencedWorkflows = referencedWorkflows;
+        this.referencedWorkflows = JsonNullable.of(referencedWorkflows);
         return this;
     }
 
     public WorkflowRun1 addReferencedWorkflowsItem(
             DeploymentWorkflowRunReferencedWorkflowsInner referencedWorkflowsItem) {
-        if (this.referencedWorkflows == null) {
-            this.referencedWorkflows = new ArrayList<>();
+        if (this.referencedWorkflows == null || !this.referencedWorkflows.isPresent()) {
+            this.referencedWorkflows = JsonNullable.of(new ArrayList<>());
         }
-        this.referencedWorkflows.add(referencedWorkflowsItem);
+        this.referencedWorkflows.get().add(referencedWorkflowsItem);
         return this;
     }
 
@@ -745,11 +744,12 @@ public class WorkflowRun1 {
     @Valid
     @Schema(name = "referenced_workflows", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("referenced_workflows")
-    public List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> getReferencedWorkflows() {
+    public JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> getReferencedWorkflows() {
         return referencedWorkflows;
     }
 
-    public void setReferencedWorkflows(List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows) {
+    public void setReferencedWorkflows(
+            JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> referencedWorkflows) {
         this.referencedWorkflows = referencedWorkflows;
     }
 
@@ -877,7 +877,7 @@ public class WorkflowRun1 {
     }
 
     public WorkflowRun1 triggeringActor(User2 triggeringActor) {
-        this.triggeringActor = triggeringActor;
+        this.triggeringActor = JsonNullable.of(triggeringActor);
         return this;
     }
 
@@ -889,11 +889,11 @@ public class WorkflowRun1 {
     @Valid
     @Schema(name = "triggering_actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("triggering_actor")
-    public User2 getTriggeringActor() {
+    public JsonNullable<User2> getTriggeringActor() {
         return triggeringActor;
     }
 
-    public void setTriggeringActor(User2 triggeringActor) {
+    public void setTriggeringActor(JsonNullable<User2> triggeringActor) {
         this.triggeringActor = triggeringActor;
     }
 
@@ -1011,7 +1011,7 @@ public class WorkflowRun1 {
                 && Objects.equals(this.path, workflowRun1.path)
                 && Objects.equals(this.previousAttemptUrl, workflowRun1.previousAttemptUrl)
                 && Objects.equals(this.pullRequests, workflowRun1.pullRequests)
-                && Objects.equals(this.referencedWorkflows, workflowRun1.referencedWorkflows)
+                && equalsNullable(this.referencedWorkflows, workflowRun1.referencedWorkflows)
                 && Objects.equals(this.repository, workflowRun1.repository)
                 && Objects.equals(this.rerunUrl, workflowRun1.rerunUrl)
                 && Objects.equals(this.runAttempt, workflowRun1.runAttempt)
@@ -1023,6 +1023,11 @@ public class WorkflowRun1 {
                 && Objects.equals(this.url, workflowRun1.url)
                 && Objects.equals(this.workflowId, workflowRun1.workflowId)
                 && Objects.equals(this.workflowUrl, workflowRun1.workflowUrl);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1050,7 +1055,7 @@ public class WorkflowRun1 {
                 path,
                 previousAttemptUrl,
                 pullRequests,
-                referencedWorkflows,
+                hashCodeNullable(referencedWorkflows),
                 repository,
                 rerunUrl,
                 runAttempt,
@@ -1062,6 +1067,13 @@ public class WorkflowRun1 {
                 url,
                 workflowId,
                 workflowUrl);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

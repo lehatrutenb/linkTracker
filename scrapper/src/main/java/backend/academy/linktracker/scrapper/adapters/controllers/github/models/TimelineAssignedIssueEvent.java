@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Timeline Assigned Issue Event
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("timeline-assigned-issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineAssignedIssueEvent {
 
@@ -30,13 +30,13 @@ public class TimelineAssignedIssueEvent {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     private SimpleUser assignee;
 
@@ -63,10 +63,10 @@ public class TimelineAssignedIssueEvent {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.assignee = assignee;
     }
 
@@ -172,7 +172,7 @@ public class TimelineAssignedIssueEvent {
     }
 
     public TimelineAssignedIssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -183,16 +183,16 @@ public class TimelineAssignedIssueEvent {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public TimelineAssignedIssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -203,11 +203,11 @@ public class TimelineAssignedIssueEvent {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -232,7 +232,7 @@ public class TimelineAssignedIssueEvent {
     }
 
     public TimelineAssignedIssueEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -244,11 +244,11 @@ public class TimelineAssignedIssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 

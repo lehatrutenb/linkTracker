@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("org-private-registry-configuration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgPrivateRegistryConfiguration {
 
@@ -90,11 +92,11 @@ public class OrgPrivateRegistryConfiguration {
 
     private RegistryTypeEnum registryType;
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private String username = null;
+    private JsonNullable<String> username = JsonNullable.<String>undefined();
 
-    private Boolean replacesBase = false;
+    private Optional<Boolean> replacesBase = Optional.of(false);
 
     /**
      * Which type of organization repositories have access to the private registry.
@@ -206,7 +208,7 @@ public class OrgPrivateRegistryConfiguration {
     }
 
     public OrgPrivateRegistryConfiguration url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -220,16 +222,16 @@ public class OrgPrivateRegistryConfiguration {
             description = "The URL of the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public OrgPrivateRegistryConfiguration username(String username) {
-        this.username = username;
+        this.username = JsonNullable.of(username);
         return this;
     }
 
@@ -243,16 +245,16 @@ public class OrgPrivateRegistryConfiguration {
             description = "The username to use when authenticating with the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public JsonNullable<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(JsonNullable<String> username) {
         this.username = username;
     }
 
     public OrgPrivateRegistryConfiguration replacesBase(Boolean replacesBase) {
-        this.replacesBase = replacesBase;
+        this.replacesBase = Optional.ofNullable(replacesBase);
         return this;
     }
 
@@ -266,11 +268,11 @@ public class OrgPrivateRegistryConfiguration {
                     "Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("replaces_base")
-    public Boolean getReplacesBase() {
+    public Optional<Boolean> getReplacesBase() {
         return replacesBase;
     }
 
-    public void setReplacesBase(Boolean replacesBase) {
+    public void setReplacesBase(Optional<Boolean> replacesBase) {
         this.replacesBase = replacesBase;
     }
 
@@ -351,16 +353,29 @@ public class OrgPrivateRegistryConfiguration {
         return Objects.equals(this.name, orgPrivateRegistryConfiguration.name)
                 && Objects.equals(this.registryType, orgPrivateRegistryConfiguration.registryType)
                 && Objects.equals(this.url, orgPrivateRegistryConfiguration.url)
-                && Objects.equals(this.username, orgPrivateRegistryConfiguration.username)
+                && equalsNullable(this.username, orgPrivateRegistryConfiguration.username)
                 && Objects.equals(this.replacesBase, orgPrivateRegistryConfiguration.replacesBase)
                 && Objects.equals(this.visibility, orgPrivateRegistryConfiguration.visibility)
                 && Objects.equals(this.createdAt, orgPrivateRegistryConfiguration.createdAt)
                 && Objects.equals(this.updatedAt, orgPrivateRegistryConfiguration.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, registryType, url, username, replacesBase, visibility, createdAt, updatedAt);
+        return Objects.hash(
+                name, registryType, url, hashCodeNullable(username), replacesBase, visibility, createdAt, updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

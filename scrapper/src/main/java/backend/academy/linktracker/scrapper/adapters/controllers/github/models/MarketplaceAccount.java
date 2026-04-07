@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MarketplaceAccount
@@ -16,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("marketplace-account")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplaceAccount {
 
@@ -26,13 +28,14 @@ public class MarketplaceAccount {
 
     private String type;
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
     private String login;
 
-    private String email = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> email = JsonNullable.<String>undefined();
 
-    private String organizationBillingEmail = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> organizationBillingEmail =
+            JsonNullable.<String>undefined();
 
     public MarketplaceAccount() {
         super();
@@ -110,7 +113,7 @@ public class MarketplaceAccount {
     }
 
     public MarketplaceAccount nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -120,11 +123,11 @@ public class MarketplaceAccount {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -149,7 +152,7 @@ public class MarketplaceAccount {
     }
 
     public MarketplaceAccount email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -157,19 +160,18 @@ public class MarketplaceAccount {
      * Get email
      * @return email
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
     public MarketplaceAccount organizationBillingEmail(String organizationBillingEmail) {
-        this.organizationBillingEmail = organizationBillingEmail;
+        this.organizationBillingEmail = JsonNullable.of(organizationBillingEmail);
         return this;
     }
 
@@ -177,14 +179,13 @@ public class MarketplaceAccount {
      * Get organizationBillingEmail
      * @return organizationBillingEmail
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "organization_billing_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_billing_email")
-    public String getOrganizationBillingEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getOrganizationBillingEmail() {
         return organizationBillingEmail;
     }
 
-    public void setOrganizationBillingEmail(String organizationBillingEmail) {
+    public void setOrganizationBillingEmail(JsonNullable<String> organizationBillingEmail) {
         this.organizationBillingEmail = organizationBillingEmail;
     }
 
@@ -202,13 +203,26 @@ public class MarketplaceAccount {
                 && Objects.equals(this.type, marketplaceAccount.type)
                 && Objects.equals(this.nodeId, marketplaceAccount.nodeId)
                 && Objects.equals(this.login, marketplaceAccount.login)
-                && Objects.equals(this.email, marketplaceAccount.email)
-                && Objects.equals(this.organizationBillingEmail, marketplaceAccount.organizationBillingEmail);
+                && equalsNullable(this.email, marketplaceAccount.email)
+                && equalsNullable(this.organizationBillingEmail, marketplaceAccount.organizationBillingEmail);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(url, id, type, nodeId, login, email, organizationBillingEmail);
+        return Objects.hash(
+                url, id, type, nodeId, login, hashCodeNullable(email), hashCodeNullable(organizationBillingEmail));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

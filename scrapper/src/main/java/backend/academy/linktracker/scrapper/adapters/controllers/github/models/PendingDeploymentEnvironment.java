@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PendingDeploymentEnvironment
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("pending_deployment_environment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PendingDeploymentEnvironment {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
     public PendingDeploymentEnvironment id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -43,16 +42,16 @@ public class PendingDeploymentEnvironment {
             description = "The id of the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public PendingDeploymentEnvironment nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -65,16 +64,16 @@ public class PendingDeploymentEnvironment {
             example = "MDExOkVudmlyb25tZW50NTY3ODA0Mjg=",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public PendingDeploymentEnvironment name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -88,16 +87,16 @@ public class PendingDeploymentEnvironment {
             description = "The name of the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public PendingDeploymentEnvironment url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -110,16 +109,16 @@ public class PendingDeploymentEnvironment {
             example = "https://api.github.com/repos/github/hello-world/environments/staging",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public PendingDeploymentEnvironment htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -132,11 +131,11 @@ public class PendingDeploymentEnvironment {
             example = "https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 

@@ -8,13 +8,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * OrgsSetClusterDeploymentRecordsRequestDeploymentsInner
@@ -22,7 +19,7 @@ import java.util.Set;
 @JsonTypeName("orgs_set_cluster_deployment_records_request_deployments_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
 
@@ -30,7 +27,7 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
 
     private String digest;
 
-    private String version;
+    private Optional<@Size(max = 100) String> version = Optional.empty();
 
     /**
      * The deployment status of the artifact.
@@ -67,11 +64,12 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
         }
     }
 
-    private StatusEnum status = StatusEnum.DEPLOYED;
+    private Optional<StatusEnum> status = Optional.of(StatusEnum.DEPLOYED);
 
     private String deploymentName;
 
-    private String githubRepository;
+    private Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(max = 100) String> githubRepository =
+            Optional.empty();
 
     @Valid
     private Map<String, String> tags = new HashMap<>();
@@ -183,7 +181,7 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
     }
 
     public OrgsSetClusterDeploymentRecordsRequestDeploymentsInner version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -191,7 +189,6 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
      * The artifact version. Note that if multiple deployments have identical 'digest' parameter values, the version parameter must also be identical across all entries.
      * @return version
      */
-    @Size(max = 100)
     @Schema(
             name = "version",
             example = "1.2.3",
@@ -199,16 +196,16 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
                     "The artifact version. Note that if multiple deployments have identical 'digest' parameter values, the version parameter must also be identical across all entries. ",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<@Size(max = 100) String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 
     public OrgsSetClusterDeploymentRecordsRequestDeploymentsInner status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -221,11 +218,11 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
             description = "The deployment status of the artifact.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
@@ -255,7 +252,7 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
     }
 
     public OrgsSetClusterDeploymentRecordsRequestDeploymentsInner githubRepository(String githubRepository) {
-        this.githubRepository = githubRepository;
+        this.githubRepository = Optional.ofNullable(githubRepository);
         return this;
     }
 
@@ -263,8 +260,6 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
      * The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.
      * @return githubRepository
      */
-    @Pattern(regexp = "^[A-Za-z0-9.\\-_]+$")
-    @Size(max = 100)
     @Schema(
             name = "github_repository",
             example = "my-github-repo",
@@ -272,11 +267,11 @@ public class OrgsSetClusterDeploymentRecordsRequestDeploymentsInner {
                     "The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("github_repository")
-    public String getGithubRepository() {
+    public Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(max = 100) String> getGithubRepository() {
         return githubRepository;
     }
 
-    public void setGithubRepository(String githubRepository) {
+    public void setGithubRepository(Optional<String> githubRepository) {
         this.githubRepository = githubRepository;
     }
 

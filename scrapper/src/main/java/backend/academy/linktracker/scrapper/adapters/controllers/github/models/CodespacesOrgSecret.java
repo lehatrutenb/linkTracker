@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("codespaces-org-secret")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesOrgSecret {
 
@@ -72,7 +72,7 @@ public class CodespacesOrgSecret {
 
     private VisibilityEnum visibility;
 
-    private URI selectedRepositoriesUrl;
+    private Optional<URI> selectedRepositoriesUrl = Optional.empty();
 
     public CodespacesOrgSecret() {
         super();
@@ -187,7 +187,7 @@ public class CodespacesOrgSecret {
     }
 
     public CodespacesOrgSecret selectedRepositoriesUrl(URI selectedRepositoriesUrl) {
-        this.selectedRepositoriesUrl = selectedRepositoriesUrl;
+        this.selectedRepositoriesUrl = Optional.ofNullable(selectedRepositoriesUrl);
         return this;
     }
 
@@ -202,11 +202,11 @@ public class CodespacesOrgSecret {
             description = "The API URL at which the list of repositories this secret is visible to can be retrieved",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("selected_repositories_url")
-    public URI getSelectedRepositoriesUrl() {
+    public Optional<URI> getSelectedRepositoriesUrl() {
         return selectedRepositoriesUrl;
     }
 
-    public void setSelectedRepositoriesUrl(URI selectedRepositoriesUrl) {
+    public void setSelectedRepositoriesUrl(Optional<URI> selectedRepositoriesUrl) {
         this.selectedRepositoriesUrl = selectedRepositoriesUrl;
     }
 

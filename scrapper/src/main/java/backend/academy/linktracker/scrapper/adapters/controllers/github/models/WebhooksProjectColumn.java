@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,11 +19,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_project_column")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksProjectColumn {
 
-    private Long afterId = null;
+    private JsonNullable<Long> afterId = JsonNullable.<Long>undefined();
 
     private URI cardsUrl;
 
@@ -69,7 +70,7 @@ public class WebhooksProjectColumn {
     }
 
     public WebhooksProjectColumn afterId(Long afterId) {
-        this.afterId = afterId;
+        this.afterId = JsonNullable.of(afterId);
         return this;
     }
 
@@ -79,11 +80,11 @@ public class WebhooksProjectColumn {
      */
     @Schema(name = "after_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_id")
-    public Long getAfterId() {
+    public JsonNullable<Long> getAfterId() {
         return afterId;
     }
 
-    public void setAfterId(Long afterId) {
+    public void setAfterId(JsonNullable<Long> afterId) {
         this.afterId = afterId;
     }
 
@@ -264,7 +265,7 @@ public class WebhooksProjectColumn {
             return false;
         }
         WebhooksProjectColumn webhooksProjectColumn = (WebhooksProjectColumn) o;
-        return Objects.equals(this.afterId, webhooksProjectColumn.afterId)
+        return equalsNullable(this.afterId, webhooksProjectColumn.afterId)
                 && Objects.equals(this.cardsUrl, webhooksProjectColumn.cardsUrl)
                 && Objects.equals(this.createdAt, webhooksProjectColumn.createdAt)
                 && Objects.equals(this.id, webhooksProjectColumn.id)
@@ -275,9 +276,22 @@ public class WebhooksProjectColumn {
                 && Objects.equals(this.url, webhooksProjectColumn.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(afterId, cardsUrl, createdAt, id, name, nodeId, projectUrl, updatedAt, url);
+        return Objects.hash(
+                hashCodeNullable(afterId), cardsUrl, createdAt, id, name, nodeId, projectUrl, updatedAt, url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

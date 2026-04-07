@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRulesetLinksHtml
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("repository_ruleset__links_html")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRulesetLinksHtml {
 
-    private String href;
+    private Optional<String> href = Optional.empty();
 
     public RepositoryRulesetLinksHtml href(String href) {
-        this.href = href;
+        this.href = Optional.ofNullable(href);
         return this;
     }
 
@@ -31,11 +30,11 @@ public class RepositoryRulesetLinksHtml {
      */
     @Schema(name = "href", description = "The html URL of the ruleset", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("href")
-    public String getHref() {
+    public Optional<String> getHref() {
         return href;
     }
 
-    public void setHref(String href) {
+    public void setHref(Optional<String> href) {
         this.href = href;
     }
 

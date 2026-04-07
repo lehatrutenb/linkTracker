@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The set of permissions for the GitHub app
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("App_9_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class App9Permissions {
 
@@ -56,7 +55,7 @@ public class App9Permissions {
         }
     }
 
-    private ActionsEnum actions;
+    private Optional<ActionsEnum> actions = Optional.empty();
 
     /**
      * Gets or Sets administration
@@ -93,7 +92,7 @@ public class App9Permissions {
         }
     }
 
-    private AdministrationEnum administration;
+    private Optional<AdministrationEnum> administration = Optional.empty();
 
     /**
      * Gets or Sets checks
@@ -130,7 +129,7 @@ public class App9Permissions {
         }
     }
 
-    private ChecksEnum checks;
+    private Optional<ChecksEnum> checks = Optional.empty();
 
     /**
      * Gets or Sets contentReferences
@@ -167,7 +166,7 @@ public class App9Permissions {
         }
     }
 
-    private ContentReferencesEnum contentReferences;
+    private Optional<ContentReferencesEnum> contentReferences = Optional.empty();
 
     /**
      * Gets or Sets contents
@@ -204,7 +203,7 @@ public class App9Permissions {
         }
     }
 
-    private ContentsEnum contents;
+    private Optional<ContentsEnum> contents = Optional.empty();
 
     /**
      * Gets or Sets deployments
@@ -241,7 +240,7 @@ public class App9Permissions {
         }
     }
 
-    private DeploymentsEnum deployments;
+    private Optional<DeploymentsEnum> deployments = Optional.empty();
 
     /**
      * Gets or Sets discussions
@@ -278,7 +277,7 @@ public class App9Permissions {
         }
     }
 
-    private DiscussionsEnum discussions;
+    private Optional<DiscussionsEnum> discussions = Optional.empty();
 
     /**
      * Gets or Sets emails
@@ -315,7 +314,7 @@ public class App9Permissions {
         }
     }
 
-    private EmailsEnum emails;
+    private Optional<EmailsEnum> emails = Optional.empty();
 
     /**
      * Gets or Sets environments
@@ -352,7 +351,7 @@ public class App9Permissions {
         }
     }
 
-    private EnvironmentsEnum environments;
+    private Optional<EnvironmentsEnum> environments = Optional.empty();
 
     /**
      * Gets or Sets issues
@@ -389,7 +388,7 @@ public class App9Permissions {
         }
     }
 
-    private IssuesEnum issues;
+    private Optional<IssuesEnum> issues = Optional.empty();
 
     /**
      * Gets or Sets keys
@@ -426,7 +425,7 @@ public class App9Permissions {
         }
     }
 
-    private KeysEnum keys;
+    private Optional<KeysEnum> keys = Optional.empty();
 
     /**
      * Gets or Sets members
@@ -463,7 +462,7 @@ public class App9Permissions {
         }
     }
 
-    private MembersEnum members;
+    private Optional<MembersEnum> members = Optional.empty();
 
     /**
      * Gets or Sets metadata
@@ -500,7 +499,7 @@ public class App9Permissions {
         }
     }
 
-    private MetadataEnum metadata;
+    private Optional<MetadataEnum> metadata = Optional.empty();
 
     /**
      * Gets or Sets organizationAdministration
@@ -537,7 +536,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationAdministrationEnum organizationAdministration;
+    private Optional<OrganizationAdministrationEnum> organizationAdministration = Optional.empty();
 
     /**
      * Gets or Sets organizationHooks
@@ -574,7 +573,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationHooksEnum organizationHooks;
+    private Optional<OrganizationHooksEnum> organizationHooks = Optional.empty();
 
     /**
      * Gets or Sets organizationPackages
@@ -611,7 +610,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationPackagesEnum organizationPackages;
+    private Optional<OrganizationPackagesEnum> organizationPackages = Optional.empty();
 
     /**
      * Gets or Sets organizationPlan
@@ -648,7 +647,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationPlanEnum organizationPlan;
+    private Optional<OrganizationPlanEnum> organizationPlan = Optional.empty();
 
     /**
      * Gets or Sets organizationProjects
@@ -685,7 +684,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationProjectsEnum organizationProjects;
+    private Optional<OrganizationProjectsEnum> organizationProjects = Optional.empty();
 
     /**
      * Gets or Sets organizationSecrets
@@ -722,7 +721,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationSecretsEnum organizationSecrets;
+    private Optional<OrganizationSecretsEnum> organizationSecrets = Optional.empty();
 
     /**
      * Gets or Sets organizationSelfHostedRunners
@@ -759,7 +758,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationSelfHostedRunnersEnum organizationSelfHostedRunners;
+    private Optional<OrganizationSelfHostedRunnersEnum> organizationSelfHostedRunners = Optional.empty();
 
     /**
      * Gets or Sets organizationUserBlocking
@@ -796,7 +795,7 @@ public class App9Permissions {
         }
     }
 
-    private OrganizationUserBlockingEnum organizationUserBlocking;
+    private Optional<OrganizationUserBlockingEnum> organizationUserBlocking = Optional.empty();
 
     /**
      * Gets or Sets packages
@@ -833,7 +832,7 @@ public class App9Permissions {
         }
     }
 
-    private PackagesEnum packages;
+    private Optional<PackagesEnum> packages = Optional.empty();
 
     /**
      * Gets or Sets pages
@@ -870,7 +869,7 @@ public class App9Permissions {
         }
     }
 
-    private PagesEnum pages;
+    private Optional<PagesEnum> pages = Optional.empty();
 
     /**
      * Gets or Sets pullRequests
@@ -907,7 +906,7 @@ public class App9Permissions {
         }
     }
 
-    private PullRequestsEnum pullRequests;
+    private Optional<PullRequestsEnum> pullRequests = Optional.empty();
 
     /**
      * Gets or Sets repositoryHooks
@@ -944,7 +943,7 @@ public class App9Permissions {
         }
     }
 
-    private RepositoryHooksEnum repositoryHooks;
+    private Optional<RepositoryHooksEnum> repositoryHooks = Optional.empty();
 
     /**
      * Gets or Sets repositoryProjects
@@ -981,7 +980,7 @@ public class App9Permissions {
         }
     }
 
-    private RepositoryProjectsEnum repositoryProjects;
+    private Optional<RepositoryProjectsEnum> repositoryProjects = Optional.empty();
 
     /**
      * Gets or Sets secretScanningAlerts
@@ -1018,7 +1017,7 @@ public class App9Permissions {
         }
     }
 
-    private SecretScanningAlertsEnum secretScanningAlerts;
+    private Optional<SecretScanningAlertsEnum> secretScanningAlerts = Optional.empty();
 
     /**
      * Gets or Sets secrets
@@ -1055,7 +1054,7 @@ public class App9Permissions {
         }
     }
 
-    private SecretsEnum secrets;
+    private Optional<SecretsEnum> secrets = Optional.empty();
 
     /**
      * Gets or Sets securityEvents
@@ -1092,7 +1091,7 @@ public class App9Permissions {
         }
     }
 
-    private SecurityEventsEnum securityEvents;
+    private Optional<SecurityEventsEnum> securityEvents = Optional.empty();
 
     /**
      * Gets or Sets securityScanningAlert
@@ -1129,7 +1128,7 @@ public class App9Permissions {
         }
     }
 
-    private SecurityScanningAlertEnum securityScanningAlert;
+    private Optional<SecurityScanningAlertEnum> securityScanningAlert = Optional.empty();
 
     /**
      * Gets or Sets singleFile
@@ -1166,7 +1165,7 @@ public class App9Permissions {
         }
     }
 
-    private SingleFileEnum singleFile;
+    private Optional<SingleFileEnum> singleFile = Optional.empty();
 
     /**
      * Gets or Sets statuses
@@ -1203,7 +1202,7 @@ public class App9Permissions {
         }
     }
 
-    private StatusesEnum statuses;
+    private Optional<StatusesEnum> statuses = Optional.empty();
 
     /**
      * Gets or Sets teamDiscussions
@@ -1240,7 +1239,7 @@ public class App9Permissions {
         }
     }
 
-    private TeamDiscussionsEnum teamDiscussions;
+    private Optional<TeamDiscussionsEnum> teamDiscussions = Optional.empty();
 
     /**
      * Gets or Sets vulnerabilityAlerts
@@ -1277,7 +1276,7 @@ public class App9Permissions {
         }
     }
 
-    private VulnerabilityAlertsEnum vulnerabilityAlerts;
+    private Optional<VulnerabilityAlertsEnum> vulnerabilityAlerts = Optional.empty();
 
     /**
      * Gets or Sets workflows
@@ -1314,10 +1313,10 @@ public class App9Permissions {
         }
     }
 
-    private WorkflowsEnum workflows;
+    private Optional<WorkflowsEnum> workflows = Optional.empty();
 
     public App9Permissions actions(ActionsEnum actions) {
-        this.actions = actions;
+        this.actions = Optional.ofNullable(actions);
         return this;
     }
 
@@ -1327,16 +1326,16 @@ public class App9Permissions {
      */
     @Schema(name = "actions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actions")
-    public ActionsEnum getActions() {
+    public Optional<ActionsEnum> getActions() {
         return actions;
     }
 
-    public void setActions(ActionsEnum actions) {
+    public void setActions(Optional<ActionsEnum> actions) {
         this.actions = actions;
     }
 
     public App9Permissions administration(AdministrationEnum administration) {
-        this.administration = administration;
+        this.administration = Optional.ofNullable(administration);
         return this;
     }
 
@@ -1346,16 +1345,16 @@ public class App9Permissions {
      */
     @Schema(name = "administration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("administration")
-    public AdministrationEnum getAdministration() {
+    public Optional<AdministrationEnum> getAdministration() {
         return administration;
     }
 
-    public void setAdministration(AdministrationEnum administration) {
+    public void setAdministration(Optional<AdministrationEnum> administration) {
         this.administration = administration;
     }
 
     public App9Permissions checks(ChecksEnum checks) {
-        this.checks = checks;
+        this.checks = Optional.ofNullable(checks);
         return this;
     }
 
@@ -1365,16 +1364,16 @@ public class App9Permissions {
      */
     @Schema(name = "checks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("checks")
-    public ChecksEnum getChecks() {
+    public Optional<ChecksEnum> getChecks() {
         return checks;
     }
 
-    public void setChecks(ChecksEnum checks) {
+    public void setChecks(Optional<ChecksEnum> checks) {
         this.checks = checks;
     }
 
     public App9Permissions contentReferences(ContentReferencesEnum contentReferences) {
-        this.contentReferences = contentReferences;
+        this.contentReferences = Optional.ofNullable(contentReferences);
         return this;
     }
 
@@ -1384,16 +1383,16 @@ public class App9Permissions {
      */
     @Schema(name = "content_references", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_references")
-    public ContentReferencesEnum getContentReferences() {
+    public Optional<ContentReferencesEnum> getContentReferences() {
         return contentReferences;
     }
 
-    public void setContentReferences(ContentReferencesEnum contentReferences) {
+    public void setContentReferences(Optional<ContentReferencesEnum> contentReferences) {
         this.contentReferences = contentReferences;
     }
 
     public App9Permissions contents(ContentsEnum contents) {
-        this.contents = contents;
+        this.contents = Optional.ofNullable(contents);
         return this;
     }
 
@@ -1403,16 +1402,16 @@ public class App9Permissions {
      */
     @Schema(name = "contents", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents")
-    public ContentsEnum getContents() {
+    public Optional<ContentsEnum> getContents() {
         return contents;
     }
 
-    public void setContents(ContentsEnum contents) {
+    public void setContents(Optional<ContentsEnum> contents) {
         this.contents = contents;
     }
 
     public App9Permissions deployments(DeploymentsEnum deployments) {
-        this.deployments = deployments;
+        this.deployments = Optional.ofNullable(deployments);
         return this;
     }
 
@@ -1422,16 +1421,16 @@ public class App9Permissions {
      */
     @Schema(name = "deployments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployments")
-    public DeploymentsEnum getDeployments() {
+    public Optional<DeploymentsEnum> getDeployments() {
         return deployments;
     }
 
-    public void setDeployments(DeploymentsEnum deployments) {
+    public void setDeployments(Optional<DeploymentsEnum> deployments) {
         this.deployments = deployments;
     }
 
     public App9Permissions discussions(DiscussionsEnum discussions) {
-        this.discussions = discussions;
+        this.discussions = Optional.ofNullable(discussions);
         return this;
     }
 
@@ -1441,16 +1440,16 @@ public class App9Permissions {
      */
     @Schema(name = "discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("discussions")
-    public DiscussionsEnum getDiscussions() {
+    public Optional<DiscussionsEnum> getDiscussions() {
         return discussions;
     }
 
-    public void setDiscussions(DiscussionsEnum discussions) {
+    public void setDiscussions(Optional<DiscussionsEnum> discussions) {
         this.discussions = discussions;
     }
 
     public App9Permissions emails(EmailsEnum emails) {
-        this.emails = emails;
+        this.emails = Optional.ofNullable(emails);
         return this;
     }
 
@@ -1460,16 +1459,16 @@ public class App9Permissions {
      */
     @Schema(name = "emails", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("emails")
-    public EmailsEnum getEmails() {
+    public Optional<EmailsEnum> getEmails() {
         return emails;
     }
 
-    public void setEmails(EmailsEnum emails) {
+    public void setEmails(Optional<EmailsEnum> emails) {
         this.emails = emails;
     }
 
     public App9Permissions environments(EnvironmentsEnum environments) {
-        this.environments = environments;
+        this.environments = Optional.ofNullable(environments);
         return this;
     }
 
@@ -1479,16 +1478,16 @@ public class App9Permissions {
      */
     @Schema(name = "environments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environments")
-    public EnvironmentsEnum getEnvironments() {
+    public Optional<EnvironmentsEnum> getEnvironments() {
         return environments;
     }
 
-    public void setEnvironments(EnvironmentsEnum environments) {
+    public void setEnvironments(Optional<EnvironmentsEnum> environments) {
         this.environments = environments;
     }
 
     public App9Permissions issues(IssuesEnum issues) {
-        this.issues = issues;
+        this.issues = Optional.ofNullable(issues);
         return this;
     }
 
@@ -1498,16 +1497,16 @@ public class App9Permissions {
      */
     @Schema(name = "issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues")
-    public IssuesEnum getIssues() {
+    public Optional<IssuesEnum> getIssues() {
         return issues;
     }
 
-    public void setIssues(IssuesEnum issues) {
+    public void setIssues(Optional<IssuesEnum> issues) {
         this.issues = issues;
     }
 
     public App9Permissions keys(KeysEnum keys) {
-        this.keys = keys;
+        this.keys = Optional.ofNullable(keys);
         return this;
     }
 
@@ -1517,16 +1516,16 @@ public class App9Permissions {
      */
     @Schema(name = "keys", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("keys")
-    public KeysEnum getKeys() {
+    public Optional<KeysEnum> getKeys() {
         return keys;
     }
 
-    public void setKeys(KeysEnum keys) {
+    public void setKeys(Optional<KeysEnum> keys) {
         this.keys = keys;
     }
 
     public App9Permissions members(MembersEnum members) {
-        this.members = members;
+        this.members = Optional.ofNullable(members);
         return this;
     }
 
@@ -1536,16 +1535,16 @@ public class App9Permissions {
      */
     @Schema(name = "members", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members")
-    public MembersEnum getMembers() {
+    public Optional<MembersEnum> getMembers() {
         return members;
     }
 
-    public void setMembers(MembersEnum members) {
+    public void setMembers(Optional<MembersEnum> members) {
         this.members = members;
     }
 
     public App9Permissions metadata(MetadataEnum metadata) {
-        this.metadata = metadata;
+        this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
@@ -1555,16 +1554,16 @@ public class App9Permissions {
      */
     @Schema(name = "metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("metadata")
-    public MetadataEnum getMetadata() {
+    public Optional<MetadataEnum> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(MetadataEnum metadata) {
+    public void setMetadata(Optional<MetadataEnum> metadata) {
         this.metadata = metadata;
     }
 
     public App9Permissions organizationAdministration(OrganizationAdministrationEnum organizationAdministration) {
-        this.organizationAdministration = organizationAdministration;
+        this.organizationAdministration = Optional.ofNullable(organizationAdministration);
         return this;
     }
 
@@ -1574,16 +1573,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_administration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_administration")
-    public OrganizationAdministrationEnum getOrganizationAdministration() {
+    public Optional<OrganizationAdministrationEnum> getOrganizationAdministration() {
         return organizationAdministration;
     }
 
-    public void setOrganizationAdministration(OrganizationAdministrationEnum organizationAdministration) {
+    public void setOrganizationAdministration(Optional<OrganizationAdministrationEnum> organizationAdministration) {
         this.organizationAdministration = organizationAdministration;
     }
 
     public App9Permissions organizationHooks(OrganizationHooksEnum organizationHooks) {
-        this.organizationHooks = organizationHooks;
+        this.organizationHooks = Optional.ofNullable(organizationHooks);
         return this;
     }
 
@@ -1593,16 +1592,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_hooks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_hooks")
-    public OrganizationHooksEnum getOrganizationHooks() {
+    public Optional<OrganizationHooksEnum> getOrganizationHooks() {
         return organizationHooks;
     }
 
-    public void setOrganizationHooks(OrganizationHooksEnum organizationHooks) {
+    public void setOrganizationHooks(Optional<OrganizationHooksEnum> organizationHooks) {
         this.organizationHooks = organizationHooks;
     }
 
     public App9Permissions organizationPackages(OrganizationPackagesEnum organizationPackages) {
-        this.organizationPackages = organizationPackages;
+        this.organizationPackages = Optional.ofNullable(organizationPackages);
         return this;
     }
 
@@ -1612,16 +1611,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_packages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_packages")
-    public OrganizationPackagesEnum getOrganizationPackages() {
+    public Optional<OrganizationPackagesEnum> getOrganizationPackages() {
         return organizationPackages;
     }
 
-    public void setOrganizationPackages(OrganizationPackagesEnum organizationPackages) {
+    public void setOrganizationPackages(Optional<OrganizationPackagesEnum> organizationPackages) {
         this.organizationPackages = organizationPackages;
     }
 
     public App9Permissions organizationPlan(OrganizationPlanEnum organizationPlan) {
-        this.organizationPlan = organizationPlan;
+        this.organizationPlan = Optional.ofNullable(organizationPlan);
         return this;
     }
 
@@ -1631,16 +1630,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_plan")
-    public OrganizationPlanEnum getOrganizationPlan() {
+    public Optional<OrganizationPlanEnum> getOrganizationPlan() {
         return organizationPlan;
     }
 
-    public void setOrganizationPlan(OrganizationPlanEnum organizationPlan) {
+    public void setOrganizationPlan(Optional<OrganizationPlanEnum> organizationPlan) {
         this.organizationPlan = organizationPlan;
     }
 
     public App9Permissions organizationProjects(OrganizationProjectsEnum organizationProjects) {
-        this.organizationProjects = organizationProjects;
+        this.organizationProjects = Optional.ofNullable(organizationProjects);
         return this;
     }
 
@@ -1650,16 +1649,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_projects")
-    public OrganizationProjectsEnum getOrganizationProjects() {
+    public Optional<OrganizationProjectsEnum> getOrganizationProjects() {
         return organizationProjects;
     }
 
-    public void setOrganizationProjects(OrganizationProjectsEnum organizationProjects) {
+    public void setOrganizationProjects(Optional<OrganizationProjectsEnum> organizationProjects) {
         this.organizationProjects = organizationProjects;
     }
 
     public App9Permissions organizationSecrets(OrganizationSecretsEnum organizationSecrets) {
-        this.organizationSecrets = organizationSecrets;
+        this.organizationSecrets = Optional.ofNullable(organizationSecrets);
         return this;
     }
 
@@ -1669,17 +1668,17 @@ public class App9Permissions {
      */
     @Schema(name = "organization_secrets", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_secrets")
-    public OrganizationSecretsEnum getOrganizationSecrets() {
+    public Optional<OrganizationSecretsEnum> getOrganizationSecrets() {
         return organizationSecrets;
     }
 
-    public void setOrganizationSecrets(OrganizationSecretsEnum organizationSecrets) {
+    public void setOrganizationSecrets(Optional<OrganizationSecretsEnum> organizationSecrets) {
         this.organizationSecrets = organizationSecrets;
     }
 
     public App9Permissions organizationSelfHostedRunners(
             OrganizationSelfHostedRunnersEnum organizationSelfHostedRunners) {
-        this.organizationSelfHostedRunners = organizationSelfHostedRunners;
+        this.organizationSelfHostedRunners = Optional.ofNullable(organizationSelfHostedRunners);
         return this;
     }
 
@@ -1689,16 +1688,17 @@ public class App9Permissions {
      */
     @Schema(name = "organization_self_hosted_runners", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_self_hosted_runners")
-    public OrganizationSelfHostedRunnersEnum getOrganizationSelfHostedRunners() {
+    public Optional<OrganizationSelfHostedRunnersEnum> getOrganizationSelfHostedRunners() {
         return organizationSelfHostedRunners;
     }
 
-    public void setOrganizationSelfHostedRunners(OrganizationSelfHostedRunnersEnum organizationSelfHostedRunners) {
+    public void setOrganizationSelfHostedRunners(
+            Optional<OrganizationSelfHostedRunnersEnum> organizationSelfHostedRunners) {
         this.organizationSelfHostedRunners = organizationSelfHostedRunners;
     }
 
     public App9Permissions organizationUserBlocking(OrganizationUserBlockingEnum organizationUserBlocking) {
-        this.organizationUserBlocking = organizationUserBlocking;
+        this.organizationUserBlocking = Optional.ofNullable(organizationUserBlocking);
         return this;
     }
 
@@ -1708,16 +1708,16 @@ public class App9Permissions {
      */
     @Schema(name = "organization_user_blocking", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_user_blocking")
-    public OrganizationUserBlockingEnum getOrganizationUserBlocking() {
+    public Optional<OrganizationUserBlockingEnum> getOrganizationUserBlocking() {
         return organizationUserBlocking;
     }
 
-    public void setOrganizationUserBlocking(OrganizationUserBlockingEnum organizationUserBlocking) {
+    public void setOrganizationUserBlocking(Optional<OrganizationUserBlockingEnum> organizationUserBlocking) {
         this.organizationUserBlocking = organizationUserBlocking;
     }
 
     public App9Permissions packages(PackagesEnum packages) {
-        this.packages = packages;
+        this.packages = Optional.ofNullable(packages);
         return this;
     }
 
@@ -1727,16 +1727,16 @@ public class App9Permissions {
      */
     @Schema(name = "packages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("packages")
-    public PackagesEnum getPackages() {
+    public Optional<PackagesEnum> getPackages() {
         return packages;
     }
 
-    public void setPackages(PackagesEnum packages) {
+    public void setPackages(Optional<PackagesEnum> packages) {
         this.packages = packages;
     }
 
     public App9Permissions pages(PagesEnum pages) {
-        this.pages = pages;
+        this.pages = Optional.ofNullable(pages);
         return this;
     }
 
@@ -1746,16 +1746,16 @@ public class App9Permissions {
      */
     @Schema(name = "pages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pages")
-    public PagesEnum getPages() {
+    public Optional<PagesEnum> getPages() {
         return pages;
     }
 
-    public void setPages(PagesEnum pages) {
+    public void setPages(Optional<PagesEnum> pages) {
         this.pages = pages;
     }
 
     public App9Permissions pullRequests(PullRequestsEnum pullRequests) {
-        this.pullRequests = pullRequests;
+        this.pullRequests = Optional.ofNullable(pullRequests);
         return this;
     }
 
@@ -1765,16 +1765,16 @@ public class App9Permissions {
      */
     @Schema(name = "pull_requests", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_requests")
-    public PullRequestsEnum getPullRequests() {
+    public Optional<PullRequestsEnum> getPullRequests() {
         return pullRequests;
     }
 
-    public void setPullRequests(PullRequestsEnum pullRequests) {
+    public void setPullRequests(Optional<PullRequestsEnum> pullRequests) {
         this.pullRequests = pullRequests;
     }
 
     public App9Permissions repositoryHooks(RepositoryHooksEnum repositoryHooks) {
-        this.repositoryHooks = repositoryHooks;
+        this.repositoryHooks = Optional.ofNullable(repositoryHooks);
         return this;
     }
 
@@ -1784,16 +1784,16 @@ public class App9Permissions {
      */
     @Schema(name = "repository_hooks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_hooks")
-    public RepositoryHooksEnum getRepositoryHooks() {
+    public Optional<RepositoryHooksEnum> getRepositoryHooks() {
         return repositoryHooks;
     }
 
-    public void setRepositoryHooks(RepositoryHooksEnum repositoryHooks) {
+    public void setRepositoryHooks(Optional<RepositoryHooksEnum> repositoryHooks) {
         this.repositoryHooks = repositoryHooks;
     }
 
     public App9Permissions repositoryProjects(RepositoryProjectsEnum repositoryProjects) {
-        this.repositoryProjects = repositoryProjects;
+        this.repositoryProjects = Optional.ofNullable(repositoryProjects);
         return this;
     }
 
@@ -1803,16 +1803,16 @@ public class App9Permissions {
      */
     @Schema(name = "repository_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_projects")
-    public RepositoryProjectsEnum getRepositoryProjects() {
+    public Optional<RepositoryProjectsEnum> getRepositoryProjects() {
         return repositoryProjects;
     }
 
-    public void setRepositoryProjects(RepositoryProjectsEnum repositoryProjects) {
+    public void setRepositoryProjects(Optional<RepositoryProjectsEnum> repositoryProjects) {
         this.repositoryProjects = repositoryProjects;
     }
 
     public App9Permissions secretScanningAlerts(SecretScanningAlertsEnum secretScanningAlerts) {
-        this.secretScanningAlerts = secretScanningAlerts;
+        this.secretScanningAlerts = Optional.ofNullable(secretScanningAlerts);
         return this;
     }
 
@@ -1822,16 +1822,16 @@ public class App9Permissions {
      */
     @Schema(name = "secret_scanning_alerts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_alerts")
-    public SecretScanningAlertsEnum getSecretScanningAlerts() {
+    public Optional<SecretScanningAlertsEnum> getSecretScanningAlerts() {
         return secretScanningAlerts;
     }
 
-    public void setSecretScanningAlerts(SecretScanningAlertsEnum secretScanningAlerts) {
+    public void setSecretScanningAlerts(Optional<SecretScanningAlertsEnum> secretScanningAlerts) {
         this.secretScanningAlerts = secretScanningAlerts;
     }
 
     public App9Permissions secrets(SecretsEnum secrets) {
-        this.secrets = secrets;
+        this.secrets = Optional.ofNullable(secrets);
         return this;
     }
 
@@ -1841,16 +1841,16 @@ public class App9Permissions {
      */
     @Schema(name = "secrets", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secrets")
-    public SecretsEnum getSecrets() {
+    public Optional<SecretsEnum> getSecrets() {
         return secrets;
     }
 
-    public void setSecrets(SecretsEnum secrets) {
+    public void setSecrets(Optional<SecretsEnum> secrets) {
         this.secrets = secrets;
     }
 
     public App9Permissions securityEvents(SecurityEventsEnum securityEvents) {
-        this.securityEvents = securityEvents;
+        this.securityEvents = Optional.ofNullable(securityEvents);
         return this;
     }
 
@@ -1860,16 +1860,16 @@ public class App9Permissions {
      */
     @Schema(name = "security_events", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_events")
-    public SecurityEventsEnum getSecurityEvents() {
+    public Optional<SecurityEventsEnum> getSecurityEvents() {
         return securityEvents;
     }
 
-    public void setSecurityEvents(SecurityEventsEnum securityEvents) {
+    public void setSecurityEvents(Optional<SecurityEventsEnum> securityEvents) {
         this.securityEvents = securityEvents;
     }
 
     public App9Permissions securityScanningAlert(SecurityScanningAlertEnum securityScanningAlert) {
-        this.securityScanningAlert = securityScanningAlert;
+        this.securityScanningAlert = Optional.ofNullable(securityScanningAlert);
         return this;
     }
 
@@ -1879,16 +1879,16 @@ public class App9Permissions {
      */
     @Schema(name = "security_scanning_alert", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_scanning_alert")
-    public SecurityScanningAlertEnum getSecurityScanningAlert() {
+    public Optional<SecurityScanningAlertEnum> getSecurityScanningAlert() {
         return securityScanningAlert;
     }
 
-    public void setSecurityScanningAlert(SecurityScanningAlertEnum securityScanningAlert) {
+    public void setSecurityScanningAlert(Optional<SecurityScanningAlertEnum> securityScanningAlert) {
         this.securityScanningAlert = securityScanningAlert;
     }
 
     public App9Permissions singleFile(SingleFileEnum singleFile) {
-        this.singleFile = singleFile;
+        this.singleFile = Optional.ofNullable(singleFile);
         return this;
     }
 
@@ -1898,16 +1898,16 @@ public class App9Permissions {
      */
     @Schema(name = "single_file", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("single_file")
-    public SingleFileEnum getSingleFile() {
+    public Optional<SingleFileEnum> getSingleFile() {
         return singleFile;
     }
 
-    public void setSingleFile(SingleFileEnum singleFile) {
+    public void setSingleFile(Optional<SingleFileEnum> singleFile) {
         this.singleFile = singleFile;
     }
 
     public App9Permissions statuses(StatusesEnum statuses) {
-        this.statuses = statuses;
+        this.statuses = Optional.ofNullable(statuses);
         return this;
     }
 
@@ -1917,16 +1917,16 @@ public class App9Permissions {
      */
     @Schema(name = "statuses", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("statuses")
-    public StatusesEnum getStatuses() {
+    public Optional<StatusesEnum> getStatuses() {
         return statuses;
     }
 
-    public void setStatuses(StatusesEnum statuses) {
+    public void setStatuses(Optional<StatusesEnum> statuses) {
         this.statuses = statuses;
     }
 
     public App9Permissions teamDiscussions(TeamDiscussionsEnum teamDiscussions) {
-        this.teamDiscussions = teamDiscussions;
+        this.teamDiscussions = Optional.ofNullable(teamDiscussions);
         return this;
     }
 
@@ -1936,16 +1936,16 @@ public class App9Permissions {
      */
     @Schema(name = "team_discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("team_discussions")
-    public TeamDiscussionsEnum getTeamDiscussions() {
+    public Optional<TeamDiscussionsEnum> getTeamDiscussions() {
         return teamDiscussions;
     }
 
-    public void setTeamDiscussions(TeamDiscussionsEnum teamDiscussions) {
+    public void setTeamDiscussions(Optional<TeamDiscussionsEnum> teamDiscussions) {
         this.teamDiscussions = teamDiscussions;
     }
 
     public App9Permissions vulnerabilityAlerts(VulnerabilityAlertsEnum vulnerabilityAlerts) {
-        this.vulnerabilityAlerts = vulnerabilityAlerts;
+        this.vulnerabilityAlerts = Optional.ofNullable(vulnerabilityAlerts);
         return this;
     }
 
@@ -1955,16 +1955,16 @@ public class App9Permissions {
      */
     @Schema(name = "vulnerability_alerts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vulnerability_alerts")
-    public VulnerabilityAlertsEnum getVulnerabilityAlerts() {
+    public Optional<VulnerabilityAlertsEnum> getVulnerabilityAlerts() {
         return vulnerabilityAlerts;
     }
 
-    public void setVulnerabilityAlerts(VulnerabilityAlertsEnum vulnerabilityAlerts) {
+    public void setVulnerabilityAlerts(Optional<VulnerabilityAlertsEnum> vulnerabilityAlerts) {
         this.vulnerabilityAlerts = vulnerabilityAlerts;
     }
 
     public App9Permissions workflows(WorkflowsEnum workflows) {
-        this.workflows = workflows;
+        this.workflows = Optional.ofNullable(workflows);
         return this;
     }
 
@@ -1974,11 +1974,11 @@ public class App9Permissions {
      */
     @Schema(name = "workflows", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("workflows")
-    public WorkflowsEnum getWorkflows() {
+    public Optional<WorkflowsEnum> getWorkflows() {
         return workflows;
     }
 
-    public void setWorkflows(WorkflowsEnum workflows) {
+    public void setWorkflows(Optional<WorkflowsEnum> workflows) {
         this.workflows = workflows;
     }
 

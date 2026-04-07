@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsDismissReviewRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("pulls_dismiss_review_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsDismissReviewRequest {
 
@@ -55,7 +55,7 @@ public class PullsDismissReviewRequest {
         }
     }
 
-    private EventEnum event;
+    private Optional<EventEnum> event = Optional.empty();
 
     public PullsDismissReviewRequest() {
         super();
@@ -92,7 +92,7 @@ public class PullsDismissReviewRequest {
     }
 
     public PullsDismissReviewRequest event(EventEnum event) {
-        this.event = event;
+        this.event = Optional.ofNullable(event);
         return this;
     }
 
@@ -102,11 +102,11 @@ public class PullsDismissReviewRequest {
      */
     @Schema(name = "event", example = "\"DISMISS\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("event")
-    public EventEnum getEvent() {
+    public Optional<EventEnum> getEvent() {
         return event;
     }
 
-    public void setEvent(EventEnum event) {
+    public void setEvent(Optional<EventEnum> event) {
         this.event = event;
     }
 

@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GistsUpdateRequestFilesValue
@@ -14,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("gists_update_request_files_value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistsUpdateRequestFilesValue {
 
-    private String content;
+    private Optional<String> content = Optional.empty();
 
-    private String filename = null;
+    private JsonNullable<String> filename = JsonNullable.<String>undefined();
 
     public GistsUpdateRequestFilesValue content(String content) {
-        this.content = content;
+        this.content = Optional.ofNullable(content);
         return this;
     }
 
@@ -36,16 +37,16 @@ public class GistsUpdateRequestFilesValue {
             description = "The new content of the file.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content")
-    public String getContent() {
+    public Optional<String> getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Optional<String> content) {
         this.content = content;
     }
 
     public GistsUpdateRequestFilesValue filename(String filename) {
-        this.filename = filename;
+        this.filename = JsonNullable.of(filename);
         return this;
     }
 
@@ -58,11 +59,11 @@ public class GistsUpdateRequestFilesValue {
             description = "The new filename for the file.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filename")
-    public String getFilename() {
+    public JsonNullable<String> getFilename() {
         return filename;
     }
 
-    public void setFilename(String filename) {
+    public void setFilename(JsonNullable<String> filename) {
         this.filename = filename;
     }
 
@@ -76,12 +77,24 @@ public class GistsUpdateRequestFilesValue {
         }
         GistsUpdateRequestFilesValue gistsUpdateRequestFilesValue = (GistsUpdateRequestFilesValue) o;
         return Objects.equals(this.content, gistsUpdateRequestFilesValue.content)
-                && Objects.equals(this.filename, gistsUpdateRequestFilesValue.filename);
+                && equalsNullable(this.filename, gistsUpdateRequestFilesValue.filename);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(content, filename);
+        return Objects.hash(content, hashCodeNullable(filename));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

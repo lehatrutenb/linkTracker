@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposGetAllDeploymentProtectionRules200Response
@@ -17,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("repos_get_all_deployment_protection_rules_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposGetAllDeploymentProtectionRules200Response {
 
-    private Long totalCount;
+    private Optional<Long> totalCount = Optional.empty();
 
     @Valid
     private List<@Valid DeploymentProtectionRule> customDeploymentProtectionRules = new ArrayList<>();
 
     public ReposGetAllDeploymentProtectionRules200Response totalCount(Long totalCount) {
-        this.totalCount = totalCount;
+        this.totalCount = Optional.ofNullable(totalCount);
         return this;
     }
 
@@ -41,11 +40,11 @@ public class ReposGetAllDeploymentProtectionRules200Response {
             description = "The number of enabled custom deployment protection rules for this environment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_count")
-    public Long getTotalCount() {
+    public Optional<Long> getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(Long totalCount) {
+    public void setTotalCount(Optional<Long> totalCount) {
         this.totalCount = totalCount;
     }
 

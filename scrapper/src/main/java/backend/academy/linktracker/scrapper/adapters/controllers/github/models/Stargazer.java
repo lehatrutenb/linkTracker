@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,14 +18,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("stargazer")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Stargazer {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime starredAt;
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     public Stargazer() {
         super();
@@ -36,7 +36,7 @@ public class Stargazer {
      */
     public Stargazer(OffsetDateTime starredAt, NullableSimpleUser user) {
         this.starredAt = starredAt;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public Stargazer starredAt(OffsetDateTime starredAt) {
@@ -61,7 +61,7 @@ public class Stargazer {
     }
 
     public Stargazer user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -73,11 +73,11 @@ public class Stargazer {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 

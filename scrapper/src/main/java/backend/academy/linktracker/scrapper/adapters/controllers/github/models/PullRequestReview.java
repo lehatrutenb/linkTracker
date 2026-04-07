@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pull-request-review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestReview {
 
@@ -27,7 +28,7 @@ public class PullRequestReview {
 
     private String nodeId;
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     private String body;
 
@@ -40,13 +41,13 @@ public class PullRequestReview {
     private TimelineReviewedEventLinks links;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime submittedAt;
+    private Optional<OffsetDateTime> submittedAt = Optional.empty();
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
     private AuthorAssociation authorAssociation;
 
@@ -70,13 +71,13 @@ public class PullRequestReview {
             AuthorAssociation authorAssociation) {
         this.id = id;
         this.nodeId = nodeId;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.body = body;
         this.state = state;
         this.htmlUrl = htmlUrl;
         this.pullRequestUrl = pullRequestUrl;
         this.links = links;
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         this.authorAssociation = authorAssociation;
     }
 
@@ -125,7 +126,7 @@ public class PullRequestReview {
     }
 
     public PullRequestReview user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -137,11 +138,11 @@ public class PullRequestReview {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
@@ -259,7 +260,7 @@ public class PullRequestReview {
     }
 
     public PullRequestReview submittedAt(OffsetDateTime submittedAt) {
-        this.submittedAt = submittedAt;
+        this.submittedAt = Optional.ofNullable(submittedAt);
         return this;
     }
 
@@ -270,16 +271,16 @@ public class PullRequestReview {
     @Valid
     @Schema(name = "submitted_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("submitted_at")
-    public OffsetDateTime getSubmittedAt() {
+    public Optional<OffsetDateTime> getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(OffsetDateTime submittedAt) {
+    public void setSubmittedAt(Optional<OffsetDateTime> submittedAt) {
         this.submittedAt = submittedAt;
     }
 
     public PullRequestReview commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -295,16 +296,16 @@ public class PullRequestReview {
                     "A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public PullRequestReview bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -314,16 +315,16 @@ public class PullRequestReview {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public PullRequestReview bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -333,11 +334,11 @@ public class PullRequestReview {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 

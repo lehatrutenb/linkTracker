@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,15 +20,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("enterprise")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Enterprise implements IntegrationOwner {
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI htmlUrl;
 
-    private URI websiteUrl = null;
+    private JsonNullable<URI> websiteUrl = JsonNullable.<URI>undefined();
 
     private Long id;
 
@@ -38,10 +39,10 @@ public class Enterprise implements IntegrationOwner {
     private String slug;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private URI avatarUrl;
 
@@ -66,13 +67,13 @@ public class Enterprise implements IntegrationOwner {
         this.nodeId = nodeId;
         this.name = name;
         this.slug = slug;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.avatarUrl = avatarUrl;
     }
 
     public Enterprise description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -85,11 +86,11 @@ public class Enterprise implements IntegrationOwner {
             description = "A short description of the enterprise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -118,7 +119,7 @@ public class Enterprise implements IntegrationOwner {
     }
 
     public Enterprise websiteUrl(URI websiteUrl) {
-        this.websiteUrl = websiteUrl;
+        this.websiteUrl = JsonNullable.of(websiteUrl);
         return this;
     }
 
@@ -132,11 +133,11 @@ public class Enterprise implements IntegrationOwner {
             description = "The enterprise's website URL.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("website_url")
-    public URI getWebsiteUrl() {
+    public JsonNullable<URI> getWebsiteUrl() {
         return websiteUrl;
     }
 
-    public void setWebsiteUrl(URI websiteUrl) {
+    public void setWebsiteUrl(JsonNullable<URI> websiteUrl) {
         this.websiteUrl = websiteUrl;
     }
 
@@ -233,7 +234,7 @@ public class Enterprise implements IntegrationOwner {
     }
 
     public Enterprise createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -245,16 +246,16 @@ public class Enterprise implements IntegrationOwner {
     @Valid
     @Schema(name = "created_at", example = "2019-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public Enterprise updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -266,11 +267,11 @@ public class Enterprise implements IntegrationOwner {
     @Valid
     @Schema(name = "updated_at", example = "2019-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -304,9 +305,9 @@ public class Enterprise implements IntegrationOwner {
             return false;
         }
         Enterprise enterprise = (Enterprise) o;
-        return Objects.equals(this.description, enterprise.description)
+        return equalsNullable(this.description, enterprise.description)
                 && Objects.equals(this.htmlUrl, enterprise.htmlUrl)
-                && Objects.equals(this.websiteUrl, enterprise.websiteUrl)
+                && equalsNullable(this.websiteUrl, enterprise.websiteUrl)
                 && Objects.equals(this.id, enterprise.id)
                 && Objects.equals(this.nodeId, enterprise.nodeId)
                 && Objects.equals(this.name, enterprise.name)
@@ -316,9 +317,31 @@ public class Enterprise implements IntegrationOwner {
                 && Objects.equals(this.avatarUrl, enterprise.avatarUrl);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(description, htmlUrl, websiteUrl, id, nodeId, name, slug, createdAt, updatedAt, avatarUrl);
+        return Objects.hash(
+                hashCodeNullable(description),
+                htmlUrl,
+                hashCodeNullable(websiteUrl),
+                id,
+                nodeId,
+                name,
+                slug,
+                createdAt,
+                updatedAt,
+                avatarUrl);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

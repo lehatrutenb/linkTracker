@@ -7,13 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Usage metrics for Copilot Chat in the IDE.
@@ -22,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("copilot-ide-chat")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotIdeChat {
 
-    private Long totalEngagedUsers;
+    private Optional<Long> totalEngagedUsers = Optional.empty();
 
     @Valid
     private List<@Valid CopilotIdeChatEditorsInner> editors = new ArrayList<>();
 
     public CopilotIdeChat totalEngagedUsers(Long totalEngagedUsers) {
-        this.totalEngagedUsers = totalEngagedUsers;
+        this.totalEngagedUsers = Optional.ofNullable(totalEngagedUsers);
         return this;
     }
 
@@ -45,11 +39,11 @@ public class CopilotIdeChat {
             description = "Total number of users who prompted Copilot Chat in the IDE.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_engaged_users")
-    public Long getTotalEngagedUsers() {
+    public Optional<Long> getTotalEngagedUsers() {
         return totalEngagedUsers;
     }
 
-    public void setTotalEngagedUsers(Long totalEngagedUsers) {
+    public void setTotalEngagedUsers(Optional<Long> totalEngagedUsers) {
         this.totalEngagedUsers = totalEngagedUsers;
     }
 

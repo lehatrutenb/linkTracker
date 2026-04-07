@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodeScanningSarifsReceipt
@@ -16,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-sarifs-receipt")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningSarifsReceipt {
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
     public CodeScanningSarifsReceipt id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class CodeScanningSarifsReceipt {
             description = "An identifier for the upload.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public CodeScanningSarifsReceipt url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -63,11 +62,11 @@ public class CodeScanningSarifsReceipt {
             description = "The REST API URL for checking the status of the upload.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 

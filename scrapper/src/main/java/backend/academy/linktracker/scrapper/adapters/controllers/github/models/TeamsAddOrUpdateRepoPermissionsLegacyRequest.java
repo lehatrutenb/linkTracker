@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TeamsAddOrUpdateRepoPermissionsLegacyRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("teams_add_or_update_repo_permissions_legacy_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamsAddOrUpdateRepoPermissionsLegacyRequest {
 
@@ -57,10 +56,10 @@ public class TeamsAddOrUpdateRepoPermissionsLegacyRequest {
         }
     }
 
-    private PermissionEnum permission;
+    private Optional<PermissionEnum> permission = Optional.empty();
 
     public TeamsAddOrUpdateRepoPermissionsLegacyRequest permission(PermissionEnum permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -74,11 +73,11 @@ public class TeamsAddOrUpdateRepoPermissionsLegacyRequest {
                     "The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public PermissionEnum getPermission() {
+    public Optional<PermissionEnum> getPermission() {
         return permission;
     }
 
-    public void setPermission(PermissionEnum permission) {
+    public void setPermission(Optional<PermissionEnum> permission) {
         this.permission = permission;
     }
 

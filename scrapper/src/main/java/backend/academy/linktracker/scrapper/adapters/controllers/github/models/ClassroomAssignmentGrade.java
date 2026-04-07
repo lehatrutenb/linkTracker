@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Grade for a student or groups GitHub Classroom assignment
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("classroom-assignment-grade")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ClassroomAssignmentGrade {
 
@@ -39,7 +39,7 @@ public class ClassroomAssignmentGrade {
 
     private Long pointsAvailable;
 
-    private String groupName;
+    private Optional<String> groupName = Optional.empty();
 
     public ClassroomAssignmentGrade() {
         super();
@@ -299,7 +299,7 @@ public class ClassroomAssignmentGrade {
     }
 
     public ClassroomAssignmentGrade groupName(String groupName) {
-        this.groupName = groupName;
+        this.groupName = Optional.ofNullable(groupName);
         return this;
     }
 
@@ -312,11 +312,11 @@ public class ClassroomAssignmentGrade {
             description = "If a group assignment, name of the group the student is in",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("group_name")
-    public String getGroupName() {
+    public Optional<String> getGroupName() {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setGroupName(Optional<String> groupName) {
         this.groupName = groupName;
     }
 

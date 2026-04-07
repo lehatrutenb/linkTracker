@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookMemberAdded
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-member-added")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMemberAdded {
 
@@ -56,15 +57,15 @@ public class WebhookMemberAdded {
 
     private ActionEnum action;
 
-    private WebhookMemberAddedChanges changes;
+    private Optional<WebhookMemberAddedChanges> changes = Optional.empty();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private WebhooksUser member = null;
+    private JsonNullable<WebhooksUser> member = JsonNullable.<WebhooksUser>undefined();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -80,7 +81,7 @@ public class WebhookMemberAdded {
     public WebhookMemberAdded(
             ActionEnum action, WebhooksUser member, RepositoryWebhooks repository, SimpleUser sender) {
         this.action = action;
-        this.member = member;
+        this.member = JsonNullable.of(member);
         this.repository = repository;
         this.sender = sender;
     }
@@ -106,7 +107,7 @@ public class WebhookMemberAdded {
     }
 
     public WebhookMemberAdded changes(WebhookMemberAddedChanges changes) {
-        this.changes = changes;
+        this.changes = Optional.ofNullable(changes);
         return this;
     }
 
@@ -117,16 +118,16 @@ public class WebhookMemberAdded {
     @Valid
     @Schema(name = "changes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("changes")
-    public WebhookMemberAddedChanges getChanges() {
+    public Optional<WebhookMemberAddedChanges> getChanges() {
         return changes;
     }
 
-    public void setChanges(WebhookMemberAddedChanges changes) {
+    public void setChanges(Optional<WebhookMemberAddedChanges> changes) {
         this.changes = changes;
     }
 
     public WebhookMemberAdded enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -137,16 +138,16 @@ public class WebhookMemberAdded {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookMemberAdded installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -157,16 +158,16 @@ public class WebhookMemberAdded {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookMemberAdded member(WebhooksUser member) {
-        this.member = member;
+        this.member = JsonNullable.of(member);
         return this;
     }
 
@@ -178,16 +179,16 @@ public class WebhookMemberAdded {
     @Valid
     @Schema(name = "member", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("member")
-    public WebhooksUser getMember() {
+    public JsonNullable<WebhooksUser> getMember() {
         return member;
     }
 
-    public void setMember(WebhooksUser member) {
+    public void setMember(JsonNullable<WebhooksUser> member) {
         this.member = member;
     }
 
     public WebhookMemberAdded organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -198,11 +199,11 @@ public class WebhookMemberAdded {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

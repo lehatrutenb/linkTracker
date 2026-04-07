@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * IssuesReprioritizeSubIssueRequest
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("issues_reprioritize_sub_issue_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesReprioritizeSubIssueRequest {
 
     private Long subIssueId;
 
-    private Long afterId;
+    private Optional<Long> afterId = Optional.empty();
 
-    private Long beforeId;
+    private Optional<Long> beforeId = Optional.empty();
 
     public IssuesReprioritizeSubIssueRequest() {
         super();
@@ -59,7 +59,7 @@ public class IssuesReprioritizeSubIssueRequest {
     }
 
     public IssuesReprioritizeSubIssueRequest afterId(Long afterId) {
-        this.afterId = afterId;
+        this.afterId = Optional.ofNullable(afterId);
         return this;
     }
 
@@ -73,16 +73,16 @@ public class IssuesReprioritizeSubIssueRequest {
                     "The id of the sub-issue to be prioritized after (either positional argument after OR before should be specified).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_id")
-    public Long getAfterId() {
+    public Optional<Long> getAfterId() {
         return afterId;
     }
 
-    public void setAfterId(Long afterId) {
+    public void setAfterId(Optional<Long> afterId) {
         this.afterId = afterId;
     }
 
     public IssuesReprioritizeSubIssueRequest beforeId(Long beforeId) {
-        this.beforeId = beforeId;
+        this.beforeId = Optional.ofNullable(beforeId);
         return this;
     }
 
@@ -96,11 +96,11 @@ public class IssuesReprioritizeSubIssueRequest {
                     "The id of the sub-issue to be prioritized before (either positional argument after OR before should be specified).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("before_id")
-    public Long getBeforeId() {
+    public Optional<Long> getBeforeId() {
         return beforeId;
     }
 
-    public void setBeforeId(Long beforeId) {
+    public void setBeforeId(Optional<Long> beforeId) {
         this.beforeId = beforeId;
     }
 

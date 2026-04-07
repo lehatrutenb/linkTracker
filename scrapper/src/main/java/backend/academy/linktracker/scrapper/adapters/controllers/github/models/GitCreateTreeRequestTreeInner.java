@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GitCreateTreeRequestTreeInner
@@ -16,11 +17,11 @@ import java.util.Objects;
 @JsonTypeName("git_create_tree_request_tree_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateTreeRequestTreeInner {
 
-    private String path;
+    private Optional<String> path = Optional.empty();
 
     /**
      * The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
@@ -63,7 +64,7 @@ public class GitCreateTreeRequestTreeInner {
         }
     }
 
-    private ModeEnum mode;
+    private Optional<ModeEnum> mode = Optional.empty();
 
     /**
      * Either `blob`, `tree`, or `commit`.
@@ -102,14 +103,14 @@ public class GitCreateTreeRequestTreeInner {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
-    private String sha = null;
+    private JsonNullable<String> sha = JsonNullable.<String>undefined();
 
-    private String content;
+    private Optional<String> content = Optional.empty();
 
     public GitCreateTreeRequestTreeInner path(String path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -122,16 +123,16 @@ public class GitCreateTreeRequestTreeInner {
             description = "The file referenced in the tree.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public Optional<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(Optional<String> path) {
         this.path = path;
     }
 
     public GitCreateTreeRequestTreeInner mode(ModeEnum mode) {
-        this.mode = mode;
+        this.mode = Optional.ofNullable(mode);
         return this;
     }
 
@@ -145,16 +146,16 @@ public class GitCreateTreeRequestTreeInner {
                     "The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mode")
-    public ModeEnum getMode() {
+    public Optional<ModeEnum> getMode() {
         return mode;
     }
 
-    public void setMode(ModeEnum mode) {
+    public void setMode(Optional<ModeEnum> mode) {
         this.mode = mode;
     }
 
     public GitCreateTreeRequestTreeInner type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -167,16 +168,16 @@ public class GitCreateTreeRequestTreeInner {
             description = "Either `blob`, `tree`, or `commit`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
     public GitCreateTreeRequestTreeInner sha(String sha) {
-        this.sha = sha;
+        this.sha = JsonNullable.of(sha);
         return this;
     }
 
@@ -190,16 +191,16 @@ public class GitCreateTreeRequestTreeInner {
                     "The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.      **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public JsonNullable<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(JsonNullable<String> sha) {
         this.sha = sha;
     }
 
     public GitCreateTreeRequestTreeInner content(String content) {
-        this.content = content;
+        this.content = Optional.ofNullable(content);
         return this;
     }
 
@@ -213,11 +214,11 @@ public class GitCreateTreeRequestTreeInner {
                     "The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.      **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content")
-    public String getContent() {
+    public Optional<String> getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Optional<String> content) {
         this.content = content;
     }
 
@@ -233,13 +234,25 @@ public class GitCreateTreeRequestTreeInner {
         return Objects.equals(this.path, gitCreateTreeRequestTreeInner.path)
                 && Objects.equals(this.mode, gitCreateTreeRequestTreeInner.mode)
                 && Objects.equals(this.type, gitCreateTreeRequestTreeInner.type)
-                && Objects.equals(this.sha, gitCreateTreeRequestTreeInner.sha)
+                && equalsNullable(this.sha, gitCreateTreeRequestTreeInner.sha)
                 && Objects.equals(this.content, gitCreateTreeRequestTreeInner.content);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(path, mode, type, sha, content);
+        return Objects.hash(path, mode, type, hashCodeNullable(sha), content);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

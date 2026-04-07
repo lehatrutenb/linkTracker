@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AppsListReposAccessibleToInstallation200Response
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("apps_list_repos_accessible_to_installation_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AppsListReposAccessibleToInstallation200Response {
 
@@ -26,7 +26,7 @@ public class AppsListReposAccessibleToInstallation200Response {
     @Valid
     private List<Repository> repositories = new ArrayList<>();
 
-    private String repositorySelection;
+    private Optional<String> repositorySelection = Optional.empty();
 
     public AppsListReposAccessibleToInstallation200Response() {
         super();
@@ -90,7 +90,7 @@ public class AppsListReposAccessibleToInstallation200Response {
     }
 
     public AppsListReposAccessibleToInstallation200Response repositorySelection(String repositorySelection) {
-        this.repositorySelection = repositorySelection;
+        this.repositorySelection = Optional.ofNullable(repositorySelection);
         return this;
     }
 
@@ -100,11 +100,11 @@ public class AppsListReposAccessibleToInstallation200Response {
      */
     @Schema(name = "repository_selection", example = "selected", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_selection")
-    public String getRepositorySelection() {
+    public Optional<String> getRepositorySelection() {
         return repositorySelection;
     }
 
-    public void setRepositorySelection(String repositorySelection) {
+    public void setRepositorySelection(Optional<String> repositorySelection) {
         this.repositorySelection = repositorySelection;
     }
 

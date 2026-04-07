@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Blob
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("blob")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Blob {
 
@@ -29,11 +30,11 @@ public class Blob {
 
     private String sha;
 
-    private Long size = null;
+    private JsonNullable<Long> size = JsonNullable.<Long>undefined();
 
     private String nodeId;
 
-    private String highlightedContent;
+    private Optional<String> highlightedContent = Optional.empty();
 
     public Blob() {
         super();
@@ -47,7 +48,7 @@ public class Blob {
         this.encoding = encoding;
         this.url = url;
         this.sha = sha;
-        this.size = size;
+        this.size = JsonNullable.of(size);
         this.nodeId = nodeId;
     }
 
@@ -133,7 +134,7 @@ public class Blob {
     }
 
     public Blob size(Long size) {
-        this.size = size;
+        this.size = JsonNullable.of(size);
         return this;
     }
 
@@ -144,11 +145,11 @@ public class Blob {
     @NotNull
     @Schema(name = "size", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public JsonNullable<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(JsonNullable<Long> size) {
         this.size = size;
     }
 
@@ -173,7 +174,7 @@ public class Blob {
     }
 
     public Blob highlightedContent(String highlightedContent) {
-        this.highlightedContent = highlightedContent;
+        this.highlightedContent = Optional.ofNullable(highlightedContent);
         return this;
     }
 
@@ -183,11 +184,11 @@ public class Blob {
      */
     @Schema(name = "highlighted_content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("highlighted_content")
-    public String getHighlightedContent() {
+    public Optional<String> getHighlightedContent() {
         return highlightedContent;
     }
 
-    public void setHighlightedContent(String highlightedContent) {
+    public void setHighlightedContent(Optional<String> highlightedContent) {
         this.highlightedContent = highlightedContent;
     }
 

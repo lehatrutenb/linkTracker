@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("organization-full")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationFull {
 
@@ -45,21 +47,21 @@ public class OrganizationFull {
 
     private String avatarUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String company;
+    private Optional<String> company = Optional.empty();
 
-    private URI blog;
+    private Optional<URI> blog = Optional.empty();
 
-    private String location;
+    private Optional<String> location = Optional.empty();
 
-    private String email;
+    private Optional<@jakarta.validation.constraints.Email String> email = Optional.empty();
 
-    private String twitterUsername = null;
+    private JsonNullable<String> twitterUsername = JsonNullable.<String>undefined();
 
-    private Boolean isVerified;
+    private Optional<Boolean> isVerified = Optional.empty();
 
     private Boolean hasOrganizationProjects;
 
@@ -77,81 +79,81 @@ public class OrganizationFull {
 
     private String type;
 
-    private Long totalPrivateRepos;
+    private Optional<Long> totalPrivateRepos = Optional.empty();
 
-    private Long ownedPrivateRepos;
+    private Optional<Long> ownedPrivateRepos = Optional.empty();
 
-    private Long privateGists = null;
+    private JsonNullable<Long> privateGists = JsonNullable.<Long>undefined();
 
-    private Long diskUsage = null;
+    private JsonNullable<Long> diskUsage = JsonNullable.<Long>undefined();
 
-    private Long collaborators = null;
+    private JsonNullable<Long> collaborators = JsonNullable.<Long>undefined();
 
-    private String billingEmail = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> billingEmail = JsonNullable.<String>undefined();
 
-    private OrganizationFullPlan plan;
+    private Optional<OrganizationFullPlan> plan = Optional.empty();
 
-    private String defaultRepositoryPermission = null;
+    private JsonNullable<String> defaultRepositoryPermission = JsonNullable.<String>undefined();
 
-    private String defaultRepositoryBranch = null;
+    private JsonNullable<String> defaultRepositoryBranch = JsonNullable.<String>undefined();
 
-    private Boolean membersCanCreateRepositories = null;
+    private JsonNullable<Boolean> membersCanCreateRepositories = JsonNullable.<Boolean>undefined();
 
-    private Boolean twoFactorRequirementEnabled = null;
+    private JsonNullable<Boolean> twoFactorRequirementEnabled = JsonNullable.<Boolean>undefined();
 
-    private String membersAllowedRepositoryCreationType;
+    private Optional<String> membersAllowedRepositoryCreationType = Optional.empty();
 
-    private Boolean membersCanCreatePublicRepositories;
+    private Optional<Boolean> membersCanCreatePublicRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePrivateRepositories;
+    private Optional<Boolean> membersCanCreatePrivateRepositories = Optional.empty();
 
-    private Boolean membersCanCreateInternalRepositories;
+    private Optional<Boolean> membersCanCreateInternalRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePages;
+    private Optional<Boolean> membersCanCreatePages = Optional.empty();
 
-    private Boolean membersCanCreatePublicPages;
+    private Optional<Boolean> membersCanCreatePublicPages = Optional.empty();
 
-    private Boolean membersCanCreatePrivatePages;
+    private Optional<Boolean> membersCanCreatePrivatePages = Optional.empty();
 
-    private Boolean membersCanDeleteRepositories;
+    private Optional<Boolean> membersCanDeleteRepositories = Optional.empty();
 
-    private Boolean membersCanChangeRepoVisibility;
+    private Optional<Boolean> membersCanChangeRepoVisibility = Optional.empty();
 
-    private Boolean membersCanInviteOutsideCollaborators;
+    private Optional<Boolean> membersCanInviteOutsideCollaborators = Optional.empty();
 
-    private Boolean membersCanDeleteIssues;
+    private Optional<Boolean> membersCanDeleteIssues = Optional.empty();
 
-    private Boolean displayCommenterFullNameSettingEnabled;
+    private Optional<Boolean> displayCommenterFullNameSettingEnabled = Optional.empty();
 
-    private Boolean readersCanCreateDiscussions;
+    private Optional<Boolean> readersCanCreateDiscussions = Optional.empty();
 
-    private Boolean membersCanCreateTeams;
+    private Optional<Boolean> membersCanCreateTeams = Optional.empty();
 
-    private Boolean membersCanViewDependencyInsights;
+    private Optional<Boolean> membersCanViewDependencyInsights = Optional.empty();
 
-    private Boolean membersCanForkPrivateRepositories = null;
+    private JsonNullable<Boolean> membersCanForkPrivateRepositories = JsonNullable.<Boolean>undefined();
 
-    private Boolean webCommitSignoffRequired;
-
-    @Deprecated
-    private Boolean advancedSecurityEnabledForNewRepositories;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
 
     @Deprecated
-    private Boolean dependabotAlertsEnabledForNewRepositories;
+    private Optional<Boolean> advancedSecurityEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean dependabotSecurityUpdatesEnabledForNewRepositories;
+    private Optional<Boolean> dependabotAlertsEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean dependencyGraphEnabledForNewRepositories;
+    private Optional<Boolean> dependabotSecurityUpdatesEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean secretScanningEnabledForNewRepositories;
+    private Optional<Boolean> dependencyGraphEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean secretScanningPushProtectionEnabledForNewRepositories;
+    private Optional<Boolean> secretScanningEnabledForNewRepositories = Optional.empty();
 
-    private String secretScanningPushProtectionCustomLink = null;
+    @Deprecated
+    private Optional<Boolean> secretScanningPushProtectionEnabledForNewRepositories = Optional.empty();
+
+    private JsonNullable<String> secretScanningPushProtectionCustomLink = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -160,9 +162,9 @@ public class OrganizationFull {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime archivedAt = null;
+    private JsonNullable<OffsetDateTime> archivedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean deployKeysEnabledForRepositories;
+    private Optional<Boolean> deployKeysEnabledForRepositories = Optional.empty();
 
     public OrganizationFull() {
         super();
@@ -206,7 +208,7 @@ public class OrganizationFull {
         this.membersUrl = membersUrl;
         this.publicMembersUrl = publicMembersUrl;
         this.avatarUrl = avatarUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.hasOrganizationProjects = hasOrganizationProjects;
         this.hasRepositoryProjects = hasRepositoryProjects;
         this.publicRepos = publicRepos;
@@ -217,7 +219,7 @@ public class OrganizationFull {
         this.type = type;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
     }
 
     public OrganizationFull login(String login) {
@@ -465,7 +467,7 @@ public class OrganizationFull {
     }
 
     public OrganizationFull description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -476,16 +478,16 @@ public class OrganizationFull {
     @NotNull
     @Schema(name = "description", example = "A great organization", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public OrganizationFull name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -495,16 +497,16 @@ public class OrganizationFull {
      */
     @Schema(name = "name", example = "github", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public OrganizationFull company(String company) {
-        this.company = company;
+        this.company = Optional.ofNullable(company);
         return this;
     }
 
@@ -514,16 +516,16 @@ public class OrganizationFull {
      */
     @Schema(name = "company", example = "GitHub", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public Optional<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Optional<String> company) {
         this.company = company;
     }
 
     public OrganizationFull blog(URI blog) {
-        this.blog = blog;
+        this.blog = Optional.ofNullable(blog);
         return this;
     }
 
@@ -534,16 +536,16 @@ public class OrganizationFull {
     @Valid
     @Schema(name = "blog", example = "https://github.com/blog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blog")
-    public URI getBlog() {
+    public Optional<URI> getBlog() {
         return blog;
     }
 
-    public void setBlog(URI blog) {
+    public void setBlog(Optional<URI> blog) {
         this.blog = blog;
     }
 
     public OrganizationFull location(String location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -553,16 +555,16 @@ public class OrganizationFull {
      */
     @Schema(name = "location", example = "San Francisco", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public Optional<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Optional<String> location) {
         this.location = location;
     }
 
     public OrganizationFull email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -570,19 +572,18 @@ public class OrganizationFull {
      * Get email
      * @return email
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "email", example = "octocat@github.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public OrganizationFull twitterUsername(String twitterUsername) {
-        this.twitterUsername = twitterUsername;
+        this.twitterUsername = JsonNullable.of(twitterUsername);
         return this;
     }
 
@@ -592,16 +593,16 @@ public class OrganizationFull {
      */
     @Schema(name = "twitter_username", example = "github", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("twitter_username")
-    public String getTwitterUsername() {
+    public JsonNullable<String> getTwitterUsername() {
         return twitterUsername;
     }
 
-    public void setTwitterUsername(String twitterUsername) {
+    public void setTwitterUsername(JsonNullable<String> twitterUsername) {
         this.twitterUsername = twitterUsername;
     }
 
     public OrganizationFull isVerified(Boolean isVerified) {
-        this.isVerified = isVerified;
+        this.isVerified = Optional.ofNullable(isVerified);
         return this;
     }
 
@@ -611,11 +612,11 @@ public class OrganizationFull {
      */
     @Schema(name = "is_verified", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_verified")
-    public Boolean getIsVerified() {
+    public Optional<Boolean> getIsVerified() {
         return isVerified;
     }
 
-    public void setIsVerified(Boolean isVerified) {
+    public void setIsVerified(Optional<Boolean> isVerified) {
         this.isVerified = isVerified;
     }
 
@@ -781,7 +782,7 @@ public class OrganizationFull {
     }
 
     public OrganizationFull totalPrivateRepos(Long totalPrivateRepos) {
-        this.totalPrivateRepos = totalPrivateRepos;
+        this.totalPrivateRepos = Optional.ofNullable(totalPrivateRepos);
         return this;
     }
 
@@ -791,16 +792,16 @@ public class OrganizationFull {
      */
     @Schema(name = "total_private_repos", example = "100", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_private_repos")
-    public Long getTotalPrivateRepos() {
+    public Optional<Long> getTotalPrivateRepos() {
         return totalPrivateRepos;
     }
 
-    public void setTotalPrivateRepos(Long totalPrivateRepos) {
+    public void setTotalPrivateRepos(Optional<Long> totalPrivateRepos) {
         this.totalPrivateRepos = totalPrivateRepos;
     }
 
     public OrganizationFull ownedPrivateRepos(Long ownedPrivateRepos) {
-        this.ownedPrivateRepos = ownedPrivateRepos;
+        this.ownedPrivateRepos = Optional.ofNullable(ownedPrivateRepos);
         return this;
     }
 
@@ -810,16 +811,16 @@ public class OrganizationFull {
      */
     @Schema(name = "owned_private_repos", example = "100", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owned_private_repos")
-    public Long getOwnedPrivateRepos() {
+    public Optional<Long> getOwnedPrivateRepos() {
         return ownedPrivateRepos;
     }
 
-    public void setOwnedPrivateRepos(Long ownedPrivateRepos) {
+    public void setOwnedPrivateRepos(Optional<Long> ownedPrivateRepos) {
         this.ownedPrivateRepos = ownedPrivateRepos;
     }
 
     public OrganizationFull privateGists(Long privateGists) {
-        this.privateGists = privateGists;
+        this.privateGists = JsonNullable.of(privateGists);
         return this;
     }
 
@@ -829,16 +830,16 @@ public class OrganizationFull {
      */
     @Schema(name = "private_gists", example = "81", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private_gists")
-    public Long getPrivateGists() {
+    public JsonNullable<Long> getPrivateGists() {
         return privateGists;
     }
 
-    public void setPrivateGists(Long privateGists) {
+    public void setPrivateGists(JsonNullable<Long> privateGists) {
         this.privateGists = privateGists;
     }
 
     public OrganizationFull diskUsage(Long diskUsage) {
-        this.diskUsage = diskUsage;
+        this.diskUsage = JsonNullable.of(diskUsage);
         return this;
     }
 
@@ -848,16 +849,16 @@ public class OrganizationFull {
      */
     @Schema(name = "disk_usage", example = "10000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disk_usage")
-    public Long getDiskUsage() {
+    public JsonNullable<Long> getDiskUsage() {
         return diskUsage;
     }
 
-    public void setDiskUsage(Long diskUsage) {
+    public void setDiskUsage(JsonNullable<Long> diskUsage) {
         this.diskUsage = diskUsage;
     }
 
     public OrganizationFull collaborators(Long collaborators) {
-        this.collaborators = collaborators;
+        this.collaborators = JsonNullable.of(collaborators);
         return this;
     }
 
@@ -872,16 +873,16 @@ public class OrganizationFull {
                     "The number of collaborators on private repositories.  This field may be null if the number of private repositories is over 50,000.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators")
-    public Long getCollaborators() {
+    public JsonNullable<Long> getCollaborators() {
         return collaborators;
     }
 
-    public void setCollaborators(Long collaborators) {
+    public void setCollaborators(JsonNullable<Long> collaborators) {
         this.collaborators = collaborators;
     }
 
     public OrganizationFull billingEmail(String billingEmail) {
-        this.billingEmail = billingEmail;
+        this.billingEmail = JsonNullable.of(billingEmail);
         return this;
     }
 
@@ -889,19 +890,18 @@ public class OrganizationFull {
      * Get billingEmail
      * @return billingEmail
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "billing_email", example = "org@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("billing_email")
-    public String getBillingEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getBillingEmail() {
         return billingEmail;
     }
 
-    public void setBillingEmail(String billingEmail) {
+    public void setBillingEmail(JsonNullable<String> billingEmail) {
         this.billingEmail = billingEmail;
     }
 
     public OrganizationFull plan(OrganizationFullPlan plan) {
-        this.plan = plan;
+        this.plan = Optional.ofNullable(plan);
         return this;
     }
 
@@ -912,16 +912,16 @@ public class OrganizationFull {
     @Valid
     @Schema(name = "plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan")
-    public OrganizationFullPlan getPlan() {
+    public Optional<OrganizationFullPlan> getPlan() {
         return plan;
     }
 
-    public void setPlan(OrganizationFullPlan plan) {
+    public void setPlan(Optional<OrganizationFullPlan> plan) {
         this.plan = plan;
     }
 
     public OrganizationFull defaultRepositoryPermission(String defaultRepositoryPermission) {
-        this.defaultRepositoryPermission = defaultRepositoryPermission;
+        this.defaultRepositoryPermission = JsonNullable.of(defaultRepositoryPermission);
         return this;
     }
 
@@ -931,16 +931,16 @@ public class OrganizationFull {
      */
     @Schema(name = "default_repository_permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_repository_permission")
-    public String getDefaultRepositoryPermission() {
+    public JsonNullable<String> getDefaultRepositoryPermission() {
         return defaultRepositoryPermission;
     }
 
-    public void setDefaultRepositoryPermission(String defaultRepositoryPermission) {
+    public void setDefaultRepositoryPermission(JsonNullable<String> defaultRepositoryPermission) {
         this.defaultRepositoryPermission = defaultRepositoryPermission;
     }
 
     public OrganizationFull defaultRepositoryBranch(String defaultRepositoryBranch) {
-        this.defaultRepositoryBranch = defaultRepositoryBranch;
+        this.defaultRepositoryBranch = JsonNullable.of(defaultRepositoryBranch);
         return this;
     }
 
@@ -954,16 +954,16 @@ public class OrganizationFull {
             description = "The default branch for repositories created in this organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_repository_branch")
-    public String getDefaultRepositoryBranch() {
+    public JsonNullable<String> getDefaultRepositoryBranch() {
         return defaultRepositoryBranch;
     }
 
-    public void setDefaultRepositoryBranch(String defaultRepositoryBranch) {
+    public void setDefaultRepositoryBranch(JsonNullable<String> defaultRepositoryBranch) {
         this.defaultRepositoryBranch = defaultRepositoryBranch;
     }
 
     public OrganizationFull membersCanCreateRepositories(Boolean membersCanCreateRepositories) {
-        this.membersCanCreateRepositories = membersCanCreateRepositories;
+        this.membersCanCreateRepositories = JsonNullable.of(membersCanCreateRepositories);
         return this;
     }
 
@@ -973,16 +973,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_create_repositories", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_repositories")
-    public Boolean getMembersCanCreateRepositories() {
+    public JsonNullable<Boolean> getMembersCanCreateRepositories() {
         return membersCanCreateRepositories;
     }
 
-    public void setMembersCanCreateRepositories(Boolean membersCanCreateRepositories) {
+    public void setMembersCanCreateRepositories(JsonNullable<Boolean> membersCanCreateRepositories) {
         this.membersCanCreateRepositories = membersCanCreateRepositories;
     }
 
     public OrganizationFull twoFactorRequirementEnabled(Boolean twoFactorRequirementEnabled) {
-        this.twoFactorRequirementEnabled = twoFactorRequirementEnabled;
+        this.twoFactorRequirementEnabled = JsonNullable.of(twoFactorRequirementEnabled);
         return this;
     }
 
@@ -992,16 +992,16 @@ public class OrganizationFull {
      */
     @Schema(name = "two_factor_requirement_enabled", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("two_factor_requirement_enabled")
-    public Boolean getTwoFactorRequirementEnabled() {
+    public JsonNullable<Boolean> getTwoFactorRequirementEnabled() {
         return twoFactorRequirementEnabled;
     }
 
-    public void setTwoFactorRequirementEnabled(Boolean twoFactorRequirementEnabled) {
+    public void setTwoFactorRequirementEnabled(JsonNullable<Boolean> twoFactorRequirementEnabled) {
         this.twoFactorRequirementEnabled = twoFactorRequirementEnabled;
     }
 
     public OrganizationFull membersAllowedRepositoryCreationType(String membersAllowedRepositoryCreationType) {
-        this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
+        this.membersAllowedRepositoryCreationType = Optional.ofNullable(membersAllowedRepositoryCreationType);
         return this;
     }
 
@@ -1014,16 +1014,16 @@ public class OrganizationFull {
             example = "all",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_allowed_repository_creation_type")
-    public String getMembersAllowedRepositoryCreationType() {
+    public Optional<String> getMembersAllowedRepositoryCreationType() {
         return membersAllowedRepositoryCreationType;
     }
 
-    public void setMembersAllowedRepositoryCreationType(String membersAllowedRepositoryCreationType) {
+    public void setMembersAllowedRepositoryCreationType(Optional<String> membersAllowedRepositoryCreationType) {
         this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
     }
 
     public OrganizationFull membersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
-        this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
+        this.membersCanCreatePublicRepositories = Optional.ofNullable(membersCanCreatePublicRepositories);
         return this;
     }
 
@@ -1036,16 +1036,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_repositories")
-    public Boolean getMembersCanCreatePublicRepositories() {
+    public Optional<Boolean> getMembersCanCreatePublicRepositories() {
         return membersCanCreatePublicRepositories;
     }
 
-    public void setMembersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
+    public void setMembersCanCreatePublicRepositories(Optional<Boolean> membersCanCreatePublicRepositories) {
         this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
     }
 
     public OrganizationFull membersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
-        this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
+        this.membersCanCreatePrivateRepositories = Optional.ofNullable(membersCanCreatePrivateRepositories);
         return this;
     }
 
@@ -1058,16 +1058,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_repositories")
-    public Boolean getMembersCanCreatePrivateRepositories() {
+    public Optional<Boolean> getMembersCanCreatePrivateRepositories() {
         return membersCanCreatePrivateRepositories;
     }
 
-    public void setMembersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
+    public void setMembersCanCreatePrivateRepositories(Optional<Boolean> membersCanCreatePrivateRepositories) {
         this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
     }
 
     public OrganizationFull membersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
-        this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
+        this.membersCanCreateInternalRepositories = Optional.ofNullable(membersCanCreateInternalRepositories);
         return this;
     }
 
@@ -1080,16 +1080,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_internal_repositories")
-    public Boolean getMembersCanCreateInternalRepositories() {
+    public Optional<Boolean> getMembersCanCreateInternalRepositories() {
         return membersCanCreateInternalRepositories;
     }
 
-    public void setMembersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
+    public void setMembersCanCreateInternalRepositories(Optional<Boolean> membersCanCreateInternalRepositories) {
         this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
     }
 
     public OrganizationFull membersCanCreatePages(Boolean membersCanCreatePages) {
-        this.membersCanCreatePages = membersCanCreatePages;
+        this.membersCanCreatePages = Optional.ofNullable(membersCanCreatePages);
         return this;
     }
 
@@ -1099,16 +1099,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_create_pages", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_pages")
-    public Boolean getMembersCanCreatePages() {
+    public Optional<Boolean> getMembersCanCreatePages() {
         return membersCanCreatePages;
     }
 
-    public void setMembersCanCreatePages(Boolean membersCanCreatePages) {
+    public void setMembersCanCreatePages(Optional<Boolean> membersCanCreatePages) {
         this.membersCanCreatePages = membersCanCreatePages;
     }
 
     public OrganizationFull membersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
-        this.membersCanCreatePublicPages = membersCanCreatePublicPages;
+        this.membersCanCreatePublicPages = Optional.ofNullable(membersCanCreatePublicPages);
         return this;
     }
 
@@ -1118,16 +1118,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_create_public_pages", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_pages")
-    public Boolean getMembersCanCreatePublicPages() {
+    public Optional<Boolean> getMembersCanCreatePublicPages() {
         return membersCanCreatePublicPages;
     }
 
-    public void setMembersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
+    public void setMembersCanCreatePublicPages(Optional<Boolean> membersCanCreatePublicPages) {
         this.membersCanCreatePublicPages = membersCanCreatePublicPages;
     }
 
     public OrganizationFull membersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
-        this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
+        this.membersCanCreatePrivatePages = Optional.ofNullable(membersCanCreatePrivatePages);
         return this;
     }
 
@@ -1140,16 +1140,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_pages")
-    public Boolean getMembersCanCreatePrivatePages() {
+    public Optional<Boolean> getMembersCanCreatePrivatePages() {
         return membersCanCreatePrivatePages;
     }
 
-    public void setMembersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
+    public void setMembersCanCreatePrivatePages(Optional<Boolean> membersCanCreatePrivatePages) {
         this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
     }
 
     public OrganizationFull membersCanDeleteRepositories(Boolean membersCanDeleteRepositories) {
-        this.membersCanDeleteRepositories = membersCanDeleteRepositories;
+        this.membersCanDeleteRepositories = Optional.ofNullable(membersCanDeleteRepositories);
         return this;
     }
 
@@ -1159,16 +1159,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_delete_repositories", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_delete_repositories")
-    public Boolean getMembersCanDeleteRepositories() {
+    public Optional<Boolean> getMembersCanDeleteRepositories() {
         return membersCanDeleteRepositories;
     }
 
-    public void setMembersCanDeleteRepositories(Boolean membersCanDeleteRepositories) {
+    public void setMembersCanDeleteRepositories(Optional<Boolean> membersCanDeleteRepositories) {
         this.membersCanDeleteRepositories = membersCanDeleteRepositories;
     }
 
     public OrganizationFull membersCanChangeRepoVisibility(Boolean membersCanChangeRepoVisibility) {
-        this.membersCanChangeRepoVisibility = membersCanChangeRepoVisibility;
+        this.membersCanChangeRepoVisibility = Optional.ofNullable(membersCanChangeRepoVisibility);
         return this;
     }
 
@@ -1181,16 +1181,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_change_repo_visibility")
-    public Boolean getMembersCanChangeRepoVisibility() {
+    public Optional<Boolean> getMembersCanChangeRepoVisibility() {
         return membersCanChangeRepoVisibility;
     }
 
-    public void setMembersCanChangeRepoVisibility(Boolean membersCanChangeRepoVisibility) {
+    public void setMembersCanChangeRepoVisibility(Optional<Boolean> membersCanChangeRepoVisibility) {
         this.membersCanChangeRepoVisibility = membersCanChangeRepoVisibility;
     }
 
     public OrganizationFull membersCanInviteOutsideCollaborators(Boolean membersCanInviteOutsideCollaborators) {
-        this.membersCanInviteOutsideCollaborators = membersCanInviteOutsideCollaborators;
+        this.membersCanInviteOutsideCollaborators = Optional.ofNullable(membersCanInviteOutsideCollaborators);
         return this;
     }
 
@@ -1203,16 +1203,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_invite_outside_collaborators")
-    public Boolean getMembersCanInviteOutsideCollaborators() {
+    public Optional<Boolean> getMembersCanInviteOutsideCollaborators() {
         return membersCanInviteOutsideCollaborators;
     }
 
-    public void setMembersCanInviteOutsideCollaborators(Boolean membersCanInviteOutsideCollaborators) {
+    public void setMembersCanInviteOutsideCollaborators(Optional<Boolean> membersCanInviteOutsideCollaborators) {
         this.membersCanInviteOutsideCollaborators = membersCanInviteOutsideCollaborators;
     }
 
     public OrganizationFull membersCanDeleteIssues(Boolean membersCanDeleteIssues) {
-        this.membersCanDeleteIssues = membersCanDeleteIssues;
+        this.membersCanDeleteIssues = Optional.ofNullable(membersCanDeleteIssues);
         return this;
     }
 
@@ -1222,16 +1222,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_delete_issues", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_delete_issues")
-    public Boolean getMembersCanDeleteIssues() {
+    public Optional<Boolean> getMembersCanDeleteIssues() {
         return membersCanDeleteIssues;
     }
 
-    public void setMembersCanDeleteIssues(Boolean membersCanDeleteIssues) {
+    public void setMembersCanDeleteIssues(Optional<Boolean> membersCanDeleteIssues) {
         this.membersCanDeleteIssues = membersCanDeleteIssues;
     }
 
     public OrganizationFull displayCommenterFullNameSettingEnabled(Boolean displayCommenterFullNameSettingEnabled) {
-        this.displayCommenterFullNameSettingEnabled = displayCommenterFullNameSettingEnabled;
+        this.displayCommenterFullNameSettingEnabled = Optional.ofNullable(displayCommenterFullNameSettingEnabled);
         return this;
     }
 
@@ -1244,16 +1244,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_commenter_full_name_setting_enabled")
-    public Boolean getDisplayCommenterFullNameSettingEnabled() {
+    public Optional<Boolean> getDisplayCommenterFullNameSettingEnabled() {
         return displayCommenterFullNameSettingEnabled;
     }
 
-    public void setDisplayCommenterFullNameSettingEnabled(Boolean displayCommenterFullNameSettingEnabled) {
+    public void setDisplayCommenterFullNameSettingEnabled(Optional<Boolean> displayCommenterFullNameSettingEnabled) {
         this.displayCommenterFullNameSettingEnabled = displayCommenterFullNameSettingEnabled;
     }
 
     public OrganizationFull readersCanCreateDiscussions(Boolean readersCanCreateDiscussions) {
-        this.readersCanCreateDiscussions = readersCanCreateDiscussions;
+        this.readersCanCreateDiscussions = Optional.ofNullable(readersCanCreateDiscussions);
         return this;
     }
 
@@ -1263,16 +1263,16 @@ public class OrganizationFull {
      */
     @Schema(name = "readers_can_create_discussions", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("readers_can_create_discussions")
-    public Boolean getReadersCanCreateDiscussions() {
+    public Optional<Boolean> getReadersCanCreateDiscussions() {
         return readersCanCreateDiscussions;
     }
 
-    public void setReadersCanCreateDiscussions(Boolean readersCanCreateDiscussions) {
+    public void setReadersCanCreateDiscussions(Optional<Boolean> readersCanCreateDiscussions) {
         this.readersCanCreateDiscussions = readersCanCreateDiscussions;
     }
 
     public OrganizationFull membersCanCreateTeams(Boolean membersCanCreateTeams) {
-        this.membersCanCreateTeams = membersCanCreateTeams;
+        this.membersCanCreateTeams = Optional.ofNullable(membersCanCreateTeams);
         return this;
     }
 
@@ -1282,16 +1282,16 @@ public class OrganizationFull {
      */
     @Schema(name = "members_can_create_teams", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_teams")
-    public Boolean getMembersCanCreateTeams() {
+    public Optional<Boolean> getMembersCanCreateTeams() {
         return membersCanCreateTeams;
     }
 
-    public void setMembersCanCreateTeams(Boolean membersCanCreateTeams) {
+    public void setMembersCanCreateTeams(Optional<Boolean> membersCanCreateTeams) {
         this.membersCanCreateTeams = membersCanCreateTeams;
     }
 
     public OrganizationFull membersCanViewDependencyInsights(Boolean membersCanViewDependencyInsights) {
-        this.membersCanViewDependencyInsights = membersCanViewDependencyInsights;
+        this.membersCanViewDependencyInsights = Optional.ofNullable(membersCanViewDependencyInsights);
         return this;
     }
 
@@ -1304,16 +1304,16 @@ public class OrganizationFull {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_view_dependency_insights")
-    public Boolean getMembersCanViewDependencyInsights() {
+    public Optional<Boolean> getMembersCanViewDependencyInsights() {
         return membersCanViewDependencyInsights;
     }
 
-    public void setMembersCanViewDependencyInsights(Boolean membersCanViewDependencyInsights) {
+    public void setMembersCanViewDependencyInsights(Optional<Boolean> membersCanViewDependencyInsights) {
         this.membersCanViewDependencyInsights = membersCanViewDependencyInsights;
     }
 
     public OrganizationFull membersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
-        this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
+        this.membersCanForkPrivateRepositories = JsonNullable.of(membersCanForkPrivateRepositories);
         return this;
     }
 
@@ -1326,16 +1326,16 @@ public class OrganizationFull {
             example = "false",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_fork_private_repositories")
-    public Boolean getMembersCanForkPrivateRepositories() {
+    public JsonNullable<Boolean> getMembersCanForkPrivateRepositories() {
         return membersCanForkPrivateRepositories;
     }
 
-    public void setMembersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
+    public void setMembersCanForkPrivateRepositories(JsonNullable<Boolean> membersCanForkPrivateRepositories) {
         this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
     }
 
     public OrganizationFull webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -1345,17 +1345,17 @@ public class OrganizationFull {
      */
     @Schema(name = "web_commit_signoff_required", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
     public OrganizationFull advancedSecurityEnabledForNewRepositories(
             Boolean advancedSecurityEnabledForNewRepositories) {
-        this.advancedSecurityEnabledForNewRepositories = advancedSecurityEnabledForNewRepositories;
+        this.advancedSecurityEnabledForNewRepositories = Optional.ofNullable(advancedSecurityEnabledForNewRepositories);
         return this;
     }
 
@@ -1373,7 +1373,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("advanced_security_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getAdvancedSecurityEnabledForNewRepositories() {
+    public Optional<Boolean> getAdvancedSecurityEnabledForNewRepositories() {
         return advancedSecurityEnabledForNewRepositories;
     }
 
@@ -1381,13 +1381,14 @@ public class OrganizationFull {
      * @deprecated
      */
     @Deprecated
-    public void setAdvancedSecurityEnabledForNewRepositories(Boolean advancedSecurityEnabledForNewRepositories) {
+    public void setAdvancedSecurityEnabledForNewRepositories(
+            Optional<Boolean> advancedSecurityEnabledForNewRepositories) {
         this.advancedSecurityEnabledForNewRepositories = advancedSecurityEnabledForNewRepositories;
     }
 
     public OrganizationFull dependabotAlertsEnabledForNewRepositories(
             Boolean dependabotAlertsEnabledForNewRepositories) {
-        this.dependabotAlertsEnabledForNewRepositories = dependabotAlertsEnabledForNewRepositories;
+        this.dependabotAlertsEnabledForNewRepositories = Optional.ofNullable(dependabotAlertsEnabledForNewRepositories);
         return this;
     }
 
@@ -1405,7 +1406,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_alerts_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependabotAlertsEnabledForNewRepositories() {
+    public Optional<Boolean> getDependabotAlertsEnabledForNewRepositories() {
         return dependabotAlertsEnabledForNewRepositories;
     }
 
@@ -1413,13 +1414,15 @@ public class OrganizationFull {
      * @deprecated
      */
     @Deprecated
-    public void setDependabotAlertsEnabledForNewRepositories(Boolean dependabotAlertsEnabledForNewRepositories) {
+    public void setDependabotAlertsEnabledForNewRepositories(
+            Optional<Boolean> dependabotAlertsEnabledForNewRepositories) {
         this.dependabotAlertsEnabledForNewRepositories = dependabotAlertsEnabledForNewRepositories;
     }
 
     public OrganizationFull dependabotSecurityUpdatesEnabledForNewRepositories(
             Boolean dependabotSecurityUpdatesEnabledForNewRepositories) {
-        this.dependabotSecurityUpdatesEnabledForNewRepositories = dependabotSecurityUpdatesEnabledForNewRepositories;
+        this.dependabotSecurityUpdatesEnabledForNewRepositories =
+                Optional.ofNullable(dependabotSecurityUpdatesEnabledForNewRepositories);
         return this;
     }
 
@@ -1437,7 +1440,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_security_updates_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependabotSecurityUpdatesEnabledForNewRepositories() {
+    public Optional<Boolean> getDependabotSecurityUpdatesEnabledForNewRepositories() {
         return dependabotSecurityUpdatesEnabledForNewRepositories;
     }
 
@@ -1446,12 +1449,12 @@ public class OrganizationFull {
      */
     @Deprecated
     public void setDependabotSecurityUpdatesEnabledForNewRepositories(
-            Boolean dependabotSecurityUpdatesEnabledForNewRepositories) {
+            Optional<Boolean> dependabotSecurityUpdatesEnabledForNewRepositories) {
         this.dependabotSecurityUpdatesEnabledForNewRepositories = dependabotSecurityUpdatesEnabledForNewRepositories;
     }
 
     public OrganizationFull dependencyGraphEnabledForNewRepositories(Boolean dependencyGraphEnabledForNewRepositories) {
-        this.dependencyGraphEnabledForNewRepositories = dependencyGraphEnabledForNewRepositories;
+        this.dependencyGraphEnabledForNewRepositories = Optional.ofNullable(dependencyGraphEnabledForNewRepositories);
         return this;
     }
 
@@ -1469,7 +1472,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_graph_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependencyGraphEnabledForNewRepositories() {
+    public Optional<Boolean> getDependencyGraphEnabledForNewRepositories() {
         return dependencyGraphEnabledForNewRepositories;
     }
 
@@ -1477,12 +1480,13 @@ public class OrganizationFull {
      * @deprecated
      */
     @Deprecated
-    public void setDependencyGraphEnabledForNewRepositories(Boolean dependencyGraphEnabledForNewRepositories) {
+    public void setDependencyGraphEnabledForNewRepositories(
+            Optional<Boolean> dependencyGraphEnabledForNewRepositories) {
         this.dependencyGraphEnabledForNewRepositories = dependencyGraphEnabledForNewRepositories;
     }
 
     public OrganizationFull secretScanningEnabledForNewRepositories(Boolean secretScanningEnabledForNewRepositories) {
-        this.secretScanningEnabledForNewRepositories = secretScanningEnabledForNewRepositories;
+        this.secretScanningEnabledForNewRepositories = Optional.ofNullable(secretScanningEnabledForNewRepositories);
         return this;
     }
 
@@ -1500,7 +1504,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getSecretScanningEnabledForNewRepositories() {
+    public Optional<Boolean> getSecretScanningEnabledForNewRepositories() {
         return secretScanningEnabledForNewRepositories;
     }
 
@@ -1508,14 +1512,14 @@ public class OrganizationFull {
      * @deprecated
      */
     @Deprecated
-    public void setSecretScanningEnabledForNewRepositories(Boolean secretScanningEnabledForNewRepositories) {
+    public void setSecretScanningEnabledForNewRepositories(Optional<Boolean> secretScanningEnabledForNewRepositories) {
         this.secretScanningEnabledForNewRepositories = secretScanningEnabledForNewRepositories;
     }
 
     public OrganizationFull secretScanningPushProtectionEnabledForNewRepositories(
             Boolean secretScanningPushProtectionEnabledForNewRepositories) {
         this.secretScanningPushProtectionEnabledForNewRepositories =
-                secretScanningPushProtectionEnabledForNewRepositories;
+                Optional.ofNullable(secretScanningPushProtectionEnabledForNewRepositories);
         return this;
     }
 
@@ -1533,7 +1537,7 @@ public class OrganizationFull {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getSecretScanningPushProtectionEnabledForNewRepositories() {
+    public Optional<Boolean> getSecretScanningPushProtectionEnabledForNewRepositories() {
         return secretScanningPushProtectionEnabledForNewRepositories;
     }
 
@@ -1542,13 +1546,13 @@ public class OrganizationFull {
      */
     @Deprecated
     public void setSecretScanningPushProtectionEnabledForNewRepositories(
-            Boolean secretScanningPushProtectionEnabledForNewRepositories) {
+            Optional<Boolean> secretScanningPushProtectionEnabledForNewRepositories) {
         this.secretScanningPushProtectionEnabledForNewRepositories =
                 secretScanningPushProtectionEnabledForNewRepositories;
     }
 
     public OrganizationFull secretScanningPushProtectionCustomLink(String secretScanningPushProtectionCustomLink) {
-        this.secretScanningPushProtectionCustomLink = secretScanningPushProtectionCustomLink;
+        this.secretScanningPushProtectionCustomLink = JsonNullable.of(secretScanningPushProtectionCustomLink);
         return this;
     }
 
@@ -1562,11 +1566,11 @@ public class OrganizationFull {
             description = "An optional URL string to display to contributors who are blocked from pushing a secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection_custom_link")
-    public String getSecretScanningPushProtectionCustomLink() {
+    public JsonNullable<String> getSecretScanningPushProtectionCustomLink() {
         return secretScanningPushProtectionCustomLink;
     }
 
-    public void setSecretScanningPushProtectionCustomLink(String secretScanningPushProtectionCustomLink) {
+    public void setSecretScanningPushProtectionCustomLink(JsonNullable<String> secretScanningPushProtectionCustomLink) {
         this.secretScanningPushProtectionCustomLink = secretScanningPushProtectionCustomLink;
     }
 
@@ -1613,7 +1617,7 @@ public class OrganizationFull {
     }
 
     public OrganizationFull archivedAt(OffsetDateTime archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -1625,16 +1629,16 @@ public class OrganizationFull {
     @Valid
     @Schema(name = "archived_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("archived_at")
-    public OffsetDateTime getArchivedAt() {
+    public JsonNullable<OffsetDateTime> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(OffsetDateTime archivedAt) {
+    public void setArchivedAt(JsonNullable<OffsetDateTime> archivedAt) {
         this.archivedAt = archivedAt;
     }
 
     public OrganizationFull deployKeysEnabledForRepositories(Boolean deployKeysEnabledForRepositories) {
-        this.deployKeysEnabledForRepositories = deployKeysEnabledForRepositories;
+        this.deployKeysEnabledForRepositories = Optional.ofNullable(deployKeysEnabledForRepositories);
         return this;
     }
 
@@ -1649,11 +1653,11 @@ public class OrganizationFull {
                     "Controls whether or not deploy keys may be added and used for repositories in the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deploy_keys_enabled_for_repositories")
-    public Boolean getDeployKeysEnabledForRepositories() {
+    public Optional<Boolean> getDeployKeysEnabledForRepositories() {
         return deployKeysEnabledForRepositories;
     }
 
-    public void setDeployKeysEnabledForRepositories(Boolean deployKeysEnabledForRepositories) {
+    public void setDeployKeysEnabledForRepositories(Optional<Boolean> deployKeysEnabledForRepositories) {
         this.deployKeysEnabledForRepositories = deployKeysEnabledForRepositories;
     }
 
@@ -1683,7 +1687,7 @@ public class OrganizationFull {
                 && Objects.equals(this.blog, organizationFull.blog)
                 && Objects.equals(this.location, organizationFull.location)
                 && Objects.equals(this.email, organizationFull.email)
-                && Objects.equals(this.twitterUsername, organizationFull.twitterUsername)
+                && equalsNullable(this.twitterUsername, organizationFull.twitterUsername)
                 && Objects.equals(this.isVerified, organizationFull.isVerified)
                 && Objects.equals(this.hasOrganizationProjects, organizationFull.hasOrganizationProjects)
                 && Objects.equals(this.hasRepositoryProjects, organizationFull.hasRepositoryProjects)
@@ -1695,15 +1699,15 @@ public class OrganizationFull {
                 && Objects.equals(this.type, organizationFull.type)
                 && Objects.equals(this.totalPrivateRepos, organizationFull.totalPrivateRepos)
                 && Objects.equals(this.ownedPrivateRepos, organizationFull.ownedPrivateRepos)
-                && Objects.equals(this.privateGists, organizationFull.privateGists)
-                && Objects.equals(this.diskUsage, organizationFull.diskUsage)
-                && Objects.equals(this.collaborators, organizationFull.collaborators)
-                && Objects.equals(this.billingEmail, organizationFull.billingEmail)
+                && equalsNullable(this.privateGists, organizationFull.privateGists)
+                && equalsNullable(this.diskUsage, organizationFull.diskUsage)
+                && equalsNullable(this.collaborators, organizationFull.collaborators)
+                && equalsNullable(this.billingEmail, organizationFull.billingEmail)
                 && Objects.equals(this.plan, organizationFull.plan)
-                && Objects.equals(this.defaultRepositoryPermission, organizationFull.defaultRepositoryPermission)
-                && Objects.equals(this.defaultRepositoryBranch, organizationFull.defaultRepositoryBranch)
-                && Objects.equals(this.membersCanCreateRepositories, organizationFull.membersCanCreateRepositories)
-                && Objects.equals(this.twoFactorRequirementEnabled, organizationFull.twoFactorRequirementEnabled)
+                && equalsNullable(this.defaultRepositoryPermission, organizationFull.defaultRepositoryPermission)
+                && equalsNullable(this.defaultRepositoryBranch, organizationFull.defaultRepositoryBranch)
+                && equalsNullable(this.membersCanCreateRepositories, organizationFull.membersCanCreateRepositories)
+                && equalsNullable(this.twoFactorRequirementEnabled, organizationFull.twoFactorRequirementEnabled)
                 && Objects.equals(
                         this.membersAllowedRepositoryCreationType,
                         organizationFull.membersAllowedRepositoryCreationType)
@@ -1730,7 +1734,7 @@ public class OrganizationFull {
                 && Objects.equals(this.membersCanCreateTeams, organizationFull.membersCanCreateTeams)
                 && Objects.equals(
                         this.membersCanViewDependencyInsights, organizationFull.membersCanViewDependencyInsights)
-                && Objects.equals(
+                && equalsNullable(
                         this.membersCanForkPrivateRepositories, organizationFull.membersCanForkPrivateRepositories)
                 && Objects.equals(this.webCommitSignoffRequired, organizationFull.webCommitSignoffRequired)
                 && Objects.equals(
@@ -1751,7 +1755,7 @@ public class OrganizationFull {
                 && Objects.equals(
                         this.secretScanningPushProtectionEnabledForNewRepositories,
                         organizationFull.secretScanningPushProtectionEnabledForNewRepositories)
-                && Objects.equals(
+                && equalsNullable(
                         this.secretScanningPushProtectionCustomLink,
                         organizationFull.secretScanningPushProtectionCustomLink)
                 && Objects.equals(this.createdAt, organizationFull.createdAt)
@@ -1759,6 +1763,11 @@ public class OrganizationFull {
                 && Objects.equals(this.archivedAt, organizationFull.archivedAt)
                 && Objects.equals(
                         this.deployKeysEnabledForRepositories, organizationFull.deployKeysEnabledForRepositories);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1781,7 +1790,7 @@ public class OrganizationFull {
                 blog,
                 location,
                 email,
-                twitterUsername,
+                hashCodeNullable(twitterUsername),
                 isVerified,
                 hasOrganizationProjects,
                 hasRepositoryProjects,
@@ -1793,15 +1802,15 @@ public class OrganizationFull {
                 type,
                 totalPrivateRepos,
                 ownedPrivateRepos,
-                privateGists,
-                diskUsage,
-                collaborators,
-                billingEmail,
+                hashCodeNullable(privateGists),
+                hashCodeNullable(diskUsage),
+                hashCodeNullable(collaborators),
+                hashCodeNullable(billingEmail),
                 plan,
-                defaultRepositoryPermission,
-                defaultRepositoryBranch,
-                membersCanCreateRepositories,
-                twoFactorRequirementEnabled,
+                hashCodeNullable(defaultRepositoryPermission),
+                hashCodeNullable(defaultRepositoryBranch),
+                hashCodeNullable(membersCanCreateRepositories),
+                hashCodeNullable(twoFactorRequirementEnabled),
                 membersAllowedRepositoryCreationType,
                 membersCanCreatePublicRepositories,
                 membersCanCreatePrivateRepositories,
@@ -1817,7 +1826,7 @@ public class OrganizationFull {
                 readersCanCreateDiscussions,
                 membersCanCreateTeams,
                 membersCanViewDependencyInsights,
-                membersCanForkPrivateRepositories,
+                hashCodeNullable(membersCanForkPrivateRepositories),
                 webCommitSignoffRequired,
                 advancedSecurityEnabledForNewRepositories,
                 dependabotAlertsEnabledForNewRepositories,
@@ -1825,11 +1834,18 @@ public class OrganizationFull {
                 dependencyGraphEnabledForNewRepositories,
                 secretScanningEnabledForNewRepositories,
                 secretScanningPushProtectionEnabledForNewRepositories,
-                secretScanningPushProtectionCustomLink,
+                hashCodeNullable(secretScanningPushProtectionCustomLink),
                 createdAt,
                 updatedAt,
                 archivedAt,
                 deployKeysEnabledForRepositories);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

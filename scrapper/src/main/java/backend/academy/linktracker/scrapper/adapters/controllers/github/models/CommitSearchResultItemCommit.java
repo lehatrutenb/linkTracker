@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CommitSearchResultItemCommit
@@ -16,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("commit_search_result_item_commit")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitSearchResultItemCommit {
 
     private CommitSearchResultItemCommitAuthor author;
 
-    private NullableGitUser committer = null;
+    private JsonNullable<NullableGitUser> committer = JsonNullable.<NullableGitUser>undefined();
 
     private Long commentCount;
 
@@ -32,7 +33,7 @@ public class CommitSearchResultItemCommit {
 
     private URI url;
 
-    private Verification verification;
+    private Optional<Verification> verification = Optional.empty();
 
     public CommitSearchResultItemCommit() {
         super();
@@ -49,7 +50,7 @@ public class CommitSearchResultItemCommit {
             ShortBranchCommit tree,
             URI url) {
         this.author = author;
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         this.commentCount = commentCount;
         this.message = message;
         this.tree = tree;
@@ -78,7 +79,7 @@ public class CommitSearchResultItemCommit {
     }
 
     public CommitSearchResultItemCommit committer(NullableGitUser committer) {
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         return this;
     }
 
@@ -90,11 +91,11 @@ public class CommitSearchResultItemCommit {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("committer")
-    public NullableGitUser getCommitter() {
+    public JsonNullable<NullableGitUser> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(NullableGitUser committer) {
+    public void setCommitter(JsonNullable<NullableGitUser> committer) {
         this.committer = committer;
     }
 
@@ -181,7 +182,7 @@ public class CommitSearchResultItemCommit {
     }
 
     public CommitSearchResultItemCommit verification(Verification verification) {
-        this.verification = verification;
+        this.verification = Optional.ofNullable(verification);
         return this;
     }
 
@@ -192,11 +193,11 @@ public class CommitSearchResultItemCommit {
     @Valid
     @Schema(name = "verification", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verification")
-    public Verification getVerification() {
+    public Optional<Verification> getVerification() {
         return verification;
     }
 
-    public void setVerification(Verification verification) {
+    public void setVerification(Optional<Verification> verification) {
         this.verification = verification;
     }
 

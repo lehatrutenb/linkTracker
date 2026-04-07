@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsUpdateRepoVariableRequest
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("actions_update_repo_variable_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsUpdateRepoVariableRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String value;
+    private Optional<String> value = Optional.empty();
 
     public ActionsUpdateRepoVariableRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class ActionsUpdateRepoVariableRequest {
      */
     @Schema(name = "name", description = "The name of the variable.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ActionsUpdateRepoVariableRequest value(String value) {
-        this.value = value;
+        this.value = Optional.ofNullable(value);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class ActionsUpdateRepoVariableRequest {
      */
     @Schema(name = "value", description = "The value of the variable.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("value")
-    public String getValue() {
+    public Optional<String> getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Optional<String> value) {
         this.value = value;
     }
 

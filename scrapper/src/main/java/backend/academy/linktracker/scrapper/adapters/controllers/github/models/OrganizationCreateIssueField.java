@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrganizationCreateIssueField
@@ -19,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("organization-create-issue-field")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationCreateIssueField {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The data type of the issue field.
@@ -103,10 +101,11 @@ public class OrganizationCreateIssueField {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
     @Valid
-    private List<@Valid OrganizationCreateIssueFieldOptionsInner> options;
+    private JsonNullable<List<@Valid OrganizationCreateIssueFieldOptionsInner>> options =
+            JsonNullable.<List<@Valid OrganizationCreateIssueFieldOptionsInner>>undefined();
 
     public OrganizationCreateIssueField() {
         super();
@@ -141,7 +140,7 @@ public class OrganizationCreateIssueField {
     }
 
     public OrganizationCreateIssueField description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -154,11 +153,11 @@ public class OrganizationCreateIssueField {
             description = "Description of the issue field.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -186,7 +185,7 @@ public class OrganizationCreateIssueField {
     }
 
     public OrganizationCreateIssueField visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -200,24 +199,24 @@ public class OrganizationCreateIssueField {
                     "The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
     public OrganizationCreateIssueField options(List<@Valid OrganizationCreateIssueFieldOptionsInner> options) {
-        this.options = options;
+        this.options = JsonNullable.of(options);
         return this;
     }
 
     public OrganizationCreateIssueField addOptionsItem(OrganizationCreateIssueFieldOptionsInner optionsItem) {
-        if (this.options == null) {
-            this.options = new ArrayList<>();
+        if (this.options == null || !this.options.isPresent()) {
+            this.options = JsonNullable.of(new ArrayList<>());
         }
-        this.options.add(optionsItem);
+        this.options.get().add(optionsItem);
         return this;
     }
 
@@ -231,11 +230,11 @@ public class OrganizationCreateIssueField {
             description = "Options for single select fields. Required when data_type is 'single_select'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("options")
-    public List<@Valid OrganizationCreateIssueFieldOptionsInner> getOptions() {
+    public JsonNullable<List<@Valid OrganizationCreateIssueFieldOptionsInner>> getOptions() {
         return options;
     }
 
-    public void setOptions(List<@Valid OrganizationCreateIssueFieldOptionsInner> options) {
+    public void setOptions(JsonNullable<List<@Valid OrganizationCreateIssueFieldOptionsInner>> options) {
         this.options = options;
     }
 
@@ -249,15 +248,27 @@ public class OrganizationCreateIssueField {
         }
         OrganizationCreateIssueField organizationCreateIssueField = (OrganizationCreateIssueField) o;
         return Objects.equals(this.name, organizationCreateIssueField.name)
-                && Objects.equals(this.description, organizationCreateIssueField.description)
+                && equalsNullable(this.description, organizationCreateIssueField.description)
                 && Objects.equals(this.dataType, organizationCreateIssueField.dataType)
                 && Objects.equals(this.visibility, organizationCreateIssueField.visibility)
-                && Objects.equals(this.options, organizationCreateIssueField.options);
+                && equalsNullable(this.options, organizationCreateIssueField.options);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, dataType, visibility, options);
+        return Objects.hash(name, hashCodeNullable(description), dataType, visibility, hashCodeNullable(options));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

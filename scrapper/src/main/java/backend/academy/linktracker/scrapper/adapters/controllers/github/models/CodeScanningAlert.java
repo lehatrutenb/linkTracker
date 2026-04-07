@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-alert")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAlert {
 
@@ -30,7 +29,7 @@ public class CodeScanningAlert {
     private OffsetDateTime createdAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     private URI url;
 
@@ -38,19 +37,20 @@ public class CodeScanningAlert {
 
     private URI instancesUrl;
 
-    private CodeScanningAlertState state = null;
+    private JsonNullable<CodeScanningAlertState> state = JsonNullable.<CodeScanningAlertState>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime fixedAt = null;
+    private JsonNullable<OffsetDateTime> fixedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser dismissedBy = null;
+    private JsonNullable<NullableSimpleUser> dismissedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime dismissedAt = null;
+    private JsonNullable<OffsetDateTime> dismissedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private CodeScanningAlertDismissedReason dismissedReason = null;
+    private JsonNullable<CodeScanningAlertDismissedReason> dismissedReason =
+            JsonNullable.<CodeScanningAlertDismissedReason>undefined();
 
-    private String dismissedComment = null;
+    private JsonNullable<@Size(max = 280) String> dismissedComment = JsonNullable.<String>undefined();
 
     private CodeScanningAlertRule rule;
 
@@ -58,7 +58,7 @@ public class CodeScanningAlert {
 
     private CodeScanningAlertInstance mostRecentInstance;
 
-    private NullableSimpleUser dismissalApprovedBy = null;
+    private JsonNullable<NullableSimpleUser> dismissalApprovedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     @Valid
     private List<@Valid SimpleUser> assignees = new ArrayList<>();
@@ -88,10 +88,10 @@ public class CodeScanningAlert {
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.instancesUrl = instancesUrl;
-        this.state = state;
-        this.dismissedBy = dismissedBy;
-        this.dismissedAt = dismissedAt;
-        this.dismissedReason = dismissedReason;
+        this.state = JsonNullable.of(state);
+        this.dismissedBy = JsonNullable.of(dismissedBy);
+        this.dismissedAt = JsonNullable.of(dismissedAt);
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         this.rule = rule;
         this.tool = tool;
         this.mostRecentInstance = mostRecentInstance;
@@ -145,7 +145,7 @@ public class CodeScanningAlert {
     }
 
     public CodeScanningAlert updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -160,11 +160,11 @@ public class CodeScanningAlert {
             description = "The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -241,7 +241,7 @@ public class CodeScanningAlert {
     }
 
     public CodeScanningAlert state(CodeScanningAlertState state) {
-        this.state = state;
+        this.state = JsonNullable.of(state);
         return this;
     }
 
@@ -253,16 +253,16 @@ public class CodeScanningAlert {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("state")
-    public CodeScanningAlertState getState() {
+    public JsonNullable<CodeScanningAlertState> getState() {
         return state;
     }
 
-    public void setState(CodeScanningAlertState state) {
+    public void setState(JsonNullable<CodeScanningAlertState> state) {
         this.state = state;
     }
 
     public CodeScanningAlert fixedAt(OffsetDateTime fixedAt) {
-        this.fixedAt = fixedAt;
+        this.fixedAt = JsonNullable.of(fixedAt);
         return this;
     }
 
@@ -278,16 +278,16 @@ public class CodeScanningAlert {
                     "The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fixed_at")
-    public OffsetDateTime getFixedAt() {
+    public JsonNullable<OffsetDateTime> getFixedAt() {
         return fixedAt;
     }
 
-    public void setFixedAt(OffsetDateTime fixedAt) {
+    public void setFixedAt(JsonNullable<OffsetDateTime> fixedAt) {
         this.fixedAt = fixedAt;
     }
 
     public CodeScanningAlert dismissedBy(NullableSimpleUser dismissedBy) {
-        this.dismissedBy = dismissedBy;
+        this.dismissedBy = JsonNullable.of(dismissedBy);
         return this;
     }
 
@@ -299,16 +299,16 @@ public class CodeScanningAlert {
     @Valid
     @Schema(name = "dismissed_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_by")
-    public NullableSimpleUser getDismissedBy() {
+    public JsonNullable<NullableSimpleUser> getDismissedBy() {
         return dismissedBy;
     }
 
-    public void setDismissedBy(NullableSimpleUser dismissedBy) {
+    public void setDismissedBy(JsonNullable<NullableSimpleUser> dismissedBy) {
         this.dismissedBy = dismissedBy;
     }
 
     public CodeScanningAlert dismissedAt(OffsetDateTime dismissedAt) {
-        this.dismissedAt = dismissedAt;
+        this.dismissedAt = JsonNullable.of(dismissedAt);
         return this;
     }
 
@@ -323,16 +323,16 @@ public class CodeScanningAlert {
             description = "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_at")
-    public OffsetDateTime getDismissedAt() {
+    public JsonNullable<OffsetDateTime> getDismissedAt() {
         return dismissedAt;
     }
 
-    public void setDismissedAt(OffsetDateTime dismissedAt) {
+    public void setDismissedAt(JsonNullable<OffsetDateTime> dismissedAt) {
         this.dismissedAt = dismissedAt;
     }
 
     public CodeScanningAlert dismissedReason(CodeScanningAlertDismissedReason dismissedReason) {
-        this.dismissedReason = dismissedReason;
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         return this;
     }
 
@@ -344,16 +344,16 @@ public class CodeScanningAlert {
     @Valid
     @Schema(name = "dismissed_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_reason")
-    public CodeScanningAlertDismissedReason getDismissedReason() {
+    public JsonNullable<CodeScanningAlertDismissedReason> getDismissedReason() {
         return dismissedReason;
     }
 
-    public void setDismissedReason(CodeScanningAlertDismissedReason dismissedReason) {
+    public void setDismissedReason(JsonNullable<CodeScanningAlertDismissedReason> dismissedReason) {
         this.dismissedReason = dismissedReason;
     }
 
     public CodeScanningAlert dismissedComment(String dismissedComment) {
-        this.dismissedComment = dismissedComment;
+        this.dismissedComment = JsonNullable.of(dismissedComment);
         return this;
     }
 
@@ -361,17 +361,16 @@ public class CodeScanningAlert {
      * The dismissal comment associated with the dismissal of the alert.
      * @return dismissedComment
      */
-    @Size(max = 280)
     @Schema(
             name = "dismissed_comment",
             description = "The dismissal comment associated with the dismissal of the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_comment")
-    public String getDismissedComment() {
+    public JsonNullable<@Size(max = 280) String> getDismissedComment() {
         return dismissedComment;
     }
 
-    public void setDismissedComment(String dismissedComment) {
+    public void setDismissedComment(JsonNullable<String> dismissedComment) {
         this.dismissedComment = dismissedComment;
     }
 
@@ -439,7 +438,7 @@ public class CodeScanningAlert {
     }
 
     public CodeScanningAlert dismissalApprovedBy(NullableSimpleUser dismissalApprovedBy) {
-        this.dismissalApprovedBy = dismissalApprovedBy;
+        this.dismissalApprovedBy = JsonNullable.of(dismissalApprovedBy);
         return this;
     }
 
@@ -450,11 +449,11 @@ public class CodeScanningAlert {
     @Valid
     @Schema(name = "dismissal_approved_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_approved_by")
-    public NullableSimpleUser getDismissalApprovedBy() {
+    public JsonNullable<NullableSimpleUser> getDismissalApprovedBy() {
         return dismissalApprovedBy;
     }
 
-    public void setDismissalApprovedBy(NullableSimpleUser dismissalApprovedBy) {
+    public void setDismissalApprovedBy(JsonNullable<NullableSimpleUser> dismissalApprovedBy) {
         this.dismissalApprovedBy = dismissalApprovedBy;
     }
 
@@ -502,16 +501,21 @@ public class CodeScanningAlert {
                 && Objects.equals(this.htmlUrl, codeScanningAlert.htmlUrl)
                 && Objects.equals(this.instancesUrl, codeScanningAlert.instancesUrl)
                 && Objects.equals(this.state, codeScanningAlert.state)
-                && Objects.equals(this.fixedAt, codeScanningAlert.fixedAt)
+                && equalsNullable(this.fixedAt, codeScanningAlert.fixedAt)
                 && Objects.equals(this.dismissedBy, codeScanningAlert.dismissedBy)
                 && Objects.equals(this.dismissedAt, codeScanningAlert.dismissedAt)
                 && Objects.equals(this.dismissedReason, codeScanningAlert.dismissedReason)
-                && Objects.equals(this.dismissedComment, codeScanningAlert.dismissedComment)
+                && equalsNullable(this.dismissedComment, codeScanningAlert.dismissedComment)
                 && Objects.equals(this.rule, codeScanningAlert.rule)
                 && Objects.equals(this.tool, codeScanningAlert.tool)
                 && Objects.equals(this.mostRecentInstance, codeScanningAlert.mostRecentInstance)
-                && Objects.equals(this.dismissalApprovedBy, codeScanningAlert.dismissalApprovedBy)
+                && equalsNullable(this.dismissalApprovedBy, codeScanningAlert.dismissalApprovedBy)
                 && Objects.equals(this.assignees, codeScanningAlert.assignees);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -524,16 +528,23 @@ public class CodeScanningAlert {
                 htmlUrl,
                 instancesUrl,
                 state,
-                fixedAt,
+                hashCodeNullable(fixedAt),
                 dismissedBy,
                 dismissedAt,
                 dismissedReason,
-                dismissedComment,
+                hashCodeNullable(dismissedComment),
                 rule,
                 tool,
                 mostRecentInstance,
-                dismissalApprovedBy,
+                hashCodeNullable(dismissalApprovedBy),
                 assignees);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

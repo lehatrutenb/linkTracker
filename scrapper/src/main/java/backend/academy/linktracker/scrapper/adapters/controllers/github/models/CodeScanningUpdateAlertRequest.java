@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodeScanningUpdateAlertRequest
@@ -17,23 +15,24 @@ import java.util.Objects;
 @JsonTypeName("code_scanning_update_alert_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningUpdateAlertRequest {
 
-    private CodeScanningAlertSetState state;
+    private Optional<CodeScanningAlertSetState> state = Optional.empty();
 
-    private CodeScanningAlertDismissedReason dismissedReason = null;
+    private JsonNullable<CodeScanningAlertDismissedReason> dismissedReason =
+            JsonNullable.<CodeScanningAlertDismissedReason>undefined();
 
-    private String dismissedComment = null;
+    private JsonNullable<@Size(max = 280) String> dismissedComment = JsonNullable.<String>undefined();
 
-    private Boolean createRequest;
+    private Optional<Boolean> createRequest = Optional.empty();
 
     @Valid
     private List<String> assignees = new ArrayList<>();
 
     public CodeScanningUpdateAlertRequest state(CodeScanningAlertSetState state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -44,16 +43,16 @@ public class CodeScanningUpdateAlertRequest {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public CodeScanningAlertSetState getState() {
+    public Optional<CodeScanningAlertSetState> getState() {
         return state;
     }
 
-    public void setState(CodeScanningAlertSetState state) {
+    public void setState(Optional<CodeScanningAlertSetState> state) {
         this.state = state;
     }
 
     public CodeScanningUpdateAlertRequest dismissedReason(CodeScanningAlertDismissedReason dismissedReason) {
-        this.dismissedReason = dismissedReason;
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         return this;
     }
 
@@ -64,16 +63,16 @@ public class CodeScanningUpdateAlertRequest {
     @Valid
     @Schema(name = "dismissed_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_reason")
-    public CodeScanningAlertDismissedReason getDismissedReason() {
+    public JsonNullable<CodeScanningAlertDismissedReason> getDismissedReason() {
         return dismissedReason;
     }
 
-    public void setDismissedReason(CodeScanningAlertDismissedReason dismissedReason) {
+    public void setDismissedReason(JsonNullable<CodeScanningAlertDismissedReason> dismissedReason) {
         this.dismissedReason = dismissedReason;
     }
 
     public CodeScanningUpdateAlertRequest dismissedComment(String dismissedComment) {
-        this.dismissedComment = dismissedComment;
+        this.dismissedComment = JsonNullable.of(dismissedComment);
         return this;
     }
 
@@ -81,22 +80,21 @@ public class CodeScanningUpdateAlertRequest {
      * The dismissal comment associated with the dismissal of the alert.
      * @return dismissedComment
      */
-    @Size(max = 280)
     @Schema(
             name = "dismissed_comment",
             description = "The dismissal comment associated with the dismissal of the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_comment")
-    public String getDismissedComment() {
+    public JsonNullable<@Size(max = 280) String> getDismissedComment() {
         return dismissedComment;
     }
 
-    public void setDismissedComment(String dismissedComment) {
+    public void setDismissedComment(JsonNullable<String> dismissedComment) {
         this.dismissedComment = dismissedComment;
     }
 
     public CodeScanningUpdateAlertRequest createRequest(Boolean createRequest) {
-        this.createRequest = createRequest;
+        this.createRequest = Optional.ofNullable(createRequest);
         return this;
     }
 
@@ -109,11 +107,11 @@ public class CodeScanningUpdateAlertRequest {
             description = "If `true`, attempt to create an alert dismissal request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("create_request")
-    public Boolean getCreateRequest() {
+    public Optional<Boolean> getCreateRequest() {
         return createRequest;
     }
 
-    public void setCreateRequest(Boolean createRequest) {
+    public void setCreateRequest(Optional<Boolean> createRequest) {
         this.createRequest = createRequest;
     }
 
@@ -158,15 +156,28 @@ public class CodeScanningUpdateAlertRequest {
         }
         CodeScanningUpdateAlertRequest codeScanningUpdateAlertRequest = (CodeScanningUpdateAlertRequest) o;
         return Objects.equals(this.state, codeScanningUpdateAlertRequest.state)
-                && Objects.equals(this.dismissedReason, codeScanningUpdateAlertRequest.dismissedReason)
-                && Objects.equals(this.dismissedComment, codeScanningUpdateAlertRequest.dismissedComment)
+                && equalsNullable(this.dismissedReason, codeScanningUpdateAlertRequest.dismissedReason)
+                && equalsNullable(this.dismissedComment, codeScanningUpdateAlertRequest.dismissedComment)
                 && Objects.equals(this.createRequest, codeScanningUpdateAlertRequest.createRequest)
                 && Objects.equals(this.assignees, codeScanningUpdateAlertRequest.assignees);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(state, dismissedReason, dismissedComment, createRequest, assignees);
+        return Objects.hash(
+                state, hashCodeNullable(dismissedReason), hashCodeNullable(dismissedComment), createRequest, assignees);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,19 +17,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-git-user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableGitUser {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime date;
+    private Optional<OffsetDateTime> date = Optional.empty();
 
     public NullableGitUser name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class NullableGitUser {
      */
     @Schema(name = "name", example = "\"Chris Wanstrath\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public NullableGitUser email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -59,16 +58,16 @@ public class NullableGitUser {
      */
     @Schema(name = "email", example = "\"chris@ozmm.org\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public NullableGitUser date(OffsetDateTime date) {
-        this.date = date;
+        this.date = Optional.ofNullable(date);
         return this;
     }
 
@@ -79,11 +78,11 @@ public class NullableGitUser {
     @Valid
     @Schema(name = "date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("date")
-    public OffsetDateTime getDate() {
+    public Optional<OffsetDateTime> getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(Optional<OffsetDateTime> date) {
         this.date = date;
     }
 

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingUsageReportUserUsageItemsInner
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("billing_usage_report_user_usageItems_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingUsageReportUserUsageItemsInner {
 
@@ -38,7 +38,7 @@ public class BillingUsageReportUserUsageItemsInner {
 
     private BigDecimal netAmount;
 
-    private String repositoryName;
+    private Optional<String> repositoryName = Optional.empty();
 
     public BillingUsageReportUserUsageItemsInner() {
         super();
@@ -271,7 +271,7 @@ public class BillingUsageReportUserUsageItemsInner {
     }
 
     public BillingUsageReportUserUsageItemsInner repositoryName(String repositoryName) {
-        this.repositoryName = repositoryName;
+        this.repositoryName = Optional.ofNullable(repositoryName);
         return this;
     }
 
@@ -284,11 +284,11 @@ public class BillingUsageReportUserUsageItemsInner {
             description = "Name of the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repositoryName")
-    public String getRepositoryName() {
+    public Optional<String> getRepositoryName() {
         return repositoryName;
     }
 
-    public void setRepositoryName(String repositoryName) {
+    public void setRepositoryName(Optional<String> repositoryName) {
         this.repositoryName = repositoryName;
     }
 

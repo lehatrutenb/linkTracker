@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -26,14 +27,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("App_9")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class App9 {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets events
@@ -159,24 +160,24 @@ public class App9 {
     @Valid
     private List<EventsEnum> events = new ArrayList<>();
 
-    private URI externalUrl = null;
+    private JsonNullable<URI> externalUrl = JsonNullable.<URI>undefined();
 
     private URI htmlUrl;
 
-    private Long id = null;
+    private JsonNullable<Long> id = JsonNullable.<Long>undefined();
 
     private String name;
 
     private String nodeId;
 
-    private User owner = null;
+    private JsonNullable<User> owner = JsonNullable.<User>undefined();
 
-    private App9Permissions permissions;
+    private Optional<App9Permissions> permissions = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public App9() {
         super();
@@ -195,19 +196,19 @@ public class App9 {
             String nodeId,
             User owner,
             OffsetDateTime updatedAt) {
-        this.createdAt = createdAt;
-        this.description = description;
-        this.externalUrl = externalUrl;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.description = JsonNullable.of(description);
+        this.externalUrl = JsonNullable.of(externalUrl);
         this.htmlUrl = htmlUrl;
-        this.id = id;
+        this.id = JsonNullable.of(id);
         this.name = name;
         this.nodeId = nodeId;
-        this.owner = owner;
-        this.updatedAt = updatedAt;
+        this.owner = JsonNullable.of(owner);
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public App9 createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -219,16 +220,16 @@ public class App9 {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public App9 description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -239,11 +240,11 @@ public class App9 {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -278,7 +279,7 @@ public class App9 {
     }
 
     public App9 externalUrl(URI externalUrl) {
-        this.externalUrl = externalUrl;
+        this.externalUrl = JsonNullable.of(externalUrl);
         return this;
     }
 
@@ -290,11 +291,11 @@ public class App9 {
     @Valid
     @Schema(name = "external_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("external_url")
-    public URI getExternalUrl() {
+    public JsonNullable<URI> getExternalUrl() {
         return externalUrl;
     }
 
-    public void setExternalUrl(URI externalUrl) {
+    public void setExternalUrl(JsonNullable<URI> externalUrl) {
         this.externalUrl = externalUrl;
     }
 
@@ -320,7 +321,7 @@ public class App9 {
     }
 
     public App9 id(Long id) {
-        this.id = id;
+        this.id = JsonNullable.of(id);
         return this;
     }
 
@@ -334,11 +335,11 @@ public class App9 {
             description = "Unique identifier of the GitHub app",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public JsonNullable<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(JsonNullable<Long> id) {
         this.id = id;
     }
 
@@ -383,7 +384,7 @@ public class App9 {
     }
 
     public App9 owner(User owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -395,16 +396,16 @@ public class App9 {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public User getOwner() {
+    public JsonNullable<User> getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(JsonNullable<User> owner) {
         this.owner = owner;
     }
 
     public App9 permissions(App9Permissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -415,16 +416,16 @@ public class App9 {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public App9Permissions getPermissions() {
+    public Optional<App9Permissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(App9Permissions permissions) {
+    public void setPermissions(Optional<App9Permissions> permissions) {
         this.permissions = permissions;
     }
 
     public App9 slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -437,16 +438,16 @@ public class App9 {
             description = "The slug name of the GitHub app",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public App9 updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -458,11 +459,11 @@ public class App9 {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 

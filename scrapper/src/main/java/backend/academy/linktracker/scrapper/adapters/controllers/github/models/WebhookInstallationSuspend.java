@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookInstallationSuspend
@@ -20,7 +17,7 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("webhook-installation-suspend")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookInstallationSuspend {
 
@@ -59,18 +56,18 @@ public class WebhookInstallationSuspend {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private Installation installation;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     @Valid
     private List<@Valid WebhooksRepositoriesInner> repositories = new ArrayList<>();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
-    private @Nullable Object requester = null;
+    private JsonNullable<Object> requester = JsonNullable.<Object>undefined();
 
     private SimpleUser sender;
 
@@ -108,7 +105,7 @@ public class WebhookInstallationSuspend {
     }
 
     public WebhookInstallationSuspend enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -119,11 +116,11 @@ public class WebhookInstallationSuspend {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -149,7 +146,7 @@ public class WebhookInstallationSuspend {
     }
 
     public WebhookInstallationSuspend organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -160,11 +157,11 @@ public class WebhookInstallationSuspend {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -200,7 +197,7 @@ public class WebhookInstallationSuspend {
     }
 
     public WebhookInstallationSuspend repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -211,16 +208,16 @@ public class WebhookInstallationSuspend {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
-    public WebhookInstallationSuspend requester(@Nullable Object requester) {
-        this.requester = requester;
+    public WebhookInstallationSuspend requester(Object requester) {
+        this.requester = JsonNullable.of(requester);
         return this;
     }
 
@@ -230,11 +227,11 @@ public class WebhookInstallationSuspend {
      */
     @Schema(name = "requester", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requester")
-    public @Nullable Object getRequester() {
+    public JsonNullable<Object> getRequester() {
         return requester;
     }
 
-    public void setRequester(@Nullable Object requester) {
+    public void setRequester(JsonNullable<Object> requester) {
         this.requester = requester;
     }
 
@@ -274,14 +271,33 @@ public class WebhookInstallationSuspend {
                 && Objects.equals(this.organization, webhookInstallationSuspend.organization)
                 && Objects.equals(this.repositories, webhookInstallationSuspend.repositories)
                 && Objects.equals(this.repository, webhookInstallationSuspend.repository)
-                && Objects.equals(this.requester, webhookInstallationSuspend.requester)
+                && equalsNullable(this.requester, webhookInstallationSuspend.requester)
                 && Objects.equals(this.sender, webhookInstallationSuspend.sender);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                action, enterprise, installation, organization, repositories, repository, requester, sender);
+                action,
+                enterprise,
+                installation,
+                organization,
+                repositories,
+                repository,
+                hashCodeNullable(requester),
+                sender);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

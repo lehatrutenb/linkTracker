@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DependencyGraphSpdxSbomSbomRelationshipsInner
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("dependency_graph_spdx_sbom_sbom_relationships_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependencyGraphSpdxSbomSbomRelationshipsInner {
 
-    private String relationshipType;
+    private Optional<String> relationshipType = Optional.empty();
 
-    private String spdxElementId;
+    private Optional<String> spdxElementId = Optional.empty();
 
-    private String relatedSpdxElement;
+    private Optional<String> relatedSpdxElement = Optional.empty();
 
     public DependencyGraphSpdxSbomSbomRelationshipsInner relationshipType(String relationshipType) {
-        this.relationshipType = relationshipType;
+        this.relationshipType = Optional.ofNullable(relationshipType);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class DependencyGraphSpdxSbomSbomRelationshipsInner {
             description = "The type of relationship between the two SPDX elements.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("relationshipType")
-    public String getRelationshipType() {
+    public Optional<String> getRelationshipType() {
         return relationshipType;
     }
 
-    public void setRelationshipType(String relationshipType) {
+    public void setRelationshipType(Optional<String> relationshipType) {
         this.relationshipType = relationshipType;
     }
 
     public DependencyGraphSpdxSbomSbomRelationshipsInner spdxElementId(String spdxElementId) {
-        this.spdxElementId = spdxElementId;
+        this.spdxElementId = Optional.ofNullable(spdxElementId);
         return this;
     }
 
@@ -61,16 +60,16 @@ public class DependencyGraphSpdxSbomSbomRelationshipsInner {
             description = "The SPDX identifier of the package that is the source of the relationship.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("spdxElementId")
-    public String getSpdxElementId() {
+    public Optional<String> getSpdxElementId() {
         return spdxElementId;
     }
 
-    public void setSpdxElementId(String spdxElementId) {
+    public void setSpdxElementId(Optional<String> spdxElementId) {
         this.spdxElementId = spdxElementId;
     }
 
     public DependencyGraphSpdxSbomSbomRelationshipsInner relatedSpdxElement(String relatedSpdxElement) {
-        this.relatedSpdxElement = relatedSpdxElement;
+        this.relatedSpdxElement = Optional.ofNullable(relatedSpdxElement);
         return this;
     }
 
@@ -83,11 +82,11 @@ public class DependencyGraphSpdxSbomSbomRelationshipsInner {
             description = "The SPDX identifier of the package that is the target of the relationship.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("relatedSpdxElement")
-    public String getRelatedSpdxElement() {
+    public Optional<String> getRelatedSpdxElement() {
         return relatedSpdxElement;
     }
 
-    public void setRelatedSpdxElement(String relatedSpdxElement) {
+    public void setRelatedSpdxElement(Optional<String> relatedSpdxElement) {
         this.relatedSpdxElement = relatedSpdxElement;
     }
 

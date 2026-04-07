@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("package-version")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PackageVersion {
 
@@ -30,11 +30,11 @@ public class PackageVersion {
 
     private String packageHtmlUrl;
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private String license;
+    private Optional<String> license = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -43,9 +43,9 @@ public class PackageVersion {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime deletedAt;
+    private Optional<OffsetDateTime> deletedAt = Optional.empty();
 
-    private PackageVersionMetadata metadata;
+    private Optional<PackageVersionMetadata> metadata = Optional.empty();
 
     public PackageVersion() {
         super();
@@ -164,7 +164,7 @@ public class PackageVersion {
     }
 
     public PackageVersion htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -177,16 +177,16 @@ public class PackageVersion {
             example = "https://github.com/orgs/github/packages/container/super-linter/786068",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public PackageVersion license(String license) {
-        this.license = license;
+        this.license = Optional.ofNullable(license);
         return this;
     }
 
@@ -196,16 +196,16 @@ public class PackageVersion {
      */
     @Schema(name = "license", example = "MIT", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license")
-    public String getLicense() {
+    public Optional<String> getLicense() {
         return license;
     }
 
-    public void setLicense(String license) {
+    public void setLicense(Optional<String> license) {
         this.license = license;
     }
 
     public PackageVersion description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -215,11 +215,11 @@ public class PackageVersion {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -266,7 +266,7 @@ public class PackageVersion {
     }
 
     public PackageVersion deletedAt(OffsetDateTime deletedAt) {
-        this.deletedAt = deletedAt;
+        this.deletedAt = Optional.ofNullable(deletedAt);
         return this;
     }
 
@@ -277,16 +277,16 @@ public class PackageVersion {
     @Valid
     @Schema(name = "deleted_at", example = "2014-03-03T18:58:10Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deleted_at")
-    public OffsetDateTime getDeletedAt() {
+    public Optional<OffsetDateTime> getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(OffsetDateTime deletedAt) {
+    public void setDeletedAt(Optional<OffsetDateTime> deletedAt) {
         this.deletedAt = deletedAt;
     }
 
     public PackageVersion metadata(PackageVersionMetadata metadata) {
-        this.metadata = metadata;
+        this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
@@ -297,11 +297,11 @@ public class PackageVersion {
     @Valid
     @Schema(name = "metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("metadata")
-    public PackageVersionMetadata getMetadata() {
+    public Optional<PackageVersionMetadata> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(PackageVersionMetadata metadata) {
+    public void setMetadata(Optional<PackageVersionMetadata> metadata) {
         this.metadata = metadata;
     }
 

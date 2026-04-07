@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookIssuesOpenedChanges
@@ -15,11 +15,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_issues_opened_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookIssuesOpenedChanges {
 
-    private Issue6 oldIssue = null;
+    private JsonNullable<Issue6> oldIssue = JsonNullable.<Issue6>undefined();
 
     private Repository1 oldRepository;
 
@@ -31,12 +31,12 @@ public class WebhookIssuesOpenedChanges {
      * Constructor with only required parameters
      */
     public WebhookIssuesOpenedChanges(Issue6 oldIssue, Repository1 oldRepository) {
-        this.oldIssue = oldIssue;
+        this.oldIssue = JsonNullable.of(oldIssue);
         this.oldRepository = oldRepository;
     }
 
     public WebhookIssuesOpenedChanges oldIssue(Issue6 oldIssue) {
-        this.oldIssue = oldIssue;
+        this.oldIssue = JsonNullable.of(oldIssue);
         return this;
     }
 
@@ -48,11 +48,11 @@ public class WebhookIssuesOpenedChanges {
     @Valid
     @Schema(name = "old_issue", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("old_issue")
-    public Issue6 getOldIssue() {
+    public JsonNullable<Issue6> getOldIssue() {
         return oldIssue;
     }
 
-    public void setOldIssue(Issue6 oldIssue) {
+    public void setOldIssue(JsonNullable<Issue6> oldIssue) {
         this.oldIssue = oldIssue;
     }
 

@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,16 +25,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("check-run-with-simple-check-suite")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CheckRunWithSimpleCheckSuite {
 
-    private Integration app = null;
+    private JsonNullable<Integration> app = JsonNullable.<Integration>undefined();
 
     private SimpleCheckSuite checkSuite;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     /**
      * Gets or Sets conclusion
@@ -88,9 +89,9 @@ public class CheckRunWithSimpleCheckSuite {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
-    private DeploymentSimple deployment;
+    private Optional<DeploymentSimple> deployment = Optional.empty();
 
     private String detailsUrl;
 
@@ -181,10 +182,10 @@ public class CheckRunWithSimpleCheckSuite {
             OffsetDateTime startedAt,
             StatusEnum status,
             String url) {
-        this.app = app;
+        this.app = JsonNullable.of(app);
         this.checkSuite = checkSuite;
-        this.completedAt = completedAt;
-        this.conclusion = conclusion;
+        this.completedAt = JsonNullable.of(completedAt);
+        this.conclusion = JsonNullable.of(conclusion);
         this.detailsUrl = detailsUrl;
         this.externalId = externalId;
         this.headSha = headSha;
@@ -200,7 +201,7 @@ public class CheckRunWithSimpleCheckSuite {
     }
 
     public CheckRunWithSimpleCheckSuite app(Integration app) {
-        this.app = app;
+        this.app = JsonNullable.of(app);
         return this;
     }
 
@@ -212,11 +213,11 @@ public class CheckRunWithSimpleCheckSuite {
     @Valid
     @Schema(name = "app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("app")
-    public Integration getApp() {
+    public JsonNullable<Integration> getApp() {
         return app;
     }
 
-    public void setApp(Integration app) {
+    public void setApp(JsonNullable<Integration> app) {
         this.app = app;
     }
 
@@ -242,7 +243,7 @@ public class CheckRunWithSimpleCheckSuite {
     }
 
     public CheckRunWithSimpleCheckSuite completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -254,16 +255,16 @@ public class CheckRunWithSimpleCheckSuite {
     @Valid
     @Schema(name = "completed_at", example = "2018-05-04T01:14:52Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public CheckRunWithSimpleCheckSuite conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -274,16 +275,16 @@ public class CheckRunWithSimpleCheckSuite {
     @NotNull
     @Schema(name = "conclusion", example = "neutral", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
     public CheckRunWithSimpleCheckSuite deployment(DeploymentSimple deployment) {
-        this.deployment = deployment;
+        this.deployment = Optional.ofNullable(deployment);
         return this;
     }
 
@@ -294,11 +295,11 @@ public class CheckRunWithSimpleCheckSuite {
     @Valid
     @Schema(name = "deployment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment")
-    public DeploymentSimple getDeployment() {
+    public Optional<DeploymentSimple> getDeployment() {
         return deployment;
     }
 
-    public void setDeployment(DeploymentSimple deployment) {
+    public void setDeployment(Optional<DeploymentSimple> deployment) {
         this.deployment = deployment;
     }
 

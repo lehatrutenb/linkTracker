@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,87 +17,87 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Answer", description = "Represents an answer to a question on a Stack Exchange site.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Answer implements ApiResponseItemsInner {
 
-    private Boolean accepted;
+    private Optional<Boolean> accepted = Optional.empty();
 
     private Long answerId;
 
-    private Long awardedBountyAmount = null;
+    private JsonNullable<Long> awardedBountyAmount = JsonNullable.<Long>undefined();
 
     @Valid
     private List<@Valid ShallowUser> awardedBountyUsers = new ArrayList<>();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private String bodyMarkdown;
+    private Optional<String> bodyMarkdown = Optional.empty();
 
-    private Boolean canComment;
+    private Optional<Boolean> canComment = Optional.empty();
 
-    private Boolean canEdit;
+    private Optional<Boolean> canEdit = Optional.empty();
 
-    private Boolean canFlag;
+    private Optional<Boolean> canFlag = Optional.empty();
 
-    private Boolean canSuggestEdit;
+    private Optional<Boolean> canSuggestEdit = Optional.empty();
 
     @Valid
     private List<@Valid Collective> collectives = new ArrayList<>();
 
-    private Long commentCount;
+    private Optional<Long> commentCount = Optional.empty();
 
     @Valid
     private List<@Valid Comment> comments = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime communityOwnedDate = null;
+    private JsonNullable<OffsetDateTime> communityOwnedDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private String contentLicense;
+    private Optional<String> contentLicense = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime creationDate;
 
-    private Long downVoteCount;
+    private Optional<Long> downVoteCount = Optional.empty();
 
-    private Boolean downvoted;
+    private Optional<Boolean> downvoted = Optional.empty();
 
-    private Boolean isAccepted;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastActivityDate;
+    private Optional<Boolean> isAccepted = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastEditDate = null;
+    private Optional<OffsetDateTime> lastActivityDate = Optional.empty();
 
-    private ShallowUser lastEditor;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> lastEditDate = JsonNullable.<OffsetDateTime>undefined();
+
+    private Optional<ShallowUser> lastEditor = Optional.empty();
 
     private URI link;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lockedDate = null;
+    private JsonNullable<OffsetDateTime> lockedDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private ShallowUser owner;
+    private Optional<ShallowUser> owner = Optional.empty();
 
     @Valid
     private List<@Valid Collective> postedByCollectives = new ArrayList<>();
 
     private Long questionId;
 
-    private Long recommendations;
+    private Optional<Long> recommendations = Optional.empty();
 
-    private Long score;
+    private Optional<Long> score = Optional.empty();
 
-    private URI shareLink;
+    private Optional<URI> shareLink = Optional.empty();
 
     @Valid
     private List<String> tags = new ArrayList<>();
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
-    private Long upVoteCount;
+    private Optional<Long> upVoteCount = Optional.empty();
 
-    private Boolean upvoted;
+    private Optional<Boolean> upvoted = Optional.empty();
 
     public Answer() {
         super();
@@ -116,7 +114,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer accepted(Boolean accepted) {
-        this.accepted = accepted;
+        this.accepted = Optional.ofNullable(accepted);
         return this;
     }
 
@@ -130,11 +128,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "Whether the answer is accepted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("accepted")
-    public Boolean getAccepted() {
+    public Optional<Boolean> getAccepted() {
         return accepted;
     }
 
-    public void setAccepted(Boolean accepted) {
+    public void setAccepted(Optional<Boolean> accepted) {
         this.accepted = accepted;
     }
 
@@ -163,7 +161,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer awardedBountyAmount(Long awardedBountyAmount) {
-        this.awardedBountyAmount = awardedBountyAmount;
+        this.awardedBountyAmount = JsonNullable.of(awardedBountyAmount);
         return this;
     }
 
@@ -176,11 +174,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "The amount of bounty awarded to this answer, if any.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("awarded_bounty_amount")
-    public Long getAwardedBountyAmount() {
+    public JsonNullable<Long> getAwardedBountyAmount() {
         return awardedBountyAmount;
     }
 
-    public void setAwardedBountyAmount(Long awardedBountyAmount) {
+    public void setAwardedBountyAmount(JsonNullable<Long> awardedBountyAmount) {
         this.awardedBountyAmount = awardedBountyAmount;
     }
 
@@ -216,7 +214,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -230,16 +228,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The main body of the answer in HTML format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public Answer bodyMarkdown(String bodyMarkdown) {
-        this.bodyMarkdown = bodyMarkdown;
+        this.bodyMarkdown = Optional.ofNullable(bodyMarkdown);
         return this;
     }
 
@@ -252,16 +250,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The main body of the answer in Markdown format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_markdown")
-    public String getBodyMarkdown() {
+    public Optional<String> getBodyMarkdown() {
         return bodyMarkdown;
     }
 
-    public void setBodyMarkdown(String bodyMarkdown) {
+    public void setBodyMarkdown(Optional<String> bodyMarkdown) {
         this.bodyMarkdown = bodyMarkdown;
     }
 
     public Answer canComment(Boolean canComment) {
-        this.canComment = canComment;
+        this.canComment = Optional.ofNullable(canComment);
         return this;
     }
 
@@ -274,16 +272,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user can comment on this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_comment")
-    public Boolean getCanComment() {
+    public Optional<Boolean> getCanComment() {
         return canComment;
     }
 
-    public void setCanComment(Boolean canComment) {
+    public void setCanComment(Optional<Boolean> canComment) {
         this.canComment = canComment;
     }
 
     public Answer canEdit(Boolean canEdit) {
-        this.canEdit = canEdit;
+        this.canEdit = Optional.ofNullable(canEdit);
         return this;
     }
 
@@ -296,16 +294,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user can edit this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_edit")
-    public Boolean getCanEdit() {
+    public Optional<Boolean> getCanEdit() {
         return canEdit;
     }
 
-    public void setCanEdit(Boolean canEdit) {
+    public void setCanEdit(Optional<Boolean> canEdit) {
         this.canEdit = canEdit;
     }
 
     public Answer canFlag(Boolean canFlag) {
-        this.canFlag = canFlag;
+        this.canFlag = Optional.ofNullable(canFlag);
         return this;
     }
 
@@ -318,16 +316,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user can flag this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_flag")
-    public Boolean getCanFlag() {
+    public Optional<Boolean> getCanFlag() {
         return canFlag;
     }
 
-    public void setCanFlag(Boolean canFlag) {
+    public void setCanFlag(Optional<Boolean> canFlag) {
         this.canFlag = canFlag;
     }
 
     public Answer canSuggestEdit(Boolean canSuggestEdit) {
-        this.canSuggestEdit = canSuggestEdit;
+        this.canSuggestEdit = Optional.ofNullable(canSuggestEdit);
         return this;
     }
 
@@ -340,11 +338,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user can suggest an edit for this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_suggest_edit")
-    public Boolean getCanSuggestEdit() {
+    public Optional<Boolean> getCanSuggestEdit() {
         return canSuggestEdit;
     }
 
-    public void setCanSuggestEdit(Boolean canSuggestEdit) {
+    public void setCanSuggestEdit(Optional<Boolean> canSuggestEdit) {
         this.canSuggestEdit = canSuggestEdit;
     }
 
@@ -380,7 +378,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer commentCount(Long commentCount) {
-        this.commentCount = commentCount;
+        this.commentCount = Optional.ofNullable(commentCount);
         return this;
     }
 
@@ -394,11 +392,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "The total number of comments on this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comment_count")
-    public Long getCommentCount() {
+    public Optional<Long> getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(Long commentCount) {
+    public void setCommentCount(Optional<Long> commentCount) {
         this.commentCount = commentCount;
     }
 
@@ -434,7 +432,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer communityOwnedDate(OffsetDateTime communityOwnedDate) {
-        this.communityOwnedDate = communityOwnedDate;
+        this.communityOwnedDate = JsonNullable.of(communityOwnedDate);
         return this;
     }
 
@@ -448,16 +446,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The date when this answer became community owned, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("community_owned_date")
-    public OffsetDateTime getCommunityOwnedDate() {
+    public JsonNullable<OffsetDateTime> getCommunityOwnedDate() {
         return communityOwnedDate;
     }
 
-    public void setCommunityOwnedDate(OffsetDateTime communityOwnedDate) {
+    public void setCommunityOwnedDate(JsonNullable<OffsetDateTime> communityOwnedDate) {
         this.communityOwnedDate = communityOwnedDate;
     }
 
     public Answer contentLicense(String contentLicense) {
-        this.contentLicense = contentLicense;
+        this.contentLicense = Optional.ofNullable(contentLicense);
         return this;
     }
 
@@ -471,11 +469,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "The content license for this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_license")
-    public String getContentLicense() {
+    public Optional<String> getContentLicense() {
         return contentLicense;
     }
 
-    public void setContentLicense(String contentLicense) {
+    public void setContentLicense(Optional<String> contentLicense) {
         this.contentLicense = contentLicense;
     }
 
@@ -505,7 +503,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer downVoteCount(Long downVoteCount) {
-        this.downVoteCount = downVoteCount;
+        this.downVoteCount = Optional.ofNullable(downVoteCount);
         return this;
     }
 
@@ -519,16 +517,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The number of downvotes on this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("down_vote_count")
-    public Long getDownVoteCount() {
+    public Optional<Long> getDownVoteCount() {
         return downVoteCount;
     }
 
-    public void setDownVoteCount(Long downVoteCount) {
+    public void setDownVoteCount(Optional<Long> downVoteCount) {
         this.downVoteCount = downVoteCount;
     }
 
     public Answer downvoted(Boolean downvoted) {
-        this.downvoted = downvoted;
+        this.downvoted = Optional.ofNullable(downvoted);
         return this;
     }
 
@@ -541,16 +539,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user has downvoted this answer. Requires private_info scope.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downvoted")
-    public Boolean getDownvoted() {
+    public Optional<Boolean> getDownvoted() {
         return downvoted;
     }
 
-    public void setDownvoted(Boolean downvoted) {
+    public void setDownvoted(Optional<Boolean> downvoted) {
         this.downvoted = downvoted;
     }
 
     public Answer isAccepted(Boolean isAccepted) {
-        this.isAccepted = isAccepted;
+        this.isAccepted = Optional.ofNullable(isAccepted);
         return this;
     }
 
@@ -564,16 +562,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "Whether the answer is accepted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_accepted")
-    public Boolean getIsAccepted() {
+    public Optional<Boolean> getIsAccepted() {
         return isAccepted;
     }
 
-    public void setIsAccepted(Boolean isAccepted) {
+    public void setIsAccepted(Optional<Boolean> isAccepted) {
         this.isAccepted = isAccepted;
     }
 
     public Answer lastActivityDate(OffsetDateTime lastActivityDate) {
-        this.lastActivityDate = lastActivityDate;
+        this.lastActivityDate = Optional.ofNullable(lastActivityDate);
         return this;
     }
 
@@ -588,16 +586,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The date of the last activity on this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_activity_date")
-    public OffsetDateTime getLastActivityDate() {
+    public Optional<OffsetDateTime> getLastActivityDate() {
         return lastActivityDate;
     }
 
-    public void setLastActivityDate(OffsetDateTime lastActivityDate) {
+    public void setLastActivityDate(Optional<OffsetDateTime> lastActivityDate) {
         this.lastActivityDate = lastActivityDate;
     }
 
     public Answer lastEditDate(OffsetDateTime lastEditDate) {
-        this.lastEditDate = lastEditDate;
+        this.lastEditDate = JsonNullable.of(lastEditDate);
         return this;
     }
 
@@ -612,16 +610,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The date of the last edit to this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_edit_date")
-    public OffsetDateTime getLastEditDate() {
+    public JsonNullable<OffsetDateTime> getLastEditDate() {
         return lastEditDate;
     }
 
-    public void setLastEditDate(OffsetDateTime lastEditDate) {
+    public void setLastEditDate(JsonNullable<OffsetDateTime> lastEditDate) {
         this.lastEditDate = lastEditDate;
     }
 
     public Answer lastEditor(ShallowUser lastEditor) {
-        this.lastEditor = lastEditor;
+        this.lastEditor = Optional.ofNullable(lastEditor);
         return this;
     }
 
@@ -632,11 +630,11 @@ public class Answer implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "last_editor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_editor")
-    public ShallowUser getLastEditor() {
+    public Optional<ShallowUser> getLastEditor() {
         return lastEditor;
     }
 
-    public void setLastEditor(ShallowUser lastEditor) {
+    public void setLastEditor(Optional<ShallowUser> lastEditor) {
         this.lastEditor = lastEditor;
     }
 
@@ -666,7 +664,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer lockedDate(OffsetDateTime lockedDate) {
-        this.lockedDate = lockedDate;
+        this.lockedDate = JsonNullable.of(lockedDate);
         return this;
     }
 
@@ -680,16 +678,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The date when this answer was locked, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locked_date")
-    public OffsetDateTime getLockedDate() {
+    public JsonNullable<OffsetDateTime> getLockedDate() {
         return lockedDate;
     }
 
-    public void setLockedDate(OffsetDateTime lockedDate) {
+    public void setLockedDate(JsonNullable<OffsetDateTime> lockedDate) {
         this.lockedDate = lockedDate;
     }
 
     public Answer owner(ShallowUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -700,11 +698,11 @@ public class Answer implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public ShallowUser getOwner() {
+    public Optional<ShallowUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(ShallowUser owner) {
+    public void setOwner(Optional<ShallowUser> owner) {
         this.owner = owner;
     }
 
@@ -764,7 +762,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer recommendations(Long recommendations) {
-        this.recommendations = recommendations;
+        this.recommendations = Optional.ofNullable(recommendations);
         return this;
     }
 
@@ -777,16 +775,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "Recommendations for this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("recommendations")
-    public Long getRecommendations() {
+    public Optional<Long> getRecommendations() {
         return recommendations;
     }
 
-    public void setRecommendations(Long recommendations) {
+    public void setRecommendations(Optional<Long> recommendations) {
         this.recommendations = recommendations;
     }
 
     public Answer score(Long score) {
-        this.score = score;
+        this.score = Optional.ofNullable(score);
         return this;
     }
 
@@ -800,16 +798,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The current score (upvotes - downvotes) of this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("score")
-    public Long getScore() {
+    public Optional<Long> getScore() {
         return score;
     }
 
-    public void setScore(Long score) {
+    public void setScore(Optional<Long> score) {
         this.score = score;
     }
 
     public Answer shareLink(URI shareLink) {
-        this.shareLink = shareLink;
+        this.shareLink = Optional.ofNullable(shareLink);
         return this;
     }
 
@@ -823,11 +821,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "A short link suitable for sharing this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("share_link")
-    public URI getShareLink() {
+    public Optional<URI> getShareLink() {
         return shareLink;
     }
 
-    public void setShareLink(URI shareLink) {
+    public void setShareLink(Optional<URI> shareLink) {
         this.shareLink = shareLink;
     }
 
@@ -863,7 +861,7 @@ public class Answer implements ApiResponseItemsInner {
     }
 
     public Answer title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -877,16 +875,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The title of the parent question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
     public Answer upVoteCount(Long upVoteCount) {
-        this.upVoteCount = upVoteCount;
+        this.upVoteCount = Optional.ofNullable(upVoteCount);
         return this;
     }
 
@@ -900,16 +898,16 @@ public class Answer implements ApiResponseItemsInner {
             description = "The number of upvotes on this answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("up_vote_count")
-    public Long getUpVoteCount() {
+    public Optional<Long> getUpVoteCount() {
         return upVoteCount;
     }
 
-    public void setUpVoteCount(Long upVoteCount) {
+    public void setUpVoteCount(Optional<Long> upVoteCount) {
         this.upVoteCount = upVoteCount;
     }
 
     public Answer upvoted(Boolean upvoted) {
-        this.upvoted = upvoted;
+        this.upvoted = Optional.ofNullable(upvoted);
         return this;
     }
 
@@ -922,11 +920,11 @@ public class Answer implements ApiResponseItemsInner {
             description = "True if the authenticated user has upvoted this answer. Requires private_info scope.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("upvoted")
-    public Boolean getUpvoted() {
+    public Optional<Boolean> getUpvoted() {
         return upvoted;
     }
 
-    public void setUpvoted(Boolean upvoted) {
+    public void setUpvoted(Optional<Boolean> upvoted) {
         this.upvoted = upvoted;
     }
 
@@ -941,7 +939,7 @@ public class Answer implements ApiResponseItemsInner {
         Answer answer = (Answer) o;
         return Objects.equals(this.accepted, answer.accepted)
                 && Objects.equals(this.answerId, answer.answerId)
-                && Objects.equals(this.awardedBountyAmount, answer.awardedBountyAmount)
+                && equalsNullable(this.awardedBountyAmount, answer.awardedBountyAmount)
                 && Objects.equals(this.awardedBountyUsers, answer.awardedBountyUsers)
                 && Objects.equals(this.body, answer.body)
                 && Objects.equals(this.bodyMarkdown, answer.bodyMarkdown)
@@ -952,17 +950,17 @@ public class Answer implements ApiResponseItemsInner {
                 && Objects.equals(this.collectives, answer.collectives)
                 && Objects.equals(this.commentCount, answer.commentCount)
                 && Objects.equals(this.comments, answer.comments)
-                && Objects.equals(this.communityOwnedDate, answer.communityOwnedDate)
+                && equalsNullable(this.communityOwnedDate, answer.communityOwnedDate)
                 && Objects.equals(this.contentLicense, answer.contentLicense)
                 && Objects.equals(this.creationDate, answer.creationDate)
                 && Objects.equals(this.downVoteCount, answer.downVoteCount)
                 && Objects.equals(this.downvoted, answer.downvoted)
                 && Objects.equals(this.isAccepted, answer.isAccepted)
                 && Objects.equals(this.lastActivityDate, answer.lastActivityDate)
-                && Objects.equals(this.lastEditDate, answer.lastEditDate)
+                && equalsNullable(this.lastEditDate, answer.lastEditDate)
                 && Objects.equals(this.lastEditor, answer.lastEditor)
                 && Objects.equals(this.link, answer.link)
-                && Objects.equals(this.lockedDate, answer.lockedDate)
+                && equalsNullable(this.lockedDate, answer.lockedDate)
                 && Objects.equals(this.owner, answer.owner)
                 && Objects.equals(this.postedByCollectives, answer.postedByCollectives)
                 && Objects.equals(this.questionId, answer.questionId)
@@ -975,12 +973,17 @@ public class Answer implements ApiResponseItemsInner {
                 && Objects.equals(this.upvoted, answer.upvoted);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 accepted,
                 answerId,
-                awardedBountyAmount,
+                hashCodeNullable(awardedBountyAmount),
                 awardedBountyUsers,
                 body,
                 bodyMarkdown,
@@ -991,17 +994,17 @@ public class Answer implements ApiResponseItemsInner {
                 collectives,
                 commentCount,
                 comments,
-                communityOwnedDate,
+                hashCodeNullable(communityOwnedDate),
                 contentLicense,
                 creationDate,
                 downVoteCount,
                 downvoted,
                 isAccepted,
                 lastActivityDate,
-                lastEditDate,
+                hashCodeNullable(lastEditDate),
                 lastEditor,
                 link,
-                lockedDate,
+                hashCodeNullable(lockedDate),
                 owner,
                 postedByCollectives,
                 questionId,
@@ -1012,6 +1015,13 @@ public class Answer implements ApiResponseItemsInner {
                 title,
                 upVoteCount,
                 upvoted);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

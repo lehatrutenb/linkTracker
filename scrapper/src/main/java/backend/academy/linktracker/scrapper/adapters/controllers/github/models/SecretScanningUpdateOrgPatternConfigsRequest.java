@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SecretScanningUpdateOrgPatternConfigsRequest
@@ -17,11 +17,11 @@ import java.util.Objects;
 @JsonTypeName("secret_scanning_update_org_pattern_configs_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningUpdateOrgPatternConfigsRequest {
 
-    private String patternConfigVersion = null;
+    private JsonNullable<String> patternConfigVersion = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettingsInner>
@@ -32,7 +32,7 @@ public class SecretScanningUpdateOrgPatternConfigsRequest {
             new ArrayList<>();
 
     public SecretScanningUpdateOrgPatternConfigsRequest patternConfigVersion(String patternConfigVersion) {
-        this.patternConfigVersion = patternConfigVersion;
+        this.patternConfigVersion = JsonNullable.of(patternConfigVersion);
         return this;
     }
 
@@ -46,11 +46,11 @@ public class SecretScanningUpdateOrgPatternConfigsRequest {
                     "The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern_config_version")
-    public String getPatternConfigVersion() {
+    public JsonNullable<String> getPatternConfigVersion() {
         return patternConfigVersion;
     }
 
-    public void setPatternConfigVersion(String patternConfigVersion) {
+    public void setPatternConfigVersion(JsonNullable<String> patternConfigVersion) {
         this.patternConfigVersion = patternConfigVersion;
     }
 
@@ -136,7 +136,7 @@ public class SecretScanningUpdateOrgPatternConfigsRequest {
         }
         SecretScanningUpdateOrgPatternConfigsRequest secretScanningUpdateOrgPatternConfigsRequest =
                 (SecretScanningUpdateOrgPatternConfigsRequest) o;
-        return Objects.equals(
+        return equalsNullable(
                         this.patternConfigVersion, secretScanningUpdateOrgPatternConfigsRequest.patternConfigVersion)
                 && Objects.equals(
                         this.providerPatternSettings,
@@ -145,9 +145,21 @@ public class SecretScanningUpdateOrgPatternConfigsRequest {
                         this.customPatternSettings, secretScanningUpdateOrgPatternConfigsRequest.customPatternSettings);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(patternConfigVersion, providerPatternSettings, customPatternSettings);
+        return Objects.hash(hashCodeNullable(patternConfigVersion), providerPatternSettings, customPatternSettings);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

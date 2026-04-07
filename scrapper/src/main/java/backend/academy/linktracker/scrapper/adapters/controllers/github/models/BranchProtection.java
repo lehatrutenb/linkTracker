@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Branch Protection
@@ -16,44 +15,44 @@ import java.util.Objects;
 @JsonTypeName("branch-protection")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BranchProtection {
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private Boolean enabled;
+    private Optional<Boolean> enabled = Optional.empty();
 
-    private ProtectedBranchRequiredStatusCheck requiredStatusChecks;
+    private Optional<ProtectedBranchRequiredStatusCheck> requiredStatusChecks = Optional.empty();
 
-    private ProtectedBranchAdminEnforced enforceAdmins;
+    private Optional<ProtectedBranchAdminEnforced> enforceAdmins = Optional.empty();
 
-    private ProtectedBranchPullRequestReview requiredPullRequestReviews;
+    private Optional<ProtectedBranchPullRequestReview> requiredPullRequestReviews = Optional.empty();
 
-    private BranchRestrictionPolicy restrictions;
+    private Optional<BranchRestrictionPolicy> restrictions = Optional.empty();
 
-    private BranchProtectionRequiredLinearHistory requiredLinearHistory;
+    private Optional<BranchProtectionRequiredLinearHistory> requiredLinearHistory = Optional.empty();
 
-    private BranchProtectionRequiredLinearHistory allowForcePushes;
+    private Optional<BranchProtectionRequiredLinearHistory> allowForcePushes = Optional.empty();
 
-    private BranchProtectionRequiredLinearHistory allowDeletions;
+    private Optional<BranchProtectionRequiredLinearHistory> allowDeletions = Optional.empty();
 
-    private BranchProtectionRequiredLinearHistory blockCreations;
+    private Optional<BranchProtectionRequiredLinearHistory> blockCreations = Optional.empty();
 
-    private BranchProtectionRequiredLinearHistory requiredConversationResolution;
+    private Optional<BranchProtectionRequiredLinearHistory> requiredConversationResolution = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String protectionUrl;
+    private Optional<String> protectionUrl = Optional.empty();
 
-    private BranchProtectionRequiredSignatures requiredSignatures;
+    private Optional<BranchProtectionRequiredSignatures> requiredSignatures = Optional.empty();
 
-    private BranchProtectionLockBranch lockBranch;
+    private Optional<BranchProtectionLockBranch> lockBranch = Optional.empty();
 
-    private BranchProtectionAllowForkSyncing allowForkSyncing;
+    private Optional<BranchProtectionAllowForkSyncing> allowForkSyncing = Optional.empty();
 
     public BranchProtection url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -63,16 +62,16 @@ public class BranchProtection {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public BranchProtection enabled(Boolean enabled) {
-        this.enabled = enabled;
+        this.enabled = Optional.ofNullable(enabled);
         return this;
     }
 
@@ -82,16 +81,16 @@ public class BranchProtection {
      */
     @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enabled")
-    public Boolean getEnabled() {
+    public Optional<Boolean> getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(Optional<Boolean> enabled) {
         this.enabled = enabled;
     }
 
     public BranchProtection requiredStatusChecks(ProtectedBranchRequiredStatusCheck requiredStatusChecks) {
-        this.requiredStatusChecks = requiredStatusChecks;
+        this.requiredStatusChecks = Optional.ofNullable(requiredStatusChecks);
         return this;
     }
 
@@ -102,16 +101,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "required_status_checks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_status_checks")
-    public ProtectedBranchRequiredStatusCheck getRequiredStatusChecks() {
+    public Optional<ProtectedBranchRequiredStatusCheck> getRequiredStatusChecks() {
         return requiredStatusChecks;
     }
 
-    public void setRequiredStatusChecks(ProtectedBranchRequiredStatusCheck requiredStatusChecks) {
+    public void setRequiredStatusChecks(Optional<ProtectedBranchRequiredStatusCheck> requiredStatusChecks) {
         this.requiredStatusChecks = requiredStatusChecks;
     }
 
     public BranchProtection enforceAdmins(ProtectedBranchAdminEnforced enforceAdmins) {
-        this.enforceAdmins = enforceAdmins;
+        this.enforceAdmins = Optional.ofNullable(enforceAdmins);
         return this;
     }
 
@@ -122,16 +121,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "enforce_admins", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enforce_admins")
-    public ProtectedBranchAdminEnforced getEnforceAdmins() {
+    public Optional<ProtectedBranchAdminEnforced> getEnforceAdmins() {
         return enforceAdmins;
     }
 
-    public void setEnforceAdmins(ProtectedBranchAdminEnforced enforceAdmins) {
+    public void setEnforceAdmins(Optional<ProtectedBranchAdminEnforced> enforceAdmins) {
         this.enforceAdmins = enforceAdmins;
     }
 
     public BranchProtection requiredPullRequestReviews(ProtectedBranchPullRequestReview requiredPullRequestReviews) {
-        this.requiredPullRequestReviews = requiredPullRequestReviews;
+        this.requiredPullRequestReviews = Optional.ofNullable(requiredPullRequestReviews);
         return this;
     }
 
@@ -142,16 +141,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "required_pull_request_reviews", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_pull_request_reviews")
-    public ProtectedBranchPullRequestReview getRequiredPullRequestReviews() {
+    public Optional<ProtectedBranchPullRequestReview> getRequiredPullRequestReviews() {
         return requiredPullRequestReviews;
     }
 
-    public void setRequiredPullRequestReviews(ProtectedBranchPullRequestReview requiredPullRequestReviews) {
+    public void setRequiredPullRequestReviews(Optional<ProtectedBranchPullRequestReview> requiredPullRequestReviews) {
         this.requiredPullRequestReviews = requiredPullRequestReviews;
     }
 
     public BranchProtection restrictions(BranchRestrictionPolicy restrictions) {
-        this.restrictions = restrictions;
+        this.restrictions = Optional.ofNullable(restrictions);
         return this;
     }
 
@@ -162,16 +161,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "restrictions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("restrictions")
-    public BranchRestrictionPolicy getRestrictions() {
+    public Optional<BranchRestrictionPolicy> getRestrictions() {
         return restrictions;
     }
 
-    public void setRestrictions(BranchRestrictionPolicy restrictions) {
+    public void setRestrictions(Optional<BranchRestrictionPolicy> restrictions) {
         this.restrictions = restrictions;
     }
 
     public BranchProtection requiredLinearHistory(BranchProtectionRequiredLinearHistory requiredLinearHistory) {
-        this.requiredLinearHistory = requiredLinearHistory;
+        this.requiredLinearHistory = Optional.ofNullable(requiredLinearHistory);
         return this;
     }
 
@@ -182,16 +181,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "required_linear_history", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_linear_history")
-    public BranchProtectionRequiredLinearHistory getRequiredLinearHistory() {
+    public Optional<BranchProtectionRequiredLinearHistory> getRequiredLinearHistory() {
         return requiredLinearHistory;
     }
 
-    public void setRequiredLinearHistory(BranchProtectionRequiredLinearHistory requiredLinearHistory) {
+    public void setRequiredLinearHistory(Optional<BranchProtectionRequiredLinearHistory> requiredLinearHistory) {
         this.requiredLinearHistory = requiredLinearHistory;
     }
 
     public BranchProtection allowForcePushes(BranchProtectionRequiredLinearHistory allowForcePushes) {
-        this.allowForcePushes = allowForcePushes;
+        this.allowForcePushes = Optional.ofNullable(allowForcePushes);
         return this;
     }
 
@@ -202,16 +201,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "allow_force_pushes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_force_pushes")
-    public BranchProtectionRequiredLinearHistory getAllowForcePushes() {
+    public Optional<BranchProtectionRequiredLinearHistory> getAllowForcePushes() {
         return allowForcePushes;
     }
 
-    public void setAllowForcePushes(BranchProtectionRequiredLinearHistory allowForcePushes) {
+    public void setAllowForcePushes(Optional<BranchProtectionRequiredLinearHistory> allowForcePushes) {
         this.allowForcePushes = allowForcePushes;
     }
 
     public BranchProtection allowDeletions(BranchProtectionRequiredLinearHistory allowDeletions) {
-        this.allowDeletions = allowDeletions;
+        this.allowDeletions = Optional.ofNullable(allowDeletions);
         return this;
     }
 
@@ -222,16 +221,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "allow_deletions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_deletions")
-    public BranchProtectionRequiredLinearHistory getAllowDeletions() {
+    public Optional<BranchProtectionRequiredLinearHistory> getAllowDeletions() {
         return allowDeletions;
     }
 
-    public void setAllowDeletions(BranchProtectionRequiredLinearHistory allowDeletions) {
+    public void setAllowDeletions(Optional<BranchProtectionRequiredLinearHistory> allowDeletions) {
         this.allowDeletions = allowDeletions;
     }
 
     public BranchProtection blockCreations(BranchProtectionRequiredLinearHistory blockCreations) {
-        this.blockCreations = blockCreations;
+        this.blockCreations = Optional.ofNullable(blockCreations);
         return this;
     }
 
@@ -242,17 +241,17 @@ public class BranchProtection {
     @Valid
     @Schema(name = "block_creations", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("block_creations")
-    public BranchProtectionRequiredLinearHistory getBlockCreations() {
+    public Optional<BranchProtectionRequiredLinearHistory> getBlockCreations() {
         return blockCreations;
     }
 
-    public void setBlockCreations(BranchProtectionRequiredLinearHistory blockCreations) {
+    public void setBlockCreations(Optional<BranchProtectionRequiredLinearHistory> blockCreations) {
         this.blockCreations = blockCreations;
     }
 
     public BranchProtection requiredConversationResolution(
             BranchProtectionRequiredLinearHistory requiredConversationResolution) {
-        this.requiredConversationResolution = requiredConversationResolution;
+        this.requiredConversationResolution = Optional.ofNullable(requiredConversationResolution);
         return this;
     }
 
@@ -263,17 +262,17 @@ public class BranchProtection {
     @Valid
     @Schema(name = "required_conversation_resolution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_conversation_resolution")
-    public BranchProtectionRequiredLinearHistory getRequiredConversationResolution() {
+    public Optional<BranchProtectionRequiredLinearHistory> getRequiredConversationResolution() {
         return requiredConversationResolution;
     }
 
     public void setRequiredConversationResolution(
-            BranchProtectionRequiredLinearHistory requiredConversationResolution) {
+            Optional<BranchProtectionRequiredLinearHistory> requiredConversationResolution) {
         this.requiredConversationResolution = requiredConversationResolution;
     }
 
     public BranchProtection name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -283,16 +282,16 @@ public class BranchProtection {
      */
     @Schema(name = "name", example = "\"branch/with/protection\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public BranchProtection protectionUrl(String protectionUrl) {
-        this.protectionUrl = protectionUrl;
+        this.protectionUrl = Optional.ofNullable(protectionUrl);
         return this;
     }
 
@@ -306,16 +305,16 @@ public class BranchProtection {
                     "\"https://api.github.com/repos/owner-79e94e2d36b3fd06a32bb213/AAA_Public_Repo/branches/branch/with/protection/protection\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protection_url")
-    public String getProtectionUrl() {
+    public Optional<String> getProtectionUrl() {
         return protectionUrl;
     }
 
-    public void setProtectionUrl(String protectionUrl) {
+    public void setProtectionUrl(Optional<String> protectionUrl) {
         this.protectionUrl = protectionUrl;
     }
 
     public BranchProtection requiredSignatures(BranchProtectionRequiredSignatures requiredSignatures) {
-        this.requiredSignatures = requiredSignatures;
+        this.requiredSignatures = Optional.ofNullable(requiredSignatures);
         return this;
     }
 
@@ -326,16 +325,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "required_signatures", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_signatures")
-    public BranchProtectionRequiredSignatures getRequiredSignatures() {
+    public Optional<BranchProtectionRequiredSignatures> getRequiredSignatures() {
         return requiredSignatures;
     }
 
-    public void setRequiredSignatures(BranchProtectionRequiredSignatures requiredSignatures) {
+    public void setRequiredSignatures(Optional<BranchProtectionRequiredSignatures> requiredSignatures) {
         this.requiredSignatures = requiredSignatures;
     }
 
     public BranchProtection lockBranch(BranchProtectionLockBranch lockBranch) {
-        this.lockBranch = lockBranch;
+        this.lockBranch = Optional.ofNullable(lockBranch);
         return this;
     }
 
@@ -346,16 +345,16 @@ public class BranchProtection {
     @Valid
     @Schema(name = "lock_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_branch")
-    public BranchProtectionLockBranch getLockBranch() {
+    public Optional<BranchProtectionLockBranch> getLockBranch() {
         return lockBranch;
     }
 
-    public void setLockBranch(BranchProtectionLockBranch lockBranch) {
+    public void setLockBranch(Optional<BranchProtectionLockBranch> lockBranch) {
         this.lockBranch = lockBranch;
     }
 
     public BranchProtection allowForkSyncing(BranchProtectionAllowForkSyncing allowForkSyncing) {
-        this.allowForkSyncing = allowForkSyncing;
+        this.allowForkSyncing = Optional.ofNullable(allowForkSyncing);
         return this;
     }
 
@@ -366,11 +365,11 @@ public class BranchProtection {
     @Valid
     @Schema(name = "allow_fork_syncing", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_fork_syncing")
-    public BranchProtectionAllowForkSyncing getAllowForkSyncing() {
+    public Optional<BranchProtectionAllowForkSyncing> getAllowForkSyncing() {
         return allowForkSyncing;
     }
 
-    public void setAllowForkSyncing(BranchProtectionAllowForkSyncing allowForkSyncing) {
+    public void setAllowForkSyncing(Optional<BranchProtectionAllowForkSyncing> allowForkSyncing) {
         this.allowForkSyncing = allowForkSyncing;
     }
 

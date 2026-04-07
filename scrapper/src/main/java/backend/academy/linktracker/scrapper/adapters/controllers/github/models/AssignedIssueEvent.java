@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Assigned Issue Event
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("assigned-issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AssignedIssueEvent {
 
@@ -30,13 +30,13 @@ public class AssignedIssueEvent {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private Integration performedViaGithubApp = null;
+    private JsonNullable<Integration> performedViaGithubApp = JsonNullable.<Integration>undefined();
 
     private SimpleUser assignee;
 
@@ -66,10 +66,10 @@ public class AssignedIssueEvent {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.assignee = assignee;
         this.assigner = assigner;
     }
@@ -176,7 +176,7 @@ public class AssignedIssueEvent {
     }
 
     public AssignedIssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -187,16 +187,16 @@ public class AssignedIssueEvent {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public AssignedIssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -207,11 +207,11 @@ public class AssignedIssueEvent {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -236,7 +236,7 @@ public class AssignedIssueEvent {
     }
 
     public AssignedIssueEvent performedViaGithubApp(Integration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -248,11 +248,11 @@ public class AssignedIssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public Integration getPerformedViaGithubApp() {
+    public JsonNullable<Integration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(Integration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<Integration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 

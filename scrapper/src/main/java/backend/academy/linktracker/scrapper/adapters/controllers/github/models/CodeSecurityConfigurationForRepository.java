@@ -7,9 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Code security configuration associated with a repository and attachment status
@@ -20,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("code-security-configuration-for-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityConfigurationForRepository {
 
@@ -71,12 +70,12 @@ public class CodeSecurityConfigurationForRepository {
         }
     }
 
-    private StatusEnum status;
+    private Optional<StatusEnum> status = Optional.empty();
 
-    private CodeSecurityConfiguration _configuration;
+    private Optional<CodeSecurityConfiguration> _configuration = Optional.empty();
 
     public CodeSecurityConfigurationForRepository status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -89,16 +88,16 @@ public class CodeSecurityConfigurationForRepository {
             description = "The attachment status of the code security configuration on the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
     public CodeSecurityConfigurationForRepository _configuration(CodeSecurityConfiguration _configuration) {
-        this._configuration = _configuration;
+        this._configuration = Optional.ofNullable(_configuration);
         return this;
     }
 
@@ -109,11 +108,11 @@ public class CodeSecurityConfigurationForRepository {
     @Valid
     @Schema(name = "configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("configuration")
-    public CodeSecurityConfiguration getConfiguration() {
+    public Optional<CodeSecurityConfiguration> getConfiguration() {
         return _configuration;
     }
 
-    public void setConfiguration(CodeSecurityConfiguration _configuration) {
+    public void setConfiguration(Optional<CodeSecurityConfiguration> _configuration) {
         this._configuration = _configuration;
     }
 

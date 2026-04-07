@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRuleWorkflowsParameters
@@ -17,11 +17,11 @@ import java.util.Objects;
 @JsonTypeName("repository_rule_workflows_parameters")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleWorkflowsParameters {
 
-    private Boolean doNotEnforceOnCreate;
+    private Optional<Boolean> doNotEnforceOnCreate = Optional.empty();
 
     @Valid
     private List<@Valid RepositoryRuleParamsWorkflowFileReference> workflows = new ArrayList<>();
@@ -38,7 +38,7 @@ public class RepositoryRuleWorkflowsParameters {
     }
 
     public RepositoryRuleWorkflowsParameters doNotEnforceOnCreate(Boolean doNotEnforceOnCreate) {
-        this.doNotEnforceOnCreate = doNotEnforceOnCreate;
+        this.doNotEnforceOnCreate = Optional.ofNullable(doNotEnforceOnCreate);
         return this;
     }
 
@@ -51,11 +51,11 @@ public class RepositoryRuleWorkflowsParameters {
             description = "Allow repositories and branches to be created if a check would otherwise prohibit it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("do_not_enforce_on_create")
-    public Boolean getDoNotEnforceOnCreate() {
+    public Optional<Boolean> getDoNotEnforceOnCreate() {
         return doNotEnforceOnCreate;
     }
 
-    public void setDoNotEnforceOnCreate(Boolean doNotEnforceOnCreate) {
+    public void setDoNotEnforceOnCreate(Optional<Boolean> doNotEnforceOnCreate) {
         this.doNotEnforceOnCreate = doNotEnforceOnCreate;
     }
 

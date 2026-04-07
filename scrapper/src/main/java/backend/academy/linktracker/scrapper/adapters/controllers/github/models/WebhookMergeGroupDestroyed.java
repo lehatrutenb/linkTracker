@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookMergeGroupDestroyed
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-merge-group-destroyed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMergeGroupDestroyed {
 
@@ -93,17 +93,17 @@ public class WebhookMergeGroupDestroyed {
         }
     }
 
-    private ReasonEnum reason;
+    private Optional<ReasonEnum> reason = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private MergeGroup mergeGroup;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookMergeGroupDestroyed() {
         super();
@@ -138,7 +138,7 @@ public class WebhookMergeGroupDestroyed {
     }
 
     public WebhookMergeGroupDestroyed reason(ReasonEnum reason) {
-        this.reason = reason;
+        this.reason = Optional.ofNullable(reason);
         return this;
     }
 
@@ -152,16 +152,16 @@ public class WebhookMergeGroupDestroyed {
                     "Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reason")
-    public ReasonEnum getReason() {
+    public Optional<ReasonEnum> getReason() {
         return reason;
     }
 
-    public void setReason(ReasonEnum reason) {
+    public void setReason(Optional<ReasonEnum> reason) {
         this.reason = reason;
     }
 
     public WebhookMergeGroupDestroyed installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -172,11 +172,11 @@ public class WebhookMergeGroupDestroyed {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -202,7 +202,7 @@ public class WebhookMergeGroupDestroyed {
     }
 
     public WebhookMergeGroupDestroyed organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -213,16 +213,16 @@ public class WebhookMergeGroupDestroyed {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookMergeGroupDestroyed repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -233,16 +233,16 @@ public class WebhookMergeGroupDestroyed {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
     public WebhookMergeGroupDestroyed sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -253,11 +253,11 @@ public class WebhookMergeGroupDestroyed {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 

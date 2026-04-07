@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRuleViolationErrorMetadata
@@ -15,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("repository_rule_violation_error_metadata")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleViolationErrorMetadata {
 
-    private RepositoryRuleViolationErrorMetadataSecretScanning secretScanning;
+    private Optional<RepositoryRuleViolationErrorMetadataSecretScanning> secretScanning = Optional.empty();
 
     public RepositoryRuleViolationErrorMetadata secretScanning(
             RepositoryRuleViolationErrorMetadataSecretScanning secretScanning) {
-        this.secretScanning = secretScanning;
+        this.secretScanning = Optional.ofNullable(secretScanning);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class RepositoryRuleViolationErrorMetadata {
     @Valid
     @Schema(name = "secret_scanning", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning")
-    public RepositoryRuleViolationErrorMetadataSecretScanning getSecretScanning() {
+    public Optional<RepositoryRuleViolationErrorMetadataSecretScanning> getSecretScanning() {
         return secretScanning;
     }
 
-    public void setSecretScanning(RepositoryRuleViolationErrorMetadataSecretScanning secretScanning) {
+    public void setSecretScanning(Optional<RepositoryRuleViolationErrorMetadataSecretScanning> secretScanning) {
         this.secretScanning = secretScanning;
     }
 

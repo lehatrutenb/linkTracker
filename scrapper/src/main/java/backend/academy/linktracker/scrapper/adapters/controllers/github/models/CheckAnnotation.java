@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Check Annotation
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("check-annotation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CheckAnnotation {
 
@@ -25,17 +25,17 @@ public class CheckAnnotation {
 
     private Long endLine;
 
-    private Long startColumn = null;
+    private JsonNullable<Long> startColumn = JsonNullable.<Long>undefined();
 
-    private Long endColumn = null;
+    private JsonNullable<Long> endColumn = JsonNullable.<Long>undefined();
 
-    private String annotationLevel = null;
+    private JsonNullable<String> annotationLevel = JsonNullable.<String>undefined();
 
-    private String title = null;
+    private JsonNullable<String> title = JsonNullable.<String>undefined();
 
-    private String message = null;
+    private JsonNullable<String> message = JsonNullable.<String>undefined();
 
-    private String rawDetails = null;
+    private JsonNullable<String> rawDetails = JsonNullable.<String>undefined();
 
     private String blobHref;
 
@@ -60,12 +60,12 @@ public class CheckAnnotation {
         this.path = path;
         this.startLine = startLine;
         this.endLine = endLine;
-        this.startColumn = startColumn;
-        this.endColumn = endColumn;
-        this.annotationLevel = annotationLevel;
-        this.title = title;
-        this.message = message;
-        this.rawDetails = rawDetails;
+        this.startColumn = JsonNullable.of(startColumn);
+        this.endColumn = JsonNullable.of(endColumn);
+        this.annotationLevel = JsonNullable.of(annotationLevel);
+        this.title = JsonNullable.of(title);
+        this.message = JsonNullable.of(message);
+        this.rawDetails = JsonNullable.of(rawDetails);
         this.blobHref = blobHref;
     }
 
@@ -130,7 +130,7 @@ public class CheckAnnotation {
     }
 
     public CheckAnnotation startColumn(Long startColumn) {
-        this.startColumn = startColumn;
+        this.startColumn = JsonNullable.of(startColumn);
         return this;
     }
 
@@ -141,16 +141,16 @@ public class CheckAnnotation {
     @NotNull
     @Schema(name = "start_column", example = "5", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("start_column")
-    public Long getStartColumn() {
+    public JsonNullable<Long> getStartColumn() {
         return startColumn;
     }
 
-    public void setStartColumn(Long startColumn) {
+    public void setStartColumn(JsonNullable<Long> startColumn) {
         this.startColumn = startColumn;
     }
 
     public CheckAnnotation endColumn(Long endColumn) {
-        this.endColumn = endColumn;
+        this.endColumn = JsonNullable.of(endColumn);
         return this;
     }
 
@@ -161,16 +161,16 @@ public class CheckAnnotation {
     @NotNull
     @Schema(name = "end_column", example = "10", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("end_column")
-    public Long getEndColumn() {
+    public JsonNullable<Long> getEndColumn() {
         return endColumn;
     }
 
-    public void setEndColumn(Long endColumn) {
+    public void setEndColumn(JsonNullable<Long> endColumn) {
         this.endColumn = endColumn;
     }
 
     public CheckAnnotation annotationLevel(String annotationLevel) {
-        this.annotationLevel = annotationLevel;
+        this.annotationLevel = JsonNullable.of(annotationLevel);
         return this;
     }
 
@@ -181,16 +181,16 @@ public class CheckAnnotation {
     @NotNull
     @Schema(name = "annotation_level", example = "warning", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("annotation_level")
-    public String getAnnotationLevel() {
+    public JsonNullable<String> getAnnotationLevel() {
         return annotationLevel;
     }
 
-    public void setAnnotationLevel(String annotationLevel) {
+    public void setAnnotationLevel(JsonNullable<String> annotationLevel) {
         this.annotationLevel = annotationLevel;
     }
 
     public CheckAnnotation title(String title) {
-        this.title = title;
+        this.title = JsonNullable.of(title);
         return this;
     }
 
@@ -201,16 +201,16 @@ public class CheckAnnotation {
     @NotNull
     @Schema(name = "title", example = "Spell Checker", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public JsonNullable<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(JsonNullable<String> title) {
         this.title = title;
     }
 
     public CheckAnnotation message(String message) {
-        this.message = message;
+        this.message = JsonNullable.of(message);
         return this;
     }
 
@@ -224,16 +224,16 @@ public class CheckAnnotation {
             example = "Check your spelling for 'banaas'.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public JsonNullable<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(JsonNullable<String> message) {
         this.message = message;
     }
 
     public CheckAnnotation rawDetails(String rawDetails) {
-        this.rawDetails = rawDetails;
+        this.rawDetails = JsonNullable.of(rawDetails);
         return this;
     }
 
@@ -247,11 +247,11 @@ public class CheckAnnotation {
             example = "Do you mean 'bananas' or 'banana'?",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("raw_details")
-    public String getRawDetails() {
+    public JsonNullable<String> getRawDetails() {
         return rawDetails;
     }
 
-    public void setRawDetails(String rawDetails) {
+    public void setRawDetails(JsonNullable<String> rawDetails) {
         this.rawDetails = rawDetails;
     }
 

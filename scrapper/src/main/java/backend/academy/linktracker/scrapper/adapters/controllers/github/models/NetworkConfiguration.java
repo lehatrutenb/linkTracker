@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("network-configuration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NetworkConfiguration {
 
@@ -67,7 +68,7 @@ public class NetworkConfiguration {
         }
     }
 
-    private ComputeServiceEnum computeService;
+    private Optional<ComputeServiceEnum> computeService = Optional.empty();
 
     @Valid
     private List<String> networkSettingsIds = new ArrayList<>();
@@ -75,10 +76,10 @@ public class NetworkConfiguration {
     @Valid
     private List<String> failoverNetworkSettingsIds = new ArrayList<>();
 
-    private Boolean failoverNetworkEnabled;
+    private Optional<Boolean> failoverNetworkEnabled = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdOn = null;
+    private JsonNullable<OffsetDateTime> createdOn = JsonNullable.<OffsetDateTime>undefined();
 
     public NetworkConfiguration() {
         super();
@@ -90,7 +91,7 @@ public class NetworkConfiguration {
     public NetworkConfiguration(String id, String name, OffsetDateTime createdOn) {
         this.id = id;
         this.name = name;
-        this.createdOn = createdOn;
+        this.createdOn = JsonNullable.of(createdOn);
     }
 
     public NetworkConfiguration id(String id) {
@@ -142,7 +143,7 @@ public class NetworkConfiguration {
     }
 
     public NetworkConfiguration computeService(ComputeServiceEnum computeService) {
-        this.computeService = computeService;
+        this.computeService = Optional.ofNullable(computeService);
         return this;
     }
 
@@ -155,11 +156,11 @@ public class NetworkConfiguration {
             description = "The hosted compute service the network configuration supports.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compute_service")
-    public ComputeServiceEnum getComputeService() {
+    public Optional<ComputeServiceEnum> getComputeService() {
         return computeService;
     }
 
-    public void setComputeService(ComputeServiceEnum computeService) {
+    public void setComputeService(Optional<ComputeServiceEnum> computeService) {
         this.computeService = computeService;
     }
 
@@ -226,7 +227,7 @@ public class NetworkConfiguration {
     }
 
     public NetworkConfiguration failoverNetworkEnabled(Boolean failoverNetworkEnabled) {
-        this.failoverNetworkEnabled = failoverNetworkEnabled;
+        this.failoverNetworkEnabled = Optional.ofNullable(failoverNetworkEnabled);
         return this;
     }
 
@@ -240,16 +241,16 @@ public class NetworkConfiguration {
             description = "Indicates whether the failover network resource is enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failover_network_enabled")
-    public Boolean getFailoverNetworkEnabled() {
+    public Optional<Boolean> getFailoverNetworkEnabled() {
         return failoverNetworkEnabled;
     }
 
-    public void setFailoverNetworkEnabled(Boolean failoverNetworkEnabled) {
+    public void setFailoverNetworkEnabled(Optional<Boolean> failoverNetworkEnabled) {
         this.failoverNetworkEnabled = failoverNetworkEnabled;
     }
 
     public NetworkConfiguration createdOn(OffsetDateTime createdOn) {
-        this.createdOn = createdOn;
+        this.createdOn = JsonNullable.of(createdOn);
         return this;
     }
 
@@ -265,11 +266,11 @@ public class NetworkConfiguration {
             description = "The time at which the network configuration was created, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_on")
-    public OffsetDateTime getCreatedOn() {
+    public JsonNullable<OffsetDateTime> getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(OffsetDateTime createdOn) {
+    public void setCreatedOn(JsonNullable<OffsetDateTime> createdOn) {
         this.createdOn = createdOn;
     }
 

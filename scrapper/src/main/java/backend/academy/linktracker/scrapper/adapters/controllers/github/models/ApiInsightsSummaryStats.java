@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * API Insights usage summary stats for an organization
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("api-insights-summary-stats")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiInsightsSummaryStats {
 
-    private Long totalRequestCount;
+    private Optional<Long> totalRequestCount = Optional.empty();
 
-    private Long rateLimitedRequestCount;
+    private Optional<Long> rateLimitedRequestCount = Optional.empty();
 
     public ApiInsightsSummaryStats totalRequestCount(Long totalRequestCount) {
-        this.totalRequestCount = totalRequestCount;
+        this.totalRequestCount = Optional.ofNullable(totalRequestCount);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class ApiInsightsSummaryStats {
             description = "The total number of requests within the queried time period",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_request_count")
-    public Long getTotalRequestCount() {
+    public Optional<Long> getTotalRequestCount() {
         return totalRequestCount;
     }
 
-    public void setTotalRequestCount(Long totalRequestCount) {
+    public void setTotalRequestCount(Optional<Long> totalRequestCount) {
         this.totalRequestCount = totalRequestCount;
     }
 
     public ApiInsightsSummaryStats rateLimitedRequestCount(Long rateLimitedRequestCount) {
-        this.rateLimitedRequestCount = rateLimitedRequestCount;
+        this.rateLimitedRequestCount = Optional.ofNullable(rateLimitedRequestCount);
         return this;
     }
 
@@ -59,11 +58,11 @@ public class ApiInsightsSummaryStats {
             description = "The total number of requests that were rate limited within the queried time period",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rate_limited_request_count")
-    public Long getRateLimitedRequestCount() {
+    public Optional<Long> getRateLimitedRequestCount() {
         return rateLimitedRequestCount;
     }
 
-    public void setRateLimitedRequestCount(Long rateLimitedRequestCount) {
+    public void setRateLimitedRequestCount(Optional<Long> rateLimitedRequestCount) {
         this.rateLimitedRequestCount = rateLimitedRequestCount;
     }
 

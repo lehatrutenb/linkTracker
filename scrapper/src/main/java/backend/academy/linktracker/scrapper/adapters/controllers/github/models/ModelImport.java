@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A repository import from an external source.
@@ -21,19 +19,19 @@ import java.util.Objects;
 @JsonTypeName("_import")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ModelImport {
 
-    private String vcs = null;
+    private JsonNullable<String> vcs = JsonNullable.<String>undefined();
 
-    private Boolean useLfs;
+    private Optional<Boolean> useLfs = Optional.empty();
 
     private String vcsUrl;
 
-    private String svcRoot;
+    private Optional<String> svcRoot = Optional.empty();
 
-    private String tfvcProject;
+    private Optional<String> tfvcProject = Optional.empty();
 
     /**
      * Gets or Sets status
@@ -100,30 +98,30 @@ public class ModelImport {
 
     private StatusEnum status;
 
-    private String statusText = null;
+    private JsonNullable<String> statusText = JsonNullable.<String>undefined();
 
-    private String failedStep = null;
+    private JsonNullable<String> failedStep = JsonNullable.<String>undefined();
 
-    private String errorMessage = null;
+    private JsonNullable<String> errorMessage = JsonNullable.<String>undefined();
 
-    private Long importPercent = null;
+    private JsonNullable<Long> importPercent = JsonNullable.<Long>undefined();
 
-    private Long commitCount = null;
+    private JsonNullable<Long> commitCount = JsonNullable.<Long>undefined();
 
-    private Long pushPercent = null;
+    private JsonNullable<Long> pushPercent = JsonNullable.<Long>undefined();
 
-    private Boolean hasLargeFiles;
+    private Optional<Boolean> hasLargeFiles = Optional.empty();
 
-    private Long largeFilesSize;
+    private Optional<Long> largeFilesSize = Optional.empty();
 
-    private Long largeFilesCount;
+    private Optional<Long> largeFilesCount = Optional.empty();
 
     @Valid
     private List<@Valid ImportProjectChoicesInner> projectChoices = new ArrayList<>();
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
-    private Long authorsCount = null;
+    private JsonNullable<Long> authorsCount = JsonNullable.<Long>undefined();
 
     private URI url;
 
@@ -133,7 +131,7 @@ public class ModelImport {
 
     private URI repositoryUrl;
 
-    private String svnRoot;
+    private Optional<String> svnRoot = Optional.empty();
 
     public ModelImport() {
         super();
@@ -144,7 +142,7 @@ public class ModelImport {
      */
     public ModelImport(
             String vcs, String vcsUrl, StatusEnum status, URI url, URI htmlUrl, URI authorsUrl, URI repositoryUrl) {
-        this.vcs = vcs;
+        this.vcs = JsonNullable.of(vcs);
         this.vcsUrl = vcsUrl;
         this.status = status;
         this.url = url;
@@ -154,7 +152,7 @@ public class ModelImport {
     }
 
     public ModelImport vcs(String vcs) {
-        this.vcs = vcs;
+        this.vcs = JsonNullable.of(vcs);
         return this;
     }
 
@@ -165,16 +163,16 @@ public class ModelImport {
     @NotNull
     @Schema(name = "vcs", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("vcs")
-    public String getVcs() {
+    public JsonNullable<String> getVcs() {
         return vcs;
     }
 
-    public void setVcs(String vcs) {
+    public void setVcs(JsonNullable<String> vcs) {
         this.vcs = vcs;
     }
 
     public ModelImport useLfs(Boolean useLfs) {
-        this.useLfs = useLfs;
+        this.useLfs = Optional.ofNullable(useLfs);
         return this;
     }
 
@@ -184,11 +182,11 @@ public class ModelImport {
      */
     @Schema(name = "use_lfs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("use_lfs")
-    public Boolean getUseLfs() {
+    public Optional<Boolean> getUseLfs() {
         return useLfs;
     }
 
-    public void setUseLfs(Boolean useLfs) {
+    public void setUseLfs(Optional<Boolean> useLfs) {
         this.useLfs = useLfs;
     }
 
@@ -216,7 +214,7 @@ public class ModelImport {
     }
 
     public ModelImport svcRoot(String svcRoot) {
-        this.svcRoot = svcRoot;
+        this.svcRoot = Optional.ofNullable(svcRoot);
         return this;
     }
 
@@ -226,16 +224,16 @@ public class ModelImport {
      */
     @Schema(name = "svc_root", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("svc_root")
-    public String getSvcRoot() {
+    public Optional<String> getSvcRoot() {
         return svcRoot;
     }
 
-    public void setSvcRoot(String svcRoot) {
+    public void setSvcRoot(Optional<String> svcRoot) {
         this.svcRoot = svcRoot;
     }
 
     public ModelImport tfvcProject(String tfvcProject) {
-        this.tfvcProject = tfvcProject;
+        this.tfvcProject = Optional.ofNullable(tfvcProject);
         return this;
     }
 
@@ -245,11 +243,11 @@ public class ModelImport {
      */
     @Schema(name = "tfvc_project", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tfvc_project")
-    public String getTfvcProject() {
+    public Optional<String> getTfvcProject() {
         return tfvcProject;
     }
 
-    public void setTfvcProject(String tfvcProject) {
+    public void setTfvcProject(Optional<String> tfvcProject) {
         this.tfvcProject = tfvcProject;
     }
 
@@ -274,7 +272,7 @@ public class ModelImport {
     }
 
     public ModelImport statusText(String statusText) {
-        this.statusText = statusText;
+        this.statusText = JsonNullable.of(statusText);
         return this;
     }
 
@@ -284,16 +282,16 @@ public class ModelImport {
      */
     @Schema(name = "status_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status_text")
-    public String getStatusText() {
+    public JsonNullable<String> getStatusText() {
         return statusText;
     }
 
-    public void setStatusText(String statusText) {
+    public void setStatusText(JsonNullable<String> statusText) {
         this.statusText = statusText;
     }
 
     public ModelImport failedStep(String failedStep) {
-        this.failedStep = failedStep;
+        this.failedStep = JsonNullable.of(failedStep);
         return this;
     }
 
@@ -303,16 +301,16 @@ public class ModelImport {
      */
     @Schema(name = "failed_step", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failed_step")
-    public String getFailedStep() {
+    public JsonNullable<String> getFailedStep() {
         return failedStep;
     }
 
-    public void setFailedStep(String failedStep) {
+    public void setFailedStep(JsonNullable<String> failedStep) {
         this.failedStep = failedStep;
     }
 
     public ModelImport errorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+        this.errorMessage = JsonNullable.of(errorMessage);
         return this;
     }
 
@@ -322,16 +320,16 @@ public class ModelImport {
      */
     @Schema(name = "error_message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_message")
-    public String getErrorMessage() {
+    public JsonNullable<String> getErrorMessage() {
         return errorMessage;
     }
 
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(JsonNullable<String> errorMessage) {
         this.errorMessage = errorMessage;
     }
 
     public ModelImport importPercent(Long importPercent) {
-        this.importPercent = importPercent;
+        this.importPercent = JsonNullable.of(importPercent);
         return this;
     }
 
@@ -341,16 +339,16 @@ public class ModelImport {
      */
     @Schema(name = "import_percent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("import_percent")
-    public Long getImportPercent() {
+    public JsonNullable<Long> getImportPercent() {
         return importPercent;
     }
 
-    public void setImportPercent(Long importPercent) {
+    public void setImportPercent(JsonNullable<Long> importPercent) {
         this.importPercent = importPercent;
     }
 
     public ModelImport commitCount(Long commitCount) {
-        this.commitCount = commitCount;
+        this.commitCount = JsonNullable.of(commitCount);
         return this;
     }
 
@@ -360,16 +358,16 @@ public class ModelImport {
      */
     @Schema(name = "commit_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_count")
-    public Long getCommitCount() {
+    public JsonNullable<Long> getCommitCount() {
         return commitCount;
     }
 
-    public void setCommitCount(Long commitCount) {
+    public void setCommitCount(JsonNullable<Long> commitCount) {
         this.commitCount = commitCount;
     }
 
     public ModelImport pushPercent(Long pushPercent) {
-        this.pushPercent = pushPercent;
+        this.pushPercent = JsonNullable.of(pushPercent);
         return this;
     }
 
@@ -379,16 +377,16 @@ public class ModelImport {
      */
     @Schema(name = "push_percent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_percent")
-    public Long getPushPercent() {
+    public JsonNullable<Long> getPushPercent() {
         return pushPercent;
     }
 
-    public void setPushPercent(Long pushPercent) {
+    public void setPushPercent(JsonNullable<Long> pushPercent) {
         this.pushPercent = pushPercent;
     }
 
     public ModelImport hasLargeFiles(Boolean hasLargeFiles) {
-        this.hasLargeFiles = hasLargeFiles;
+        this.hasLargeFiles = Optional.ofNullable(hasLargeFiles);
         return this;
     }
 
@@ -398,16 +396,16 @@ public class ModelImport {
      */
     @Schema(name = "has_large_files", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_large_files")
-    public Boolean getHasLargeFiles() {
+    public Optional<Boolean> getHasLargeFiles() {
         return hasLargeFiles;
     }
 
-    public void setHasLargeFiles(Boolean hasLargeFiles) {
+    public void setHasLargeFiles(Optional<Boolean> hasLargeFiles) {
         this.hasLargeFiles = hasLargeFiles;
     }
 
     public ModelImport largeFilesSize(Long largeFilesSize) {
-        this.largeFilesSize = largeFilesSize;
+        this.largeFilesSize = Optional.ofNullable(largeFilesSize);
         return this;
     }
 
@@ -417,16 +415,16 @@ public class ModelImport {
      */
     @Schema(name = "large_files_size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("large_files_size")
-    public Long getLargeFilesSize() {
+    public Optional<Long> getLargeFilesSize() {
         return largeFilesSize;
     }
 
-    public void setLargeFilesSize(Long largeFilesSize) {
+    public void setLargeFilesSize(Optional<Long> largeFilesSize) {
         this.largeFilesSize = largeFilesSize;
     }
 
     public ModelImport largeFilesCount(Long largeFilesCount) {
-        this.largeFilesCount = largeFilesCount;
+        this.largeFilesCount = Optional.ofNullable(largeFilesCount);
         return this;
     }
 
@@ -436,11 +434,11 @@ public class ModelImport {
      */
     @Schema(name = "large_files_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("large_files_count")
-    public Long getLargeFilesCount() {
+    public Optional<Long> getLargeFilesCount() {
         return largeFilesCount;
     }
 
-    public void setLargeFilesCount(Long largeFilesCount) {
+    public void setLargeFilesCount(Optional<Long> largeFilesCount) {
         this.largeFilesCount = largeFilesCount;
     }
 
@@ -473,7 +471,7 @@ public class ModelImport {
     }
 
     public ModelImport message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -483,16 +481,16 @@ public class ModelImport {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
     public ModelImport authorsCount(Long authorsCount) {
-        this.authorsCount = authorsCount;
+        this.authorsCount = JsonNullable.of(authorsCount);
         return this;
     }
 
@@ -502,11 +500,11 @@ public class ModelImport {
      */
     @Schema(name = "authors_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("authors_count")
-    public Long getAuthorsCount() {
+    public JsonNullable<Long> getAuthorsCount() {
         return authorsCount;
     }
 
-    public void setAuthorsCount(Long authorsCount) {
+    public void setAuthorsCount(JsonNullable<Long> authorsCount) {
         this.authorsCount = authorsCount;
     }
 
@@ -595,7 +593,7 @@ public class ModelImport {
     }
 
     public ModelImport svnRoot(String svnRoot) {
-        this.svnRoot = svnRoot;
+        this.svnRoot = Optional.ofNullable(svnRoot);
         return this;
     }
 
@@ -605,11 +603,11 @@ public class ModelImport {
      */
     @Schema(name = "svn_root", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("svn_root")
-    public String getSvnRoot() {
+    public Optional<String> getSvnRoot() {
         return svnRoot;
     }
 
-    public void setSvnRoot(String svnRoot) {
+    public void setSvnRoot(Optional<String> svnRoot) {
         this.svnRoot = svnRoot;
     }
 
@@ -628,23 +626,28 @@ public class ModelImport {
                 && Objects.equals(this.svcRoot, _import.svcRoot)
                 && Objects.equals(this.tfvcProject, _import.tfvcProject)
                 && Objects.equals(this.status, _import.status)
-                && Objects.equals(this.statusText, _import.statusText)
-                && Objects.equals(this.failedStep, _import.failedStep)
-                && Objects.equals(this.errorMessage, _import.errorMessage)
-                && Objects.equals(this.importPercent, _import.importPercent)
-                && Objects.equals(this.commitCount, _import.commitCount)
-                && Objects.equals(this.pushPercent, _import.pushPercent)
+                && equalsNullable(this.statusText, _import.statusText)
+                && equalsNullable(this.failedStep, _import.failedStep)
+                && equalsNullable(this.errorMessage, _import.errorMessage)
+                && equalsNullable(this.importPercent, _import.importPercent)
+                && equalsNullable(this.commitCount, _import.commitCount)
+                && equalsNullable(this.pushPercent, _import.pushPercent)
                 && Objects.equals(this.hasLargeFiles, _import.hasLargeFiles)
                 && Objects.equals(this.largeFilesSize, _import.largeFilesSize)
                 && Objects.equals(this.largeFilesCount, _import.largeFilesCount)
                 && Objects.equals(this.projectChoices, _import.projectChoices)
                 && Objects.equals(this.message, _import.message)
-                && Objects.equals(this.authorsCount, _import.authorsCount)
+                && equalsNullable(this.authorsCount, _import.authorsCount)
                 && Objects.equals(this.url, _import.url)
                 && Objects.equals(this.htmlUrl, _import.htmlUrl)
                 && Objects.equals(this.authorsUrl, _import.authorsUrl)
                 && Objects.equals(this.repositoryUrl, _import.repositoryUrl)
                 && Objects.equals(this.svnRoot, _import.svnRoot);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -656,23 +659,30 @@ public class ModelImport {
                 svcRoot,
                 tfvcProject,
                 status,
-                statusText,
-                failedStep,
-                errorMessage,
-                importPercent,
-                commitCount,
-                pushPercent,
+                hashCodeNullable(statusText),
+                hashCodeNullable(failedStep),
+                hashCodeNullable(errorMessage),
+                hashCodeNullable(importPercent),
+                hashCodeNullable(commitCount),
+                hashCodeNullable(pushPercent),
                 hasLargeFiles,
                 largeFilesSize,
                 largeFilesCount,
                 projectChoices,
                 message,
-                authorsCount,
+                hashCodeNullable(authorsCount),
                 url,
                 htmlUrl,
                 authorsUrl,
                 repositoryUrl,
                 svnRoot);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

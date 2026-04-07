@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("activity")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Activity {
 
@@ -82,7 +82,7 @@ public class Activity {
 
     private ActivityTypeEnum activityType;
 
-    private NullableSimpleUser actor = null;
+    private JsonNullable<NullableSimpleUser> actor = JsonNullable.<NullableSimpleUser>undefined();
 
     public Activity() {
         super();
@@ -107,7 +107,7 @@ public class Activity {
         this.ref = ref;
         this.timestamp = timestamp;
         this.activityType = activityType;
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
     }
 
     public Activity id(Long id) {
@@ -272,7 +272,7 @@ public class Activity {
     }
 
     public Activity actor(NullableSimpleUser actor) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         return this;
     }
 
@@ -284,11 +284,11 @@ public class Activity {
     @Valid
     @Schema(name = "actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("actor")
-    public NullableSimpleUser getActor() {
+    public JsonNullable<NullableSimpleUser> getActor() {
         return actor;
     }
 
-    public void setActor(NullableSimpleUser actor) {
+    public void setActor(JsonNullable<NullableSimpleUser> actor) {
         this.actor = actor;
     }
 

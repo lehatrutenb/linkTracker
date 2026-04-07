@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActivityListPublicEvents503Response
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("activity_list_public_events_503_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActivityListPublicEvents503Response {
 
-    private String code;
+    private Optional<String> code = Optional.empty();
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
-    private String documentationUrl;
+    private Optional<String> documentationUrl = Optional.empty();
 
     public ActivityListPublicEvents503Response code(String code) {
-        this.code = code;
+        this.code = Optional.ofNullable(code);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class ActivityListPublicEvents503Response {
      */
     @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code")
-    public String getCode() {
+    public Optional<String> getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Optional<String> code) {
         this.code = code;
     }
 
     public ActivityListPublicEvents503Response message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class ActivityListPublicEvents503Response {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
     public ActivityListPublicEvents503Response documentationUrl(String documentationUrl) {
-        this.documentationUrl = documentationUrl;
+        this.documentationUrl = Optional.ofNullable(documentationUrl);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class ActivityListPublicEvents503Response {
      */
     @Schema(name = "documentation_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("documentation_url")
-    public String getDocumentationUrl() {
+    public Optional<String> getDocumentationUrl() {
         return documentationUrl;
     }
 
-    public void setDocumentationUrl(String documentationUrl) {
+    public void setDocumentationUrl(Optional<String> documentationUrl) {
         this.documentationUrl = documentationUrl;
     }
 

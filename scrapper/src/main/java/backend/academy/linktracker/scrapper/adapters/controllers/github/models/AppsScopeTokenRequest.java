@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AppsScopeTokenRequest
@@ -17,15 +17,15 @@ import java.util.Objects;
 @JsonTypeName("apps_scope_token_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AppsScopeTokenRequest {
 
     private String accessToken;
 
-    private String target;
+    private Optional<String> target = Optional.empty();
 
-    private Long targetId;
+    private Optional<Long> targetId = Optional.empty();
 
     @Valid
     private List<String> repositories = new ArrayList<>();
@@ -33,7 +33,7 @@ public class AppsScopeTokenRequest {
     @Valid
     private List<Long> repositoryIds = new ArrayList<>();
 
-    private AppPermissions permissions;
+    private Optional<AppPermissions> permissions = Optional.empty();
 
     public AppsScopeTokenRequest() {
         super();
@@ -71,7 +71,7 @@ public class AppsScopeTokenRequest {
     }
 
     public AppsScopeTokenRequest target(String target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -86,16 +86,16 @@ public class AppsScopeTokenRequest {
                     "The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public String getTarget() {
+    public Optional<String> getTarget() {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(Optional<String> target) {
         this.target = target;
     }
 
     public AppsScopeTokenRequest targetId(Long targetId) {
-        this.targetId = targetId;
+        this.targetId = Optional.ofNullable(targetId);
         return this;
     }
 
@@ -110,11 +110,11 @@ public class AppsScopeTokenRequest {
                     "The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_id")
-    public Long getTargetId() {
+    public Optional<Long> getTargetId() {
         return targetId;
     }
 
-    public void setTargetId(Long targetId) {
+    public void setTargetId(Optional<Long> targetId) {
         this.targetId = targetId;
     }
 
@@ -182,7 +182,7 @@ public class AppsScopeTokenRequest {
     }
 
     public AppsScopeTokenRequest permissions(AppPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -193,11 +193,11 @@ public class AppsScopeTokenRequest {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public AppPermissions getPermissions() {
+    public Optional<AppPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(AppPermissions permissions) {
+    public void setPermissions(Optional<AppPermissions> permissions) {
         this.permissions = permissions;
     }
 

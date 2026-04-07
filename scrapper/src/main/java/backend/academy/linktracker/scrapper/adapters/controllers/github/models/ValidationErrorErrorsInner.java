@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ValidationErrorErrorsInner
@@ -15,21 +15,21 @@ import java.util.Objects;
 @JsonTypeName("validation_error_errors_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ValidationErrorErrorsInner {
 
-    private String resource;
+    private Optional<String> resource = Optional.empty();
 
-    private String field;
+    private Optional<String> field = Optional.empty();
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
     private String code;
 
-    private Long index;
+    private Optional<Long> index = Optional.empty();
 
-    private ValidationErrorErrorsInnerValue value;
+    private Optional<ValidationErrorErrorsInnerValue> value = Optional.empty();
 
     public ValidationErrorErrorsInner() {
         super();
@@ -43,7 +43,7 @@ public class ValidationErrorErrorsInner {
     }
 
     public ValidationErrorErrorsInner resource(String resource) {
-        this.resource = resource;
+        this.resource = Optional.ofNullable(resource);
         return this;
     }
 
@@ -53,16 +53,16 @@ public class ValidationErrorErrorsInner {
      */
     @Schema(name = "resource", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resource")
-    public String getResource() {
+    public Optional<String> getResource() {
         return resource;
     }
 
-    public void setResource(String resource) {
+    public void setResource(Optional<String> resource) {
         this.resource = resource;
     }
 
     public ValidationErrorErrorsInner field(String field) {
-        this.field = field;
+        this.field = Optional.ofNullable(field);
         return this;
     }
 
@@ -72,16 +72,16 @@ public class ValidationErrorErrorsInner {
      */
     @Schema(name = "field", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("field")
-    public String getField() {
+    public Optional<String> getField() {
         return field;
     }
 
-    public void setField(String field) {
+    public void setField(Optional<String> field) {
         this.field = field;
     }
 
     public ValidationErrorErrorsInner message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -91,11 +91,11 @@ public class ValidationErrorErrorsInner {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
@@ -120,7 +120,7 @@ public class ValidationErrorErrorsInner {
     }
 
     public ValidationErrorErrorsInner index(Long index) {
-        this.index = index;
+        this.index = Optional.ofNullable(index);
         return this;
     }
 
@@ -130,16 +130,16 @@ public class ValidationErrorErrorsInner {
      */
     @Schema(name = "index", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("index")
-    public Long getIndex() {
+    public Optional<Long> getIndex() {
         return index;
     }
 
-    public void setIndex(Long index) {
+    public void setIndex(Optional<Long> index) {
         this.index = index;
     }
 
     public ValidationErrorErrorsInner value(ValidationErrorErrorsInnerValue value) {
-        this.value = value;
+        this.value = Optional.ofNullable(value);
         return this;
     }
 
@@ -150,11 +150,11 @@ public class ValidationErrorErrorsInner {
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("value")
-    public ValidationErrorErrorsInnerValue getValue() {
+    public Optional<ValidationErrorErrorsInnerValue> getValue() {
         return value;
     }
 
-    public void setValue(ValidationErrorErrorsInnerValue value) {
+    public void setValue(Optional<ValidationErrorErrorsInnerValue> value) {
         this.value = value;
     }
 

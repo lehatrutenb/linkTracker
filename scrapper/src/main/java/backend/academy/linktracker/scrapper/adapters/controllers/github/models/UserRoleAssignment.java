@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The Relationship a User has with a role.
@@ -21,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("user-role-assignment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class UserRoleAssignment {
 
@@ -62,14 +60,14 @@ public class UserRoleAssignment {
         }
     }
 
-    private AssignmentEnum assignment;
+    private Optional<AssignmentEnum> assignment = Optional.empty();
 
     @Valid
     private List<@Valid TeamSimple> inheritedFrom = new ArrayList<>();
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     private String login;
 
@@ -79,7 +77,7 @@ public class UserRoleAssignment {
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -107,9 +105,9 @@ public class UserRoleAssignment {
 
     private Boolean siteAdmin;
 
-    private String starredAt;
+    private Optional<String> starredAt = Optional.empty();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public UserRoleAssignment() {
         super();
@@ -141,7 +139,7 @@ public class UserRoleAssignment {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -158,7 +156,7 @@ public class UserRoleAssignment {
     }
 
     public UserRoleAssignment assignment(AssignmentEnum assignment) {
-        this.assignment = assignment;
+        this.assignment = Optional.ofNullable(assignment);
         return this;
     }
 
@@ -172,11 +170,11 @@ public class UserRoleAssignment {
             description = "Determines if the user has a direct, indirect, or mixed relationship to a role",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignment")
-    public AssignmentEnum getAssignment() {
+    public Optional<AssignmentEnum> getAssignment() {
         return assignment;
     }
 
-    public void setAssignment(AssignmentEnum assignment) {
+    public void setAssignment(Optional<AssignmentEnum> assignment) {
         this.assignment = assignment;
     }
 
@@ -212,7 +210,7 @@ public class UserRoleAssignment {
     }
 
     public UserRoleAssignment name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -222,16 +220,16 @@ public class UserRoleAssignment {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public UserRoleAssignment email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -241,11 +239,11 @@ public class UserRoleAssignment {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -334,7 +332,7 @@ public class UserRoleAssignment {
     }
 
     public UserRoleAssignment gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -348,11 +346,11 @@ public class UserRoleAssignment {
             example = "41d064eb2195891e12d0413f63227ea7",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -651,7 +649,7 @@ public class UserRoleAssignment {
     }
 
     public UserRoleAssignment starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
 
@@ -661,16 +659,16 @@ public class UserRoleAssignment {
      */
     @Schema(name = "starred_at", example = "\"2020-07-09T00:17:55Z\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public Optional<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(Optional<String> starredAt) {
         this.starredAt = starredAt;
     }
 
     public UserRoleAssignment userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -680,11 +678,11 @@ public class UserRoleAssignment {
      */
     @Schema(name = "user_view_type", example = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -699,8 +697,8 @@ public class UserRoleAssignment {
         UserRoleAssignment userRoleAssignment = (UserRoleAssignment) o;
         return Objects.equals(this.assignment, userRoleAssignment.assignment)
                 && Objects.equals(this.inheritedFrom, userRoleAssignment.inheritedFrom)
-                && Objects.equals(this.name, userRoleAssignment.name)
-                && Objects.equals(this.email, userRoleAssignment.email)
+                && equalsNullable(this.name, userRoleAssignment.name)
+                && equalsNullable(this.email, userRoleAssignment.email)
                 && Objects.equals(this.login, userRoleAssignment.login)
                 && Objects.equals(this.id, userRoleAssignment.id)
                 && Objects.equals(this.nodeId, userRoleAssignment.nodeId)
@@ -723,13 +721,18 @@ public class UserRoleAssignment {
                 && Objects.equals(this.userViewType, userRoleAssignment.userViewType);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 assignment,
                 inheritedFrom,
-                name,
-                email,
+                hashCodeNullable(name),
+                hashCodeNullable(email),
                 login,
                 id,
                 nodeId,
@@ -750,6 +753,13 @@ public class UserRoleAssignment {
                 siteAdmin,
                 starredAt,
                 userViewType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

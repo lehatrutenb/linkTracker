@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookMemberEditedChangesPermission
@@ -14,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_member_edited_changes_permission")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMemberEditedChangesPermission {
 
-    private String from = null;
+    private JsonNullable<String> from = JsonNullable.<String>undefined();
 
-    private String to = null;
+    private JsonNullable<String> to = JsonNullable.<String>undefined();
 
     public WebhookMemberEditedChangesPermission from(String from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -33,16 +33,16 @@ public class WebhookMemberEditedChangesPermission {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public String getFrom() {
+    public JsonNullable<String> getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(JsonNullable<String> from) {
         this.from = from;
     }
 
     public WebhookMemberEditedChangesPermission to(String to) {
-        this.to = to;
+        this.to = JsonNullable.of(to);
         return this;
     }
 
@@ -52,11 +52,11 @@ public class WebhookMemberEditedChangesPermission {
      */
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public String getTo() {
+    public JsonNullable<String> getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(JsonNullable<String> to) {
         this.to = to;
     }
 
@@ -70,13 +70,25 @@ public class WebhookMemberEditedChangesPermission {
         }
         WebhookMemberEditedChangesPermission webhookMemberEditedChangesPermission =
                 (WebhookMemberEditedChangesPermission) o;
-        return Objects.equals(this.from, webhookMemberEditedChangesPermission.from)
-                && Objects.equals(this.to, webhookMemberEditedChangesPermission.to);
+        return equalsNullable(this.from, webhookMemberEditedChangesPermission.from)
+                && equalsNullable(this.to, webhookMemberEditedChangesPermission.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(hashCodeNullable(from), hashCodeNullable(to));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

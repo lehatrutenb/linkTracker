@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrgsReviewPatGrantRequestsInBulkRequest
@@ -19,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("orgs_review_pat_grant_requests_in_bulk_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsReviewPatGrantRequestsInBulkRequest {
 
@@ -63,7 +65,7 @@ public class OrgsReviewPatGrantRequestsInBulkRequest {
 
     private ActionEnum action;
 
-    private String reason = null;
+    private JsonNullable<@Size(max = 1024) String> reason = JsonNullable.<String>undefined();
 
     public OrgsReviewPatGrantRequestsInBulkRequest() {
         super();
@@ -132,7 +134,7 @@ public class OrgsReviewPatGrantRequestsInBulkRequest {
     }
 
     public OrgsReviewPatGrantRequestsInBulkRequest reason(String reason) {
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         return this;
     }
 
@@ -140,17 +142,16 @@ public class OrgsReviewPatGrantRequestsInBulkRequest {
      * Reason for approving or denying the requests. Max 1024 characters.
      * @return reason
      */
-    @Size(max = 1024)
     @Schema(
             name = "reason",
             description = "Reason for approving or denying the requests. Max 1024 characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public JsonNullable<@Size(max = 1024) String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(JsonNullable<String> reason) {
         this.reason = reason;
     }
 
@@ -166,12 +167,24 @@ public class OrgsReviewPatGrantRequestsInBulkRequest {
                 (OrgsReviewPatGrantRequestsInBulkRequest) o;
         return Objects.equals(this.patRequestIds, orgsReviewPatGrantRequestsInBulkRequest.patRequestIds)
                 && Objects.equals(this.action, orgsReviewPatGrantRequestsInBulkRequest.action)
-                && Objects.equals(this.reason, orgsReviewPatGrantRequestsInBulkRequest.reason);
+                && equalsNullable(this.reason, orgsReviewPatGrantRequestsInBulkRequest.reason);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(patRequestIds, action, reason);
+        return Objects.hash(patRequestIds, action, hashCodeNullable(reason));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

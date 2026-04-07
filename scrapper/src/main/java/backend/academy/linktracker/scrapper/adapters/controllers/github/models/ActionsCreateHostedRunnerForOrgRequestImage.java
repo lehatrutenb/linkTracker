@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The image of runner. To list all available images, use &#x60;GET /actions/hosted-runners/images/github-owned&#x60; or &#x60;GET /actions/hosted-runners/images/partner&#x60;.
@@ -20,11 +21,11 @@ import java.util.Objects;
 @JsonTypeName("actions_create_hosted_runner_for_org_request_image")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsCreateHostedRunnerForOrgRequestImage {
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
     /**
      * The source of the runner image.
@@ -63,12 +64,12 @@ public class ActionsCreateHostedRunnerForOrgRequestImage {
         }
     }
 
-    private SourceEnum source;
+    private Optional<SourceEnum> source = Optional.empty();
 
-    private String version = null;
+    private JsonNullable<String> version = JsonNullable.<String>undefined();
 
     public ActionsCreateHostedRunnerForOrgRequestImage id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -81,16 +82,16 @@ public class ActionsCreateHostedRunnerForOrgRequestImage {
             description = "The unique identifier of the runner image.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public ActionsCreateHostedRunnerForOrgRequestImage source(SourceEnum source) {
-        this.source = source;
+        this.source = Optional.ofNullable(source);
         return this;
     }
 
@@ -103,16 +104,16 @@ public class ActionsCreateHostedRunnerForOrgRequestImage {
             description = "The source of the runner image.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public SourceEnum getSource() {
+    public Optional<SourceEnum> getSource() {
         return source;
     }
 
-    public void setSource(SourceEnum source) {
+    public void setSource(Optional<SourceEnum> source) {
         this.source = source;
     }
 
     public ActionsCreateHostedRunnerForOrgRequestImage version(String version) {
-        this.version = version;
+        this.version = JsonNullable.of(version);
         return this;
     }
 
@@ -126,11 +127,11 @@ public class ActionsCreateHostedRunnerForOrgRequestImage {
                     "The version of the runner image to deploy. This is relevant only for runners using custom images.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public JsonNullable<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(JsonNullable<String> version) {
         this.version = version;
     }
 
@@ -146,12 +147,24 @@ public class ActionsCreateHostedRunnerForOrgRequestImage {
                 (ActionsCreateHostedRunnerForOrgRequestImage) o;
         return Objects.equals(this.id, actionsCreateHostedRunnerForOrgRequestImage.id)
                 && Objects.equals(this.source, actionsCreateHostedRunnerForOrgRequestImage.source)
-                && Objects.equals(this.version, actionsCreateHostedRunnerForOrgRequestImage.version);
+                && equalsNullable(this.version, actionsCreateHostedRunnerForOrgRequestImage.version);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, source, version);
+        return Objects.hash(id, source, hashCodeNullable(version));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

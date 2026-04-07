@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateAutolinkRequest
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_autolink_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateAutolinkRequest {
 
@@ -22,7 +22,7 @@ public class ReposCreateAutolinkRequest {
 
     private String urlTemplate;
 
-    private Boolean isAlphanumeric = true;
+    private Optional<Boolean> isAlphanumeric = Optional.of(true);
 
     public ReposCreateAutolinkRequest() {
         super();
@@ -85,7 +85,7 @@ public class ReposCreateAutolinkRequest {
     }
 
     public ReposCreateAutolinkRequest isAlphanumeric(Boolean isAlphanumeric) {
-        this.isAlphanumeric = isAlphanumeric;
+        this.isAlphanumeric = Optional.ofNullable(isAlphanumeric);
         return this;
     }
 
@@ -99,11 +99,11 @@ public class ReposCreateAutolinkRequest {
                     "Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_alphanumeric")
-    public Boolean getIsAlphanumeric() {
+    public Optional<Boolean> getIsAlphanumeric() {
         return isAlphanumeric;
     }
 
-    public void setIsAlphanumeric(Boolean isAlphanumeric) {
+    public void setIsAlphanumeric(Optional<Boolean> isAlphanumeric) {
         this.isAlphanumeric = isAlphanumeric;
     }
 

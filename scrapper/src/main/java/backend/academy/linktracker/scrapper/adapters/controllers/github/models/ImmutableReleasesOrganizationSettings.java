@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Check immutable releases settings for an organization.
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("immutable-releases-organization-settings")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ImmutableReleasesOrganizationSettings {
 
@@ -62,7 +62,7 @@ public class ImmutableReleasesOrganizationSettings {
 
     private EnforcedRepositoriesEnum enforcedRepositories;
 
-    private String selectedRepositoriesUrl;
+    private Optional<String> selectedRepositoriesUrl = Optional.empty();
 
     public ImmutableReleasesOrganizationSettings() {
         super();
@@ -100,7 +100,7 @@ public class ImmutableReleasesOrganizationSettings {
     }
 
     public ImmutableReleasesOrganizationSettings selectedRepositoriesUrl(String selectedRepositoriesUrl) {
-        this.selectedRepositoriesUrl = selectedRepositoriesUrl;
+        this.selectedRepositoriesUrl = Optional.ofNullable(selectedRepositoriesUrl);
         return this;
     }
 
@@ -114,11 +114,11 @@ public class ImmutableReleasesOrganizationSettings {
                     "The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("selected_repositories_url")
-    public String getSelectedRepositoriesUrl() {
+    public Optional<String> getSelectedRepositoriesUrl() {
         return selectedRepositoriesUrl;
     }
 
-    public void setSelectedRepositoriesUrl(String selectedRepositoriesUrl) {
+    public void setSelectedRepositoriesUrl(Optional<String> selectedRepositoriesUrl) {
         this.selectedRepositoriesUrl = selectedRepositoriesUrl;
     }
 

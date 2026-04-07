@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Groups of organization members that gives permissions on specified repositories.
@@ -21,27 +23,27 @@ import java.util.Objects;
 @JsonTypeName("webhooks_team")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksTeam {
 
-    private Boolean deleted;
+    private Optional<Boolean> deleted = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
     private Long id;
 
-    private String membersUrl;
+    private Optional<String> membersUrl = Optional.empty();
 
     private String name;
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private WebhooksTeamParent parent = null;
+    private JsonNullable<WebhooksTeamParent> parent = JsonNullable.<WebhooksTeamParent>undefined();
 
-    private String permission;
+    private Optional<String> permission = Optional.empty();
 
     /**
      * Gets or Sets privacy
@@ -80,7 +82,7 @@ public class WebhooksTeam {
         }
     }
 
-    private PrivacyEnum privacy;
+    private Optional<PrivacyEnum> privacy = Optional.empty();
 
     /**
      * Gets or Sets notificationSetting
@@ -117,13 +119,13 @@ public class WebhooksTeam {
         }
     }
 
-    private NotificationSettingEnum notificationSetting;
+    private Optional<NotificationSettingEnum> notificationSetting = Optional.empty();
 
-    private URI repositoriesUrl;
+    private Optional<URI> repositoriesUrl = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
     /**
      * The ownership type of the team
@@ -160,11 +162,11 @@ public class WebhooksTeam {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
     public WebhooksTeam() {
         super();
@@ -179,7 +181,7 @@ public class WebhooksTeam {
     }
 
     public WebhooksTeam deleted(Boolean deleted) {
-        this.deleted = deleted;
+        this.deleted = Optional.ofNullable(deleted);
         return this;
     }
 
@@ -189,16 +191,16 @@ public class WebhooksTeam {
      */
     @Schema(name = "deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deleted")
-    public Boolean getDeleted() {
+    public Optional<Boolean> getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(Optional<Boolean> deleted) {
         this.deleted = deleted;
     }
 
     public WebhooksTeam description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -211,16 +213,16 @@ public class WebhooksTeam {
             description = "Description of the team",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public WebhooksTeam htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -231,11 +233,11 @@ public class WebhooksTeam {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -260,7 +262,7 @@ public class WebhooksTeam {
     }
 
     public WebhooksTeam membersUrl(String membersUrl) {
-        this.membersUrl = membersUrl;
+        this.membersUrl = Optional.ofNullable(membersUrl);
         return this;
     }
 
@@ -270,11 +272,11 @@ public class WebhooksTeam {
      */
     @Schema(name = "members_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_url")
-    public String getMembersUrl() {
+    public Optional<String> getMembersUrl() {
         return membersUrl;
     }
 
-    public void setMembersUrl(String membersUrl) {
+    public void setMembersUrl(Optional<String> membersUrl) {
         this.membersUrl = membersUrl;
     }
 
@@ -299,7 +301,7 @@ public class WebhooksTeam {
     }
 
     public WebhooksTeam nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -309,16 +311,16 @@ public class WebhooksTeam {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public WebhooksTeam parent(WebhooksTeamParent parent) {
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         return this;
     }
 
@@ -329,16 +331,16 @@ public class WebhooksTeam {
     @Valid
     @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent")
-    public WebhooksTeamParent getParent() {
+    public JsonNullable<WebhooksTeamParent> getParent() {
         return parent;
     }
 
-    public void setParent(WebhooksTeamParent parent) {
+    public void setParent(JsonNullable<WebhooksTeamParent> parent) {
         this.parent = parent;
     }
 
     public WebhooksTeam permission(String permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -351,16 +353,16 @@ public class WebhooksTeam {
             description = "Permission that the team will have for its repositories",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public String getPermission() {
+    public Optional<String> getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) {
+    public void setPermission(Optional<String> permission) {
         this.permission = permission;
     }
 
     public WebhooksTeam privacy(PrivacyEnum privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -370,16 +372,16 @@ public class WebhooksTeam {
      */
     @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public PrivacyEnum getPrivacy() {
+    public Optional<PrivacyEnum> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(PrivacyEnum privacy) {
+    public void setPrivacy(Optional<PrivacyEnum> privacy) {
         this.privacy = privacy;
     }
 
     public WebhooksTeam notificationSetting(NotificationSettingEnum notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -389,16 +391,16 @@ public class WebhooksTeam {
      */
     @Schema(name = "notification_setting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public NotificationSettingEnum getNotificationSetting() {
+    public Optional<NotificationSettingEnum> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(NotificationSettingEnum notificationSetting) {
+    public void setNotificationSetting(Optional<NotificationSettingEnum> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
     public WebhooksTeam repositoriesUrl(URI repositoriesUrl) {
-        this.repositoriesUrl = repositoriesUrl;
+        this.repositoriesUrl = Optional.ofNullable(repositoriesUrl);
         return this;
     }
 
@@ -409,16 +411,16 @@ public class WebhooksTeam {
     @Valid
     @Schema(name = "repositories_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repositories_url")
-    public URI getRepositoriesUrl() {
+    public Optional<URI> getRepositoriesUrl() {
         return repositoriesUrl;
     }
 
-    public void setRepositoriesUrl(URI repositoriesUrl) {
+    public void setRepositoriesUrl(Optional<URI> repositoriesUrl) {
         this.repositoriesUrl = repositoriesUrl;
     }
 
     public WebhooksTeam slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -428,16 +430,16 @@ public class WebhooksTeam {
      */
     @Schema(name = "slug", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public WebhooksTeam url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -448,16 +450,16 @@ public class WebhooksTeam {
     @Valid
     @Schema(name = "url", description = "URL for the team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public WebhooksTeam type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -470,16 +472,16 @@ public class WebhooksTeam {
             description = "The ownership type of the team",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
     public WebhooksTeam organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -493,16 +495,16 @@ public class WebhooksTeam {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public WebhooksTeam enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -516,11 +518,11 @@ public class WebhooksTeam {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 
@@ -534,13 +536,13 @@ public class WebhooksTeam {
         }
         WebhooksTeam webhooksTeam = (WebhooksTeam) o;
         return Objects.equals(this.deleted, webhooksTeam.deleted)
-                && Objects.equals(this.description, webhooksTeam.description)
+                && equalsNullable(this.description, webhooksTeam.description)
                 && Objects.equals(this.htmlUrl, webhooksTeam.htmlUrl)
                 && Objects.equals(this.id, webhooksTeam.id)
                 && Objects.equals(this.membersUrl, webhooksTeam.membersUrl)
                 && Objects.equals(this.name, webhooksTeam.name)
                 && Objects.equals(this.nodeId, webhooksTeam.nodeId)
-                && Objects.equals(this.parent, webhooksTeam.parent)
+                && equalsNullable(this.parent, webhooksTeam.parent)
                 && Objects.equals(this.permission, webhooksTeam.permission)
                 && Objects.equals(this.privacy, webhooksTeam.privacy)
                 && Objects.equals(this.notificationSetting, webhooksTeam.notificationSetting)
@@ -552,17 +554,22 @@ public class WebhooksTeam {
                 && Objects.equals(this.enterpriseId, webhooksTeam.enterpriseId);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 deleted,
-                description,
+                hashCodeNullable(description),
                 htmlUrl,
                 id,
                 membersUrl,
                 name,
                 nodeId,
-                parent,
+                hashCodeNullable(parent),
                 permission,
                 privacy,
                 notificationSetting,
@@ -572,6 +579,13 @@ public class WebhooksTeam {
                 type,
                 organizationId,
                 enterpriseId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

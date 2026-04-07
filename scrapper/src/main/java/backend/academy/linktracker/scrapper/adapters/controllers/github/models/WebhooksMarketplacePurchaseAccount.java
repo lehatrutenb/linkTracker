@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhooksMarketplacePurchaseAccount
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("webhooks_marketplace_purchase_account")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksMarketplacePurchaseAccount {
 
@@ -24,7 +24,7 @@ public class WebhooksMarketplacePurchaseAccount {
 
     private String nodeId;
 
-    private String organizationBillingEmail = null;
+    private JsonNullable<String> organizationBillingEmail = JsonNullable.<String>undefined();
 
     private String type;
 
@@ -40,7 +40,7 @@ public class WebhooksMarketplacePurchaseAccount {
         this.id = id;
         this.login = login;
         this.nodeId = nodeId;
-        this.organizationBillingEmail = organizationBillingEmail;
+        this.organizationBillingEmail = JsonNullable.of(organizationBillingEmail);
         this.type = type;
     }
 
@@ -105,7 +105,7 @@ public class WebhooksMarketplacePurchaseAccount {
     }
 
     public WebhooksMarketplacePurchaseAccount organizationBillingEmail(String organizationBillingEmail) {
-        this.organizationBillingEmail = organizationBillingEmail;
+        this.organizationBillingEmail = JsonNullable.of(organizationBillingEmail);
         return this;
     }
 
@@ -116,11 +116,11 @@ public class WebhooksMarketplacePurchaseAccount {
     @NotNull
     @Schema(name = "organization_billing_email", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("organization_billing_email")
-    public String getOrganizationBillingEmail() {
+    public JsonNullable<String> getOrganizationBillingEmail() {
         return organizationBillingEmail;
     }
 
-    public void setOrganizationBillingEmail(String organizationBillingEmail) {
+    public void setOrganizationBillingEmail(JsonNullable<String> organizationBillingEmail) {
         this.organizationBillingEmail = organizationBillingEmail;
     }
 

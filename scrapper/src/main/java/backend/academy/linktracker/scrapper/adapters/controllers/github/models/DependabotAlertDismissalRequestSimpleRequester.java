@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The user who requested the dismissal.
@@ -17,16 +16,16 @@ import java.util.Objects;
 @JsonTypeName("dependabot_alert_dismissal_request_simple_requester")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotAlertDismissalRequestSimpleRequester {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
     public DependabotAlertDismissalRequestSimpleRequester id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class DependabotAlertDismissalRequestSimpleRequester {
             description = "The unique identifier of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public DependabotAlertDismissalRequestSimpleRequester login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -61,11 +60,11 @@ public class DependabotAlertDismissalRequestSimpleRequester {
             description = "The login name of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 

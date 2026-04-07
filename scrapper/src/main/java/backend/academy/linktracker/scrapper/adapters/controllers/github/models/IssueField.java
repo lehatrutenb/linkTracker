@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue-field")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueField {
 
@@ -34,7 +32,7 @@ public class IssueField {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The data type of the issue field.
@@ -112,16 +110,17 @@ public class IssueField {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
     @Valid
-    private List<@Valid IssueFieldOptionsInner> options;
+    private JsonNullable<List<@Valid IssueFieldOptionsInner>> options =
+            JsonNullable.<List<@Valid IssueFieldOptionsInner>>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     public IssueField() {
         super();
@@ -204,7 +203,7 @@ public class IssueField {
     }
 
     public IssueField description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -217,11 +216,11 @@ public class IssueField {
             description = "The description of the issue field.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -249,7 +248,7 @@ public class IssueField {
     }
 
     public IssueField visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -263,24 +262,24 @@ public class IssueField {
                     "The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
     public IssueField options(List<@Valid IssueFieldOptionsInner> options) {
-        this.options = options;
+        this.options = JsonNullable.of(options);
         return this;
     }
 
     public IssueField addOptionsItem(IssueFieldOptionsInner optionsItem) {
-        if (this.options == null) {
-            this.options = new ArrayList<>();
+        if (this.options == null || !this.options.isPresent()) {
+            this.options = JsonNullable.of(new ArrayList<>());
         }
-        this.options.add(optionsItem);
+        this.options.get().add(optionsItem);
         return this;
     }
 
@@ -294,16 +293,16 @@ public class IssueField {
             description = "Available options for single select fields.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("options")
-    public List<@Valid IssueFieldOptionsInner> getOptions() {
+    public JsonNullable<List<@Valid IssueFieldOptionsInner>> getOptions() {
         return options;
     }
 
-    public void setOptions(List<@Valid IssueFieldOptionsInner> options) {
+    public void setOptions(JsonNullable<List<@Valid IssueFieldOptionsInner>> options) {
         this.options = options;
     }
 
     public IssueField createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -317,16 +316,16 @@ public class IssueField {
             description = "The time the issue field was created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public IssueField updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -340,11 +339,11 @@ public class IssueField {
             description = "The time the issue field was last updated.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -360,17 +359,38 @@ public class IssueField {
         return Objects.equals(this.id, issueField.id)
                 && Objects.equals(this.nodeId, issueField.nodeId)
                 && Objects.equals(this.name, issueField.name)
-                && Objects.equals(this.description, issueField.description)
+                && equalsNullable(this.description, issueField.description)
                 && Objects.equals(this.dataType, issueField.dataType)
                 && Objects.equals(this.visibility, issueField.visibility)
-                && Objects.equals(this.options, issueField.options)
+                && equalsNullable(this.options, issueField.options)
                 && Objects.equals(this.createdAt, issueField.createdAt)
                 && Objects.equals(this.updatedAt, issueField.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, nodeId, name, description, dataType, visibility, options, createdAt, updatedAt);
+        return Objects.hash(
+                id,
+                nodeId,
+                name,
+                hashCodeNullable(description),
+                dataType,
+                visibility,
+                hashCodeNullable(options),
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

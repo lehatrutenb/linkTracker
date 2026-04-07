@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Check runs can accept a variety of data in the &#x60;output&#x60; object, including a &#x60;title&#x60; and &#x60;summary&#x60; and can optionally provide descriptive details about the run.
@@ -21,7 +22,7 @@ import java.util.Objects;
 @JsonTypeName("checks_create_request_output")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ChecksCreateRequestOutput {
 
@@ -29,7 +30,7 @@ public class ChecksCreateRequestOutput {
 
     private String summary;
 
-    private String text;
+    private Optional<@Size(max = 65535) String> text = Optional.empty();
 
     @Valid
     private List<@Valid ChecksCreateRequestOutputAnnotationsInner> annotations = new ArrayList<>();
@@ -95,7 +96,7 @@ public class ChecksCreateRequestOutput {
     }
 
     public ChecksCreateRequestOutput text(String text) {
-        this.text = text;
+        this.text = Optional.ofNullable(text);
         return this;
     }
 
@@ -103,18 +104,17 @@ public class ChecksCreateRequestOutput {
      * The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.
      * @return text
      */
-    @Size(max = 65535)
     @Schema(
             name = "text",
             description =
                     "The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("text")
-    public String getText() {
+    public Optional<@Size(max = 65535) String> getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(Optional<String> text) {
         this.text = text;
     }
 

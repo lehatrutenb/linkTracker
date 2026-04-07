@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-analysis")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAnalysis {
 
@@ -30,7 +32,7 @@ public class CodeScanningAnalysis {
 
     private String environment;
 
-    private String category;
+    private Optional<String> category = Optional.empty();
 
     private String error;
 
@@ -189,7 +191,7 @@ public class CodeScanningAnalysis {
     }
 
     public CodeScanningAnalysis category(String category) {
-        this.category = category;
+        this.category = Optional.ofNullable(category);
         return this;
     }
 
@@ -203,11 +205,11 @@ public class CodeScanningAnalysis {
                     "Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("category")
-    public String getCategory() {
+    public Optional<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Optional<String> category) {
         this.category = category;
     }
 

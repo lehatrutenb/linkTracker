@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Release_Asset_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReleaseAsset1 {
 
@@ -36,7 +37,7 @@ public class ReleaseAsset1 {
 
     private Long id;
 
-    private String label = null;
+    private JsonNullable<String> label = JsonNullable.<String>undefined();
 
     private String name;
 
@@ -44,7 +45,7 @@ public class ReleaseAsset1 {
 
     private Long size;
 
-    private String digest = null;
+    private JsonNullable<String> digest = JsonNullable.<String>undefined();
 
     /**
      * State of the release asset.
@@ -84,7 +85,7 @@ public class ReleaseAsset1 {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private User2 uploader = null;
+    private JsonNullable<User2> uploader = JsonNullable.<User2>undefined();
 
     private URI url;
 
@@ -114,11 +115,11 @@ public class ReleaseAsset1 {
         this.createdAt = createdAt;
         this.downloadCount = downloadCount;
         this.id = id;
-        this.label = label;
+        this.label = JsonNullable.of(label);
         this.name = name;
         this.nodeId = nodeId;
         this.size = size;
-        this.digest = digest;
+        this.digest = JsonNullable.of(digest);
         this.state = state;
         this.updatedAt = updatedAt;
         this.url = url;
@@ -227,7 +228,7 @@ public class ReleaseAsset1 {
     }
 
     public ReleaseAsset1 label(String label) {
-        this.label = label;
+        this.label = JsonNullable.of(label);
         return this;
     }
 
@@ -238,11 +239,11 @@ public class ReleaseAsset1 {
     @NotNull
     @Schema(name = "label", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("label")
-    public String getLabel() {
+    public JsonNullable<String> getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(JsonNullable<String> label) {
         this.label = label;
     }
 
@@ -307,7 +308,7 @@ public class ReleaseAsset1 {
     }
 
     public ReleaseAsset1 digest(String digest) {
-        this.digest = digest;
+        this.digest = JsonNullable.of(digest);
         return this;
     }
 
@@ -318,11 +319,11 @@ public class ReleaseAsset1 {
     @NotNull
     @Schema(name = "digest", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("digest")
-    public String getDigest() {
+    public JsonNullable<String> getDigest() {
         return digest;
     }
 
-    public void setDigest(String digest) {
+    public void setDigest(JsonNullable<String> digest) {
         this.digest = digest;
     }
 
@@ -368,7 +369,7 @@ public class ReleaseAsset1 {
     }
 
     public ReleaseAsset1 uploader(User2 uploader) {
-        this.uploader = uploader;
+        this.uploader = JsonNullable.of(uploader);
         return this;
     }
 
@@ -379,11 +380,11 @@ public class ReleaseAsset1 {
     @Valid
     @Schema(name = "uploader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("uploader")
-    public User2 getUploader() {
+    public JsonNullable<User2> getUploader() {
         return uploader;
     }
 
-    public void setUploader(User2 uploader) {
+    public void setUploader(JsonNullable<User2> uploader) {
         this.uploader = uploader;
     }
 
@@ -429,8 +430,13 @@ public class ReleaseAsset1 {
                 && Objects.equals(this.digest, releaseAsset1.digest)
                 && Objects.equals(this.state, releaseAsset1.state)
                 && Objects.equals(this.updatedAt, releaseAsset1.updatedAt)
-                && Objects.equals(this.uploader, releaseAsset1.uploader)
+                && equalsNullable(this.uploader, releaseAsset1.uploader)
                 && Objects.equals(this.url, releaseAsset1.url);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -448,8 +454,15 @@ public class ReleaseAsset1 {
                 digest,
                 state,
                 updatedAt,
-                uploader,
+                hashCodeNullable(uploader),
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

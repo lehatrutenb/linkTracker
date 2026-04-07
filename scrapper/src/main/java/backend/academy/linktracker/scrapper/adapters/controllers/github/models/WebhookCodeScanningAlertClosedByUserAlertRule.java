@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookCodeScanningAlertClosedByUserAlertRule
@@ -19,21 +17,21 @@ import java.util.Objects;
 @JsonTypeName("webhook_code_scanning_alert_closed_by_user_alert_rule")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertClosedByUserAlertRule {
 
     private String description;
 
-    private String fullDescription;
+    private Optional<String> fullDescription = Optional.empty();
 
-    private String help = null;
+    private JsonNullable<String> help = JsonNullable.<String>undefined();
 
-    private String helpUri = null;
+    private JsonNullable<String> helpUri = JsonNullable.<String>undefined();
 
     private String id;
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The severity of the alert.
@@ -74,10 +72,10 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
     @Valid
-    private List<String> tags;
+    private JsonNullable<List<String>> tags = JsonNullable.<List<String>>undefined();
 
     public WebhookCodeScanningAlertClosedByUserAlertRule() {
         super();
@@ -89,7 +87,7 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
     public WebhookCodeScanningAlertClosedByUserAlertRule(String description, String id, SeverityEnum severity) {
         this.description = description;
         this.id = id;
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule description(String description) {
@@ -116,7 +114,7 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule fullDescription(String fullDescription) {
-        this.fullDescription = fullDescription;
+        this.fullDescription = Optional.ofNullable(fullDescription);
         return this;
     }
 
@@ -126,16 +124,16 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
      */
     @Schema(name = "full_description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_description")
-    public String getFullDescription() {
+    public Optional<String> getFullDescription() {
         return fullDescription;
     }
 
-    public void setFullDescription(String fullDescription) {
+    public void setFullDescription(Optional<String> fullDescription) {
         this.fullDescription = fullDescription;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule help(String help) {
-        this.help = help;
+        this.help = JsonNullable.of(help);
         return this;
     }
 
@@ -145,16 +143,16 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
      */
     @Schema(name = "help", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("help")
-    public String getHelp() {
+    public JsonNullable<String> getHelp() {
         return help;
     }
 
-    public void setHelp(String help) {
+    public void setHelp(JsonNullable<String> help) {
         this.help = help;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule helpUri(String helpUri) {
-        this.helpUri = helpUri;
+        this.helpUri = JsonNullable.of(helpUri);
         return this;
     }
 
@@ -167,11 +165,11 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
             description = "A link to the documentation for the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("help_uri")
-    public String getHelpUri() {
+    public JsonNullable<String> getHelpUri() {
         return helpUri;
     }
 
-    public void setHelpUri(String helpUri) {
+    public void setHelpUri(JsonNullable<String> helpUri) {
         this.helpUri = helpUri;
     }
 
@@ -199,7 +197,7 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -209,16 +207,16 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -229,24 +227,24 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
     @NotNull
     @Schema(name = "severity", description = "The severity of the alert.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule tags(List<String> tags) {
-        this.tags = tags;
+        this.tags = JsonNullable.of(tags);
         return this;
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertRule addTagsItem(String tagsItem) {
-        if (this.tags == null) {
-            this.tags = new ArrayList<>();
+        if (this.tags == null || !this.tags.isPresent()) {
+            this.tags = JsonNullable.of(new ArrayList<>());
         }
-        this.tags.add(tagsItem);
+        this.tags.get().add(tagsItem);
         return this;
     }
 
@@ -256,11 +254,11 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
      */
     @Schema(name = "tags", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tags")
-    public List<String> getTags() {
+    public JsonNullable<List<String>> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(JsonNullable<List<String>> tags) {
         this.tags = tags;
     }
 
@@ -276,17 +274,37 @@ public class WebhookCodeScanningAlertClosedByUserAlertRule {
                 (WebhookCodeScanningAlertClosedByUserAlertRule) o;
         return Objects.equals(this.description, webhookCodeScanningAlertClosedByUserAlertRule.description)
                 && Objects.equals(this.fullDescription, webhookCodeScanningAlertClosedByUserAlertRule.fullDescription)
-                && Objects.equals(this.help, webhookCodeScanningAlertClosedByUserAlertRule.help)
-                && Objects.equals(this.helpUri, webhookCodeScanningAlertClosedByUserAlertRule.helpUri)
+                && equalsNullable(this.help, webhookCodeScanningAlertClosedByUserAlertRule.help)
+                && equalsNullable(this.helpUri, webhookCodeScanningAlertClosedByUserAlertRule.helpUri)
                 && Objects.equals(this.id, webhookCodeScanningAlertClosedByUserAlertRule.id)
                 && Objects.equals(this.name, webhookCodeScanningAlertClosedByUserAlertRule.name)
                 && Objects.equals(this.severity, webhookCodeScanningAlertClosedByUserAlertRule.severity)
-                && Objects.equals(this.tags, webhookCodeScanningAlertClosedByUserAlertRule.tags);
+                && equalsNullable(this.tags, webhookCodeScanningAlertClosedByUserAlertRule.tags);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, fullDescription, help, helpUri, id, name, severity, tags);
+        return Objects.hash(
+                description,
+                fullDescription,
+                hashCodeNullable(help),
+                hashCodeNullable(helpUri),
+                id,
+                name,
+                severity,
+                hashCodeNullable(tags));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

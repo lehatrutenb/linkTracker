@@ -5,16 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,22 +20,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-item-with-content")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2ItemWithContent {
 
     private BigDecimal id;
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private URI projectUrl;
+    private Optional<URI> projectUrl = Optional.empty();
 
     private ProjectsV2ItemContentType contentType;
 
     @Valid
-    private Map<String, Object> content;
+    private JsonNullable<Map<String, Object>> content = JsonNullable.<Map<String, Object>>undefined();
 
-    private SimpleUser creator;
+    private Optional<SimpleUser> creator = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -48,9 +44,9 @@ public class ProjectsV2ItemWithContent {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime archivedAt = null;
+    private JsonNullable<OffsetDateTime> archivedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI itemUrl = null;
+    private JsonNullable<URI> itemUrl = JsonNullable.<URI>undefined();
 
     @Valid
     private List<Map<String, Object>> fields = new ArrayList<>();
@@ -72,7 +68,7 @@ public class ProjectsV2ItemWithContent {
         this.contentType = contentType;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
     }
 
     public ProjectsV2ItemWithContent id(BigDecimal id) {
@@ -100,7 +96,7 @@ public class ProjectsV2ItemWithContent {
     }
 
     public ProjectsV2ItemWithContent nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -113,16 +109,16 @@ public class ProjectsV2ItemWithContent {
             description = "The node ID of the project item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public ProjectsV2ItemWithContent projectUrl(URI projectUrl) {
-        this.projectUrl = projectUrl;
+        this.projectUrl = Optional.ofNullable(projectUrl);
         return this;
     }
 
@@ -137,11 +133,11 @@ public class ProjectsV2ItemWithContent {
             description = "The API URL of the project that contains this item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_url")
-    public URI getProjectUrl() {
+    public Optional<URI> getProjectUrl() {
         return projectUrl;
     }
 
-    public void setProjectUrl(URI projectUrl) {
+    public void setProjectUrl(Optional<URI> projectUrl) {
         this.projectUrl = projectUrl;
     }
 
@@ -167,15 +163,15 @@ public class ProjectsV2ItemWithContent {
     }
 
     public ProjectsV2ItemWithContent content(Map<String, Object> content) {
-        this.content = content;
+        this.content = JsonNullable.of(content);
         return this;
     }
 
     public ProjectsV2ItemWithContent putContentItem(String key, Object contentItem) {
-        if (this.content == null) {
-            this.content = new HashMap<>();
+        if (this.content == null || !this.content.isPresent()) {
+            this.content = JsonNullable.of(new HashMap<>());
         }
-        this.content.put(key, contentItem);
+        this.content.get().put(key, contentItem);
         return this;
     }
 
@@ -188,16 +184,16 @@ public class ProjectsV2ItemWithContent {
             description = "The content of the item, which varies by content type.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content")
-    public Map<String, Object> getContent() {
+    public JsonNullable<Map<String, Object>> getContent() {
         return content;
     }
 
-    public void setContent(Map<String, Object> content) {
+    public void setContent(JsonNullable<Map<String, Object>> content) {
         this.content = content;
     }
 
     public ProjectsV2ItemWithContent creator(SimpleUser creator) {
-        this.creator = creator;
+        this.creator = Optional.ofNullable(creator);
         return this;
     }
 
@@ -208,11 +204,11 @@ public class ProjectsV2ItemWithContent {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creator")
-    public SimpleUser getCreator() {
+    public Optional<SimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(SimpleUser creator) {
+    public void setCreator(Optional<SimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -267,7 +263,7 @@ public class ProjectsV2ItemWithContent {
     }
 
     public ProjectsV2ItemWithContent archivedAt(OffsetDateTime archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -283,16 +279,16 @@ public class ProjectsV2ItemWithContent {
             description = "The time when the item was archived.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("archived_at")
-    public OffsetDateTime getArchivedAt() {
+    public JsonNullable<OffsetDateTime> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(OffsetDateTime archivedAt) {
+    public void setArchivedAt(JsonNullable<OffsetDateTime> archivedAt) {
         this.archivedAt = archivedAt;
     }
 
     public ProjectsV2ItemWithContent itemUrl(URI itemUrl) {
-        this.itemUrl = itemUrl;
+        this.itemUrl = JsonNullable.of(itemUrl);
         return this;
     }
 
@@ -307,11 +303,11 @@ public class ProjectsV2ItemWithContent {
             description = "The API URL of this item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("item_url")
-    public URI getItemUrl() {
+    public JsonNullable<URI> getItemUrl() {
         return itemUrl;
     }
 
-    public void setItemUrl(URI itemUrl) {
+    public void setItemUrl(JsonNullable<URI> itemUrl) {
         this.itemUrl = itemUrl;
     }
 
@@ -359,13 +355,18 @@ public class ProjectsV2ItemWithContent {
                 && Objects.equals(this.nodeId, projectsV2ItemWithContent.nodeId)
                 && Objects.equals(this.projectUrl, projectsV2ItemWithContent.projectUrl)
                 && Objects.equals(this.contentType, projectsV2ItemWithContent.contentType)
-                && Objects.equals(this.content, projectsV2ItemWithContent.content)
+                && equalsNullable(this.content, projectsV2ItemWithContent.content)
                 && Objects.equals(this.creator, projectsV2ItemWithContent.creator)
                 && Objects.equals(this.createdAt, projectsV2ItemWithContent.createdAt)
                 && Objects.equals(this.updatedAt, projectsV2ItemWithContent.updatedAt)
                 && Objects.equals(this.archivedAt, projectsV2ItemWithContent.archivedAt)
-                && Objects.equals(this.itemUrl, projectsV2ItemWithContent.itemUrl)
+                && equalsNullable(this.itemUrl, projectsV2ItemWithContent.itemUrl)
                 && Objects.equals(this.fields, projectsV2ItemWithContent.fields);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -375,13 +376,20 @@ public class ProjectsV2ItemWithContent {
                 nodeId,
                 projectUrl,
                 contentType,
-                content,
+                hashCodeNullable(content),
                 creator,
                 createdAt,
                 updatedAt,
                 archivedAt,
-                itemUrl,
+                hashCodeNullable(itemUrl),
                 fields);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

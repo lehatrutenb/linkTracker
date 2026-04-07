@@ -7,11 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("deployment-status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeploymentStatus {
 
@@ -78,11 +81,11 @@ public class DeploymentStatus {
 
     private StateEnum state;
 
-    private NullableSimpleUser creator = null;
+    private JsonNullable<NullableSimpleUser> creator = JsonNullable.<NullableSimpleUser>undefined();
 
     private String description = "";
 
-    private String environment = "";
+    private Optional<String> environment = Optional.of("");
 
     private URI targetUrl = URI.create("");
 
@@ -96,11 +99,11 @@ public class DeploymentStatus {
 
     private URI repositoryUrl;
 
-    private URI environmentUrl = URI.create("");
+    private Optional<URI> environmentUrl = Optional.of(URI.create(""));
 
-    private URI logUrl = URI.create("");
+    private Optional<URI> logUrl = Optional.of(URI.create(""));
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     public DeploymentStatus() {
         super();
@@ -125,7 +128,7 @@ public class DeploymentStatus {
         this.id = id;
         this.nodeId = nodeId;
         this.state = state;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.description = description;
         this.targetUrl = targetUrl;
         this.createdAt = createdAt;
@@ -223,7 +226,7 @@ public class DeploymentStatus {
     }
 
     public DeploymentStatus creator(NullableSimpleUser creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -235,11 +238,11 @@ public class DeploymentStatus {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public NullableSimpleUser getCreator() {
+    public JsonNullable<NullableSimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(NullableSimpleUser creator) {
+    public void setCreator(JsonNullable<NullableSimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -269,7 +272,7 @@ public class DeploymentStatus {
     }
 
     public DeploymentStatus environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -283,11 +286,11 @@ public class DeploymentStatus {
             description = "The environment of the deployment that the status is for.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
@@ -407,7 +410,7 @@ public class DeploymentStatus {
     }
 
     public DeploymentStatus environmentUrl(URI environmentUrl) {
-        this.environmentUrl = environmentUrl;
+        this.environmentUrl = Optional.ofNullable(environmentUrl);
         return this;
     }
 
@@ -422,16 +425,16 @@ public class DeploymentStatus {
             description = "The URL for accessing your environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment_url")
-    public URI getEnvironmentUrl() {
+    public Optional<URI> getEnvironmentUrl() {
         return environmentUrl;
     }
 
-    public void setEnvironmentUrl(URI environmentUrl) {
+    public void setEnvironmentUrl(Optional<URI> environmentUrl) {
         this.environmentUrl = environmentUrl;
     }
 
     public DeploymentStatus logUrl(URI logUrl) {
-        this.logUrl = logUrl;
+        this.logUrl = Optional.ofNullable(logUrl);
         return this;
     }
 
@@ -446,16 +449,16 @@ public class DeploymentStatus {
             description = "The URL to associate with this status.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("log_url")
-    public URI getLogUrl() {
+    public Optional<URI> getLogUrl() {
         return logUrl;
     }
 
-    public void setLogUrl(URI logUrl) {
+    public void setLogUrl(Optional<URI> logUrl) {
         this.logUrl = logUrl;
     }
 
     public DeploymentStatus performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -466,11 +469,11 @@ public class DeploymentStatus {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -497,7 +500,12 @@ public class DeploymentStatus {
                 && Objects.equals(this.repositoryUrl, deploymentStatus.repositoryUrl)
                 && Objects.equals(this.environmentUrl, deploymentStatus.environmentUrl)
                 && Objects.equals(this.logUrl, deploymentStatus.logUrl)
-                && Objects.equals(this.performedViaGithubApp, deploymentStatus.performedViaGithubApp);
+                && equalsNullable(this.performedViaGithubApp, deploymentStatus.performedViaGithubApp);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -517,7 +525,14 @@ public class DeploymentStatus {
                 repositoryUrl,
                 environmentUrl,
                 logUrl,
-                performedViaGithubApp);
+                hashCodeNullable(performedViaGithubApp));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * IssueSearchResultItemLabelsInner
@@ -14,26 +15,26 @@ import java.util.Objects;
 @JsonTypeName("issue_search_result_item_labels_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueSearchResultItemLabelsInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String color;
+    private Optional<String> color = Optional.empty();
 
-    private Boolean _default;
+    private Optional<Boolean> _default = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     public IssueSearchResultItemLabelsInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -43,16 +44,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public IssueSearchResultItemLabelsInner nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -62,16 +63,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public IssueSearchResultItemLabelsInner url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -81,16 +82,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public IssueSearchResultItemLabelsInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -100,16 +101,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public IssueSearchResultItemLabelsInner color(String color) {
-        this.color = color;
+        this.color = Optional.ofNullable(color);
         return this;
     }
 
@@ -119,16 +120,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "color", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public String getColor() {
+    public Optional<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Optional<String> color) {
         this.color = color;
     }
 
     public IssueSearchResultItemLabelsInner _default(Boolean _default) {
-        this._default = _default;
+        this._default = Optional.ofNullable(_default);
         return this;
     }
 
@@ -138,16 +139,16 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "default", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default")
-    public Boolean getDefault() {
+    public Optional<Boolean> getDefault() {
         return _default;
     }
 
-    public void setDefault(Boolean _default) {
+    public void setDefault(Optional<Boolean> _default) {
         this._default = _default;
     }
 
     public IssueSearchResultItemLabelsInner description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -157,11 +158,11 @@ public class IssueSearchResultItemLabelsInner {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -180,12 +181,24 @@ public class IssueSearchResultItemLabelsInner {
                 && Objects.equals(this.name, issueSearchResultItemLabelsInner.name)
                 && Objects.equals(this.color, issueSearchResultItemLabelsInner.color)
                 && Objects.equals(this._default, issueSearchResultItemLabelsInner._default)
-                && Objects.equals(this.description, issueSearchResultItemLabelsInner.description);
+                && equalsNullable(this.description, issueSearchResultItemLabelsInner.description);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nodeId, url, name, color, _default, description);
+        return Objects.hash(id, nodeId, url, name, color, _default, hashCodeNullable(description));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookIssuesTyped
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-issues-typed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookIssuesTyped {
 
@@ -56,15 +57,15 @@ public class WebhookIssuesTyped {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private WebhooksIssue issue;
 
-    private IssueType type = null;
+    private JsonNullable<IssueType> type = JsonNullable.<IssueType>undefined();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -81,7 +82,7 @@ public class WebhookIssuesTyped {
             ActionEnum action, WebhooksIssue issue, IssueType type, RepositoryWebhooks repository, SimpleUser sender) {
         this.action = action;
         this.issue = issue;
-        this.type = type;
+        this.type = JsonNullable.of(type);
         this.repository = repository;
         this.sender = sender;
     }
@@ -107,7 +108,7 @@ public class WebhookIssuesTyped {
     }
 
     public WebhookIssuesTyped enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -118,16 +119,16 @@ public class WebhookIssuesTyped {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookIssuesTyped installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -138,11 +139,11 @@ public class WebhookIssuesTyped {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -168,7 +169,7 @@ public class WebhookIssuesTyped {
     }
 
     public WebhookIssuesTyped type(IssueType type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -180,16 +181,16 @@ public class WebhookIssuesTyped {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("type")
-    public IssueType getType() {
+    public JsonNullable<IssueType> getType() {
         return type;
     }
 
-    public void setType(IssueType type) {
+    public void setType(JsonNullable<IssueType> type) {
         this.type = type;
     }
 
     public WebhookIssuesTyped organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -200,11 +201,11 @@ public class WebhookIssuesTyped {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

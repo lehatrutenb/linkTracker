@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookReleaseEditedChanges
@@ -15,20 +14,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_release_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookReleaseEditedChanges {
 
-    private WebhookProjectEditedChangesBody body;
+    private Optional<WebhookProjectEditedChangesBody> body = Optional.empty();
 
-    private WebhookLabelEditedChangesName name;
+    private Optional<WebhookLabelEditedChangesName> name = Optional.empty();
 
-    private WebhookReleaseEditedChangesTagName tagName;
+    private Optional<WebhookReleaseEditedChangesTagName> tagName = Optional.empty();
 
-    private WebhookReleaseEditedChangesMakeLatest makeLatest;
+    private Optional<WebhookReleaseEditedChangesMakeLatest> makeLatest = Optional.empty();
 
     public WebhookReleaseEditedChanges body(WebhookProjectEditedChangesBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookReleaseEditedChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookProjectEditedChangesBody getBody() {
+    public Optional<WebhookProjectEditedChangesBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhookProjectEditedChangesBody body) {
+    public void setBody(Optional<WebhookProjectEditedChangesBody> body) {
         this.body = body;
     }
 
     public WebhookReleaseEditedChanges name(WebhookLabelEditedChangesName name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -59,16 +58,16 @@ public class WebhookReleaseEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookLabelEditedChangesName getName() {
+    public Optional<WebhookLabelEditedChangesName> getName() {
         return name;
     }
 
-    public void setName(WebhookLabelEditedChangesName name) {
+    public void setName(Optional<WebhookLabelEditedChangesName> name) {
         this.name = name;
     }
 
     public WebhookReleaseEditedChanges tagName(WebhookReleaseEditedChangesTagName tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class WebhookReleaseEditedChanges {
     @Valid
     @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public WebhookReleaseEditedChangesTagName getTagName() {
+    public Optional<WebhookReleaseEditedChangesTagName> getTagName() {
         return tagName;
     }
 
-    public void setTagName(WebhookReleaseEditedChangesTagName tagName) {
+    public void setTagName(Optional<WebhookReleaseEditedChangesTagName> tagName) {
         this.tagName = tagName;
     }
 
     public WebhookReleaseEditedChanges makeLatest(WebhookReleaseEditedChangesMakeLatest makeLatest) {
-        this.makeLatest = makeLatest;
+        this.makeLatest = Optional.ofNullable(makeLatest);
         return this;
     }
 
@@ -99,11 +98,11 @@ public class WebhookReleaseEditedChanges {
     @Valid
     @Schema(name = "make_latest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("make_latest")
-    public WebhookReleaseEditedChangesMakeLatest getMakeLatest() {
+    public Optional<WebhookReleaseEditedChangesMakeLatest> getMakeLatest() {
         return makeLatest;
     }
 
-    public void setMakeLatest(WebhookReleaseEditedChangesMakeLatest makeLatest) {
+    public void setMakeLatest(Optional<WebhookReleaseEditedChangesMakeLatest> makeLatest) {
         this.makeLatest = makeLatest;
     }
 

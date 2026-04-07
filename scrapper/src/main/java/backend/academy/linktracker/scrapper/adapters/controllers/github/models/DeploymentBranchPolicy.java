@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Details of a deployment branch or tag policy.
@@ -17,15 +16,15 @@ import java.util.Objects;
 @JsonTypeName("deployment-branch-policy")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeploymentBranchPolicy {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * Whether this rule targets a branch or tag.
@@ -62,10 +61,10 @@ public class DeploymentBranchPolicy {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
     public DeploymentBranchPolicy id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class DeploymentBranchPolicy {
             description = "The unique identifier of the branch or tag policy.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public DeploymentBranchPolicy nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -101,16 +100,16 @@ public class DeploymentBranchPolicy {
             example = "MDE2OkdhdGVCcmFuY2hQb2xpY3kzNjE0NzE=",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public DeploymentBranchPolicy name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -124,16 +123,16 @@ public class DeploymentBranchPolicy {
             description = "The name pattern that branches or tags must match in order to deploy to the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public DeploymentBranchPolicy type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -147,11 +146,11 @@ public class DeploymentBranchPolicy {
             description = "Whether this rule targets a branch or tag.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 

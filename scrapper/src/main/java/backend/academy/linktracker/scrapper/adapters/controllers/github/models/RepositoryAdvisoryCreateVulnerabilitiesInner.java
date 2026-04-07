@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RepositoryAdvisoryCreateVulnerabilitiesInner
@@ -17,18 +15,18 @@ import java.util.Objects;
 @JsonTypeName("repository_advisory_create_vulnerabilities_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisoryCreateVulnerabilitiesInner {
 
     private RepositoryAdvisoryCreateVulnerabilitiesInnerPackage _package;
 
-    private String vulnerableVersionRange = null;
+    private JsonNullable<String> vulnerableVersionRange = JsonNullable.<String>undefined();
 
-    private String patchedVersions = null;
+    private JsonNullable<String> patchedVersions = JsonNullable.<String>undefined();
 
     @Valid
-    private List<String> vulnerableFunctions;
+    private JsonNullable<List<String>> vulnerableFunctions = JsonNullable.<List<String>>undefined();
 
     public RepositoryAdvisoryCreateVulnerabilitiesInner() {
         super();
@@ -64,7 +62,7 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInner {
     }
 
     public RepositoryAdvisoryCreateVulnerabilitiesInner vulnerableVersionRange(String vulnerableVersionRange) {
-        this.vulnerableVersionRange = vulnerableVersionRange;
+        this.vulnerableVersionRange = JsonNullable.of(vulnerableVersionRange);
         return this;
     }
 
@@ -77,16 +75,16 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInner {
             description = "The range of the package versions affected by the vulnerability.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vulnerable_version_range")
-    public String getVulnerableVersionRange() {
+    public JsonNullable<String> getVulnerableVersionRange() {
         return vulnerableVersionRange;
     }
 
-    public void setVulnerableVersionRange(String vulnerableVersionRange) {
+    public void setVulnerableVersionRange(JsonNullable<String> vulnerableVersionRange) {
         this.vulnerableVersionRange = vulnerableVersionRange;
     }
 
     public RepositoryAdvisoryCreateVulnerabilitiesInner patchedVersions(String patchedVersions) {
-        this.patchedVersions = patchedVersions;
+        this.patchedVersions = JsonNullable.of(patchedVersions);
         return this;
     }
 
@@ -99,24 +97,24 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInner {
             description = "The package version(s) that resolve the vulnerability.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("patched_versions")
-    public String getPatchedVersions() {
+    public JsonNullable<String> getPatchedVersions() {
         return patchedVersions;
     }
 
-    public void setPatchedVersions(String patchedVersions) {
+    public void setPatchedVersions(JsonNullable<String> patchedVersions) {
         this.patchedVersions = patchedVersions;
     }
 
     public RepositoryAdvisoryCreateVulnerabilitiesInner vulnerableFunctions(List<String> vulnerableFunctions) {
-        this.vulnerableFunctions = vulnerableFunctions;
+        this.vulnerableFunctions = JsonNullable.of(vulnerableFunctions);
         return this;
     }
 
     public RepositoryAdvisoryCreateVulnerabilitiesInner addVulnerableFunctionsItem(String vulnerableFunctionsItem) {
-        if (this.vulnerableFunctions == null) {
-            this.vulnerableFunctions = new ArrayList<>();
+        if (this.vulnerableFunctions == null || !this.vulnerableFunctions.isPresent()) {
+            this.vulnerableFunctions = JsonNullable.of(new ArrayList<>());
         }
-        this.vulnerableFunctions.add(vulnerableFunctionsItem);
+        this.vulnerableFunctions.get().add(vulnerableFunctionsItem);
         return this;
     }
 
@@ -129,11 +127,11 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInner {
             description = "The functions in the package that are affected.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vulnerable_functions")
-    public List<String> getVulnerableFunctions() {
+    public JsonNullable<List<String>> getVulnerableFunctions() {
         return vulnerableFunctions;
     }
 
-    public void setVulnerableFunctions(List<String> vulnerableFunctions) {
+    public void setVulnerableFunctions(JsonNullable<List<String>> vulnerableFunctions) {
         this.vulnerableFunctions = vulnerableFunctions;
     }
 
@@ -148,17 +146,33 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInner {
         RepositoryAdvisoryCreateVulnerabilitiesInner repositoryAdvisoryCreateVulnerabilitiesInner =
                 (RepositoryAdvisoryCreateVulnerabilitiesInner) o;
         return Objects.equals(this._package, repositoryAdvisoryCreateVulnerabilitiesInner._package)
-                && Objects.equals(
+                && equalsNullable(
                         this.vulnerableVersionRange,
                         repositoryAdvisoryCreateVulnerabilitiesInner.vulnerableVersionRange)
-                && Objects.equals(this.patchedVersions, repositoryAdvisoryCreateVulnerabilitiesInner.patchedVersions)
-                && Objects.equals(
+                && equalsNullable(this.patchedVersions, repositoryAdvisoryCreateVulnerabilitiesInner.patchedVersions)
+                && equalsNullable(
                         this.vulnerableFunctions, repositoryAdvisoryCreateVulnerabilitiesInner.vulnerableFunctions);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(_package, vulnerableVersionRange, patchedVersions, vulnerableFunctions);
+        return Objects.hash(
+                _package,
+                hashCodeNullable(vulnerableVersionRange),
+                hashCodeNullable(patchedVersions),
+                hashCodeNullable(vulnerableFunctions));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

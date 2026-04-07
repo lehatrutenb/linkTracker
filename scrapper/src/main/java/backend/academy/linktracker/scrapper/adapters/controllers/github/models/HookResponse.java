@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * HookResponse
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("hook-response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HookResponse {
 
-    private Long code = null;
+    private JsonNullable<Long> code = JsonNullable.<Long>undefined();
 
-    private String status = null;
+    private JsonNullable<String> status = JsonNullable.<String>undefined();
 
-    private String message = null;
+    private JsonNullable<String> message = JsonNullable.<String>undefined();
 
     public HookResponse() {
         super();
@@ -32,13 +32,13 @@ public class HookResponse {
      * Constructor with only required parameters
      */
     public HookResponse(Long code, String status, String message) {
-        this.code = code;
-        this.status = status;
-        this.message = message;
+        this.code = JsonNullable.of(code);
+        this.status = JsonNullable.of(status);
+        this.message = JsonNullable.of(message);
     }
 
     public HookResponse code(Long code) {
-        this.code = code;
+        this.code = JsonNullable.of(code);
         return this;
     }
 
@@ -49,16 +49,16 @@ public class HookResponse {
     @NotNull
     @Schema(name = "code", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("code")
-    public Long getCode() {
+    public JsonNullable<Long> getCode() {
         return code;
     }
 
-    public void setCode(Long code) {
+    public void setCode(JsonNullable<Long> code) {
         this.code = code;
     }
 
     public HookResponse status(String status) {
-        this.status = status;
+        this.status = JsonNullable.of(status);
         return this;
     }
 
@@ -69,16 +69,16 @@ public class HookResponse {
     @NotNull
     @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public JsonNullable<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(JsonNullable<String> status) {
         this.status = status;
     }
 
     public HookResponse message(String message) {
-        this.message = message;
+        this.message = JsonNullable.of(message);
         return this;
     }
 
@@ -89,11 +89,11 @@ public class HookResponse {
     @NotNull
     @Schema(name = "message", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public JsonNullable<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(JsonNullable<String> message) {
         this.message = message;
     }
 

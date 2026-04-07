@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Issue Event Label
@@ -15,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("issue-event-label")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueEventLabel {
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String color = null;
+    private JsonNullable<String> color = JsonNullable.<String>undefined();
 
     public IssueEventLabel() {
         super();
@@ -31,12 +31,12 @@ public class IssueEventLabel {
      * Constructor with only required parameters
      */
     public IssueEventLabel(String name, String color) {
-        this.name = name;
-        this.color = color;
+        this.name = JsonNullable.of(name);
+        this.color = JsonNullable.of(color);
     }
 
     public IssueEventLabel name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -47,16 +47,16 @@ public class IssueEventLabel {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public IssueEventLabel color(String color) {
-        this.color = color;
+        this.color = JsonNullable.of(color);
         return this;
     }
 
@@ -67,11 +67,11 @@ public class IssueEventLabel {
     @NotNull
     @Schema(name = "color", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("color")
-    public String getColor() {
+    public JsonNullable<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(JsonNullable<String> color) {
         this.color = color;
     }
 

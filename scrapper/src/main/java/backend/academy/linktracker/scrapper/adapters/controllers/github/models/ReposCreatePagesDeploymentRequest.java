@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The object used to create GitHub Pages deployment
@@ -19,15 +19,15 @@ import java.util.Objects;
 @JsonTypeName("repos_create_pages_deployment_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreatePagesDeploymentRequest {
 
-    private BigDecimal artifactId;
+    private Optional<BigDecimal> artifactId = Optional.empty();
 
-    private String artifactUrl;
+    private Optional<String> artifactUrl = Optional.empty();
 
-    private String environment = "github-pages";
+    private Optional<String> environment = Optional.of("github-pages");
 
     private String pagesBuildVersion = "GITHUB_SHA";
 
@@ -46,7 +46,7 @@ public class ReposCreatePagesDeploymentRequest {
     }
 
     public ReposCreatePagesDeploymentRequest artifactId(BigDecimal artifactId) {
-        this.artifactId = artifactId;
+        this.artifactId = Optional.ofNullable(artifactId);
         return this;
     }
 
@@ -61,16 +61,16 @@ public class ReposCreatePagesDeploymentRequest {
                     "The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_id")
-    public BigDecimal getArtifactId() {
+    public Optional<BigDecimal> getArtifactId() {
         return artifactId;
     }
 
-    public void setArtifactId(BigDecimal artifactId) {
+    public void setArtifactId(Optional<BigDecimal> artifactId) {
         this.artifactId = artifactId;
     }
 
     public ReposCreatePagesDeploymentRequest artifactUrl(String artifactUrl) {
-        this.artifactUrl = artifactUrl;
+        this.artifactUrl = Optional.ofNullable(artifactUrl);
         return this;
     }
 
@@ -84,16 +84,16 @@ public class ReposCreatePagesDeploymentRequest {
                     "The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_url")
-    public String getArtifactUrl() {
+    public Optional<String> getArtifactUrl() {
         return artifactUrl;
     }
 
-    public void setArtifactUrl(String artifactUrl) {
+    public void setArtifactUrl(Optional<String> artifactUrl) {
         this.artifactUrl = artifactUrl;
     }
 
     public ReposCreatePagesDeploymentRequest environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -106,11 +106,11 @@ public class ReposCreatePagesDeploymentRequest {
             description = "The target environment for this GitHub Pages deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 

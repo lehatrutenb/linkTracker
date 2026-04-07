@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("timeline-comment-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineCommentEvent {
 
@@ -33,11 +35,11 @@ public class TimelineCommentEvent {
 
     private URI url;
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
     private URI htmlUrl;
 
@@ -53,11 +55,11 @@ public class TimelineCommentEvent {
 
     private AuthorAssociation authorAssociation;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
-    private ReactionRollup reactions;
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
-    private NullablePinnedIssueComment pin = null;
+    private JsonNullable<NullablePinnedIssueComment> pin = JsonNullable.<NullablePinnedIssueComment>undefined();
 
     public TimelineCommentEvent() {
         super();
@@ -202,7 +204,7 @@ public class TimelineCommentEvent {
     }
 
     public TimelineCommentEvent body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -216,16 +218,16 @@ public class TimelineCommentEvent {
             description = "Contents of the issue comment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public TimelineCommentEvent bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -235,16 +237,16 @@ public class TimelineCommentEvent {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public TimelineCommentEvent bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -254,11 +256,11 @@ public class TimelineCommentEvent {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
@@ -389,7 +391,7 @@ public class TimelineCommentEvent {
     }
 
     public TimelineCommentEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -400,16 +402,16 @@ public class TimelineCommentEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
     public TimelineCommentEvent reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -420,16 +422,16 @@ public class TimelineCommentEvent {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 
     public TimelineCommentEvent pin(NullablePinnedIssueComment pin) {
-        this.pin = pin;
+        this.pin = JsonNullable.of(pin);
         return this;
     }
 
@@ -440,11 +442,11 @@ public class TimelineCommentEvent {
     @Valid
     @Schema(name = "pin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pin")
-    public NullablePinnedIssueComment getPin() {
+    public JsonNullable<NullablePinnedIssueComment> getPin() {
         return pin;
     }
 
-    public void setPin(NullablePinnedIssueComment pin) {
+    public void setPin(JsonNullable<NullablePinnedIssueComment> pin) {
         this.pin = pin;
     }
 
@@ -471,9 +473,14 @@ public class TimelineCommentEvent {
                 && Objects.equals(this.updatedAt, timelineCommentEvent.updatedAt)
                 && Objects.equals(this.issueUrl, timelineCommentEvent.issueUrl)
                 && Objects.equals(this.authorAssociation, timelineCommentEvent.authorAssociation)
-                && Objects.equals(this.performedViaGithubApp, timelineCommentEvent.performedViaGithubApp)
+                && equalsNullable(this.performedViaGithubApp, timelineCommentEvent.performedViaGithubApp)
                 && Objects.equals(this.reactions, timelineCommentEvent.reactions)
-                && Objects.equals(this.pin, timelineCommentEvent.pin);
+                && equalsNullable(this.pin, timelineCommentEvent.pin);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -493,9 +500,16 @@ public class TimelineCommentEvent {
                 updatedAt,
                 issueUrl,
                 authorAssociation,
-                performedViaGithubApp,
+                hashCodeNullable(performedViaGithubApp),
                 reactions,
-                pin);
+                hashCodeNullable(pin));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

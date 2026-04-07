@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PendingDeploymentReviewersInnerReviewer
@@ -16,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("pending_deployment_reviewers_inner_reviewer")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PendingDeploymentReviewersInnerReviewer {
 
     private String name;
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     private String login;
 
@@ -32,7 +34,7 @@ public class PendingDeploymentReviewersInnerReviewer {
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -60,31 +62,31 @@ public class PendingDeploymentReviewersInnerReviewer {
 
     private Boolean siteAdmin;
 
-    private String starredAt;
+    private Optional<String> starredAt = Optional.empty();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     private String slug;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String privacy;
+    private Optional<String> privacy = Optional.empty();
 
-    private String notificationSetting;
+    private Optional<String> notificationSetting = Optional.empty();
 
     private String permission;
 
-    private TeamPermissions permissions;
+    private Optional<TeamPermissions> permissions = Optional.empty();
 
     private String membersUrl;
 
     private URI repositoriesUrl;
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
-    private NullableTeamSimple parent = null;
+    private JsonNullable<NullableTeamSimple> parent = JsonNullable.<NullableTeamSimple>undefined();
 
     public PendingDeploymentReviewersInnerReviewer() {
         super();
@@ -124,7 +126,7 @@ public class PendingDeploymentReviewersInnerReviewer {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -139,11 +141,11 @@ public class PendingDeploymentReviewersInnerReviewer {
         this.type = type;
         this.siteAdmin = siteAdmin;
         this.slug = slug;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.permission = permission;
         this.membersUrl = membersUrl;
         this.repositoriesUrl = repositoriesUrl;
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
     }
 
     public PendingDeploymentReviewersInnerReviewer name(String name) {
@@ -167,7 +169,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -177,11 +179,11 @@ public class PendingDeploymentReviewersInnerReviewer {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -270,7 +272,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -284,11 +286,11 @@ public class PendingDeploymentReviewersInnerReviewer {
             example = "41d064eb2195891e12d0413f63227ea7",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -590,7 +592,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
 
@@ -600,16 +602,16 @@ public class PendingDeploymentReviewersInnerReviewer {
      */
     @Schema(name = "starred_at", example = "\"2020-07-09T00:17:55Z\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public Optional<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(Optional<String> starredAt) {
         this.starredAt = starredAt;
     }
 
     public PendingDeploymentReviewersInnerReviewer userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -619,11 +621,11 @@ public class PendingDeploymentReviewersInnerReviewer {
      */
     @Schema(name = "user_view_type", example = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -648,7 +650,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -659,16 +661,16 @@ public class PendingDeploymentReviewersInnerReviewer {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public PendingDeploymentReviewersInnerReviewer privacy(String privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -678,16 +680,16 @@ public class PendingDeploymentReviewersInnerReviewer {
      */
     @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public String getPrivacy() {
+    public Optional<String> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(String privacy) {
+    public void setPrivacy(Optional<String> privacy) {
         this.privacy = privacy;
     }
 
     public PendingDeploymentReviewersInnerReviewer notificationSetting(String notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -697,11 +699,11 @@ public class PendingDeploymentReviewersInnerReviewer {
      */
     @Schema(name = "notification_setting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public String getNotificationSetting() {
+    public Optional<String> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(String notificationSetting) {
+    public void setNotificationSetting(Optional<String> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
@@ -726,7 +728,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer permissions(TeamPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -737,11 +739,11 @@ public class PendingDeploymentReviewersInnerReviewer {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public TeamPermissions getPermissions() {
+    public Optional<TeamPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(TeamPermissions permissions) {
+    public void setPermissions(Optional<TeamPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -787,7 +789,7 @@ public class PendingDeploymentReviewersInnerReviewer {
     }
 
     public PendingDeploymentReviewersInnerReviewer organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -801,16 +803,16 @@ public class PendingDeploymentReviewersInnerReviewer {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public PendingDeploymentReviewersInnerReviewer enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -824,16 +826,16 @@ public class PendingDeploymentReviewersInnerReviewer {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 
     public PendingDeploymentReviewersInnerReviewer parent(NullableTeamSimple parent) {
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         return this;
     }
 
@@ -845,11 +847,11 @@ public class PendingDeploymentReviewersInnerReviewer {
     @Valid
     @Schema(name = "parent", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("parent")
-    public NullableTeamSimple getParent() {
+    public JsonNullable<NullableTeamSimple> getParent() {
         return parent;
     }
 
-    public void setParent(NullableTeamSimple parent) {
+    public void setParent(JsonNullable<NullableTeamSimple> parent) {
         this.parent = parent;
     }
 
@@ -864,7 +866,7 @@ public class PendingDeploymentReviewersInnerReviewer {
         PendingDeploymentReviewersInnerReviewer pendingDeploymentReviewersInnerReviewer =
                 (PendingDeploymentReviewersInnerReviewer) o;
         return Objects.equals(this.name, pendingDeploymentReviewersInnerReviewer.name)
-                && Objects.equals(this.email, pendingDeploymentReviewersInnerReviewer.email)
+                && equalsNullable(this.email, pendingDeploymentReviewersInnerReviewer.email)
                 && Objects.equals(this.login, pendingDeploymentReviewersInnerReviewer.login)
                 && Objects.equals(this.id, pendingDeploymentReviewersInnerReviewer.id)
                 && Objects.equals(this.nodeId, pendingDeploymentReviewersInnerReviewer.nodeId)
@@ -898,11 +900,16 @@ public class PendingDeploymentReviewersInnerReviewer {
                 && Objects.equals(this.parent, pendingDeploymentReviewersInnerReviewer.parent);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 name,
-                email,
+                hashCodeNullable(email),
                 login,
                 id,
                 nodeId,
@@ -934,6 +941,13 @@ public class PendingDeploymentReviewersInnerReviewer {
                 organizationId,
                 enterpriseId,
                 parent);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

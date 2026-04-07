@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Enable or disable Dependabot security updates for the repository.
@@ -19,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("security_and_analysis_dependabot_security_updates")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecurityAndAnalysisDependabotSecurityUpdates {
 
@@ -58,10 +57,10 @@ public class SecurityAndAnalysisDependabotSecurityUpdates {
         }
     }
 
-    private StatusEnum status;
+    private Optional<StatusEnum> status = Optional.empty();
 
     public SecurityAndAnalysisDependabotSecurityUpdates status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -74,11 +73,11 @@ public class SecurityAndAnalysisDependabotSecurityUpdates {
             description = "The enablement status of Dependabot security updates for the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 

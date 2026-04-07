@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,26 +18,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("secret_scanning_scan_history_custom_pattern_backfill_scans_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String status;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private Optional<String> status = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String patternName;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> startedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String patternScope;
+    private Optional<String> patternName = Optional.empty();
+
+    private Optional<String> patternScope = Optional.empty();
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -46,16 +47,16 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
      */
     @Schema(name = "type", description = "The type of scan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner status(String status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -68,16 +69,16 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
             description = "The state of the scan. Either \"completed\", \"running\", or \"pending\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public Optional<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Optional<String> status) {
         this.status = status;
     }
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -91,16 +92,16 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
             description = "The time that the scan was completed. Empty if the scan is running",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         return this;
     }
 
@@ -114,16 +115,16 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
             description = "The time that the scan was started. Empty if the scan is pending",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public JsonNullable<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(JsonNullable<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner patternName(String patternName) {
-        this.patternName = patternName;
+        this.patternName = Optional.ofNullable(patternName);
         return this;
     }
 
@@ -136,16 +137,16 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
             description = "Name of the custom pattern for custom pattern scans",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern_name")
-    public String getPatternName() {
+    public Optional<String> getPatternName() {
         return patternName;
     }
 
-    public void setPatternName(String patternName) {
+    public void setPatternName(Optional<String> patternName) {
         this.patternName = patternName;
     }
 
     public SecretScanningScanHistoryCustomPatternBackfillScansInner patternScope(String patternScope) {
-        this.patternScope = patternScope;
+        this.patternScope = Optional.ofNullable(patternScope);
         return this;
     }
 
@@ -159,11 +160,11 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
                     "Level at which the custom pattern is defined, one of \"repository\", \"organization\", or \"enterprise\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern_scope")
-    public String getPatternScope() {
+    public Optional<String> getPatternScope() {
         return patternScope;
     }
 
-    public void setPatternScope(String patternScope) {
+    public void setPatternScope(Optional<String> patternScope) {
         this.patternScope = patternScope;
     }
 
@@ -180,18 +181,31 @@ public class SecretScanningScanHistoryCustomPatternBackfillScansInner {
                         (SecretScanningScanHistoryCustomPatternBackfillScansInner) o;
         return Objects.equals(this.type, secretScanningScanHistoryCustomPatternBackfillScansInner.type)
                 && Objects.equals(this.status, secretScanningScanHistoryCustomPatternBackfillScansInner.status)
-                && Objects.equals(
+                && equalsNullable(
                         this.completedAt, secretScanningScanHistoryCustomPatternBackfillScansInner.completedAt)
-                && Objects.equals(this.startedAt, secretScanningScanHistoryCustomPatternBackfillScansInner.startedAt)
+                && equalsNullable(this.startedAt, secretScanningScanHistoryCustomPatternBackfillScansInner.startedAt)
                 && Objects.equals(
                         this.patternName, secretScanningScanHistoryCustomPatternBackfillScansInner.patternName)
                 && Objects.equals(
                         this.patternScope, secretScanningScanHistoryCustomPatternBackfillScansInner.patternScope);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(type, status, completedAt, startedAt, patternName, patternScope);
+        return Objects.hash(
+                type, status, hashCodeNullable(completedAt), hashCodeNullable(startedAt), patternName, patternScope);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

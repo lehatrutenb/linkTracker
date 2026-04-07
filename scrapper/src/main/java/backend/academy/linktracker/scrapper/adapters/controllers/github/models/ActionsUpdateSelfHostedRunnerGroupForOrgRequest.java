@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ActionsUpdateSelfHostedRunnerGroupForOrgRequest
@@ -19,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("actions_update_self_hosted_runner_group_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
 
@@ -62,16 +60,16 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
-    private Boolean allowsPublicRepositories = false;
+    private Optional<Boolean> allowsPublicRepositories = Optional.of(false);
 
-    private Boolean restrictedToWorkflows = false;
+    private Optional<Boolean> restrictedToWorkflows = Optional.of(false);
 
     @Valid
     private List<String> selectedWorkflows = new ArrayList<>();
 
-    private String networkConfigurationId = null;
+    private JsonNullable<String> networkConfigurationId = JsonNullable.<String>undefined();
 
     public ActionsUpdateSelfHostedRunnerGroupForOrgRequest() {
         super();
@@ -105,7 +103,7 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
     }
 
     public ActionsUpdateSelfHostedRunnerGroupForOrgRequest visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -119,16 +117,16 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
                     "Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
     public ActionsUpdateSelfHostedRunnerGroupForOrgRequest allowsPublicRepositories(Boolean allowsPublicRepositories) {
-        this.allowsPublicRepositories = allowsPublicRepositories;
+        this.allowsPublicRepositories = Optional.ofNullable(allowsPublicRepositories);
         return this;
     }
 
@@ -141,16 +139,16 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
             description = "Whether the runner group can be used by `public` repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allows_public_repositories")
-    public Boolean getAllowsPublicRepositories() {
+    public Optional<Boolean> getAllowsPublicRepositories() {
         return allowsPublicRepositories;
     }
 
-    public void setAllowsPublicRepositories(Boolean allowsPublicRepositories) {
+    public void setAllowsPublicRepositories(Optional<Boolean> allowsPublicRepositories) {
         this.allowsPublicRepositories = allowsPublicRepositories;
     }
 
     public ActionsUpdateSelfHostedRunnerGroupForOrgRequest restrictedToWorkflows(Boolean restrictedToWorkflows) {
-        this.restrictedToWorkflows = restrictedToWorkflows;
+        this.restrictedToWorkflows = Optional.ofNullable(restrictedToWorkflows);
         return this;
     }
 
@@ -164,11 +162,11 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
                     "If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("restricted_to_workflows")
-    public Boolean getRestrictedToWorkflows() {
+    public Optional<Boolean> getRestrictedToWorkflows() {
         return restrictedToWorkflows;
     }
 
-    public void setRestrictedToWorkflows(Boolean restrictedToWorkflows) {
+    public void setRestrictedToWorkflows(Optional<Boolean> restrictedToWorkflows) {
         this.restrictedToWorkflows = restrictedToWorkflows;
     }
 
@@ -204,7 +202,7 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
     }
 
     public ActionsUpdateSelfHostedRunnerGroupForOrgRequest networkConfigurationId(String networkConfigurationId) {
-        this.networkConfigurationId = networkConfigurationId;
+        this.networkConfigurationId = JsonNullable.of(networkConfigurationId);
         return this;
     }
 
@@ -217,11 +215,11 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
             description = "The identifier of a hosted compute network configuration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_configuration_id")
-    public String getNetworkConfigurationId() {
+    public JsonNullable<String> getNetworkConfigurationId() {
         return networkConfigurationId;
     }
 
-    public void setNetworkConfigurationId(String networkConfigurationId) {
+    public void setNetworkConfigurationId(JsonNullable<String> networkConfigurationId) {
         this.networkConfigurationId = networkConfigurationId;
     }
 
@@ -245,9 +243,14 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
                         actionsUpdateSelfHostedRunnerGroupForOrgRequest.restrictedToWorkflows)
                 && Objects.equals(
                         this.selectedWorkflows, actionsUpdateSelfHostedRunnerGroupForOrgRequest.selectedWorkflows)
-                && Objects.equals(
+                && equalsNullable(
                         this.networkConfigurationId,
                         actionsUpdateSelfHostedRunnerGroupForOrgRequest.networkConfigurationId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -258,7 +261,14 @@ public class ActionsUpdateSelfHostedRunnerGroupForOrgRequest {
                 allowsPublicRepositories,
                 restrictedToWorkflows,
                 selectedWorkflows,
-                networkConfigurationId);
+                hashCodeNullable(networkConfigurationId));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

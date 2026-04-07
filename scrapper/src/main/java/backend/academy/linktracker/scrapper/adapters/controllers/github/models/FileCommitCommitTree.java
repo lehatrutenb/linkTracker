@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * FileCommitCommitTree
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("file_commit_commit_tree")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommitCommitTree {
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
     public FileCommitCommitTree url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class FileCommitCommitTree {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public FileCommitCommitTree sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class FileCommitCommitTree {
      */
     @Schema(name = "sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 

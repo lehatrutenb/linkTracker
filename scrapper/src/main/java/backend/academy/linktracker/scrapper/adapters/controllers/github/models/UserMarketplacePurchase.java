@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,24 +18,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("user-marketplace-purchase")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class UserMarketplacePurchase {
 
     private String billingCycle;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime nextBillingDate = null;
+    private JsonNullable<OffsetDateTime> nextBillingDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private Long unitCount = null;
+    private JsonNullable<Long> unitCount = JsonNullable.<Long>undefined();
 
     private Boolean onFreeTrial;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime freeTrialEndsOn = null;
+    private JsonNullable<OffsetDateTime> freeTrialEndsOn = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private MarketplaceAccount account;
 
@@ -58,11 +58,11 @@ public class UserMarketplacePurchase {
             MarketplaceAccount account,
             MarketplaceListingPlan plan) {
         this.billingCycle = billingCycle;
-        this.nextBillingDate = nextBillingDate;
-        this.unitCount = unitCount;
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
+        this.unitCount = JsonNullable.of(unitCount);
         this.onFreeTrial = onFreeTrial;
-        this.freeTrialEndsOn = freeTrialEndsOn;
-        this.updatedAt = updatedAt;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.account = account;
         this.plan = plan;
     }
@@ -88,7 +88,7 @@ public class UserMarketplacePurchase {
     }
 
     public UserMarketplacePurchase nextBillingDate(OffsetDateTime nextBillingDate) {
-        this.nextBillingDate = nextBillingDate;
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
         return this;
     }
 
@@ -100,16 +100,16 @@ public class UserMarketplacePurchase {
     @Valid
     @Schema(name = "next_billing_date", example = "2017-11-11T00:00Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("next_billing_date")
-    public OffsetDateTime getNextBillingDate() {
+    public JsonNullable<OffsetDateTime> getNextBillingDate() {
         return nextBillingDate;
     }
 
-    public void setNextBillingDate(OffsetDateTime nextBillingDate) {
+    public void setNextBillingDate(JsonNullable<OffsetDateTime> nextBillingDate) {
         this.nextBillingDate = nextBillingDate;
     }
 
     public UserMarketplacePurchase unitCount(Long unitCount) {
-        this.unitCount = unitCount;
+        this.unitCount = JsonNullable.of(unitCount);
         return this;
     }
 
@@ -120,11 +120,11 @@ public class UserMarketplacePurchase {
     @NotNull
     @Schema(name = "unit_count", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("unit_count")
-    public Long getUnitCount() {
+    public JsonNullable<Long> getUnitCount() {
         return unitCount;
     }
 
-    public void setUnitCount(Long unitCount) {
+    public void setUnitCount(JsonNullable<Long> unitCount) {
         this.unitCount = unitCount;
     }
 
@@ -149,7 +149,7 @@ public class UserMarketplacePurchase {
     }
 
     public UserMarketplacePurchase freeTrialEndsOn(OffsetDateTime freeTrialEndsOn) {
-        this.freeTrialEndsOn = freeTrialEndsOn;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
         return this;
     }
 
@@ -161,16 +161,16 @@ public class UserMarketplacePurchase {
     @Valid
     @Schema(name = "free_trial_ends_on", example = "2017-11-11T00:00Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("free_trial_ends_on")
-    public OffsetDateTime getFreeTrialEndsOn() {
+    public JsonNullable<OffsetDateTime> getFreeTrialEndsOn() {
         return freeTrialEndsOn;
     }
 
-    public void setFreeTrialEndsOn(OffsetDateTime freeTrialEndsOn) {
+    public void setFreeTrialEndsOn(JsonNullable<OffsetDateTime> freeTrialEndsOn) {
         this.freeTrialEndsOn = freeTrialEndsOn;
     }
 
     public UserMarketplacePurchase updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -182,11 +182,11 @@ public class UserMarketplacePurchase {
     @Valid
     @Schema(name = "updated_at", example = "2017-11-02T01:12:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 

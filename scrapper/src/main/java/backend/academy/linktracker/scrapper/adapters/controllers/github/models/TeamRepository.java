@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("team-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamRepository {
 
@@ -33,21 +34,21 @@ public class TeamRepository {
 
     private String fullName;
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
     private Long forks;
 
-    private RepositoryPermissions permissions;
+    private Optional<RepositoryPermissions> permissions = Optional.empty();
 
-    private String roleName;
+    private Optional<String> roleName = Optional.empty();
 
-    private NullableSimpleUser owner = null;
+    private JsonNullable<NullableSimpleUser> owner = JsonNullable.<NullableSimpleUser>undefined();
 
     private Boolean _private = false;
 
     private URI htmlUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean fork;
 
@@ -129,15 +130,15 @@ public class TeamRepository {
 
     private String cloneUrl;
 
-    private URI mirrorUrl = null;
+    private JsonNullable<URI> mirrorUrl = JsonNullable.<URI>undefined();
 
     private URI hooksUrl;
 
     private URI svnUrl;
 
-    private URI homepage = null;
+    private JsonNullable<URI> homepage = JsonNullable.<URI>undefined();
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
     private Long forksCount;
 
@@ -151,7 +152,7 @@ public class TeamRepository {
 
     private Long openIssuesCount;
 
-    private Boolean isTemplate = false;
+    private Optional<Boolean> isTemplate = Optional.of(false);
 
     @Valid
     private List<String> topics = new ArrayList<>();
@@ -168,42 +169,42 @@ public class TeamRepository {
 
     private Boolean disabled;
 
-    private String visibility = "public";
+    private Optional<String> visibility = Optional.of("public");
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt = null;
+    private JsonNullable<OffsetDateTime> pushedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private String tempCloneToken;
+    private Optional<String> tempCloneToken = Optional.empty();
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowForking = false;
+    private Optional<Boolean> allowForking = Optional.of(false);
 
-    private Boolean webCommitSignoffRequired = false;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.of(false);
 
-    private Long subscribersCount;
+    private Optional<Long> subscribersCount = Optional.empty();
 
-    private Long networkCount;
+    private Optional<Long> networkCount = Optional.empty();
 
     private Long openIssues;
 
     private Long watchers;
 
-    private String masterBranch;
+    private Optional<String> masterBranch = Optional.empty();
 
     public TeamRepository() {
         super();
@@ -289,12 +290,12 @@ public class TeamRepository {
         this.nodeId = nodeId;
         this.name = name;
         this.fullName = fullName;
-        this.license = license;
+        this.license = JsonNullable.of(license);
         this.forks = forks;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this._private = _private;
         this.htmlUrl = htmlUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.fork = fork;
         this.url = url;
         this.archiveUrl = archiveUrl;
@@ -335,11 +336,11 @@ public class TeamRepository {
         this.teamsUrl = teamsUrl;
         this.treesUrl = treesUrl;
         this.cloneUrl = cloneUrl;
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         this.hooksUrl = hooksUrl;
         this.svnUrl = svnUrl;
-        this.homepage = homepage;
-        this.language = language;
+        this.homepage = JsonNullable.of(homepage);
+        this.language = JsonNullable.of(language);
         this.forksCount = forksCount;
         this.stargazersCount = stargazersCount;
         this.watchersCount = watchersCount;
@@ -352,9 +353,9 @@ public class TeamRepository {
         this.hasPages = hasPages;
         this.archived = archived;
         this.disabled = disabled;
-        this.pushedAt = pushedAt;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.openIssues = openIssues;
         this.watchers = watchers;
     }
@@ -448,7 +449,7 @@ public class TeamRepository {
     }
 
     public TeamRepository license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -460,11 +461,11 @@ public class TeamRepository {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 
@@ -489,7 +490,7 @@ public class TeamRepository {
     }
 
     public TeamRepository permissions(RepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -500,16 +501,16 @@ public class TeamRepository {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public RepositoryPermissions getPermissions() {
+    public Optional<RepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(RepositoryPermissions permissions) {
+    public void setPermissions(Optional<RepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
     public TeamRepository roleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = Optional.ofNullable(roleName);
         return this;
     }
 
@@ -519,16 +520,16 @@ public class TeamRepository {
      */
     @Schema(name = "role_name", example = "admin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role_name")
-    public String getRoleName() {
+    public Optional<String> getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(Optional<String> roleName) {
         this.roleName = roleName;
     }
 
     public TeamRepository owner(NullableSimpleUser owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -540,11 +541,11 @@ public class TeamRepository {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public NullableSimpleUser getOwner() {
+    public JsonNullable<NullableSimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(NullableSimpleUser owner) {
+    public void setOwner(JsonNullable<NullableSimpleUser> owner) {
         this.owner = owner;
     }
 
@@ -596,7 +597,7 @@ public class TeamRepository {
     }
 
     public TeamRepository description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -607,11 +608,11 @@ public class TeamRepository {
     @NotNull
     @Schema(name = "description", example = "This your first repo!", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -1546,7 +1547,7 @@ public class TeamRepository {
     }
 
     public TeamRepository mirrorUrl(URI mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1561,11 +1562,11 @@ public class TeamRepository {
             example = "git:git.example.com/octocat/Hello-World",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mirror_url")
-    public URI getMirrorUrl() {
+    public JsonNullable<URI> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(URI mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<URI> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1618,7 +1619,7 @@ public class TeamRepository {
     }
 
     public TeamRepository homepage(URI homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1630,16 +1631,16 @@ public class TeamRepository {
     @Valid
     @Schema(name = "homepage", example = "https://github.com", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("homepage")
-    public URI getHomepage() {
+    public JsonNullable<URI> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(URI homepage) {
+    public void setHomepage(JsonNullable<URI> homepage) {
         this.homepage = homepage;
     }
 
     public TeamRepository language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1650,11 +1651,11 @@ public class TeamRepository {
     @NotNull
     @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
@@ -1783,7 +1784,7 @@ public class TeamRepository {
     }
 
     public TeamRepository isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1797,11 +1798,11 @@ public class TeamRepository {
             description = "Whether this repository acts as a template that can be used to generate new repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -1971,7 +1972,7 @@ public class TeamRepository {
     }
 
     public TeamRepository visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -1984,16 +1985,16 @@ public class TeamRepository {
             description = "The repository visibility: public, private, or internal.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public TeamRepository pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         return this;
     }
 
@@ -2005,16 +2006,16 @@ public class TeamRepository {
     @Valid
     @Schema(name = "pushed_at", example = "2011-01-26T19:06:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public JsonNullable<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(JsonNullable<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public TeamRepository createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -2026,16 +2027,16 @@ public class TeamRepository {
     @Valid
     @Schema(name = "created_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public TeamRepository updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -2047,16 +2048,16 @@ public class TeamRepository {
     @Valid
     @Schema(name = "updated_at", example = "2011-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public TeamRepository allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -2070,16 +2071,16 @@ public class TeamRepository {
             description = "Whether to allow rebase merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public TeamRepository tempCloneToken(String tempCloneToken) {
-        this.tempCloneToken = tempCloneToken;
+        this.tempCloneToken = Optional.ofNullable(tempCloneToken);
         return this;
     }
 
@@ -2089,16 +2090,16 @@ public class TeamRepository {
      */
     @Schema(name = "temp_clone_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_clone_token")
-    public String getTempCloneToken() {
+    public Optional<String> getTempCloneToken() {
         return tempCloneToken;
     }
 
-    public void setTempCloneToken(String tempCloneToken) {
+    public void setTempCloneToken(Optional<String> tempCloneToken) {
         this.tempCloneToken = tempCloneToken;
     }
 
     public TeamRepository allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -2112,16 +2113,16 @@ public class TeamRepository {
             description = "Whether to allow squash merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public TeamRepository allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -2135,16 +2136,16 @@ public class TeamRepository {
             description = "Whether to allow Auto-merge to be used on pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public TeamRepository deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -2158,16 +2159,16 @@ public class TeamRepository {
             description = "Whether to delete head branches when pull requests are merged",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public TeamRepository allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -2181,16 +2182,16 @@ public class TeamRepository {
             description = "Whether to allow merge commits for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public TeamRepository allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -2204,16 +2205,16 @@ public class TeamRepository {
             description = "Whether to allow forking this repo",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public TeamRepository webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -2227,16 +2228,16 @@ public class TeamRepository {
             description = "Whether to require contributors to sign off on web-based commits",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
     public TeamRepository subscribersCount(Long subscribersCount) {
-        this.subscribersCount = subscribersCount;
+        this.subscribersCount = Optional.ofNullable(subscribersCount);
         return this;
     }
 
@@ -2246,16 +2247,16 @@ public class TeamRepository {
      */
     @Schema(name = "subscribers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_count")
-    public Long getSubscribersCount() {
+    public Optional<Long> getSubscribersCount() {
         return subscribersCount;
     }
 
-    public void setSubscribersCount(Long subscribersCount) {
+    public void setSubscribersCount(Optional<Long> subscribersCount) {
         this.subscribersCount = subscribersCount;
     }
 
     public TeamRepository networkCount(Long networkCount) {
-        this.networkCount = networkCount;
+        this.networkCount = Optional.ofNullable(networkCount);
         return this;
     }
 
@@ -2265,11 +2266,11 @@ public class TeamRepository {
      */
     @Schema(name = "network_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_count")
-    public Long getNetworkCount() {
+    public Optional<Long> getNetworkCount() {
         return networkCount;
     }
 
-    public void setNetworkCount(Long networkCount) {
+    public void setNetworkCount(Optional<Long> networkCount) {
         this.networkCount = networkCount;
     }
 
@@ -2314,7 +2315,7 @@ public class TeamRepository {
     }
 
     public TeamRepository masterBranch(String masterBranch) {
-        this.masterBranch = masterBranch;
+        this.masterBranch = Optional.ofNullable(masterBranch);
         return this;
     }
 
@@ -2324,11 +2325,11 @@ public class TeamRepository {
      */
     @Schema(name = "master_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("master_branch")
-    public String getMasterBranch() {
+    public Optional<String> getMasterBranch() {
         return masterBranch;
     }
 
-    public void setMasterBranch(String masterBranch) {
+    public void setMasterBranch(Optional<String> masterBranch) {
         this.masterBranch = masterBranch;
     }
 

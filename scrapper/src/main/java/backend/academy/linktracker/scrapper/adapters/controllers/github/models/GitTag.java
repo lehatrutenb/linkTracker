@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Metadata for a Git tag
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("git-tag")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitTag {
 
@@ -35,7 +35,7 @@ public class GitTag {
 
     private GitTagObject _object;
 
-    private Verification verification;
+    private Optional<Verification> verification = Optional.empty();
 
     public GitTag() {
         super();
@@ -217,7 +217,7 @@ public class GitTag {
     }
 
     public GitTag verification(Verification verification) {
-        this.verification = verification;
+        this.verification = Optional.ofNullable(verification);
         return this;
     }
 
@@ -228,11 +228,11 @@ public class GitTag {
     @Valid
     @Schema(name = "verification", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verification")
-    public Verification getVerification() {
+    public Optional<Verification> getVerification() {
         return verification;
     }
 
-    public void setVerification(Verification verification) {
+    public void setVerification(Optional<Verification> verification) {
         this.verification = verification;
     }
 

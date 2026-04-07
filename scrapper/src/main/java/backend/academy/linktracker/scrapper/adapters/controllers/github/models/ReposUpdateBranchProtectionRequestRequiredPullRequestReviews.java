@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Require at least one approving review on a pull request, before merging. Set to &#x60;null&#x60; to disable.
@@ -19,26 +18,27 @@ import java.util.Objects;
 @JsonTypeName("repos_update_branch_protection_request_required_pull_request_reviews")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
 
-    private ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions;
+    private Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions>
+            dismissalRestrictions = Optional.empty();
 
-    private Boolean dismissStaleReviews;
+    private Optional<Boolean> dismissStaleReviews = Optional.empty();
 
-    private Boolean requireCodeOwnerReviews;
+    private Optional<Boolean> requireCodeOwnerReviews = Optional.empty();
 
-    private Long requiredApprovingReviewCount;
+    private Optional<Long> requiredApprovingReviewCount = Optional.empty();
 
-    private Boolean requireLastPushApproval = false;
+    private Optional<Boolean> requireLastPushApproval = Optional.of(false);
 
-    private ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances
-            bypassPullRequestAllowances;
+    private Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances>
+            bypassPullRequestAllowances = Optional.empty();
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews dismissalRestrictions(
             ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions) {
-        this.dismissalRestrictions = dismissalRestrictions;
+        this.dismissalRestrictions = Optional.ofNullable(dismissalRestrictions);
         return this;
     }
 
@@ -49,19 +49,20 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
     @Valid
     @Schema(name = "dismissal_restrictions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_restrictions")
-    public ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions
+    public Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions>
             getDismissalRestrictions() {
         return dismissalRestrictions;
     }
 
     public void setDismissalRestrictions(
-            ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions) {
+            Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions>
+                    dismissalRestrictions) {
         this.dismissalRestrictions = dismissalRestrictions;
     }
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews dismissStaleReviews(
             Boolean dismissStaleReviews) {
-        this.dismissStaleReviews = dismissStaleReviews;
+        this.dismissStaleReviews = Optional.ofNullable(dismissStaleReviews);
         return this;
     }
 
@@ -75,17 +76,17 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
                     "Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismiss_stale_reviews")
-    public Boolean getDismissStaleReviews() {
+    public Optional<Boolean> getDismissStaleReviews() {
         return dismissStaleReviews;
     }
 
-    public void setDismissStaleReviews(Boolean dismissStaleReviews) {
+    public void setDismissStaleReviews(Optional<Boolean> dismissStaleReviews) {
         this.dismissStaleReviews = dismissStaleReviews;
     }
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews requireCodeOwnerReviews(
             Boolean requireCodeOwnerReviews) {
-        this.requireCodeOwnerReviews = requireCodeOwnerReviews;
+        this.requireCodeOwnerReviews = Optional.ofNullable(requireCodeOwnerReviews);
         return this;
     }
 
@@ -99,17 +100,17 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
                     "Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_code_owner_reviews")
-    public Boolean getRequireCodeOwnerReviews() {
+    public Optional<Boolean> getRequireCodeOwnerReviews() {
         return requireCodeOwnerReviews;
     }
 
-    public void setRequireCodeOwnerReviews(Boolean requireCodeOwnerReviews) {
+    public void setRequireCodeOwnerReviews(Optional<Boolean> requireCodeOwnerReviews) {
         this.requireCodeOwnerReviews = requireCodeOwnerReviews;
     }
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews requiredApprovingReviewCount(
             Long requiredApprovingReviewCount) {
-        this.requiredApprovingReviewCount = requiredApprovingReviewCount;
+        this.requiredApprovingReviewCount = Optional.ofNullable(requiredApprovingReviewCount);
         return this;
     }
 
@@ -123,17 +124,17 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
                     "Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_approving_review_count")
-    public Long getRequiredApprovingReviewCount() {
+    public Optional<Long> getRequiredApprovingReviewCount() {
         return requiredApprovingReviewCount;
     }
 
-    public void setRequiredApprovingReviewCount(Long requiredApprovingReviewCount) {
+    public void setRequiredApprovingReviewCount(Optional<Long> requiredApprovingReviewCount) {
         this.requiredApprovingReviewCount = requiredApprovingReviewCount;
     }
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews requireLastPushApproval(
             Boolean requireLastPushApproval) {
-        this.requireLastPushApproval = requireLastPushApproval;
+        this.requireLastPushApproval = Optional.ofNullable(requireLastPushApproval);
         return this;
     }
 
@@ -147,18 +148,18 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
                     "Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_last_push_approval")
-    public Boolean getRequireLastPushApproval() {
+    public Optional<Boolean> getRequireLastPushApproval() {
         return requireLastPushApproval;
     }
 
-    public void setRequireLastPushApproval(Boolean requireLastPushApproval) {
+    public void setRequireLastPushApproval(Optional<Boolean> requireLastPushApproval) {
         this.requireLastPushApproval = requireLastPushApproval;
     }
 
     public ReposUpdateBranchProtectionRequestRequiredPullRequestReviews bypassPullRequestAllowances(
             ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances
                     bypassPullRequestAllowances) {
-        this.bypassPullRequestAllowances = bypassPullRequestAllowances;
+        this.bypassPullRequestAllowances = Optional.ofNullable(bypassPullRequestAllowances);
         return this;
     }
 
@@ -169,13 +170,13 @@ public class ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
     @Valid
     @Schema(name = "bypass_pull_request_allowances", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bypass_pull_request_allowances")
-    public ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances
+    public Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances>
             getBypassPullRequestAllowances() {
         return bypassPullRequestAllowances;
     }
 
     public void setBypassPullRequestAllowances(
-            ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances
+            Optional<ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances>
                     bypassPullRequestAllowances) {
         this.bypassPullRequestAllowances = bypassPullRequestAllowances;
     }

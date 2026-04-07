@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,18 +17,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_projects_v2_status_update_edited_changes_start_date")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2StatusUpdateEditedChangesStartDate {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate from = null;
+    private JsonNullable<LocalDate> from = JsonNullable.<LocalDate>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate to = null;
+    private JsonNullable<LocalDate> to = JsonNullable.<LocalDate>undefined();
 
     public WebhookProjectsV2StatusUpdateEditedChangesStartDate from(LocalDate from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -39,16 +39,16 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStartDate {
     @Valid
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public LocalDate getFrom() {
+    public JsonNullable<LocalDate> getFrom() {
         return from;
     }
 
-    public void setFrom(LocalDate from) {
+    public void setFrom(JsonNullable<LocalDate> from) {
         this.from = from;
     }
 
     public WebhookProjectsV2StatusUpdateEditedChangesStartDate to(LocalDate to) {
-        this.to = to;
+        this.to = JsonNullable.of(to);
         return this;
     }
 
@@ -59,11 +59,11 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStartDate {
     @Valid
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public LocalDate getTo() {
+    public JsonNullable<LocalDate> getTo() {
         return to;
     }
 
-    public void setTo(LocalDate to) {
+    public void setTo(JsonNullable<LocalDate> to) {
         this.to = to;
     }
 
@@ -77,13 +77,25 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStartDate {
         }
         WebhookProjectsV2StatusUpdateEditedChangesStartDate webhookProjectsV2StatusUpdateEditedChangesStartDate =
                 (WebhookProjectsV2StatusUpdateEditedChangesStartDate) o;
-        return Objects.equals(this.from, webhookProjectsV2StatusUpdateEditedChangesStartDate.from)
-                && Objects.equals(this.to, webhookProjectsV2StatusUpdateEditedChangesStartDate.to);
+        return equalsNullable(this.from, webhookProjectsV2StatusUpdateEditedChangesStartDate.from)
+                && equalsNullable(this.to, webhookProjectsV2StatusUpdateEditedChangesStartDate.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(hashCodeNullable(from), hashCodeNullable(to));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,12 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * ReposCreateWebhookRequest
@@ -18,21 +13,21 @@ import java.util.Objects;
 @JsonTypeName("repos_create_webhook_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateWebhookRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private ReposCreateWebhookRequestConfig config;
+    private Optional<ReposCreateWebhookRequestConfig> config = Optional.empty();
 
     @Valid
     private List<String> events = new ArrayList<>(Arrays.asList("push"));
 
-    private Boolean active = true;
+    private Optional<Boolean> active = Optional.of(true);
 
     public ReposCreateWebhookRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -45,16 +40,16 @@ public class ReposCreateWebhookRequest {
             description = "Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposCreateWebhookRequest config(ReposCreateWebhookRequestConfig config) {
-        this.config = config;
+        this.config = Optional.ofNullable(config);
         return this;
     }
 
@@ -65,11 +60,11 @@ public class ReposCreateWebhookRequest {
     @Valid
     @Schema(name = "config", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("config")
-    public ReposCreateWebhookRequestConfig getConfig() {
+    public Optional<ReposCreateWebhookRequestConfig> getConfig() {
         return config;
     }
 
-    public void setConfig(ReposCreateWebhookRequestConfig config) {
+    public void setConfig(Optional<ReposCreateWebhookRequestConfig> config) {
         this.config = config;
     }
 
@@ -105,7 +100,7 @@ public class ReposCreateWebhookRequest {
     }
 
     public ReposCreateWebhookRequest active(Boolean active) {
-        this.active = active;
+        this.active = Optional.ofNullable(active);
         return this;
     }
 
@@ -119,11 +114,11 @@ public class ReposCreateWebhookRequest {
                     "Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("active")
-    public Boolean getActive() {
+    public Optional<Boolean> getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Optional<Boolean> active) {
         this.active = active;
     }
 

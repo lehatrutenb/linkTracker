@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DependencyGraphSpdxSbomSbomPackagesInner
@@ -17,33 +16,33 @@ import java.util.Objects;
 @JsonTypeName("dependency_graph_spdx_sbom_sbom_packages_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependencyGraphSpdxSbomSbomPackagesInner {
 
-    private String SPDXID;
+    private Optional<String> SPDXID = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String versionInfo;
+    private Optional<String> versionInfo = Optional.empty();
 
-    private String downloadLocation;
+    private Optional<String> downloadLocation = Optional.empty();
 
-    private Boolean filesAnalyzed;
+    private Optional<Boolean> filesAnalyzed = Optional.empty();
 
-    private String licenseConcluded;
+    private Optional<String> licenseConcluded = Optional.empty();
 
-    private String licenseDeclared;
+    private Optional<String> licenseDeclared = Optional.empty();
 
-    private String supplier;
+    private Optional<String> supplier = Optional.empty();
 
-    private String copyrightText;
+    private Optional<String> copyrightText = Optional.empty();
 
     @Valid
     private List<@Valid DependencyGraphSpdxSbomSbomPackagesInnerExternalRefsInner> externalRefs = new ArrayList<>();
 
     public DependencyGraphSpdxSbomSbomPackagesInner SPDXID(String SPDXID) {
-        this.SPDXID = SPDXID;
+        this.SPDXID = Optional.ofNullable(SPDXID);
         return this;
     }
 
@@ -57,16 +56,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
             description = "A unique SPDX identifier for the package.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("SPDXID")
-    public String getSPDXID() {
+    public Optional<String> getSPDXID() {
         return SPDXID;
     }
 
-    public void setSPDXID(String SPDXID) {
+    public void setSPDXID(Optional<String> SPDXID) {
         this.SPDXID = SPDXID;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -80,16 +79,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
             description = "The name of the package.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner versionInfo(String versionInfo) {
-        this.versionInfo = versionInfo;
+        this.versionInfo = Optional.ofNullable(versionInfo);
         return this;
     }
 
@@ -104,16 +103,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
                     "The version of the package. If the package does not have an exact version specified, a version range is given.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("versionInfo")
-    public String getVersionInfo() {
+    public Optional<String> getVersionInfo() {
         return versionInfo;
     }
 
-    public void setVersionInfo(String versionInfo) {
+    public void setVersionInfo(Optional<String> versionInfo) {
         this.versionInfo = versionInfo;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner downloadLocation(String downloadLocation) {
-        this.downloadLocation = downloadLocation;
+        this.downloadLocation = Optional.ofNullable(downloadLocation);
         return this;
     }
 
@@ -128,16 +127,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
                     "The location where the package can be downloaded, or NOASSERTION if this has not been determined.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downloadLocation")
-    public String getDownloadLocation() {
+    public Optional<String> getDownloadLocation() {
         return downloadLocation;
     }
 
-    public void setDownloadLocation(String downloadLocation) {
+    public void setDownloadLocation(Optional<String> downloadLocation) {
         this.downloadLocation = downloadLocation;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner filesAnalyzed(Boolean filesAnalyzed) {
-        this.filesAnalyzed = filesAnalyzed;
+        this.filesAnalyzed = Optional.ofNullable(filesAnalyzed);
         return this;
     }
 
@@ -152,16 +151,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
                     "Whether the package's file content has been subjected to analysis during the creation of the SPDX document.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filesAnalyzed")
-    public Boolean getFilesAnalyzed() {
+    public Optional<Boolean> getFilesAnalyzed() {
         return filesAnalyzed;
     }
 
-    public void setFilesAnalyzed(Boolean filesAnalyzed) {
+    public void setFilesAnalyzed(Optional<Boolean> filesAnalyzed) {
         this.filesAnalyzed = filesAnalyzed;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner licenseConcluded(String licenseConcluded) {
-        this.licenseConcluded = licenseConcluded;
+        this.licenseConcluded = Optional.ofNullable(licenseConcluded);
         return this;
     }
 
@@ -175,16 +174,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
             description = "The license of the package as determined while creating the SPDX document.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("licenseConcluded")
-    public String getLicenseConcluded() {
+    public Optional<String> getLicenseConcluded() {
         return licenseConcluded;
     }
 
-    public void setLicenseConcluded(String licenseConcluded) {
+    public void setLicenseConcluded(Optional<String> licenseConcluded) {
         this.licenseConcluded = licenseConcluded;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner licenseDeclared(String licenseDeclared) {
-        this.licenseDeclared = licenseDeclared;
+        this.licenseDeclared = Optional.ofNullable(licenseDeclared);
         return this;
     }
 
@@ -199,16 +198,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
                     "The license of the package as declared by its author, or NOASSERTION if this information was not available when the SPDX document was created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("licenseDeclared")
-    public String getLicenseDeclared() {
+    public Optional<String> getLicenseDeclared() {
         return licenseDeclared;
     }
 
-    public void setLicenseDeclared(String licenseDeclared) {
+    public void setLicenseDeclared(Optional<String> licenseDeclared) {
         this.licenseDeclared = licenseDeclared;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner supplier(String supplier) {
-        this.supplier = supplier;
+        this.supplier = Optional.ofNullable(supplier);
         return this;
     }
 
@@ -222,16 +221,16 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
             description = "The distribution source of this package, or NOASSERTION if this was not determined.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("supplier")
-    public String getSupplier() {
+    public Optional<String> getSupplier() {
         return supplier;
     }
 
-    public void setSupplier(String supplier) {
+    public void setSupplier(Optional<String> supplier) {
         this.supplier = supplier;
     }
 
     public DependencyGraphSpdxSbomSbomPackagesInner copyrightText(String copyrightText) {
-        this.copyrightText = copyrightText;
+        this.copyrightText = Optional.ofNullable(copyrightText);
         return this;
     }
 
@@ -246,11 +245,11 @@ public class DependencyGraphSpdxSbomSbomPackagesInner {
                     "The copyright holders of the package, and any dates present with those notices, if available.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("copyrightText")
-    public String getCopyrightText() {
+    public Optional<String> getCopyrightText() {
         return copyrightText;
     }
 
-    public void setCopyrightText(String copyrightText) {
+    public void setCopyrightText(Optional<String> copyrightText) {
         this.copyrightText = copyrightText;
     }
 

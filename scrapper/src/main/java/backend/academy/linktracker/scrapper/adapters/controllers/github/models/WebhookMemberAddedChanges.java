@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookMemberAddedChanges
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_member_added_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMemberAddedChanges {
 
-    private WebhookMemberAddedChangesPermission permission;
+    private Optional<WebhookMemberAddedChangesPermission> permission = Optional.empty();
 
-    private WebhookMemberAddedChangesRoleName roleName;
+    private Optional<WebhookMemberAddedChangesRoleName> roleName = Optional.empty();
 
     public WebhookMemberAddedChanges permission(WebhookMemberAddedChangesPermission permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class WebhookMemberAddedChanges {
     @Valid
     @Schema(name = "permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public WebhookMemberAddedChangesPermission getPermission() {
+    public Optional<WebhookMemberAddedChangesPermission> getPermission() {
         return permission;
     }
 
-    public void setPermission(WebhookMemberAddedChangesPermission permission) {
+    public void setPermission(Optional<WebhookMemberAddedChangesPermission> permission) {
         this.permission = permission;
     }
 
     public WebhookMemberAddedChanges roleName(WebhookMemberAddedChangesRoleName roleName) {
-        this.roleName = roleName;
+        this.roleName = Optional.ofNullable(roleName);
         return this;
     }
 
@@ -55,11 +54,11 @@ public class WebhookMemberAddedChanges {
     @Valid
     @Schema(name = "role_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role_name")
-    public WebhookMemberAddedChangesRoleName getRoleName() {
+    public Optional<WebhookMemberAddedChangesRoleName> getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(WebhookMemberAddedChangesRoleName roleName) {
+    public void setRoleName(Optional<WebhookMemberAddedChangesRoleName> roleName) {
         this.roleName = roleName;
     }
 

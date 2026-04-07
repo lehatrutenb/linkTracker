@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TimelineCrossReferencedEventSource
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("timeline_cross_referenced_event_source")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineCrossReferencedEventSource {
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private Issue issue;
+    private Optional<Issue> issue = Optional.empty();
 
     public TimelineCrossReferencedEventSource type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -34,16 +33,16 @@ public class TimelineCrossReferencedEventSource {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public TimelineCrossReferencedEventSource issue(Issue issue) {
-        this.issue = issue;
+        this.issue = Optional.ofNullable(issue);
         return this;
     }
 
@@ -54,11 +53,11 @@ public class TimelineCrossReferencedEventSource {
     @Valid
     @Schema(name = "issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue")
-    public Issue getIssue() {
+    public Optional<Issue> getIssue() {
         return issue;
     }
 
-    public void setIssue(Issue issue) {
+    public void setIssue(Optional<Issue> issue) {
         this.issue = issue;
     }
 

@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Parameters to be used for the commit_author_email_pattern rule
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-commit-author-email-pattern")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleCommitAuthorEmailPattern implements OrgRules, RepositoryRule {
 
@@ -59,7 +59,7 @@ public class RepositoryRuleCommitAuthorEmailPattern implements OrgRules, Reposit
 
     private TypeEnum type;
 
-    private RepositoryRuleCommitMessagePatternParameters parameters;
+    private Optional<RepositoryRuleCommitMessagePatternParameters> parameters = Optional.empty();
 
     public RepositoryRuleCommitAuthorEmailPattern() {
         super();
@@ -93,7 +93,7 @@ public class RepositoryRuleCommitAuthorEmailPattern implements OrgRules, Reposit
     }
 
     public RepositoryRuleCommitAuthorEmailPattern parameters(RepositoryRuleCommitMessagePatternParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -104,11 +104,11 @@ public class RepositoryRuleCommitAuthorEmailPattern implements OrgRules, Reposit
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleCommitMessagePatternParameters getParameters() {
+    public Optional<RepositoryRuleCommitMessagePatternParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleCommitMessagePatternParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleCommitMessagePatternParameters> parameters) {
         this.parameters = parameters;
     }
 

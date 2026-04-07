@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsSetMembershipForUserRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("orgs_set_membership_for_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsSetMembershipForUserRequest {
 
@@ -55,10 +54,10 @@ public class OrgsSetMembershipForUserRequest {
         }
     }
 
-    private RoleEnum role = RoleEnum.MEMBER;
+    private Optional<RoleEnum> role = Optional.of(RoleEnum.MEMBER);
 
     public OrgsSetMembershipForUserRequest role(RoleEnum role) {
-        this.role = role;
+        this.role = Optional.ofNullable(role);
         return this;
     }
 
@@ -72,11 +71,11 @@ public class OrgsSetMembershipForUserRequest {
                     "The role to give the user in the organization. Can be one of:    * `admin` - The user will become an owner of the organization.    * `member` - The user will become a non-owner member of the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role")
-    public RoleEnum getRole() {
+    public Optional<RoleEnum> getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(Optional<RoleEnum> role) {
         this.role = role;
     }
 

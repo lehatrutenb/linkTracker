@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MigrationsStartImportRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("migrations_start_import_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MigrationsStartImportRequest {
 
@@ -61,13 +61,13 @@ public class MigrationsStartImportRequest {
         }
     }
 
-    private VcsEnum vcs;
+    private Optional<VcsEnum> vcs = Optional.empty();
 
-    private String vcsUsername;
+    private Optional<String> vcsUsername = Optional.empty();
 
-    private String vcsPassword;
+    private Optional<String> vcsPassword = Optional.empty();
 
-    private String tfvcProject;
+    private Optional<String> tfvcProject = Optional.empty();
 
     public MigrationsStartImportRequest() {
         super();
@@ -104,7 +104,7 @@ public class MigrationsStartImportRequest {
     }
 
     public MigrationsStartImportRequest vcs(VcsEnum vcs) {
-        this.vcs = vcs;
+        this.vcs = Optional.ofNullable(vcs);
         return this;
     }
 
@@ -118,16 +118,16 @@ public class MigrationsStartImportRequest {
                     "The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs")
-    public VcsEnum getVcs() {
+    public Optional<VcsEnum> getVcs() {
         return vcs;
     }
 
-    public void setVcs(VcsEnum vcs) {
+    public void setVcs(Optional<VcsEnum> vcs) {
         this.vcs = vcs;
     }
 
     public MigrationsStartImportRequest vcsUsername(String vcsUsername) {
-        this.vcsUsername = vcsUsername;
+        this.vcsUsername = Optional.ofNullable(vcsUsername);
         return this;
     }
 
@@ -140,16 +140,16 @@ public class MigrationsStartImportRequest {
             description = "If authentication is required, the username to provide to `vcs_url`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs_username")
-    public String getVcsUsername() {
+    public Optional<String> getVcsUsername() {
         return vcsUsername;
     }
 
-    public void setVcsUsername(String vcsUsername) {
+    public void setVcsUsername(Optional<String> vcsUsername) {
         this.vcsUsername = vcsUsername;
     }
 
     public MigrationsStartImportRequest vcsPassword(String vcsPassword) {
-        this.vcsPassword = vcsPassword;
+        this.vcsPassword = Optional.ofNullable(vcsPassword);
         return this;
     }
 
@@ -162,16 +162,16 @@ public class MigrationsStartImportRequest {
             description = "If authentication is required, the password to provide to `vcs_url`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs_password")
-    public String getVcsPassword() {
+    public Optional<String> getVcsPassword() {
         return vcsPassword;
     }
 
-    public void setVcsPassword(String vcsPassword) {
+    public void setVcsPassword(Optional<String> vcsPassword) {
         this.vcsPassword = vcsPassword;
     }
 
     public MigrationsStartImportRequest tfvcProject(String tfvcProject) {
-        this.tfvcProject = tfvcProject;
+        this.tfvcProject = Optional.ofNullable(tfvcProject);
         return this;
     }
 
@@ -184,11 +184,11 @@ public class MigrationsStartImportRequest {
             description = "For a tfvc import, the name of the project that is being imported.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tfvc_project")
-    public String getTfvcProject() {
+    public Optional<String> getTfvcProject() {
         return tfvcProject;
     }
 
-    public void setTfvcProject(String tfvcProject) {
+    public void setTfvcProject(Optional<String> tfvcProject) {
         this.tfvcProject = tfvcProject;
     }
 

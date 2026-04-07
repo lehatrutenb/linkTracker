@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Information about the current page.
@@ -17,20 +16,20 @@ import java.util.Objects;
 @JsonTypeName("orgs_list_attestations_bulk_200_response_page_info")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsListAttestationsBulk200ResponsePageInfo {
 
-    private Boolean hasNext;
+    private Optional<Boolean> hasNext = Optional.empty();
 
-    private Boolean hasPrevious;
+    private Optional<Boolean> hasPrevious = Optional.empty();
 
-    private String next;
+    private Optional<String> next = Optional.empty();
 
-    private String previous;
+    private Optional<String> previous = Optional.empty();
 
     public OrgsListAttestationsBulk200ResponsePageInfo hasNext(Boolean hasNext) {
-        this.hasNext = hasNext;
+        this.hasNext = Optional.ofNullable(hasNext);
         return this;
     }
 
@@ -43,16 +42,16 @@ public class OrgsListAttestationsBulk200ResponsePageInfo {
             description = "Indicates whether there is a next page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_next")
-    public Boolean getHasNext() {
+    public Optional<Boolean> getHasNext() {
         return hasNext;
     }
 
-    public void setHasNext(Boolean hasNext) {
+    public void setHasNext(Optional<Boolean> hasNext) {
         this.hasNext = hasNext;
     }
 
     public OrgsListAttestationsBulk200ResponsePageInfo hasPrevious(Boolean hasPrevious) {
-        this.hasPrevious = hasPrevious;
+        this.hasPrevious = Optional.ofNullable(hasPrevious);
         return this;
     }
 
@@ -65,16 +64,16 @@ public class OrgsListAttestationsBulk200ResponsePageInfo {
             description = "Indicates whether there is a previous page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_previous")
-    public Boolean getHasPrevious() {
+    public Optional<Boolean> getHasPrevious() {
         return hasPrevious;
     }
 
-    public void setHasPrevious(Boolean hasPrevious) {
+    public void setHasPrevious(Optional<Boolean> hasPrevious) {
         this.hasPrevious = hasPrevious;
     }
 
     public OrgsListAttestationsBulk200ResponsePageInfo next(String next) {
-        this.next = next;
+        this.next = Optional.ofNullable(next);
         return this;
     }
 
@@ -87,16 +86,16 @@ public class OrgsListAttestationsBulk200ResponsePageInfo {
             description = "The cursor to the next page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("next")
-    public String getNext() {
+    public Optional<String> getNext() {
         return next;
     }
 
-    public void setNext(String next) {
+    public void setNext(Optional<String> next) {
         this.next = next;
     }
 
     public OrgsListAttestationsBulk200ResponsePageInfo previous(String previous) {
-        this.previous = previous;
+        this.previous = Optional.ofNullable(previous);
         return this;
     }
 
@@ -109,11 +108,11 @@ public class OrgsListAttestationsBulk200ResponsePageInfo {
             description = "The cursor to the previous page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("previous")
-    public String getPrevious() {
+    public Optional<String> getPrevious() {
         return previous;
     }
 
-    public void setPrevious(String previous) {
+    public void setPrevious(Optional<String> previous) {
         this.previous = previous;
     }
 

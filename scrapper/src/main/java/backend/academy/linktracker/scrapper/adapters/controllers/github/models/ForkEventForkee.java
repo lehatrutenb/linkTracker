@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,142 +18,142 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("fork_event_forkee")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ForkEventForkee {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String fullName;
+    private Optional<String> fullName = Optional.empty();
 
-    private Boolean _private;
+    private Optional<Boolean> _private = Optional.empty();
 
-    private SimpleUser owner;
+    private Optional<SimpleUser> owner = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private Boolean fork;
+    private Optional<Boolean> fork = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String forksUrl;
+    private Optional<String> forksUrl = Optional.empty();
 
-    private String keysUrl;
+    private Optional<String> keysUrl = Optional.empty();
 
-    private String collaboratorsUrl;
+    private Optional<String> collaboratorsUrl = Optional.empty();
 
-    private String teamsUrl;
+    private Optional<String> teamsUrl = Optional.empty();
 
-    private String hooksUrl;
+    private Optional<String> hooksUrl = Optional.empty();
 
-    private String issueEventsUrl;
+    private Optional<String> issueEventsUrl = Optional.empty();
 
-    private String eventsUrl;
+    private Optional<String> eventsUrl = Optional.empty();
 
-    private String assigneesUrl;
+    private Optional<String> assigneesUrl = Optional.empty();
 
-    private String branchesUrl;
+    private Optional<String> branchesUrl = Optional.empty();
 
-    private String tagsUrl;
+    private Optional<String> tagsUrl = Optional.empty();
 
-    private String blobsUrl;
+    private Optional<String> blobsUrl = Optional.empty();
 
-    private String gitTagsUrl;
+    private Optional<String> gitTagsUrl = Optional.empty();
 
-    private String gitRefsUrl;
+    private Optional<String> gitRefsUrl = Optional.empty();
 
-    private String treesUrl;
+    private Optional<String> treesUrl = Optional.empty();
 
-    private String statusesUrl;
+    private Optional<String> statusesUrl = Optional.empty();
 
-    private String languagesUrl;
+    private Optional<String> languagesUrl = Optional.empty();
 
-    private String stargazersUrl;
+    private Optional<String> stargazersUrl = Optional.empty();
 
-    private String contributorsUrl;
+    private Optional<String> contributorsUrl = Optional.empty();
 
-    private String subscribersUrl;
+    private Optional<String> subscribersUrl = Optional.empty();
 
-    private String subscriptionUrl;
+    private Optional<String> subscriptionUrl = Optional.empty();
 
-    private String commitsUrl;
+    private Optional<String> commitsUrl = Optional.empty();
 
-    private String gitCommitsUrl;
+    private Optional<String> gitCommitsUrl = Optional.empty();
 
-    private String commentsUrl;
+    private Optional<String> commentsUrl = Optional.empty();
 
-    private String issueCommentUrl;
+    private Optional<String> issueCommentUrl = Optional.empty();
 
-    private String contentsUrl;
+    private Optional<String> contentsUrl = Optional.empty();
 
-    private String compareUrl;
+    private Optional<String> compareUrl = Optional.empty();
 
-    private String mergesUrl;
+    private Optional<String> mergesUrl = Optional.empty();
 
-    private String archiveUrl;
+    private Optional<String> archiveUrl = Optional.empty();
 
-    private String downloadsUrl;
+    private Optional<String> downloadsUrl = Optional.empty();
 
-    private String issuesUrl;
+    private Optional<String> issuesUrl = Optional.empty();
 
-    private String pullsUrl;
+    private Optional<String> pullsUrl = Optional.empty();
 
-    private String milestonesUrl;
+    private Optional<String> milestonesUrl = Optional.empty();
 
-    private String notificationsUrl;
+    private Optional<String> notificationsUrl = Optional.empty();
 
-    private String labelsUrl;
+    private Optional<String> labelsUrl = Optional.empty();
 
-    private String releasesUrl;
+    private Optional<String> releasesUrl = Optional.empty();
 
-    private String deploymentsUrl;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private Optional<String> deploymentsUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String gitUrl;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> pushedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String sshUrl;
+    private Optional<String> gitUrl = Optional.empty();
 
-    private String cloneUrl;
+    private Optional<String> sshUrl = Optional.empty();
 
-    private String svnUrl;
+    private Optional<String> cloneUrl = Optional.empty();
 
-    private String homepage = null;
+    private Optional<String> svnUrl = Optional.empty();
 
-    private Long size;
+    private JsonNullable<String> homepage = JsonNullable.<String>undefined();
 
-    private Long stargazersCount;
+    private Optional<Long> size = Optional.empty();
 
-    private Long watchersCount;
+    private Optional<Long> stargazersCount = Optional.empty();
 
-    private String language = null;
+    private Optional<Long> watchersCount = Optional.empty();
 
-    private Boolean hasIssues;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
-    private Boolean hasProjects;
+    private Optional<Boolean> hasIssues = Optional.empty();
 
-    private Boolean hasDownloads;
+    private Optional<Boolean> hasProjects = Optional.empty();
 
-    private Boolean hasWiki;
+    private Optional<Boolean> hasDownloads = Optional.empty();
 
-    private Boolean hasPages;
+    private Optional<Boolean> hasWiki = Optional.empty();
 
-    private Boolean hasDiscussions;
+    private Optional<Boolean> hasPages = Optional.empty();
 
-    private Boolean hasPullRequests;
+    private Optional<Boolean> hasDiscussions = Optional.empty();
+
+    private Optional<Boolean> hasPullRequests = Optional.empty();
 
     /**
      * The policy controlling who can create pull requests: all or collaborators_only.
@@ -193,45 +190,45 @@ public class ForkEventForkee {
         }
     }
 
-    private PullRequestCreationPolicyEnum pullRequestCreationPolicy;
+    private Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy = Optional.empty();
 
-    private Boolean hasCommitComments;
+    private Optional<Boolean> hasCommitComments = Optional.empty();
 
-    private Long forksCount;
+    private Optional<Long> forksCount = Optional.empty();
 
-    private String mirrorUrl = null;
+    private JsonNullable<String> mirrorUrl = JsonNullable.<String>undefined();
 
-    private Boolean archived;
+    private Optional<Boolean> archived = Optional.empty();
 
-    private Boolean disabled;
+    private Optional<Boolean> disabled = Optional.empty();
 
-    private Long openIssuesCount;
+    private Optional<Long> openIssuesCount = Optional.empty();
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
-    private Boolean allowForking;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
-    private Boolean webCommitSignoffRequired;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
 
     @Valid
     private List<String> topics = new ArrayList<>();
 
-    private String visibility;
+    private Optional<String> visibility = Optional.empty();
 
-    private Long forks;
+    private Optional<Long> forks = Optional.empty();
 
-    private Long openIssues;
+    private Optional<Long> openIssues = Optional.empty();
 
-    private Long watchers;
+    private Optional<Long> watchers = Optional.empty();
 
-    private String defaultBranch;
+    private Optional<String> defaultBranch = Optional.empty();
 
-    private Boolean _public;
+    private Optional<Boolean> _public = Optional.empty();
 
     public ForkEventForkee id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -241,16 +238,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public ForkEventForkee nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -260,16 +257,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public ForkEventForkee name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -279,16 +276,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ForkEventForkee fullName(String fullName) {
-        this.fullName = fullName;
+        this.fullName = Optional.ofNullable(fullName);
         return this;
     }
 
@@ -298,16 +295,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "full_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_name")
-    public String getFullName() {
+    public Optional<String> getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(Optional<String> fullName) {
         this.fullName = fullName;
     }
 
     public ForkEventForkee _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -317,16 +314,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "private", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 
     public ForkEventForkee owner(SimpleUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -337,16 +334,16 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public SimpleUser getOwner() {
+    public Optional<SimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(SimpleUser owner) {
+    public void setOwner(Optional<SimpleUser> owner) {
         this.owner = owner;
     }
 
     public ForkEventForkee htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -356,16 +353,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public ForkEventForkee description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -375,16 +372,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public ForkEventForkee fork(Boolean fork) {
-        this.fork = fork;
+        this.fork = Optional.ofNullable(fork);
         return this;
     }
 
@@ -394,16 +391,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "fork", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fork")
-    public Boolean getFork() {
+    public Optional<Boolean> getFork() {
         return fork;
     }
 
-    public void setFork(Boolean fork) {
+    public void setFork(Optional<Boolean> fork) {
         this.fork = fork;
     }
 
     public ForkEventForkee url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -413,16 +410,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public ForkEventForkee forksUrl(String forksUrl) {
-        this.forksUrl = forksUrl;
+        this.forksUrl = Optional.ofNullable(forksUrl);
         return this;
     }
 
@@ -432,16 +429,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "forks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_url")
-    public String getForksUrl() {
+    public Optional<String> getForksUrl() {
         return forksUrl;
     }
 
-    public void setForksUrl(String forksUrl) {
+    public void setForksUrl(Optional<String> forksUrl) {
         this.forksUrl = forksUrl;
     }
 
     public ForkEventForkee keysUrl(String keysUrl) {
-        this.keysUrl = keysUrl;
+        this.keysUrl = Optional.ofNullable(keysUrl);
         return this;
     }
 
@@ -451,16 +448,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "keys_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("keys_url")
-    public String getKeysUrl() {
+    public Optional<String> getKeysUrl() {
         return keysUrl;
     }
 
-    public void setKeysUrl(String keysUrl) {
+    public void setKeysUrl(Optional<String> keysUrl) {
         this.keysUrl = keysUrl;
     }
 
     public ForkEventForkee collaboratorsUrl(String collaboratorsUrl) {
-        this.collaboratorsUrl = collaboratorsUrl;
+        this.collaboratorsUrl = Optional.ofNullable(collaboratorsUrl);
         return this;
     }
 
@@ -470,16 +467,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "collaborators_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators_url")
-    public String getCollaboratorsUrl() {
+    public Optional<String> getCollaboratorsUrl() {
         return collaboratorsUrl;
     }
 
-    public void setCollaboratorsUrl(String collaboratorsUrl) {
+    public void setCollaboratorsUrl(Optional<String> collaboratorsUrl) {
         this.collaboratorsUrl = collaboratorsUrl;
     }
 
     public ForkEventForkee teamsUrl(String teamsUrl) {
-        this.teamsUrl = teamsUrl;
+        this.teamsUrl = Optional.ofNullable(teamsUrl);
         return this;
     }
 
@@ -489,16 +486,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "teams_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("teams_url")
-    public String getTeamsUrl() {
+    public Optional<String> getTeamsUrl() {
         return teamsUrl;
     }
 
-    public void setTeamsUrl(String teamsUrl) {
+    public void setTeamsUrl(Optional<String> teamsUrl) {
         this.teamsUrl = teamsUrl;
     }
 
     public ForkEventForkee hooksUrl(String hooksUrl) {
-        this.hooksUrl = hooksUrl;
+        this.hooksUrl = Optional.ofNullable(hooksUrl);
         return this;
     }
 
@@ -508,16 +505,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "hooks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooks_url")
-    public String getHooksUrl() {
+    public Optional<String> getHooksUrl() {
         return hooksUrl;
     }
 
-    public void setHooksUrl(String hooksUrl) {
+    public void setHooksUrl(Optional<String> hooksUrl) {
         this.hooksUrl = hooksUrl;
     }
 
     public ForkEventForkee issueEventsUrl(String issueEventsUrl) {
-        this.issueEventsUrl = issueEventsUrl;
+        this.issueEventsUrl = Optional.ofNullable(issueEventsUrl);
         return this;
     }
 
@@ -527,16 +524,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "issue_events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_events_url")
-    public String getIssueEventsUrl() {
+    public Optional<String> getIssueEventsUrl() {
         return issueEventsUrl;
     }
 
-    public void setIssueEventsUrl(String issueEventsUrl) {
+    public void setIssueEventsUrl(Optional<String> issueEventsUrl) {
         this.issueEventsUrl = issueEventsUrl;
     }
 
     public ForkEventForkee eventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
+        this.eventsUrl = Optional.ofNullable(eventsUrl);
         return this;
     }
 
@@ -546,16 +543,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("events_url")
-    public String getEventsUrl() {
+    public Optional<String> getEventsUrl() {
         return eventsUrl;
     }
 
-    public void setEventsUrl(String eventsUrl) {
+    public void setEventsUrl(Optional<String> eventsUrl) {
         this.eventsUrl = eventsUrl;
     }
 
     public ForkEventForkee assigneesUrl(String assigneesUrl) {
-        this.assigneesUrl = assigneesUrl;
+        this.assigneesUrl = Optional.ofNullable(assigneesUrl);
         return this;
     }
 
@@ -565,16 +562,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "assignees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignees_url")
-    public String getAssigneesUrl() {
+    public Optional<String> getAssigneesUrl() {
         return assigneesUrl;
     }
 
-    public void setAssigneesUrl(String assigneesUrl) {
+    public void setAssigneesUrl(Optional<String> assigneesUrl) {
         this.assigneesUrl = assigneesUrl;
     }
 
     public ForkEventForkee branchesUrl(String branchesUrl) {
-        this.branchesUrl = branchesUrl;
+        this.branchesUrl = Optional.ofNullable(branchesUrl);
         return this;
     }
 
@@ -584,16 +581,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "branches_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branches_url")
-    public String getBranchesUrl() {
+    public Optional<String> getBranchesUrl() {
         return branchesUrl;
     }
 
-    public void setBranchesUrl(String branchesUrl) {
+    public void setBranchesUrl(Optional<String> branchesUrl) {
         this.branchesUrl = branchesUrl;
     }
 
     public ForkEventForkee tagsUrl(String tagsUrl) {
-        this.tagsUrl = tagsUrl;
+        this.tagsUrl = Optional.ofNullable(tagsUrl);
         return this;
     }
 
@@ -603,16 +600,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tags_url")
-    public String getTagsUrl() {
+    public Optional<String> getTagsUrl() {
         return tagsUrl;
     }
 
-    public void setTagsUrl(String tagsUrl) {
+    public void setTagsUrl(Optional<String> tagsUrl) {
         this.tagsUrl = tagsUrl;
     }
 
     public ForkEventForkee blobsUrl(String blobsUrl) {
-        this.blobsUrl = blobsUrl;
+        this.blobsUrl = Optional.ofNullable(blobsUrl);
         return this;
     }
 
@@ -622,16 +619,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "blobs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blobs_url")
-    public String getBlobsUrl() {
+    public Optional<String> getBlobsUrl() {
         return blobsUrl;
     }
 
-    public void setBlobsUrl(String blobsUrl) {
+    public void setBlobsUrl(Optional<String> blobsUrl) {
         this.blobsUrl = blobsUrl;
     }
 
     public ForkEventForkee gitTagsUrl(String gitTagsUrl) {
-        this.gitTagsUrl = gitTagsUrl;
+        this.gitTagsUrl = Optional.ofNullable(gitTagsUrl);
         return this;
     }
 
@@ -641,16 +638,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "git_tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_tags_url")
-    public String getGitTagsUrl() {
+    public Optional<String> getGitTagsUrl() {
         return gitTagsUrl;
     }
 
-    public void setGitTagsUrl(String gitTagsUrl) {
+    public void setGitTagsUrl(Optional<String> gitTagsUrl) {
         this.gitTagsUrl = gitTagsUrl;
     }
 
     public ForkEventForkee gitRefsUrl(String gitRefsUrl) {
-        this.gitRefsUrl = gitRefsUrl;
+        this.gitRefsUrl = Optional.ofNullable(gitRefsUrl);
         return this;
     }
 
@@ -660,16 +657,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "git_refs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_refs_url")
-    public String getGitRefsUrl() {
+    public Optional<String> getGitRefsUrl() {
         return gitRefsUrl;
     }
 
-    public void setGitRefsUrl(String gitRefsUrl) {
+    public void setGitRefsUrl(Optional<String> gitRefsUrl) {
         this.gitRefsUrl = gitRefsUrl;
     }
 
     public ForkEventForkee treesUrl(String treesUrl) {
-        this.treesUrl = treesUrl;
+        this.treesUrl = Optional.ofNullable(treesUrl);
         return this;
     }
 
@@ -679,16 +676,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "trees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("trees_url")
-    public String getTreesUrl() {
+    public Optional<String> getTreesUrl() {
         return treesUrl;
     }
 
-    public void setTreesUrl(String treesUrl) {
+    public void setTreesUrl(Optional<String> treesUrl) {
         this.treesUrl = treesUrl;
     }
 
     public ForkEventForkee statusesUrl(String statusesUrl) {
-        this.statusesUrl = statusesUrl;
+        this.statusesUrl = Optional.ofNullable(statusesUrl);
         return this;
     }
 
@@ -698,16 +695,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "statuses_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("statuses_url")
-    public String getStatusesUrl() {
+    public Optional<String> getStatusesUrl() {
         return statusesUrl;
     }
 
-    public void setStatusesUrl(String statusesUrl) {
+    public void setStatusesUrl(Optional<String> statusesUrl) {
         this.statusesUrl = statusesUrl;
     }
 
     public ForkEventForkee languagesUrl(String languagesUrl) {
-        this.languagesUrl = languagesUrl;
+        this.languagesUrl = Optional.ofNullable(languagesUrl);
         return this;
     }
 
@@ -717,16 +714,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "languages_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("languages_url")
-    public String getLanguagesUrl() {
+    public Optional<String> getLanguagesUrl() {
         return languagesUrl;
     }
 
-    public void setLanguagesUrl(String languagesUrl) {
+    public void setLanguagesUrl(Optional<String> languagesUrl) {
         this.languagesUrl = languagesUrl;
     }
 
     public ForkEventForkee stargazersUrl(String stargazersUrl) {
-        this.stargazersUrl = stargazersUrl;
+        this.stargazersUrl = Optional.ofNullable(stargazersUrl);
         return this;
     }
 
@@ -736,16 +733,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "stargazers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_url")
-    public String getStargazersUrl() {
+    public Optional<String> getStargazersUrl() {
         return stargazersUrl;
     }
 
-    public void setStargazersUrl(String stargazersUrl) {
+    public void setStargazersUrl(Optional<String> stargazersUrl) {
         this.stargazersUrl = stargazersUrl;
     }
 
     public ForkEventForkee contributorsUrl(String contributorsUrl) {
-        this.contributorsUrl = contributorsUrl;
+        this.contributorsUrl = Optional.ofNullable(contributorsUrl);
         return this;
     }
 
@@ -755,16 +752,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "contributors_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contributors_url")
-    public String getContributorsUrl() {
+    public Optional<String> getContributorsUrl() {
         return contributorsUrl;
     }
 
-    public void setContributorsUrl(String contributorsUrl) {
+    public void setContributorsUrl(Optional<String> contributorsUrl) {
         this.contributorsUrl = contributorsUrl;
     }
 
     public ForkEventForkee subscribersUrl(String subscribersUrl) {
-        this.subscribersUrl = subscribersUrl;
+        this.subscribersUrl = Optional.ofNullable(subscribersUrl);
         return this;
     }
 
@@ -774,16 +771,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "subscribers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_url")
-    public String getSubscribersUrl() {
+    public Optional<String> getSubscribersUrl() {
         return subscribersUrl;
     }
 
-    public void setSubscribersUrl(String subscribersUrl) {
+    public void setSubscribersUrl(Optional<String> subscribersUrl) {
         this.subscribersUrl = subscribersUrl;
     }
 
     public ForkEventForkee subscriptionUrl(String subscriptionUrl) {
-        this.subscriptionUrl = subscriptionUrl;
+        this.subscriptionUrl = Optional.ofNullable(subscriptionUrl);
         return this;
     }
 
@@ -793,16 +790,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "subscription_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscription_url")
-    public String getSubscriptionUrl() {
+    public Optional<String> getSubscriptionUrl() {
         return subscriptionUrl;
     }
 
-    public void setSubscriptionUrl(String subscriptionUrl) {
+    public void setSubscriptionUrl(Optional<String> subscriptionUrl) {
         this.subscriptionUrl = subscriptionUrl;
     }
 
     public ForkEventForkee commitsUrl(String commitsUrl) {
-        this.commitsUrl = commitsUrl;
+        this.commitsUrl = Optional.ofNullable(commitsUrl);
         return this;
     }
 
@@ -812,16 +809,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commits_url")
-    public String getCommitsUrl() {
+    public Optional<String> getCommitsUrl() {
         return commitsUrl;
     }
 
-    public void setCommitsUrl(String commitsUrl) {
+    public void setCommitsUrl(Optional<String> commitsUrl) {
         this.commitsUrl = commitsUrl;
     }
 
     public ForkEventForkee gitCommitsUrl(String gitCommitsUrl) {
-        this.gitCommitsUrl = gitCommitsUrl;
+        this.gitCommitsUrl = Optional.ofNullable(gitCommitsUrl);
         return this;
     }
 
@@ -831,16 +828,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "git_commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_commits_url")
-    public String getGitCommitsUrl() {
+    public Optional<String> getGitCommitsUrl() {
         return gitCommitsUrl;
     }
 
-    public void setGitCommitsUrl(String gitCommitsUrl) {
+    public void setGitCommitsUrl(Optional<String> gitCommitsUrl) {
         this.gitCommitsUrl = gitCommitsUrl;
     }
 
     public ForkEventForkee commentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
+        this.commentsUrl = Optional.ofNullable(commentsUrl);
         return this;
     }
 
@@ -850,16 +847,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "comments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_url")
-    public String getCommentsUrl() {
+    public Optional<String> getCommentsUrl() {
         return commentsUrl;
     }
 
-    public void setCommentsUrl(String commentsUrl) {
+    public void setCommentsUrl(Optional<String> commentsUrl) {
         this.commentsUrl = commentsUrl;
     }
 
     public ForkEventForkee issueCommentUrl(String issueCommentUrl) {
-        this.issueCommentUrl = issueCommentUrl;
+        this.issueCommentUrl = Optional.ofNullable(issueCommentUrl);
         return this;
     }
 
@@ -869,16 +866,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "issue_comment_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_comment_url")
-    public String getIssueCommentUrl() {
+    public Optional<String> getIssueCommentUrl() {
         return issueCommentUrl;
     }
 
-    public void setIssueCommentUrl(String issueCommentUrl) {
+    public void setIssueCommentUrl(Optional<String> issueCommentUrl) {
         this.issueCommentUrl = issueCommentUrl;
     }
 
     public ForkEventForkee contentsUrl(String contentsUrl) {
-        this.contentsUrl = contentsUrl;
+        this.contentsUrl = Optional.ofNullable(contentsUrl);
         return this;
     }
 
@@ -888,16 +885,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "contents_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents_url")
-    public String getContentsUrl() {
+    public Optional<String> getContentsUrl() {
         return contentsUrl;
     }
 
-    public void setContentsUrl(String contentsUrl) {
+    public void setContentsUrl(Optional<String> contentsUrl) {
         this.contentsUrl = contentsUrl;
     }
 
     public ForkEventForkee compareUrl(String compareUrl) {
-        this.compareUrl = compareUrl;
+        this.compareUrl = Optional.ofNullable(compareUrl);
         return this;
     }
 
@@ -907,16 +904,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "compare_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compare_url")
-    public String getCompareUrl() {
+    public Optional<String> getCompareUrl() {
         return compareUrl;
     }
 
-    public void setCompareUrl(String compareUrl) {
+    public void setCompareUrl(Optional<String> compareUrl) {
         this.compareUrl = compareUrl;
     }
 
     public ForkEventForkee mergesUrl(String mergesUrl) {
-        this.mergesUrl = mergesUrl;
+        this.mergesUrl = Optional.ofNullable(mergesUrl);
         return this;
     }
 
@@ -926,16 +923,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "merges_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merges_url")
-    public String getMergesUrl() {
+    public Optional<String> getMergesUrl() {
         return mergesUrl;
     }
 
-    public void setMergesUrl(String mergesUrl) {
+    public void setMergesUrl(Optional<String> mergesUrl) {
         this.mergesUrl = mergesUrl;
     }
 
     public ForkEventForkee archiveUrl(String archiveUrl) {
-        this.archiveUrl = archiveUrl;
+        this.archiveUrl = Optional.ofNullable(archiveUrl);
         return this;
     }
 
@@ -945,16 +942,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "archive_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archive_url")
-    public String getArchiveUrl() {
+    public Optional<String> getArchiveUrl() {
         return archiveUrl;
     }
 
-    public void setArchiveUrl(String archiveUrl) {
+    public void setArchiveUrl(Optional<String> archiveUrl) {
         this.archiveUrl = archiveUrl;
     }
 
     public ForkEventForkee downloadsUrl(String downloadsUrl) {
-        this.downloadsUrl = downloadsUrl;
+        this.downloadsUrl = Optional.ofNullable(downloadsUrl);
         return this;
     }
 
@@ -964,16 +961,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "downloads_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downloads_url")
-    public String getDownloadsUrl() {
+    public Optional<String> getDownloadsUrl() {
         return downloadsUrl;
     }
 
-    public void setDownloadsUrl(String downloadsUrl) {
+    public void setDownloadsUrl(Optional<String> downloadsUrl) {
         this.downloadsUrl = downloadsUrl;
     }
 
     public ForkEventForkee issuesUrl(String issuesUrl) {
-        this.issuesUrl = issuesUrl;
+        this.issuesUrl = Optional.ofNullable(issuesUrl);
         return this;
     }
 
@@ -983,16 +980,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "issues_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues_url")
-    public String getIssuesUrl() {
+    public Optional<String> getIssuesUrl() {
         return issuesUrl;
     }
 
-    public void setIssuesUrl(String issuesUrl) {
+    public void setIssuesUrl(Optional<String> issuesUrl) {
         this.issuesUrl = issuesUrl;
     }
 
     public ForkEventForkee pullsUrl(String pullsUrl) {
-        this.pullsUrl = pullsUrl;
+        this.pullsUrl = Optional.ofNullable(pullsUrl);
         return this;
     }
 
@@ -1002,16 +999,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "pulls_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pulls_url")
-    public String getPullsUrl() {
+    public Optional<String> getPullsUrl() {
         return pullsUrl;
     }
 
-    public void setPullsUrl(String pullsUrl) {
+    public void setPullsUrl(Optional<String> pullsUrl) {
         this.pullsUrl = pullsUrl;
     }
 
     public ForkEventForkee milestonesUrl(String milestonesUrl) {
-        this.milestonesUrl = milestonesUrl;
+        this.milestonesUrl = Optional.ofNullable(milestonesUrl);
         return this;
     }
 
@@ -1021,16 +1018,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "milestones_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestones_url")
-    public String getMilestonesUrl() {
+    public Optional<String> getMilestonesUrl() {
         return milestonesUrl;
     }
 
-    public void setMilestonesUrl(String milestonesUrl) {
+    public void setMilestonesUrl(Optional<String> milestonesUrl) {
         this.milestonesUrl = milestonesUrl;
     }
 
     public ForkEventForkee notificationsUrl(String notificationsUrl) {
-        this.notificationsUrl = notificationsUrl;
+        this.notificationsUrl = Optional.ofNullable(notificationsUrl);
         return this;
     }
 
@@ -1040,16 +1037,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "notifications_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notifications_url")
-    public String getNotificationsUrl() {
+    public Optional<String> getNotificationsUrl() {
         return notificationsUrl;
     }
 
-    public void setNotificationsUrl(String notificationsUrl) {
+    public void setNotificationsUrl(Optional<String> notificationsUrl) {
         this.notificationsUrl = notificationsUrl;
     }
 
     public ForkEventForkee labelsUrl(String labelsUrl) {
-        this.labelsUrl = labelsUrl;
+        this.labelsUrl = Optional.ofNullable(labelsUrl);
         return this;
     }
 
@@ -1059,16 +1056,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "labels_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("labels_url")
-    public String getLabelsUrl() {
+    public Optional<String> getLabelsUrl() {
         return labelsUrl;
     }
 
-    public void setLabelsUrl(String labelsUrl) {
+    public void setLabelsUrl(Optional<String> labelsUrl) {
         this.labelsUrl = labelsUrl;
     }
 
     public ForkEventForkee releasesUrl(String releasesUrl) {
-        this.releasesUrl = releasesUrl;
+        this.releasesUrl = Optional.ofNullable(releasesUrl);
         return this;
     }
 
@@ -1078,16 +1075,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "releases_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("releases_url")
-    public String getReleasesUrl() {
+    public Optional<String> getReleasesUrl() {
         return releasesUrl;
     }
 
-    public void setReleasesUrl(String releasesUrl) {
+    public void setReleasesUrl(Optional<String> releasesUrl) {
         this.releasesUrl = releasesUrl;
     }
 
     public ForkEventForkee deploymentsUrl(String deploymentsUrl) {
-        this.deploymentsUrl = deploymentsUrl;
+        this.deploymentsUrl = Optional.ofNullable(deploymentsUrl);
         return this;
     }
 
@@ -1097,16 +1094,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "deployments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployments_url")
-    public String getDeploymentsUrl() {
+    public Optional<String> getDeploymentsUrl() {
         return deploymentsUrl;
     }
 
-    public void setDeploymentsUrl(String deploymentsUrl) {
+    public void setDeploymentsUrl(Optional<String> deploymentsUrl) {
         this.deploymentsUrl = deploymentsUrl;
     }
 
     public ForkEventForkee createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -1117,16 +1114,16 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public ForkEventForkee updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -1137,16 +1134,16 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public ForkEventForkee pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         return this;
     }
 
@@ -1157,16 +1154,16 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "pushed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public JsonNullable<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(JsonNullable<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public ForkEventForkee gitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = Optional.ofNullable(gitUrl);
         return this;
     }
 
@@ -1176,16 +1173,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_url")
-    public String getGitUrl() {
+    public Optional<String> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(String gitUrl) {
+    public void setGitUrl(Optional<String> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public ForkEventForkee sshUrl(String sshUrl) {
-        this.sshUrl = sshUrl;
+        this.sshUrl = Optional.ofNullable(sshUrl);
         return this;
     }
 
@@ -1195,16 +1192,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "ssh_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ssh_url")
-    public String getSshUrl() {
+    public Optional<String> getSshUrl() {
         return sshUrl;
     }
 
-    public void setSshUrl(String sshUrl) {
+    public void setSshUrl(Optional<String> sshUrl) {
         this.sshUrl = sshUrl;
     }
 
     public ForkEventForkee cloneUrl(String cloneUrl) {
-        this.cloneUrl = cloneUrl;
+        this.cloneUrl = Optional.ofNullable(cloneUrl);
         return this;
     }
 
@@ -1214,16 +1211,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "clone_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("clone_url")
-    public String getCloneUrl() {
+    public Optional<String> getCloneUrl() {
         return cloneUrl;
     }
 
-    public void setCloneUrl(String cloneUrl) {
+    public void setCloneUrl(Optional<String> cloneUrl) {
         this.cloneUrl = cloneUrl;
     }
 
     public ForkEventForkee svnUrl(String svnUrl) {
-        this.svnUrl = svnUrl;
+        this.svnUrl = Optional.ofNullable(svnUrl);
         return this;
     }
 
@@ -1233,16 +1230,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "svn_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("svn_url")
-    public String getSvnUrl() {
+    public Optional<String> getSvnUrl() {
         return svnUrl;
     }
 
-    public void setSvnUrl(String svnUrl) {
+    public void setSvnUrl(Optional<String> svnUrl) {
         this.svnUrl = svnUrl;
     }
 
     public ForkEventForkee homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1252,16 +1249,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public JsonNullable<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(JsonNullable<String> homepage) {
         this.homepage = homepage;
     }
 
     public ForkEventForkee size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -1271,16 +1268,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public ForkEventForkee stargazersCount(Long stargazersCount) {
-        this.stargazersCount = stargazersCount;
+        this.stargazersCount = Optional.ofNullable(stargazersCount);
         return this;
     }
 
@@ -1290,16 +1287,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "stargazers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_count")
-    public Long getStargazersCount() {
+    public Optional<Long> getStargazersCount() {
         return stargazersCount;
     }
 
-    public void setStargazersCount(Long stargazersCount) {
+    public void setStargazersCount(Optional<Long> stargazersCount) {
         this.stargazersCount = stargazersCount;
     }
 
     public ForkEventForkee watchersCount(Long watchersCount) {
-        this.watchersCount = watchersCount;
+        this.watchersCount = Optional.ofNullable(watchersCount);
         return this;
     }
 
@@ -1309,16 +1306,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "watchers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("watchers_count")
-    public Long getWatchersCount() {
+    public Optional<Long> getWatchersCount() {
         return watchersCount;
     }
 
-    public void setWatchersCount(Long watchersCount) {
+    public void setWatchersCount(Optional<Long> watchersCount) {
         this.watchersCount = watchersCount;
     }
 
     public ForkEventForkee language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1328,16 +1325,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
     public ForkEventForkee hasIssues(Boolean hasIssues) {
-        this.hasIssues = hasIssues;
+        this.hasIssues = Optional.ofNullable(hasIssues);
         return this;
     }
 
@@ -1347,16 +1344,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_issues")
-    public Boolean getHasIssues() {
+    public Optional<Boolean> getHasIssues() {
         return hasIssues;
     }
 
-    public void setHasIssues(Boolean hasIssues) {
+    public void setHasIssues(Optional<Boolean> hasIssues) {
         this.hasIssues = hasIssues;
     }
 
     public ForkEventForkee hasProjects(Boolean hasProjects) {
-        this.hasProjects = hasProjects;
+        this.hasProjects = Optional.ofNullable(hasProjects);
         return this;
     }
 
@@ -1366,16 +1363,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_projects")
-    public Boolean getHasProjects() {
+    public Optional<Boolean> getHasProjects() {
         return hasProjects;
     }
 
-    public void setHasProjects(Boolean hasProjects) {
+    public void setHasProjects(Optional<Boolean> hasProjects) {
         this.hasProjects = hasProjects;
     }
 
     public ForkEventForkee hasDownloads(Boolean hasDownloads) {
-        this.hasDownloads = hasDownloads;
+        this.hasDownloads = Optional.ofNullable(hasDownloads);
         return this;
     }
 
@@ -1385,16 +1382,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_downloads", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_downloads")
-    public Boolean getHasDownloads() {
+    public Optional<Boolean> getHasDownloads() {
         return hasDownloads;
     }
 
-    public void setHasDownloads(Boolean hasDownloads) {
+    public void setHasDownloads(Optional<Boolean> hasDownloads) {
         this.hasDownloads = hasDownloads;
     }
 
     public ForkEventForkee hasWiki(Boolean hasWiki) {
-        this.hasWiki = hasWiki;
+        this.hasWiki = Optional.ofNullable(hasWiki);
         return this;
     }
 
@@ -1404,16 +1401,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_wiki", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_wiki")
-    public Boolean getHasWiki() {
+    public Optional<Boolean> getHasWiki() {
         return hasWiki;
     }
 
-    public void setHasWiki(Boolean hasWiki) {
+    public void setHasWiki(Optional<Boolean> hasWiki) {
         this.hasWiki = hasWiki;
     }
 
     public ForkEventForkee hasPages(Boolean hasPages) {
-        this.hasPages = hasPages;
+        this.hasPages = Optional.ofNullable(hasPages);
         return this;
     }
 
@@ -1423,16 +1420,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_pages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pages")
-    public Boolean getHasPages() {
+    public Optional<Boolean> getHasPages() {
         return hasPages;
     }
 
-    public void setHasPages(Boolean hasPages) {
+    public void setHasPages(Optional<Boolean> hasPages) {
         this.hasPages = hasPages;
     }
 
     public ForkEventForkee hasDiscussions(Boolean hasDiscussions) {
-        this.hasDiscussions = hasDiscussions;
+        this.hasDiscussions = Optional.ofNullable(hasDiscussions);
         return this;
     }
 
@@ -1442,16 +1439,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_discussions")
-    public Boolean getHasDiscussions() {
+    public Optional<Boolean> getHasDiscussions() {
         return hasDiscussions;
     }
 
-    public void setHasDiscussions(Boolean hasDiscussions) {
+    public void setHasDiscussions(Optional<Boolean> hasDiscussions) {
         this.hasDiscussions = hasDiscussions;
     }
 
     public ForkEventForkee hasPullRequests(Boolean hasPullRequests) {
-        this.hasPullRequests = hasPullRequests;
+        this.hasPullRequests = Optional.ofNullable(hasPullRequests);
         return this;
     }
 
@@ -1461,16 +1458,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_pull_requests", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pull_requests")
-    public Boolean getHasPullRequests() {
+    public Optional<Boolean> getHasPullRequests() {
         return hasPullRequests;
     }
 
-    public void setHasPullRequests(Boolean hasPullRequests) {
+    public void setHasPullRequests(Optional<Boolean> hasPullRequests) {
         this.hasPullRequests = hasPullRequests;
     }
 
     public ForkEventForkee pullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
-        this.pullRequestCreationPolicy = pullRequestCreationPolicy;
+        this.pullRequestCreationPolicy = Optional.ofNullable(pullRequestCreationPolicy);
         return this;
     }
 
@@ -1483,16 +1480,16 @@ public class ForkEventForkee {
             description = "The policy controlling who can create pull requests: all or collaborators_only.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_creation_policy")
-    public PullRequestCreationPolicyEnum getPullRequestCreationPolicy() {
+    public Optional<PullRequestCreationPolicyEnum> getPullRequestCreationPolicy() {
         return pullRequestCreationPolicy;
     }
 
-    public void setPullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
+    public void setPullRequestCreationPolicy(Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy) {
         this.pullRequestCreationPolicy = pullRequestCreationPolicy;
     }
 
     public ForkEventForkee hasCommitComments(Boolean hasCommitComments) {
-        this.hasCommitComments = hasCommitComments;
+        this.hasCommitComments = Optional.ofNullable(hasCommitComments);
         return this;
     }
 
@@ -1502,16 +1499,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "has_commit_comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_commit_comments")
-    public Boolean getHasCommitComments() {
+    public Optional<Boolean> getHasCommitComments() {
         return hasCommitComments;
     }
 
-    public void setHasCommitComments(Boolean hasCommitComments) {
+    public void setHasCommitComments(Optional<Boolean> hasCommitComments) {
         this.hasCommitComments = hasCommitComments;
     }
 
     public ForkEventForkee forksCount(Long forksCount) {
-        this.forksCount = forksCount;
+        this.forksCount = Optional.ofNullable(forksCount);
         return this;
     }
 
@@ -1521,16 +1518,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "forks_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_count")
-    public Long getForksCount() {
+    public Optional<Long> getForksCount() {
         return forksCount;
     }
 
-    public void setForksCount(Long forksCount) {
+    public void setForksCount(Optional<Long> forksCount) {
         this.forksCount = forksCount;
     }
 
     public ForkEventForkee mirrorUrl(String mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1540,16 +1537,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mirror_url")
-    public String getMirrorUrl() {
+    public JsonNullable<String> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(String mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<String> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
     public ForkEventForkee archived(Boolean archived) {
-        this.archived = archived;
+        this.archived = Optional.ofNullable(archived);
         return this;
     }
 
@@ -1559,16 +1556,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "archived", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archived")
-    public Boolean getArchived() {
+    public Optional<Boolean> getArchived() {
         return archived;
     }
 
-    public void setArchived(Boolean archived) {
+    public void setArchived(Optional<Boolean> archived) {
         this.archived = archived;
     }
 
     public ForkEventForkee disabled(Boolean disabled) {
-        this.disabled = disabled;
+        this.disabled = Optional.ofNullable(disabled);
         return this;
     }
 
@@ -1578,16 +1575,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "disabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disabled")
-    public Boolean getDisabled() {
+    public Optional<Boolean> getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Optional<Boolean> disabled) {
         this.disabled = disabled;
     }
 
     public ForkEventForkee openIssuesCount(Long openIssuesCount) {
-        this.openIssuesCount = openIssuesCount;
+        this.openIssuesCount = Optional.ofNullable(openIssuesCount);
         return this;
     }
 
@@ -1597,16 +1594,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "open_issues_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_issues_count")
-    public Long getOpenIssuesCount() {
+    public Optional<Long> getOpenIssuesCount() {
         return openIssuesCount;
     }
 
-    public void setOpenIssuesCount(Long openIssuesCount) {
+    public void setOpenIssuesCount(Optional<Long> openIssuesCount) {
         this.openIssuesCount = openIssuesCount;
     }
 
     public ForkEventForkee license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -1617,16 +1614,16 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 
     public ForkEventForkee allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -1636,16 +1633,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "allow_forking", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public ForkEventForkee isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1655,16 +1652,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
     public ForkEventForkee webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -1674,11 +1671,11 @@ public class ForkEventForkee {
      */
     @Schema(name = "web_commit_signoff_required", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
@@ -1710,7 +1707,7 @@ public class ForkEventForkee {
     }
 
     public ForkEventForkee visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -1720,16 +1717,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "visibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public ForkEventForkee forks(Long forks) {
-        this.forks = forks;
+        this.forks = Optional.ofNullable(forks);
         return this;
     }
 
@@ -1739,16 +1736,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "forks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks")
-    public Long getForks() {
+    public Optional<Long> getForks() {
         return forks;
     }
 
-    public void setForks(Long forks) {
+    public void setForks(Optional<Long> forks) {
         this.forks = forks;
     }
 
     public ForkEventForkee openIssues(Long openIssues) {
-        this.openIssues = openIssues;
+        this.openIssues = Optional.ofNullable(openIssues);
         return this;
     }
 
@@ -1758,16 +1755,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "open_issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_issues")
-    public Long getOpenIssues() {
+    public Optional<Long> getOpenIssues() {
         return openIssues;
     }
 
-    public void setOpenIssues(Long openIssues) {
+    public void setOpenIssues(Optional<Long> openIssues) {
         this.openIssues = openIssues;
     }
 
     public ForkEventForkee watchers(Long watchers) {
-        this.watchers = watchers;
+        this.watchers = Optional.ofNullable(watchers);
         return this;
     }
 
@@ -1777,16 +1774,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "watchers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("watchers")
-    public Long getWatchers() {
+    public Optional<Long> getWatchers() {
         return watchers;
     }
 
-    public void setWatchers(Long watchers) {
+    public void setWatchers(Optional<Long> watchers) {
         this.watchers = watchers;
     }
 
     public ForkEventForkee defaultBranch(String defaultBranch) {
-        this.defaultBranch = defaultBranch;
+        this.defaultBranch = Optional.ofNullable(defaultBranch);
         return this;
     }
 
@@ -1796,16 +1793,16 @@ public class ForkEventForkee {
      */
     @Schema(name = "default_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch")
-    public String getDefaultBranch() {
+    public Optional<String> getDefaultBranch() {
         return defaultBranch;
     }
 
-    public void setDefaultBranch(String defaultBranch) {
+    public void setDefaultBranch(Optional<String> defaultBranch) {
         this.defaultBranch = defaultBranch;
     }
 
     public ForkEventForkee _public(Boolean _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -1815,11 +1812,11 @@ public class ForkEventForkee {
      */
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public Boolean getPublic() {
+    public Optional<Boolean> getPublic() {
         return _public;
     }
 
-    public void setPublic(Boolean _public) {
+    public void setPublic(Optional<Boolean> _public) {
         this._public = _public;
     }
 
@@ -1839,7 +1836,7 @@ public class ForkEventForkee {
                 && Objects.equals(this._private, forkEventForkee._private)
                 && Objects.equals(this.owner, forkEventForkee.owner)
                 && Objects.equals(this.htmlUrl, forkEventForkee.htmlUrl)
-                && Objects.equals(this.description, forkEventForkee.description)
+                && equalsNullable(this.description, forkEventForkee.description)
                 && Objects.equals(this.fork, forkEventForkee.fork)
                 && Objects.equals(this.url, forkEventForkee.url)
                 && Objects.equals(this.forksUrl, forkEventForkee.forksUrl)
@@ -1878,18 +1875,18 @@ public class ForkEventForkee {
                 && Objects.equals(this.labelsUrl, forkEventForkee.labelsUrl)
                 && Objects.equals(this.releasesUrl, forkEventForkee.releasesUrl)
                 && Objects.equals(this.deploymentsUrl, forkEventForkee.deploymentsUrl)
-                && Objects.equals(this.createdAt, forkEventForkee.createdAt)
-                && Objects.equals(this.updatedAt, forkEventForkee.updatedAt)
-                && Objects.equals(this.pushedAt, forkEventForkee.pushedAt)
+                && equalsNullable(this.createdAt, forkEventForkee.createdAt)
+                && equalsNullable(this.updatedAt, forkEventForkee.updatedAt)
+                && equalsNullable(this.pushedAt, forkEventForkee.pushedAt)
                 && Objects.equals(this.gitUrl, forkEventForkee.gitUrl)
                 && Objects.equals(this.sshUrl, forkEventForkee.sshUrl)
                 && Objects.equals(this.cloneUrl, forkEventForkee.cloneUrl)
                 && Objects.equals(this.svnUrl, forkEventForkee.svnUrl)
-                && Objects.equals(this.homepage, forkEventForkee.homepage)
+                && equalsNullable(this.homepage, forkEventForkee.homepage)
                 && Objects.equals(this.size, forkEventForkee.size)
                 && Objects.equals(this.stargazersCount, forkEventForkee.stargazersCount)
                 && Objects.equals(this.watchersCount, forkEventForkee.watchersCount)
-                && Objects.equals(this.language, forkEventForkee.language)
+                && equalsNullable(this.language, forkEventForkee.language)
                 && Objects.equals(this.hasIssues, forkEventForkee.hasIssues)
                 && Objects.equals(this.hasProjects, forkEventForkee.hasProjects)
                 && Objects.equals(this.hasDownloads, forkEventForkee.hasDownloads)
@@ -1900,11 +1897,11 @@ public class ForkEventForkee {
                 && Objects.equals(this.pullRequestCreationPolicy, forkEventForkee.pullRequestCreationPolicy)
                 && Objects.equals(this.hasCommitComments, forkEventForkee.hasCommitComments)
                 && Objects.equals(this.forksCount, forkEventForkee.forksCount)
-                && Objects.equals(this.mirrorUrl, forkEventForkee.mirrorUrl)
+                && equalsNullable(this.mirrorUrl, forkEventForkee.mirrorUrl)
                 && Objects.equals(this.archived, forkEventForkee.archived)
                 && Objects.equals(this.disabled, forkEventForkee.disabled)
                 && Objects.equals(this.openIssuesCount, forkEventForkee.openIssuesCount)
-                && Objects.equals(this.license, forkEventForkee.license)
+                && equalsNullable(this.license, forkEventForkee.license)
                 && Objects.equals(this.allowForking, forkEventForkee.allowForking)
                 && Objects.equals(this.isTemplate, forkEventForkee.isTemplate)
                 && Objects.equals(this.webCommitSignoffRequired, forkEventForkee.webCommitSignoffRequired)
@@ -1917,6 +1914,11 @@ public class ForkEventForkee {
                 && Objects.equals(this._public, forkEventForkee._public);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -1927,7 +1929,7 @@ public class ForkEventForkee {
                 _private,
                 owner,
                 htmlUrl,
-                description,
+                hashCodeNullable(description),
                 fork,
                 url,
                 forksUrl,
@@ -1966,18 +1968,18 @@ public class ForkEventForkee {
                 labelsUrl,
                 releasesUrl,
                 deploymentsUrl,
-                createdAt,
-                updatedAt,
-                pushedAt,
+                hashCodeNullable(createdAt),
+                hashCodeNullable(updatedAt),
+                hashCodeNullable(pushedAt),
                 gitUrl,
                 sshUrl,
                 cloneUrl,
                 svnUrl,
-                homepage,
+                hashCodeNullable(homepage),
                 size,
                 stargazersCount,
                 watchersCount,
-                language,
+                hashCodeNullable(language),
                 hasIssues,
                 hasProjects,
                 hasDownloads,
@@ -1988,11 +1990,11 @@ public class ForkEventForkee {
                 pullRequestCreationPolicy,
                 hasCommitComments,
                 forksCount,
-                mirrorUrl,
+                hashCodeNullable(mirrorUrl),
                 archived,
                 disabled,
                 openIssuesCount,
-                license,
+                hashCodeNullable(license),
                 allowForking,
                 isTemplate,
                 webCommitSignoffRequired,
@@ -2003,6 +2005,13 @@ public class ForkEventForkee {
                 watchers,
                 defaultBranch,
                 _public);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RepositoryAdvisoryCreate
@@ -19,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("repository-advisory-create")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisoryCreate {
 
@@ -27,16 +26,17 @@ public class RepositoryAdvisoryCreate {
 
     private String description;
 
-    private String cveId = null;
+    private JsonNullable<String> cveId = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid RepositoryAdvisoryCreateVulnerabilitiesInner> vulnerabilities = new ArrayList<>();
 
     @Valid
-    private List<String> cweIds;
+    private JsonNullable<List<String>> cweIds = JsonNullable.<List<String>>undefined();
 
     @Valid
-    private List<@Valid RepositoryAdvisoryCreateCreditsInner> credits;
+    private JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> credits =
+            JsonNullable.<List<@Valid RepositoryAdvisoryCreateCreditsInner>>undefined();
 
     /**
      * The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
@@ -77,11 +77,11 @@ public class RepositoryAdvisoryCreate {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
-    private String cvssVectorString = null;
+    private JsonNullable<String> cvssVectorString = JsonNullable.<String>undefined();
 
-    private Boolean startPrivateFork = false;
+    private Optional<Boolean> startPrivateFork = Optional.of(false);
 
     public RepositoryAdvisoryCreate() {
         super();
@@ -148,7 +148,7 @@ public class RepositoryAdvisoryCreate {
     }
 
     public RepositoryAdvisoryCreate cveId(String cveId) {
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         return this;
     }
 
@@ -161,11 +161,11 @@ public class RepositoryAdvisoryCreate {
             description = "The Common Vulnerabilities and Exposures (CVE) ID.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cve_id")
-    public String getCveId() {
+    public JsonNullable<String> getCveId() {
         return cveId;
     }
 
-    public void setCveId(String cveId) {
+    public void setCveId(JsonNullable<String> cveId) {
         this.cveId = cveId;
     }
 
@@ -204,15 +204,15 @@ public class RepositoryAdvisoryCreate {
     }
 
     public RepositoryAdvisoryCreate cweIds(List<String> cweIds) {
-        this.cweIds = cweIds;
+        this.cweIds = JsonNullable.of(cweIds);
         return this;
     }
 
     public RepositoryAdvisoryCreate addCweIdsItem(String cweIdsItem) {
-        if (this.cweIds == null) {
-            this.cweIds = new ArrayList<>();
+        if (this.cweIds == null || !this.cweIds.isPresent()) {
+            this.cweIds = JsonNullable.of(new ArrayList<>());
         }
-        this.cweIds.add(cweIdsItem);
+        this.cweIds.get().add(cweIdsItem);
         return this;
     }
 
@@ -225,24 +225,24 @@ public class RepositoryAdvisoryCreate {
             description = "A list of Common Weakness Enumeration (CWE) IDs.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cwe_ids")
-    public List<String> getCweIds() {
+    public JsonNullable<List<String>> getCweIds() {
         return cweIds;
     }
 
-    public void setCweIds(List<String> cweIds) {
+    public void setCweIds(JsonNullable<List<String>> cweIds) {
         this.cweIds = cweIds;
     }
 
     public RepositoryAdvisoryCreate credits(List<@Valid RepositoryAdvisoryCreateCreditsInner> credits) {
-        this.credits = credits;
+        this.credits = JsonNullable.of(credits);
         return this;
     }
 
     public RepositoryAdvisoryCreate addCreditsItem(RepositoryAdvisoryCreateCreditsInner creditsItem) {
-        if (this.credits == null) {
-            this.credits = new ArrayList<>();
+        if (this.credits == null || !this.credits.isPresent()) {
+            this.credits = JsonNullable.of(new ArrayList<>());
         }
-        this.credits.add(creditsItem);
+        this.credits.get().add(creditsItem);
         return this;
     }
 
@@ -256,16 +256,16 @@ public class RepositoryAdvisoryCreate {
             description = "A list of users receiving credit for their participation in the security advisory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("credits")
-    public List<@Valid RepositoryAdvisoryCreateCreditsInner> getCredits() {
+    public JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> getCredits() {
         return credits;
     }
 
-    public void setCredits(List<@Valid RepositoryAdvisoryCreateCreditsInner> credits) {
+    public void setCredits(JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> credits) {
         this.credits = credits;
     }
 
     public RepositoryAdvisoryCreate severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -279,16 +279,16 @@ public class RepositoryAdvisoryCreate {
                     "The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 
     public RepositoryAdvisoryCreate cvssVectorString(String cvssVectorString) {
-        this.cvssVectorString = cvssVectorString;
+        this.cvssVectorString = JsonNullable.of(cvssVectorString);
         return this;
     }
 
@@ -302,16 +302,16 @@ public class RepositoryAdvisoryCreate {
                     "The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_vector_string")
-    public String getCvssVectorString() {
+    public JsonNullable<String> getCvssVectorString() {
         return cvssVectorString;
     }
 
-    public void setCvssVectorString(String cvssVectorString) {
+    public void setCvssVectorString(JsonNullable<String> cvssVectorString) {
         this.cvssVectorString = cvssVectorString;
     }
 
     public RepositoryAdvisoryCreate startPrivateFork(Boolean startPrivateFork) {
-        this.startPrivateFork = startPrivateFork;
+        this.startPrivateFork = Optional.ofNullable(startPrivateFork);
         return this;
     }
 
@@ -324,11 +324,11 @@ public class RepositoryAdvisoryCreate {
             description = "Whether to create a temporary private fork of the repository to collaborate on a fix.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_private_fork")
-    public Boolean getStartPrivateFork() {
+    public Optional<Boolean> getStartPrivateFork() {
         return startPrivateFork;
     }
 
-    public void setStartPrivateFork(Boolean startPrivateFork) {
+    public void setStartPrivateFork(Optional<Boolean> startPrivateFork) {
         this.startPrivateFork = startPrivateFork;
     }
 
@@ -343,13 +343,18 @@ public class RepositoryAdvisoryCreate {
         RepositoryAdvisoryCreate repositoryAdvisoryCreate = (RepositoryAdvisoryCreate) o;
         return Objects.equals(this.summary, repositoryAdvisoryCreate.summary)
                 && Objects.equals(this.description, repositoryAdvisoryCreate.description)
-                && Objects.equals(this.cveId, repositoryAdvisoryCreate.cveId)
+                && equalsNullable(this.cveId, repositoryAdvisoryCreate.cveId)
                 && Objects.equals(this.vulnerabilities, repositoryAdvisoryCreate.vulnerabilities)
-                && Objects.equals(this.cweIds, repositoryAdvisoryCreate.cweIds)
-                && Objects.equals(this.credits, repositoryAdvisoryCreate.credits)
-                && Objects.equals(this.severity, repositoryAdvisoryCreate.severity)
-                && Objects.equals(this.cvssVectorString, repositoryAdvisoryCreate.cvssVectorString)
+                && equalsNullable(this.cweIds, repositoryAdvisoryCreate.cweIds)
+                && equalsNullable(this.credits, repositoryAdvisoryCreate.credits)
+                && equalsNullable(this.severity, repositoryAdvisoryCreate.severity)
+                && equalsNullable(this.cvssVectorString, repositoryAdvisoryCreate.cvssVectorString)
                 && Objects.equals(this.startPrivateFork, repositoryAdvisoryCreate.startPrivateFork);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -357,13 +362,20 @@ public class RepositoryAdvisoryCreate {
         return Objects.hash(
                 summary,
                 description,
-                cveId,
+                hashCodeNullable(cveId),
                 vulnerabilities,
-                cweIds,
-                credits,
-                severity,
-                cvssVectorString,
+                hashCodeNullable(cweIds),
+                hashCodeNullable(credits),
+                hashCodeNullable(severity),
+                hashCodeNullable(cvssVectorString),
                 startPrivateFork);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

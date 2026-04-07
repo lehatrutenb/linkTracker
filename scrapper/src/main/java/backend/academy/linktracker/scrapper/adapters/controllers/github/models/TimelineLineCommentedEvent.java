@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Timeline Line Commented Event
@@ -18,19 +17,19 @@ import java.util.Objects;
 @JsonTypeName("timeline-line-commented-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineLineCommentedEvent {
 
-    private String event;
+    private Optional<String> event = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
     @Valid
     private List<@Valid PullRequestReviewComment> comments = new ArrayList<>();
 
     public TimelineLineCommentedEvent event(String event) {
-        this.event = event;
+        this.event = Optional.ofNullable(event);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class TimelineLineCommentedEvent {
      */
     @Schema(name = "event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("event")
-    public String getEvent() {
+    public Optional<String> getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Optional<String> event) {
         this.event = event;
     }
 
     public TimelineLineCommentedEvent nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -59,11 +58,11 @@ public class TimelineLineCommentedEvent {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 

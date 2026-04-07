@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ProjectsUpdateItemForOrgRequestFieldsInner
@@ -15,13 +15,14 @@ import java.util.Objects;
 @JsonTypeName("projects_update_item_for_org_request_fields_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsUpdateItemForOrgRequestFieldsInner {
 
     private Long id;
 
-    private ProjectsUpdateItemForOrgRequestFieldsInnerValue value = null;
+    private JsonNullable<ProjectsUpdateItemForOrgRequestFieldsInnerValue> value =
+            JsonNullable.<ProjectsUpdateItemForOrgRequestFieldsInnerValue>undefined();
 
     public ProjectsUpdateItemForOrgRequestFieldsInner() {
         super();
@@ -32,7 +33,7 @@ public class ProjectsUpdateItemForOrgRequestFieldsInner {
      */
     public ProjectsUpdateItemForOrgRequestFieldsInner(Long id, ProjectsUpdateItemForOrgRequestFieldsInnerValue value) {
         this.id = id;
-        this.value = value;
+        this.value = JsonNullable.of(value);
     }
 
     public ProjectsUpdateItemForOrgRequestFieldsInner id(Long id) {
@@ -59,7 +60,7 @@ public class ProjectsUpdateItemForOrgRequestFieldsInner {
     }
 
     public ProjectsUpdateItemForOrgRequestFieldsInner value(ProjectsUpdateItemForOrgRequestFieldsInnerValue value) {
-        this.value = value;
+        this.value = JsonNullable.of(value);
         return this;
     }
 
@@ -71,11 +72,11 @@ public class ProjectsUpdateItemForOrgRequestFieldsInner {
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("value")
-    public ProjectsUpdateItemForOrgRequestFieldsInnerValue getValue() {
+    public JsonNullable<ProjectsUpdateItemForOrgRequestFieldsInnerValue> getValue() {
         return value;
     }
 
-    public void setValue(ProjectsUpdateItemForOrgRequestFieldsInnerValue value) {
+    public void setValue(JsonNullable<ProjectsUpdateItemForOrgRequestFieldsInnerValue> value) {
         this.value = value;
     }
 

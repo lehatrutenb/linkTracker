@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WorkflowStep4
@@ -16,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("Workflow_Step_4")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WorkflowStep4 {
 
-    private String completedAt = null;
+    private JsonNullable<String> completedAt = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets conclusion
@@ -61,13 +61,13 @@ public class WorkflowStep4 {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     private String name;
 
     private Long number;
 
-    private String startedAt = null;
+    private JsonNullable<String> startedAt = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets status
@@ -126,16 +126,16 @@ public class WorkflowStep4 {
             Long number,
             String startedAt,
             StatusEnum status) {
-        this.completedAt = completedAt;
-        this.conclusion = conclusion;
+        this.completedAt = JsonNullable.of(completedAt);
+        this.conclusion = JsonNullable.of(conclusion);
         this.name = name;
         this.number = number;
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         this.status = status;
     }
 
     public WorkflowStep4 completedAt(String completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -146,16 +146,16 @@ public class WorkflowStep4 {
     @NotNull
     @Schema(name = "completed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public String getCompletedAt() {
+    public JsonNullable<String> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(String completedAt) {
+    public void setCompletedAt(JsonNullable<String> completedAt) {
         this.completedAt = completedAt;
     }
 
     public WorkflowStep4 conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -166,11 +166,11 @@ public class WorkflowStep4 {
     @NotNull
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -215,7 +215,7 @@ public class WorkflowStep4 {
     }
 
     public WorkflowStep4 startedAt(String startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         return this;
     }
 
@@ -226,11 +226,11 @@ public class WorkflowStep4 {
     @NotNull
     @Schema(name = "started_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("started_at")
-    public String getStartedAt() {
+    public JsonNullable<String> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(String startedAt) {
+    public void setStartedAt(JsonNullable<String> startedAt) {
         this.startedAt = startedAt;
     }
 

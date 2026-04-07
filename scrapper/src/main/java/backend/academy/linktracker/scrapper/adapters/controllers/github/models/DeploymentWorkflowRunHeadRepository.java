@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * DeploymentWorkflowRunHeadRepository
@@ -16,104 +16,104 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("Deployment_Workflow_Run_head_repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeploymentWorkflowRunHeadRepository {
 
-    private String archiveUrl;
+    private Optional<String> archiveUrl = Optional.empty();
 
-    private String assigneesUrl;
+    private Optional<String> assigneesUrl = Optional.empty();
 
-    private String blobsUrl;
+    private Optional<String> blobsUrl = Optional.empty();
 
-    private String branchesUrl;
+    private Optional<String> branchesUrl = Optional.empty();
 
-    private String collaboratorsUrl;
+    private Optional<String> collaboratorsUrl = Optional.empty();
 
-    private String commentsUrl;
+    private Optional<String> commentsUrl = Optional.empty();
 
-    private String commitsUrl;
+    private Optional<String> commitsUrl = Optional.empty();
 
-    private String compareUrl;
+    private Optional<String> compareUrl = Optional.empty();
 
-    private String contentsUrl;
+    private Optional<String> contentsUrl = Optional.empty();
 
-    private String contributorsUrl;
+    private Optional<String> contributorsUrl = Optional.empty();
 
-    private String deploymentsUrl;
+    private Optional<String> deploymentsUrl = Optional.empty();
 
-    private @Nullable Object description = null;
+    private JsonNullable<Object> description = JsonNullable.<Object>undefined();
 
-    private String downloadsUrl;
+    private Optional<String> downloadsUrl = Optional.empty();
 
-    private String eventsUrl;
+    private Optional<String> eventsUrl = Optional.empty();
 
-    private Boolean fork;
+    private Optional<Boolean> fork = Optional.empty();
 
-    private String forksUrl;
+    private Optional<String> forksUrl = Optional.empty();
 
-    private String fullName;
+    private Optional<String> fullName = Optional.empty();
 
-    private String gitCommitsUrl;
+    private Optional<String> gitCommitsUrl = Optional.empty();
 
-    private String gitRefsUrl;
+    private Optional<String> gitRefsUrl = Optional.empty();
 
-    private String gitTagsUrl;
+    private Optional<String> gitTagsUrl = Optional.empty();
 
-    private String hooksUrl;
+    private Optional<String> hooksUrl = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String issueCommentUrl;
+    private Optional<String> issueCommentUrl = Optional.empty();
 
-    private String issueEventsUrl;
+    private Optional<String> issueEventsUrl = Optional.empty();
 
-    private String issuesUrl;
+    private Optional<String> issuesUrl = Optional.empty();
 
-    private String keysUrl;
+    private Optional<String> keysUrl = Optional.empty();
 
-    private String labelsUrl;
+    private Optional<String> labelsUrl = Optional.empty();
 
-    private String languagesUrl;
+    private Optional<String> languagesUrl = Optional.empty();
 
-    private String mergesUrl;
+    private Optional<String> mergesUrl = Optional.empty();
 
-    private String milestonesUrl;
+    private Optional<String> milestonesUrl = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String notificationsUrl;
+    private Optional<String> notificationsUrl = Optional.empty();
 
-    private DeploymentWorkflowRunHeadRepositoryOwner owner;
+    private Optional<DeploymentWorkflowRunHeadRepositoryOwner> owner = Optional.empty();
 
-    private Boolean _private;
+    private Optional<Boolean> _private = Optional.empty();
 
-    private String pullsUrl;
+    private Optional<String> pullsUrl = Optional.empty();
 
-    private String releasesUrl;
+    private Optional<String> releasesUrl = Optional.empty();
 
-    private String stargazersUrl;
+    private Optional<String> stargazersUrl = Optional.empty();
 
-    private String statusesUrl;
+    private Optional<String> statusesUrl = Optional.empty();
 
-    private String subscribersUrl;
+    private Optional<String> subscribersUrl = Optional.empty();
 
-    private String subscriptionUrl;
+    private Optional<String> subscriptionUrl = Optional.empty();
 
-    private String tagsUrl;
+    private Optional<String> tagsUrl = Optional.empty();
 
-    private String teamsUrl;
+    private Optional<String> teamsUrl = Optional.empty();
 
-    private String treesUrl;
+    private Optional<String> treesUrl = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     public DeploymentWorkflowRunHeadRepository archiveUrl(String archiveUrl) {
-        this.archiveUrl = archiveUrl;
+        this.archiveUrl = Optional.ofNullable(archiveUrl);
         return this;
     }
 
@@ -123,16 +123,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "archive_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archive_url")
-    public String getArchiveUrl() {
+    public Optional<String> getArchiveUrl() {
         return archiveUrl;
     }
 
-    public void setArchiveUrl(String archiveUrl) {
+    public void setArchiveUrl(Optional<String> archiveUrl) {
         this.archiveUrl = archiveUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository assigneesUrl(String assigneesUrl) {
-        this.assigneesUrl = assigneesUrl;
+        this.assigneesUrl = Optional.ofNullable(assigneesUrl);
         return this;
     }
 
@@ -142,16 +142,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "assignees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignees_url")
-    public String getAssigneesUrl() {
+    public Optional<String> getAssigneesUrl() {
         return assigneesUrl;
     }
 
-    public void setAssigneesUrl(String assigneesUrl) {
+    public void setAssigneesUrl(Optional<String> assigneesUrl) {
         this.assigneesUrl = assigneesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository blobsUrl(String blobsUrl) {
-        this.blobsUrl = blobsUrl;
+        this.blobsUrl = Optional.ofNullable(blobsUrl);
         return this;
     }
 
@@ -161,16 +161,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "blobs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blobs_url")
-    public String getBlobsUrl() {
+    public Optional<String> getBlobsUrl() {
         return blobsUrl;
     }
 
-    public void setBlobsUrl(String blobsUrl) {
+    public void setBlobsUrl(Optional<String> blobsUrl) {
         this.blobsUrl = blobsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository branchesUrl(String branchesUrl) {
-        this.branchesUrl = branchesUrl;
+        this.branchesUrl = Optional.ofNullable(branchesUrl);
         return this;
     }
 
@@ -180,16 +180,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "branches_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branches_url")
-    public String getBranchesUrl() {
+    public Optional<String> getBranchesUrl() {
         return branchesUrl;
     }
 
-    public void setBranchesUrl(String branchesUrl) {
+    public void setBranchesUrl(Optional<String> branchesUrl) {
         this.branchesUrl = branchesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository collaboratorsUrl(String collaboratorsUrl) {
-        this.collaboratorsUrl = collaboratorsUrl;
+        this.collaboratorsUrl = Optional.ofNullable(collaboratorsUrl);
         return this;
     }
 
@@ -199,16 +199,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "collaborators_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators_url")
-    public String getCollaboratorsUrl() {
+    public Optional<String> getCollaboratorsUrl() {
         return collaboratorsUrl;
     }
 
-    public void setCollaboratorsUrl(String collaboratorsUrl) {
+    public void setCollaboratorsUrl(Optional<String> collaboratorsUrl) {
         this.collaboratorsUrl = collaboratorsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository commentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
+        this.commentsUrl = Optional.ofNullable(commentsUrl);
         return this;
     }
 
@@ -218,16 +218,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "comments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_url")
-    public String getCommentsUrl() {
+    public Optional<String> getCommentsUrl() {
         return commentsUrl;
     }
 
-    public void setCommentsUrl(String commentsUrl) {
+    public void setCommentsUrl(Optional<String> commentsUrl) {
         this.commentsUrl = commentsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository commitsUrl(String commitsUrl) {
-        this.commitsUrl = commitsUrl;
+        this.commitsUrl = Optional.ofNullable(commitsUrl);
         return this;
     }
 
@@ -237,16 +237,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commits_url")
-    public String getCommitsUrl() {
+    public Optional<String> getCommitsUrl() {
         return commitsUrl;
     }
 
-    public void setCommitsUrl(String commitsUrl) {
+    public void setCommitsUrl(Optional<String> commitsUrl) {
         this.commitsUrl = commitsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository compareUrl(String compareUrl) {
-        this.compareUrl = compareUrl;
+        this.compareUrl = Optional.ofNullable(compareUrl);
         return this;
     }
 
@@ -256,16 +256,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "compare_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compare_url")
-    public String getCompareUrl() {
+    public Optional<String> getCompareUrl() {
         return compareUrl;
     }
 
-    public void setCompareUrl(String compareUrl) {
+    public void setCompareUrl(Optional<String> compareUrl) {
         this.compareUrl = compareUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository contentsUrl(String contentsUrl) {
-        this.contentsUrl = contentsUrl;
+        this.contentsUrl = Optional.ofNullable(contentsUrl);
         return this;
     }
 
@@ -275,16 +275,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "contents_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents_url")
-    public String getContentsUrl() {
+    public Optional<String> getContentsUrl() {
         return contentsUrl;
     }
 
-    public void setContentsUrl(String contentsUrl) {
+    public void setContentsUrl(Optional<String> contentsUrl) {
         this.contentsUrl = contentsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository contributorsUrl(String contributorsUrl) {
-        this.contributorsUrl = contributorsUrl;
+        this.contributorsUrl = Optional.ofNullable(contributorsUrl);
         return this;
     }
 
@@ -294,16 +294,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "contributors_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contributors_url")
-    public String getContributorsUrl() {
+    public Optional<String> getContributorsUrl() {
         return contributorsUrl;
     }
 
-    public void setContributorsUrl(String contributorsUrl) {
+    public void setContributorsUrl(Optional<String> contributorsUrl) {
         this.contributorsUrl = contributorsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository deploymentsUrl(String deploymentsUrl) {
-        this.deploymentsUrl = deploymentsUrl;
+        this.deploymentsUrl = Optional.ofNullable(deploymentsUrl);
         return this;
     }
 
@@ -313,16 +313,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "deployments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployments_url")
-    public String getDeploymentsUrl() {
+    public Optional<String> getDeploymentsUrl() {
         return deploymentsUrl;
     }
 
-    public void setDeploymentsUrl(String deploymentsUrl) {
+    public void setDeploymentsUrl(Optional<String> deploymentsUrl) {
         this.deploymentsUrl = deploymentsUrl;
     }
 
-    public DeploymentWorkflowRunHeadRepository description(@Nullable Object description) {
-        this.description = description;
+    public DeploymentWorkflowRunHeadRepository description(Object description) {
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -332,16 +332,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public @Nullable Object getDescription() {
+    public JsonNullable<Object> getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable Object description) {
+    public void setDescription(JsonNullable<Object> description) {
         this.description = description;
     }
 
     public DeploymentWorkflowRunHeadRepository downloadsUrl(String downloadsUrl) {
-        this.downloadsUrl = downloadsUrl;
+        this.downloadsUrl = Optional.ofNullable(downloadsUrl);
         return this;
     }
 
@@ -351,16 +351,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "downloads_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downloads_url")
-    public String getDownloadsUrl() {
+    public Optional<String> getDownloadsUrl() {
         return downloadsUrl;
     }
 
-    public void setDownloadsUrl(String downloadsUrl) {
+    public void setDownloadsUrl(Optional<String> downloadsUrl) {
         this.downloadsUrl = downloadsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository eventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
+        this.eventsUrl = Optional.ofNullable(eventsUrl);
         return this;
     }
 
@@ -370,16 +370,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("events_url")
-    public String getEventsUrl() {
+    public Optional<String> getEventsUrl() {
         return eventsUrl;
     }
 
-    public void setEventsUrl(String eventsUrl) {
+    public void setEventsUrl(Optional<String> eventsUrl) {
         this.eventsUrl = eventsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository fork(Boolean fork) {
-        this.fork = fork;
+        this.fork = Optional.ofNullable(fork);
         return this;
     }
 
@@ -389,16 +389,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "fork", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fork")
-    public Boolean getFork() {
+    public Optional<Boolean> getFork() {
         return fork;
     }
 
-    public void setFork(Boolean fork) {
+    public void setFork(Optional<Boolean> fork) {
         this.fork = fork;
     }
 
     public DeploymentWorkflowRunHeadRepository forksUrl(String forksUrl) {
-        this.forksUrl = forksUrl;
+        this.forksUrl = Optional.ofNullable(forksUrl);
         return this;
     }
 
@@ -408,16 +408,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "forks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_url")
-    public String getForksUrl() {
+    public Optional<String> getForksUrl() {
         return forksUrl;
     }
 
-    public void setForksUrl(String forksUrl) {
+    public void setForksUrl(Optional<String> forksUrl) {
         this.forksUrl = forksUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository fullName(String fullName) {
-        this.fullName = fullName;
+        this.fullName = Optional.ofNullable(fullName);
         return this;
     }
 
@@ -427,16 +427,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "full_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_name")
-    public String getFullName() {
+    public Optional<String> getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(Optional<String> fullName) {
         this.fullName = fullName;
     }
 
     public DeploymentWorkflowRunHeadRepository gitCommitsUrl(String gitCommitsUrl) {
-        this.gitCommitsUrl = gitCommitsUrl;
+        this.gitCommitsUrl = Optional.ofNullable(gitCommitsUrl);
         return this;
     }
 
@@ -446,16 +446,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "git_commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_commits_url")
-    public String getGitCommitsUrl() {
+    public Optional<String> getGitCommitsUrl() {
         return gitCommitsUrl;
     }
 
-    public void setGitCommitsUrl(String gitCommitsUrl) {
+    public void setGitCommitsUrl(Optional<String> gitCommitsUrl) {
         this.gitCommitsUrl = gitCommitsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository gitRefsUrl(String gitRefsUrl) {
-        this.gitRefsUrl = gitRefsUrl;
+        this.gitRefsUrl = Optional.ofNullable(gitRefsUrl);
         return this;
     }
 
@@ -465,16 +465,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "git_refs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_refs_url")
-    public String getGitRefsUrl() {
+    public Optional<String> getGitRefsUrl() {
         return gitRefsUrl;
     }
 
-    public void setGitRefsUrl(String gitRefsUrl) {
+    public void setGitRefsUrl(Optional<String> gitRefsUrl) {
         this.gitRefsUrl = gitRefsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository gitTagsUrl(String gitTagsUrl) {
-        this.gitTagsUrl = gitTagsUrl;
+        this.gitTagsUrl = Optional.ofNullable(gitTagsUrl);
         return this;
     }
 
@@ -484,16 +484,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "git_tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_tags_url")
-    public String getGitTagsUrl() {
+    public Optional<String> getGitTagsUrl() {
         return gitTagsUrl;
     }
 
-    public void setGitTagsUrl(String gitTagsUrl) {
+    public void setGitTagsUrl(Optional<String> gitTagsUrl) {
         this.gitTagsUrl = gitTagsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository hooksUrl(String hooksUrl) {
-        this.hooksUrl = hooksUrl;
+        this.hooksUrl = Optional.ofNullable(hooksUrl);
         return this;
     }
 
@@ -503,16 +503,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "hooks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooks_url")
-    public String getHooksUrl() {
+    public Optional<String> getHooksUrl() {
         return hooksUrl;
     }
 
-    public void setHooksUrl(String hooksUrl) {
+    public void setHooksUrl(Optional<String> hooksUrl) {
         this.hooksUrl = hooksUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -522,16 +522,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -541,16 +541,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public DeploymentWorkflowRunHeadRepository issueCommentUrl(String issueCommentUrl) {
-        this.issueCommentUrl = issueCommentUrl;
+        this.issueCommentUrl = Optional.ofNullable(issueCommentUrl);
         return this;
     }
 
@@ -560,16 +560,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "issue_comment_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_comment_url")
-    public String getIssueCommentUrl() {
+    public Optional<String> getIssueCommentUrl() {
         return issueCommentUrl;
     }
 
-    public void setIssueCommentUrl(String issueCommentUrl) {
+    public void setIssueCommentUrl(Optional<String> issueCommentUrl) {
         this.issueCommentUrl = issueCommentUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository issueEventsUrl(String issueEventsUrl) {
-        this.issueEventsUrl = issueEventsUrl;
+        this.issueEventsUrl = Optional.ofNullable(issueEventsUrl);
         return this;
     }
 
@@ -579,16 +579,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "issue_events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_events_url")
-    public String getIssueEventsUrl() {
+    public Optional<String> getIssueEventsUrl() {
         return issueEventsUrl;
     }
 
-    public void setIssueEventsUrl(String issueEventsUrl) {
+    public void setIssueEventsUrl(Optional<String> issueEventsUrl) {
         this.issueEventsUrl = issueEventsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository issuesUrl(String issuesUrl) {
-        this.issuesUrl = issuesUrl;
+        this.issuesUrl = Optional.ofNullable(issuesUrl);
         return this;
     }
 
@@ -598,16 +598,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "issues_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues_url")
-    public String getIssuesUrl() {
+    public Optional<String> getIssuesUrl() {
         return issuesUrl;
     }
 
-    public void setIssuesUrl(String issuesUrl) {
+    public void setIssuesUrl(Optional<String> issuesUrl) {
         this.issuesUrl = issuesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository keysUrl(String keysUrl) {
-        this.keysUrl = keysUrl;
+        this.keysUrl = Optional.ofNullable(keysUrl);
         return this;
     }
 
@@ -617,16 +617,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "keys_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("keys_url")
-    public String getKeysUrl() {
+    public Optional<String> getKeysUrl() {
         return keysUrl;
     }
 
-    public void setKeysUrl(String keysUrl) {
+    public void setKeysUrl(Optional<String> keysUrl) {
         this.keysUrl = keysUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository labelsUrl(String labelsUrl) {
-        this.labelsUrl = labelsUrl;
+        this.labelsUrl = Optional.ofNullable(labelsUrl);
         return this;
     }
 
@@ -636,16 +636,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "labels_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("labels_url")
-    public String getLabelsUrl() {
+    public Optional<String> getLabelsUrl() {
         return labelsUrl;
     }
 
-    public void setLabelsUrl(String labelsUrl) {
+    public void setLabelsUrl(Optional<String> labelsUrl) {
         this.labelsUrl = labelsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository languagesUrl(String languagesUrl) {
-        this.languagesUrl = languagesUrl;
+        this.languagesUrl = Optional.ofNullable(languagesUrl);
         return this;
     }
 
@@ -655,16 +655,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "languages_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("languages_url")
-    public String getLanguagesUrl() {
+    public Optional<String> getLanguagesUrl() {
         return languagesUrl;
     }
 
-    public void setLanguagesUrl(String languagesUrl) {
+    public void setLanguagesUrl(Optional<String> languagesUrl) {
         this.languagesUrl = languagesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository mergesUrl(String mergesUrl) {
-        this.mergesUrl = mergesUrl;
+        this.mergesUrl = Optional.ofNullable(mergesUrl);
         return this;
     }
 
@@ -674,16 +674,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "merges_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merges_url")
-    public String getMergesUrl() {
+    public Optional<String> getMergesUrl() {
         return mergesUrl;
     }
 
-    public void setMergesUrl(String mergesUrl) {
+    public void setMergesUrl(Optional<String> mergesUrl) {
         this.mergesUrl = mergesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository milestonesUrl(String milestonesUrl) {
-        this.milestonesUrl = milestonesUrl;
+        this.milestonesUrl = Optional.ofNullable(milestonesUrl);
         return this;
     }
 
@@ -693,16 +693,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "milestones_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestones_url")
-    public String getMilestonesUrl() {
+    public Optional<String> getMilestonesUrl() {
         return milestonesUrl;
     }
 
-    public void setMilestonesUrl(String milestonesUrl) {
+    public void setMilestonesUrl(Optional<String> milestonesUrl) {
         this.milestonesUrl = milestonesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -712,16 +712,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public DeploymentWorkflowRunHeadRepository nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -731,16 +731,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public DeploymentWorkflowRunHeadRepository notificationsUrl(String notificationsUrl) {
-        this.notificationsUrl = notificationsUrl;
+        this.notificationsUrl = Optional.ofNullable(notificationsUrl);
         return this;
     }
 
@@ -750,16 +750,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "notifications_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notifications_url")
-    public String getNotificationsUrl() {
+    public Optional<String> getNotificationsUrl() {
         return notificationsUrl;
     }
 
-    public void setNotificationsUrl(String notificationsUrl) {
+    public void setNotificationsUrl(Optional<String> notificationsUrl) {
         this.notificationsUrl = notificationsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository owner(DeploymentWorkflowRunHeadRepositoryOwner owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -770,16 +770,16 @@ public class DeploymentWorkflowRunHeadRepository {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public DeploymentWorkflowRunHeadRepositoryOwner getOwner() {
+    public Optional<DeploymentWorkflowRunHeadRepositoryOwner> getOwner() {
         return owner;
     }
 
-    public void setOwner(DeploymentWorkflowRunHeadRepositoryOwner owner) {
+    public void setOwner(Optional<DeploymentWorkflowRunHeadRepositoryOwner> owner) {
         this.owner = owner;
     }
 
     public DeploymentWorkflowRunHeadRepository _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -789,16 +789,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "private", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 
     public DeploymentWorkflowRunHeadRepository pullsUrl(String pullsUrl) {
-        this.pullsUrl = pullsUrl;
+        this.pullsUrl = Optional.ofNullable(pullsUrl);
         return this;
     }
 
@@ -808,16 +808,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "pulls_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pulls_url")
-    public String getPullsUrl() {
+    public Optional<String> getPullsUrl() {
         return pullsUrl;
     }
 
-    public void setPullsUrl(String pullsUrl) {
+    public void setPullsUrl(Optional<String> pullsUrl) {
         this.pullsUrl = pullsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository releasesUrl(String releasesUrl) {
-        this.releasesUrl = releasesUrl;
+        this.releasesUrl = Optional.ofNullable(releasesUrl);
         return this;
     }
 
@@ -827,16 +827,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "releases_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("releases_url")
-    public String getReleasesUrl() {
+    public Optional<String> getReleasesUrl() {
         return releasesUrl;
     }
 
-    public void setReleasesUrl(String releasesUrl) {
+    public void setReleasesUrl(Optional<String> releasesUrl) {
         this.releasesUrl = releasesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository stargazersUrl(String stargazersUrl) {
-        this.stargazersUrl = stargazersUrl;
+        this.stargazersUrl = Optional.ofNullable(stargazersUrl);
         return this;
     }
 
@@ -846,16 +846,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "stargazers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_url")
-    public String getStargazersUrl() {
+    public Optional<String> getStargazersUrl() {
         return stargazersUrl;
     }
 
-    public void setStargazersUrl(String stargazersUrl) {
+    public void setStargazersUrl(Optional<String> stargazersUrl) {
         this.stargazersUrl = stargazersUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository statusesUrl(String statusesUrl) {
-        this.statusesUrl = statusesUrl;
+        this.statusesUrl = Optional.ofNullable(statusesUrl);
         return this;
     }
 
@@ -865,16 +865,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "statuses_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("statuses_url")
-    public String getStatusesUrl() {
+    public Optional<String> getStatusesUrl() {
         return statusesUrl;
     }
 
-    public void setStatusesUrl(String statusesUrl) {
+    public void setStatusesUrl(Optional<String> statusesUrl) {
         this.statusesUrl = statusesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository subscribersUrl(String subscribersUrl) {
-        this.subscribersUrl = subscribersUrl;
+        this.subscribersUrl = Optional.ofNullable(subscribersUrl);
         return this;
     }
 
@@ -884,16 +884,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "subscribers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_url")
-    public String getSubscribersUrl() {
+    public Optional<String> getSubscribersUrl() {
         return subscribersUrl;
     }
 
-    public void setSubscribersUrl(String subscribersUrl) {
+    public void setSubscribersUrl(Optional<String> subscribersUrl) {
         this.subscribersUrl = subscribersUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository subscriptionUrl(String subscriptionUrl) {
-        this.subscriptionUrl = subscriptionUrl;
+        this.subscriptionUrl = Optional.ofNullable(subscriptionUrl);
         return this;
     }
 
@@ -903,16 +903,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "subscription_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscription_url")
-    public String getSubscriptionUrl() {
+    public Optional<String> getSubscriptionUrl() {
         return subscriptionUrl;
     }
 
-    public void setSubscriptionUrl(String subscriptionUrl) {
+    public void setSubscriptionUrl(Optional<String> subscriptionUrl) {
         this.subscriptionUrl = subscriptionUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository tagsUrl(String tagsUrl) {
-        this.tagsUrl = tagsUrl;
+        this.tagsUrl = Optional.ofNullable(tagsUrl);
         return this;
     }
 
@@ -922,16 +922,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tags_url")
-    public String getTagsUrl() {
+    public Optional<String> getTagsUrl() {
         return tagsUrl;
     }
 
-    public void setTagsUrl(String tagsUrl) {
+    public void setTagsUrl(Optional<String> tagsUrl) {
         this.tagsUrl = tagsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository teamsUrl(String teamsUrl) {
-        this.teamsUrl = teamsUrl;
+        this.teamsUrl = Optional.ofNullable(teamsUrl);
         return this;
     }
 
@@ -941,16 +941,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "teams_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("teams_url")
-    public String getTeamsUrl() {
+    public Optional<String> getTeamsUrl() {
         return teamsUrl;
     }
 
-    public void setTeamsUrl(String teamsUrl) {
+    public void setTeamsUrl(Optional<String> teamsUrl) {
         this.teamsUrl = teamsUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository treesUrl(String treesUrl) {
-        this.treesUrl = treesUrl;
+        this.treesUrl = Optional.ofNullable(treesUrl);
         return this;
     }
 
@@ -960,16 +960,16 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "trees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("trees_url")
-    public String getTreesUrl() {
+    public Optional<String> getTreesUrl() {
         return treesUrl;
     }
 
-    public void setTreesUrl(String treesUrl) {
+    public void setTreesUrl(Optional<String> treesUrl) {
         this.treesUrl = treesUrl;
     }
 
     public DeploymentWorkflowRunHeadRepository url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -979,11 +979,11 @@ public class DeploymentWorkflowRunHeadRepository {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
@@ -1008,7 +1008,7 @@ public class DeploymentWorkflowRunHeadRepository {
                 && Objects.equals(this.contentsUrl, deploymentWorkflowRunHeadRepository.contentsUrl)
                 && Objects.equals(this.contributorsUrl, deploymentWorkflowRunHeadRepository.contributorsUrl)
                 && Objects.equals(this.deploymentsUrl, deploymentWorkflowRunHeadRepository.deploymentsUrl)
-                && Objects.equals(this.description, deploymentWorkflowRunHeadRepository.description)
+                && equalsNullable(this.description, deploymentWorkflowRunHeadRepository.description)
                 && Objects.equals(this.downloadsUrl, deploymentWorkflowRunHeadRepository.downloadsUrl)
                 && Objects.equals(this.eventsUrl, deploymentWorkflowRunHeadRepository.eventsUrl)
                 && Objects.equals(this.fork, deploymentWorkflowRunHeadRepository.fork)
@@ -1045,6 +1045,11 @@ public class DeploymentWorkflowRunHeadRepository {
                 && Objects.equals(this.url, deploymentWorkflowRunHeadRepository.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -1059,7 +1064,7 @@ public class DeploymentWorkflowRunHeadRepository {
                 contentsUrl,
                 contributorsUrl,
                 deploymentsUrl,
-                description,
+                hashCodeNullable(description),
                 downloadsUrl,
                 eventsUrl,
                 fork,
@@ -1094,6 +1099,13 @@ public class DeploymentWorkflowRunHeadRepository {
                 teamsUrl,
                 treesUrl,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

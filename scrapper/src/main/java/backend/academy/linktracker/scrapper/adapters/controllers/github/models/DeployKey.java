@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("deploy-key")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeployKey {
 
@@ -36,12 +38,12 @@ public class DeployKey {
 
     private Boolean readOnly;
 
-    private String addedBy = null;
+    private JsonNullable<String> addedBy = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastUsed = null;
+    private JsonNullable<OffsetDateTime> lastUsed = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean enabled;
+    private Optional<Boolean> enabled = Optional.empty();
 
     public DeployKey() {
         super();
@@ -202,7 +204,7 @@ public class DeployKey {
     }
 
     public DeployKey addedBy(String addedBy) {
-        this.addedBy = addedBy;
+        this.addedBy = JsonNullable.of(addedBy);
         return this;
     }
 
@@ -212,16 +214,16 @@ public class DeployKey {
      */
     @Schema(name = "added_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("added_by")
-    public String getAddedBy() {
+    public JsonNullable<String> getAddedBy() {
         return addedBy;
     }
 
-    public void setAddedBy(String addedBy) {
+    public void setAddedBy(JsonNullable<String> addedBy) {
         this.addedBy = addedBy;
     }
 
     public DeployKey lastUsed(OffsetDateTime lastUsed) {
-        this.lastUsed = lastUsed;
+        this.lastUsed = JsonNullable.of(lastUsed);
         return this;
     }
 
@@ -232,16 +234,16 @@ public class DeployKey {
     @Valid
     @Schema(name = "last_used", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_used")
-    public OffsetDateTime getLastUsed() {
+    public JsonNullable<OffsetDateTime> getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(OffsetDateTime lastUsed) {
+    public void setLastUsed(JsonNullable<OffsetDateTime> lastUsed) {
         this.lastUsed = lastUsed;
     }
 
     public DeployKey enabled(Boolean enabled) {
-        this.enabled = enabled;
+        this.enabled = Optional.ofNullable(enabled);
         return this;
     }
 
@@ -251,11 +253,11 @@ public class DeployKey {
      */
     @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enabled")
-    public Boolean getEnabled() {
+    public Optional<Boolean> getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(Optional<Boolean> enabled) {
         this.enabled = enabled;
     }
 
@@ -275,14 +277,36 @@ public class DeployKey {
                 && Objects.equals(this.verified, deployKey.verified)
                 && Objects.equals(this.createdAt, deployKey.createdAt)
                 && Objects.equals(this.readOnly, deployKey.readOnly)
-                && Objects.equals(this.addedBy, deployKey.addedBy)
-                && Objects.equals(this.lastUsed, deployKey.lastUsed)
+                && equalsNullable(this.addedBy, deployKey.addedBy)
+                && equalsNullable(this.lastUsed, deployKey.lastUsed)
                 && Objects.equals(this.enabled, deployKey.enabled);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, key, url, title, verified, createdAt, readOnly, addedBy, lastUsed, enabled);
+        return Objects.hash(
+                id,
+                key,
+                url,
+                title,
+                verified,
+                createdAt,
+                readOnly,
+                hashCodeNullable(addedBy),
+                hashCodeNullable(lastUsed),
+                enabled);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

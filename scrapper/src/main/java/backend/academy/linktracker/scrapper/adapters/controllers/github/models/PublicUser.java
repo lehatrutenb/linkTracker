@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("public-user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PublicUser implements UsersGetAuthenticated200Response {
 
@@ -27,13 +29,13 @@ public class PublicUser implements UsersGetAuthenticated200Response {
 
     private Long id;
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     private String nodeId;
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -61,23 +63,24 @@ public class PublicUser implements UsersGetAuthenticated200Response {
 
     private Boolean siteAdmin;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String company = null;
+    private JsonNullable<String> company = JsonNullable.<String>undefined();
 
-    private String blog = null;
+    private JsonNullable<String> blog = JsonNullable.<String>undefined();
 
-    private String location = null;
+    private JsonNullable<String> location = JsonNullable.<String>undefined();
 
-    private String email = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> email = JsonNullable.<String>undefined();
 
-    private String notificationEmail = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> notificationEmail =
+            JsonNullable.<String>undefined();
 
-    private Boolean hireable = null;
+    private JsonNullable<Boolean> hireable = JsonNullable.<Boolean>undefined();
 
-    private String bio = null;
+    private JsonNullable<String> bio = JsonNullable.<String>undefined();
 
-    private String twitterUsername = null;
+    private JsonNullable<String> twitterUsername = JsonNullable.<String>undefined();
 
     private Long publicRepos;
 
@@ -93,17 +96,17 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private PublicUserPlan plan;
+    private Optional<PublicUserPlan> plan = Optional.empty();
 
-    private Long privateGists;
+    private Optional<Long> privateGists = Optional.empty();
 
-    private Long totalPrivateRepos;
+    private Optional<Long> totalPrivateRepos = Optional.empty();
 
-    private Long ownedPrivateRepos;
+    private Optional<Long> ownedPrivateRepos = Optional.empty();
 
-    private Long diskUsage;
+    private Optional<Long> diskUsage = Optional.empty();
 
-    private Long collaborators;
+    private Optional<Long> collaborators = Optional.empty();
 
     public PublicUser() {
         super();
@@ -148,7 +151,7 @@ public class PublicUser implements UsersGetAuthenticated200Response {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -162,13 +165,13 @@ public class PublicUser implements UsersGetAuthenticated200Response {
         this.receivedEventsUrl = receivedEventsUrl;
         this.type = type;
         this.siteAdmin = siteAdmin;
-        this.name = name;
-        this.company = company;
-        this.blog = blog;
-        this.location = location;
-        this.email = email;
-        this.hireable = hireable;
-        this.bio = bio;
+        this.name = JsonNullable.of(name);
+        this.company = JsonNullable.of(company);
+        this.blog = JsonNullable.of(blog);
+        this.location = JsonNullable.of(location);
+        this.email = JsonNullable.of(email);
+        this.hireable = JsonNullable.of(hireable);
+        this.bio = JsonNullable.of(bio);
         this.publicRepos = publicRepos;
         this.publicGists = publicGists;
         this.followers = followers;
@@ -218,7 +221,7 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     }
 
     public PublicUser userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -228,11 +231,11 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "user_view_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
-        return userViewType;
+    public Optional<String> getUserViewType() {
+        return Optional.of(userViewType.toString());
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -278,7 +281,7 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     }
 
     public PublicUser gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -289,11 +292,11 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "gravatar_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -565,7 +568,7 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     }
 
     public PublicUser name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -576,16 +579,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public PublicUser company(String company) {
-        this.company = company;
+        this.company = JsonNullable.of(company);
         return this;
     }
 
@@ -596,16 +599,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "company", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public JsonNullable<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(JsonNullable<String> company) {
         this.company = company;
     }
 
     public PublicUser blog(String blog) {
-        this.blog = blog;
+        this.blog = JsonNullable.of(blog);
         return this;
     }
 
@@ -616,16 +619,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "blog", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("blog")
-    public String getBlog() {
+    public JsonNullable<String> getBlog() {
         return blog;
     }
 
-    public void setBlog(String blog) {
+    public void setBlog(JsonNullable<String> blog) {
         this.blog = blog;
     }
 
     public PublicUser location(String location) {
-        this.location = location;
+        this.location = JsonNullable.of(location);
         return this;
     }
 
@@ -636,16 +639,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "location", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public JsonNullable<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(JsonNullable<String> location) {
         this.location = location;
     }
 
     public PublicUser email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -657,16 +660,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @jakarta.validation.constraints.Email
     @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
     public PublicUser notificationEmail(String notificationEmail) {
-        this.notificationEmail = notificationEmail;
+        this.notificationEmail = JsonNullable.of(notificationEmail);
         return this;
     }
 
@@ -674,19 +677,18 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      * Get notificationEmail
      * @return notificationEmail
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "notification_email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_email")
-    public String getNotificationEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getNotificationEmail() {
         return notificationEmail;
     }
 
-    public void setNotificationEmail(String notificationEmail) {
+    public void setNotificationEmail(JsonNullable<String> notificationEmail) {
         this.notificationEmail = notificationEmail;
     }
 
     public PublicUser hireable(Boolean hireable) {
-        this.hireable = hireable;
+        this.hireable = JsonNullable.of(hireable);
         return this;
     }
 
@@ -697,16 +699,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "hireable", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("hireable")
-    public Boolean getHireable() {
+    public JsonNullable<Boolean> getHireable() {
         return hireable;
     }
 
-    public void setHireable(Boolean hireable) {
+    public void setHireable(JsonNullable<Boolean> hireable) {
         this.hireable = hireable;
     }
 
     public PublicUser bio(String bio) {
-        this.bio = bio;
+        this.bio = JsonNullable.of(bio);
         return this;
     }
 
@@ -717,16 +719,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @NotNull
     @Schema(name = "bio", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("bio")
-    public String getBio() {
+    public JsonNullable<String> getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
+    public void setBio(JsonNullable<String> bio) {
         this.bio = bio;
     }
 
     public PublicUser twitterUsername(String twitterUsername) {
-        this.twitterUsername = twitterUsername;
+        this.twitterUsername = JsonNullable.of(twitterUsername);
         return this;
     }
 
@@ -736,11 +738,11 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "twitter_username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("twitter_username")
-    public String getTwitterUsername() {
+    public JsonNullable<String> getTwitterUsername() {
         return twitterUsername;
     }
 
-    public void setTwitterUsername(String twitterUsername) {
+    public void setTwitterUsername(JsonNullable<String> twitterUsername) {
         this.twitterUsername = twitterUsername;
     }
 
@@ -867,7 +869,7 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     }
 
     public PublicUser plan(PublicUserPlan plan) {
-        this.plan = plan;
+        this.plan = Optional.ofNullable(plan);
         return this;
     }
 
@@ -878,16 +880,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
     @Valid
     @Schema(name = "plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan")
-    public PublicUserPlan getPlan() {
+    public Optional<PublicUserPlan> getPlan() {
         return plan;
     }
 
-    public void setPlan(PublicUserPlan plan) {
+    public void setPlan(Optional<PublicUserPlan> plan) {
         this.plan = plan;
     }
 
     public PublicUser privateGists(Long privateGists) {
-        this.privateGists = privateGists;
+        this.privateGists = Optional.ofNullable(privateGists);
         return this;
     }
 
@@ -897,16 +899,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "private_gists", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private_gists")
-    public Long getPrivateGists() {
+    public Optional<Long> getPrivateGists() {
         return privateGists;
     }
 
-    public void setPrivateGists(Long privateGists) {
+    public void setPrivateGists(Optional<Long> privateGists) {
         this.privateGists = privateGists;
     }
 
     public PublicUser totalPrivateRepos(Long totalPrivateRepos) {
-        this.totalPrivateRepos = totalPrivateRepos;
+        this.totalPrivateRepos = Optional.ofNullable(totalPrivateRepos);
         return this;
     }
 
@@ -916,16 +918,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "total_private_repos", example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_private_repos")
-    public Long getTotalPrivateRepos() {
+    public Optional<Long> getTotalPrivateRepos() {
         return totalPrivateRepos;
     }
 
-    public void setTotalPrivateRepos(Long totalPrivateRepos) {
+    public void setTotalPrivateRepos(Optional<Long> totalPrivateRepos) {
         this.totalPrivateRepos = totalPrivateRepos;
     }
 
     public PublicUser ownedPrivateRepos(Long ownedPrivateRepos) {
-        this.ownedPrivateRepos = ownedPrivateRepos;
+        this.ownedPrivateRepos = Optional.ofNullable(ownedPrivateRepos);
         return this;
     }
 
@@ -935,16 +937,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "owned_private_repos", example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owned_private_repos")
-    public Long getOwnedPrivateRepos() {
+    public Optional<Long> getOwnedPrivateRepos() {
         return ownedPrivateRepos;
     }
 
-    public void setOwnedPrivateRepos(Long ownedPrivateRepos) {
+    public void setOwnedPrivateRepos(Optional<Long> ownedPrivateRepos) {
         this.ownedPrivateRepos = ownedPrivateRepos;
     }
 
     public PublicUser diskUsage(Long diskUsage) {
-        this.diskUsage = diskUsage;
+        this.diskUsage = Optional.ofNullable(diskUsage);
         return this;
     }
 
@@ -954,16 +956,16 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "disk_usage", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disk_usage")
-    public Long getDiskUsage() {
+    public Optional<Long> getDiskUsage() {
         return diskUsage;
     }
 
-    public void setDiskUsage(Long diskUsage) {
+    public void setDiskUsage(Optional<Long> diskUsage) {
         this.diskUsage = diskUsage;
     }
 
     public PublicUser collaborators(Long collaborators) {
-        this.collaborators = collaborators;
+        this.collaborators = Optional.ofNullable(collaborators);
         return this;
     }
 
@@ -973,11 +975,11 @@ public class PublicUser implements UsersGetAuthenticated200Response {
      */
     @Schema(name = "collaborators", example = "3", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators")
-    public Long getCollaborators() {
+    public Optional<Long> getCollaborators() {
         return collaborators;
     }
 
-    public void setCollaborators(Long collaborators) {
+    public void setCollaborators(Optional<Long> collaborators) {
         this.collaborators = collaborators;
     }
 
@@ -1014,10 +1016,10 @@ public class PublicUser implements UsersGetAuthenticated200Response {
                 && Objects.equals(this.blog, publicUser.blog)
                 && Objects.equals(this.location, publicUser.location)
                 && Objects.equals(this.email, publicUser.email)
-                && Objects.equals(this.notificationEmail, publicUser.notificationEmail)
+                && equalsNullable(this.notificationEmail, publicUser.notificationEmail)
                 && Objects.equals(this.hireable, publicUser.hireable)
                 && Objects.equals(this.bio, publicUser.bio)
-                && Objects.equals(this.twitterUsername, publicUser.twitterUsername)
+                && equalsNullable(this.twitterUsername, publicUser.twitterUsername)
                 && Objects.equals(this.publicRepos, publicUser.publicRepos)
                 && Objects.equals(this.publicGists, publicUser.publicGists)
                 && Objects.equals(this.followers, publicUser.followers)
@@ -1030,6 +1032,11 @@ public class PublicUser implements UsersGetAuthenticated200Response {
                 && Objects.equals(this.ownedPrivateRepos, publicUser.ownedPrivateRepos)
                 && Objects.equals(this.diskUsage, publicUser.diskUsage)
                 && Objects.equals(this.collaborators, publicUser.collaborators);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1059,10 +1066,10 @@ public class PublicUser implements UsersGetAuthenticated200Response {
                 blog,
                 location,
                 email,
-                notificationEmail,
+                hashCodeNullable(notificationEmail),
                 hireable,
                 bio,
-                twitterUsername,
+                hashCodeNullable(twitterUsername),
                 publicRepos,
                 publicGists,
                 followers,
@@ -1075,6 +1082,13 @@ public class PublicUser implements UsersGetAuthenticated200Response {
                 ownedPrivateRepos,
                 diskUsage,
                 collaborators);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

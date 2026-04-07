@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("org-private-registry-configuration-with-selected-repositories")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
 
@@ -94,11 +94,11 @@ public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
 
     private RegistryTypeEnum registryType;
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private String username;
+    private Optional<String> username = Optional.empty();
 
-    private Boolean replacesBase = false;
+    private Optional<Boolean> replacesBase = Optional.of(false);
 
     /**
      * Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry.
@@ -213,7 +213,7 @@ public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
     }
 
     public OrgPrivateRegistryConfigurationWithSelectedRepositories url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -227,16 +227,16 @@ public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
             description = "The URL of the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public OrgPrivateRegistryConfigurationWithSelectedRepositories username(String username) {
-        this.username = username;
+        this.username = Optional.ofNullable(username);
         return this;
     }
 
@@ -250,16 +250,16 @@ public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
             description = "The username to use when authenticating with the private registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public Optional<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Optional<String> username) {
         this.username = username;
     }
 
     public OrgPrivateRegistryConfigurationWithSelectedRepositories replacesBase(Boolean replacesBase) {
-        this.replacesBase = replacesBase;
+        this.replacesBase = Optional.ofNullable(replacesBase);
         return this;
     }
 
@@ -273,11 +273,11 @@ public class OrgPrivateRegistryConfigurationWithSelectedRepositories {
                     "Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("replaces_base")
-    public Boolean getReplacesBase() {
+    public Optional<Boolean> getReplacesBase() {
         return replacesBase;
     }
 
-    public void setReplacesBase(Boolean replacesBase) {
+    public void setReplacesBase(Optional<Boolean> replacesBase) {
         this.replacesBase = replacesBase;
     }
 

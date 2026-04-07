@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,12 +20,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_deployment_status_created_check_run")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentStatusCreatedCheckRun {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     /**
      * The result of the completed check run. This value will be `null` until the check run has completed.
@@ -74,7 +74,7 @@ public class WebhookDeploymentStatusCreatedCheckRun {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     private URI detailsUrl;
 
@@ -158,8 +158,8 @@ public class WebhookDeploymentStatusCreatedCheckRun {
             OffsetDateTime startedAt,
             StatusEnum status,
             URI url) {
-        this.completedAt = completedAt;
-        this.conclusion = conclusion;
+        this.completedAt = JsonNullable.of(completedAt);
+        this.conclusion = JsonNullable.of(conclusion);
         this.detailsUrl = detailsUrl;
         this.externalId = externalId;
         this.headSha = headSha;
@@ -173,7 +173,7 @@ public class WebhookDeploymentStatusCreatedCheckRun {
     }
 
     public WebhookDeploymentStatusCreatedCheckRun completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -185,16 +185,16 @@ public class WebhookDeploymentStatusCreatedCheckRun {
     @Valid
     @Schema(name = "completed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public WebhookDeploymentStatusCreatedCheckRun conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -209,11 +209,11 @@ public class WebhookDeploymentStatusCreatedCheckRun {
                     "The result of the completed check run. This value will be `null` until the check run has completed.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 

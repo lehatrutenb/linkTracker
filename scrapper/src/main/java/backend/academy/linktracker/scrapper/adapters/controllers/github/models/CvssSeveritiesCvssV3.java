@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CvssSeveritiesCvssV3
@@ -16,13 +18,14 @@ import java.util.Objects;
 @JsonTypeName("cvss_severities_cvss_v3")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CvssSeveritiesCvssV3 {
 
-    private String vectorString = null;
+    private JsonNullable<String> vectorString = JsonNullable.<String>undefined();
 
-    private BigDecimal score = null;
+    private JsonNullable<@DecimalMin(value = "0") @DecimalMax(value = "10") BigDecimal> score =
+            JsonNullable.<BigDecimal>undefined();
 
     public CvssSeveritiesCvssV3() {
         super();
@@ -32,12 +35,12 @@ public class CvssSeveritiesCvssV3 {
      * Constructor with only required parameters
      */
     public CvssSeveritiesCvssV3(String vectorString, BigDecimal score) {
-        this.vectorString = vectorString;
-        this.score = score;
+        this.vectorString = JsonNullable.of(vectorString);
+        this.score = JsonNullable.of(score);
     }
 
     public CvssSeveritiesCvssV3 vectorString(String vectorString) {
-        this.vectorString = vectorString;
+        this.vectorString = JsonNullable.of(vectorString);
         return this;
     }
 
@@ -51,16 +54,16 @@ public class CvssSeveritiesCvssV3 {
             description = "The CVSS 3 vector string.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("vector_string")
-    public String getVectorString() {
+    public JsonNullable<String> getVectorString() {
         return vectorString;
     }
 
-    public void setVectorString(String vectorString) {
+    public void setVectorString(JsonNullable<String> vectorString) {
         this.vectorString = vectorString;
     }
 
     public CvssSeveritiesCvssV3 score(BigDecimal score) {
-        this.score = score;
+        this.score = JsonNullable.of(score);
         return this;
     }
 
@@ -79,11 +82,11 @@ public class CvssSeveritiesCvssV3 {
             description = "The CVSS 3 score.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("score")
-    public BigDecimal getScore() {
+    public JsonNullable<@DecimalMin(value = "0") @DecimalMax(value = "10") BigDecimal> getScore() {
         return score;
     }
 
-    public void setScore(BigDecimal score) {
+    public void setScore(JsonNullable<BigDecimal> score) {
         this.score = score;
     }
 

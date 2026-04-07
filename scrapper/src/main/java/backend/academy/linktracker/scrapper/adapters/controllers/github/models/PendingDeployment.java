@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pending-deployment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PendingDeployment {
 
@@ -31,7 +31,7 @@ public class PendingDeployment {
     private Long waitTimer;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime waitTimerStartedAt = null;
+    private JsonNullable<OffsetDateTime> waitTimerStartedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private Boolean currentUserCanApprove;
 
@@ -53,7 +53,7 @@ public class PendingDeployment {
             List<@Valid PendingDeploymentReviewersInner> reviewers) {
         this.environment = environment;
         this.waitTimer = waitTimer;
-        this.waitTimerStartedAt = waitTimerStartedAt;
+        this.waitTimerStartedAt = JsonNullable.of(waitTimerStartedAt);
         this.currentUserCanApprove = currentUserCanApprove;
         this.reviewers = reviewers;
     }
@@ -104,7 +104,7 @@ public class PendingDeployment {
     }
 
     public PendingDeployment waitTimerStartedAt(OffsetDateTime waitTimerStartedAt) {
-        this.waitTimerStartedAt = waitTimerStartedAt;
+        this.waitTimerStartedAt = JsonNullable.of(waitTimerStartedAt);
         return this;
     }
 
@@ -120,11 +120,11 @@ public class PendingDeployment {
             description = "The time that the wait timer began.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("wait_timer_started_at")
-    public OffsetDateTime getWaitTimerStartedAt() {
+    public JsonNullable<OffsetDateTime> getWaitTimerStartedAt() {
         return waitTimerStartedAt;
     }
 
-    public void setWaitTimerStartedAt(OffsetDateTime waitTimerStartedAt) {
+    public void setWaitTimerStartedAt(JsonNullable<OffsetDateTime> waitTimerStartedAt) {
         this.waitTimerStartedAt = waitTimerStartedAt;
     }
 

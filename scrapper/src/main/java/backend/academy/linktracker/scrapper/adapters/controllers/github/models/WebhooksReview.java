@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksReview {
 
@@ -76,7 +77,7 @@ public class WebhooksReview {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     private String commitId;
 
@@ -91,12 +92,12 @@ public class WebhooksReview {
     private String state;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime submittedAt = null;
+    private JsonNullable<OffsetDateTime> submittedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhooksReview() {
         super();
@@ -119,15 +120,15 @@ public class WebhooksReview {
             User1 user) {
         this.links = links;
         this.authorAssociation = authorAssociation;
-        this.body = body;
+        this.body = JsonNullable.of(body);
         this.commitId = commitId;
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.nodeId = nodeId;
         this.pullRequestUrl = pullRequestUrl;
         this.state = state;
-        this.submittedAt = submittedAt;
-        this.user = user;
+        this.submittedAt = JsonNullable.of(submittedAt);
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksReview links(WebhooksReviewLinks links) {
@@ -175,7 +176,7 @@ public class WebhooksReview {
     }
 
     public WebhooksReview body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -186,11 +187,11 @@ public class WebhooksReview {
     @NotNull
     @Schema(name = "body", description = "The text of the review.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -320,7 +321,7 @@ public class WebhooksReview {
     }
 
     public WebhooksReview submittedAt(OffsetDateTime submittedAt) {
-        this.submittedAt = submittedAt;
+        this.submittedAt = JsonNullable.of(submittedAt);
         return this;
     }
 
@@ -332,16 +333,16 @@ public class WebhooksReview {
     @Valid
     @Schema(name = "submitted_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("submitted_at")
-    public OffsetDateTime getSubmittedAt() {
+    public JsonNullable<OffsetDateTime> getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(OffsetDateTime submittedAt) {
+    public void setSubmittedAt(JsonNullable<OffsetDateTime> submittedAt) {
         this.submittedAt = submittedAt;
     }
 
     public WebhooksReview updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -352,16 +353,16 @@ public class WebhooksReview {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public WebhooksReview user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -373,11 +374,11 @@ public class WebhooksReview {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 
@@ -400,8 +401,13 @@ public class WebhooksReview {
                 && Objects.equals(this.pullRequestUrl, webhooksReview.pullRequestUrl)
                 && Objects.equals(this.state, webhooksReview.state)
                 && Objects.equals(this.submittedAt, webhooksReview.submittedAt)
-                && Objects.equals(this.updatedAt, webhooksReview.updatedAt)
+                && equalsNullable(this.updatedAt, webhooksReview.updatedAt)
                 && Objects.equals(this.user, webhooksReview.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -417,8 +423,15 @@ public class WebhooksReview {
                 pullRequestUrl,
                 state,
                 submittedAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

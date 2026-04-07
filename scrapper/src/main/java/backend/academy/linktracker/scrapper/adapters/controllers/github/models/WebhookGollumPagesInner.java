@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookGollumPagesInner
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_gollum_pages_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookGollumPagesInner {
 
@@ -65,7 +65,7 @@ public class WebhookGollumPagesInner {
 
     private String sha;
 
-    private String summary = null;
+    private JsonNullable<String> summary = JsonNullable.<String>undefined();
 
     private String title;
 
@@ -82,7 +82,7 @@ public class WebhookGollumPagesInner {
         this.htmlUrl = htmlUrl;
         this.pageName = pageName;
         this.sha = sha;
-        this.summary = summary;
+        this.summary = JsonNullable.of(summary);
         this.title = title;
     }
 
@@ -177,7 +177,7 @@ public class WebhookGollumPagesInner {
     }
 
     public WebhookGollumPagesInner summary(String summary) {
-        this.summary = summary;
+        this.summary = JsonNullable.of(summary);
         return this;
     }
 
@@ -188,11 +188,11 @@ public class WebhookGollumPagesInner {
     @NotNull
     @Schema(name = "summary", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("summary")
-    public String getSummary() {
+    public JsonNullable<String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(JsonNullable<String> summary) {
         this.summary = summary;
     }
 

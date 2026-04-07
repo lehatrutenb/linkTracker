@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,13 +20,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("installation_account")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class InstallationAccount {
 
     private String name;
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     private String login;
 
@@ -34,7 +36,7 @@ public class InstallationAccount {
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -62,21 +64,21 @@ public class InstallationAccount {
 
     private Boolean siteAdmin;
 
-    private String starredAt;
+    private Optional<String> starredAt = Optional.empty();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private URI websiteUrl = null;
+    private JsonNullable<URI> websiteUrl = JsonNullable.<URI>undefined();
 
     private String slug;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public InstallationAccount() {
         super();
@@ -113,7 +115,7 @@ public class InstallationAccount {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -128,8 +130,8 @@ public class InstallationAccount {
         this.type = type;
         this.siteAdmin = siteAdmin;
         this.slug = slug;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public InstallationAccount name(String name) {
@@ -157,7 +159,7 @@ public class InstallationAccount {
     }
 
     public InstallationAccount email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -167,11 +169,11 @@ public class InstallationAccount {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -261,7 +263,7 @@ public class InstallationAccount {
     }
 
     public InstallationAccount gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -275,11 +277,11 @@ public class InstallationAccount {
             example = "41d064eb2195891e12d0413f63227ea7",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -581,7 +583,7 @@ public class InstallationAccount {
     }
 
     public InstallationAccount starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
 
@@ -591,16 +593,16 @@ public class InstallationAccount {
      */
     @Schema(name = "starred_at", example = "\"2020-07-09T00:17:55Z\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public Optional<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(Optional<String> starredAt) {
         this.starredAt = starredAt;
     }
 
     public InstallationAccount userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -610,16 +612,16 @@ public class InstallationAccount {
      */
     @Schema(name = "user_view_type", example = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
     public InstallationAccount description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -632,16 +634,16 @@ public class InstallationAccount {
             description = "A short description of the enterprise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public InstallationAccount websiteUrl(URI websiteUrl) {
-        this.websiteUrl = websiteUrl;
+        this.websiteUrl = JsonNullable.of(websiteUrl);
         return this;
     }
 
@@ -655,11 +657,11 @@ public class InstallationAccount {
             description = "The enterprise's website URL.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("website_url")
-    public URI getWebsiteUrl() {
+    public JsonNullable<URI> getWebsiteUrl() {
         return websiteUrl;
     }
 
-    public void setWebsiteUrl(URI websiteUrl) {
+    public void setWebsiteUrl(JsonNullable<URI> websiteUrl) {
         this.websiteUrl = websiteUrl;
     }
 
@@ -688,7 +690,7 @@ public class InstallationAccount {
     }
 
     public InstallationAccount createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -700,16 +702,16 @@ public class InstallationAccount {
     @Valid
     @Schema(name = "created_at", example = "2019-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public InstallationAccount updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -721,11 +723,11 @@ public class InstallationAccount {
     @Valid
     @Schema(name = "updated_at", example = "2019-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -739,7 +741,7 @@ public class InstallationAccount {
         }
         InstallationAccount installationAccount = (InstallationAccount) o;
         return Objects.equals(this.name, installationAccount.name)
-                && Objects.equals(this.email, installationAccount.email)
+                && equalsNullable(this.email, installationAccount.email)
                 && Objects.equals(this.login, installationAccount.login)
                 && Objects.equals(this.id, installationAccount.id)
                 && Objects.equals(this.nodeId, installationAccount.nodeId)
@@ -760,18 +762,23 @@ public class InstallationAccount {
                 && Objects.equals(this.siteAdmin, installationAccount.siteAdmin)
                 && Objects.equals(this.starredAt, installationAccount.starredAt)
                 && Objects.equals(this.userViewType, installationAccount.userViewType)
-                && Objects.equals(this.description, installationAccount.description)
-                && Objects.equals(this.websiteUrl, installationAccount.websiteUrl)
+                && equalsNullable(this.description, installationAccount.description)
+                && equalsNullable(this.websiteUrl, installationAccount.websiteUrl)
                 && Objects.equals(this.slug, installationAccount.slug)
                 && Objects.equals(this.createdAt, installationAccount.createdAt)
                 && Objects.equals(this.updatedAt, installationAccount.updatedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 name,
-                email,
+                hashCodeNullable(email),
                 login,
                 id,
                 nodeId,
@@ -792,11 +799,18 @@ public class InstallationAccount {
                 siteAdmin,
                 starredAt,
                 userViewType,
-                description,
-                websiteUrl,
+                hashCodeNullable(description),
+                hashCodeNullable(websiteUrl),
                 slug,
                 createdAt,
                 updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

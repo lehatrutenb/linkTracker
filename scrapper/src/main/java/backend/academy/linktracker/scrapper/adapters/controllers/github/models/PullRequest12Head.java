@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PullRequest12Head
@@ -15,19 +15,19 @@ import java.util.Objects;
 @JsonTypeName("Pull_Request_12_head")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequest12Head {
 
-    private String label = null;
+    private JsonNullable<String> label = JsonNullable.<String>undefined();
 
     private String ref;
 
-    private Repository15 repo = null;
+    private JsonNullable<Repository15> repo = JsonNullable.<Repository15>undefined();
 
     private String sha;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public PullRequest12Head() {
         super();
@@ -37,15 +37,15 @@ public class PullRequest12Head {
      * Constructor with only required parameters
      */
     public PullRequest12Head(String label, String ref, Repository15 repo, String sha, User1 user) {
-        this.label = label;
+        this.label = JsonNullable.of(label);
         this.ref = ref;
-        this.repo = repo;
+        this.repo = JsonNullable.of(repo);
         this.sha = sha;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public PullRequest12Head label(String label) {
-        this.label = label;
+        this.label = JsonNullable.of(label);
         return this;
     }
 
@@ -56,11 +56,11 @@ public class PullRequest12Head {
     @NotNull
     @Schema(name = "label", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("label")
-    public String getLabel() {
+    public JsonNullable<String> getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(JsonNullable<String> label) {
         this.label = label;
     }
 
@@ -85,7 +85,7 @@ public class PullRequest12Head {
     }
 
     public PullRequest12Head repo(Repository15 repo) {
-        this.repo = repo;
+        this.repo = JsonNullable.of(repo);
         return this;
     }
 
@@ -97,11 +97,11 @@ public class PullRequest12Head {
     @Valid
     @Schema(name = "repo", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repo")
-    public Repository15 getRepo() {
+    public JsonNullable<Repository15> getRepo() {
         return repo;
     }
 
-    public void setRepo(Repository15 repo) {
+    public void setRepo(JsonNullable<Repository15> repo) {
         this.repo = repo;
     }
 
@@ -126,7 +126,7 @@ public class PullRequest12Head {
     }
 
     public PullRequest12Head user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -138,11 +138,11 @@ public class PullRequest12Head {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

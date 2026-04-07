@@ -8,13 +8,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * OrgsCreateArtifactDeploymentRecordRequest
@@ -22,7 +19,7 @@ import java.util.Set;
 @JsonTypeName("orgs_create_artifact_deployment_record_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsCreateArtifactDeploymentRecordRequest {
 
@@ -30,7 +27,7 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
 
     private String digest;
 
-    private String version;
+    private Optional<@Size(min = 1, max = 100) String> version = Optional.empty();
 
     /**
      * The status of the artifact. Can be either deployed or decommissioned.
@@ -71,9 +68,9 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
 
     private String logicalEnvironment;
 
-    private String physicalEnvironment;
+    private Optional<@Size(max = 128) String> physicalEnvironment = Optional.empty();
 
-    private String cluster;
+    private Optional<@Size(max = 128) String> cluster = Optional.empty();
 
     private String deploymentName;
 
@@ -122,7 +119,8 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
     @Valid
     private Set<RuntimeRisksEnum> runtimeRisks = new LinkedHashSet<>();
 
-    private String githubRepository;
+    private Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(min = 1, max = 100) String> githubRepository =
+            Optional.empty();
 
     public OrgsCreateArtifactDeploymentRecordRequest() {
         super();
@@ -191,7 +189,7 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
     }
 
     public OrgsCreateArtifactDeploymentRecordRequest version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -199,18 +197,17 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
      * The artifact version.
      * @return version
      */
-    @Size(min = 1, max = 100)
     @Schema(
             name = "version",
             example = "1.2.3",
             description = "The artifact version.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<@Size(min = 1, max = 100) String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 
@@ -262,7 +259,7 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
     }
 
     public OrgsCreateArtifactDeploymentRecordRequest physicalEnvironment(String physicalEnvironment) {
-        this.physicalEnvironment = physicalEnvironment;
+        this.physicalEnvironment = Optional.ofNullable(physicalEnvironment);
         return this;
     }
 
@@ -270,22 +267,21 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
      * The physical region of the deployment.
      * @return physicalEnvironment
      */
-    @Size(max = 128)
     @Schema(
             name = "physical_environment",
             description = "The physical region of the deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("physical_environment")
-    public String getPhysicalEnvironment() {
+    public Optional<@Size(max = 128) String> getPhysicalEnvironment() {
         return physicalEnvironment;
     }
 
-    public void setPhysicalEnvironment(String physicalEnvironment) {
+    public void setPhysicalEnvironment(Optional<String> physicalEnvironment) {
         this.physicalEnvironment = physicalEnvironment;
     }
 
     public OrgsCreateArtifactDeploymentRecordRequest cluster(String cluster) {
-        this.cluster = cluster;
+        this.cluster = Optional.ofNullable(cluster);
         return this;
     }
 
@@ -293,14 +289,13 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
      * The deployment cluster.
      * @return cluster
      */
-    @Size(max = 128)
     @Schema(name = "cluster", description = "The deployment cluster.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cluster")
-    public String getCluster() {
+    public Optional<@Size(max = 128) String> getCluster() {
         return cluster;
     }
 
-    public void setCluster(String cluster) {
+    public void setCluster(Optional<String> cluster) {
         this.cluster = cluster;
     }
 
@@ -393,7 +388,7 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
     }
 
     public OrgsCreateArtifactDeploymentRecordRequest githubRepository(String githubRepository) {
-        this.githubRepository = githubRepository;
+        this.githubRepository = Optional.ofNullable(githubRepository);
         return this;
     }
 
@@ -401,8 +396,6 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
      * The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.
      * @return githubRepository
      */
-    @Pattern(regexp = "^[A-Za-z0-9.\\-_]+$")
-    @Size(min = 1, max = 100)
     @Schema(
             name = "github_repository",
             example = "my-github-repo",
@@ -410,11 +403,11 @@ public class OrgsCreateArtifactDeploymentRecordRequest {
                     "The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("github_repository")
-    public String getGithubRepository() {
+    public Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(min = 1, max = 100) String> getGithubRepository() {
         return githubRepository;
     }
 
-    public void setGithubRepository(String githubRepository) {
+    public void setGithubRepository(Optional<String> githubRepository) {
         this.githubRepository = githubRepository;
     }
 

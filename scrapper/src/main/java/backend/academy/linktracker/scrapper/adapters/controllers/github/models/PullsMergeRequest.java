@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsMergeRequest
@@ -16,15 +15,15 @@ import java.util.Objects;
 @JsonTypeName("pulls_merge_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsMergeRequest {
 
-    private String commitTitle;
+    private Optional<String> commitTitle = Optional.empty();
 
-    private String commitMessage;
+    private Optional<String> commitMessage = Optional.empty();
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
     /**
      * The merge method to use.
@@ -63,10 +62,10 @@ public class PullsMergeRequest {
         }
     }
 
-    private MergeMethodEnum mergeMethod;
+    private Optional<MergeMethodEnum> mergeMethod = Optional.empty();
 
     public PullsMergeRequest commitTitle(String commitTitle) {
-        this.commitTitle = commitTitle;
+        this.commitTitle = Optional.ofNullable(commitTitle);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class PullsMergeRequest {
             description = "Title for the automatic commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_title")
-    public String getCommitTitle() {
+    public Optional<String> getCommitTitle() {
         return commitTitle;
     }
 
-    public void setCommitTitle(String commitTitle) {
+    public void setCommitTitle(Optional<String> commitTitle) {
         this.commitTitle = commitTitle;
     }
 
     public PullsMergeRequest commitMessage(String commitMessage) {
-        this.commitMessage = commitMessage;
+        this.commitMessage = Optional.ofNullable(commitMessage);
         return this;
     }
 
@@ -101,16 +100,16 @@ public class PullsMergeRequest {
             description = "Extra detail to append to automatic commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_message")
-    public String getCommitMessage() {
+    public Optional<String> getCommitMessage() {
         return commitMessage;
     }
 
-    public void setCommitMessage(String commitMessage) {
+    public void setCommitMessage(Optional<String> commitMessage) {
         this.commitMessage = commitMessage;
     }
 
     public PullsMergeRequest sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -123,16 +122,16 @@ public class PullsMergeRequest {
             description = "SHA that pull request head must match to allow merge.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 
     public PullsMergeRequest mergeMethod(MergeMethodEnum mergeMethod) {
-        this.mergeMethod = mergeMethod;
+        this.mergeMethod = Optional.ofNullable(mergeMethod);
         return this;
     }
 
@@ -145,11 +144,11 @@ public class PullsMergeRequest {
             description = "The merge method to use.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_method")
-    public MergeMethodEnum getMergeMethod() {
+    public Optional<MergeMethodEnum> getMergeMethod() {
         return mergeMethod;
     }
 
-    public void setMergeMethod(MergeMethodEnum mergeMethod) {
+    public void setMergeMethod(Optional<MergeMethodEnum> mergeMethod) {
         this.mergeMethod = mergeMethod;
     }
 

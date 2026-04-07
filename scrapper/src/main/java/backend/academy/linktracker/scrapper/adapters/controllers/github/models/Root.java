@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Root
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("root")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Root {
 
@@ -70,7 +70,7 @@ public class Root {
 
     private String starredGistsUrl;
 
-    private String topicSearchUrl;
+    private Optional<String> topicSearchUrl = Optional.empty();
 
     private String userUrl;
 
@@ -671,7 +671,7 @@ public class Root {
     }
 
     public Root topicSearchUrl(String topicSearchUrl) {
-        this.topicSearchUrl = topicSearchUrl;
+        this.topicSearchUrl = Optional.ofNullable(topicSearchUrl);
         return this;
     }
 
@@ -681,11 +681,11 @@ public class Root {
      */
     @Schema(name = "topic_search_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("topic_search_url")
-    public String getTopicSearchUrl() {
+    public Optional<String> getTopicSearchUrl() {
         return topicSearchUrl;
     }
 
-    public void setTopicSearchUrl(String topicSearchUrl) {
+    public void setTopicSearchUrl(Optional<String> topicSearchUrl) {
         this.topicSearchUrl = topicSearchUrl;
     }
 

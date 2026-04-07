@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Locked Issue Event
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("locked-issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LockedIssueEvent {
 
@@ -30,15 +30,15 @@ public class LockedIssueEvent {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
-    private String lockReason = null;
+    private JsonNullable<String> lockReason = JsonNullable.<String>undefined();
 
     public LockedIssueEvent() {
         super();
@@ -63,11 +63,11 @@ public class LockedIssueEvent {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
-        this.lockReason = lockReason;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
+        this.lockReason = JsonNullable.of(lockReason);
     }
 
     public LockedIssueEvent id(Long id) {
@@ -172,7 +172,7 @@ public class LockedIssueEvent {
     }
 
     public LockedIssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -183,16 +183,16 @@ public class LockedIssueEvent {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public LockedIssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -203,11 +203,11 @@ public class LockedIssueEvent {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -232,7 +232,7 @@ public class LockedIssueEvent {
     }
 
     public LockedIssueEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -244,16 +244,16 @@ public class LockedIssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
     public LockedIssueEvent lockReason(String lockReason) {
-        this.lockReason = lockReason;
+        this.lockReason = JsonNullable.of(lockReason);
         return this;
     }
 
@@ -264,11 +264,11 @@ public class LockedIssueEvent {
     @NotNull
     @Schema(name = "lock_reason", example = "\"off-topic\"", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("lock_reason")
-    public String getLockReason() {
+    public JsonNullable<String> getLockReason() {
         return lockReason;
     }
 
-    public void setLockReason(String lockReason) {
+    public void setLockReason(JsonNullable<String> lockReason) {
         this.lockReason = lockReason;
     }
 

@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("hook-delivery")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HookDelivery {
 
@@ -40,16 +42,16 @@ public class HookDelivery {
 
     private String event;
 
-    private String action = null;
+    private JsonNullable<String> action = JsonNullable.<String>undefined();
 
-    private Long installationId = null;
+    private JsonNullable<Long> installationId = JsonNullable.<Long>undefined();
 
-    private Long repositoryId = null;
+    private JsonNullable<Long> repositoryId = JsonNullable.<Long>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime throttledAt = null;
+    private JsonNullable<OffsetDateTime> throttledAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     private HookDeliveryRequest request;
 
@@ -84,9 +86,9 @@ public class HookDelivery {
         this.status = status;
         this.statusCode = statusCode;
         this.event = event;
-        this.action = action;
-        this.installationId = installationId;
-        this.repositoryId = repositoryId;
+        this.action = JsonNullable.of(action);
+        this.installationId = JsonNullable.of(installationId);
+        this.repositoryId = JsonNullable.of(repositoryId);
         this.request = request;
         this.response = response;
     }
@@ -287,7 +289,7 @@ public class HookDelivery {
     }
 
     public HookDelivery action(String action) {
-        this.action = action;
+        this.action = JsonNullable.of(action);
         return this;
     }
 
@@ -302,16 +304,16 @@ public class HookDelivery {
             description = "The type of activity for the event that triggered the delivery.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("action")
-    public String getAction() {
+    public JsonNullable<String> getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(JsonNullable<String> action) {
         this.action = action;
     }
 
     public HookDelivery installationId(Long installationId) {
-        this.installationId = installationId;
+        this.installationId = JsonNullable.of(installationId);
         return this;
     }
 
@@ -326,16 +328,16 @@ public class HookDelivery {
             description = "The id of the GitHub App installation associated with this event.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("installation_id")
-    public Long getInstallationId() {
+    public JsonNullable<Long> getInstallationId() {
         return installationId;
     }
 
-    public void setInstallationId(Long installationId) {
+    public void setInstallationId(JsonNullable<Long> installationId) {
         this.installationId = installationId;
     }
 
     public HookDelivery repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = JsonNullable.of(repositoryId);
         return this;
     }
 
@@ -350,16 +352,16 @@ public class HookDelivery {
             description = "The id of the repository associated with this event.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public JsonNullable<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(JsonNullable<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public HookDelivery throttledAt(OffsetDateTime throttledAt) {
-        this.throttledAt = throttledAt;
+        this.throttledAt = JsonNullable.of(throttledAt);
         return this;
     }
 
@@ -374,16 +376,16 @@ public class HookDelivery {
             description = "Time when the webhook delivery was throttled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("throttled_at")
-    public OffsetDateTime getThrottledAt() {
+    public JsonNullable<OffsetDateTime> getThrottledAt() {
         return throttledAt;
     }
 
-    public void setThrottledAt(OffsetDateTime throttledAt) {
+    public void setThrottledAt(JsonNullable<OffsetDateTime> throttledAt) {
         this.throttledAt = throttledAt;
     }
 
     public HookDelivery url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -397,11 +399,11 @@ public class HookDelivery {
             description = "The URL target of the delivery.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
@@ -467,10 +469,15 @@ public class HookDelivery {
                 && Objects.equals(this.action, hookDelivery.action)
                 && Objects.equals(this.installationId, hookDelivery.installationId)
                 && Objects.equals(this.repositoryId, hookDelivery.repositoryId)
-                && Objects.equals(this.throttledAt, hookDelivery.throttledAt)
+                && equalsNullable(this.throttledAt, hookDelivery.throttledAt)
                 && Objects.equals(this.url, hookDelivery.url)
                 && Objects.equals(this.request, hookDelivery.request)
                 && Objects.equals(this.response, hookDelivery.response);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -487,10 +494,17 @@ public class HookDelivery {
                 action,
                 installationId,
                 repositoryId,
-                throttledAt,
+                hashCodeNullable(throttledAt),
                 url,
                 request,
                 response);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,24 +20,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("copilot-usage-metrics-day")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotUsageMetricsDay {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
-    private Long totalActiveUsers;
+    private Optional<Long> totalActiveUsers = Optional.empty();
 
-    private Long totalEngagedUsers;
+    private Optional<Long> totalEngagedUsers = Optional.empty();
 
-    private CopilotIdeCodeCompletions copilotIdeCodeCompletions = null;
+    private JsonNullable<CopilotIdeCodeCompletions> copilotIdeCodeCompletions =
+            JsonNullable.<CopilotIdeCodeCompletions>undefined();
 
-    private CopilotIdeChat copilotIdeChat = null;
+    private JsonNullable<CopilotIdeChat> copilotIdeChat = JsonNullable.<CopilotIdeChat>undefined();
 
-    private CopilotDotcomChat copilotDotcomChat = null;
+    private JsonNullable<CopilotDotcomChat> copilotDotcomChat = JsonNullable.<CopilotDotcomChat>undefined();
 
-    private CopilotDotcomPullRequests copilotDotcomPullRequests = null;
+    private JsonNullable<CopilotDotcomPullRequests> copilotDotcomPullRequests =
+            JsonNullable.<CopilotDotcomPullRequests>undefined();
 
     public CopilotUsageMetricsDay() {
         super();
@@ -77,7 +77,7 @@ public class CopilotUsageMetricsDay {
     }
 
     public CopilotUsageMetricsDay totalActiveUsers(Long totalActiveUsers) {
-        this.totalActiveUsers = totalActiveUsers;
+        this.totalActiveUsers = Optional.ofNullable(totalActiveUsers);
         return this;
     }
 
@@ -91,16 +91,16 @@ public class CopilotUsageMetricsDay {
                     "The total number of Copilot users with activity belonging to any Copilot feature, globally, for the given day. Includes passive activity such as receiving a code suggestion, as well as engagement activity such as accepting a code suggestion or prompting chat. Does not include authentication events. Is not limited to the individual features detailed on the endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_active_users")
-    public Long getTotalActiveUsers() {
+    public Optional<Long> getTotalActiveUsers() {
         return totalActiveUsers;
     }
 
-    public void setTotalActiveUsers(Long totalActiveUsers) {
+    public void setTotalActiveUsers(Optional<Long> totalActiveUsers) {
         this.totalActiveUsers = totalActiveUsers;
     }
 
     public CopilotUsageMetricsDay totalEngagedUsers(Long totalEngagedUsers) {
-        this.totalEngagedUsers = totalEngagedUsers;
+        this.totalEngagedUsers = Optional.ofNullable(totalEngagedUsers);
         return this;
     }
 
@@ -114,16 +114,16 @@ public class CopilotUsageMetricsDay {
                     "The total number of Copilot users who engaged with any Copilot feature, for the given day. Examples include but are not limited to accepting a code suggestion, prompting Copilot chat, or triggering a PR Summary. Does not include authentication events. Is not limited to the individual features detailed on the endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_engaged_users")
-    public Long getTotalEngagedUsers() {
+    public Optional<Long> getTotalEngagedUsers() {
         return totalEngagedUsers;
     }
 
-    public void setTotalEngagedUsers(Long totalEngagedUsers) {
+    public void setTotalEngagedUsers(Optional<Long> totalEngagedUsers) {
         this.totalEngagedUsers = totalEngagedUsers;
     }
 
     public CopilotUsageMetricsDay copilotIdeCodeCompletions(CopilotIdeCodeCompletions copilotIdeCodeCompletions) {
-        this.copilotIdeCodeCompletions = copilotIdeCodeCompletions;
+        this.copilotIdeCodeCompletions = JsonNullable.of(copilotIdeCodeCompletions);
         return this;
     }
 
@@ -134,16 +134,16 @@ public class CopilotUsageMetricsDay {
     @Valid
     @Schema(name = "copilot_ide_code_completions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("copilot_ide_code_completions")
-    public CopilotIdeCodeCompletions getCopilotIdeCodeCompletions() {
+    public JsonNullable<CopilotIdeCodeCompletions> getCopilotIdeCodeCompletions() {
         return copilotIdeCodeCompletions;
     }
 
-    public void setCopilotIdeCodeCompletions(CopilotIdeCodeCompletions copilotIdeCodeCompletions) {
+    public void setCopilotIdeCodeCompletions(JsonNullable<CopilotIdeCodeCompletions> copilotIdeCodeCompletions) {
         this.copilotIdeCodeCompletions = copilotIdeCodeCompletions;
     }
 
     public CopilotUsageMetricsDay copilotIdeChat(CopilotIdeChat copilotIdeChat) {
-        this.copilotIdeChat = copilotIdeChat;
+        this.copilotIdeChat = JsonNullable.of(copilotIdeChat);
         return this;
     }
 
@@ -154,16 +154,16 @@ public class CopilotUsageMetricsDay {
     @Valid
     @Schema(name = "copilot_ide_chat", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("copilot_ide_chat")
-    public CopilotIdeChat getCopilotIdeChat() {
+    public JsonNullable<CopilotIdeChat> getCopilotIdeChat() {
         return copilotIdeChat;
     }
 
-    public void setCopilotIdeChat(CopilotIdeChat copilotIdeChat) {
+    public void setCopilotIdeChat(JsonNullable<CopilotIdeChat> copilotIdeChat) {
         this.copilotIdeChat = copilotIdeChat;
     }
 
     public CopilotUsageMetricsDay copilotDotcomChat(CopilotDotcomChat copilotDotcomChat) {
-        this.copilotDotcomChat = copilotDotcomChat;
+        this.copilotDotcomChat = JsonNullable.of(copilotDotcomChat);
         return this;
     }
 
@@ -174,16 +174,16 @@ public class CopilotUsageMetricsDay {
     @Valid
     @Schema(name = "copilot_dotcom_chat", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("copilot_dotcom_chat")
-    public CopilotDotcomChat getCopilotDotcomChat() {
+    public JsonNullable<CopilotDotcomChat> getCopilotDotcomChat() {
         return copilotDotcomChat;
     }
 
-    public void setCopilotDotcomChat(CopilotDotcomChat copilotDotcomChat) {
+    public void setCopilotDotcomChat(JsonNullable<CopilotDotcomChat> copilotDotcomChat) {
         this.copilotDotcomChat = copilotDotcomChat;
     }
 
     public CopilotUsageMetricsDay copilotDotcomPullRequests(CopilotDotcomPullRequests copilotDotcomPullRequests) {
-        this.copilotDotcomPullRequests = copilotDotcomPullRequests;
+        this.copilotDotcomPullRequests = JsonNullable.of(copilotDotcomPullRequests);
         return this;
     }
 
@@ -194,11 +194,11 @@ public class CopilotUsageMetricsDay {
     @Valid
     @Schema(name = "copilot_dotcom_pull_requests", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("copilot_dotcom_pull_requests")
-    public CopilotDotcomPullRequests getCopilotDotcomPullRequests() {
+    public JsonNullable<CopilotDotcomPullRequests> getCopilotDotcomPullRequests() {
         return copilotDotcomPullRequests;
     }
 
-    public void setCopilotDotcomPullRequests(CopilotDotcomPullRequests copilotDotcomPullRequests) {
+    public void setCopilotDotcomPullRequests(JsonNullable<CopilotDotcomPullRequests> copilotDotcomPullRequests) {
         this.copilotDotcomPullRequests = copilotDotcomPullRequests;
     }
     /**
@@ -251,11 +251,16 @@ public class CopilotUsageMetricsDay {
         return Objects.equals(this.date, copilotUsageMetricsDay.date)
                 && Objects.equals(this.totalActiveUsers, copilotUsageMetricsDay.totalActiveUsers)
                 && Objects.equals(this.totalEngagedUsers, copilotUsageMetricsDay.totalEngagedUsers)
-                && Objects.equals(this.copilotIdeCodeCompletions, copilotUsageMetricsDay.copilotIdeCodeCompletions)
-                && Objects.equals(this.copilotIdeChat, copilotUsageMetricsDay.copilotIdeChat)
-                && Objects.equals(this.copilotDotcomChat, copilotUsageMetricsDay.copilotDotcomChat)
-                && Objects.equals(this.copilotDotcomPullRequests, copilotUsageMetricsDay.copilotDotcomPullRequests)
+                && equalsNullable(this.copilotIdeCodeCompletions, copilotUsageMetricsDay.copilotIdeCodeCompletions)
+                && equalsNullable(this.copilotIdeChat, copilotUsageMetricsDay.copilotIdeChat)
+                && equalsNullable(this.copilotDotcomChat, copilotUsageMetricsDay.copilotDotcomChat)
+                && equalsNullable(this.copilotDotcomPullRequests, copilotUsageMetricsDay.copilotDotcomPullRequests)
                 && Objects.equals(this.additionalProperties, copilotUsageMetricsDay.additionalProperties);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -264,11 +269,18 @@ public class CopilotUsageMetricsDay {
                 date,
                 totalActiveUsers,
                 totalEngagedUsers,
-                copilotIdeCodeCompletions,
-                copilotIdeChat,
-                copilotDotcomChat,
-                copilotDotcomPullRequests,
+                hashCodeNullable(copilotIdeCodeCompletions),
+                hashCodeNullable(copilotIdeChat),
+                hashCodeNullable(copilotDotcomChat),
+                hashCodeNullable(copilotDotcomPullRequests),
                 additionalProperties);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

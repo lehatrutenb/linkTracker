@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookOrganizationMemberInvited
@@ -17,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-organization-member-invited")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookOrganizationMemberInvited {
 
@@ -56,19 +58,19 @@ public class WebhookOrganizationMemberInvited {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private WebhookOrganizationMemberInvitedInvitation invitation;
 
     private OrganizationSimpleWebhooks organization;
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
     private SimpleUser sender;
 
-    private WebhooksUser user = null;
+    private JsonNullable<WebhooksUser> user = JsonNullable.<WebhooksUser>undefined();
 
     public WebhookOrganizationMemberInvited() {
         super();
@@ -109,7 +111,7 @@ public class WebhookOrganizationMemberInvited {
     }
 
     public WebhookOrganizationMemberInvited enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -120,16 +122,16 @@ public class WebhookOrganizationMemberInvited {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookOrganizationMemberInvited installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -140,11 +142,11 @@ public class WebhookOrganizationMemberInvited {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -191,7 +193,7 @@ public class WebhookOrganizationMemberInvited {
     }
 
     public WebhookOrganizationMemberInvited repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -202,11 +204,11 @@ public class WebhookOrganizationMemberInvited {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
@@ -232,7 +234,7 @@ public class WebhookOrganizationMemberInvited {
     }
 
     public WebhookOrganizationMemberInvited user(WebhooksUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -243,11 +245,11 @@ public class WebhookOrganizationMemberInvited {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public WebhooksUser getUser() {
+    public JsonNullable<WebhooksUser> getUser() {
         return user;
     }
 
-    public void setUser(WebhooksUser user) {
+    public void setUser(JsonNullable<WebhooksUser> user) {
         this.user = user;
     }
 
@@ -267,12 +269,25 @@ public class WebhookOrganizationMemberInvited {
                 && Objects.equals(this.organization, webhookOrganizationMemberInvited.organization)
                 && Objects.equals(this.repository, webhookOrganizationMemberInvited.repository)
                 && Objects.equals(this.sender, webhookOrganizationMemberInvited.sender)
-                && Objects.equals(this.user, webhookOrganizationMemberInvited.user);
+                && equalsNullable(this.user, webhookOrganizationMemberInvited.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(action, enterprise, installation, invitation, organization, repository, sender, user);
+        return Objects.hash(
+                action, enterprise, installation, invitation, organization, repository, sender, hashCodeNullable(user));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

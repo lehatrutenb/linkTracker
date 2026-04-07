@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the label if the action was &#x60;edited&#x60;.
@@ -16,18 +15,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_label_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookLabelEditedChanges {
 
-    private WebhookLabelEditedChangesColor color;
+    private Optional<WebhookLabelEditedChangesColor> color = Optional.empty();
 
-    private WebhookLabelEditedChangesDescription description;
+    private Optional<WebhookLabelEditedChangesDescription> description = Optional.empty();
 
-    private WebhookLabelEditedChangesName name;
+    private Optional<WebhookLabelEditedChangesName> name = Optional.empty();
 
     public WebhookLabelEditedChanges color(WebhookLabelEditedChangesColor color) {
-        this.color = color;
+        this.color = Optional.ofNullable(color);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class WebhookLabelEditedChanges {
     @Valid
     @Schema(name = "color", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public WebhookLabelEditedChangesColor getColor() {
+    public Optional<WebhookLabelEditedChangesColor> getColor() {
         return color;
     }
 
-    public void setColor(WebhookLabelEditedChangesColor color) {
+    public void setColor(Optional<WebhookLabelEditedChangesColor> color) {
         this.color = color;
     }
 
     public WebhookLabelEditedChanges description(WebhookLabelEditedChangesDescription description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class WebhookLabelEditedChanges {
     @Valid
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public WebhookLabelEditedChangesDescription getDescription() {
+    public Optional<WebhookLabelEditedChangesDescription> getDescription() {
         return description;
     }
 
-    public void setDescription(WebhookLabelEditedChangesDescription description) {
+    public void setDescription(Optional<WebhookLabelEditedChangesDescription> description) {
         this.description = description;
     }
 
     public WebhookLabelEditedChanges name(WebhookLabelEditedChangesName name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -78,11 +77,11 @@ public class WebhookLabelEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookLabelEditedChangesName getName() {
+    public Optional<WebhookLabelEditedChangesName> getName() {
         return name;
     }
 
-    public void setName(WebhookLabelEditedChangesName name) {
+    public void setName(Optional<WebhookLabelEditedChangesName> name) {
         this.name = name;
     }
 

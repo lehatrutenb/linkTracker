@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,26 +19,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Event {
 
     private String id;
 
-    private String type = null;
+    private JsonNullable<String> type = JsonNullable.<String>undefined();
 
     private Actor actor;
 
     private EventRepo repo;
 
-    private Actor org;
+    private Optional<Actor> org = Optional.empty();
 
     private EventPayload payload;
 
     private Boolean _public;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     public Event() {
         super();
@@ -55,12 +56,12 @@ public class Event {
             Boolean _public,
             OffsetDateTime createdAt) {
         this.id = id;
-        this.type = type;
+        this.type = JsonNullable.of(type);
         this.actor = actor;
         this.repo = repo;
         this.payload = payload;
         this._public = _public;
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
     }
 
     public Event id(String id) {
@@ -84,7 +85,7 @@ public class Event {
     }
 
     public Event type(String type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -95,11 +96,11 @@ public class Event {
     @NotNull
     @Schema(name = "type", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public JsonNullable<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(JsonNullable<String> type) {
         this.type = type;
     }
 
@@ -146,7 +147,7 @@ public class Event {
     }
 
     public Event org(Actor org) {
-        this.org = org;
+        this.org = Optional.ofNullable(org);
         return this;
     }
 
@@ -157,11 +158,11 @@ public class Event {
     @Valid
     @Schema(name = "org", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("org")
-    public Actor getOrg() {
+    public Optional<Actor> getOrg() {
         return org;
     }
 
-    public void setOrg(Actor org) {
+    public void setOrg(Optional<Actor> org) {
         this.org = org;
     }
 
@@ -207,7 +208,7 @@ public class Event {
     }
 
     public Event createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -219,11 +220,11 @@ public class Event {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 

@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,57 +21,59 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("organization-secret-scanning-alert")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationSecretScanningAlert {
 
-    private Long number;
+    private Optional<Long> number = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
-    private URI locationsUrl;
+    private Optional<URI> locationsUrl = Optional.empty();
 
-    private SecretScanningAlertState state;
+    private Optional<SecretScanningAlertState> state = Optional.empty();
 
-    private SecretScanningAlertResolution resolution = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime resolvedAt = null;
-
-    private NullableSimpleUser resolvedBy = null;
-
-    private String secretType;
-
-    private String secretTypeDisplayName;
-
-    private String secret;
-
-    private SimpleRepository repository;
-
-    private Boolean pushProtectionBypassed = null;
-
-    private NullableSimpleUser pushProtectionBypassedBy = null;
+    private JsonNullable<SecretScanningAlertResolution> resolution =
+            JsonNullable.<SecretScanningAlertResolution>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushProtectionBypassedAt = null;
+    private JsonNullable<OffsetDateTime> resolvedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser pushProtectionBypassRequestReviewer = null;
+    private JsonNullable<NullableSimpleUser> resolvedBy = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String pushProtectionBypassRequestReviewerComment = null;
+    private Optional<String> secretType = Optional.empty();
 
-    private String pushProtectionBypassRequestComment = null;
+    private Optional<String> secretTypeDisplayName = Optional.empty();
 
-    private URI pushProtectionBypassRequestHtmlUrl = null;
+    private Optional<String> secret = Optional.empty();
 
-    private String resolutionComment = null;
+    private Optional<SimpleRepository> repository = Optional.empty();
+
+    private JsonNullable<Boolean> pushProtectionBypassed = JsonNullable.<Boolean>undefined();
+
+    private JsonNullable<NullableSimpleUser> pushProtectionBypassedBy = JsonNullable.<NullableSimpleUser>undefined();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> pushProtectionBypassedAt = JsonNullable.<OffsetDateTime>undefined();
+
+    private JsonNullable<NullableSimpleUser> pushProtectionBypassRequestReviewer =
+            JsonNullable.<NullableSimpleUser>undefined();
+
+    private JsonNullable<String> pushProtectionBypassRequestReviewerComment = JsonNullable.<String>undefined();
+
+    private JsonNullable<String> pushProtectionBypassRequestComment = JsonNullable.<String>undefined();
+
+    private JsonNullable<URI> pushProtectionBypassRequestHtmlUrl = JsonNullable.<URI>undefined();
+
+    private JsonNullable<String> resolutionComment = JsonNullable.<String>undefined();
 
     /**
      * The token status as of the latest validity check.
@@ -109,22 +112,23 @@ public class OrganizationSecretScanningAlert {
         }
     }
 
-    private ValidityEnum validity;
+    private Optional<ValidityEnum> validity = Optional.empty();
 
-    private Boolean publiclyLeaked = null;
+    private JsonNullable<Boolean> publiclyLeaked = JsonNullable.<Boolean>undefined();
 
-    private Boolean multiRepo = null;
+    private JsonNullable<Boolean> multiRepo = JsonNullable.<Boolean>undefined();
 
-    private Boolean isBase64Encoded = null;
+    private JsonNullable<Boolean> isBase64Encoded = JsonNullable.<Boolean>undefined();
 
-    private NullableSecretScanningFirstDetectedLocation firstLocationDetected = null;
+    private JsonNullable<NullableSecretScanningFirstDetectedLocation> firstLocationDetected =
+            JsonNullable.<NullableSecretScanningFirstDetectedLocation>undefined();
 
-    private Boolean hasMoreLocations;
+    private Optional<Boolean> hasMoreLocations = Optional.empty();
 
-    private NullableSimpleUser assignedTo = null;
+    private JsonNullable<NullableSimpleUser> assignedTo = JsonNullable.<NullableSimpleUser>undefined();
 
     public OrganizationSecretScanningAlert number(Long number) {
-        this.number = number;
+        this.number = Optional.ofNullable(number);
         return this;
     }
 
@@ -138,16 +142,16 @@ public class OrganizationSecretScanningAlert {
             description = "The security alert number.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("number")
-    public Long getNumber() {
+    public Optional<Long> getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(Optional<Long> number) {
         this.number = number;
     }
 
     public OrganizationSecretScanningAlert createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -162,16 +166,16 @@ public class OrganizationSecretScanningAlert {
             description = "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public OrganizationSecretScanningAlert updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -186,16 +190,16 @@ public class OrganizationSecretScanningAlert {
             description = "The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public OrganizationSecretScanningAlert url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -210,16 +214,16 @@ public class OrganizationSecretScanningAlert {
             description = "The REST API URL of the alert resource.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public OrganizationSecretScanningAlert htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -234,16 +238,16 @@ public class OrganizationSecretScanningAlert {
             description = "The GitHub URL of the alert resource.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public OrganizationSecretScanningAlert locationsUrl(URI locationsUrl) {
-        this.locationsUrl = locationsUrl;
+        this.locationsUrl = Optional.ofNullable(locationsUrl);
         return this;
     }
 
@@ -257,16 +261,16 @@ public class OrganizationSecretScanningAlert {
             description = "The REST API URL of the code locations for this alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locations_url")
-    public URI getLocationsUrl() {
+    public Optional<URI> getLocationsUrl() {
         return locationsUrl;
     }
 
-    public void setLocationsUrl(URI locationsUrl) {
+    public void setLocationsUrl(Optional<URI> locationsUrl) {
         this.locationsUrl = locationsUrl;
     }
 
     public OrganizationSecretScanningAlert state(SecretScanningAlertState state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -277,16 +281,16 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public SecretScanningAlertState getState() {
+    public Optional<SecretScanningAlertState> getState() {
         return state;
     }
 
-    public void setState(SecretScanningAlertState state) {
+    public void setState(Optional<SecretScanningAlertState> state) {
         this.state = state;
     }
 
     public OrganizationSecretScanningAlert resolution(SecretScanningAlertResolution resolution) {
-        this.resolution = resolution;
+        this.resolution = JsonNullable.of(resolution);
         return this;
     }
 
@@ -297,16 +301,16 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "resolution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution")
-    public SecretScanningAlertResolution getResolution() {
+    public JsonNullable<SecretScanningAlertResolution> getResolution() {
         return resolution;
     }
 
-    public void setResolution(SecretScanningAlertResolution resolution) {
+    public void setResolution(JsonNullable<SecretScanningAlertResolution> resolution) {
         this.resolution = resolution;
     }
 
     public OrganizationSecretScanningAlert resolvedAt(OffsetDateTime resolvedAt) {
-        this.resolvedAt = resolvedAt;
+        this.resolvedAt = JsonNullable.of(resolvedAt);
         return this;
     }
 
@@ -320,16 +324,16 @@ public class OrganizationSecretScanningAlert {
             description = "The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolved_at")
-    public OffsetDateTime getResolvedAt() {
+    public JsonNullable<OffsetDateTime> getResolvedAt() {
         return resolvedAt;
     }
 
-    public void setResolvedAt(OffsetDateTime resolvedAt) {
+    public void setResolvedAt(JsonNullable<OffsetDateTime> resolvedAt) {
         this.resolvedAt = resolvedAt;
     }
 
     public OrganizationSecretScanningAlert resolvedBy(NullableSimpleUser resolvedBy) {
-        this.resolvedBy = resolvedBy;
+        this.resolvedBy = JsonNullable.of(resolvedBy);
         return this;
     }
 
@@ -340,16 +344,16 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "resolved_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolved_by")
-    public NullableSimpleUser getResolvedBy() {
+    public JsonNullable<NullableSimpleUser> getResolvedBy() {
         return resolvedBy;
     }
 
-    public void setResolvedBy(NullableSimpleUser resolvedBy) {
+    public void setResolvedBy(JsonNullable<NullableSimpleUser> resolvedBy) {
         this.resolvedBy = resolvedBy;
     }
 
     public OrganizationSecretScanningAlert secretType(String secretType) {
-        this.secretType = secretType;
+        this.secretType = Optional.ofNullable(secretType);
         return this;
     }
 
@@ -362,16 +366,16 @@ public class OrganizationSecretScanningAlert {
             description = "The type of secret that secret scanning detected.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_type")
-    public String getSecretType() {
+    public Optional<String> getSecretType() {
         return secretType;
     }
 
-    public void setSecretType(String secretType) {
+    public void setSecretType(Optional<String> secretType) {
         this.secretType = secretType;
     }
 
     public OrganizationSecretScanningAlert secretTypeDisplayName(String secretTypeDisplayName) {
-        this.secretTypeDisplayName = secretTypeDisplayName;
+        this.secretTypeDisplayName = Optional.ofNullable(secretTypeDisplayName);
         return this;
     }
 
@@ -385,16 +389,16 @@ public class OrganizationSecretScanningAlert {
                     "User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see \"[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_type_display_name")
-    public String getSecretTypeDisplayName() {
+    public Optional<String> getSecretTypeDisplayName() {
         return secretTypeDisplayName;
     }
 
-    public void setSecretTypeDisplayName(String secretTypeDisplayName) {
+    public void setSecretTypeDisplayName(Optional<String> secretTypeDisplayName) {
         this.secretTypeDisplayName = secretTypeDisplayName;
     }
 
     public OrganizationSecretScanningAlert secret(String secret) {
-        this.secret = secret;
+        this.secret = Optional.ofNullable(secret);
         return this;
     }
 
@@ -407,16 +411,16 @@ public class OrganizationSecretScanningAlert {
             description = "The secret that was detected.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret")
-    public String getSecret() {
+    public Optional<String> getSecret() {
         return secret;
     }
 
-    public void setSecret(String secret) {
+    public void setSecret(Optional<String> secret) {
         this.secret = secret;
     }
 
     public OrganizationSecretScanningAlert repository(SimpleRepository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -427,16 +431,16 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public SimpleRepository getRepository() {
+    public Optional<SimpleRepository> getRepository() {
         return repository;
     }
 
-    public void setRepository(SimpleRepository repository) {
+    public void setRepository(Optional<SimpleRepository> repository) {
         this.repository = repository;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassed(Boolean pushProtectionBypassed) {
-        this.pushProtectionBypassed = pushProtectionBypassed;
+        this.pushProtectionBypassed = JsonNullable.of(pushProtectionBypassed);
         return this;
     }
 
@@ -449,16 +453,16 @@ public class OrganizationSecretScanningAlert {
             description = "Whether push protection was bypassed for the detected secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed")
-    public Boolean getPushProtectionBypassed() {
+    public JsonNullable<Boolean> getPushProtectionBypassed() {
         return pushProtectionBypassed;
     }
 
-    public void setPushProtectionBypassed(Boolean pushProtectionBypassed) {
+    public void setPushProtectionBypassed(JsonNullable<Boolean> pushProtectionBypassed) {
         this.pushProtectionBypassed = pushProtectionBypassed;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassedBy(NullableSimpleUser pushProtectionBypassedBy) {
-        this.pushProtectionBypassedBy = pushProtectionBypassedBy;
+        this.pushProtectionBypassedBy = JsonNullable.of(pushProtectionBypassedBy);
         return this;
     }
 
@@ -469,16 +473,16 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "push_protection_bypassed_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed_by")
-    public NullableSimpleUser getPushProtectionBypassedBy() {
+    public JsonNullable<NullableSimpleUser> getPushProtectionBypassedBy() {
         return pushProtectionBypassedBy;
     }
 
-    public void setPushProtectionBypassedBy(NullableSimpleUser pushProtectionBypassedBy) {
+    public void setPushProtectionBypassedBy(JsonNullable<NullableSimpleUser> pushProtectionBypassedBy) {
         this.pushProtectionBypassedBy = pushProtectionBypassedBy;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassedAt(OffsetDateTime pushProtectionBypassedAt) {
-        this.pushProtectionBypassedAt = pushProtectionBypassedAt;
+        this.pushProtectionBypassedAt = JsonNullable.of(pushProtectionBypassedAt);
         return this;
     }
 
@@ -492,17 +496,17 @@ public class OrganizationSecretScanningAlert {
             description = "The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed_at")
-    public OffsetDateTime getPushProtectionBypassedAt() {
+    public JsonNullable<OffsetDateTime> getPushProtectionBypassedAt() {
         return pushProtectionBypassedAt;
     }
 
-    public void setPushProtectionBypassedAt(OffsetDateTime pushProtectionBypassedAt) {
+    public void setPushProtectionBypassedAt(JsonNullable<OffsetDateTime> pushProtectionBypassedAt) {
         this.pushProtectionBypassedAt = pushProtectionBypassedAt;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassRequestReviewer(
             NullableSimpleUser pushProtectionBypassRequestReviewer) {
-        this.pushProtectionBypassRequestReviewer = pushProtectionBypassRequestReviewer;
+        this.pushProtectionBypassRequestReviewer = JsonNullable.of(pushProtectionBypassRequestReviewer);
         return this;
     }
 
@@ -513,17 +517,18 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "push_protection_bypass_request_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_reviewer")
-    public NullableSimpleUser getPushProtectionBypassRequestReviewer() {
+    public JsonNullable<NullableSimpleUser> getPushProtectionBypassRequestReviewer() {
         return pushProtectionBypassRequestReviewer;
     }
 
-    public void setPushProtectionBypassRequestReviewer(NullableSimpleUser pushProtectionBypassRequestReviewer) {
+    public void setPushProtectionBypassRequestReviewer(
+            JsonNullable<NullableSimpleUser> pushProtectionBypassRequestReviewer) {
         this.pushProtectionBypassRequestReviewer = pushProtectionBypassRequestReviewer;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassRequestReviewerComment(
             String pushProtectionBypassRequestReviewerComment) {
-        this.pushProtectionBypassRequestReviewerComment = pushProtectionBypassRequestReviewerComment;
+        this.pushProtectionBypassRequestReviewerComment = JsonNullable.of(pushProtectionBypassRequestReviewerComment);
         return this;
     }
 
@@ -536,17 +541,18 @@ public class OrganizationSecretScanningAlert {
             description = "An optional comment when reviewing a push protection bypass.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_reviewer_comment")
-    public String getPushProtectionBypassRequestReviewerComment() {
+    public JsonNullable<String> getPushProtectionBypassRequestReviewerComment() {
         return pushProtectionBypassRequestReviewerComment;
     }
 
-    public void setPushProtectionBypassRequestReviewerComment(String pushProtectionBypassRequestReviewerComment) {
+    public void setPushProtectionBypassRequestReviewerComment(
+            JsonNullable<String> pushProtectionBypassRequestReviewerComment) {
         this.pushProtectionBypassRequestReviewerComment = pushProtectionBypassRequestReviewerComment;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassRequestComment(
             String pushProtectionBypassRequestComment) {
-        this.pushProtectionBypassRequestComment = pushProtectionBypassRequestComment;
+        this.pushProtectionBypassRequestComment = JsonNullable.of(pushProtectionBypassRequestComment);
         return this;
     }
 
@@ -559,16 +565,16 @@ public class OrganizationSecretScanningAlert {
             description = "An optional comment when requesting a push protection bypass.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_comment")
-    public String getPushProtectionBypassRequestComment() {
+    public JsonNullable<String> getPushProtectionBypassRequestComment() {
         return pushProtectionBypassRequestComment;
     }
 
-    public void setPushProtectionBypassRequestComment(String pushProtectionBypassRequestComment) {
+    public void setPushProtectionBypassRequestComment(JsonNullable<String> pushProtectionBypassRequestComment) {
         this.pushProtectionBypassRequestComment = pushProtectionBypassRequestComment;
     }
 
     public OrganizationSecretScanningAlert pushProtectionBypassRequestHtmlUrl(URI pushProtectionBypassRequestHtmlUrl) {
-        this.pushProtectionBypassRequestHtmlUrl = pushProtectionBypassRequestHtmlUrl;
+        this.pushProtectionBypassRequestHtmlUrl = JsonNullable.of(pushProtectionBypassRequestHtmlUrl);
         return this;
     }
 
@@ -582,16 +588,16 @@ public class OrganizationSecretScanningAlert {
             description = "The URL to a push protection bypass request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_html_url")
-    public URI getPushProtectionBypassRequestHtmlUrl() {
+    public JsonNullable<URI> getPushProtectionBypassRequestHtmlUrl() {
         return pushProtectionBypassRequestHtmlUrl;
     }
 
-    public void setPushProtectionBypassRequestHtmlUrl(URI pushProtectionBypassRequestHtmlUrl) {
+    public void setPushProtectionBypassRequestHtmlUrl(JsonNullable<URI> pushProtectionBypassRequestHtmlUrl) {
         this.pushProtectionBypassRequestHtmlUrl = pushProtectionBypassRequestHtmlUrl;
     }
 
     public OrganizationSecretScanningAlert resolutionComment(String resolutionComment) {
-        this.resolutionComment = resolutionComment;
+        this.resolutionComment = JsonNullable.of(resolutionComment);
         return this;
     }
 
@@ -604,16 +610,16 @@ public class OrganizationSecretScanningAlert {
             description = "The comment that was optionally added when this alert was closed",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution_comment")
-    public String getResolutionComment() {
+    public JsonNullable<String> getResolutionComment() {
         return resolutionComment;
     }
 
-    public void setResolutionComment(String resolutionComment) {
+    public void setResolutionComment(JsonNullable<String> resolutionComment) {
         this.resolutionComment = resolutionComment;
     }
 
     public OrganizationSecretScanningAlert validity(ValidityEnum validity) {
-        this.validity = validity;
+        this.validity = Optional.ofNullable(validity);
         return this;
     }
 
@@ -626,16 +632,16 @@ public class OrganizationSecretScanningAlert {
             description = "The token status as of the latest validity check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("validity")
-    public ValidityEnum getValidity() {
+    public Optional<ValidityEnum> getValidity() {
         return validity;
     }
 
-    public void setValidity(ValidityEnum validity) {
+    public void setValidity(Optional<ValidityEnum> validity) {
         this.validity = validity;
     }
 
     public OrganizationSecretScanningAlert publiclyLeaked(Boolean publiclyLeaked) {
-        this.publiclyLeaked = publiclyLeaked;
+        this.publiclyLeaked = JsonNullable.of(publiclyLeaked);
         return this;
     }
 
@@ -648,16 +654,16 @@ public class OrganizationSecretScanningAlert {
             description = "Whether the secret was publicly leaked.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("publicly_leaked")
-    public Boolean getPubliclyLeaked() {
+    public JsonNullable<Boolean> getPubliclyLeaked() {
         return publiclyLeaked;
     }
 
-    public void setPubliclyLeaked(Boolean publiclyLeaked) {
+    public void setPubliclyLeaked(JsonNullable<Boolean> publiclyLeaked) {
         this.publiclyLeaked = publiclyLeaked;
     }
 
     public OrganizationSecretScanningAlert multiRepo(Boolean multiRepo) {
-        this.multiRepo = multiRepo;
+        this.multiRepo = JsonNullable.of(multiRepo);
         return this;
     }
 
@@ -671,16 +677,16 @@ public class OrganizationSecretScanningAlert {
                     "Whether the detected secret was found in multiple repositories in the same organization or enterprise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("multi_repo")
-    public Boolean getMultiRepo() {
+    public JsonNullable<Boolean> getMultiRepo() {
         return multiRepo;
     }
 
-    public void setMultiRepo(Boolean multiRepo) {
+    public void setMultiRepo(JsonNullable<Boolean> multiRepo) {
         this.multiRepo = multiRepo;
     }
 
     public OrganizationSecretScanningAlert isBase64Encoded(Boolean isBase64Encoded) {
-        this.isBase64Encoded = isBase64Encoded;
+        this.isBase64Encoded = JsonNullable.of(isBase64Encoded);
         return this;
     }
 
@@ -693,17 +699,17 @@ public class OrganizationSecretScanningAlert {
             description = "A boolean value representing whether or not alert is base64 encoded",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_base64_encoded")
-    public Boolean getIsBase64Encoded() {
+    public JsonNullable<Boolean> getIsBase64Encoded() {
         return isBase64Encoded;
     }
 
-    public void setIsBase64Encoded(Boolean isBase64Encoded) {
+    public void setIsBase64Encoded(JsonNullable<Boolean> isBase64Encoded) {
         this.isBase64Encoded = isBase64Encoded;
     }
 
     public OrganizationSecretScanningAlert firstLocationDetected(
             NullableSecretScanningFirstDetectedLocation firstLocationDetected) {
-        this.firstLocationDetected = firstLocationDetected;
+        this.firstLocationDetected = JsonNullable.of(firstLocationDetected);
         return this;
     }
 
@@ -714,16 +720,17 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "first_location_detected", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("first_location_detected")
-    public NullableSecretScanningFirstDetectedLocation getFirstLocationDetected() {
+    public JsonNullable<NullableSecretScanningFirstDetectedLocation> getFirstLocationDetected() {
         return firstLocationDetected;
     }
 
-    public void setFirstLocationDetected(NullableSecretScanningFirstDetectedLocation firstLocationDetected) {
+    public void setFirstLocationDetected(
+            JsonNullable<NullableSecretScanningFirstDetectedLocation> firstLocationDetected) {
         this.firstLocationDetected = firstLocationDetected;
     }
 
     public OrganizationSecretScanningAlert hasMoreLocations(Boolean hasMoreLocations) {
-        this.hasMoreLocations = hasMoreLocations;
+        this.hasMoreLocations = Optional.ofNullable(hasMoreLocations);
         return this;
     }
 
@@ -737,16 +744,16 @@ public class OrganizationSecretScanningAlert {
                     "A boolean value representing whether or not the token in the alert was detected in more than one location.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_more_locations")
-    public Boolean getHasMoreLocations() {
+    public Optional<Boolean> getHasMoreLocations() {
         return hasMoreLocations;
     }
 
-    public void setHasMoreLocations(Boolean hasMoreLocations) {
+    public void setHasMoreLocations(Optional<Boolean> hasMoreLocations) {
         this.hasMoreLocations = hasMoreLocations;
     }
 
     public OrganizationSecretScanningAlert assignedTo(NullableSimpleUser assignedTo) {
-        this.assignedTo = assignedTo;
+        this.assignedTo = JsonNullable.of(assignedTo);
         return this;
     }
 
@@ -757,11 +764,11 @@ public class OrganizationSecretScanningAlert {
     @Valid
     @Schema(name = "assigned_to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assigned_to")
-    public NullableSimpleUser getAssignedTo() {
+    public JsonNullable<NullableSimpleUser> getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(NullableSimpleUser assignedTo) {
+    public void setAssignedTo(JsonNullable<NullableSimpleUser> assignedTo) {
         this.assignedTo = assignedTo;
     }
 
@@ -776,43 +783,48 @@ public class OrganizationSecretScanningAlert {
         OrganizationSecretScanningAlert organizationSecretScanningAlert = (OrganizationSecretScanningAlert) o;
         return Objects.equals(this.number, organizationSecretScanningAlert.number)
                 && Objects.equals(this.createdAt, organizationSecretScanningAlert.createdAt)
-                && Objects.equals(this.updatedAt, organizationSecretScanningAlert.updatedAt)
+                && equalsNullable(this.updatedAt, organizationSecretScanningAlert.updatedAt)
                 && Objects.equals(this.url, organizationSecretScanningAlert.url)
                 && Objects.equals(this.htmlUrl, organizationSecretScanningAlert.htmlUrl)
                 && Objects.equals(this.locationsUrl, organizationSecretScanningAlert.locationsUrl)
                 && Objects.equals(this.state, organizationSecretScanningAlert.state)
-                && Objects.equals(this.resolution, organizationSecretScanningAlert.resolution)
-                && Objects.equals(this.resolvedAt, organizationSecretScanningAlert.resolvedAt)
-                && Objects.equals(this.resolvedBy, organizationSecretScanningAlert.resolvedBy)
+                && equalsNullable(this.resolution, organizationSecretScanningAlert.resolution)
+                && equalsNullable(this.resolvedAt, organizationSecretScanningAlert.resolvedAt)
+                && equalsNullable(this.resolvedBy, organizationSecretScanningAlert.resolvedBy)
                 && Objects.equals(this.secretType, organizationSecretScanningAlert.secretType)
                 && Objects.equals(this.secretTypeDisplayName, organizationSecretScanningAlert.secretTypeDisplayName)
                 && Objects.equals(this.secret, organizationSecretScanningAlert.secret)
                 && Objects.equals(this.repository, organizationSecretScanningAlert.repository)
-                && Objects.equals(this.pushProtectionBypassed, organizationSecretScanningAlert.pushProtectionBypassed)
-                && Objects.equals(
+                && equalsNullable(this.pushProtectionBypassed, organizationSecretScanningAlert.pushProtectionBypassed)
+                && equalsNullable(
                         this.pushProtectionBypassedBy, organizationSecretScanningAlert.pushProtectionBypassedBy)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassedAt, organizationSecretScanningAlert.pushProtectionBypassedAt)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestReviewer,
                         organizationSecretScanningAlert.pushProtectionBypassRequestReviewer)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestReviewerComment,
                         organizationSecretScanningAlert.pushProtectionBypassRequestReviewerComment)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestComment,
                         organizationSecretScanningAlert.pushProtectionBypassRequestComment)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestHtmlUrl,
                         organizationSecretScanningAlert.pushProtectionBypassRequestHtmlUrl)
-                && Objects.equals(this.resolutionComment, organizationSecretScanningAlert.resolutionComment)
+                && equalsNullable(this.resolutionComment, organizationSecretScanningAlert.resolutionComment)
                 && Objects.equals(this.validity, organizationSecretScanningAlert.validity)
-                && Objects.equals(this.publiclyLeaked, organizationSecretScanningAlert.publiclyLeaked)
-                && Objects.equals(this.multiRepo, organizationSecretScanningAlert.multiRepo)
-                && Objects.equals(this.isBase64Encoded, organizationSecretScanningAlert.isBase64Encoded)
-                && Objects.equals(this.firstLocationDetected, organizationSecretScanningAlert.firstLocationDetected)
+                && equalsNullable(this.publiclyLeaked, organizationSecretScanningAlert.publiclyLeaked)
+                && equalsNullable(this.multiRepo, organizationSecretScanningAlert.multiRepo)
+                && equalsNullable(this.isBase64Encoded, organizationSecretScanningAlert.isBase64Encoded)
+                && equalsNullable(this.firstLocationDetected, organizationSecretScanningAlert.firstLocationDetected)
                 && Objects.equals(this.hasMoreLocations, organizationSecretScanningAlert.hasMoreLocations)
-                && Objects.equals(this.assignedTo, organizationSecretScanningAlert.assignedTo);
+                && equalsNullable(this.assignedTo, organizationSecretScanningAlert.assignedTo);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -820,33 +832,40 @@ public class OrganizationSecretScanningAlert {
         return Objects.hash(
                 number,
                 createdAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 url,
                 htmlUrl,
                 locationsUrl,
                 state,
-                resolution,
-                resolvedAt,
-                resolvedBy,
+                hashCodeNullable(resolution),
+                hashCodeNullable(resolvedAt),
+                hashCodeNullable(resolvedBy),
                 secretType,
                 secretTypeDisplayName,
                 secret,
                 repository,
-                pushProtectionBypassed,
-                pushProtectionBypassedBy,
-                pushProtectionBypassedAt,
-                pushProtectionBypassRequestReviewer,
-                pushProtectionBypassRequestReviewerComment,
-                pushProtectionBypassRequestComment,
-                pushProtectionBypassRequestHtmlUrl,
-                resolutionComment,
+                hashCodeNullable(pushProtectionBypassed),
+                hashCodeNullable(pushProtectionBypassedBy),
+                hashCodeNullable(pushProtectionBypassedAt),
+                hashCodeNullable(pushProtectionBypassRequestReviewer),
+                hashCodeNullable(pushProtectionBypassRequestReviewerComment),
+                hashCodeNullable(pushProtectionBypassRequestComment),
+                hashCodeNullable(pushProtectionBypassRequestHtmlUrl),
+                hashCodeNullable(resolutionComment),
                 validity,
-                publiclyLeaked,
-                multiRepo,
-                isBase64Encoded,
-                firstLocationDetected,
+                hashCodeNullable(publiclyLeaked),
+                hashCodeNullable(multiRepo),
+                hashCodeNullable(isBase64Encoded),
+                hashCodeNullable(firstLocationDetected),
                 hasMoreLocations,
-                assignedTo);
+                hashCodeNullable(assignedTo));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

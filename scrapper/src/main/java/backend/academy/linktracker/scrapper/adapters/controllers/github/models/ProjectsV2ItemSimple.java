@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,19 +21,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-item-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2ItemSimple {
 
     private BigDecimal id;
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private ProjectsV2ItemSimpleContent content;
+    private Optional<ProjectsV2ItemSimpleContent> content = Optional.empty();
 
     private ProjectsV2ItemContentType contentType;
 
-    private SimpleUser creator;
+    private Optional<SimpleUser> creator = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -41,11 +42,11 @@ public class ProjectsV2ItemSimple {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime archivedAt = null;
+    private JsonNullable<OffsetDateTime> archivedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI projectUrl;
+    private Optional<URI> projectUrl = Optional.empty();
 
-    private URI itemUrl;
+    private Optional<URI> itemUrl = Optional.empty();
 
     public ProjectsV2ItemSimple() {
         super();
@@ -64,7 +65,7 @@ public class ProjectsV2ItemSimple {
         this.contentType = contentType;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
     }
 
     public ProjectsV2ItemSimple id(BigDecimal id) {
@@ -92,7 +93,7 @@ public class ProjectsV2ItemSimple {
     }
 
     public ProjectsV2ItemSimple nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -105,16 +106,16 @@ public class ProjectsV2ItemSimple {
             description = "The node ID of the project item.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public ProjectsV2ItemSimple content(ProjectsV2ItemSimpleContent content) {
-        this.content = content;
+        this.content = Optional.ofNullable(content);
         return this;
     }
 
@@ -125,11 +126,11 @@ public class ProjectsV2ItemSimple {
     @Valid
     @Schema(name = "content", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content")
-    public ProjectsV2ItemSimpleContent getContent() {
+    public Optional<ProjectsV2ItemSimpleContent> getContent() {
         return content;
     }
 
-    public void setContent(ProjectsV2ItemSimpleContent content) {
+    public void setContent(Optional<ProjectsV2ItemSimpleContent> content) {
         this.content = content;
     }
 
@@ -155,7 +156,7 @@ public class ProjectsV2ItemSimple {
     }
 
     public ProjectsV2ItemSimple creator(SimpleUser creator) {
-        this.creator = creator;
+        this.creator = Optional.ofNullable(creator);
         return this;
     }
 
@@ -166,11 +167,11 @@ public class ProjectsV2ItemSimple {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creator")
-    public SimpleUser getCreator() {
+    public Optional<SimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(SimpleUser creator) {
+    public void setCreator(Optional<SimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -225,7 +226,7 @@ public class ProjectsV2ItemSimple {
     }
 
     public ProjectsV2ItemSimple archivedAt(OffsetDateTime archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -241,16 +242,16 @@ public class ProjectsV2ItemSimple {
             description = "The time when the item was archived.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("archived_at")
-    public OffsetDateTime getArchivedAt() {
+    public JsonNullable<OffsetDateTime> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(OffsetDateTime archivedAt) {
+    public void setArchivedAt(JsonNullable<OffsetDateTime> archivedAt) {
         this.archivedAt = archivedAt;
     }
 
     public ProjectsV2ItemSimple projectUrl(URI projectUrl) {
-        this.projectUrl = projectUrl;
+        this.projectUrl = Optional.ofNullable(projectUrl);
         return this;
     }
 
@@ -264,16 +265,16 @@ public class ProjectsV2ItemSimple {
             description = "The URL of the project this item belongs to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_url")
-    public URI getProjectUrl() {
+    public Optional<URI> getProjectUrl() {
         return projectUrl;
     }
 
-    public void setProjectUrl(URI projectUrl) {
+    public void setProjectUrl(Optional<URI> projectUrl) {
         this.projectUrl = projectUrl;
     }
 
     public ProjectsV2ItemSimple itemUrl(URI itemUrl) {
-        this.itemUrl = itemUrl;
+        this.itemUrl = Optional.ofNullable(itemUrl);
         return this;
     }
 
@@ -287,11 +288,11 @@ public class ProjectsV2ItemSimple {
             description = "The URL of the item in the project.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("item_url")
-    public URI getItemUrl() {
+    public Optional<URI> getItemUrl() {
         return itemUrl;
     }
 
-    public void setItemUrl(URI itemUrl) {
+    public void setItemUrl(Optional<URI> itemUrl) {
         this.itemUrl = itemUrl;
     }
 

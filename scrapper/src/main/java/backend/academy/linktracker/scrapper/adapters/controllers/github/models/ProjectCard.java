@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,30 +20,30 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Project_Card")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectCard {
 
-    private Long afterId = null;
+    private JsonNullable<Long> afterId = JsonNullable.<Long>undefined();
 
     private Boolean archived;
 
-    private Long columnId = null;
+    private JsonNullable<Long> columnId = JsonNullable.<Long>undefined();
 
     private URI columnUrl;
 
-    private URI contentUrl;
+    private Optional<URI> contentUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private User4 creator = null;
+    private JsonNullable<User4> creator = JsonNullable.<User4>undefined();
 
     private Long id;
 
     private String nodeId;
 
-    private String note = null;
+    private JsonNullable<String> note = JsonNullable.<String>undefined();
 
     private URI projectUrl;
 
@@ -70,20 +72,20 @@ public class ProjectCard {
             OffsetDateTime updatedAt,
             URI url) {
         this.archived = archived;
-        this.columnId = columnId;
+        this.columnId = JsonNullable.of(columnId);
         this.columnUrl = columnUrl;
         this.createdAt = createdAt;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.id = id;
         this.nodeId = nodeId;
-        this.note = note;
+        this.note = JsonNullable.of(note);
         this.projectUrl = projectUrl;
         this.updatedAt = updatedAt;
         this.url = url;
     }
 
     public ProjectCard afterId(Long afterId) {
-        this.afterId = afterId;
+        this.afterId = JsonNullable.of(afterId);
         return this;
     }
 
@@ -93,11 +95,11 @@ public class ProjectCard {
      */
     @Schema(name = "after_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_id")
-    public Long getAfterId() {
+    public JsonNullable<Long> getAfterId() {
         return afterId;
     }
 
-    public void setAfterId(Long afterId) {
+    public void setAfterId(JsonNullable<Long> afterId) {
         this.afterId = afterId;
     }
 
@@ -125,7 +127,7 @@ public class ProjectCard {
     }
 
     public ProjectCard columnId(Long columnId) {
-        this.columnId = columnId;
+        this.columnId = JsonNullable.of(columnId);
         return this;
     }
 
@@ -136,11 +138,11 @@ public class ProjectCard {
     @NotNull
     @Schema(name = "column_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("column_id")
-    public Long getColumnId() {
+    public JsonNullable<Long> getColumnId() {
         return columnId;
     }
 
-    public void setColumnId(Long columnId) {
+    public void setColumnId(JsonNullable<Long> columnId) {
         this.columnId = columnId;
     }
 
@@ -166,7 +168,7 @@ public class ProjectCard {
     }
 
     public ProjectCard contentUrl(URI contentUrl) {
-        this.contentUrl = contentUrl;
+        this.contentUrl = Optional.ofNullable(contentUrl);
         return this;
     }
 
@@ -177,11 +179,11 @@ public class ProjectCard {
     @Valid
     @Schema(name = "content_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_url")
-    public URI getContentUrl() {
+    public Optional<URI> getContentUrl() {
         return contentUrl;
     }
 
-    public void setContentUrl(URI contentUrl) {
+    public void setContentUrl(Optional<URI> contentUrl) {
         this.contentUrl = contentUrl;
     }
 
@@ -207,7 +209,7 @@ public class ProjectCard {
     }
 
     public ProjectCard creator(User4 creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -219,11 +221,11 @@ public class ProjectCard {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public User4 getCreator() {
+    public JsonNullable<User4> getCreator() {
         return creator;
     }
 
-    public void setCreator(User4 creator) {
+    public void setCreator(JsonNullable<User4> creator) {
         this.creator = creator;
     }
 
@@ -268,7 +270,7 @@ public class ProjectCard {
     }
 
     public ProjectCard note(String note) {
-        this.note = note;
+        this.note = JsonNullable.of(note);
         return this;
     }
 
@@ -279,11 +281,11 @@ public class ProjectCard {
     @NotNull
     @Schema(name = "note", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("note")
-    public String getNote() {
+    public JsonNullable<String> getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(JsonNullable<String> note) {
         this.note = note;
     }
 
@@ -359,7 +361,7 @@ public class ProjectCard {
             return false;
         }
         ProjectCard projectCard = (ProjectCard) o;
-        return Objects.equals(this.afterId, projectCard.afterId)
+        return equalsNullable(this.afterId, projectCard.afterId)
                 && Objects.equals(this.archived, projectCard.archived)
                 && Objects.equals(this.columnId, projectCard.columnId)
                 && Objects.equals(this.columnUrl, projectCard.columnUrl)
@@ -374,10 +376,15 @@ public class ProjectCard {
                 && Objects.equals(this.url, projectCard.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                afterId,
+                hashCodeNullable(afterId),
                 archived,
                 columnId,
                 columnUrl,
@@ -390,6 +397,13 @@ public class ProjectCard {
                 projectUrl,
                 updatedAt,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

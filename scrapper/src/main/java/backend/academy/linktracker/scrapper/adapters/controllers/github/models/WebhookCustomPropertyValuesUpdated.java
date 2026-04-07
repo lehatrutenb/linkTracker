@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookCustomPropertyValuesUpdated
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-custom-property-values-updated")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCustomPropertyValuesUpdated {
 
@@ -58,15 +58,15 @@ public class WebhookCustomPropertyValuesUpdated {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private RepositoryWebhooks repository;
 
     private OrganizationSimpleWebhooks organization;
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     @Valid
     private List<@Valid CustomPropertyValue> newPropertyValues = new ArrayList<>();
@@ -115,7 +115,7 @@ public class WebhookCustomPropertyValuesUpdated {
     }
 
     public WebhookCustomPropertyValuesUpdated enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -126,16 +126,16 @@ public class WebhookCustomPropertyValuesUpdated {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookCustomPropertyValuesUpdated installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -146,11 +146,11 @@ public class WebhookCustomPropertyValuesUpdated {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -197,7 +197,7 @@ public class WebhookCustomPropertyValuesUpdated {
     }
 
     public WebhookCustomPropertyValuesUpdated sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -208,11 +208,11 @@ public class WebhookCustomPropertyValuesUpdated {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 

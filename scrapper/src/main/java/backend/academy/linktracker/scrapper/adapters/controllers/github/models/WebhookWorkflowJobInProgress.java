@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookWorkflowJobInProgress
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-workflow-job-in-progress")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookWorkflowJobInProgress {
 
@@ -56,11 +56,11 @@ public class WebhookWorkflowJobInProgress {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -68,7 +68,7 @@ public class WebhookWorkflowJobInProgress {
 
     private WebhookWorkflowJobInProgressWorkflowJob workflowJob;
 
-    private Deployment deployment;
+    private Optional<Deployment> deployment = Optional.empty();
 
     public WebhookWorkflowJobInProgress() {
         super();
@@ -109,7 +109,7 @@ public class WebhookWorkflowJobInProgress {
     }
 
     public WebhookWorkflowJobInProgress enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -120,16 +120,16 @@ public class WebhookWorkflowJobInProgress {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookWorkflowJobInProgress installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -140,16 +140,16 @@ public class WebhookWorkflowJobInProgress {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookWorkflowJobInProgress organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -160,11 +160,11 @@ public class WebhookWorkflowJobInProgress {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -232,7 +232,7 @@ public class WebhookWorkflowJobInProgress {
     }
 
     public WebhookWorkflowJobInProgress deployment(Deployment deployment) {
-        this.deployment = deployment;
+        this.deployment = Optional.ofNullable(deployment);
         return this;
     }
 
@@ -243,11 +243,11 @@ public class WebhookWorkflowJobInProgress {
     @Valid
     @Schema(name = "deployment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment")
-    public Deployment getDeployment() {
+    public Optional<Deployment> getDeployment() {
         return deployment;
     }
 
-    public void setDeployment(Deployment deployment) {
+    public void setDeployment(Optional<Deployment> deployment) {
         this.deployment = deployment;
     }
 

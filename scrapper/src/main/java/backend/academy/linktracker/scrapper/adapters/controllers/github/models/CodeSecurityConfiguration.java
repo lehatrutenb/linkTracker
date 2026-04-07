@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,13 +22,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-security-configuration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityConfiguration {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The type of the code security configuration.
@@ -66,9 +67,9 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private TargetTypeEnum targetType;
+    private Optional<TargetTypeEnum> targetType = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     /**
      * The enablement status of GitHub Advanced Security
@@ -109,7 +110,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private AdvancedSecurityEnum advancedSecurity;
+    private Optional<AdvancedSecurityEnum> advancedSecurity = Optional.empty();
 
     /**
      * The enablement status of Dependency Graph
@@ -148,7 +149,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private DependencyGraphEnum dependencyGraph;
+    private Optional<DependencyGraphEnum> dependencyGraph = Optional.empty();
 
     /**
      * The enablement status of Automatic dependency submission
@@ -187,10 +188,10 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private DependencyGraphAutosubmitActionEnum dependencyGraphAutosubmitAction;
+    private Optional<DependencyGraphAutosubmitActionEnum> dependencyGraphAutosubmitAction = Optional.empty();
 
-    private CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions
-            dependencyGraphAutosubmitActionOptions;
+    private Optional<CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions>
+            dependencyGraphAutosubmitActionOptions = Optional.empty();
 
     /**
      * The enablement status of Dependabot alerts
@@ -229,7 +230,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private DependabotAlertsEnum dependabotAlerts;
+    private Optional<DependabotAlertsEnum> dependabotAlerts = Optional.empty();
 
     /**
      * The enablement status of Dependabot security updates
@@ -268,7 +269,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private DependabotSecurityUpdatesEnum dependabotSecurityUpdates;
+    private Optional<DependabotSecurityUpdatesEnum> dependabotSecurityUpdates = Optional.empty();
 
     /**
      * The enablement status of Dependabot delegated alert dismissal
@@ -307,9 +308,11 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private DependabotDelegatedAlertDismissalEnum dependabotDelegatedAlertDismissal = null;
+    private JsonNullable<DependabotDelegatedAlertDismissalEnum> dependabotDelegatedAlertDismissal =
+            JsonNullable.<DependabotDelegatedAlertDismissalEnum>undefined();
 
-    private CodeSecurityConfigurationCodeScanningOptions codeScanningOptions = null;
+    private JsonNullable<CodeSecurityConfigurationCodeScanningOptions> codeScanningOptions =
+            JsonNullable.<CodeSecurityConfigurationCodeScanningOptions>undefined();
 
     /**
      * The enablement status of code scanning default setup
@@ -348,9 +351,10 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private CodeScanningDefaultSetupEnum codeScanningDefaultSetup;
+    private Optional<CodeScanningDefaultSetupEnum> codeScanningDefaultSetup = Optional.empty();
 
-    private CodeSecurityConfigurationCodeScanningDefaultSetupOptions codeScanningDefaultSetupOptions = null;
+    private JsonNullable<CodeSecurityConfigurationCodeScanningDefaultSetupOptions> codeScanningDefaultSetupOptions =
+            JsonNullable.<CodeSecurityConfigurationCodeScanningDefaultSetupOptions>undefined();
 
     /**
      * The enablement status of code scanning delegated alert dismissal
@@ -389,7 +393,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private CodeScanningDelegatedAlertDismissalEnum codeScanningDelegatedAlertDismissal;
+    private Optional<CodeScanningDelegatedAlertDismissalEnum> codeScanningDelegatedAlertDismissal = Optional.empty();
 
     /**
      * The enablement status of secret scanning
@@ -428,7 +432,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningEnum secretScanning;
+    private Optional<SecretScanningEnum> secretScanning = Optional.empty();
 
     /**
      * The enablement status of secret scanning push protection
@@ -467,7 +471,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningPushProtectionEnum secretScanningPushProtection;
+    private Optional<SecretScanningPushProtectionEnum> secretScanningPushProtection = Optional.empty();
 
     /**
      * The enablement status of secret scanning delegated bypass
@@ -506,9 +510,10 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningDelegatedBypassEnum secretScanningDelegatedBypass;
+    private Optional<SecretScanningDelegatedBypassEnum> secretScanningDelegatedBypass = Optional.empty();
 
-    private CodeSecurityConfigurationSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions;
+    private Optional<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>
+            secretScanningDelegatedBypassOptions = Optional.empty();
 
     /**
      * The enablement status of secret scanning validity checks
@@ -547,7 +552,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningValidityChecksEnum secretScanningValidityChecks;
+    private Optional<SecretScanningValidityChecksEnum> secretScanningValidityChecks = Optional.empty();
 
     /**
      * The enablement status of secret scanning non-provider patterns
@@ -586,7 +591,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningNonProviderPatternsEnum secretScanningNonProviderPatterns;
+    private Optional<SecretScanningNonProviderPatternsEnum> secretScanningNonProviderPatterns = Optional.empty();
 
     /**
      * The enablement status of Copilot secret scanning
@@ -625,7 +630,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningGenericSecretsEnum secretScanningGenericSecrets;
+    private Optional<SecretScanningGenericSecretsEnum> secretScanningGenericSecrets = Optional.empty();
 
     /**
      * The enablement status of secret scanning delegated alert dismissal
@@ -664,7 +669,8 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningDelegatedAlertDismissalEnum secretScanningDelegatedAlertDismissal;
+    private Optional<SecretScanningDelegatedAlertDismissalEnum> secretScanningDelegatedAlertDismissal =
+            Optional.empty();
 
     /**
      * The enablement status of secret scanning extended metadata
@@ -703,7 +709,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private SecretScanningExtendedMetadataEnum secretScanningExtendedMetadata;
+    private Optional<SecretScanningExtendedMetadataEnum> secretScanningExtendedMetadata = Optional.empty();
 
     /**
      * The enablement status of private vulnerability reporting
@@ -742,7 +748,7 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private PrivateVulnerabilityReportingEnum privateVulnerabilityReporting;
+    private Optional<PrivateVulnerabilityReportingEnum> privateVulnerabilityReporting = Optional.empty();
 
     /**
      * The enforcement status for a security configuration
@@ -779,20 +785,20 @@ public class CodeSecurityConfiguration {
         }
     }
 
-    private EnforcementEnum enforcement;
+    private Optional<EnforcementEnum> enforcement = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private URI htmlUrl;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<URI> htmlUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     public CodeSecurityConfiguration id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -805,16 +811,16 @@ public class CodeSecurityConfiguration {
             description = "The ID of the code security configuration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public CodeSecurityConfiguration name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -827,16 +833,16 @@ public class CodeSecurityConfiguration {
             description = "The name of the code security configuration. Must be unique within the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CodeSecurityConfiguration targetType(TargetTypeEnum targetType) {
-        this.targetType = targetType;
+        this.targetType = Optional.ofNullable(targetType);
         return this;
     }
 
@@ -849,16 +855,16 @@ public class CodeSecurityConfiguration {
             description = "The type of the code security configuration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_type")
-    public TargetTypeEnum getTargetType() {
+    public Optional<TargetTypeEnum> getTargetType() {
         return targetType;
     }
 
-    public void setTargetType(TargetTypeEnum targetType) {
+    public void setTargetType(Optional<TargetTypeEnum> targetType) {
         this.targetType = targetType;
     }
 
     public CodeSecurityConfiguration description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -871,16 +877,16 @@ public class CodeSecurityConfiguration {
             description = "A description of the code security configuration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public CodeSecurityConfiguration advancedSecurity(AdvancedSecurityEnum advancedSecurity) {
-        this.advancedSecurity = advancedSecurity;
+        this.advancedSecurity = Optional.ofNullable(advancedSecurity);
         return this;
     }
 
@@ -893,16 +899,16 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of GitHub Advanced Security",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("advanced_security")
-    public AdvancedSecurityEnum getAdvancedSecurity() {
+    public Optional<AdvancedSecurityEnum> getAdvancedSecurity() {
         return advancedSecurity;
     }
 
-    public void setAdvancedSecurity(AdvancedSecurityEnum advancedSecurity) {
+    public void setAdvancedSecurity(Optional<AdvancedSecurityEnum> advancedSecurity) {
         this.advancedSecurity = advancedSecurity;
     }
 
     public CodeSecurityConfiguration dependencyGraph(DependencyGraphEnum dependencyGraph) {
-        this.dependencyGraph = dependencyGraph;
+        this.dependencyGraph = Optional.ofNullable(dependencyGraph);
         return this;
     }
 
@@ -915,17 +921,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Dependency Graph",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_graph")
-    public DependencyGraphEnum getDependencyGraph() {
+    public Optional<DependencyGraphEnum> getDependencyGraph() {
         return dependencyGraph;
     }
 
-    public void setDependencyGraph(DependencyGraphEnum dependencyGraph) {
+    public void setDependencyGraph(Optional<DependencyGraphEnum> dependencyGraph) {
         this.dependencyGraph = dependencyGraph;
     }
 
     public CodeSecurityConfiguration dependencyGraphAutosubmitAction(
             DependencyGraphAutosubmitActionEnum dependencyGraphAutosubmitAction) {
-        this.dependencyGraphAutosubmitAction = dependencyGraphAutosubmitAction;
+        this.dependencyGraphAutosubmitAction = Optional.ofNullable(dependencyGraphAutosubmitAction);
         return this;
     }
 
@@ -938,19 +944,19 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Automatic dependency submission",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_graph_autosubmit_action")
-    public DependencyGraphAutosubmitActionEnum getDependencyGraphAutosubmitAction() {
+    public Optional<DependencyGraphAutosubmitActionEnum> getDependencyGraphAutosubmitAction() {
         return dependencyGraphAutosubmitAction;
     }
 
     public void setDependencyGraphAutosubmitAction(
-            DependencyGraphAutosubmitActionEnum dependencyGraphAutosubmitAction) {
+            Optional<DependencyGraphAutosubmitActionEnum> dependencyGraphAutosubmitAction) {
         this.dependencyGraphAutosubmitAction = dependencyGraphAutosubmitAction;
     }
 
     public CodeSecurityConfiguration dependencyGraphAutosubmitActionOptions(
             CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions
                     dependencyGraphAutosubmitActionOptions) {
-        this.dependencyGraphAutosubmitActionOptions = dependencyGraphAutosubmitActionOptions;
+        this.dependencyGraphAutosubmitActionOptions = Optional.ofNullable(dependencyGraphAutosubmitActionOptions);
         return this;
     }
 
@@ -961,19 +967,19 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "dependency_graph_autosubmit_action_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_graph_autosubmit_action_options")
-    public CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions
+    public Optional<CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions>
             getDependencyGraphAutosubmitActionOptions() {
         return dependencyGraphAutosubmitActionOptions;
     }
 
     public void setDependencyGraphAutosubmitActionOptions(
-            CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions
+            Optional<CodeSecurityUpdateEnterpriseConfigurationRequestDependencyGraphAutosubmitActionOptions>
                     dependencyGraphAutosubmitActionOptions) {
         this.dependencyGraphAutosubmitActionOptions = dependencyGraphAutosubmitActionOptions;
     }
 
     public CodeSecurityConfiguration dependabotAlerts(DependabotAlertsEnum dependabotAlerts) {
-        this.dependabotAlerts = dependabotAlerts;
+        this.dependabotAlerts = Optional.ofNullable(dependabotAlerts);
         return this;
     }
 
@@ -986,17 +992,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Dependabot alerts",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_alerts")
-    public DependabotAlertsEnum getDependabotAlerts() {
+    public Optional<DependabotAlertsEnum> getDependabotAlerts() {
         return dependabotAlerts;
     }
 
-    public void setDependabotAlerts(DependabotAlertsEnum dependabotAlerts) {
+    public void setDependabotAlerts(Optional<DependabotAlertsEnum> dependabotAlerts) {
         this.dependabotAlerts = dependabotAlerts;
     }
 
     public CodeSecurityConfiguration dependabotSecurityUpdates(
             DependabotSecurityUpdatesEnum dependabotSecurityUpdates) {
-        this.dependabotSecurityUpdates = dependabotSecurityUpdates;
+        this.dependabotSecurityUpdates = Optional.ofNullable(dependabotSecurityUpdates);
         return this;
     }
 
@@ -1009,17 +1015,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Dependabot security updates",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_security_updates")
-    public DependabotSecurityUpdatesEnum getDependabotSecurityUpdates() {
+    public Optional<DependabotSecurityUpdatesEnum> getDependabotSecurityUpdates() {
         return dependabotSecurityUpdates;
     }
 
-    public void setDependabotSecurityUpdates(DependabotSecurityUpdatesEnum dependabotSecurityUpdates) {
+    public void setDependabotSecurityUpdates(Optional<DependabotSecurityUpdatesEnum> dependabotSecurityUpdates) {
         this.dependabotSecurityUpdates = dependabotSecurityUpdates;
     }
 
     public CodeSecurityConfiguration dependabotDelegatedAlertDismissal(
             DependabotDelegatedAlertDismissalEnum dependabotDelegatedAlertDismissal) {
-        this.dependabotDelegatedAlertDismissal = dependabotDelegatedAlertDismissal;
+        this.dependabotDelegatedAlertDismissal = JsonNullable.of(dependabotDelegatedAlertDismissal);
         return this;
     }
 
@@ -1032,18 +1038,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Dependabot delegated alert dismissal",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_delegated_alert_dismissal")
-    public DependabotDelegatedAlertDismissalEnum getDependabotDelegatedAlertDismissal() {
+    public JsonNullable<DependabotDelegatedAlertDismissalEnum> getDependabotDelegatedAlertDismissal() {
         return dependabotDelegatedAlertDismissal;
     }
 
     public void setDependabotDelegatedAlertDismissal(
-            DependabotDelegatedAlertDismissalEnum dependabotDelegatedAlertDismissal) {
+            JsonNullable<DependabotDelegatedAlertDismissalEnum> dependabotDelegatedAlertDismissal) {
         this.dependabotDelegatedAlertDismissal = dependabotDelegatedAlertDismissal;
     }
 
     public CodeSecurityConfiguration codeScanningOptions(
             CodeSecurityConfigurationCodeScanningOptions codeScanningOptions) {
-        this.codeScanningOptions = codeScanningOptions;
+        this.codeScanningOptions = JsonNullable.of(codeScanningOptions);
         return this;
     }
 
@@ -1054,16 +1060,16 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "code_scanning_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_options")
-    public CodeSecurityConfigurationCodeScanningOptions getCodeScanningOptions() {
+    public JsonNullable<CodeSecurityConfigurationCodeScanningOptions> getCodeScanningOptions() {
         return codeScanningOptions;
     }
 
-    public void setCodeScanningOptions(CodeSecurityConfigurationCodeScanningOptions codeScanningOptions) {
+    public void setCodeScanningOptions(JsonNullable<CodeSecurityConfigurationCodeScanningOptions> codeScanningOptions) {
         this.codeScanningOptions = codeScanningOptions;
     }
 
     public CodeSecurityConfiguration codeScanningDefaultSetup(CodeScanningDefaultSetupEnum codeScanningDefaultSetup) {
-        this.codeScanningDefaultSetup = codeScanningDefaultSetup;
+        this.codeScanningDefaultSetup = Optional.ofNullable(codeScanningDefaultSetup);
         return this;
     }
 
@@ -1076,17 +1082,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of code scanning default setup",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_default_setup")
-    public CodeScanningDefaultSetupEnum getCodeScanningDefaultSetup() {
+    public Optional<CodeScanningDefaultSetupEnum> getCodeScanningDefaultSetup() {
         return codeScanningDefaultSetup;
     }
 
-    public void setCodeScanningDefaultSetup(CodeScanningDefaultSetupEnum codeScanningDefaultSetup) {
+    public void setCodeScanningDefaultSetup(Optional<CodeScanningDefaultSetupEnum> codeScanningDefaultSetup) {
         this.codeScanningDefaultSetup = codeScanningDefaultSetup;
     }
 
     public CodeSecurityConfiguration codeScanningDefaultSetupOptions(
             CodeSecurityConfigurationCodeScanningDefaultSetupOptions codeScanningDefaultSetupOptions) {
-        this.codeScanningDefaultSetupOptions = codeScanningDefaultSetupOptions;
+        this.codeScanningDefaultSetupOptions = JsonNullable.of(codeScanningDefaultSetupOptions);
         return this;
     }
 
@@ -1097,18 +1103,18 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "code_scanning_default_setup_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_default_setup_options")
-    public CodeSecurityConfigurationCodeScanningDefaultSetupOptions getCodeScanningDefaultSetupOptions() {
+    public JsonNullable<CodeSecurityConfigurationCodeScanningDefaultSetupOptions> getCodeScanningDefaultSetupOptions() {
         return codeScanningDefaultSetupOptions;
     }
 
     public void setCodeScanningDefaultSetupOptions(
-            CodeSecurityConfigurationCodeScanningDefaultSetupOptions codeScanningDefaultSetupOptions) {
+            JsonNullable<CodeSecurityConfigurationCodeScanningDefaultSetupOptions> codeScanningDefaultSetupOptions) {
         this.codeScanningDefaultSetupOptions = codeScanningDefaultSetupOptions;
     }
 
     public CodeSecurityConfiguration codeScanningDelegatedAlertDismissal(
             CodeScanningDelegatedAlertDismissalEnum codeScanningDelegatedAlertDismissal) {
-        this.codeScanningDelegatedAlertDismissal = codeScanningDelegatedAlertDismissal;
+        this.codeScanningDelegatedAlertDismissal = Optional.ofNullable(codeScanningDelegatedAlertDismissal);
         return this;
     }
 
@@ -1121,17 +1127,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of code scanning delegated alert dismissal",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_delegated_alert_dismissal")
-    public CodeScanningDelegatedAlertDismissalEnum getCodeScanningDelegatedAlertDismissal() {
+    public Optional<CodeScanningDelegatedAlertDismissalEnum> getCodeScanningDelegatedAlertDismissal() {
         return codeScanningDelegatedAlertDismissal;
     }
 
     public void setCodeScanningDelegatedAlertDismissal(
-            CodeScanningDelegatedAlertDismissalEnum codeScanningDelegatedAlertDismissal) {
+            Optional<CodeScanningDelegatedAlertDismissalEnum> codeScanningDelegatedAlertDismissal) {
         this.codeScanningDelegatedAlertDismissal = codeScanningDelegatedAlertDismissal;
     }
 
     public CodeSecurityConfiguration secretScanning(SecretScanningEnum secretScanning) {
-        this.secretScanning = secretScanning;
+        this.secretScanning = Optional.ofNullable(secretScanning);
         return this;
     }
 
@@ -1144,17 +1150,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning")
-    public SecretScanningEnum getSecretScanning() {
+    public Optional<SecretScanningEnum> getSecretScanning() {
         return secretScanning;
     }
 
-    public void setSecretScanning(SecretScanningEnum secretScanning) {
+    public void setSecretScanning(Optional<SecretScanningEnum> secretScanning) {
         this.secretScanning = secretScanning;
     }
 
     public CodeSecurityConfiguration secretScanningPushProtection(
             SecretScanningPushProtectionEnum secretScanningPushProtection) {
-        this.secretScanningPushProtection = secretScanningPushProtection;
+        this.secretScanningPushProtection = Optional.ofNullable(secretScanningPushProtection);
         return this;
     }
 
@@ -1167,17 +1173,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning push protection",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection")
-    public SecretScanningPushProtectionEnum getSecretScanningPushProtection() {
+    public Optional<SecretScanningPushProtectionEnum> getSecretScanningPushProtection() {
         return secretScanningPushProtection;
     }
 
-    public void setSecretScanningPushProtection(SecretScanningPushProtectionEnum secretScanningPushProtection) {
+    public void setSecretScanningPushProtection(
+            Optional<SecretScanningPushProtectionEnum> secretScanningPushProtection) {
         this.secretScanningPushProtection = secretScanningPushProtection;
     }
 
     public CodeSecurityConfiguration secretScanningDelegatedBypass(
             SecretScanningDelegatedBypassEnum secretScanningDelegatedBypass) {
-        this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
+        this.secretScanningDelegatedBypass = Optional.ofNullable(secretScanningDelegatedBypass);
         return this;
     }
 
@@ -1190,17 +1197,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning delegated bypass",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass")
-    public SecretScanningDelegatedBypassEnum getSecretScanningDelegatedBypass() {
+    public Optional<SecretScanningDelegatedBypassEnum> getSecretScanningDelegatedBypass() {
         return secretScanningDelegatedBypass;
     }
 
-    public void setSecretScanningDelegatedBypass(SecretScanningDelegatedBypassEnum secretScanningDelegatedBypass) {
+    public void setSecretScanningDelegatedBypass(
+            Optional<SecretScanningDelegatedBypassEnum> secretScanningDelegatedBypass) {
         this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
     }
 
     public CodeSecurityConfiguration secretScanningDelegatedBypassOptions(
             CodeSecurityConfigurationSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions) {
-        this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
+        this.secretScanningDelegatedBypassOptions = Optional.ofNullable(secretScanningDelegatedBypassOptions);
         return this;
     }
 
@@ -1211,18 +1219,20 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "secret_scanning_delegated_bypass_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass_options")
-    public CodeSecurityConfigurationSecretScanningDelegatedBypassOptions getSecretScanningDelegatedBypassOptions() {
+    public Optional<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>
+            getSecretScanningDelegatedBypassOptions() {
         return secretScanningDelegatedBypassOptions;
     }
 
     public void setSecretScanningDelegatedBypassOptions(
-            CodeSecurityConfigurationSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions) {
+            Optional<CodeSecurityConfigurationSecretScanningDelegatedBypassOptions>
+                    secretScanningDelegatedBypassOptions) {
         this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
     }
 
     public CodeSecurityConfiguration secretScanningValidityChecks(
             SecretScanningValidityChecksEnum secretScanningValidityChecks) {
-        this.secretScanningValidityChecks = secretScanningValidityChecks;
+        this.secretScanningValidityChecks = Optional.ofNullable(secretScanningValidityChecks);
         return this;
     }
 
@@ -1235,17 +1245,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning validity checks",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_validity_checks")
-    public SecretScanningValidityChecksEnum getSecretScanningValidityChecks() {
+    public Optional<SecretScanningValidityChecksEnum> getSecretScanningValidityChecks() {
         return secretScanningValidityChecks;
     }
 
-    public void setSecretScanningValidityChecks(SecretScanningValidityChecksEnum secretScanningValidityChecks) {
+    public void setSecretScanningValidityChecks(
+            Optional<SecretScanningValidityChecksEnum> secretScanningValidityChecks) {
         this.secretScanningValidityChecks = secretScanningValidityChecks;
     }
 
     public CodeSecurityConfiguration secretScanningNonProviderPatterns(
             SecretScanningNonProviderPatternsEnum secretScanningNonProviderPatterns) {
-        this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
+        this.secretScanningNonProviderPatterns = Optional.ofNullable(secretScanningNonProviderPatterns);
         return this;
     }
 
@@ -1258,18 +1269,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning non-provider patterns",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_non_provider_patterns")
-    public SecretScanningNonProviderPatternsEnum getSecretScanningNonProviderPatterns() {
+    public Optional<SecretScanningNonProviderPatternsEnum> getSecretScanningNonProviderPatterns() {
         return secretScanningNonProviderPatterns;
     }
 
     public void setSecretScanningNonProviderPatterns(
-            SecretScanningNonProviderPatternsEnum secretScanningNonProviderPatterns) {
+            Optional<SecretScanningNonProviderPatternsEnum> secretScanningNonProviderPatterns) {
         this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
     }
 
     public CodeSecurityConfiguration secretScanningGenericSecrets(
             SecretScanningGenericSecretsEnum secretScanningGenericSecrets) {
-        this.secretScanningGenericSecrets = secretScanningGenericSecrets;
+        this.secretScanningGenericSecrets = Optional.ofNullable(secretScanningGenericSecrets);
         return this;
     }
 
@@ -1282,17 +1293,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of Copilot secret scanning",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_generic_secrets")
-    public SecretScanningGenericSecretsEnum getSecretScanningGenericSecrets() {
+    public Optional<SecretScanningGenericSecretsEnum> getSecretScanningGenericSecrets() {
         return secretScanningGenericSecrets;
     }
 
-    public void setSecretScanningGenericSecrets(SecretScanningGenericSecretsEnum secretScanningGenericSecrets) {
+    public void setSecretScanningGenericSecrets(
+            Optional<SecretScanningGenericSecretsEnum> secretScanningGenericSecrets) {
         this.secretScanningGenericSecrets = secretScanningGenericSecrets;
     }
 
     public CodeSecurityConfiguration secretScanningDelegatedAlertDismissal(
             SecretScanningDelegatedAlertDismissalEnum secretScanningDelegatedAlertDismissal) {
-        this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
+        this.secretScanningDelegatedAlertDismissal = Optional.ofNullable(secretScanningDelegatedAlertDismissal);
         return this;
     }
 
@@ -1305,18 +1317,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning delegated alert dismissal",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_alert_dismissal")
-    public SecretScanningDelegatedAlertDismissalEnum getSecretScanningDelegatedAlertDismissal() {
+    public Optional<SecretScanningDelegatedAlertDismissalEnum> getSecretScanningDelegatedAlertDismissal() {
         return secretScanningDelegatedAlertDismissal;
     }
 
     public void setSecretScanningDelegatedAlertDismissal(
-            SecretScanningDelegatedAlertDismissalEnum secretScanningDelegatedAlertDismissal) {
+            Optional<SecretScanningDelegatedAlertDismissalEnum> secretScanningDelegatedAlertDismissal) {
         this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
     }
 
     public CodeSecurityConfiguration secretScanningExtendedMetadata(
             SecretScanningExtendedMetadataEnum secretScanningExtendedMetadata) {
-        this.secretScanningExtendedMetadata = secretScanningExtendedMetadata;
+        this.secretScanningExtendedMetadata = Optional.ofNullable(secretScanningExtendedMetadata);
         return this;
     }
 
@@ -1329,17 +1341,18 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of secret scanning extended metadata",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_extended_metadata")
-    public SecretScanningExtendedMetadataEnum getSecretScanningExtendedMetadata() {
+    public Optional<SecretScanningExtendedMetadataEnum> getSecretScanningExtendedMetadata() {
         return secretScanningExtendedMetadata;
     }
 
-    public void setSecretScanningExtendedMetadata(SecretScanningExtendedMetadataEnum secretScanningExtendedMetadata) {
+    public void setSecretScanningExtendedMetadata(
+            Optional<SecretScanningExtendedMetadataEnum> secretScanningExtendedMetadata) {
         this.secretScanningExtendedMetadata = secretScanningExtendedMetadata;
     }
 
     public CodeSecurityConfiguration privateVulnerabilityReporting(
             PrivateVulnerabilityReportingEnum privateVulnerabilityReporting) {
-        this.privateVulnerabilityReporting = privateVulnerabilityReporting;
+        this.privateVulnerabilityReporting = Optional.ofNullable(privateVulnerabilityReporting);
         return this;
     }
 
@@ -1352,16 +1365,17 @@ public class CodeSecurityConfiguration {
             description = "The enablement status of private vulnerability reporting",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private_vulnerability_reporting")
-    public PrivateVulnerabilityReportingEnum getPrivateVulnerabilityReporting() {
+    public Optional<PrivateVulnerabilityReportingEnum> getPrivateVulnerabilityReporting() {
         return privateVulnerabilityReporting;
     }
 
-    public void setPrivateVulnerabilityReporting(PrivateVulnerabilityReportingEnum privateVulnerabilityReporting) {
+    public void setPrivateVulnerabilityReporting(
+            Optional<PrivateVulnerabilityReportingEnum> privateVulnerabilityReporting) {
         this.privateVulnerabilityReporting = privateVulnerabilityReporting;
     }
 
     public CodeSecurityConfiguration enforcement(EnforcementEnum enforcement) {
-        this.enforcement = enforcement;
+        this.enforcement = Optional.ofNullable(enforcement);
         return this;
     }
 
@@ -1374,16 +1388,16 @@ public class CodeSecurityConfiguration {
             description = "The enforcement status for a security configuration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enforcement")
-    public EnforcementEnum getEnforcement() {
+    public Optional<EnforcementEnum> getEnforcement() {
         return enforcement;
     }
 
-    public void setEnforcement(EnforcementEnum enforcement) {
+    public void setEnforcement(Optional<EnforcementEnum> enforcement) {
         this.enforcement = enforcement;
     }
 
     public CodeSecurityConfiguration url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -1394,16 +1408,16 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "url", description = "The URL of the configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public CodeSecurityConfiguration htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -1417,16 +1431,16 @@ public class CodeSecurityConfiguration {
             description = "The URL of the configuration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public CodeSecurityConfiguration createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -1437,16 +1451,16 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public CodeSecurityConfiguration updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -1457,11 +1471,11 @@ public class CodeSecurityConfiguration {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -1487,12 +1501,12 @@ public class CodeSecurityConfiguration {
                         codeSecurityConfiguration.dependencyGraphAutosubmitActionOptions)
                 && Objects.equals(this.dependabotAlerts, codeSecurityConfiguration.dependabotAlerts)
                 && Objects.equals(this.dependabotSecurityUpdates, codeSecurityConfiguration.dependabotSecurityUpdates)
-                && Objects.equals(
+                && equalsNullable(
                         this.dependabotDelegatedAlertDismissal,
                         codeSecurityConfiguration.dependabotDelegatedAlertDismissal)
-                && Objects.equals(this.codeScanningOptions, codeSecurityConfiguration.codeScanningOptions)
+                && equalsNullable(this.codeScanningOptions, codeSecurityConfiguration.codeScanningOptions)
                 && Objects.equals(this.codeScanningDefaultSetup, codeSecurityConfiguration.codeScanningDefaultSetup)
-                && Objects.equals(
+                && equalsNullable(
                         this.codeScanningDefaultSetupOptions, codeSecurityConfiguration.codeScanningDefaultSetupOptions)
                 && Objects.equals(
                         this.codeScanningDelegatedAlertDismissal,
@@ -1526,6 +1540,11 @@ public class CodeSecurityConfiguration {
                 && Objects.equals(this.updatedAt, codeSecurityConfiguration.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -1539,10 +1558,10 @@ public class CodeSecurityConfiguration {
                 dependencyGraphAutosubmitActionOptions,
                 dependabotAlerts,
                 dependabotSecurityUpdates,
-                dependabotDelegatedAlertDismissal,
-                codeScanningOptions,
+                hashCodeNullable(dependabotDelegatedAlertDismissal),
+                hashCodeNullable(codeScanningOptions),
                 codeScanningDefaultSetup,
-                codeScanningDefaultSetupOptions,
+                hashCodeNullable(codeScanningDefaultSetupOptions),
                 codeScanningDelegatedAlertDismissal,
                 secretScanning,
                 secretScanningPushProtection,
@@ -1559,6 +1578,13 @@ public class CodeSecurityConfiguration {
                 htmlUrl,
                 createdAt,
                 updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

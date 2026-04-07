@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * IssuesCreateLabelRequest
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("issues_create_label_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesCreateLabelRequest {
 
     private String name;
 
-    private String color;
+    private Optional<String> color = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     public IssuesCreateLabelRequest() {
         super();
@@ -60,7 +60,7 @@ public class IssuesCreateLabelRequest {
     }
 
     public IssuesCreateLabelRequest color(String color) {
-        this.color = color;
+        this.color = Optional.ofNullable(color);
         return this;
     }
 
@@ -74,16 +74,16 @@ public class IssuesCreateLabelRequest {
                     "The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public String getColor() {
+    public Optional<String> getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Optional<String> color) {
         this.color = color;
     }
 
     public IssuesCreateLabelRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -96,11 +96,11 @@ public class IssuesCreateLabelRequest {
             description = "A short description of the label. Must be 100 characters or fewer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 

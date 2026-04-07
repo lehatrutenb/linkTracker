@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReposUpdateRequest
@@ -17,17 +18,17 @@ import java.util.Objects;
 @JsonTypeName("repos_update_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private String homepage;
+    private Optional<String> homepage = Optional.empty();
 
-    private Boolean _private = false;
+    private Optional<Boolean> _private = Optional.of(false);
 
     /**
      * The visibility of the repository.
@@ -64,34 +65,35 @@ public class ReposUpdateRequest {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysis securityAndAnalysis = null;
+    private JsonNullable<ReposUpdateRequestSecurityAndAnalysis> securityAndAnalysis =
+            JsonNullable.<ReposUpdateRequestSecurityAndAnalysis>undefined();
 
-    private Boolean hasIssues = true;
+    private Optional<Boolean> hasIssues = Optional.of(true);
 
-    private Boolean hasProjects = true;
+    private Optional<Boolean> hasProjects = Optional.of(true);
 
-    private Boolean hasWiki = true;
+    private Optional<Boolean> hasWiki = Optional.of(true);
 
-    private Boolean isTemplate = false;
+    private Optional<Boolean> isTemplate = Optional.of(false);
 
-    private String defaultBranch;
+    private Optional<String> defaultBranch = Optional.empty();
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
-    private Boolean allowUpdateBranch = false;
+    private Optional<Boolean> allowUpdateBranch = Optional.of(false);
 
     @Deprecated
-    private Boolean useSquashPrTitleAsDefault = false;
+    private Optional<Boolean> useSquashPrTitleAsDefault = Optional.of(false);
 
     /**
      * Required when using `squash_merge_commit_message`.  The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -128,7 +130,7 @@ public class ReposUpdateRequest {
         }
     }
 
-    private SquashMergeCommitTitleEnum squashMergeCommitTitle;
+    private Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
@@ -167,7 +169,7 @@ public class ReposUpdateRequest {
         }
     }
 
-    private SquashMergeCommitMessageEnum squashMergeCommitMessage;
+    private Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage = Optional.empty();
 
     /**
      * Required when using `merge_commit_message`.  The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -204,7 +206,7 @@ public class ReposUpdateRequest {
         }
     }
 
-    private MergeCommitTitleEnum mergeCommitTitle;
+    private Optional<MergeCommitTitleEnum> mergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
@@ -243,16 +245,16 @@ public class ReposUpdateRequest {
         }
     }
 
-    private MergeCommitMessageEnum mergeCommitMessage;
+    private Optional<MergeCommitMessageEnum> mergeCommitMessage = Optional.empty();
 
-    private Boolean archived = false;
+    private Optional<Boolean> archived = Optional.of(false);
 
-    private Boolean allowForking = false;
+    private Optional<Boolean> allowForking = Optional.of(false);
 
-    private Boolean webCommitSignoffRequired = false;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.of(false);
 
     public ReposUpdateRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -262,16 +264,16 @@ public class ReposUpdateRequest {
      */
     @Schema(name = "name", description = "The name of the repository.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposUpdateRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -284,16 +286,16 @@ public class ReposUpdateRequest {
             description = "A short description of the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public ReposUpdateRequest homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -306,16 +308,16 @@ public class ReposUpdateRequest {
             description = "A URL with more information about the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public Optional<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(Optional<String> homepage) {
         this.homepage = homepage;
     }
 
     public ReposUpdateRequest _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -329,16 +331,16 @@ public class ReposUpdateRequest {
                     "Either `true` to make the repository private or `false` to make it public. Default: `false`.   **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 
     public ReposUpdateRequest visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -351,16 +353,16 @@ public class ReposUpdateRequest {
             description = "The visibility of the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
     public ReposUpdateRequest securityAndAnalysis(ReposUpdateRequestSecurityAndAnalysis securityAndAnalysis) {
-        this.securityAndAnalysis = securityAndAnalysis;
+        this.securityAndAnalysis = JsonNullable.of(securityAndAnalysis);
         return this;
     }
 
@@ -371,16 +373,16 @@ public class ReposUpdateRequest {
     @Valid
     @Schema(name = "security_and_analysis", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_and_analysis")
-    public ReposUpdateRequestSecurityAndAnalysis getSecurityAndAnalysis() {
+    public JsonNullable<ReposUpdateRequestSecurityAndAnalysis> getSecurityAndAnalysis() {
         return securityAndAnalysis;
     }
 
-    public void setSecurityAndAnalysis(ReposUpdateRequestSecurityAndAnalysis securityAndAnalysis) {
+    public void setSecurityAndAnalysis(JsonNullable<ReposUpdateRequestSecurityAndAnalysis> securityAndAnalysis) {
         this.securityAndAnalysis = securityAndAnalysis;
     }
 
     public ReposUpdateRequest hasIssues(Boolean hasIssues) {
-        this.hasIssues = hasIssues;
+        this.hasIssues = Optional.ofNullable(hasIssues);
         return this;
     }
 
@@ -393,16 +395,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to enable issues for this repository or `false` to disable them.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_issues")
-    public Boolean getHasIssues() {
+    public Optional<Boolean> getHasIssues() {
         return hasIssues;
     }
 
-    public void setHasIssues(Boolean hasIssues) {
+    public void setHasIssues(Optional<Boolean> hasIssues) {
         this.hasIssues = hasIssues;
     }
 
     public ReposUpdateRequest hasProjects(Boolean hasProjects) {
-        this.hasProjects = hasProjects;
+        this.hasProjects = Optional.ofNullable(hasProjects);
         return this;
     }
 
@@ -416,16 +418,16 @@ public class ReposUpdateRequest {
                     "Either `true` to enable projects for this repository or `false` to disable them. **Note:** If you're creating a repository in an organization that has disabled repository projects, the default is `false`, and if you pass `true`, the API returns an error.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_projects")
-    public Boolean getHasProjects() {
+    public Optional<Boolean> getHasProjects() {
         return hasProjects;
     }
 
-    public void setHasProjects(Boolean hasProjects) {
+    public void setHasProjects(Optional<Boolean> hasProjects) {
         this.hasProjects = hasProjects;
     }
 
     public ReposUpdateRequest hasWiki(Boolean hasWiki) {
-        this.hasWiki = hasWiki;
+        this.hasWiki = Optional.ofNullable(hasWiki);
         return this;
     }
 
@@ -438,16 +440,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to enable the wiki for this repository or `false` to disable it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_wiki")
-    public Boolean getHasWiki() {
+    public Optional<Boolean> getHasWiki() {
         return hasWiki;
     }
 
-    public void setHasWiki(Boolean hasWiki) {
+    public void setHasWiki(Optional<Boolean> hasWiki) {
         this.hasWiki = hasWiki;
     }
 
     public ReposUpdateRequest isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -461,16 +463,16 @@ public class ReposUpdateRequest {
                     "Either `true` to make this repo available as a template repository or `false` to prevent it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
     public ReposUpdateRequest defaultBranch(String defaultBranch) {
-        this.defaultBranch = defaultBranch;
+        this.defaultBranch = Optional.ofNullable(defaultBranch);
         return this;
     }
 
@@ -483,16 +485,16 @@ public class ReposUpdateRequest {
             description = "Updates the default branch for this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch")
-    public String getDefaultBranch() {
+    public Optional<String> getDefaultBranch() {
         return defaultBranch;
     }
 
-    public void setDefaultBranch(String defaultBranch) {
+    public void setDefaultBranch(Optional<String> defaultBranch) {
         this.defaultBranch = defaultBranch;
     }
 
     public ReposUpdateRequest allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -505,16 +507,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public ReposUpdateRequest allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -528,16 +530,16 @@ public class ReposUpdateRequest {
                     "Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull requests with merge commits.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public ReposUpdateRequest allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -550,16 +552,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public ReposUpdateRequest allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -572,16 +574,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public ReposUpdateRequest deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -595,16 +597,16 @@ public class ReposUpdateRequest {
                     "Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public ReposUpdateRequest allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -618,16 +620,16 @@ public class ReposUpdateRequest {
                     "Either `true` to always allow a pull request head branch that is behind its base branch to be updated even if it is not required to be up to date before merging, or false otherwise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
     public ReposUpdateRequest useSquashPrTitleAsDefault(Boolean useSquashPrTitleAsDefault) {
-        this.useSquashPrTitleAsDefault = useSquashPrTitleAsDefault;
+        this.useSquashPrTitleAsDefault = Optional.ofNullable(useSquashPrTitleAsDefault);
         return this;
     }
 
@@ -644,7 +646,7 @@ public class ReposUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("use_squash_pr_title_as_default")
     @Deprecated
-    public Boolean getUseSquashPrTitleAsDefault() {
+    public Optional<Boolean> getUseSquashPrTitleAsDefault() {
         return useSquashPrTitleAsDefault;
     }
 
@@ -652,12 +654,12 @@ public class ReposUpdateRequest {
      * @deprecated
      */
     @Deprecated
-    public void setUseSquashPrTitleAsDefault(Boolean useSquashPrTitleAsDefault) {
+    public void setUseSquashPrTitleAsDefault(Optional<Boolean> useSquashPrTitleAsDefault) {
         this.useSquashPrTitleAsDefault = useSquashPrTitleAsDefault;
     }
 
     public ReposUpdateRequest squashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
-        this.squashMergeCommitTitle = squashMergeCommitTitle;
+        this.squashMergeCommitTitle = Optional.ofNullable(squashMergeCommitTitle);
         return this;
     }
 
@@ -671,16 +673,16 @@ public class ReposUpdateRequest {
                     "Required when using `squash_merge_commit_message`.  The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_title")
-    public SquashMergeCommitTitleEnum getSquashMergeCommitTitle() {
+    public Optional<SquashMergeCommitTitleEnum> getSquashMergeCommitTitle() {
         return squashMergeCommitTitle;
     }
 
-    public void setSquashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
+    public void setSquashMergeCommitTitle(Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle) {
         this.squashMergeCommitTitle = squashMergeCommitTitle;
     }
 
     public ReposUpdateRequest squashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
-        this.squashMergeCommitMessage = squashMergeCommitMessage;
+        this.squashMergeCommitMessage = Optional.ofNullable(squashMergeCommitMessage);
         return this;
     }
 
@@ -694,16 +696,16 @@ public class ReposUpdateRequest {
                     "The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_message")
-    public SquashMergeCommitMessageEnum getSquashMergeCommitMessage() {
+    public Optional<SquashMergeCommitMessageEnum> getSquashMergeCommitMessage() {
         return squashMergeCommitMessage;
     }
 
-    public void setSquashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
+    public void setSquashMergeCommitMessage(Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage) {
         this.squashMergeCommitMessage = squashMergeCommitMessage;
     }
 
     public ReposUpdateRequest mergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
-        this.mergeCommitTitle = mergeCommitTitle;
+        this.mergeCommitTitle = Optional.ofNullable(mergeCommitTitle);
         return this;
     }
 
@@ -717,16 +719,16 @@ public class ReposUpdateRequest {
                     "Required when using `merge_commit_message`.  The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_title")
-    public MergeCommitTitleEnum getMergeCommitTitle() {
+    public Optional<MergeCommitTitleEnum> getMergeCommitTitle() {
         return mergeCommitTitle;
     }
 
-    public void setMergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
+    public void setMergeCommitTitle(Optional<MergeCommitTitleEnum> mergeCommitTitle) {
         this.mergeCommitTitle = mergeCommitTitle;
     }
 
     public ReposUpdateRequest mergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
-        this.mergeCommitMessage = mergeCommitMessage;
+        this.mergeCommitMessage = Optional.ofNullable(mergeCommitMessage);
         return this;
     }
 
@@ -740,16 +742,16 @@ public class ReposUpdateRequest {
                     "The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_message")
-    public MergeCommitMessageEnum getMergeCommitMessage() {
+    public Optional<MergeCommitMessageEnum> getMergeCommitMessage() {
         return mergeCommitMessage;
     }
 
-    public void setMergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
+    public void setMergeCommitMessage(Optional<MergeCommitMessageEnum> mergeCommitMessage) {
         this.mergeCommitMessage = mergeCommitMessage;
     }
 
     public ReposUpdateRequest archived(Boolean archived) {
-        this.archived = archived;
+        this.archived = Optional.ofNullable(archived);
         return this;
     }
 
@@ -763,16 +765,16 @@ public class ReposUpdateRequest {
                     "Whether to archive this repository. `false` will unarchive a previously archived repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archived")
-    public Boolean getArchived() {
+    public Optional<Boolean> getArchived() {
         return archived;
     }
 
-    public void setArchived(Boolean archived) {
+    public void setArchived(Optional<Boolean> archived) {
         this.archived = archived;
     }
 
     public ReposUpdateRequest allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -785,16 +787,16 @@ public class ReposUpdateRequest {
             description = "Either `true` to allow private forks, or `false` to prevent private forks.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public ReposUpdateRequest webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -808,11 +810,11 @@ public class ReposUpdateRequest {
                     "Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
@@ -830,7 +832,7 @@ public class ReposUpdateRequest {
                 && Objects.equals(this.homepage, reposUpdateRequest.homepage)
                 && Objects.equals(this._private, reposUpdateRequest._private)
                 && Objects.equals(this.visibility, reposUpdateRequest.visibility)
-                && Objects.equals(this.securityAndAnalysis, reposUpdateRequest.securityAndAnalysis)
+                && equalsNullable(this.securityAndAnalysis, reposUpdateRequest.securityAndAnalysis)
                 && Objects.equals(this.hasIssues, reposUpdateRequest.hasIssues)
                 && Objects.equals(this.hasProjects, reposUpdateRequest.hasProjects)
                 && Objects.equals(this.hasWiki, reposUpdateRequest.hasWiki)
@@ -852,6 +854,11 @@ public class ReposUpdateRequest {
                 && Objects.equals(this.webCommitSignoffRequired, reposUpdateRequest.webCommitSignoffRequired);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -860,7 +867,7 @@ public class ReposUpdateRequest {
                 homepage,
                 _private,
                 visibility,
-                securityAndAnalysis,
+                hashCodeNullable(securityAndAnalysis),
                 hasIssues,
                 hasProjects,
                 hasWiki,
@@ -880,6 +887,13 @@ public class ReposUpdateRequest {
                 archived,
                 allowForking,
                 webCommitSignoffRequired);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

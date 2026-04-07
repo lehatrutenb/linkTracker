@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateOrUpdateFileContentsRequest
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_or_update_file_contents_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateOrUpdateFileContentsRequest {
 
@@ -23,13 +23,13 @@ public class ReposCreateOrUpdateFileContentsRequest {
 
     private String content;
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
-    private String branch;
+    private Optional<String> branch = Optional.empty();
 
-    private ReposCreateOrUpdateFileContentsRequestCommitter committer;
+    private Optional<ReposCreateOrUpdateFileContentsRequestCommitter> committer = Optional.empty();
 
-    private ReposCreateOrUpdateFileContentsRequestAuthor author;
+    private Optional<ReposCreateOrUpdateFileContentsRequestAuthor> author = Optional.empty();
 
     public ReposCreateOrUpdateFileContentsRequest() {
         super();
@@ -87,7 +87,7 @@ public class ReposCreateOrUpdateFileContentsRequest {
     }
 
     public ReposCreateOrUpdateFileContentsRequest sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -100,16 +100,16 @@ public class ReposCreateOrUpdateFileContentsRequest {
             description = "**Required if you are updating a file**. The blob SHA of the file being replaced.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 
     public ReposCreateOrUpdateFileContentsRequest branch(String branch) {
-        this.branch = branch;
+        this.branch = Optional.ofNullable(branch);
         return this;
     }
 
@@ -122,16 +122,16 @@ public class ReposCreateOrUpdateFileContentsRequest {
             description = "The branch name. Default: the repository’s default branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branch")
-    public String getBranch() {
+    public Optional<String> getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(Optional<String> branch) {
         this.branch = branch;
     }
 
     public ReposCreateOrUpdateFileContentsRequest committer(ReposCreateOrUpdateFileContentsRequestCommitter committer) {
-        this.committer = committer;
+        this.committer = Optional.ofNullable(committer);
         return this;
     }
 
@@ -142,16 +142,16 @@ public class ReposCreateOrUpdateFileContentsRequest {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("committer")
-    public ReposCreateOrUpdateFileContentsRequestCommitter getCommitter() {
+    public Optional<ReposCreateOrUpdateFileContentsRequestCommitter> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(ReposCreateOrUpdateFileContentsRequestCommitter committer) {
+    public void setCommitter(Optional<ReposCreateOrUpdateFileContentsRequestCommitter> committer) {
         this.committer = committer;
     }
 
     public ReposCreateOrUpdateFileContentsRequest author(ReposCreateOrUpdateFileContentsRequestAuthor author) {
-        this.author = author;
+        this.author = Optional.ofNullable(author);
         return this;
     }
 
@@ -162,11 +162,11 @@ public class ReposCreateOrUpdateFileContentsRequest {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public ReposCreateOrUpdateFileContentsRequestAuthor getAuthor() {
+    public Optional<ReposCreateOrUpdateFileContentsRequestAuthor> getAuthor() {
         return author;
     }
 
-    public void setAuthor(ReposCreateOrUpdateFileContentsRequestAuthor author) {
+    public void setAuthor(Optional<ReposCreateOrUpdateFileContentsRequestAuthor> author) {
         this.author = author;
     }
 

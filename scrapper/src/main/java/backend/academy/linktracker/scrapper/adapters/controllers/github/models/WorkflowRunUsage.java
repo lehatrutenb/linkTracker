@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Workflow Run Usage
@@ -16,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("workflow-run-usage")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WorkflowRunUsage {
 
     private WorkflowRunUsageBillable billable;
 
-    private Long runDurationMs;
+    private Optional<Long> runDurationMs = Optional.empty();
 
     public WorkflowRunUsage() {
         super();
@@ -57,7 +57,7 @@ public class WorkflowRunUsage {
     }
 
     public WorkflowRunUsage runDurationMs(Long runDurationMs) {
-        this.runDurationMs = runDurationMs;
+        this.runDurationMs = Optional.ofNullable(runDurationMs);
         return this;
     }
 
@@ -67,11 +67,11 @@ public class WorkflowRunUsage {
      */
     @Schema(name = "run_duration_ms", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("run_duration_ms")
-    public Long getRunDurationMs() {
+    public Optional<Long> getRunDurationMs() {
         return runDurationMs;
     }
 
-    public void setRunDurationMs(Long runDurationMs) {
+    public void setRunDurationMs(Optional<Long> runDurationMs) {
         this.runDurationMs = runDurationMs;
     }
 

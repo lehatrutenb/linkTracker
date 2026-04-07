@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Information about repositories that Dependabot is able to access in an organization
@@ -22,7 +22,7 @@ import java.util.Objects;
 @JsonTypeName("dependabot-repository-access-details")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotRepositoryAccessDetails {
 
@@ -61,13 +61,13 @@ public class DependabotRepositoryAccessDetails {
         }
     }
 
-    private DefaultLevelEnum defaultLevel = null;
+    private JsonNullable<DefaultLevelEnum> defaultLevel = JsonNullable.<DefaultLevelEnum>undefined();
 
     @Valid
     private List<@Valid NullableSimpleRepository> accessibleRepositories = new ArrayList<>();
 
     public DependabotRepositoryAccessDetails defaultLevel(DefaultLevelEnum defaultLevel) {
-        this.defaultLevel = defaultLevel;
+        this.defaultLevel = JsonNullable.of(defaultLevel);
         return this;
     }
 
@@ -81,11 +81,11 @@ public class DependabotRepositoryAccessDetails {
             description = "The default repository access level for Dependabot updates.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_level")
-    public DefaultLevelEnum getDefaultLevel() {
+    public JsonNullable<DefaultLevelEnum> getDefaultLevel() {
         return defaultLevel;
     }
 
-    public void setDefaultLevel(DefaultLevelEnum defaultLevel) {
+    public void setDefaultLevel(JsonNullable<DefaultLevelEnum> defaultLevel) {
         this.defaultLevel = defaultLevel;
     }
 
@@ -128,14 +128,26 @@ public class DependabotRepositoryAccessDetails {
             return false;
         }
         DependabotRepositoryAccessDetails dependabotRepositoryAccessDetails = (DependabotRepositoryAccessDetails) o;
-        return Objects.equals(this.defaultLevel, dependabotRepositoryAccessDetails.defaultLevel)
+        return equalsNullable(this.defaultLevel, dependabotRepositoryAccessDetails.defaultLevel)
                 && Objects.equals(
                         this.accessibleRepositories, dependabotRepositoryAccessDetails.accessibleRepositories);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(defaultLevel, accessibleRepositories);
+        return Objects.hash(hashCodeNullable(defaultLevel), accessibleRepositories);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

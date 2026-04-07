@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-draft-issue")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
 
@@ -30,9 +32,9 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
 
     private String title;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -40,15 +42,15 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private NullableSimpleUser closedBy = null;
+    private JsonNullable<NullableSimpleUser> closedBy = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private Repository repository;
+    private Optional<Repository> repository = Optional.empty();
 
-    private URI parentIssueUrl = null;
+    private JsonNullable<URI> parentIssueUrl = JsonNullable.<URI>undefined();
 
     public ProjectsV2DraftIssue() {
         super();
@@ -67,7 +69,7 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
         this.id = id;
         this.nodeId = nodeId;
         this.title = title;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -137,7 +139,7 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     }
 
     public ProjectsV2DraftIssue body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -150,16 +152,16 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
             description = "The body content of the draft issue",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public ProjectsV2DraftIssue user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -171,11 +173,11 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
@@ -228,7 +230,7 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     }
 
     public ProjectsV2DraftIssue closedBy(NullableSimpleUser closedBy) {
-        this.closedBy = closedBy;
+        this.closedBy = JsonNullable.of(closedBy);
         return this;
     }
 
@@ -239,16 +241,16 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "closed_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_by")
-    public NullableSimpleUser getClosedBy() {
+    public JsonNullable<NullableSimpleUser> getClosedBy() {
         return closedBy;
     }
 
-    public void setClosedBy(NullableSimpleUser closedBy) {
+    public void setClosedBy(JsonNullable<NullableSimpleUser> closedBy) {
         this.closedBy = closedBy;
     }
 
     public ProjectsV2DraftIssue bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -258,16 +260,16 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public ProjectsV2DraftIssue bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -277,16 +279,16 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public ProjectsV2DraftIssue repository(Repository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -297,16 +299,16 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public Repository getRepository() {
+    public Optional<Repository> getRepository() {
         return repository;
     }
 
-    public void setRepository(Repository repository) {
+    public void setRepository(Optional<Repository> repository) {
         this.repository = repository;
     }
 
     public ProjectsV2DraftIssue parentIssueUrl(URI parentIssueUrl) {
-        this.parentIssueUrl = parentIssueUrl;
+        this.parentIssueUrl = JsonNullable.of(parentIssueUrl);
         return this;
     }
 
@@ -320,11 +322,11 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
             description = "URL to get the parent issue of this issue, if it is a sub-issue",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent_issue_url")
-    public URI getParentIssueUrl() {
+    public JsonNullable<URI> getParentIssueUrl() {
         return parentIssueUrl;
     }
 
-    public void setParentIssueUrl(URI parentIssueUrl) {
+    public void setParentIssueUrl(JsonNullable<URI> parentIssueUrl) {
         this.parentIssueUrl = parentIssueUrl;
     }
 
@@ -340,15 +342,20 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
         return Objects.equals(this.id, projectsV2DraftIssue.id)
                 && Objects.equals(this.nodeId, projectsV2DraftIssue.nodeId)
                 && Objects.equals(this.title, projectsV2DraftIssue.title)
-                && Objects.equals(this.body, projectsV2DraftIssue.body)
+                && equalsNullable(this.body, projectsV2DraftIssue.body)
                 && Objects.equals(this.user, projectsV2DraftIssue.user)
                 && Objects.equals(this.createdAt, projectsV2DraftIssue.createdAt)
                 && Objects.equals(this.updatedAt, projectsV2DraftIssue.updatedAt)
-                && Objects.equals(this.closedBy, projectsV2DraftIssue.closedBy)
+                && equalsNullable(this.closedBy, projectsV2DraftIssue.closedBy)
                 && Objects.equals(this.bodyHtml, projectsV2DraftIssue.bodyHtml)
                 && Objects.equals(this.bodyText, projectsV2DraftIssue.bodyText)
                 && Objects.equals(this.repository, projectsV2DraftIssue.repository)
-                && Objects.equals(this.parentIssueUrl, projectsV2DraftIssue.parentIssueUrl);
+                && equalsNullable(this.parentIssueUrl, projectsV2DraftIssue.parentIssueUrl);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -357,15 +364,22 @@ public class ProjectsV2DraftIssue implements ProjectsV2ItemSimpleContent {
                 id,
                 nodeId,
                 title,
-                body,
+                hashCodeNullable(body),
                 user,
                 createdAt,
                 updatedAt,
-                closedBy,
+                hashCodeNullable(closedBy),
                 bodyHtml,
                 bodyText,
                 repository,
-                parentIssueUrl);
+                hashCodeNullable(parentIssueUrl));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

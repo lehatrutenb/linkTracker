@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * You can use &#x60;run_url&#x60; to track the status of the run. This includes a property status and conclusion. You should not rely on this always being an actions workflow run object.
@@ -18,16 +17,16 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-default-setup-update-response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningDefaultSetupUpdateResponse {
 
-    private Long runId;
+    private Optional<Long> runId = Optional.empty();
 
-    private String runUrl;
+    private Optional<String> runUrl = Optional.empty();
 
     public CodeScanningDefaultSetupUpdateResponse runId(Long runId) {
-        this.runId = runId;
+        this.runId = Optional.ofNullable(runId);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class CodeScanningDefaultSetupUpdateResponse {
             description = "ID of the corresponding run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("run_id")
-    public Long getRunId() {
+    public Optional<Long> getRunId() {
         return runId;
     }
 
-    public void setRunId(Long runId) {
+    public void setRunId(Optional<Long> runId) {
         this.runId = runId;
     }
 
     public CodeScanningDefaultSetupUpdateResponse runUrl(String runUrl) {
-        this.runUrl = runUrl;
+        this.runUrl = Optional.ofNullable(runUrl);
         return this;
     }
 
@@ -62,11 +61,11 @@ public class CodeScanningDefaultSetupUpdateResponse {
             description = "URL of the corresponding run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("run_url")
-    public String getRunUrl() {
+    public Optional<String> getRunUrl() {
         return runUrl;
     }
 
-    public void setRunUrl(String runUrl) {
+    public void setRunUrl(Optional<String> runUrl) {
         this.runUrl = runUrl;
     }
 

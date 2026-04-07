@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookInstallationRepositoriesAddedRepositoriesRemovedInner
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("webhook_installation_repositories_added_repositories_removed_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
 
-    private String fullName;
+    private Optional<String> fullName = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private Boolean _private;
+    private Optional<Boolean> _private = Optional.empty();
 
     public WebhookInstallationRepositoriesAddedRepositoriesRemovedInner fullName(String fullName) {
-        this.fullName = fullName;
+        this.fullName = Optional.ofNullable(fullName);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
      */
     @Schema(name = "full_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_name")
-    public String getFullName() {
+    public Optional<String> getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(Optional<String> fullName) {
         this.fullName = fullName;
     }
 
     public WebhookInstallationRepositoriesAddedRepositoriesRemovedInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -61,16 +60,16 @@ public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
             description = "Unique identifier of the repository",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public WebhookInstallationRepositoriesAddedRepositoriesRemovedInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -80,16 +79,16 @@ public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
      */
     @Schema(name = "name", description = "The name of the repository.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookInstallationRepositoriesAddedRepositoriesRemovedInner nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -99,16 +98,16 @@ public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public WebhookInstallationRepositoriesAddedRepositoriesRemovedInner _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -121,11 +120,11 @@ public class WebhookInstallationRepositoriesAddedRepositoriesRemovedInner {
             description = "Whether the repository is private or public.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 

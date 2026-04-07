@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookOrgBlockUnblocked
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-org-block-unblocked")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookOrgBlockUnblocked {
 
@@ -56,15 +57,15 @@ public class WebhookOrgBlockUnblocked {
 
     private ActionEnum action;
 
-    private WebhooksUser blockedUser = null;
+    private JsonNullable<WebhooksUser> blockedUser = JsonNullable.<WebhooksUser>undefined();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private OrganizationSimpleWebhooks organization;
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
     private SimpleUser sender;
 
@@ -78,7 +79,7 @@ public class WebhookOrgBlockUnblocked {
     public WebhookOrgBlockUnblocked(
             ActionEnum action, WebhooksUser blockedUser, OrganizationSimpleWebhooks organization, SimpleUser sender) {
         this.action = action;
-        this.blockedUser = blockedUser;
+        this.blockedUser = JsonNullable.of(blockedUser);
         this.organization = organization;
         this.sender = sender;
     }
@@ -104,7 +105,7 @@ public class WebhookOrgBlockUnblocked {
     }
 
     public WebhookOrgBlockUnblocked blockedUser(WebhooksUser blockedUser) {
-        this.blockedUser = blockedUser;
+        this.blockedUser = JsonNullable.of(blockedUser);
         return this;
     }
 
@@ -116,16 +117,16 @@ public class WebhookOrgBlockUnblocked {
     @Valid
     @Schema(name = "blocked_user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("blocked_user")
-    public WebhooksUser getBlockedUser() {
+    public JsonNullable<WebhooksUser> getBlockedUser() {
         return blockedUser;
     }
 
-    public void setBlockedUser(WebhooksUser blockedUser) {
+    public void setBlockedUser(JsonNullable<WebhooksUser> blockedUser) {
         this.blockedUser = blockedUser;
     }
 
     public WebhookOrgBlockUnblocked enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -136,16 +137,16 @@ public class WebhookOrgBlockUnblocked {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookOrgBlockUnblocked installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -156,11 +157,11 @@ public class WebhookOrgBlockUnblocked {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -186,7 +187,7 @@ public class WebhookOrgBlockUnblocked {
     }
 
     public WebhookOrgBlockUnblocked repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -197,11 +198,11 @@ public class WebhookOrgBlockUnblocked {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 

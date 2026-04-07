@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrganizationFullPlan
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("organization_full_plan")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationFullPlan {
 
@@ -24,9 +24,9 @@ public class OrganizationFullPlan {
 
     private Long privateRepos;
 
-    private Long filledSeats;
+    private Optional<Long> filledSeats = Optional.empty();
 
-    private Long seats;
+    private Optional<Long> seats = Optional.empty();
 
     public OrganizationFullPlan() {
         super();
@@ -102,7 +102,7 @@ public class OrganizationFullPlan {
     }
 
     public OrganizationFullPlan filledSeats(Long filledSeats) {
-        this.filledSeats = filledSeats;
+        this.filledSeats = Optional.ofNullable(filledSeats);
         return this;
     }
 
@@ -112,16 +112,16 @@ public class OrganizationFullPlan {
      */
     @Schema(name = "filled_seats", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filled_seats")
-    public Long getFilledSeats() {
+    public Optional<Long> getFilledSeats() {
         return filledSeats;
     }
 
-    public void setFilledSeats(Long filledSeats) {
+    public void setFilledSeats(Optional<Long> filledSeats) {
         this.filledSeats = filledSeats;
     }
 
     public OrganizationFullPlan seats(Long seats) {
-        this.seats = seats;
+        this.seats = Optional.ofNullable(seats);
         return this;
     }
 
@@ -131,11 +131,11 @@ public class OrganizationFullPlan {
      */
     @Schema(name = "seats", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("seats")
-    public Long getSeats() {
+    public Optional<Long> getSeats() {
         return seats;
     }
 
-    public void setSeats(Long seats) {
+    public void setSeats(Optional<Long> seats) {
         this.seats = seats;
     }
 

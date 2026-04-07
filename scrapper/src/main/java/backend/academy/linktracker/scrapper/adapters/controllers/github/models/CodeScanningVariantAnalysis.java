@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-variant-analysis")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningVariantAnalysis {
 
@@ -39,13 +37,13 @@ public class CodeScanningVariantAnalysis {
     private String queryPackUrl;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     /**
      * Gets or Sets status
@@ -88,7 +86,7 @@ public class CodeScanningVariantAnalysis {
 
     private StatusEnum status;
 
-    private Long actionsWorkflowRunId;
+    private Optional<Long> actionsWorkflowRunId = Optional.empty();
 
     /**
      * The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.
@@ -127,12 +125,12 @@ public class CodeScanningVariantAnalysis {
         }
     }
 
-    private FailureReasonEnum failureReason;
+    private Optional<FailureReasonEnum> failureReason = Optional.empty();
 
     @Valid
     private List<@Valid CodeScanningVariantAnalysisScannedRepositoriesInner> scannedRepositories = new ArrayList<>();
 
-    private CodeScanningVariantAnalysisSkippedRepositories skippedRepositories;
+    private Optional<CodeScanningVariantAnalysisSkippedRepositories> skippedRepositories = Optional.empty();
 
     public CodeScanningVariantAnalysis() {
         super();
@@ -263,7 +261,7 @@ public class CodeScanningVariantAnalysis {
     }
 
     public CodeScanningVariantAnalysis createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -278,16 +276,16 @@ public class CodeScanningVariantAnalysis {
                     "The date and time at which the variant analysis was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public CodeScanningVariantAnalysis updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -302,16 +300,16 @@ public class CodeScanningVariantAnalysis {
                     "The date and time at which the variant analysis was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public CodeScanningVariantAnalysis completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -326,11 +324,11 @@ public class CodeScanningVariantAnalysis {
                     "The date and time at which the variant analysis was completed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the variant analysis has not yet completed or this information is not available.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -355,7 +353,7 @@ public class CodeScanningVariantAnalysis {
     }
 
     public CodeScanningVariantAnalysis actionsWorkflowRunId(Long actionsWorkflowRunId) {
-        this.actionsWorkflowRunId = actionsWorkflowRunId;
+        this.actionsWorkflowRunId = Optional.ofNullable(actionsWorkflowRunId);
         return this;
     }
 
@@ -369,16 +367,16 @@ public class CodeScanningVariantAnalysis {
                     "The GitHub Actions workflow run used to execute this variant analysis. This is only available if the workflow run has started.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actions_workflow_run_id")
-    public Long getActionsWorkflowRunId() {
+    public Optional<Long> getActionsWorkflowRunId() {
         return actionsWorkflowRunId;
     }
 
-    public void setActionsWorkflowRunId(Long actionsWorkflowRunId) {
+    public void setActionsWorkflowRunId(Optional<Long> actionsWorkflowRunId) {
         this.actionsWorkflowRunId = actionsWorkflowRunId;
     }
 
     public CodeScanningVariantAnalysis failureReason(FailureReasonEnum failureReason) {
-        this.failureReason = failureReason;
+        this.failureReason = Optional.ofNullable(failureReason);
         return this;
     }
 
@@ -392,11 +390,11 @@ public class CodeScanningVariantAnalysis {
                     "The reason for a failure of the variant analysis. This is only available if the variant analysis has failed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failure_reason")
-    public FailureReasonEnum getFailureReason() {
+    public Optional<FailureReasonEnum> getFailureReason() {
         return failureReason;
     }
 
-    public void setFailureReason(FailureReasonEnum failureReason) {
+    public void setFailureReason(Optional<FailureReasonEnum> failureReason) {
         this.failureReason = failureReason;
     }
 
@@ -433,7 +431,7 @@ public class CodeScanningVariantAnalysis {
 
     public CodeScanningVariantAnalysis skippedRepositories(
             CodeScanningVariantAnalysisSkippedRepositories skippedRepositories) {
-        this.skippedRepositories = skippedRepositories;
+        this.skippedRepositories = Optional.ofNullable(skippedRepositories);
         return this;
     }
 
@@ -444,11 +442,11 @@ public class CodeScanningVariantAnalysis {
     @Valid
     @Schema(name = "skipped_repositories", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("skipped_repositories")
-    public CodeScanningVariantAnalysisSkippedRepositories getSkippedRepositories() {
+    public Optional<CodeScanningVariantAnalysisSkippedRepositories> getSkippedRepositories() {
         return skippedRepositories;
     }
 
-    public void setSkippedRepositories(CodeScanningVariantAnalysisSkippedRepositories skippedRepositories) {
+    public void setSkippedRepositories(Optional<CodeScanningVariantAnalysisSkippedRepositories> skippedRepositories) {
         this.skippedRepositories = skippedRepositories;
     }
 
@@ -468,12 +466,17 @@ public class CodeScanningVariantAnalysis {
                 && Objects.equals(this.queryPackUrl, codeScanningVariantAnalysis.queryPackUrl)
                 && Objects.equals(this.createdAt, codeScanningVariantAnalysis.createdAt)
                 && Objects.equals(this.updatedAt, codeScanningVariantAnalysis.updatedAt)
-                && Objects.equals(this.completedAt, codeScanningVariantAnalysis.completedAt)
+                && equalsNullable(this.completedAt, codeScanningVariantAnalysis.completedAt)
                 && Objects.equals(this.status, codeScanningVariantAnalysis.status)
                 && Objects.equals(this.actionsWorkflowRunId, codeScanningVariantAnalysis.actionsWorkflowRunId)
                 && Objects.equals(this.failureReason, codeScanningVariantAnalysis.failureReason)
                 && Objects.equals(this.scannedRepositories, codeScanningVariantAnalysis.scannedRepositories)
                 && Objects.equals(this.skippedRepositories, codeScanningVariantAnalysis.skippedRepositories);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -486,12 +489,19 @@ public class CodeScanningVariantAnalysis {
                 queryPackUrl,
                 createdAt,
                 updatedAt,
-                completedAt,
+                hashCodeNullable(completedAt),
                 status,
                 actionsWorkflowRunId,
                 failureReason,
                 scannedRepositories,
                 skippedRepositories);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

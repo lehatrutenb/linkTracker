@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A GitHub user.
@@ -17,13 +19,13 @@ import java.util.Objects;
 @JsonTypeName("simple-user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SimpleUser implements CommitAuthor, IntegrationOwner {
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     private String login;
 
@@ -33,7 +35,7 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -61,9 +63,9 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
 
     private Boolean siteAdmin;
 
-    private String starredAt;
+    private Optional<String> starredAt = Optional.empty();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public SimpleUser() {
         super();
@@ -95,7 +97,7 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -112,7 +114,7 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
     }
 
     public SimpleUser name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -122,16 +124,16 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public SimpleUser email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -141,11 +143,11 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -234,7 +236,7 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
     }
 
     public SimpleUser gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -248,11 +250,11 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
             example = "41d064eb2195891e12d0413f63227ea7",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -551,7 +553,7 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
     }
 
     public SimpleUser starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
 
@@ -561,16 +563,16 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
      */
     @Schema(name = "starred_at", example = "\"2020-07-09T00:17:55Z\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public Optional<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(Optional<String> starredAt) {
         this.starredAt = starredAt;
     }
 
     public SimpleUser userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -580,11 +582,11 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
      */
     @Schema(name = "user_view_type", example = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -597,8 +599,8 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
             return false;
         }
         SimpleUser simpleUser = (SimpleUser) o;
-        return Objects.equals(this.name, simpleUser.name)
-                && Objects.equals(this.email, simpleUser.email)
+        return equalsNullable(this.name, simpleUser.name)
+                && equalsNullable(this.email, simpleUser.email)
                 && Objects.equals(this.login, simpleUser.login)
                 && Objects.equals(this.id, simpleUser.id)
                 && Objects.equals(this.nodeId, simpleUser.nodeId)
@@ -621,11 +623,16 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
                 && Objects.equals(this.userViewType, simpleUser.userViewType);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                name,
-                email,
+                hashCodeNullable(name),
+                hashCodeNullable(email),
                 login,
                 id,
                 nodeId,
@@ -646,6 +653,13 @@ public class SimpleUser implements CommitAuthor, IntegrationOwner {
                 siteAdmin,
                 starredAt,
                 userViewType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

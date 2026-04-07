@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgHookConfig
@@ -14,20 +13,20 @@ import java.util.Objects;
 @JsonTypeName("org_hook_config")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgHookConfig {
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String insecureSsl;
+    private Optional<String> insecureSsl = Optional.empty();
 
-    private String contentType;
+    private Optional<String> contentType = Optional.empty();
 
-    private String secret;
+    private Optional<String> secret = Optional.empty();
 
     public OrgHookConfig url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class OrgHookConfig {
      */
     @Schema(name = "url", example = "\"http://example.com/2\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public OrgHookConfig insecureSsl(String insecureSsl) {
-        this.insecureSsl = insecureSsl;
+        this.insecureSsl = Optional.ofNullable(insecureSsl);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class OrgHookConfig {
      */
     @Schema(name = "insecure_ssl", example = "\"0\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("insecure_ssl")
-    public String getInsecureSsl() {
+    public Optional<String> getInsecureSsl() {
         return insecureSsl;
     }
 
-    public void setInsecureSsl(String insecureSsl) {
+    public void setInsecureSsl(Optional<String> insecureSsl) {
         this.insecureSsl = insecureSsl;
     }
 
     public OrgHookConfig contentType(String contentType) {
-        this.contentType = contentType;
+        this.contentType = Optional.ofNullable(contentType);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class OrgHookConfig {
      */
     @Schema(name = "content_type", example = "\"form\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_type")
-    public String getContentType() {
+    public Optional<String> getContentType() {
         return contentType;
     }
 
-    public void setContentType(String contentType) {
+    public void setContentType(Optional<String> contentType) {
         this.contentType = contentType;
     }
 
     public OrgHookConfig secret(String secret) {
-        this.secret = secret;
+        this.secret = Optional.ofNullable(secret);
         return this;
     }
 
@@ -94,11 +93,11 @@ public class OrgHookConfig {
      */
     @Schema(name = "secret", example = "\"********\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret")
-    public String getSecret() {
+    public Optional<String> getSecret() {
         return secret;
     }
 
-    public void setSecret(String secret) {
+    public void setSecret(Optional<String> secret) {
         this.secret = secret;
     }
 

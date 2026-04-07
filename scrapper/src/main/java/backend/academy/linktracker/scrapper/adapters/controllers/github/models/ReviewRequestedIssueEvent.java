@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Review Requested Issue Event
@@ -16,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("review-requested-issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReviewRequestedIssueEvent {
 
@@ -30,19 +31,19 @@ public class ReviewRequestedIssueEvent {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     private SimpleUser reviewRequester;
 
-    private Team requestedTeam;
+    private Optional<Team> requestedTeam = Optional.empty();
 
-    private SimpleUser requestedReviewer;
+    private Optional<SimpleUser> requestedReviewer = Optional.empty();
 
     public ReviewRequestedIssueEvent() {
         super();
@@ -67,10 +68,10 @@ public class ReviewRequestedIssueEvent {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.reviewRequester = reviewRequester;
     }
 
@@ -176,7 +177,7 @@ public class ReviewRequestedIssueEvent {
     }
 
     public ReviewRequestedIssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -187,16 +188,16 @@ public class ReviewRequestedIssueEvent {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public ReviewRequestedIssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -207,11 +208,11 @@ public class ReviewRequestedIssueEvent {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -236,7 +237,7 @@ public class ReviewRequestedIssueEvent {
     }
 
     public ReviewRequestedIssueEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -248,11 +249,11 @@ public class ReviewRequestedIssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -278,7 +279,7 @@ public class ReviewRequestedIssueEvent {
     }
 
     public ReviewRequestedIssueEvent requestedTeam(Team requestedTeam) {
-        this.requestedTeam = requestedTeam;
+        this.requestedTeam = Optional.ofNullable(requestedTeam);
         return this;
     }
 
@@ -289,16 +290,16 @@ public class ReviewRequestedIssueEvent {
     @Valid
     @Schema(name = "requested_team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_team")
-    public Team getRequestedTeam() {
+    public Optional<Team> getRequestedTeam() {
         return requestedTeam;
     }
 
-    public void setRequestedTeam(Team requestedTeam) {
+    public void setRequestedTeam(Optional<Team> requestedTeam) {
         this.requestedTeam = requestedTeam;
     }
 
     public ReviewRequestedIssueEvent requestedReviewer(SimpleUser requestedReviewer) {
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = Optional.ofNullable(requestedReviewer);
         return this;
     }
 
@@ -309,11 +310,11 @@ public class ReviewRequestedIssueEvent {
     @Valid
     @Schema(name = "requested_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_reviewer")
-    public SimpleUser getRequestedReviewer() {
+    public Optional<SimpleUser> getRequestedReviewer() {
         return requestedReviewer;
     }
 
-    public void setRequestedReviewer(SimpleUser requestedReviewer) {
+    public void setRequestedReviewer(Optional<SimpleUser> requestedReviewer) {
         this.requestedReviewer = requestedReviewer;
     }
 

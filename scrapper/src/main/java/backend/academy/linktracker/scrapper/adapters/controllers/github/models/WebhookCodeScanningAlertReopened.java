@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookCodeScanningAlertReopened
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-code-scanning-alert-reopened")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertReopened {
 
@@ -58,15 +59,15 @@ public class WebhookCodeScanningAlertReopened {
 
     private WebhookCodeScanningAlertReopenedAlert alert;
 
-    private String commitOid = null;
+    private JsonNullable<String> commitOid = JsonNullable.<String>undefined();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private String ref = null;
+    private JsonNullable<String> ref = JsonNullable.<String>undefined();
 
     private RepositoryWebhooks repository;
 
@@ -88,8 +89,8 @@ public class WebhookCodeScanningAlertReopened {
             SimpleUser sender) {
         this.action = action;
         this.alert = alert;
-        this.commitOid = commitOid;
-        this.ref = ref;
+        this.commitOid = JsonNullable.of(commitOid);
+        this.ref = JsonNullable.of(ref);
         this.repository = repository;
         this.sender = sender;
     }
@@ -136,7 +137,7 @@ public class WebhookCodeScanningAlertReopened {
     }
 
     public WebhookCodeScanningAlertReopened commitOid(String commitOid) {
-        this.commitOid = commitOid;
+        this.commitOid = JsonNullable.of(commitOid);
         return this;
     }
 
@@ -151,16 +152,16 @@ public class WebhookCodeScanningAlertReopened {
                     "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_oid")
-    public String getCommitOid() {
+    public JsonNullable<String> getCommitOid() {
         return commitOid;
     }
 
-    public void setCommitOid(String commitOid) {
+    public void setCommitOid(JsonNullable<String> commitOid) {
         this.commitOid = commitOid;
     }
 
     public WebhookCodeScanningAlertReopened enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -171,16 +172,16 @@ public class WebhookCodeScanningAlertReopened {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookCodeScanningAlertReopened installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -191,16 +192,16 @@ public class WebhookCodeScanningAlertReopened {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookCodeScanningAlertReopened organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -211,16 +212,16 @@ public class WebhookCodeScanningAlertReopened {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookCodeScanningAlertReopened ref(String ref) {
-        this.ref = ref;
+        this.ref = JsonNullable.of(ref);
         return this;
     }
 
@@ -235,11 +236,11 @@ public class WebhookCodeScanningAlertReopened {
                     "The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public JsonNullable<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(JsonNullable<String> ref) {
         this.ref = ref;
     }
 

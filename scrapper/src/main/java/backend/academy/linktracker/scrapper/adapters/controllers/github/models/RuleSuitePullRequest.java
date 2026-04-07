@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Metadata for a pull request rule evaluation result.
@@ -16,14 +15,14 @@ import java.util.Objects;
 @JsonTypeName("rule-suite-pull-request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuitePullRequest {
 
-    private RuleSuitePullRequestPullRequest pullRequest;
+    private Optional<RuleSuitePullRequestPullRequest> pullRequest = Optional.empty();
 
     public RuleSuitePullRequest pullRequest(RuleSuitePullRequestPullRequest pullRequest) {
-        this.pullRequest = pullRequest;
+        this.pullRequest = Optional.ofNullable(pullRequest);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class RuleSuitePullRequest {
     @Valid
     @Schema(name = "pull_request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request")
-    public RuleSuitePullRequestPullRequest getPullRequest() {
+    public Optional<RuleSuitePullRequestPullRequest> getPullRequest() {
         return pullRequest;
     }
 
-    public void setPullRequest(RuleSuitePullRequestPullRequest pullRequest) {
+    public void setPullRequest(Optional<RuleSuitePullRequestPullRequest> pullRequest) {
         this.pullRequest = pullRequest;
     }
 

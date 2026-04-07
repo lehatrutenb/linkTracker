@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-github-pages-builds) itself.
@@ -20,11 +20,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_page_build_build")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPageBuildBuild {
 
-    private String commit = null;
+    private JsonNullable<String> commit = JsonNullable.<String>undefined();
 
     private String createdAt;
 
@@ -32,7 +32,7 @@ public class WebhookPageBuildBuild {
 
     private PageBuildError error;
 
-    private User pusher = null;
+    private JsonNullable<User> pusher = JsonNullable.<User>undefined();
 
     private String status;
 
@@ -56,18 +56,18 @@ public class WebhookPageBuildBuild {
             String status,
             String updatedAt,
             URI url) {
-        this.commit = commit;
+        this.commit = JsonNullable.of(commit);
         this.createdAt = createdAt;
         this.duration = duration;
         this.error = error;
-        this.pusher = pusher;
+        this.pusher = JsonNullable.of(pusher);
         this.status = status;
         this.updatedAt = updatedAt;
         this.url = url;
     }
 
     public WebhookPageBuildBuild commit(String commit) {
-        this.commit = commit;
+        this.commit = JsonNullable.of(commit);
         return this;
     }
 
@@ -78,11 +78,11 @@ public class WebhookPageBuildBuild {
     @NotNull
     @Schema(name = "commit", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit")
-    public String getCommit() {
+    public JsonNullable<String> getCommit() {
         return commit;
     }
 
-    public void setCommit(String commit) {
+    public void setCommit(JsonNullable<String> commit) {
         this.commit = commit;
     }
 
@@ -148,7 +148,7 @@ public class WebhookPageBuildBuild {
     }
 
     public WebhookPageBuildBuild pusher(User pusher) {
-        this.pusher = pusher;
+        this.pusher = JsonNullable.of(pusher);
         return this;
     }
 
@@ -160,11 +160,11 @@ public class WebhookPageBuildBuild {
     @Valid
     @Schema(name = "pusher", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pusher")
-    public User getPusher() {
+    public JsonNullable<User> getPusher() {
         return pusher;
     }
 
-    public void setPusher(User pusher) {
+    public void setPusher(JsonNullable<User> pusher) {
         this.pusher = pusher;
     }
 

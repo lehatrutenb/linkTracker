@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Pages Health Check Status
@@ -16,16 +17,16 @@ import java.util.Objects;
 @JsonTypeName("pages-health-check")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PagesHealthCheck {
 
-    private PagesHealthCheckDomain domain;
+    private Optional<PagesHealthCheckDomain> domain = Optional.empty();
 
-    private PagesHealthCheckAltDomain altDomain = null;
+    private JsonNullable<PagesHealthCheckAltDomain> altDomain = JsonNullable.<PagesHealthCheckAltDomain>undefined();
 
     public PagesHealthCheck domain(PagesHealthCheckDomain domain) {
-        this.domain = domain;
+        this.domain = Optional.ofNullable(domain);
         return this;
     }
 
@@ -36,16 +37,16 @@ public class PagesHealthCheck {
     @Valid
     @Schema(name = "domain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("domain")
-    public PagesHealthCheckDomain getDomain() {
+    public Optional<PagesHealthCheckDomain> getDomain() {
         return domain;
     }
 
-    public void setDomain(PagesHealthCheckDomain domain) {
+    public void setDomain(Optional<PagesHealthCheckDomain> domain) {
         this.domain = domain;
     }
 
     public PagesHealthCheck altDomain(PagesHealthCheckAltDomain altDomain) {
-        this.altDomain = altDomain;
+        this.altDomain = JsonNullable.of(altDomain);
         return this;
     }
 
@@ -56,11 +57,11 @@ public class PagesHealthCheck {
     @Valid
     @Schema(name = "alt_domain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("alt_domain")
-    public PagesHealthCheckAltDomain getAltDomain() {
+    public JsonNullable<PagesHealthCheckAltDomain> getAltDomain() {
         return altDomain;
     }
 
-    public void setAltDomain(PagesHealthCheckAltDomain altDomain) {
+    public void setAltDomain(JsonNullable<PagesHealthCheckAltDomain> altDomain) {
         this.altDomain = altDomain;
     }
 
@@ -74,12 +75,24 @@ public class PagesHealthCheck {
         }
         PagesHealthCheck pagesHealthCheck = (PagesHealthCheck) o;
         return Objects.equals(this.domain, pagesHealthCheck.domain)
-                && Objects.equals(this.altDomain, pagesHealthCheck.altDomain);
+                && equalsNullable(this.altDomain, pagesHealthCheck.altDomain);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(domain, altDomain);
+        return Objects.hash(domain, hashCodeNullable(altDomain));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

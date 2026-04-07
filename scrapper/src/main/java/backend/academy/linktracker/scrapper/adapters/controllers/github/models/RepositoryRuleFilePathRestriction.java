@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Prevent commits that include changes in specified file and folder paths from being pushed to the commit graph. This includes absolute paths that contain file names.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-file-path-restriction")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleFilePathRestriction implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleFilePathRestriction implements OrgRules, RepositoryRu
 
     private TypeEnum type;
 
-    private RepositoryRuleFilePathRestrictionParameters parameters;
+    private Optional<RepositoryRuleFilePathRestrictionParameters> parameters = Optional.empty();
 
     public RepositoryRuleFilePathRestriction() {
         super();
@@ -94,7 +94,7 @@ public class RepositoryRuleFilePathRestriction implements OrgRules, RepositoryRu
     }
 
     public RepositoryRuleFilePathRestriction parameters(RepositoryRuleFilePathRestrictionParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class RepositoryRuleFilePathRestriction implements OrgRules, RepositoryRu
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleFilePathRestrictionParameters getParameters() {
+    public Optional<RepositoryRuleFilePathRestrictionParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleFilePathRestrictionParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleFilePathRestrictionParameters> parameters) {
         this.parameters = parameters;
     }
 

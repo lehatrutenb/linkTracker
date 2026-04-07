@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposMergeRequest
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("repos_merge_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposMergeRequest {
 
@@ -22,7 +22,7 @@ public class ReposMergeRequest {
 
     private String head;
 
-    private String commitMessage;
+    private Optional<String> commitMessage = Optional.empty();
 
     public ReposMergeRequest() {
         super();
@@ -83,7 +83,7 @@ public class ReposMergeRequest {
     }
 
     public ReposMergeRequest commitMessage(String commitMessage) {
-        this.commitMessage = commitMessage;
+        this.commitMessage = Optional.ofNullable(commitMessage);
         return this;
     }
 
@@ -96,11 +96,11 @@ public class ReposMergeRequest {
             description = "Commit message to use for the merge commit. If omitted, a default message will be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_message")
-    public String getCommitMessage() {
+    public Optional<String> getCommitMessage() {
         return commitMessage;
     }
 
-    public void setCommitMessage(String commitMessage) {
+    public void setCommitMessage(Optional<String> commitMessage) {
         this.commitMessage = commitMessage;
     }
 

@@ -7,14 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,15 +23,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_workflow_job_queued_workflow_job")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookWorkflowJobQueuedWorkflowJob {
 
     private URI checkRunUrl;
 
-    private String completedAt = null;
+    private JsonNullable<String> completedAt = JsonNullable.<String>undefined();
 
-    private String conclusion = null;
+    private JsonNullable<String> conclusion = JsonNullable.<String>undefined();
 
     private String createdAt;
 
@@ -54,13 +54,13 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
 
     private URI runUrl;
 
-    private Long runnerGroupId = null;
+    private JsonNullable<Long> runnerGroupId = JsonNullable.<Long>undefined();
 
-    private String runnerGroupName = null;
+    private JsonNullable<String> runnerGroupName = JsonNullable.<String>undefined();
 
-    private Long runnerId = null;
+    private JsonNullable<Long> runnerId = JsonNullable.<Long>undefined();
 
-    private String runnerName = null;
+    private JsonNullable<String> runnerName = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime startedAt;
@@ -106,9 +106,9 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
 
     private StatusEnum status;
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
-    private String workflowName = null;
+    private JsonNullable<String> workflowName = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid WorkflowStep3> steps = new ArrayList<>();
@@ -147,8 +147,8 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
             List<@Valid WorkflowStep3> steps,
             URI url) {
         this.checkRunUrl = checkRunUrl;
-        this.completedAt = completedAt;
-        this.conclusion = conclusion;
+        this.completedAt = JsonNullable.of(completedAt);
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
         this.headSha = headSha;
         this.htmlUrl = htmlUrl;
@@ -159,14 +159,14 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
         this.runAttempt = runAttempt;
         this.runId = runId;
         this.runUrl = runUrl;
-        this.runnerGroupId = runnerGroupId;
-        this.runnerGroupName = runnerGroupName;
-        this.runnerId = runnerId;
-        this.runnerName = runnerName;
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
+        this.runnerId = JsonNullable.of(runnerId);
+        this.runnerName = JsonNullable.of(runnerName);
         this.startedAt = startedAt;
         this.status = status;
-        this.headBranch = headBranch;
-        this.workflowName = workflowName;
+        this.headBranch = JsonNullable.of(headBranch);
+        this.workflowName = JsonNullable.of(workflowName);
         this.steps = steps;
         this.url = url;
     }
@@ -193,7 +193,7 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob completedAt(String completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -204,16 +204,16 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "completed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public String getCompletedAt() {
+    public JsonNullable<String> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(String completedAt) {
+    public void setCompletedAt(JsonNullable<String> completedAt) {
         this.completedAt = completedAt;
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob conclusion(String conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -224,11 +224,11 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public String getConclusion() {
+    public JsonNullable<String> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(String conclusion) {
+    public void setConclusion(JsonNullable<String> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -447,7 +447,7 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob runnerGroupId(Long runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
         return this;
     }
 
@@ -458,16 +458,16 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "runner_group_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_id")
-    public Long getRunnerGroupId() {
+    public JsonNullable<Long> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(Long runnerGroupId) {
+    public void setRunnerGroupId(JsonNullable<Long> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob runnerGroupName(String runnerGroupName) {
-        this.runnerGroupName = runnerGroupName;
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
         return this;
     }
 
@@ -478,16 +478,16 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "runner_group_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_name")
-    public String getRunnerGroupName() {
+    public JsonNullable<String> getRunnerGroupName() {
         return runnerGroupName;
     }
 
-    public void setRunnerGroupName(String runnerGroupName) {
+    public void setRunnerGroupName(JsonNullable<String> runnerGroupName) {
         this.runnerGroupName = runnerGroupName;
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob runnerId(Long runnerId) {
-        this.runnerId = runnerId;
+        this.runnerId = JsonNullable.of(runnerId);
         return this;
     }
 
@@ -498,16 +498,16 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "runner_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_id")
-    public Long getRunnerId() {
+    public JsonNullable<Long> getRunnerId() {
         return runnerId;
     }
 
-    public void setRunnerId(Long runnerId) {
+    public void setRunnerId(JsonNullable<Long> runnerId) {
         this.runnerId = runnerId;
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob runnerName(String runnerName) {
-        this.runnerName = runnerName;
+        this.runnerName = JsonNullable.of(runnerName);
         return this;
     }
 
@@ -518,11 +518,11 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     @NotNull
     @Schema(name = "runner_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_name")
-    public String getRunnerName() {
+    public JsonNullable<String> getRunnerName() {
         return runnerName;
     }
 
-    public void setRunnerName(String runnerName) {
+    public void setRunnerName(JsonNullable<String> runnerName) {
         this.runnerName = runnerName;
     }
 
@@ -568,7 +568,7 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -582,16 +582,16 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
             description = "The name of the current branch.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 
     public WebhookWorkflowJobQueuedWorkflowJob workflowName(String workflowName) {
-        this.workflowName = workflowName;
+        this.workflowName = JsonNullable.of(workflowName);
         return this;
     }
 
@@ -605,11 +605,11 @@ public class WebhookWorkflowJobQueuedWorkflowJob {
             description = "The name of the workflow.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_name")
-    public String getWorkflowName() {
+    public JsonNullable<String> getWorkflowName() {
         return workflowName;
     }
 
-    public void setWorkflowName(String workflowName) {
+    public void setWorkflowName(JsonNullable<String> workflowName) {
         this.workflowName = workflowName;
     }
 

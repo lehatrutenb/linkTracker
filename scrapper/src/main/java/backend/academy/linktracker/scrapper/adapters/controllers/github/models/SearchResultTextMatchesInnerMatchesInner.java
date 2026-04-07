@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SearchResultTextMatchesInnerMatchesInner
@@ -17,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("search_result_text_matches_inner_matches_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SearchResultTextMatchesInnerMatchesInner {
 
-    private String text;
+    private Optional<String> text = Optional.empty();
 
     @Valid
     private List<Long> indices = new ArrayList<>();
 
     public SearchResultTextMatchesInnerMatchesInner text(String text) {
-        this.text = text;
+        this.text = Optional.ofNullable(text);
         return this;
     }
 
@@ -37,11 +36,11 @@ public class SearchResultTextMatchesInnerMatchesInner {
      */
     @Schema(name = "text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("text")
-    public String getText() {
+    public Optional<String> getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(Optional<String> text) {
         this.text = text;
     }
 

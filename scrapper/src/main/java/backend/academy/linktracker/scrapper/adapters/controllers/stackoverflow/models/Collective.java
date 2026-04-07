@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Represents a Collective.
@@ -17,19 +16,19 @@ import java.util.Objects;
 @Schema(name = "Collective", description = "Represents a Collective.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Collective {
 
-    private Long collectiveId;
+    private Optional<Long> collectiveId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private URI link;
+    private Optional<URI> link = Optional.empty();
 
     @Valid
     private List<String> tags = new ArrayList<>();
@@ -38,7 +37,7 @@ public class Collective {
     private List<@Valid CollectiveExternalLinksInner> externalLinks = new ArrayList<>();
 
     public Collective collectiveId(Long collectiveId) {
-        this.collectiveId = collectiveId;
+        this.collectiveId = Optional.ofNullable(collectiveId);
         return this;
     }
 
@@ -48,16 +47,16 @@ public class Collective {
      */
     @Schema(name = "collective_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collective_id")
-    public Long getCollectiveId() {
+    public Optional<Long> getCollectiveId() {
         return collectiveId;
     }
 
-    public void setCollectiveId(Long collectiveId) {
+    public void setCollectiveId(Optional<Long> collectiveId) {
         this.collectiveId = collectiveId;
     }
 
     public Collective name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -67,16 +66,16 @@ public class Collective {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public Collective slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -86,16 +85,16 @@ public class Collective {
      */
     @Schema(name = "slug", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public Collective description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -105,16 +104,16 @@ public class Collective {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public Collective link(URI link) {
-        this.link = link;
+        this.link = Optional.ofNullable(link);
         return this;
     }
 
@@ -125,11 +124,11 @@ public class Collective {
     @Valid
     @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("link")
-    public URI getLink() {
+    public Optional<URI> getLink() {
         return link;
     }
 
-    public void setLink(URI link) {
+    public void setLink(Optional<URI> link) {
         this.link = link;
     }
 

@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * IssuesEvent
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("issues-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesEvent implements EventPayload {
 
@@ -25,12 +25,12 @@ public class IssuesEvent implements EventPayload {
 
     private Issue issue;
 
-    private SimpleUser assignee;
+    private Optional<SimpleUser> assignee = Optional.empty();
 
     @Valid
     private List<@Valid SimpleUser> assignees = new ArrayList<>();
 
-    private Label label;
+    private Optional<Label> label = Optional.empty();
 
     @Valid
     private List<@Valid Label> labels = new ArrayList<>();
@@ -89,7 +89,7 @@ public class IssuesEvent implements EventPayload {
     }
 
     public IssuesEvent assignee(SimpleUser assignee) {
-        this.assignee = assignee;
+        this.assignee = Optional.ofNullable(assignee);
         return this;
     }
 
@@ -100,11 +100,11 @@ public class IssuesEvent implements EventPayload {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public SimpleUser getAssignee() {
+    public Optional<SimpleUser> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(SimpleUser assignee) {
+    public void setAssignee(Optional<SimpleUser> assignee) {
         this.assignee = assignee;
     }
 
@@ -137,7 +137,7 @@ public class IssuesEvent implements EventPayload {
     }
 
     public IssuesEvent label(Label label) {
-        this.label = label;
+        this.label = Optional.ofNullable(label);
         return this;
     }
 
@@ -148,11 +148,11 @@ public class IssuesEvent implements EventPayload {
     @Valid
     @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("label")
-    public Label getLabel() {
+    public Optional<Label> getLabel() {
         return label;
     }
 
-    public void setLabel(Label label) {
+    public void setLabel(Optional<Label> label) {
         this.label = label;
     }
 

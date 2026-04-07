@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ContentTreeEntriesInnerLinks
@@ -16,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("content_tree_entries_inner__links")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ContentTreeEntriesInnerLinks {
 
-    private URI git = null;
+    private JsonNullable<URI> git = JsonNullable.<URI>undefined();
 
-    private URI html = null;
+    private JsonNullable<URI> html = JsonNullable.<URI>undefined();
 
     private URI self;
 
@@ -34,13 +34,13 @@ public class ContentTreeEntriesInnerLinks {
      * Constructor with only required parameters
      */
     public ContentTreeEntriesInnerLinks(URI git, URI html, URI self) {
-        this.git = git;
-        this.html = html;
+        this.git = JsonNullable.of(git);
+        this.html = JsonNullable.of(html);
         this.self = self;
     }
 
     public ContentTreeEntriesInnerLinks git(URI git) {
-        this.git = git;
+        this.git = JsonNullable.of(git);
         return this;
     }
 
@@ -52,16 +52,16 @@ public class ContentTreeEntriesInnerLinks {
     @Valid
     @Schema(name = "git", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("git")
-    public URI getGit() {
+    public JsonNullable<URI> getGit() {
         return git;
     }
 
-    public void setGit(URI git) {
+    public void setGit(JsonNullable<URI> git) {
         this.git = git;
     }
 
     public ContentTreeEntriesInnerLinks html(URI html) {
-        this.html = html;
+        this.html = JsonNullable.of(html);
         return this;
     }
 
@@ -73,11 +73,11 @@ public class ContentTreeEntriesInnerLinks {
     @Valid
     @Schema(name = "html", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html")
-    public URI getHtml() {
+    public JsonNullable<URI> getHtml() {
         return html;
     }
 
-    public void setHtml(URI html) {
+    public void setHtml(JsonNullable<URI> html) {
         this.html = html;
     }
 

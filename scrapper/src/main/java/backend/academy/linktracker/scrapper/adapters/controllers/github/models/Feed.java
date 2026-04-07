@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Feed
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("feed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Feed {
 
@@ -27,22 +27,22 @@ public class Feed {
 
     private String userUrl;
 
-    private String currentUserPublicUrl;
+    private Optional<String> currentUserPublicUrl = Optional.empty();
 
-    private String currentUserUrl;
+    private Optional<String> currentUserUrl = Optional.empty();
 
-    private String currentUserActorUrl;
+    private Optional<String> currentUserActorUrl = Optional.empty();
 
-    private String currentUserOrganizationUrl;
+    private Optional<String> currentUserOrganizationUrl = Optional.empty();
 
     @Valid
     private List<URI> currentUserOrganizationUrls = new ArrayList<>();
 
-    private String securityAdvisoriesUrl;
+    private Optional<String> securityAdvisoriesUrl = Optional.empty();
 
-    private String repositoryDiscussionsUrl;
+    private Optional<String> repositoryDiscussionsUrl = Optional.empty();
 
-    private String repositoryDiscussionsCategoryUrl;
+    private Optional<String> repositoryDiscussionsCategoryUrl = Optional.empty();
 
     private FeedLinks links;
 
@@ -100,7 +100,7 @@ public class Feed {
     }
 
     public Feed currentUserPublicUrl(String currentUserPublicUrl) {
-        this.currentUserPublicUrl = currentUserPublicUrl;
+        this.currentUserPublicUrl = Optional.ofNullable(currentUserPublicUrl);
         return this;
     }
 
@@ -113,16 +113,16 @@ public class Feed {
             example = "https://github.com/octocat",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_public_url")
-    public String getCurrentUserPublicUrl() {
+    public Optional<String> getCurrentUserPublicUrl() {
         return currentUserPublicUrl;
     }
 
-    public void setCurrentUserPublicUrl(String currentUserPublicUrl) {
+    public void setCurrentUserPublicUrl(Optional<String> currentUserPublicUrl) {
         this.currentUserPublicUrl = currentUserPublicUrl;
     }
 
     public Feed currentUserUrl(String currentUserUrl) {
-        this.currentUserUrl = currentUserUrl;
+        this.currentUserUrl = Optional.ofNullable(currentUserUrl);
         return this;
     }
 
@@ -135,16 +135,16 @@ public class Feed {
             example = "https://github.com/octocat.private?token=abc123",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_url")
-    public String getCurrentUserUrl() {
+    public Optional<String> getCurrentUserUrl() {
         return currentUserUrl;
     }
 
-    public void setCurrentUserUrl(String currentUserUrl) {
+    public void setCurrentUserUrl(Optional<String> currentUserUrl) {
         this.currentUserUrl = currentUserUrl;
     }
 
     public Feed currentUserActorUrl(String currentUserActorUrl) {
-        this.currentUserActorUrl = currentUserActorUrl;
+        this.currentUserActorUrl = Optional.ofNullable(currentUserActorUrl);
         return this;
     }
 
@@ -157,16 +157,16 @@ public class Feed {
             example = "https://github.com/octocat.private.actor?token=abc123",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_actor_url")
-    public String getCurrentUserActorUrl() {
+    public Optional<String> getCurrentUserActorUrl() {
         return currentUserActorUrl;
     }
 
-    public void setCurrentUserActorUrl(String currentUserActorUrl) {
+    public void setCurrentUserActorUrl(Optional<String> currentUserActorUrl) {
         this.currentUserActorUrl = currentUserActorUrl;
     }
 
     public Feed currentUserOrganizationUrl(String currentUserOrganizationUrl) {
-        this.currentUserOrganizationUrl = currentUserOrganizationUrl;
+        this.currentUserOrganizationUrl = Optional.ofNullable(currentUserOrganizationUrl);
         return this;
     }
 
@@ -179,11 +179,11 @@ public class Feed {
             example = "https://github.com/octocat-org",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_organization_url")
-    public String getCurrentUserOrganizationUrl() {
+    public Optional<String> getCurrentUserOrganizationUrl() {
         return currentUserOrganizationUrl;
     }
 
-    public void setCurrentUserOrganizationUrl(String currentUserOrganizationUrl) {
+    public void setCurrentUserOrganizationUrl(Optional<String> currentUserOrganizationUrl) {
         this.currentUserOrganizationUrl = currentUserOrganizationUrl;
     }
 
@@ -219,7 +219,7 @@ public class Feed {
     }
 
     public Feed securityAdvisoriesUrl(String securityAdvisoriesUrl) {
-        this.securityAdvisoriesUrl = securityAdvisoriesUrl;
+        this.securityAdvisoriesUrl = Optional.ofNullable(securityAdvisoriesUrl);
         return this;
     }
 
@@ -232,16 +232,16 @@ public class Feed {
             example = "https://github.com/security-advisories",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_advisories_url")
-    public String getSecurityAdvisoriesUrl() {
+    public Optional<String> getSecurityAdvisoriesUrl() {
         return securityAdvisoriesUrl;
     }
 
-    public void setSecurityAdvisoriesUrl(String securityAdvisoriesUrl) {
+    public void setSecurityAdvisoriesUrl(Optional<String> securityAdvisoriesUrl) {
         this.securityAdvisoriesUrl = securityAdvisoriesUrl;
     }
 
     public Feed repositoryDiscussionsUrl(String repositoryDiscussionsUrl) {
-        this.repositoryDiscussionsUrl = repositoryDiscussionsUrl;
+        this.repositoryDiscussionsUrl = Optional.ofNullable(repositoryDiscussionsUrl);
         return this;
     }
 
@@ -255,16 +255,16 @@ public class Feed {
             description = "A feed of discussions for a given repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_discussions_url")
-    public String getRepositoryDiscussionsUrl() {
+    public Optional<String> getRepositoryDiscussionsUrl() {
         return repositoryDiscussionsUrl;
     }
 
-    public void setRepositoryDiscussionsUrl(String repositoryDiscussionsUrl) {
+    public void setRepositoryDiscussionsUrl(Optional<String> repositoryDiscussionsUrl) {
         this.repositoryDiscussionsUrl = repositoryDiscussionsUrl;
     }
 
     public Feed repositoryDiscussionsCategoryUrl(String repositoryDiscussionsCategoryUrl) {
-        this.repositoryDiscussionsCategoryUrl = repositoryDiscussionsCategoryUrl;
+        this.repositoryDiscussionsCategoryUrl = Optional.ofNullable(repositoryDiscussionsCategoryUrl);
         return this;
     }
 
@@ -278,11 +278,11 @@ public class Feed {
             description = "A feed of discussions for a given repository and category.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_discussions_category_url")
-    public String getRepositoryDiscussionsCategoryUrl() {
+    public Optional<String> getRepositoryDiscussionsCategoryUrl() {
         return repositoryDiscussionsCategoryUrl;
     }
 
-    public void setRepositoryDiscussionsCategoryUrl(String repositoryDiscussionsCategoryUrl) {
+    public void setRepositoryDiscussionsCategoryUrl(Optional<String> repositoryDiscussionsCategoryUrl) {
         this.repositoryDiscussionsCategoryUrl = repositoryDiscussionsCategoryUrl;
     }
 

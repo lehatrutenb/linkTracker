@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRuleCommitMessagePatternParameters
@@ -16,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("repository_rule_commit_message_pattern_parameters")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleCommitMessagePatternParameters {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Boolean negate;
+    private Optional<Boolean> negate = Optional.empty();
 
     /**
      * The operator to use for matching.
@@ -80,7 +80,7 @@ public class RepositoryRuleCommitMessagePatternParameters {
     }
 
     public RepositoryRuleCommitMessagePatternParameters name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -93,16 +93,16 @@ public class RepositoryRuleCommitMessagePatternParameters {
             description = "How this rule appears when configuring it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public RepositoryRuleCommitMessagePatternParameters negate(Boolean negate) {
-        this.negate = negate;
+        this.negate = Optional.ofNullable(negate);
         return this;
     }
 
@@ -115,11 +115,11 @@ public class RepositoryRuleCommitMessagePatternParameters {
             description = "If true, the rule will fail if the pattern matches.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("negate")
-    public Boolean getNegate() {
+    public Optional<Boolean> getNegate() {
         return negate;
     }
 
-    public void setNegate(Boolean negate) {
+    public void setNegate(Optional<Boolean> negate) {
         this.negate = negate;
     }
 

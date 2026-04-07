@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MarketplacePurchaseMarketplacePendingChange
@@ -15,22 +16,22 @@ import java.util.Objects;
 @JsonTypeName("marketplace_purchase_marketplace_pending_change")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplacePurchaseMarketplacePendingChange {
 
-    private Boolean isInstalled;
+    private Optional<Boolean> isInstalled = Optional.empty();
 
-    private String effectiveDate;
+    private Optional<String> effectiveDate = Optional.empty();
 
-    private Long unitCount = null;
+    private JsonNullable<Long> unitCount = JsonNullable.<Long>undefined();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private MarketplaceListingPlan plan;
+    private Optional<MarketplaceListingPlan> plan = Optional.empty();
 
     public MarketplacePurchaseMarketplacePendingChange isInstalled(Boolean isInstalled) {
-        this.isInstalled = isInstalled;
+        this.isInstalled = Optional.ofNullable(isInstalled);
         return this;
     }
 
@@ -40,16 +41,16 @@ public class MarketplacePurchaseMarketplacePendingChange {
      */
     @Schema(name = "is_installed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_installed")
-    public Boolean getIsInstalled() {
+    public Optional<Boolean> getIsInstalled() {
         return isInstalled;
     }
 
-    public void setIsInstalled(Boolean isInstalled) {
+    public void setIsInstalled(Optional<Boolean> isInstalled) {
         this.isInstalled = isInstalled;
     }
 
     public MarketplacePurchaseMarketplacePendingChange effectiveDate(String effectiveDate) {
-        this.effectiveDate = effectiveDate;
+        this.effectiveDate = Optional.ofNullable(effectiveDate);
         return this;
     }
 
@@ -59,16 +60,16 @@ public class MarketplacePurchaseMarketplacePendingChange {
      */
     @Schema(name = "effective_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("effective_date")
-    public String getEffectiveDate() {
+    public Optional<String> getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(String effectiveDate) {
+    public void setEffectiveDate(Optional<String> effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
     public MarketplacePurchaseMarketplacePendingChange unitCount(Long unitCount) {
-        this.unitCount = unitCount;
+        this.unitCount = JsonNullable.of(unitCount);
         return this;
     }
 
@@ -78,16 +79,16 @@ public class MarketplacePurchaseMarketplacePendingChange {
      */
     @Schema(name = "unit_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("unit_count")
-    public Long getUnitCount() {
+    public JsonNullable<Long> getUnitCount() {
         return unitCount;
     }
 
-    public void setUnitCount(Long unitCount) {
+    public void setUnitCount(JsonNullable<Long> unitCount) {
         this.unitCount = unitCount;
     }
 
     public MarketplacePurchaseMarketplacePendingChange id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -97,16 +98,16 @@ public class MarketplacePurchaseMarketplacePendingChange {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public MarketplacePurchaseMarketplacePendingChange plan(MarketplaceListingPlan plan) {
-        this.plan = plan;
+        this.plan = Optional.ofNullable(plan);
         return this;
     }
 
@@ -117,11 +118,11 @@ public class MarketplacePurchaseMarketplacePendingChange {
     @Valid
     @Schema(name = "plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan")
-    public MarketplaceListingPlan getPlan() {
+    public Optional<MarketplaceListingPlan> getPlan() {
         return plan;
     }
 
-    public void setPlan(MarketplaceListingPlan plan) {
+    public void setPlan(Optional<MarketplaceListingPlan> plan) {
         this.plan = plan;
     }
 
@@ -137,14 +138,26 @@ public class MarketplacePurchaseMarketplacePendingChange {
                 (MarketplacePurchaseMarketplacePendingChange) o;
         return Objects.equals(this.isInstalled, marketplacePurchaseMarketplacePendingChange.isInstalled)
                 && Objects.equals(this.effectiveDate, marketplacePurchaseMarketplacePendingChange.effectiveDate)
-                && Objects.equals(this.unitCount, marketplacePurchaseMarketplacePendingChange.unitCount)
+                && equalsNullable(this.unitCount, marketplacePurchaseMarketplacePendingChange.unitCount)
                 && Objects.equals(this.id, marketplacePurchaseMarketplacePendingChange.id)
                 && Objects.equals(this.plan, marketplacePurchaseMarketplacePendingChange.plan);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(isInstalled, effectiveDate, unitCount, id, plan);
+        return Objects.hash(isInstalled, effectiveDate, hashCodeNullable(unitCount), id, plan);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

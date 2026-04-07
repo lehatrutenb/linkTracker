@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,13 +21,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("installation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Installation {
 
     private Long id;
 
-    private InstallationAccount account = null;
+    private JsonNullable<InstallationAccount> account = JsonNullable.<InstallationAccount>undefined();
 
     /**
      * Describe whether all repositories have been selected or there's a selection involved
@@ -76,7 +74,7 @@ public class Installation {
 
     private Long appId;
 
-    private String clientId;
+    private Optional<String> clientId = Optional.empty();
 
     private Long targetId;
 
@@ -93,21 +91,21 @@ public class Installation {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String singleFileName = null;
+    private JsonNullable<String> singleFileName = JsonNullable.<String>undefined();
 
-    private Boolean hasMultipleSingleFiles;
+    private Optional<Boolean> hasMultipleSingleFiles = Optional.empty();
 
     @Valid
     private List<String> singleFilePaths = new ArrayList<>();
 
     private String appSlug;
 
-    private NullableSimpleUser suspendedBy = null;
+    private JsonNullable<NullableSimpleUser> suspendedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime suspendedAt = null;
+    private JsonNullable<OffsetDateTime> suspendedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String contactEmail = null;
+    private JsonNullable<String> contactEmail = JsonNullable.<String>undefined();
 
     public Installation() {
         super();
@@ -135,7 +133,7 @@ public class Installation {
             NullableSimpleUser suspendedBy,
             OffsetDateTime suspendedAt) {
         this.id = id;
-        this.account = account;
+        this.account = JsonNullable.of(account);
         this.repositorySelection = repositorySelection;
         this.accessTokensUrl = accessTokensUrl;
         this.repositoriesUrl = repositoriesUrl;
@@ -147,10 +145,10 @@ public class Installation {
         this.events = events;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.singleFileName = singleFileName;
+        this.singleFileName = JsonNullable.of(singleFileName);
         this.appSlug = appSlug;
-        this.suspendedBy = suspendedBy;
-        this.suspendedAt = suspendedAt;
+        this.suspendedBy = JsonNullable.of(suspendedBy);
+        this.suspendedAt = JsonNullable.of(suspendedAt);
     }
 
     public Installation id(Long id) {
@@ -178,7 +176,7 @@ public class Installation {
     }
 
     public Installation account(InstallationAccount account) {
-        this.account = account;
+        this.account = JsonNullable.of(account);
         return this;
     }
 
@@ -190,11 +188,11 @@ public class Installation {
     @Valid
     @Schema(name = "account", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("account")
-    public InstallationAccount getAccount() {
+    public JsonNullable<InstallationAccount> getAccount() {
         return account;
     }
 
-    public void setAccount(InstallationAccount account) {
+    public void setAccount(JsonNullable<InstallationAccount> account) {
         this.account = account;
     }
 
@@ -314,7 +312,7 @@ public class Installation {
     }
 
     public Installation clientId(String clientId) {
-        this.clientId = clientId;
+        this.clientId = Optional.ofNullable(clientId);
         return this;
     }
 
@@ -324,11 +322,11 @@ public class Installation {
      */
     @Schema(name = "client_id", example = "Iv1.ab1112223334445c", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("client_id")
-    public String getClientId() {
+    public Optional<String> getClientId() {
         return clientId;
     }
 
-    public void setClientId(String clientId) {
+    public void setClientId(Optional<String> clientId) {
         this.clientId = clientId;
     }
 
@@ -467,7 +465,7 @@ public class Installation {
     }
 
     public Installation singleFileName(String singleFileName) {
-        this.singleFileName = singleFileName;
+        this.singleFileName = JsonNullable.of(singleFileName);
         return this;
     }
 
@@ -478,16 +476,16 @@ public class Installation {
     @NotNull
     @Schema(name = "single_file_name", example = "config.yaml", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("single_file_name")
-    public String getSingleFileName() {
+    public JsonNullable<String> getSingleFileName() {
         return singleFileName;
     }
 
-    public void setSingleFileName(String singleFileName) {
+    public void setSingleFileName(JsonNullable<String> singleFileName) {
         this.singleFileName = singleFileName;
     }
 
     public Installation hasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
-        this.hasMultipleSingleFiles = hasMultipleSingleFiles;
+        this.hasMultipleSingleFiles = Optional.ofNullable(hasMultipleSingleFiles);
         return this;
     }
 
@@ -497,11 +495,11 @@ public class Installation {
      */
     @Schema(name = "has_multiple_single_files", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_multiple_single_files")
-    public Boolean getHasMultipleSingleFiles() {
+    public Optional<Boolean> getHasMultipleSingleFiles() {
         return hasMultipleSingleFiles;
     }
 
-    public void setHasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
+    public void setHasMultipleSingleFiles(Optional<Boolean> hasMultipleSingleFiles) {
         this.hasMultipleSingleFiles = hasMultipleSingleFiles;
     }
 
@@ -556,7 +554,7 @@ public class Installation {
     }
 
     public Installation suspendedBy(NullableSimpleUser suspendedBy) {
-        this.suspendedBy = suspendedBy;
+        this.suspendedBy = JsonNullable.of(suspendedBy);
         return this;
     }
 
@@ -568,16 +566,16 @@ public class Installation {
     @Valid
     @Schema(name = "suspended_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("suspended_by")
-    public NullableSimpleUser getSuspendedBy() {
+    public JsonNullable<NullableSimpleUser> getSuspendedBy() {
         return suspendedBy;
     }
 
-    public void setSuspendedBy(NullableSimpleUser suspendedBy) {
+    public void setSuspendedBy(JsonNullable<NullableSimpleUser> suspendedBy) {
         this.suspendedBy = suspendedBy;
     }
 
     public Installation suspendedAt(OffsetDateTime suspendedAt) {
-        this.suspendedAt = suspendedAt;
+        this.suspendedAt = JsonNullable.of(suspendedAt);
         return this;
     }
 
@@ -589,16 +587,16 @@ public class Installation {
     @Valid
     @Schema(name = "suspended_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("suspended_at")
-    public OffsetDateTime getSuspendedAt() {
+    public JsonNullable<OffsetDateTime> getSuspendedAt() {
         return suspendedAt;
     }
 
-    public void setSuspendedAt(OffsetDateTime suspendedAt) {
+    public void setSuspendedAt(JsonNullable<OffsetDateTime> suspendedAt) {
         this.suspendedAt = suspendedAt;
     }
 
     public Installation contactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
+        this.contactEmail = JsonNullable.of(contactEmail);
         return this;
     }
 
@@ -611,11 +609,11 @@ public class Installation {
             example = "\"test_13f1e99741e3e004@d7e1eb0bc0a1ba12.com\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contact_email")
-    public String getContactEmail() {
+    public JsonNullable<String> getContactEmail() {
         return contactEmail;
     }
 
-    public void setContactEmail(String contactEmail) {
+    public void setContactEmail(JsonNullable<String> contactEmail) {
         this.contactEmail = contactEmail;
     }
 
@@ -648,7 +646,12 @@ public class Installation {
                 && Objects.equals(this.appSlug, installation.appSlug)
                 && Objects.equals(this.suspendedBy, installation.suspendedBy)
                 && Objects.equals(this.suspendedAt, installation.suspendedAt)
-                && Objects.equals(this.contactEmail, installation.contactEmail);
+                && equalsNullable(this.contactEmail, installation.contactEmail);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -674,7 +677,14 @@ public class Installation {
                 appSlug,
                 suspendedBy,
                 suspendedAt,
-                contactEmail);
+                hashCodeNullable(contactEmail));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

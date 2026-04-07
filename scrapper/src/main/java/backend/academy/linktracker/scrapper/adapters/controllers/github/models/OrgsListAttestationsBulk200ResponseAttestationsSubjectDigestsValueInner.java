@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("orgs_list_attestations_bulk_200_response_attestations_subject_digests_value_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner {
 
-    private Long repositoryId;
+    private Optional<Long> repositoryId = Optional.empty();
 
-    private String bundleUrl;
+    private Optional<String> bundleUrl = Optional.empty();
 
     public OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = Optional.ofNullable(repositoryId);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueI
      */
     @Schema(name = "repository_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public Optional<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(Optional<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner bundleUrl(String bundleUrl) {
-        this.bundleUrl = bundleUrl;
+        this.bundleUrl = Optional.ofNullable(bundleUrl);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueI
      */
     @Schema(name = "bundle_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bundle_url")
-    public String getBundleUrl() {
+    public Optional<String> getBundleUrl() {
         return bundleUrl;
     }
 
-    public void setBundleUrl(String bundleUrl) {
+    public void setBundleUrl(Optional<String> bundleUrl) {
         this.bundleUrl = bundleUrl;
     }
 

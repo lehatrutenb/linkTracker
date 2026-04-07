@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * File Commit
@@ -16,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("file-commit")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommit {
 
-    private FileCommitContent content = null;
+    private JsonNullable<FileCommitContent> content = JsonNullable.<FileCommitContent>undefined();
 
     private FileCommitCommit commit;
 
@@ -32,12 +32,12 @@ public class FileCommit {
      * Constructor with only required parameters
      */
     public FileCommit(FileCommitContent content, FileCommitCommit commit) {
-        this.content = content;
+        this.content = JsonNullable.of(content);
         this.commit = commit;
     }
 
     public FileCommit content(FileCommitContent content) {
-        this.content = content;
+        this.content = JsonNullable.of(content);
         return this;
     }
 
@@ -49,11 +49,11 @@ public class FileCommit {
     @Valid
     @Schema(name = "content", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("content")
-    public FileCommitContent getContent() {
+    public JsonNullable<FileCommitContent> getContent() {
         return content;
     }
 
-    public void setContent(FileCommitContent content) {
+    public void setContent(JsonNullable<FileCommitContent> content) {
         this.content = content;
     }
 

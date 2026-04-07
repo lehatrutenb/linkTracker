@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackageRegistry
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_registry")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
 
-    private String aboutUrl;
+    private Optional<String> aboutUrl = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String vendor;
+    private Optional<String> vendor = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackageRegistry aboutUrl(String aboutUrl) {
-        this.aboutUrl = aboutUrl;
+        this.aboutUrl = Optional.ofNullable(aboutUrl);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
      */
     @Schema(name = "about_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("about_url")
-    public String getAboutUrl() {
+    public Optional<String> getAboutUrl() {
         return aboutUrl;
     }
 
-    public void setAboutUrl(String aboutUrl) {
+    public void setAboutUrl(Optional<String> aboutUrl) {
         this.aboutUrl = aboutUrl;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackageRegistry name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackageRegistry type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -77,16 +76,16 @@ public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackageRegistry url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -96,16 +95,16 @@ public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackageRegistry vendor(String vendor) {
-        this.vendor = vendor;
+        this.vendor = Optional.ofNullable(vendor);
         return this;
     }
 
@@ -115,11 +114,11 @@ public class WebhookRegistryPackagePublishedRegistryPackageRegistry {
      */
     @Schema(name = "vendor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vendor")
-    public String getVendor() {
+    public Optional<String> getVendor() {
         return vendor;
     }
 
-    public void setVendor(String vendor) {
+    public void setVendor(Optional<String> vendor) {
         this.vendor = vendor;
     }
 

@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentReviewRejected
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-deployment-review-rejected")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentReviewRejected {
 
@@ -58,13 +59,13 @@ public class WebhookDeploymentReviewRejected {
 
     private ActionEnum action;
 
-    private WebhooksApprover approver;
+    private Optional<WebhooksApprover> approver = Optional.empty();
 
-    private String comment;
+    private Optional<String> comment = Optional.empty();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private OrganizationSimpleWebhooks organization;
 
@@ -77,12 +78,12 @@ public class WebhookDeploymentReviewRejected {
 
     private String since;
 
-    private WebhooksWorkflowJobRun workflowJobRun;
+    private Optional<WebhooksWorkflowJobRun> workflowJobRun = Optional.empty();
 
     @Valid
     private List<@Valid WebhookDeploymentReviewRejectedWorkflowJobRunsInner> workflowJobRuns = new ArrayList<>();
 
-    private DeploymentWorkflowRun2 workflowRun = null;
+    private JsonNullable<DeploymentWorkflowRun2> workflowRun = JsonNullable.<DeploymentWorkflowRun2>undefined();
 
     public WebhookDeploymentReviewRejected() {
         super();
@@ -103,7 +104,7 @@ public class WebhookDeploymentReviewRejected {
         this.repository = repository;
         this.sender = sender;
         this.since = since;
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
     }
 
     public WebhookDeploymentReviewRejected action(ActionEnum action) {
@@ -127,7 +128,7 @@ public class WebhookDeploymentReviewRejected {
     }
 
     public WebhookDeploymentReviewRejected approver(WebhooksApprover approver) {
-        this.approver = approver;
+        this.approver = Optional.ofNullable(approver);
         return this;
     }
 
@@ -138,16 +139,16 @@ public class WebhookDeploymentReviewRejected {
     @Valid
     @Schema(name = "approver", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("approver")
-    public WebhooksApprover getApprover() {
+    public Optional<WebhooksApprover> getApprover() {
         return approver;
     }
 
-    public void setApprover(WebhooksApprover approver) {
+    public void setApprover(Optional<WebhooksApprover> approver) {
         this.approver = approver;
     }
 
     public WebhookDeploymentReviewRejected comment(String comment) {
-        this.comment = comment;
+        this.comment = Optional.ofNullable(comment);
         return this;
     }
 
@@ -157,16 +158,16 @@ public class WebhookDeploymentReviewRejected {
      */
     @Schema(name = "comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comment")
-    public String getComment() {
+    public Optional<String> getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(Optional<String> comment) {
         this.comment = comment;
     }
 
     public WebhookDeploymentReviewRejected enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -177,16 +178,16 @@ public class WebhookDeploymentReviewRejected {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookDeploymentReviewRejected installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -197,11 +198,11 @@ public class WebhookDeploymentReviewRejected {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -317,7 +318,7 @@ public class WebhookDeploymentReviewRejected {
     }
 
     public WebhookDeploymentReviewRejected workflowJobRun(WebhooksWorkflowJobRun workflowJobRun) {
-        this.workflowJobRun = workflowJobRun;
+        this.workflowJobRun = Optional.ofNullable(workflowJobRun);
         return this;
     }
 
@@ -328,11 +329,11 @@ public class WebhookDeploymentReviewRejected {
     @Valid
     @Schema(name = "workflow_job_run", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("workflow_job_run")
-    public WebhooksWorkflowJobRun getWorkflowJobRun() {
+    public Optional<WebhooksWorkflowJobRun> getWorkflowJobRun() {
         return workflowJobRun;
     }
 
-    public void setWorkflowJobRun(WebhooksWorkflowJobRun workflowJobRun) {
+    public void setWorkflowJobRun(Optional<WebhooksWorkflowJobRun> workflowJobRun) {
         this.workflowJobRun = workflowJobRun;
     }
 
@@ -367,7 +368,7 @@ public class WebhookDeploymentReviewRejected {
     }
 
     public WebhookDeploymentReviewRejected workflowRun(DeploymentWorkflowRun2 workflowRun) {
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
         return this;
     }
 
@@ -379,11 +380,11 @@ public class WebhookDeploymentReviewRejected {
     @Valid
     @Schema(name = "workflow_run", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_run")
-    public DeploymentWorkflowRun2 getWorkflowRun() {
+    public JsonNullable<DeploymentWorkflowRun2> getWorkflowRun() {
         return workflowRun;
     }
 
-    public void setWorkflowRun(DeploymentWorkflowRun2 workflowRun) {
+    public void setWorkflowRun(JsonNullable<DeploymentWorkflowRun2> workflowRun) {
         this.workflowRun = workflowRun;
     }
 

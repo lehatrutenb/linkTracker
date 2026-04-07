@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MigrationsStartForAuthenticatedUserRequest
@@ -19,23 +19,23 @@ import java.util.Objects;
 @JsonTypeName("migrations_start_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MigrationsStartForAuthenticatedUserRequest {
 
-    private Boolean lockRepositories;
+    private Optional<Boolean> lockRepositories = Optional.empty();
 
-    private Boolean excludeMetadata;
+    private Optional<Boolean> excludeMetadata = Optional.empty();
 
-    private Boolean excludeGitData;
+    private Optional<Boolean> excludeGitData = Optional.empty();
 
-    private Boolean excludeAttachments;
+    private Optional<Boolean> excludeAttachments = Optional.empty();
 
-    private Boolean excludeReleases;
+    private Optional<Boolean> excludeReleases = Optional.empty();
 
-    private Boolean excludeOwnerProjects;
+    private Optional<Boolean> excludeOwnerProjects = Optional.empty();
 
-    private Boolean orgMetadataOnly = false;
+    private Optional<Boolean> orgMetadataOnly = Optional.of(false);
 
     /**
      * Allowed values that can be passed to the exclude param.
@@ -88,7 +88,7 @@ public class MigrationsStartForAuthenticatedUserRequest {
     }
 
     public MigrationsStartForAuthenticatedUserRequest lockRepositories(Boolean lockRepositories) {
-        this.lockRepositories = lockRepositories;
+        this.lockRepositories = Optional.ofNullable(lockRepositories);
         return this;
     }
 
@@ -102,16 +102,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
             description = "Lock the repositories being migrated at the start of the migration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_repositories")
-    public Boolean getLockRepositories() {
+    public Optional<Boolean> getLockRepositories() {
         return lockRepositories;
     }
 
-    public void setLockRepositories(Boolean lockRepositories) {
+    public void setLockRepositories(Optional<Boolean> lockRepositories) {
         this.lockRepositories = lockRepositories;
     }
 
     public MigrationsStartForAuthenticatedUserRequest excludeMetadata(Boolean excludeMetadata) {
-        this.excludeMetadata = excludeMetadata;
+        this.excludeMetadata = Optional.ofNullable(excludeMetadata);
         return this;
     }
 
@@ -126,16 +126,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
                     "Indicates whether metadata should be excluded and only git source should be included for the migration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude_metadata")
-    public Boolean getExcludeMetadata() {
+    public Optional<Boolean> getExcludeMetadata() {
         return excludeMetadata;
     }
 
-    public void setExcludeMetadata(Boolean excludeMetadata) {
+    public void setExcludeMetadata(Optional<Boolean> excludeMetadata) {
         this.excludeMetadata = excludeMetadata;
     }
 
     public MigrationsStartForAuthenticatedUserRequest excludeGitData(Boolean excludeGitData) {
-        this.excludeGitData = excludeGitData;
+        this.excludeGitData = Optional.ofNullable(excludeGitData);
         return this;
     }
 
@@ -149,16 +149,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
             description = "Indicates whether the repository git data should be excluded from the migration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude_git_data")
-    public Boolean getExcludeGitData() {
+    public Optional<Boolean> getExcludeGitData() {
         return excludeGitData;
     }
 
-    public void setExcludeGitData(Boolean excludeGitData) {
+    public void setExcludeGitData(Optional<Boolean> excludeGitData) {
         this.excludeGitData = excludeGitData;
     }
 
     public MigrationsStartForAuthenticatedUserRequest excludeAttachments(Boolean excludeAttachments) {
-        this.excludeAttachments = excludeAttachments;
+        this.excludeAttachments = Optional.ofNullable(excludeAttachments);
         return this;
     }
 
@@ -172,16 +172,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
             description = "Do not include attachments in the migration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude_attachments")
-    public Boolean getExcludeAttachments() {
+    public Optional<Boolean> getExcludeAttachments() {
         return excludeAttachments;
     }
 
-    public void setExcludeAttachments(Boolean excludeAttachments) {
+    public void setExcludeAttachments(Optional<Boolean> excludeAttachments) {
         this.excludeAttachments = excludeAttachments;
     }
 
     public MigrationsStartForAuthenticatedUserRequest excludeReleases(Boolean excludeReleases) {
-        this.excludeReleases = excludeReleases;
+        this.excludeReleases = Optional.ofNullable(excludeReleases);
         return this;
     }
 
@@ -195,16 +195,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
             description = "Do not include releases in the migration",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude_releases")
-    public Boolean getExcludeReleases() {
+    public Optional<Boolean> getExcludeReleases() {
         return excludeReleases;
     }
 
-    public void setExcludeReleases(Boolean excludeReleases) {
+    public void setExcludeReleases(Optional<Boolean> excludeReleases) {
         this.excludeReleases = excludeReleases;
     }
 
     public MigrationsStartForAuthenticatedUserRequest excludeOwnerProjects(Boolean excludeOwnerProjects) {
-        this.excludeOwnerProjects = excludeOwnerProjects;
+        this.excludeOwnerProjects = Optional.ofNullable(excludeOwnerProjects);
         return this;
     }
 
@@ -218,16 +218,16 @@ public class MigrationsStartForAuthenticatedUserRequest {
             description = "Indicates whether projects owned by the organization or users should be excluded.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude_owner_projects")
-    public Boolean getExcludeOwnerProjects() {
+    public Optional<Boolean> getExcludeOwnerProjects() {
         return excludeOwnerProjects;
     }
 
-    public void setExcludeOwnerProjects(Boolean excludeOwnerProjects) {
+    public void setExcludeOwnerProjects(Optional<Boolean> excludeOwnerProjects) {
         this.excludeOwnerProjects = excludeOwnerProjects;
     }
 
     public MigrationsStartForAuthenticatedUserRequest orgMetadataOnly(Boolean orgMetadataOnly) {
-        this.orgMetadataOnly = orgMetadataOnly;
+        this.orgMetadataOnly = Optional.ofNullable(orgMetadataOnly);
         return this;
     }
 
@@ -242,11 +242,11 @@ public class MigrationsStartForAuthenticatedUserRequest {
                     "Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("org_metadata_only")
-    public Boolean getOrgMetadataOnly() {
+    public Optional<Boolean> getOrgMetadataOnly() {
         return orgMetadataOnly;
     }
 
-    public void setOrgMetadataOnly(Boolean orgMetadataOnly) {
+    public void setOrgMetadataOnly(Optional<Boolean> orgMetadataOnly) {
         this.orgMetadataOnly = orgMetadataOnly;
     }
 

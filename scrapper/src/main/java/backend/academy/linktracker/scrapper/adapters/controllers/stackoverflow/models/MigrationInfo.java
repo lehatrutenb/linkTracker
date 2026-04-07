@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -16,19 +15,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "MigrationInfo", description = "Information about a question migration.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MigrationInfo {
 
-    private Site otherSite;
+    private Optional<Site> otherSite = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime onDate;
+    private Optional<OffsetDateTime> onDate = Optional.empty();
 
-    private Long questionId;
+    private Optional<Long> questionId = Optional.empty();
 
     public MigrationInfo otherSite(Site otherSite) {
-        this.otherSite = otherSite;
+        this.otherSite = Optional.ofNullable(otherSite);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class MigrationInfo {
     @Valid
     @Schema(name = "other_site", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("other_site")
-    public Site getOtherSite() {
+    public Optional<Site> getOtherSite() {
         return otherSite;
     }
 
-    public void setOtherSite(Site otherSite) {
+    public void setOtherSite(Optional<Site> otherSite) {
         this.otherSite = otherSite;
     }
 
     public MigrationInfo onDate(OffsetDateTime onDate) {
-        this.onDate = onDate;
+        this.onDate = Optional.ofNullable(onDate);
         return this;
     }
 
@@ -62,16 +61,16 @@ public class MigrationInfo {
             description = "The date when the migration occurred.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("on_date")
-    public OffsetDateTime getOnDate() {
+    public Optional<OffsetDateTime> getOnDate() {
         return onDate;
     }
 
-    public void setOnDate(OffsetDateTime onDate) {
+    public void setOnDate(Optional<OffsetDateTime> onDate) {
         this.onDate = onDate;
     }
 
     public MigrationInfo questionId(Long questionId) {
-        this.questionId = questionId;
+        this.questionId = Optional.ofNullable(questionId);
         return this;
     }
 
@@ -84,11 +83,11 @@ public class MigrationInfo {
             description = "The ID of the question on the other site.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("question_id")
-    public Long getQuestionId() {
+    public Optional<Long> getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(Long questionId) {
+    public void setQuestionId(Optional<Long> questionId) {
         this.questionId = questionId;
     }
 

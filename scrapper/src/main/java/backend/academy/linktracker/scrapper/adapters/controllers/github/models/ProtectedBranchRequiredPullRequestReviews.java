@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProtectedBranchRequiredPullRequestReviews
@@ -16,23 +16,25 @@ import java.util.Objects;
 @JsonTypeName("protected_branch_required_pull_request_reviews")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProtectedBranchRequiredPullRequestReviews {
 
     private URI url;
 
-    private Boolean dismissStaleReviews;
+    private Optional<Boolean> dismissStaleReviews = Optional.empty();
 
-    private Boolean requireCodeOwnerReviews;
+    private Optional<Boolean> requireCodeOwnerReviews = Optional.empty();
 
-    private Long requiredApprovingReviewCount;
+    private Optional<Long> requiredApprovingReviewCount = Optional.empty();
 
-    private Boolean requireLastPushApproval = false;
+    private Optional<Boolean> requireLastPushApproval = Optional.of(false);
 
-    private ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions;
+    private Optional<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions> dismissalRestrictions =
+            Optional.empty();
 
-    private ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances bypassPullRequestAllowances;
+    private Optional<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances> bypassPullRequestAllowances =
+            Optional.empty();
 
     public ProtectedBranchRequiredPullRequestReviews() {
         super();
@@ -67,7 +69,7 @@ public class ProtectedBranchRequiredPullRequestReviews {
     }
 
     public ProtectedBranchRequiredPullRequestReviews dismissStaleReviews(Boolean dismissStaleReviews) {
-        this.dismissStaleReviews = dismissStaleReviews;
+        this.dismissStaleReviews = Optional.ofNullable(dismissStaleReviews);
         return this;
     }
 
@@ -77,16 +79,16 @@ public class ProtectedBranchRequiredPullRequestReviews {
      */
     @Schema(name = "dismiss_stale_reviews", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismiss_stale_reviews")
-    public Boolean getDismissStaleReviews() {
+    public Optional<Boolean> getDismissStaleReviews() {
         return dismissStaleReviews;
     }
 
-    public void setDismissStaleReviews(Boolean dismissStaleReviews) {
+    public void setDismissStaleReviews(Optional<Boolean> dismissStaleReviews) {
         this.dismissStaleReviews = dismissStaleReviews;
     }
 
     public ProtectedBranchRequiredPullRequestReviews requireCodeOwnerReviews(Boolean requireCodeOwnerReviews) {
-        this.requireCodeOwnerReviews = requireCodeOwnerReviews;
+        this.requireCodeOwnerReviews = Optional.ofNullable(requireCodeOwnerReviews);
         return this;
     }
 
@@ -96,16 +98,16 @@ public class ProtectedBranchRequiredPullRequestReviews {
      */
     @Schema(name = "require_code_owner_reviews", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_code_owner_reviews")
-    public Boolean getRequireCodeOwnerReviews() {
+    public Optional<Boolean> getRequireCodeOwnerReviews() {
         return requireCodeOwnerReviews;
     }
 
-    public void setRequireCodeOwnerReviews(Boolean requireCodeOwnerReviews) {
+    public void setRequireCodeOwnerReviews(Optional<Boolean> requireCodeOwnerReviews) {
         this.requireCodeOwnerReviews = requireCodeOwnerReviews;
     }
 
     public ProtectedBranchRequiredPullRequestReviews requiredApprovingReviewCount(Long requiredApprovingReviewCount) {
-        this.requiredApprovingReviewCount = requiredApprovingReviewCount;
+        this.requiredApprovingReviewCount = Optional.ofNullable(requiredApprovingReviewCount);
         return this;
     }
 
@@ -115,16 +117,16 @@ public class ProtectedBranchRequiredPullRequestReviews {
      */
     @Schema(name = "required_approving_review_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_approving_review_count")
-    public Long getRequiredApprovingReviewCount() {
+    public Optional<Long> getRequiredApprovingReviewCount() {
         return requiredApprovingReviewCount;
     }
 
-    public void setRequiredApprovingReviewCount(Long requiredApprovingReviewCount) {
+    public void setRequiredApprovingReviewCount(Optional<Long> requiredApprovingReviewCount) {
         this.requiredApprovingReviewCount = requiredApprovingReviewCount;
     }
 
     public ProtectedBranchRequiredPullRequestReviews requireLastPushApproval(Boolean requireLastPushApproval) {
-        this.requireLastPushApproval = requireLastPushApproval;
+        this.requireLastPushApproval = Optional.ofNullable(requireLastPushApproval);
         return this;
     }
 
@@ -138,17 +140,17 @@ public class ProtectedBranchRequiredPullRequestReviews {
                     "Whether the most recent push must be approved by someone other than the person who pushed it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_last_push_approval")
-    public Boolean getRequireLastPushApproval() {
+    public Optional<Boolean> getRequireLastPushApproval() {
         return requireLastPushApproval;
     }
 
-    public void setRequireLastPushApproval(Boolean requireLastPushApproval) {
+    public void setRequireLastPushApproval(Optional<Boolean> requireLastPushApproval) {
         this.requireLastPushApproval = requireLastPushApproval;
     }
 
     public ProtectedBranchRequiredPullRequestReviews dismissalRestrictions(
             ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions) {
-        this.dismissalRestrictions = dismissalRestrictions;
+        this.dismissalRestrictions = Optional.ofNullable(dismissalRestrictions);
         return this;
     }
 
@@ -159,18 +161,18 @@ public class ProtectedBranchRequiredPullRequestReviews {
     @Valid
     @Schema(name = "dismissal_restrictions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_restrictions")
-    public ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions getDismissalRestrictions() {
+    public Optional<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions> getDismissalRestrictions() {
         return dismissalRestrictions;
     }
 
     public void setDismissalRestrictions(
-            ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions dismissalRestrictions) {
+            Optional<ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions> dismissalRestrictions) {
         this.dismissalRestrictions = dismissalRestrictions;
     }
 
     public ProtectedBranchRequiredPullRequestReviews bypassPullRequestAllowances(
             ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances bypassPullRequestAllowances) {
-        this.bypassPullRequestAllowances = bypassPullRequestAllowances;
+        this.bypassPullRequestAllowances = Optional.ofNullable(bypassPullRequestAllowances);
         return this;
     }
 
@@ -181,12 +183,14 @@ public class ProtectedBranchRequiredPullRequestReviews {
     @Valid
     @Schema(name = "bypass_pull_request_allowances", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bypass_pull_request_allowances")
-    public ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances getBypassPullRequestAllowances() {
+    public Optional<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances>
+            getBypassPullRequestAllowances() {
         return bypassPullRequestAllowances;
     }
 
     public void setBypassPullRequestAllowances(
-            ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances bypassPullRequestAllowances) {
+            Optional<ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances>
+                    bypassPullRequestAllowances) {
         this.bypassPullRequestAllowances = bypassPullRequestAllowances;
     }
 

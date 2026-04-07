@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
@@ -15,35 +16,35 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version_release")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
 
-    private WebhooksSponsorshipMaintainer author;
+    private Optional<WebhooksSponsorshipMaintainer> author = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private Boolean prerelease;
+    private Optional<Boolean> prerelease = Optional.empty();
 
-    private String publishedAt;
+    private Optional<String> publishedAt = Optional.empty();
 
-    private String tagName;
+    private Optional<String> tagName = Optional.empty();
 
-    private String targetCommitish;
+    private Optional<String> targetCommitish = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease author(
             WebhooksSponsorshipMaintainer author) {
-        this.author = author;
+        this.author = Optional.ofNullable(author);
         return this;
     }
 
@@ -54,16 +55,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public WebhooksSponsorshipMaintainer getAuthor() {
+    public Optional<WebhooksSponsorshipMaintainer> getAuthor() {
         return author;
     }
 
-    public void setAuthor(WebhooksSponsorshipMaintainer author) {
+    public void setAuthor(Optional<WebhooksSponsorshipMaintainer> author) {
         this.author = author;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -73,16 +74,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -92,16 +93,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -111,16 +112,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -130,16 +131,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -149,16 +150,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -168,16 +169,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "prerelease", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease publishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
+        this.publishedAt = Optional.ofNullable(publishedAt);
         return this;
     }
 
@@ -187,16 +188,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "published_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("published_at")
-    public String getPublishedAt() {
+    public Optional<String> getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(String publishedAt) {
+    public void setPublishedAt(Optional<String> publishedAt) {
         this.publishedAt = publishedAt;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease tagName(String tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -206,16 +207,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public String getTagName() {
+    public Optional<String> getTagName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName(Optional<String> tagName) {
         this.tagName = tagName;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease targetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish;
+        this.targetCommitish = Optional.ofNullable(targetCommitish);
         return this;
     }
 
@@ -225,16 +226,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "target_commitish", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_commitish")
-    public String getTargetCommitish() {
+    public Optional<String> getTargetCommitish() {
         return targetCommitish;
     }
 
-    public void setTargetCommitish(String targetCommitish) {
+    public void setTargetCommitish(Optional<String> targetCommitish) {
         this.targetCommitish = targetCommitish;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -244,11 +245,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
@@ -270,7 +271,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
                 && Objects.equals(
                         this.htmlUrl, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.htmlUrl)
                 && Objects.equals(this.id, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.id)
-                && Objects.equals(this.name, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.name)
+                && equalsNullable(this.name, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.name)
                 && Objects.equals(
                         this.prerelease, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.prerelease)
                 && Objects.equals(
@@ -284,10 +285,32 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease
                 && Objects.equals(this.url, webhookRegistryPackagePublishedRegistryPackagePackageVersionRelease.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                author, createdAt, draft, htmlUrl, id, name, prerelease, publishedAt, tagName, targetCommitish, url);
+                author,
+                createdAt,
+                draft,
+                htmlUrl,
+                id,
+                hashCodeNullable(name),
+                prerelease,
+                publishedAt,
+                tagName,
+                targetCommitish,
+                url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

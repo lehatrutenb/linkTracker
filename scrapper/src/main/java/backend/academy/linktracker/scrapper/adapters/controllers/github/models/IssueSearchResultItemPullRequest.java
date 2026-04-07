@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,20 +19,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue_search_result_item_pull_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueSearchResultItemPullRequest {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt = null;
+    private JsonNullable<OffsetDateTime> mergedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI diffUrl = null;
+    private JsonNullable<URI> diffUrl = JsonNullable.<URI>undefined();
 
-    private URI htmlUrl = null;
+    private JsonNullable<URI> htmlUrl = JsonNullable.<URI>undefined();
 
-    private URI patchUrl = null;
+    private JsonNullable<URI> patchUrl = JsonNullable.<URI>undefined();
 
-    private URI url = null;
+    private JsonNullable<URI> url = JsonNullable.<URI>undefined();
 
     public IssueSearchResultItemPullRequest() {
         super();
@@ -41,14 +42,14 @@ public class IssueSearchResultItemPullRequest {
      * Constructor with only required parameters
      */
     public IssueSearchResultItemPullRequest(URI diffUrl, URI htmlUrl, URI patchUrl, URI url) {
-        this.diffUrl = diffUrl;
-        this.htmlUrl = htmlUrl;
-        this.patchUrl = patchUrl;
-        this.url = url;
+        this.diffUrl = JsonNullable.of(diffUrl);
+        this.htmlUrl = JsonNullable.of(htmlUrl);
+        this.patchUrl = JsonNullable.of(patchUrl);
+        this.url = JsonNullable.of(url);
     }
 
     public IssueSearchResultItemPullRequest mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -59,16 +60,16 @@ public class IssueSearchResultItemPullRequest {
     @Valid
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public JsonNullable<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(JsonNullable<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
     public IssueSearchResultItemPullRequest diffUrl(URI diffUrl) {
-        this.diffUrl = diffUrl;
+        this.diffUrl = JsonNullable.of(diffUrl);
         return this;
     }
 
@@ -80,16 +81,16 @@ public class IssueSearchResultItemPullRequest {
     @Valid
     @Schema(name = "diff_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("diff_url")
-    public URI getDiffUrl() {
+    public JsonNullable<URI> getDiffUrl() {
         return diffUrl;
     }
 
-    public void setDiffUrl(URI diffUrl) {
+    public void setDiffUrl(JsonNullable<URI> diffUrl) {
         this.diffUrl = diffUrl;
     }
 
     public IssueSearchResultItemPullRequest htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -101,16 +102,16 @@ public class IssueSearchResultItemPullRequest {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public JsonNullable<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(JsonNullable<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public IssueSearchResultItemPullRequest patchUrl(URI patchUrl) {
-        this.patchUrl = patchUrl;
+        this.patchUrl = JsonNullable.of(patchUrl);
         return this;
     }
 
@@ -122,16 +123,16 @@ public class IssueSearchResultItemPullRequest {
     @Valid
     @Schema(name = "patch_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("patch_url")
-    public URI getPatchUrl() {
+    public JsonNullable<URI> getPatchUrl() {
         return patchUrl;
     }
 
-    public void setPatchUrl(URI patchUrl) {
+    public void setPatchUrl(JsonNullable<URI> patchUrl) {
         this.patchUrl = patchUrl;
     }
 
     public IssueSearchResultItemPullRequest url(URI url) {
-        this.url = url;
+        this.url = JsonNullable.of(url);
         return this;
     }
 
@@ -143,11 +144,11 @@ public class IssueSearchResultItemPullRequest {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public JsonNullable<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(JsonNullable<URI> url) {
         this.url = url;
     }
 
@@ -160,16 +161,28 @@ public class IssueSearchResultItemPullRequest {
             return false;
         }
         IssueSearchResultItemPullRequest issueSearchResultItemPullRequest = (IssueSearchResultItemPullRequest) o;
-        return Objects.equals(this.mergedAt, issueSearchResultItemPullRequest.mergedAt)
+        return equalsNullable(this.mergedAt, issueSearchResultItemPullRequest.mergedAt)
                 && Objects.equals(this.diffUrl, issueSearchResultItemPullRequest.diffUrl)
                 && Objects.equals(this.htmlUrl, issueSearchResultItemPullRequest.htmlUrl)
                 && Objects.equals(this.patchUrl, issueSearchResultItemPullRequest.patchUrl)
                 && Objects.equals(this.url, issueSearchResultItemPullRequest.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(mergedAt, diffUrl, htmlUrl, patchUrl, url);
+        return Objects.hash(hashCodeNullable(mergedAt), diffUrl, htmlUrl, patchUrl, url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_pull_request_review_dismissed_review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestReviewDismissedReview {
 
@@ -76,7 +77,7 @@ public class WebhookPullRequestReviewDismissedReview {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     private String commitId;
 
@@ -131,9 +132,9 @@ public class WebhookPullRequestReviewDismissedReview {
     private OffsetDateTime submittedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private User3 user = null;
+    private JsonNullable<User3> user = JsonNullable.<User3>undefined();
 
     public WebhookPullRequestReviewDismissedReview() {
         super();
@@ -156,7 +157,7 @@ public class WebhookPullRequestReviewDismissedReview {
             User3 user) {
         this.links = links;
         this.authorAssociation = authorAssociation;
-        this.body = body;
+        this.body = JsonNullable.of(body);
         this.commitId = commitId;
         this.htmlUrl = htmlUrl;
         this.id = id;
@@ -164,7 +165,7 @@ public class WebhookPullRequestReviewDismissedReview {
         this.pullRequestUrl = pullRequestUrl;
         this.state = state;
         this.submittedAt = submittedAt;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhookPullRequestReviewDismissedReview links(WebhooksReviewLinks links) {
@@ -212,7 +213,7 @@ public class WebhookPullRequestReviewDismissedReview {
     }
 
     public WebhookPullRequestReviewDismissedReview body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -223,11 +224,11 @@ public class WebhookPullRequestReviewDismissedReview {
     @NotNull
     @Schema(name = "body", description = "The text of the review.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -378,7 +379,7 @@ public class WebhookPullRequestReviewDismissedReview {
     }
 
     public WebhookPullRequestReviewDismissedReview updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -389,16 +390,16 @@ public class WebhookPullRequestReviewDismissedReview {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public WebhookPullRequestReviewDismissedReview user(User3 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -410,11 +411,11 @@ public class WebhookPullRequestReviewDismissedReview {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User3 getUser() {
+    public JsonNullable<User3> getUser() {
         return user;
     }
 
-    public void setUser(User3 user) {
+    public void setUser(JsonNullable<User3> user) {
         this.user = user;
     }
 
@@ -438,8 +439,13 @@ public class WebhookPullRequestReviewDismissedReview {
                 && Objects.equals(this.pullRequestUrl, webhookPullRequestReviewDismissedReview.pullRequestUrl)
                 && Objects.equals(this.state, webhookPullRequestReviewDismissedReview.state)
                 && Objects.equals(this.submittedAt, webhookPullRequestReviewDismissedReview.submittedAt)
-                && Objects.equals(this.updatedAt, webhookPullRequestReviewDismissedReview.updatedAt)
+                && equalsNullable(this.updatedAt, webhookPullRequestReviewDismissedReview.updatedAt)
                 && Objects.equals(this.user, webhookPullRequestReviewDismissedReview.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -455,8 +461,15 @@ public class WebhookPullRequestReviewDismissedReview {
                 pullRequestUrl,
                 state,
                 submittedAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

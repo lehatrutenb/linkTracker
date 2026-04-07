@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReposUpdateInformationAboutPagesSiteRequest
@@ -17,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("repos_update_information_about_pages_site_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateInformationAboutPagesSiteRequest {
 
-    private String cname = null;
+    private JsonNullable<String> cname = JsonNullable.<String>undefined();
 
-    private Boolean httpsEnforced;
+    private Optional<Boolean> httpsEnforced = Optional.empty();
 
     /**
      * The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.
@@ -60,12 +61,12 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
         }
     }
 
-    private BuildTypeEnum buildType;
+    private Optional<BuildTypeEnum> buildType = Optional.empty();
 
-    private ReposUpdateInformationAboutPagesSiteRequestSource source;
+    private Optional<ReposUpdateInformationAboutPagesSiteRequestSource> source = Optional.empty();
 
     public ReposUpdateInformationAboutPagesSiteRequest cname(String cname) {
-        this.cname = cname;
+        this.cname = JsonNullable.of(cname);
         return this;
     }
 
@@ -79,16 +80,16 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
                     "Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see \"[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cname")
-    public String getCname() {
+    public JsonNullable<String> getCname() {
         return cname;
     }
 
-    public void setCname(String cname) {
+    public void setCname(JsonNullable<String> cname) {
         this.cname = cname;
     }
 
     public ReposUpdateInformationAboutPagesSiteRequest httpsEnforced(Boolean httpsEnforced) {
-        this.httpsEnforced = httpsEnforced;
+        this.httpsEnforced = Optional.ofNullable(httpsEnforced);
         return this;
     }
 
@@ -101,16 +102,16 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
             description = "Specify whether HTTPS should be enforced for the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("https_enforced")
-    public Boolean getHttpsEnforced() {
+    public Optional<Boolean> getHttpsEnforced() {
         return httpsEnforced;
     }
 
-    public void setHttpsEnforced(Boolean httpsEnforced) {
+    public void setHttpsEnforced(Optional<Boolean> httpsEnforced) {
         this.httpsEnforced = httpsEnforced;
     }
 
     public ReposUpdateInformationAboutPagesSiteRequest buildType(BuildTypeEnum buildType) {
-        this.buildType = buildType;
+        this.buildType = Optional.ofNullable(buildType);
         return this;
     }
 
@@ -124,17 +125,17 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
                     "The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("build_type")
-    public BuildTypeEnum getBuildType() {
+    public Optional<BuildTypeEnum> getBuildType() {
         return buildType;
     }
 
-    public void setBuildType(BuildTypeEnum buildType) {
+    public void setBuildType(Optional<BuildTypeEnum> buildType) {
         this.buildType = buildType;
     }
 
     public ReposUpdateInformationAboutPagesSiteRequest source(
             ReposUpdateInformationAboutPagesSiteRequestSource source) {
-        this.source = source;
+        this.source = Optional.ofNullable(source);
         return this;
     }
 
@@ -145,11 +146,11 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
     @Valid
     @Schema(name = "source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public ReposUpdateInformationAboutPagesSiteRequestSource getSource() {
+    public Optional<ReposUpdateInformationAboutPagesSiteRequestSource> getSource() {
         return source;
     }
 
-    public void setSource(ReposUpdateInformationAboutPagesSiteRequestSource source) {
+    public void setSource(Optional<ReposUpdateInformationAboutPagesSiteRequestSource> source) {
         this.source = source;
     }
 
@@ -163,15 +164,27 @@ public class ReposUpdateInformationAboutPagesSiteRequest {
         }
         ReposUpdateInformationAboutPagesSiteRequest reposUpdateInformationAboutPagesSiteRequest =
                 (ReposUpdateInformationAboutPagesSiteRequest) o;
-        return Objects.equals(this.cname, reposUpdateInformationAboutPagesSiteRequest.cname)
+        return equalsNullable(this.cname, reposUpdateInformationAboutPagesSiteRequest.cname)
                 && Objects.equals(this.httpsEnforced, reposUpdateInformationAboutPagesSiteRequest.httpsEnforced)
                 && Objects.equals(this.buildType, reposUpdateInformationAboutPagesSiteRequest.buildType)
                 && Objects.equals(this.source, reposUpdateInformationAboutPagesSiteRequest.source);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(cname, httpsEnforced, buildType, source);
+        return Objects.hash(hashCodeNullable(cname), httpsEnforced, buildType, source);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

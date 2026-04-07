@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Issue_8")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Issue8 {
 
@@ -66,9 +64,9 @@ public class Issue8 {
         }
     }
 
-    private ActiveLockReasonEnum activeLockReason = null;
+    private JsonNullable<ActiveLockReasonEnum> activeLockReason = JsonNullable.<ActiveLockReasonEnum>undefined();
 
-    private User2 assignee = null;
+    private JsonNullable<User2> assignee = JsonNullable.<User2>undefined();
 
     @Valid
     private List<@Valid User5> assignees = new ArrayList<>();
@@ -122,10 +120,10 @@ public class Issue8 {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private Long comments;
 
@@ -134,7 +132,7 @@ public class Issue8 {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private URI eventsUrl;
 
@@ -147,27 +145,27 @@ public class Issue8 {
 
     private String labelsUrl;
 
-    private Boolean locked;
+    private Optional<Boolean> locked = Optional.empty();
 
-    private Milestone milestone = null;
+    private JsonNullable<Milestone> milestone = JsonNullable.<Milestone>undefined();
 
     private String nodeId;
 
     private Long number;
 
-    private App17 performedViaGithubApp = null;
+    private JsonNullable<App17> performedViaGithubApp = JsonNullable.<App17>undefined();
 
-    private WebhooksIssuePullRequest pullRequest;
+    private Optional<WebhooksIssuePullRequest> pullRequest = Optional.empty();
 
     private Reactions reactions;
 
     private URI repositoryUrl;
 
-    private NullableIssueComment pinnedComment = null;
+    private JsonNullable<NullableIssueComment> pinnedComment = JsonNullable.<NullableIssueComment>undefined();
 
-    private SubIssuesSummary subIssuesSummary;
+    private Optional<SubIssuesSummary> subIssuesSummary = Optional.empty();
 
-    private IssueDependenciesSummary issueDependenciesSummary;
+    private Optional<IssueDependenciesSummary> issueDependenciesSummary = Optional.empty();
 
     @Valid
     private List<@Valid IssueFieldValue> issueFieldValues = new ArrayList<>();
@@ -209,9 +207,9 @@ public class Issue8 {
 
     private StateEnum state;
 
-    private String stateReason = null;
+    private JsonNullable<String> stateReason = JsonNullable.<String>undefined();
 
-    private URI timelineUrl;
+    private Optional<URI> timelineUrl = Optional.empty();
 
     private String title;
 
@@ -220,9 +218,9 @@ public class Issue8 {
 
     private URI url;
 
-    private User3 user = null;
+    private JsonNullable<User3> user = JsonNullable.<User3>undefined();
 
-    private IssueType type = null;
+    private JsonNullable<IssueType> type = JsonNullable.<IssueType>undefined();
 
     public Issue8() {
         super();
@@ -254,11 +252,11 @@ public class Issue8 {
             OffsetDateTime updatedAt,
             URI url,
             User3 user) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         this.assignees = assignees;
         this.authorAssociation = authorAssociation;
-        this.body = body;
-        this.closedAt = closedAt;
+        this.body = JsonNullable.of(body);
+        this.closedAt = JsonNullable.of(closedAt);
         this.comments = comments;
         this.commentsUrl = commentsUrl;
         this.createdAt = createdAt;
@@ -266,7 +264,7 @@ public class Issue8 {
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.labelsUrl = labelsUrl;
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         this.nodeId = nodeId;
         this.number = number;
         this.reactions = reactions;
@@ -275,11 +273,11 @@ public class Issue8 {
         this.title = title;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public Issue8 activeLockReason(ActiveLockReasonEnum activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -290,16 +288,16 @@ public class Issue8 {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public ActiveLockReasonEnum getActiveLockReason() {
+    public JsonNullable<ActiveLockReasonEnum> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(ActiveLockReasonEnum activeLockReason) {
+    public void setActiveLockReason(JsonNullable<ActiveLockReasonEnum> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public Issue8 assignee(User2 assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -310,11 +308,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public User2 getAssignee() {
+    public JsonNullable<User2> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(User2 assignee) {
+    public void setAssignee(JsonNullable<User2> assignee) {
         this.assignee = assignee;
     }
 
@@ -371,7 +369,7 @@ public class Issue8 {
     }
 
     public Issue8 body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -382,16 +380,16 @@ public class Issue8 {
     @NotNull
     @Schema(name = "body", description = "Contents of the issue", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public Issue8 closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -403,11 +401,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -474,7 +472,7 @@ public class Issue8 {
     }
 
     public Issue8 draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -484,11 +482,11 @@ public class Issue8 {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -603,7 +601,7 @@ public class Issue8 {
     }
 
     public Issue8 locked(Boolean locked) {
-        this.locked = locked;
+        this.locked = Optional.ofNullable(locked);
         return this;
     }
 
@@ -613,16 +611,16 @@ public class Issue8 {
      */
     @Schema(name = "locked", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locked")
-    public Boolean getLocked() {
+    public Optional<Boolean> getLocked() {
         return locked;
     }
 
-    public void setLocked(Boolean locked) {
+    public void setLocked(Optional<Boolean> locked) {
         this.locked = locked;
     }
 
     public Issue8 milestone(Milestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -634,11 +632,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public Milestone getMilestone() {
+    public JsonNullable<Milestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Milestone milestone) {
+    public void setMilestone(JsonNullable<Milestone> milestone) {
         this.milestone = milestone;
     }
 
@@ -683,7 +681,7 @@ public class Issue8 {
     }
 
     public Issue8 performedViaGithubApp(App17 performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -694,16 +692,16 @@ public class Issue8 {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public App17 getPerformedViaGithubApp() {
+    public JsonNullable<App17> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(App17 performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<App17> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
     public Issue8 pullRequest(WebhooksIssuePullRequest pullRequest) {
-        this.pullRequest = pullRequest;
+        this.pullRequest = Optional.ofNullable(pullRequest);
         return this;
     }
 
@@ -714,11 +712,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "pull_request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request")
-    public WebhooksIssuePullRequest getPullRequest() {
+    public Optional<WebhooksIssuePullRequest> getPullRequest() {
         return pullRequest;
     }
 
-    public void setPullRequest(WebhooksIssuePullRequest pullRequest) {
+    public void setPullRequest(Optional<WebhooksIssuePullRequest> pullRequest) {
         this.pullRequest = pullRequest;
     }
 
@@ -765,7 +763,7 @@ public class Issue8 {
     }
 
     public Issue8 pinnedComment(NullableIssueComment pinnedComment) {
-        this.pinnedComment = pinnedComment;
+        this.pinnedComment = JsonNullable.of(pinnedComment);
         return this;
     }
 
@@ -776,16 +774,16 @@ public class Issue8 {
     @Valid
     @Schema(name = "pinned_comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pinned_comment")
-    public NullableIssueComment getPinnedComment() {
+    public JsonNullable<NullableIssueComment> getPinnedComment() {
         return pinnedComment;
     }
 
-    public void setPinnedComment(NullableIssueComment pinnedComment) {
+    public void setPinnedComment(JsonNullable<NullableIssueComment> pinnedComment) {
         this.pinnedComment = pinnedComment;
     }
 
     public Issue8 subIssuesSummary(SubIssuesSummary subIssuesSummary) {
-        this.subIssuesSummary = subIssuesSummary;
+        this.subIssuesSummary = Optional.ofNullable(subIssuesSummary);
         return this;
     }
 
@@ -796,16 +794,16 @@ public class Issue8 {
     @Valid
     @Schema(name = "sub_issues_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sub_issues_summary")
-    public SubIssuesSummary getSubIssuesSummary() {
+    public Optional<SubIssuesSummary> getSubIssuesSummary() {
         return subIssuesSummary;
     }
 
-    public void setSubIssuesSummary(SubIssuesSummary subIssuesSummary) {
+    public void setSubIssuesSummary(Optional<SubIssuesSummary> subIssuesSummary) {
         this.subIssuesSummary = subIssuesSummary;
     }
 
     public Issue8 issueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
-        this.issueDependenciesSummary = issueDependenciesSummary;
+        this.issueDependenciesSummary = Optional.ofNullable(issueDependenciesSummary);
         return this;
     }
 
@@ -816,11 +814,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "issue_dependencies_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_dependencies_summary")
-    public IssueDependenciesSummary getIssueDependenciesSummary() {
+    public Optional<IssueDependenciesSummary> getIssueDependenciesSummary() {
         return issueDependenciesSummary;
     }
 
-    public void setIssueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
+    public void setIssueDependenciesSummary(Optional<IssueDependenciesSummary> issueDependenciesSummary) {
         this.issueDependenciesSummary = issueDependenciesSummary;
     }
 
@@ -876,7 +874,7 @@ public class Issue8 {
     }
 
     public Issue8 stateReason(String stateReason) {
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         return this;
     }
 
@@ -886,16 +884,16 @@ public class Issue8 {
      */
     @Schema(name = "state_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state_reason")
-    public String getStateReason() {
+    public JsonNullable<String> getStateReason() {
         return stateReason;
     }
 
-    public void setStateReason(String stateReason) {
+    public void setStateReason(JsonNullable<String> stateReason) {
         this.stateReason = stateReason;
     }
 
     public Issue8 timelineUrl(URI timelineUrl) {
-        this.timelineUrl = timelineUrl;
+        this.timelineUrl = Optional.ofNullable(timelineUrl);
         return this;
     }
 
@@ -906,11 +904,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "timeline_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("timeline_url")
-    public URI getTimelineUrl() {
+    public Optional<URI> getTimelineUrl() {
         return timelineUrl;
     }
 
-    public void setTimelineUrl(URI timelineUrl) {
+    public void setTimelineUrl(Optional<URI> timelineUrl) {
         this.timelineUrl = timelineUrl;
     }
 
@@ -977,7 +975,7 @@ public class Issue8 {
     }
 
     public Issue8 user(User3 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -989,16 +987,16 @@ public class Issue8 {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User3 getUser() {
+    public JsonNullable<User3> getUser() {
         return user;
     }
 
-    public void setUser(User3 user) {
+    public void setUser(JsonNullable<User3> user) {
         this.user = user;
     }
 
     public Issue8 type(IssueType type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -1009,11 +1007,11 @@ public class Issue8 {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public IssueType getType() {
+    public JsonNullable<IssueType> getType() {
         return type;
     }
 
-    public void setType(IssueType type) {
+    public void setType(JsonNullable<IssueType> type) {
         this.type = type;
     }
 
@@ -1027,7 +1025,7 @@ public class Issue8 {
         }
         Issue8 issue8 = (Issue8) o;
         return Objects.equals(this.activeLockReason, issue8.activeLockReason)
-                && Objects.equals(this.assignee, issue8.assignee)
+                && equalsNullable(this.assignee, issue8.assignee)
                 && Objects.equals(this.assignees, issue8.assignees)
                 && Objects.equals(this.authorAssociation, issue8.authorAssociation)
                 && Objects.equals(this.body, issue8.body)
@@ -1045,29 +1043,34 @@ public class Issue8 {
                 && Objects.equals(this.milestone, issue8.milestone)
                 && Objects.equals(this.nodeId, issue8.nodeId)
                 && Objects.equals(this.number, issue8.number)
-                && Objects.equals(this.performedViaGithubApp, issue8.performedViaGithubApp)
+                && equalsNullable(this.performedViaGithubApp, issue8.performedViaGithubApp)
                 && Objects.equals(this.pullRequest, issue8.pullRequest)
                 && Objects.equals(this.reactions, issue8.reactions)
                 && Objects.equals(this.repositoryUrl, issue8.repositoryUrl)
-                && Objects.equals(this.pinnedComment, issue8.pinnedComment)
+                && equalsNullable(this.pinnedComment, issue8.pinnedComment)
                 && Objects.equals(this.subIssuesSummary, issue8.subIssuesSummary)
                 && Objects.equals(this.issueDependenciesSummary, issue8.issueDependenciesSummary)
                 && Objects.equals(this.issueFieldValues, issue8.issueFieldValues)
                 && Objects.equals(this.state, issue8.state)
-                && Objects.equals(this.stateReason, issue8.stateReason)
+                && equalsNullable(this.stateReason, issue8.stateReason)
                 && Objects.equals(this.timelineUrl, issue8.timelineUrl)
                 && Objects.equals(this.title, issue8.title)
                 && Objects.equals(this.updatedAt, issue8.updatedAt)
                 && Objects.equals(this.url, issue8.url)
                 && Objects.equals(this.user, issue8.user)
-                && Objects.equals(this.type, issue8.type);
+                && equalsNullable(this.type, issue8.type);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 activeLockReason,
-                assignee,
+                hashCodeNullable(assignee),
                 assignees,
                 authorAssociation,
                 body,
@@ -1085,22 +1088,29 @@ public class Issue8 {
                 milestone,
                 nodeId,
                 number,
-                performedViaGithubApp,
+                hashCodeNullable(performedViaGithubApp),
                 pullRequest,
                 reactions,
                 repositoryUrl,
-                pinnedComment,
+                hashCodeNullable(pinnedComment),
                 subIssuesSummary,
                 issueDependenciesSummary,
                 issueFieldValues,
                 state,
-                stateReason,
+                hashCodeNullable(stateReason),
                 timelineUrl,
                 title,
                 updatedAt,
                 url,
                 user,
-                type);
+                hashCodeNullable(type));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

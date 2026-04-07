@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("autolink")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Autolink {
 
@@ -31,7 +32,7 @@ public class Autolink {
     private Boolean isAlphanumeric;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public Autolink() {
         super();
@@ -141,7 +142,7 @@ public class Autolink {
     }
 
     public Autolink updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -152,11 +153,11 @@ public class Autolink {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -173,12 +174,24 @@ public class Autolink {
                 && Objects.equals(this.keyPrefix, autolink.keyPrefix)
                 && Objects.equals(this.urlTemplate, autolink.urlTemplate)
                 && Objects.equals(this.isAlphanumeric, autolink.isAlphanumeric)
-                && Objects.equals(this.updatedAt, autolink.updatedAt);
+                && equalsNullable(this.updatedAt, autolink.updatedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, keyPrefix, urlTemplate, isAlphanumeric, updatedAt);
+        return Objects.hash(id, keyPrefix, urlTemplate, isAlphanumeric, hashCodeNullable(updatedAt));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BranchRestrictionPolicyAppsInnerPermissions
@@ -14,20 +13,20 @@ import java.util.Objects;
 @JsonTypeName("branch_restriction_policy_apps_inner_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BranchRestrictionPolicyAppsInnerPermissions {
 
-    private String metadata;
+    private Optional<String> metadata = Optional.empty();
 
-    private String contents;
+    private Optional<String> contents = Optional.empty();
 
-    private String issues;
+    private Optional<String> issues = Optional.empty();
 
-    private String singleFile;
+    private Optional<String> singleFile = Optional.empty();
 
     public BranchRestrictionPolicyAppsInnerPermissions metadata(String metadata) {
-        this.metadata = metadata;
+        this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class BranchRestrictionPolicyAppsInnerPermissions {
      */
     @Schema(name = "metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("metadata")
-    public String getMetadata() {
+    public Optional<String> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(String metadata) {
+    public void setMetadata(Optional<String> metadata) {
         this.metadata = metadata;
     }
 
     public BranchRestrictionPolicyAppsInnerPermissions contents(String contents) {
-        this.contents = contents;
+        this.contents = Optional.ofNullable(contents);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class BranchRestrictionPolicyAppsInnerPermissions {
      */
     @Schema(name = "contents", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents")
-    public String getContents() {
+    public Optional<String> getContents() {
         return contents;
     }
 
-    public void setContents(String contents) {
+    public void setContents(Optional<String> contents) {
         this.contents = contents;
     }
 
     public BranchRestrictionPolicyAppsInnerPermissions issues(String issues) {
-        this.issues = issues;
+        this.issues = Optional.ofNullable(issues);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class BranchRestrictionPolicyAppsInnerPermissions {
      */
     @Schema(name = "issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues")
-    public String getIssues() {
+    public Optional<String> getIssues() {
         return issues;
     }
 
-    public void setIssues(String issues) {
+    public void setIssues(Optional<String> issues) {
         this.issues = issues;
     }
 
     public BranchRestrictionPolicyAppsInnerPermissions singleFile(String singleFile) {
-        this.singleFile = singleFile;
+        this.singleFile = Optional.ofNullable(singleFile);
         return this;
     }
 
@@ -94,11 +93,11 @@ public class BranchRestrictionPolicyAppsInnerPermissions {
      */
     @Schema(name = "single_file", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("single_file")
-    public String getSingleFile() {
+    public Optional<String> getSingleFile() {
         return singleFile;
     }
 
-    public void setSingleFile(String singleFile) {
+    public void setSingleFile(Optional<String> singleFile) {
         this.singleFile = singleFile;
     }
 

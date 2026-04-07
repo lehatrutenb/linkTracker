@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectsV2StatusUpdateEditedChanges
@@ -15,20 +14,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_status_update_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2StatusUpdateEditedChanges {
 
-    private WebhookMemberEditedChangesPermission body;
+    private Optional<WebhookMemberEditedChangesPermission> body = Optional.empty();
 
-    private WebhookProjectsV2StatusUpdateEditedChangesStatus status;
+    private Optional<WebhookProjectsV2StatusUpdateEditedChangesStatus> status = Optional.empty();
 
-    private WebhookProjectsV2StatusUpdateEditedChangesStartDate startDate;
+    private Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> startDate = Optional.empty();
 
-    private WebhookProjectsV2StatusUpdateEditedChangesStartDate targetDate;
+    private Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> targetDate = Optional.empty();
 
     public WebhookProjectsV2StatusUpdateEditedChanges body(WebhookMemberEditedChangesPermission body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookProjectsV2StatusUpdateEditedChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookMemberEditedChangesPermission getBody() {
+    public Optional<WebhookMemberEditedChangesPermission> getBody() {
         return body;
     }
 
-    public void setBody(WebhookMemberEditedChangesPermission body) {
+    public void setBody(Optional<WebhookMemberEditedChangesPermission> body) {
         this.body = body;
     }
 
     public WebhookProjectsV2StatusUpdateEditedChanges status(WebhookProjectsV2StatusUpdateEditedChangesStatus status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -59,17 +58,17 @@ public class WebhookProjectsV2StatusUpdateEditedChanges {
     @Valid
     @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public WebhookProjectsV2StatusUpdateEditedChangesStatus getStatus() {
+    public Optional<WebhookProjectsV2StatusUpdateEditedChangesStatus> getStatus() {
         return status;
     }
 
-    public void setStatus(WebhookProjectsV2StatusUpdateEditedChangesStatus status) {
+    public void setStatus(Optional<WebhookProjectsV2StatusUpdateEditedChangesStatus> status) {
         this.status = status;
     }
 
     public WebhookProjectsV2StatusUpdateEditedChanges startDate(
             WebhookProjectsV2StatusUpdateEditedChangesStartDate startDate) {
-        this.startDate = startDate;
+        this.startDate = Optional.ofNullable(startDate);
         return this;
     }
 
@@ -80,17 +79,17 @@ public class WebhookProjectsV2StatusUpdateEditedChanges {
     @Valid
     @Schema(name = "start_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_date")
-    public WebhookProjectsV2StatusUpdateEditedChangesStartDate getStartDate() {
+    public Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(WebhookProjectsV2StatusUpdateEditedChangesStartDate startDate) {
+    public void setStartDate(Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> startDate) {
         this.startDate = startDate;
     }
 
     public WebhookProjectsV2StatusUpdateEditedChanges targetDate(
             WebhookProjectsV2StatusUpdateEditedChangesStartDate targetDate) {
-        this.targetDate = targetDate;
+        this.targetDate = Optional.ofNullable(targetDate);
         return this;
     }
 
@@ -101,11 +100,11 @@ public class WebhookProjectsV2StatusUpdateEditedChanges {
     @Valid
     @Schema(name = "target_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_date")
-    public WebhookProjectsV2StatusUpdateEditedChangesStartDate getTargetDate() {
+    public Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(WebhookProjectsV2StatusUpdateEditedChangesStartDate targetDate) {
+    public void setTargetDate(Optional<WebhookProjectsV2StatusUpdateEditedChangesStartDate> targetDate) {
         this.targetDate = targetDate;
     }
 

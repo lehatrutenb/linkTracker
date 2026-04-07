@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProjectsCreateDraftItemForOrgRequest
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("projects_create_draft_item_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsCreateDraftItemForOrgRequest {
 
     private String title;
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
     public ProjectsCreateDraftItemForOrgRequest() {
         super();
@@ -57,7 +57,7 @@ public class ProjectsCreateDraftItemForOrgRequest {
     }
 
     public ProjectsCreateDraftItemForOrgRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -70,11 +70,11 @@ public class ProjectsCreateDraftItemForOrgRequest {
             description = "The body content of the draft issue item to create in the project.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 

@@ -7,11 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrganizationUpdateIssueField
@@ -19,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("organization-update-issue-field")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationUpdateIssueField {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.
@@ -62,13 +59,13 @@ public class OrganizationUpdateIssueField {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
     @Valid
     private List<@Valid OrganizationCreateIssueFieldOptionsInner> options = new ArrayList<>();
 
     public OrganizationUpdateIssueField name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -78,16 +75,16 @@ public class OrganizationUpdateIssueField {
      */
     @Schema(name = "name", description = "Name of the issue field.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public OrganizationUpdateIssueField description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -100,16 +97,16 @@ public class OrganizationUpdateIssueField {
             description = "Description of the issue field.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public OrganizationUpdateIssueField visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -123,11 +120,11 @@ public class OrganizationUpdateIssueField {
                     "The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 
@@ -172,14 +169,26 @@ public class OrganizationUpdateIssueField {
         }
         OrganizationUpdateIssueField organizationUpdateIssueField = (OrganizationUpdateIssueField) o;
         return Objects.equals(this.name, organizationUpdateIssueField.name)
-                && Objects.equals(this.description, organizationUpdateIssueField.description)
+                && equalsNullable(this.description, organizationUpdateIssueField.description)
                 && Objects.equals(this.visibility, organizationUpdateIssueField.visibility)
                 && Objects.equals(this.options, organizationUpdateIssueField.options);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, visibility, options);
+        return Objects.hash(name, hashCodeNullable(description), visibility, options);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

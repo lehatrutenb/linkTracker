@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pages-https-certificate")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PagesHttpsCertificate {
 
@@ -88,7 +88,7 @@ public class PagesHttpsCertificate {
     private List<String> domains = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate expiresAt;
+    private Optional<LocalDate> expiresAt = Optional.empty();
 
     public PagesHttpsCertificate() {
         super();
@@ -176,7 +176,7 @@ public class PagesHttpsCertificate {
     }
 
     public PagesHttpsCertificate expiresAt(LocalDate expiresAt) {
-        this.expiresAt = expiresAt;
+        this.expiresAt = Optional.ofNullable(expiresAt);
         return this;
     }
 
@@ -187,11 +187,11 @@ public class PagesHttpsCertificate {
     @Valid
     @Schema(name = "expires_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("expires_at")
-    public LocalDate getExpiresAt() {
+    public Optional<LocalDate> getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(LocalDate expiresAt) {
+    public void setExpiresAt(Optional<LocalDate> expiresAt) {
         this.expiresAt = expiresAt;
     }
 

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookOrganizationRenamedChangesLogin
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_organization_renamed_changes_login")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookOrganizationRenamedChangesLogin {
 
-    private String from;
+    private Optional<String> from = Optional.empty();
 
     public WebhookOrganizationRenamedChangesLogin from(String from) {
-        this.from = from;
+        this.from = Optional.ofNullable(from);
         return this;
     }
 
@@ -31,11 +30,11 @@ public class WebhookOrganizationRenamedChangesLogin {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public String getFrom() {
+    public Optional<String> getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(Optional<String> from) {
         this.from = from;
     }
 

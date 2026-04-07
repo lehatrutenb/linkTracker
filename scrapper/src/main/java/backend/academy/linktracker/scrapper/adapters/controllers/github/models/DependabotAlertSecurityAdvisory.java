@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,13 +23,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("dependabot-alert-security-advisory")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotAlertSecurityAdvisory {
 
     private String ghsaId;
 
-    private String cveId = null;
+    private JsonNullable<String> cveId = JsonNullable.<String>undefined();
 
     private String summary;
 
@@ -78,9 +79,9 @@ public class DependabotAlertSecurityAdvisory {
 
     private SeverityEnum severity;
 
-    private CvssSeverities cvssSeverities = null;
+    private JsonNullable<CvssSeverities> cvssSeverities = JsonNullable.<CvssSeverities>undefined();
 
-    private SecurityAdvisoryEpss epss = null;
+    private JsonNullable<SecurityAdvisoryEpss> epss = JsonNullable.<SecurityAdvisoryEpss>undefined();
 
     @Valid
     private List<@Valid DependabotAlertSecurityAdvisoryCwesInner> cwes = new ArrayList<>();
@@ -98,7 +99,7 @@ public class DependabotAlertSecurityAdvisory {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime withdrawnAt = null;
+    private JsonNullable<OffsetDateTime> withdrawnAt = JsonNullable.<OffsetDateTime>undefined();
 
     public DependabotAlertSecurityAdvisory() {
         super();
@@ -121,7 +122,7 @@ public class DependabotAlertSecurityAdvisory {
             OffsetDateTime updatedAt,
             OffsetDateTime withdrawnAt) {
         this.ghsaId = ghsaId;
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         this.summary = summary;
         this.description = description;
         this.vulnerabilities = vulnerabilities;
@@ -131,7 +132,7 @@ public class DependabotAlertSecurityAdvisory {
         this.references = references;
         this.publishedAt = publishedAt;
         this.updatedAt = updatedAt;
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
     }
 
     public DependabotAlertSecurityAdvisory ghsaId(String ghsaId) {
@@ -158,7 +159,7 @@ public class DependabotAlertSecurityAdvisory {
     }
 
     public DependabotAlertSecurityAdvisory cveId(String cveId) {
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         return this;
     }
 
@@ -172,11 +173,11 @@ public class DependabotAlertSecurityAdvisory {
             description = "The unique CVE ID assigned to the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cve_id")
-    public String getCveId() {
+    public JsonNullable<String> getCveId() {
         return cveId;
     }
 
-    public void setCveId(String cveId) {
+    public void setCveId(JsonNullable<String> cveId) {
         this.cveId = cveId;
     }
 
@@ -285,7 +286,7 @@ public class DependabotAlertSecurityAdvisory {
     }
 
     public DependabotAlertSecurityAdvisory cvssSeverities(CvssSeverities cvssSeverities) {
-        this.cvssSeverities = cvssSeverities;
+        this.cvssSeverities = JsonNullable.of(cvssSeverities);
         return this;
     }
 
@@ -296,16 +297,16 @@ public class DependabotAlertSecurityAdvisory {
     @Valid
     @Schema(name = "cvss_severities", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_severities")
-    public CvssSeverities getCvssSeverities() {
+    public JsonNullable<CvssSeverities> getCvssSeverities() {
         return cvssSeverities;
     }
 
-    public void setCvssSeverities(CvssSeverities cvssSeverities) {
+    public void setCvssSeverities(JsonNullable<CvssSeverities> cvssSeverities) {
         this.cvssSeverities = cvssSeverities;
     }
 
     public DependabotAlertSecurityAdvisory epss(SecurityAdvisoryEpss epss) {
-        this.epss = epss;
+        this.epss = JsonNullable.of(epss);
         return this;
     }
 
@@ -316,11 +317,11 @@ public class DependabotAlertSecurityAdvisory {
     @Valid
     @Schema(name = "epss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("epss")
-    public SecurityAdvisoryEpss getEpss() {
+    public JsonNullable<SecurityAdvisoryEpss> getEpss() {
         return epss;
     }
 
-    public void setEpss(SecurityAdvisoryEpss epss) {
+    public void setEpss(JsonNullable<SecurityAdvisoryEpss> epss) {
         this.epss = epss;
     }
 
@@ -473,7 +474,7 @@ public class DependabotAlertSecurityAdvisory {
     }
 
     public DependabotAlertSecurityAdvisory withdrawnAt(OffsetDateTime withdrawnAt) {
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
         return this;
     }
 
@@ -488,11 +489,11 @@ public class DependabotAlertSecurityAdvisory {
             description = "The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("withdrawn_at")
-    public OffsetDateTime getWithdrawnAt() {
+    public JsonNullable<OffsetDateTime> getWithdrawnAt() {
         return withdrawnAt;
     }
 
-    public void setWithdrawnAt(OffsetDateTime withdrawnAt) {
+    public void setWithdrawnAt(JsonNullable<OffsetDateTime> withdrawnAt) {
         this.withdrawnAt = withdrawnAt;
     }
 
@@ -511,14 +512,19 @@ public class DependabotAlertSecurityAdvisory {
                 && Objects.equals(this.description, dependabotAlertSecurityAdvisory.description)
                 && Objects.equals(this.vulnerabilities, dependabotAlertSecurityAdvisory.vulnerabilities)
                 && Objects.equals(this.severity, dependabotAlertSecurityAdvisory.severity)
-                && Objects.equals(this.cvssSeverities, dependabotAlertSecurityAdvisory.cvssSeverities)
-                && Objects.equals(this.epss, dependabotAlertSecurityAdvisory.epss)
+                && equalsNullable(this.cvssSeverities, dependabotAlertSecurityAdvisory.cvssSeverities)
+                && equalsNullable(this.epss, dependabotAlertSecurityAdvisory.epss)
                 && Objects.equals(this.cwes, dependabotAlertSecurityAdvisory.cwes)
                 && Objects.equals(this.identifiers, dependabotAlertSecurityAdvisory.identifiers)
                 && Objects.equals(this.references, dependabotAlertSecurityAdvisory.references)
                 && Objects.equals(this.publishedAt, dependabotAlertSecurityAdvisory.publishedAt)
                 && Objects.equals(this.updatedAt, dependabotAlertSecurityAdvisory.updatedAt)
                 && Objects.equals(this.withdrawnAt, dependabotAlertSecurityAdvisory.withdrawnAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -530,14 +536,21 @@ public class DependabotAlertSecurityAdvisory {
                 description,
                 vulnerabilities,
                 severity,
-                cvssSeverities,
-                epss,
+                hashCodeNullable(cvssSeverities),
+                hashCodeNullable(epss),
                 cwes,
                 identifiers,
                 references,
                 publishedAt,
                 updatedAt,
                 withdrawnAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

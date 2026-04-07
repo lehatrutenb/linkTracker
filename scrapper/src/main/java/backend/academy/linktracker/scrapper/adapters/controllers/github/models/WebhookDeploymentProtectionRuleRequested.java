@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentProtectionRuleRequested
@@ -20,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-deployment-protection-rule-requested")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentProtectionRuleRequested {
 
@@ -57,33 +54,33 @@ public class WebhookDeploymentProtectionRuleRequested {
         }
     }
 
-    private ActionEnum action;
+    private Optional<ActionEnum> action = Optional.empty();
 
-    private String environment;
+    private Optional<String> environment = Optional.empty();
 
-    private String event;
+    private Optional<String> event = Optional.empty();
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
-    private URI deploymentCallbackUrl;
+    private Optional<URI> deploymentCallbackUrl = Optional.empty();
 
-    private NullableDeployment deployment = null;
+    private JsonNullable<NullableDeployment> deployment = JsonNullable.<NullableDeployment>undefined();
 
     @Valid
     private List<@Valid PullRequest> pullRequests = new ArrayList<>();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookDeploymentProtectionRuleRequested action(ActionEnum action) {
-        this.action = action;
+        this.action = Optional.ofNullable(action);
         return this;
     }
 
@@ -93,16 +90,16 @@ public class WebhookDeploymentProtectionRuleRequested {
      */
     @Schema(name = "action", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("action")
-    public ActionEnum getAction() {
+    public Optional<ActionEnum> getAction() {
         return action;
     }
 
-    public void setAction(ActionEnum action) {
+    public void setAction(Optional<ActionEnum> action) {
         this.action = action;
     }
 
     public WebhookDeploymentProtectionRuleRequested environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -115,16 +112,16 @@ public class WebhookDeploymentProtectionRuleRequested {
             description = "The name of the environment that has the deployment protection rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
     public WebhookDeploymentProtectionRuleRequested event(String event) {
-        this.event = event;
+        this.event = Optional.ofNullable(event);
         return this;
     }
 
@@ -137,16 +134,16 @@ public class WebhookDeploymentProtectionRuleRequested {
             description = "The event that triggered the deployment protection rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("event")
-    public String getEvent() {
+    public Optional<String> getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Optional<String> event) {
         this.event = event;
     }
 
     public WebhookDeploymentProtectionRuleRequested sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -160,16 +157,16 @@ public class WebhookDeploymentProtectionRuleRequested {
                     "The commit SHA that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 
     public WebhookDeploymentProtectionRuleRequested ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -183,16 +180,16 @@ public class WebhookDeploymentProtectionRuleRequested {
                     "The ref (branch or tag) that triggered the workflow. Always populated from the check suite, regardless of whether a deployment is created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 
     public WebhookDeploymentProtectionRuleRequested deploymentCallbackUrl(URI deploymentCallbackUrl) {
-        this.deploymentCallbackUrl = deploymentCallbackUrl;
+        this.deploymentCallbackUrl = Optional.ofNullable(deploymentCallbackUrl);
         return this;
     }
 
@@ -206,16 +203,16 @@ public class WebhookDeploymentProtectionRuleRequested {
             description = "The URL to review the deployment protection rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment_callback_url")
-    public URI getDeploymentCallbackUrl() {
+    public Optional<URI> getDeploymentCallbackUrl() {
         return deploymentCallbackUrl;
     }
 
-    public void setDeploymentCallbackUrl(URI deploymentCallbackUrl) {
+    public void setDeploymentCallbackUrl(Optional<URI> deploymentCallbackUrl) {
         this.deploymentCallbackUrl = deploymentCallbackUrl;
     }
 
     public WebhookDeploymentProtectionRuleRequested deployment(NullableDeployment deployment) {
-        this.deployment = deployment;
+        this.deployment = JsonNullable.of(deployment);
         return this;
     }
 
@@ -226,11 +223,11 @@ public class WebhookDeploymentProtectionRuleRequested {
     @Valid
     @Schema(name = "deployment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment")
-    public NullableDeployment getDeployment() {
+    public JsonNullable<NullableDeployment> getDeployment() {
         return deployment;
     }
 
-    public void setDeployment(NullableDeployment deployment) {
+    public void setDeployment(JsonNullable<NullableDeployment> deployment) {
         this.deployment = deployment;
     }
 
@@ -263,7 +260,7 @@ public class WebhookDeploymentProtectionRuleRequested {
     }
 
     public WebhookDeploymentProtectionRuleRequested repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -274,16 +271,16 @@ public class WebhookDeploymentProtectionRuleRequested {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
     public WebhookDeploymentProtectionRuleRequested organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -294,16 +291,16 @@ public class WebhookDeploymentProtectionRuleRequested {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookDeploymentProtectionRuleRequested installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -314,16 +311,16 @@ public class WebhookDeploymentProtectionRuleRequested {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookDeploymentProtectionRuleRequested sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -334,11 +331,11 @@ public class WebhookDeploymentProtectionRuleRequested {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 
@@ -359,12 +356,17 @@ public class WebhookDeploymentProtectionRuleRequested {
                 && Objects.equals(this.ref, webhookDeploymentProtectionRuleRequested.ref)
                 && Objects.equals(
                         this.deploymentCallbackUrl, webhookDeploymentProtectionRuleRequested.deploymentCallbackUrl)
-                && Objects.equals(this.deployment, webhookDeploymentProtectionRuleRequested.deployment)
+                && equalsNullable(this.deployment, webhookDeploymentProtectionRuleRequested.deployment)
                 && Objects.equals(this.pullRequests, webhookDeploymentProtectionRuleRequested.pullRequests)
                 && Objects.equals(this.repository, webhookDeploymentProtectionRuleRequested.repository)
                 && Objects.equals(this.organization, webhookDeploymentProtectionRuleRequested.organization)
                 && Objects.equals(this.installation, webhookDeploymentProtectionRuleRequested.installation)
                 && Objects.equals(this.sender, webhookDeploymentProtectionRuleRequested.sender);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -376,12 +378,19 @@ public class WebhookDeploymentProtectionRuleRequested {
                 sha,
                 ref,
                 deploymentCallbackUrl,
-                deployment,
+                hashCodeNullable(deployment),
                 pullRequests,
                 repository,
                 organization,
                 installation,
                 sender);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,13 +21,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("apps_create_from_manifest_201_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AppsCreateFromManifest201Response {
 
     private Long id;
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
     private String nodeId;
 
@@ -36,7 +37,7 @@ public class AppsCreateFromManifest201Response {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI externalUrl;
 
@@ -53,11 +54,11 @@ public class AppsCreateFromManifest201Response {
     @Valid
     private List<String> events = new ArrayList<>();
 
-    private Long installationsCount;
+    private Optional<Long> installationsCount = Optional.empty();
 
     private String clientSecret;
 
-    private String webhookSecret = null;
+    private JsonNullable<String> webhookSecret = JsonNullable.<String>undefined();
 
     private String pem;
 
@@ -89,7 +90,7 @@ public class AppsCreateFromManifest201Response {
         this.clientId = clientId;
         this.owner = owner;
         this.name = name;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.externalUrl = externalUrl;
         this.htmlUrl = htmlUrl;
         this.createdAt = createdAt;
@@ -97,7 +98,7 @@ public class AppsCreateFromManifest201Response {
         this.permissions = permissions;
         this.events = events;
         this.clientSecret = clientSecret;
-        this.webhookSecret = webhookSecret;
+        this.webhookSecret = JsonNullable.of(webhookSecret);
         this.pem = pem;
     }
 
@@ -126,7 +127,7 @@ public class AppsCreateFromManifest201Response {
     }
 
     public AppsCreateFromManifest201Response slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -140,11 +141,11 @@ public class AppsCreateFromManifest201Response {
             description = "The slug name of the GitHub app",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
@@ -234,7 +235,7 @@ public class AppsCreateFromManifest201Response {
     }
 
     public AppsCreateFromManifest201Response description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -245,11 +246,11 @@ public class AppsCreateFromManifest201Response {
     @NotNull
     @Schema(name = "description", example = "The description of the app.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -395,7 +396,7 @@ public class AppsCreateFromManifest201Response {
     }
 
     public AppsCreateFromManifest201Response installationsCount(Long installationsCount) {
-        this.installationsCount = installationsCount;
+        this.installationsCount = Optional.ofNullable(installationsCount);
         return this;
     }
 
@@ -410,11 +411,11 @@ public class AppsCreateFromManifest201Response {
                     "The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installations_count")
-    public Long getInstallationsCount() {
+    public Optional<Long> getInstallationsCount() {
         return installationsCount;
     }
 
-    public void setInstallationsCount(Long installationsCount) {
+    public void setInstallationsCount(Optional<Long> installationsCount) {
         this.installationsCount = installationsCount;
     }
 
@@ -439,7 +440,7 @@ public class AppsCreateFromManifest201Response {
     }
 
     public AppsCreateFromManifest201Response webhookSecret(String webhookSecret) {
-        this.webhookSecret = webhookSecret;
+        this.webhookSecret = JsonNullable.of(webhookSecret);
         return this;
     }
 
@@ -450,11 +451,11 @@ public class AppsCreateFromManifest201Response {
     @NotNull
     @Schema(name = "webhook_secret", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("webhook_secret")
-    public String getWebhookSecret() {
+    public JsonNullable<String> getWebhookSecret() {
         return webhookSecret;
     }
 
-    public void setWebhookSecret(String webhookSecret) {
+    public void setWebhookSecret(JsonNullable<String> webhookSecret) {
         this.webhookSecret = webhookSecret;
     }
 

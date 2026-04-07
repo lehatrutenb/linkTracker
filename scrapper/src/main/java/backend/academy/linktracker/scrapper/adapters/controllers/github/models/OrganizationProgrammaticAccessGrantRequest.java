@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Minimal representation of an organization programmatic access grant request for enumerations
@@ -20,13 +20,13 @@ import java.util.Objects;
 @JsonTypeName("organization-programmatic-access-grant-request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationProgrammaticAccessGrantRequest {
 
     private Long id;
 
-    private String reason = null;
+    private JsonNullable<String> reason = JsonNullable.<String>undefined();
 
     private SimpleUser owner;
 
@@ -81,9 +81,9 @@ public class OrganizationProgrammaticAccessGrantRequest {
 
     private Boolean tokenExpired;
 
-    private String tokenExpiresAt = null;
+    private JsonNullable<String> tokenExpiresAt = JsonNullable.<String>undefined();
 
-    private String tokenLastUsedAt = null;
+    private JsonNullable<String> tokenLastUsedAt = JsonNullable.<String>undefined();
 
     public OrganizationProgrammaticAccessGrantRequest() {
         super();
@@ -106,7 +106,7 @@ public class OrganizationProgrammaticAccessGrantRequest {
             String tokenExpiresAt,
             String tokenLastUsedAt) {
         this.id = id;
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         this.owner = owner;
         this.repositorySelection = repositorySelection;
         this.repositoriesUrl = repositoriesUrl;
@@ -115,8 +115,8 @@ public class OrganizationProgrammaticAccessGrantRequest {
         this.tokenId = tokenId;
         this.tokenName = tokenName;
         this.tokenExpired = tokenExpired;
-        this.tokenExpiresAt = tokenExpiresAt;
-        this.tokenLastUsedAt = tokenLastUsedAt;
+        this.tokenExpiresAt = JsonNullable.of(tokenExpiresAt);
+        this.tokenLastUsedAt = JsonNullable.of(tokenLastUsedAt);
     }
 
     public OrganizationProgrammaticAccessGrantRequest id(Long id) {
@@ -144,7 +144,7 @@ public class OrganizationProgrammaticAccessGrantRequest {
     }
 
     public OrganizationProgrammaticAccessGrantRequest reason(String reason) {
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         return this;
     }
 
@@ -155,11 +155,11 @@ public class OrganizationProgrammaticAccessGrantRequest {
     @NotNull
     @Schema(name = "reason", description = "Reason for requesting access.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public JsonNullable<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(JsonNullable<String> reason) {
         this.reason = reason;
     }
 
@@ -348,7 +348,7 @@ public class OrganizationProgrammaticAccessGrantRequest {
     }
 
     public OrganizationProgrammaticAccessGrantRequest tokenExpiresAt(String tokenExpiresAt) {
-        this.tokenExpiresAt = tokenExpiresAt;
+        this.tokenExpiresAt = JsonNullable.of(tokenExpiresAt);
         return this;
     }
 
@@ -362,16 +362,16 @@ public class OrganizationProgrammaticAccessGrantRequest {
             description = "Date and time when the associated fine-grained personal access token expires.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("token_expires_at")
-    public String getTokenExpiresAt() {
+    public JsonNullable<String> getTokenExpiresAt() {
         return tokenExpiresAt;
     }
 
-    public void setTokenExpiresAt(String tokenExpiresAt) {
+    public void setTokenExpiresAt(JsonNullable<String> tokenExpiresAt) {
         this.tokenExpiresAt = tokenExpiresAt;
     }
 
     public OrganizationProgrammaticAccessGrantRequest tokenLastUsedAt(String tokenLastUsedAt) {
-        this.tokenLastUsedAt = tokenLastUsedAt;
+        this.tokenLastUsedAt = JsonNullable.of(tokenLastUsedAt);
         return this;
     }
 
@@ -386,11 +386,11 @@ public class OrganizationProgrammaticAccessGrantRequest {
                     "Date and time when the associated fine-grained personal access token was last used for authentication.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("token_last_used_at")
-    public String getTokenLastUsedAt() {
+    public JsonNullable<String> getTokenLastUsedAt() {
         return tokenLastUsedAt;
     }
 
-    public void setTokenLastUsedAt(String tokenLastUsedAt) {
+    public void setTokenLastUsedAt(JsonNullable<String> tokenLastUsedAt) {
         this.tokenLastUsedAt = tokenLastUsedAt;
     }
 

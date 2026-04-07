@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateReleaseAssetRequest
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("repos_update_release_asset_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateReleaseAssetRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String label;
+    private Optional<String> label = Optional.empty();
 
-    private String state;
+    private Optional<String> state = Optional.empty();
 
     public ReposUpdateReleaseAssetRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class ReposUpdateReleaseAssetRequest {
      */
     @Schema(name = "name", description = "The file name of the asset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposUpdateReleaseAssetRequest label(String label) {
-        this.label = label;
+        this.label = Optional.ofNullable(label);
         return this;
     }
 
@@ -57,16 +56,16 @@ public class ReposUpdateReleaseAssetRequest {
             description = "An alternate short description of the asset. Used in place of the filename.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("label")
-    public String getLabel() {
+    public Optional<String> getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(Optional<String> label) {
         this.label = label;
     }
 
     public ReposUpdateReleaseAssetRequest state(String state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -76,11 +75,11 @@ public class ReposUpdateReleaseAssetRequest {
      */
     @Schema(name = "state", example = "\"uploaded\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public Optional<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Optional<String> state) {
         this.state = state;
     }
 

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The GitHub Pages deployment status.
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("page-deployment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PageDeployment {
 
@@ -27,7 +27,7 @@ public class PageDeployment {
 
     private URI pageUrl;
 
-    private URI previewUrl;
+    private Optional<URI> previewUrl = Optional.empty();
 
     public PageDeployment() {
         super();
@@ -115,7 +115,7 @@ public class PageDeployment {
     }
 
     public PageDeployment previewUrl(URI previewUrl) {
-        this.previewUrl = previewUrl;
+        this.previewUrl = Optional.ofNullable(previewUrl);
         return this;
     }
 
@@ -130,11 +130,11 @@ public class PageDeployment {
             description = "The URI to the deployed GitHub Pages preview.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("preview_url")
-    public URI getPreviewUrl() {
+    public Optional<URI> getPreviewUrl() {
         return previewUrl;
     }
 
-    public void setPreviewUrl(URI previewUrl) {
+    public void setPreviewUrl(Optional<URI> previewUrl) {
         this.previewUrl = previewUrl;
     }
 

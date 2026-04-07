@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ArtifactWorkflowRun
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("artifact_workflow_run")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ArtifactWorkflowRun {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private Long repositoryId;
+    private Optional<Long> repositoryId = Optional.empty();
 
-    private Long headRepositoryId;
+    private Optional<Long> headRepositoryId = Optional.empty();
 
-    private String headBranch;
+    private Optional<String> headBranch = Optional.empty();
 
-    private String headSha;
+    private Optional<String> headSha = Optional.empty();
 
     public ArtifactWorkflowRun id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class ArtifactWorkflowRun {
      */
     @Schema(name = "id", example = "10", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public ArtifactWorkflowRun repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = Optional.ofNullable(repositoryId);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class ArtifactWorkflowRun {
      */
     @Schema(name = "repository_id", example = "42", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public Optional<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(Optional<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public ArtifactWorkflowRun headRepositoryId(Long headRepositoryId) {
-        this.headRepositoryId = headRepositoryId;
+        this.headRepositoryId = Optional.ofNullable(headRepositoryId);
         return this;
     }
 
@@ -77,16 +76,16 @@ public class ArtifactWorkflowRun {
      */
     @Schema(name = "head_repository_id", example = "42", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_repository_id")
-    public Long getHeadRepositoryId() {
+    public Optional<Long> getHeadRepositoryId() {
         return headRepositoryId;
     }
 
-    public void setHeadRepositoryId(Long headRepositoryId) {
+    public void setHeadRepositoryId(Optional<Long> headRepositoryId) {
         this.headRepositoryId = headRepositoryId;
     }
 
     public ArtifactWorkflowRun headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = Optional.ofNullable(headBranch);
         return this;
     }
 
@@ -96,16 +95,16 @@ public class ArtifactWorkflowRun {
      */
     @Schema(name = "head_branch", example = "main", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public Optional<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(Optional<String> headBranch) {
         this.headBranch = headBranch;
     }
 
     public ArtifactWorkflowRun headSha(String headSha) {
-        this.headSha = headSha;
+        this.headSha = Optional.ofNullable(headSha);
         return this;
     }
 
@@ -118,11 +117,11 @@ public class ArtifactWorkflowRun {
             example = "009b8a3a9ccbb128af87f9b1c0f4c62e8a304f6d",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_sha")
-    public String getHeadSha() {
+    public Optional<String> getHeadSha() {
         return headSha;
     }
 
-    public void setHeadSha(String headSha) {
+    public void setHeadSha(Optional<String> headSha) {
         this.headSha = headSha;
     }
 

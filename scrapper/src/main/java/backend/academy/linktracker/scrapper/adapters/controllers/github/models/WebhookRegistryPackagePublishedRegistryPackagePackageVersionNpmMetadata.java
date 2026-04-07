@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata
@@ -17,51 +14,51 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version_npm_metadata")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String version;
+    private Optional<String> version = Optional.empty();
 
-    private String npmUser;
+    private Optional<String> npmUser = Optional.empty();
 
-    private Deployment1Payload author = null;
+    private JsonNullable<Deployment1Payload> author = JsonNullable.<Deployment1Payload>undefined();
 
-    private Deployment1Payload bugs = null;
+    private JsonNullable<Deployment1Payload> bugs = JsonNullable.<Deployment1Payload>undefined();
 
-    private Object dependencies;
+    private Optional<Object> dependencies = Optional.empty();
 
-    private Object devDependencies;
+    private Optional<Object> devDependencies = Optional.empty();
 
-    private Object peerDependencies;
+    private Optional<Object> peerDependencies = Optional.empty();
 
-    private Object optionalDependencies;
+    private Optional<Object> optionalDependencies = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private Deployment1Payload dist = null;
+    private JsonNullable<Deployment1Payload> dist = JsonNullable.<Deployment1Payload>undefined();
 
-    private String gitHead;
+    private Optional<String> gitHead = Optional.empty();
 
-    private String homepage;
+    private Optional<String> homepage = Optional.empty();
 
-    private String license;
+    private Optional<String> license = Optional.empty();
 
-    private String main;
+    private Optional<String> main = Optional.empty();
 
-    private Deployment1Payload repository = null;
+    private JsonNullable<Deployment1Payload> repository = JsonNullable.<Deployment1Payload>undefined();
 
-    private Object scripts;
+    private Optional<Object> scripts = Optional.empty();
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
-    private String nodeVersion;
+    private Optional<String> nodeVersion = Optional.empty();
 
-    private String npmVersion;
+    private Optional<String> npmVersion = Optional.empty();
 
-    private Boolean hasShrinkwrap;
+    private Optional<Boolean> hasShrinkwrap = Optional.empty();
 
     @Valid
     private List<String> maintainers = new ArrayList<>();
@@ -69,7 +66,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     private List<String> contributors = new ArrayList<>();
 
-    private Object engines;
+    private Optional<Object> engines = Optional.empty();
 
     @Valid
     private List<String> keywords = new ArrayList<>();
@@ -77,11 +74,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     private List<String> files = new ArrayList<>();
 
-    private Object bin;
+    private Optional<Object> bin = Optional.empty();
 
-    private Object man;
+    private Optional<Object> man = Optional.empty();
 
-    private Deployment1Payload directories = null;
+    private JsonNullable<Deployment1Payload> directories = JsonNullable.<Deployment1Payload>undefined();
 
     @Valid
     private List<String> os = new ArrayList<>();
@@ -89,20 +86,20 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     private List<String> cpu = new ArrayList<>();
 
-    private String readme;
+    private Optional<String> readme = Optional.empty();
 
-    private String installationCommand;
+    private Optional<String> installationCommand = Optional.empty();
 
-    private Long releaseId;
+    private Optional<Long> releaseId = Optional.empty();
 
-    private String commitOid;
+    private Optional<String> commitOid = Optional.empty();
 
-    private Boolean publishedViaActions;
+    private Optional<Boolean> publishedViaActions = Optional.empty();
 
-    private Long deletedById;
+    private Optional<Long> deletedById = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -112,16 +109,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -131,16 +128,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "version", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata npmUser(String npmUser) {
-        this.npmUser = npmUser;
+        this.npmUser = Optional.ofNullable(npmUser);
         return this;
     }
 
@@ -150,16 +147,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "npm_user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("npm_user")
-    public String getNpmUser() {
+    public Optional<String> getNpmUser() {
         return npmUser;
     }
 
-    public void setNpmUser(String npmUser) {
+    public void setNpmUser(Optional<String> npmUser) {
         this.npmUser = npmUser;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata author(Deployment1Payload author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -170,16 +167,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public Deployment1Payload getAuthor() {
+    public JsonNullable<Deployment1Payload> getAuthor() {
         return author;
     }
 
-    public void setAuthor(Deployment1Payload author) {
+    public void setAuthor(JsonNullable<Deployment1Payload> author) {
         this.author = author;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata bugs(Deployment1Payload bugs) {
-        this.bugs = bugs;
+        this.bugs = JsonNullable.of(bugs);
         return this;
     }
 
@@ -190,16 +187,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     @Schema(name = "bugs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bugs")
-    public Deployment1Payload getBugs() {
+    public JsonNullable<Deployment1Payload> getBugs() {
         return bugs;
     }
 
-    public void setBugs(Deployment1Payload bugs) {
+    public void setBugs(JsonNullable<Deployment1Payload> bugs) {
         this.bugs = bugs;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata dependencies(Object dependencies) {
-        this.dependencies = dependencies;
+        this.dependencies = Optional.ofNullable(dependencies);
         return this;
     }
 
@@ -209,17 +206,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "dependencies", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependencies")
-    public Object getDependencies() {
+    public Optional<Object> getDependencies() {
         return dependencies;
     }
 
-    public void setDependencies(Object dependencies) {
+    public void setDependencies(Optional<Object> dependencies) {
         this.dependencies = dependencies;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata devDependencies(
             Object devDependencies) {
-        this.devDependencies = devDependencies;
+        this.devDependencies = Optional.ofNullable(devDependencies);
         return this;
     }
 
@@ -229,17 +226,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "dev_dependencies", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dev_dependencies")
-    public Object getDevDependencies() {
+    public Optional<Object> getDevDependencies() {
         return devDependencies;
     }
 
-    public void setDevDependencies(Object devDependencies) {
+    public void setDevDependencies(Optional<Object> devDependencies) {
         this.devDependencies = devDependencies;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata peerDependencies(
             Object peerDependencies) {
-        this.peerDependencies = peerDependencies;
+        this.peerDependencies = Optional.ofNullable(peerDependencies);
         return this;
     }
 
@@ -249,17 +246,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "peer_dependencies", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("peer_dependencies")
-    public Object getPeerDependencies() {
+    public Optional<Object> getPeerDependencies() {
         return peerDependencies;
     }
 
-    public void setPeerDependencies(Object peerDependencies) {
+    public void setPeerDependencies(Optional<Object> peerDependencies) {
         this.peerDependencies = peerDependencies;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata optionalDependencies(
             Object optionalDependencies) {
-        this.optionalDependencies = optionalDependencies;
+        this.optionalDependencies = Optional.ofNullable(optionalDependencies);
         return this;
     }
 
@@ -269,16 +266,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "optional_dependencies", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("optional_dependencies")
-    public Object getOptionalDependencies() {
+    public Optional<Object> getOptionalDependencies() {
         return optionalDependencies;
     }
 
-    public void setOptionalDependencies(Object optionalDependencies) {
+    public void setOptionalDependencies(Optional<Object> optionalDependencies) {
         this.optionalDependencies = optionalDependencies;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -288,16 +285,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata dist(Deployment1Payload dist) {
-        this.dist = dist;
+        this.dist = JsonNullable.of(dist);
         return this;
     }
 
@@ -308,16 +305,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     @Schema(name = "dist", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dist")
-    public Deployment1Payload getDist() {
+    public JsonNullable<Deployment1Payload> getDist() {
         return dist;
     }
 
-    public void setDist(Deployment1Payload dist) {
+    public void setDist(JsonNullable<Deployment1Payload> dist) {
         this.dist = dist;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata gitHead(String gitHead) {
-        this.gitHead = gitHead;
+        this.gitHead = Optional.ofNullable(gitHead);
         return this;
     }
 
@@ -327,16 +324,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "git_head", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_head")
-    public String getGitHead() {
+    public Optional<String> getGitHead() {
         return gitHead;
     }
 
-    public void setGitHead(String gitHead) {
+    public void setGitHead(Optional<String> gitHead) {
         this.gitHead = gitHead;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -346,16 +343,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public Optional<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(Optional<String> homepage) {
         this.homepage = homepage;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata license(String license) {
-        this.license = license;
+        this.license = Optional.ofNullable(license);
         return this;
     }
 
@@ -365,16 +362,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "license", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license")
-    public String getLicense() {
+    public Optional<String> getLicense() {
         return license;
     }
 
-    public void setLicense(String license) {
+    public void setLicense(Optional<String> license) {
         this.license = license;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata main(String main) {
-        this.main = main;
+        this.main = Optional.ofNullable(main);
         return this;
     }
 
@@ -384,17 +381,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "main", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("main")
-    public String getMain() {
+    public Optional<String> getMain() {
         return main;
     }
 
-    public void setMain(String main) {
+    public void setMain(Optional<String> main) {
         this.main = main;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata repository(
             Deployment1Payload repository) {
-        this.repository = repository;
+        this.repository = JsonNullable.of(repository);
         return this;
     }
 
@@ -405,16 +402,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public Deployment1Payload getRepository() {
+    public JsonNullable<Deployment1Payload> getRepository() {
         return repository;
     }
 
-    public void setRepository(Deployment1Payload repository) {
+    public void setRepository(JsonNullable<Deployment1Payload> repository) {
         this.repository = repository;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata scripts(Object scripts) {
-        this.scripts = scripts;
+        this.scripts = Optional.ofNullable(scripts);
         return this;
     }
 
@@ -424,16 +421,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "scripts", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("scripts")
-    public Object getScripts() {
+    public Optional<Object> getScripts() {
         return scripts;
     }
 
-    public void setScripts(Object scripts) {
+    public void setScripts(Optional<Object> scripts) {
         this.scripts = scripts;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -443,16 +440,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata nodeVersion(String nodeVersion) {
-        this.nodeVersion = nodeVersion;
+        this.nodeVersion = Optional.ofNullable(nodeVersion);
         return this;
     }
 
@@ -462,16 +459,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "node_version", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_version")
-    public String getNodeVersion() {
+    public Optional<String> getNodeVersion() {
         return nodeVersion;
     }
 
-    public void setNodeVersion(String nodeVersion) {
+    public void setNodeVersion(Optional<String> nodeVersion) {
         this.nodeVersion = nodeVersion;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata npmVersion(String npmVersion) {
-        this.npmVersion = npmVersion;
+        this.npmVersion = Optional.ofNullable(npmVersion);
         return this;
     }
 
@@ -481,17 +478,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "npm_version", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("npm_version")
-    public String getNpmVersion() {
+    public Optional<String> getNpmVersion() {
         return npmVersion;
     }
 
-    public void setNpmVersion(String npmVersion) {
+    public void setNpmVersion(Optional<String> npmVersion) {
         this.npmVersion = npmVersion;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata hasShrinkwrap(
             Boolean hasShrinkwrap) {
-        this.hasShrinkwrap = hasShrinkwrap;
+        this.hasShrinkwrap = Optional.ofNullable(hasShrinkwrap);
         return this;
     }
 
@@ -501,11 +498,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "has_shrinkwrap", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_shrinkwrap")
-    public Boolean getHasShrinkwrap() {
+    public Optional<Boolean> getHasShrinkwrap() {
         return hasShrinkwrap;
     }
 
-    public void setHasShrinkwrap(Boolean hasShrinkwrap) {
+    public void setHasShrinkwrap(Optional<Boolean> hasShrinkwrap) {
         this.hasShrinkwrap = hasShrinkwrap;
     }
 
@@ -568,7 +565,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata engines(Object engines) {
-        this.engines = engines;
+        this.engines = Optional.ofNullable(engines);
         return this;
     }
 
@@ -578,11 +575,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "engines", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("engines")
-    public Object getEngines() {
+    public Optional<Object> getEngines() {
         return engines;
     }
 
-    public void setEngines(Object engines) {
+    public void setEngines(Optional<Object> engines) {
         this.engines = engines;
     }
 
@@ -642,7 +639,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata bin(Object bin) {
-        this.bin = bin;
+        this.bin = Optional.ofNullable(bin);
         return this;
     }
 
@@ -652,16 +649,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "bin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bin")
-    public Object getBin() {
+    public Optional<Object> getBin() {
         return bin;
     }
 
-    public void setBin(Object bin) {
+    public void setBin(Optional<Object> bin) {
         this.bin = bin;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata man(Object man) {
-        this.man = man;
+        this.man = Optional.ofNullable(man);
         return this;
     }
 
@@ -671,17 +668,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "man", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("man")
-    public Object getMan() {
+    public Optional<Object> getMan() {
         return man;
     }
 
-    public void setMan(Object man) {
+    public void setMan(Optional<Object> man) {
         this.man = man;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata directories(
             Deployment1Payload directories) {
-        this.directories = directories;
+        this.directories = JsonNullable.of(directories);
         return this;
     }
 
@@ -692,11 +689,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     @Valid
     @Schema(name = "directories", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("directories")
-    public Deployment1Payload getDirectories() {
+    public JsonNullable<Deployment1Payload> getDirectories() {
         return directories;
     }
 
-    public void setDirectories(Deployment1Payload directories) {
+    public void setDirectories(JsonNullable<Deployment1Payload> directories) {
         this.directories = directories;
     }
 
@@ -755,7 +752,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata readme(String readme) {
-        this.readme = readme;
+        this.readme = Optional.ofNullable(readme);
         return this;
     }
 
@@ -765,17 +762,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "readme", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("readme")
-    public String getReadme() {
+    public Optional<String> getReadme() {
         return readme;
     }
 
-    public void setReadme(String readme) {
+    public void setReadme(Optional<String> readme) {
         this.readme = readme;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata installationCommand(
             String installationCommand) {
-        this.installationCommand = installationCommand;
+        this.installationCommand = Optional.ofNullable(installationCommand);
         return this;
     }
 
@@ -785,16 +782,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "installation_command", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation_command")
-    public String getInstallationCommand() {
+    public Optional<String> getInstallationCommand() {
         return installationCommand;
     }
 
-    public void setInstallationCommand(String installationCommand) {
+    public void setInstallationCommand(Optional<String> installationCommand) {
         this.installationCommand = installationCommand;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata releaseId(Long releaseId) {
-        this.releaseId = releaseId;
+        this.releaseId = Optional.ofNullable(releaseId);
         return this;
     }
 
@@ -804,16 +801,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "release_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("release_id")
-    public Long getReleaseId() {
+    public Optional<Long> getReleaseId() {
         return releaseId;
     }
 
-    public void setReleaseId(Long releaseId) {
+    public void setReleaseId(Optional<Long> releaseId) {
         this.releaseId = releaseId;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata commitOid(String commitOid) {
-        this.commitOid = commitOid;
+        this.commitOid = Optional.ofNullable(commitOid);
         return this;
     }
 
@@ -823,17 +820,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "commit_oid", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_oid")
-    public String getCommitOid() {
+    public Optional<String> getCommitOid() {
         return commitOid;
     }
 
-    public void setCommitOid(String commitOid) {
+    public void setCommitOid(Optional<String> commitOid) {
         this.commitOid = commitOid;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata publishedViaActions(
             Boolean publishedViaActions) {
-        this.publishedViaActions = publishedViaActions;
+        this.publishedViaActions = Optional.ofNullable(publishedViaActions);
         return this;
     }
 
@@ -843,16 +840,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "published_via_actions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("published_via_actions")
-    public Boolean getPublishedViaActions() {
+    public Optional<Boolean> getPublishedViaActions() {
         return publishedViaActions;
     }
 
-    public void setPublishedViaActions(Boolean publishedViaActions) {
+    public void setPublishedViaActions(Optional<Boolean> publishedViaActions) {
         this.publishedViaActions = publishedViaActions;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata deletedById(Long deletedById) {
-        this.deletedById = deletedById;
+        this.deletedById = Optional.ofNullable(deletedById);
         return this;
     }
 
@@ -862,11 +859,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
      */
     @Schema(name = "deleted_by_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deleted_by_id")
-    public Long getDeletedById() {
+    public Optional<Long> getDeletedById() {
         return deletedById;
     }
 
-    public void setDeletedById(Long deletedById) {
+    public void setDeletedById(Optional<Long> deletedById) {
         this.deletedById = deletedById;
     }
 
@@ -886,9 +883,9 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                         this.version, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.version)
                 && Objects.equals(
                         this.npmUser, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.npmUser)
-                && Objects.equals(
+                && equalsNullable(
                         this.author, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.author)
-                && Objects.equals(
+                && equalsNullable(
                         this.bugs, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.bugs)
                 && Objects.equals(
                         this.dependencies,
@@ -905,7 +902,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                 && Objects.equals(
                         this.description,
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.description)
-                && Objects.equals(
+                && equalsNullable(
                         this.dist, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.dist)
                 && Objects.equals(
                         this.gitHead, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.gitHead)
@@ -915,7 +912,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                         this.license, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.license)
                 && Objects.equals(
                         this.main, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.main)
-                && Objects.equals(
+                && equalsNullable(
                         this.repository,
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.repository)
                 && Objects.equals(
@@ -944,7 +941,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                         this.files, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.files)
                 && Objects.equals(this.bin, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.bin)
                 && Objects.equals(this.man, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.man)
-                && Objects.equals(
+                && equalsNullable(
                         this.directories,
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.directories)
                 && Objects.equals(this.os, webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.os)
@@ -968,25 +965,30 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata.deletedById);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 name,
                 version,
                 npmUser,
-                author,
-                bugs,
+                hashCodeNullable(author),
+                hashCodeNullable(bugs),
                 dependencies,
                 devDependencies,
                 peerDependencies,
                 optionalDependencies,
                 description,
-                dist,
+                hashCodeNullable(dist),
                 gitHead,
                 homepage,
                 license,
                 main,
-                repository,
+                hashCodeNullable(repository),
                 scripts,
                 id,
                 nodeVersion,
@@ -999,7 +1001,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                 files,
                 bin,
                 man,
-                directories,
+                hashCodeNullable(directories),
                 os,
                 cpu,
                 readme,
@@ -1008,6 +1010,13 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMeta
                 commitOid,
                 publishedViaActions,
                 deletedById);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

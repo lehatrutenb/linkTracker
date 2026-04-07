@@ -7,13 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,23 +22,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("global-advisory")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GlobalAdvisory {
 
     private String ghsaId;
 
-    private String cveId = null;
+    private JsonNullable<String> cveId = JsonNullable.<String>undefined();
 
     private String url;
 
     private URI htmlUrl;
 
-    private URI repositoryAdvisoryUrl = null;
+    private JsonNullable<URI> repositoryAdvisoryUrl = JsonNullable.<URI>undefined();
 
     private String summary;
 
-    private String description = null;
+    private JsonNullable<@Size(max = 65535) String> description = JsonNullable.<String>undefined();
 
     /**
      * The type of advisory.
@@ -123,13 +122,14 @@ public class GlobalAdvisory {
 
     private SeverityEnum severity;
 
-    private URI sourceCodeLocation = null;
+    private JsonNullable<URI> sourceCodeLocation = JsonNullable.<URI>undefined();
 
     @Valid
-    private List<@Valid GlobalAdvisoryIdentifiersInner> identifiers;
+    private JsonNullable<List<@Valid GlobalAdvisoryIdentifiersInner>> identifiers =
+            JsonNullable.<List<@Valid GlobalAdvisoryIdentifiersInner>>undefined();
 
     @Valid
-    private List<String> references;
+    private JsonNullable<List<String>> references = JsonNullable.<List<String>>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime publishedAt;
@@ -138,26 +138,29 @@ public class GlobalAdvisory {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime githubReviewedAt = null;
+    private JsonNullable<OffsetDateTime> githubReviewedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime nvdPublishedAt = null;
+    private JsonNullable<OffsetDateTime> nvdPublishedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime withdrawnAt = null;
+    private JsonNullable<OffsetDateTime> withdrawnAt = JsonNullable.<OffsetDateTime>undefined();
 
     @Valid
-    private List<@Valid Vulnerability> vulnerabilities;
+    private JsonNullable<List<@Valid Vulnerability>> vulnerabilities =
+            JsonNullable.<List<@Valid Vulnerability>>undefined();
 
-    private CvssSeverities cvssSeverities = null;
+    private JsonNullable<CvssSeverities> cvssSeverities = JsonNullable.<CvssSeverities>undefined();
 
-    private SecurityAdvisoryEpss epss = null;
-
-    @Valid
-    private List<@Valid GlobalAdvisoryCwesInner> cwes;
+    private JsonNullable<SecurityAdvisoryEpss> epss = JsonNullable.<SecurityAdvisoryEpss>undefined();
 
     @Valid
-    private List<@Valid GlobalAdvisoryCreditsInner> credits;
+    private JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> cwes =
+            JsonNullable.<List<@Valid GlobalAdvisoryCwesInner>>undefined();
+
+    @Valid
+    private JsonNullable<List<@Valid GlobalAdvisoryCreditsInner>> credits =
+            JsonNullable.<List<@Valid GlobalAdvisoryCreditsInner>>undefined();
 
     public GlobalAdvisory() {
         super();
@@ -188,25 +191,25 @@ public class GlobalAdvisory {
             List<@Valid GlobalAdvisoryCwesInner> cwes,
             List<@Valid GlobalAdvisoryCreditsInner> credits) {
         this.ghsaId = ghsaId;
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         this.url = url;
         this.htmlUrl = htmlUrl;
-        this.repositoryAdvisoryUrl = repositoryAdvisoryUrl;
+        this.repositoryAdvisoryUrl = JsonNullable.of(repositoryAdvisoryUrl);
         this.summary = summary;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.type = type;
         this.severity = severity;
-        this.sourceCodeLocation = sourceCodeLocation;
-        this.identifiers = identifiers;
-        this.references = references;
+        this.sourceCodeLocation = JsonNullable.of(sourceCodeLocation);
+        this.identifiers = JsonNullable.of(identifiers);
+        this.references = JsonNullable.of(references);
         this.publishedAt = publishedAt;
         this.updatedAt = updatedAt;
-        this.githubReviewedAt = githubReviewedAt;
-        this.nvdPublishedAt = nvdPublishedAt;
-        this.withdrawnAt = withdrawnAt;
-        this.vulnerabilities = vulnerabilities;
-        this.cwes = cwes;
-        this.credits = credits;
+        this.githubReviewedAt = JsonNullable.of(githubReviewedAt);
+        this.nvdPublishedAt = JsonNullable.of(nvdPublishedAt);
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
+        this.vulnerabilities = JsonNullable.of(vulnerabilities);
+        this.cwes = JsonNullable.of(cwes);
+        this.credits = JsonNullable.of(credits);
     }
 
     public GlobalAdvisory ghsaId(String ghsaId) {
@@ -233,7 +236,7 @@ public class GlobalAdvisory {
     }
 
     public GlobalAdvisory cveId(String cveId) {
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         return this;
     }
 
@@ -247,11 +250,11 @@ public class GlobalAdvisory {
             description = "The Common Vulnerabilities and Exposures (CVE) ID.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cve_id")
-    public String getCveId() {
+    public JsonNullable<String> getCveId() {
         return cveId;
     }
 
-    public void setCveId(String cveId) {
+    public void setCveId(JsonNullable<String> cveId) {
         this.cveId = cveId;
     }
 
@@ -303,7 +306,7 @@ public class GlobalAdvisory {
     }
 
     public GlobalAdvisory repositoryAdvisoryUrl(URI repositoryAdvisoryUrl) {
-        this.repositoryAdvisoryUrl = repositoryAdvisoryUrl;
+        this.repositoryAdvisoryUrl = JsonNullable.of(repositoryAdvisoryUrl);
         return this;
     }
 
@@ -318,11 +321,11 @@ public class GlobalAdvisory {
             description = "The API URL for the repository advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repository_advisory_url")
-    public URI getRepositoryAdvisoryUrl() {
+    public JsonNullable<URI> getRepositoryAdvisoryUrl() {
         return repositoryAdvisoryUrl;
     }
 
-    public void setRepositoryAdvisoryUrl(URI repositoryAdvisoryUrl) {
+    public void setRepositoryAdvisoryUrl(JsonNullable<URI> repositoryAdvisoryUrl) {
         this.repositoryAdvisoryUrl = repositoryAdvisoryUrl;
     }
 
@@ -351,7 +354,7 @@ public class GlobalAdvisory {
     }
 
     public GlobalAdvisory description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -366,11 +369,11 @@ public class GlobalAdvisory {
             description = "A detailed description of what the advisory entails.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<@Size(max = 65535) String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -421,7 +424,7 @@ public class GlobalAdvisory {
     }
 
     public GlobalAdvisory sourceCodeLocation(URI sourceCodeLocation) {
-        this.sourceCodeLocation = sourceCodeLocation;
+        this.sourceCodeLocation = JsonNullable.of(sourceCodeLocation);
         return this;
     }
 
@@ -436,24 +439,24 @@ public class GlobalAdvisory {
             description = "The URL of the advisory's source code.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("source_code_location")
-    public URI getSourceCodeLocation() {
+    public JsonNullable<URI> getSourceCodeLocation() {
         return sourceCodeLocation;
     }
 
-    public void setSourceCodeLocation(URI sourceCodeLocation) {
+    public void setSourceCodeLocation(JsonNullable<URI> sourceCodeLocation) {
         this.sourceCodeLocation = sourceCodeLocation;
     }
 
     public GlobalAdvisory identifiers(List<@Valid GlobalAdvisoryIdentifiersInner> identifiers) {
-        this.identifiers = identifiers;
+        this.identifiers = JsonNullable.of(identifiers);
         return this;
     }
 
     public GlobalAdvisory addIdentifiersItem(GlobalAdvisoryIdentifiersInner identifiersItem) {
-        if (this.identifiers == null) {
-            this.identifiers = new ArrayList<>();
+        if (this.identifiers == null || !this.identifiers.isPresent()) {
+            this.identifiers = JsonNullable.of(new ArrayList<>());
         }
-        this.identifiers.add(identifiersItem);
+        this.identifiers.get().add(identifiersItem);
         return this;
     }
 
@@ -464,24 +467,24 @@ public class GlobalAdvisory {
     @Valid
     @Schema(name = "identifiers", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("identifiers")
-    public List<@Valid GlobalAdvisoryIdentifiersInner> getIdentifiers() {
+    public JsonNullable<List<@Valid GlobalAdvisoryIdentifiersInner>> getIdentifiers() {
         return identifiers;
     }
 
-    public void setIdentifiers(List<@Valid GlobalAdvisoryIdentifiersInner> identifiers) {
+    public void setIdentifiers(JsonNullable<List<@Valid GlobalAdvisoryIdentifiersInner>> identifiers) {
         this.identifiers = identifiers;
     }
 
     public GlobalAdvisory references(List<String> references) {
-        this.references = references;
+        this.references = JsonNullable.of(references);
         return this;
     }
 
     public GlobalAdvisory addReferencesItem(String referencesItem) {
-        if (this.references == null) {
-            this.references = new ArrayList<>();
+        if (this.references == null || !this.references.isPresent()) {
+            this.references = JsonNullable.of(new ArrayList<>());
         }
-        this.references.add(referencesItem);
+        this.references.get().add(referencesItem);
         return this;
     }
 
@@ -492,11 +495,11 @@ public class GlobalAdvisory {
     @NotNull
     @Schema(name = "references", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("references")
-    public List<String> getReferences() {
+    public JsonNullable<List<String>> getReferences() {
         return references;
     }
 
-    public void setReferences(List<String> references) {
+    public void setReferences(JsonNullable<List<String>> references) {
         this.references = references;
     }
 
@@ -549,7 +552,7 @@ public class GlobalAdvisory {
     }
 
     public GlobalAdvisory githubReviewedAt(OffsetDateTime githubReviewedAt) {
-        this.githubReviewedAt = githubReviewedAt;
+        this.githubReviewedAt = JsonNullable.of(githubReviewedAt);
         return this;
     }
 
@@ -564,16 +567,16 @@ public class GlobalAdvisory {
             description = "The date and time of when the advisory was reviewed by GitHub, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("github_reviewed_at")
-    public OffsetDateTime getGithubReviewedAt() {
+    public JsonNullable<OffsetDateTime> getGithubReviewedAt() {
         return githubReviewedAt;
     }
 
-    public void setGithubReviewedAt(OffsetDateTime githubReviewedAt) {
+    public void setGithubReviewedAt(JsonNullable<OffsetDateTime> githubReviewedAt) {
         this.githubReviewedAt = githubReviewedAt;
     }
 
     public GlobalAdvisory nvdPublishedAt(OffsetDateTime nvdPublishedAt) {
-        this.nvdPublishedAt = nvdPublishedAt;
+        this.nvdPublishedAt = JsonNullable.of(nvdPublishedAt);
         return this;
     }
 
@@ -589,16 +592,16 @@ public class GlobalAdvisory {
                     "The date and time when the advisory was published in the National Vulnerability Database, in ISO 8601 format. This field is only populated when the advisory is imported from the National Vulnerability Database.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("nvd_published_at")
-    public OffsetDateTime getNvdPublishedAt() {
+    public JsonNullable<OffsetDateTime> getNvdPublishedAt() {
         return nvdPublishedAt;
     }
 
-    public void setNvdPublishedAt(OffsetDateTime nvdPublishedAt) {
+    public void setNvdPublishedAt(JsonNullable<OffsetDateTime> nvdPublishedAt) {
         this.nvdPublishedAt = nvdPublishedAt;
     }
 
     public GlobalAdvisory withdrawnAt(OffsetDateTime withdrawnAt) {
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
         return this;
     }
 
@@ -613,24 +616,24 @@ public class GlobalAdvisory {
             description = "The date and time of when the advisory was withdrawn, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("withdrawn_at")
-    public OffsetDateTime getWithdrawnAt() {
+    public JsonNullable<OffsetDateTime> getWithdrawnAt() {
         return withdrawnAt;
     }
 
-    public void setWithdrawnAt(OffsetDateTime withdrawnAt) {
+    public void setWithdrawnAt(JsonNullable<OffsetDateTime> withdrawnAt) {
         this.withdrawnAt = withdrawnAt;
     }
 
     public GlobalAdvisory vulnerabilities(List<@Valid Vulnerability> vulnerabilities) {
-        this.vulnerabilities = vulnerabilities;
+        this.vulnerabilities = JsonNullable.of(vulnerabilities);
         return this;
     }
 
     public GlobalAdvisory addVulnerabilitiesItem(Vulnerability vulnerabilitiesItem) {
-        if (this.vulnerabilities == null) {
-            this.vulnerabilities = new ArrayList<>();
+        if (this.vulnerabilities == null || !this.vulnerabilities.isPresent()) {
+            this.vulnerabilities = JsonNullable.of(new ArrayList<>());
         }
-        this.vulnerabilities.add(vulnerabilitiesItem);
+        this.vulnerabilities.get().add(vulnerabilitiesItem);
         return this;
     }
 
@@ -645,16 +648,16 @@ public class GlobalAdvisory {
             description = "The products and respective version ranges affected by the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("vulnerabilities")
-    public List<@Valid Vulnerability> getVulnerabilities() {
+    public JsonNullable<List<@Valid Vulnerability>> getVulnerabilities() {
         return vulnerabilities;
     }
 
-    public void setVulnerabilities(List<@Valid Vulnerability> vulnerabilities) {
+    public void setVulnerabilities(JsonNullable<List<@Valid Vulnerability>> vulnerabilities) {
         this.vulnerabilities = vulnerabilities;
     }
 
     public GlobalAdvisory cvssSeverities(CvssSeverities cvssSeverities) {
-        this.cvssSeverities = cvssSeverities;
+        this.cvssSeverities = JsonNullable.of(cvssSeverities);
         return this;
     }
 
@@ -665,16 +668,16 @@ public class GlobalAdvisory {
     @Valid
     @Schema(name = "cvss_severities", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_severities")
-    public CvssSeverities getCvssSeverities() {
+    public JsonNullable<CvssSeverities> getCvssSeverities() {
         return cvssSeverities;
     }
 
-    public void setCvssSeverities(CvssSeverities cvssSeverities) {
+    public void setCvssSeverities(JsonNullable<CvssSeverities> cvssSeverities) {
         this.cvssSeverities = cvssSeverities;
     }
 
     public GlobalAdvisory epss(SecurityAdvisoryEpss epss) {
-        this.epss = epss;
+        this.epss = JsonNullable.of(epss);
         return this;
     }
 
@@ -685,24 +688,24 @@ public class GlobalAdvisory {
     @Valid
     @Schema(name = "epss", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("epss")
-    public SecurityAdvisoryEpss getEpss() {
+    public JsonNullable<SecurityAdvisoryEpss> getEpss() {
         return epss;
     }
 
-    public void setEpss(SecurityAdvisoryEpss epss) {
+    public void setEpss(JsonNullable<SecurityAdvisoryEpss> epss) {
         this.epss = epss;
     }
 
     public GlobalAdvisory cwes(List<@Valid GlobalAdvisoryCwesInner> cwes) {
-        this.cwes = cwes;
+        this.cwes = JsonNullable.of(cwes);
         return this;
     }
 
     public GlobalAdvisory addCwesItem(GlobalAdvisoryCwesInner cwesItem) {
-        if (this.cwes == null) {
-            this.cwes = new ArrayList<>();
+        if (this.cwes == null || !this.cwes.isPresent()) {
+            this.cwes = JsonNullable.of(new ArrayList<>());
         }
-        this.cwes.add(cwesItem);
+        this.cwes.get().add(cwesItem);
         return this;
     }
 
@@ -714,24 +717,24 @@ public class GlobalAdvisory {
     @Valid
     @Schema(name = "cwes", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cwes")
-    public List<@Valid GlobalAdvisoryCwesInner> getCwes() {
+    public JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> getCwes() {
         return cwes;
     }
 
-    public void setCwes(List<@Valid GlobalAdvisoryCwesInner> cwes) {
+    public void setCwes(JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> cwes) {
         this.cwes = cwes;
     }
 
     public GlobalAdvisory credits(List<@Valid GlobalAdvisoryCreditsInner> credits) {
-        this.credits = credits;
+        this.credits = JsonNullable.of(credits);
         return this;
     }
 
     public GlobalAdvisory addCreditsItem(GlobalAdvisoryCreditsInner creditsItem) {
-        if (this.credits == null) {
-            this.credits = new ArrayList<>();
+        if (this.credits == null || !this.credits.isPresent()) {
+            this.credits = JsonNullable.of(new ArrayList<>());
         }
-        this.credits.add(creditsItem);
+        this.credits.get().add(creditsItem);
         return this;
     }
 
@@ -746,11 +749,11 @@ public class GlobalAdvisory {
             description = "The users who contributed to the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("credits")
-    public List<@Valid GlobalAdvisoryCreditsInner> getCredits() {
+    public JsonNullable<List<@Valid GlobalAdvisoryCreditsInner>> getCredits() {
         return credits;
     }
 
-    public void setCredits(List<@Valid GlobalAdvisoryCreditsInner> credits) {
+    public void setCredits(JsonNullable<List<@Valid GlobalAdvisoryCreditsInner>> credits) {
         this.credits = credits;
     }
 
@@ -781,10 +784,15 @@ public class GlobalAdvisory {
                 && Objects.equals(this.nvdPublishedAt, globalAdvisory.nvdPublishedAt)
                 && Objects.equals(this.withdrawnAt, globalAdvisory.withdrawnAt)
                 && Objects.equals(this.vulnerabilities, globalAdvisory.vulnerabilities)
-                && Objects.equals(this.cvssSeverities, globalAdvisory.cvssSeverities)
-                && Objects.equals(this.epss, globalAdvisory.epss)
+                && equalsNullable(this.cvssSeverities, globalAdvisory.cvssSeverities)
+                && equalsNullable(this.epss, globalAdvisory.epss)
                 && Objects.equals(this.cwes, globalAdvisory.cwes)
                 && Objects.equals(this.credits, globalAdvisory.credits);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -808,10 +816,17 @@ public class GlobalAdvisory {
                 nvdPublishedAt,
                 withdrawnAt,
                 vulnerabilities,
-                cvssSeverities,
-                epss,
+                hashCodeNullable(cvssSeverities),
+                hashCodeNullable(epss),
                 cwes,
                 credits);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

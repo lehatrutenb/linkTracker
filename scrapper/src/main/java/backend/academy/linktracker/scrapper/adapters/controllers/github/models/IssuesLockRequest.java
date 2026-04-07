@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * IssuesLockRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("issues_lock_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesLockRequest {
 
@@ -59,10 +58,10 @@ public class IssuesLockRequest {
         }
     }
 
-    private LockReasonEnum lockReason;
+    private Optional<LockReasonEnum> lockReason = Optional.empty();
 
     public IssuesLockRequest lockReason(LockReasonEnum lockReason) {
-        this.lockReason = lockReason;
+        this.lockReason = Optional.ofNullable(lockReason);
         return this;
     }
 
@@ -76,11 +75,11 @@ public class IssuesLockRequest {
                     "The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:    * `off-topic`    * `too heated`    * `resolved`    * `spam`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_reason")
-    public LockReasonEnum getLockReason() {
+    public Optional<LockReasonEnum> getLockReason() {
         return lockReason;
     }
 
-    public void setLockReason(LockReasonEnum lockReason) {
+    public void setLockReason(Optional<LockReasonEnum> lockReason) {
         this.lockReason = lockReason;
     }
 

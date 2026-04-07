@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Conditions to target repositories by property and refs by name
@@ -18,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("repository_property_and_ref_name")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryPropertyAndRefName implements OrgRulesetConditions {
 
-    private RepositoryRulesetConditionsRefName refName;
+    private Optional<RepositoryRulesetConditionsRefName> refName = Optional.empty();
 
     private RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty repositoryProperty;
 
@@ -39,7 +39,7 @@ public class RepositoryPropertyAndRefName implements OrgRulesetConditions {
     }
 
     public RepositoryPropertyAndRefName refName(RepositoryRulesetConditionsRefName refName) {
-        this.refName = refName;
+        this.refName = Optional.ofNullable(refName);
         return this;
     }
 
@@ -50,11 +50,11 @@ public class RepositoryPropertyAndRefName implements OrgRulesetConditions {
     @Valid
     @Schema(name = "ref_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref_name")
-    public RepositoryRulesetConditionsRefName getRefName() {
+    public Optional<RepositoryRulesetConditionsRefName> getRefName() {
         return refName;
     }
 
-    public void setRefName(RepositoryRulesetConditionsRefName refName) {
+    public void setRefName(Optional<RepositoryRulesetConditionsRefName> refName) {
         this.refName = refName;
     }
 

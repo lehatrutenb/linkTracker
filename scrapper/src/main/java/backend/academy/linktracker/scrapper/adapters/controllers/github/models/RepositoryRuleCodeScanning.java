@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Choose which tools must provide code scanning results before the reference is updated. When configured, code scanning must be enabled and have results for both the commit and the reference being updated.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-code-scanning")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleCodeScanning implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleCodeScanning implements OrgRules, RepositoryRule {
 
     private TypeEnum type;
 
-    private RepositoryRuleCodeScanningParameters parameters;
+    private Optional<RepositoryRuleCodeScanningParameters> parameters = Optional.empty();
 
     public RepositoryRuleCodeScanning() {
         super();
@@ -94,7 +94,7 @@ public class RepositoryRuleCodeScanning implements OrgRules, RepositoryRule {
     }
 
     public RepositoryRuleCodeScanning parameters(RepositoryRuleCodeScanningParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class RepositoryRuleCodeScanning implements OrgRules, RepositoryRule {
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleCodeScanningParameters getParameters() {
+    public Optional<RepositoryRuleCodeScanningParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleCodeScanningParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleCodeScanningParameters> parameters) {
         this.parameters = parameters;
     }
 

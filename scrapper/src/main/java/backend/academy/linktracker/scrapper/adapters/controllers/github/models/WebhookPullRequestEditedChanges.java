@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the comment if the action was &#x60;edited&#x60;.
@@ -18,18 +17,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_pull_request_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestEditedChanges {
 
-    private WebhookPullRequestEditedChangesBase base;
+    private Optional<WebhookPullRequestEditedChangesBase> base = Optional.empty();
 
-    private WebhookProjectEditedChangesBody body;
+    private Optional<WebhookProjectEditedChangesBody> body = Optional.empty();
 
-    private WebhookMilestoneEditedChangesTitle title;
+    private Optional<WebhookMilestoneEditedChangesTitle> title = Optional.empty();
 
     public WebhookPullRequestEditedChanges base(WebhookPullRequestEditedChangesBase base) {
-        this.base = base;
+        this.base = Optional.ofNullable(base);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class WebhookPullRequestEditedChanges {
     @Valid
     @Schema(name = "base", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("base")
-    public WebhookPullRequestEditedChangesBase getBase() {
+    public Optional<WebhookPullRequestEditedChangesBase> getBase() {
         return base;
     }
 
-    public void setBase(WebhookPullRequestEditedChangesBase base) {
+    public void setBase(Optional<WebhookPullRequestEditedChangesBase> base) {
         this.base = base;
     }
 
     public WebhookPullRequestEditedChanges body(WebhookProjectEditedChangesBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -60,16 +59,16 @@ public class WebhookPullRequestEditedChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookProjectEditedChangesBody getBody() {
+    public Optional<WebhookProjectEditedChangesBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhookProjectEditedChangesBody body) {
+    public void setBody(Optional<WebhookProjectEditedChangesBody> body) {
         this.body = body;
     }
 
     public WebhookPullRequestEditedChanges title(WebhookMilestoneEditedChangesTitle title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -80,11 +79,11 @@ public class WebhookPullRequestEditedChanges {
     @Valid
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public WebhookMilestoneEditedChangesTitle getTitle() {
+    public Optional<WebhookMilestoneEditedChangesTitle> getTitle() {
         return title;
     }
 
-    public void setTitle(WebhookMilestoneEditedChangesTitle title) {
+    public void setTitle(Optional<WebhookMilestoneEditedChangesTitle> title) {
         this.title = title;
     }
 

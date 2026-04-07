@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryWebhooksTemplateRepository
@@ -19,168 +18,168 @@ import java.util.Objects;
 @JsonTypeName("repository_webhooks_template_repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryWebhooksTemplateRepository {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String fullName;
+    private Optional<String> fullName = Optional.empty();
 
-    private RepositoryWebhooksTemplateRepositoryOwner owner;
+    private Optional<RepositoryWebhooksTemplateRepositoryOwner> owner = Optional.empty();
 
-    private Boolean _private;
+    private Optional<Boolean> _private = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private Boolean fork;
+    private Optional<Boolean> fork = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String archiveUrl;
+    private Optional<String> archiveUrl = Optional.empty();
 
-    private String assigneesUrl;
+    private Optional<String> assigneesUrl = Optional.empty();
 
-    private String blobsUrl;
+    private Optional<String> blobsUrl = Optional.empty();
 
-    private String branchesUrl;
+    private Optional<String> branchesUrl = Optional.empty();
 
-    private String collaboratorsUrl;
+    private Optional<String> collaboratorsUrl = Optional.empty();
 
-    private String commentsUrl;
+    private Optional<String> commentsUrl = Optional.empty();
 
-    private String commitsUrl;
+    private Optional<String> commitsUrl = Optional.empty();
 
-    private String compareUrl;
+    private Optional<String> compareUrl = Optional.empty();
 
-    private String contentsUrl;
+    private Optional<String> contentsUrl = Optional.empty();
 
-    private String contributorsUrl;
+    private Optional<String> contributorsUrl = Optional.empty();
 
-    private String deploymentsUrl;
+    private Optional<String> deploymentsUrl = Optional.empty();
 
-    private String downloadsUrl;
+    private Optional<String> downloadsUrl = Optional.empty();
 
-    private String eventsUrl;
+    private Optional<String> eventsUrl = Optional.empty();
 
-    private String forksUrl;
+    private Optional<String> forksUrl = Optional.empty();
 
-    private String gitCommitsUrl;
+    private Optional<String> gitCommitsUrl = Optional.empty();
 
-    private String gitRefsUrl;
+    private Optional<String> gitRefsUrl = Optional.empty();
 
-    private String gitTagsUrl;
+    private Optional<String> gitTagsUrl = Optional.empty();
 
-    private String gitUrl;
+    private Optional<String> gitUrl = Optional.empty();
 
-    private String issueCommentUrl;
+    private Optional<String> issueCommentUrl = Optional.empty();
 
-    private String issueEventsUrl;
+    private Optional<String> issueEventsUrl = Optional.empty();
 
-    private String issuesUrl;
+    private Optional<String> issuesUrl = Optional.empty();
 
-    private String keysUrl;
+    private Optional<String> keysUrl = Optional.empty();
 
-    private String labelsUrl;
+    private Optional<String> labelsUrl = Optional.empty();
 
-    private String languagesUrl;
+    private Optional<String> languagesUrl = Optional.empty();
 
-    private String mergesUrl;
+    private Optional<String> mergesUrl = Optional.empty();
 
-    private String milestonesUrl;
+    private Optional<String> milestonesUrl = Optional.empty();
 
-    private String notificationsUrl;
+    private Optional<String> notificationsUrl = Optional.empty();
 
-    private String pullsUrl;
+    private Optional<String> pullsUrl = Optional.empty();
 
-    private String releasesUrl;
+    private Optional<String> releasesUrl = Optional.empty();
 
-    private String sshUrl;
+    private Optional<String> sshUrl = Optional.empty();
 
-    private String stargazersUrl;
+    private Optional<String> stargazersUrl = Optional.empty();
 
-    private String statusesUrl;
+    private Optional<String> statusesUrl = Optional.empty();
 
-    private String subscribersUrl;
+    private Optional<String> subscribersUrl = Optional.empty();
 
-    private String subscriptionUrl;
+    private Optional<String> subscriptionUrl = Optional.empty();
 
-    private String tagsUrl;
+    private Optional<String> tagsUrl = Optional.empty();
 
-    private String teamsUrl;
+    private Optional<String> teamsUrl = Optional.empty();
 
-    private String treesUrl;
+    private Optional<String> treesUrl = Optional.empty();
 
-    private String cloneUrl;
+    private Optional<String> cloneUrl = Optional.empty();
 
-    private String mirrorUrl;
+    private Optional<String> mirrorUrl = Optional.empty();
 
-    private String hooksUrl;
+    private Optional<String> hooksUrl = Optional.empty();
 
-    private String svnUrl;
+    private Optional<String> svnUrl = Optional.empty();
 
-    private String homepage;
+    private Optional<String> homepage = Optional.empty();
 
-    private String language;
+    private Optional<String> language = Optional.empty();
 
-    private Long forksCount;
+    private Optional<Long> forksCount = Optional.empty();
 
-    private Long stargazersCount;
+    private Optional<Long> stargazersCount = Optional.empty();
 
-    private Long watchersCount;
+    private Optional<Long> watchersCount = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String defaultBranch;
+    private Optional<String> defaultBranch = Optional.empty();
 
-    private Long openIssuesCount;
+    private Optional<Long> openIssuesCount = Optional.empty();
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
     @Valid
     private List<String> topics = new ArrayList<>();
 
-    private Boolean hasIssues;
+    private Optional<Boolean> hasIssues = Optional.empty();
 
-    private Boolean hasProjects;
+    private Optional<Boolean> hasProjects = Optional.empty();
 
-    private Boolean hasWiki;
+    private Optional<Boolean> hasWiki = Optional.empty();
 
-    private Boolean hasPages;
+    private Optional<Boolean> hasPages = Optional.empty();
 
-    private Boolean hasDownloads;
+    private Optional<Boolean> hasDownloads = Optional.empty();
 
-    private Boolean archived;
+    private Optional<Boolean> archived = Optional.empty();
 
-    private Boolean disabled;
+    private Optional<Boolean> disabled = Optional.empty();
 
-    private String visibility;
+    private Optional<String> visibility = Optional.empty();
 
-    private String pushedAt;
+    private Optional<String> pushedAt = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
-    private MinimalRepositoryPermissions permissions;
+    private Optional<MinimalRepositoryPermissions> permissions = Optional.empty();
 
-    private Boolean allowRebaseMerge;
+    private Optional<Boolean> allowRebaseMerge = Optional.empty();
 
-    private String tempCloneToken;
+    private Optional<String> tempCloneToken = Optional.empty();
 
-    private Boolean allowSquashMerge;
+    private Optional<Boolean> allowSquashMerge = Optional.empty();
 
-    private Boolean allowAutoMerge;
+    private Optional<Boolean> allowAutoMerge = Optional.empty();
 
-    private Boolean deleteBranchOnMerge;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.empty();
 
-    private Boolean allowUpdateBranch;
+    private Optional<Boolean> allowUpdateBranch = Optional.empty();
 
     /**
      * The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -217,7 +216,7 @@ public class RepositoryWebhooksTemplateRepository {
         }
     }
 
-    private SquashMergeCommitTitleEnum squashMergeCommitTitle;
+    private Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
@@ -256,7 +255,7 @@ public class RepositoryWebhooksTemplateRepository {
         }
     }
 
-    private SquashMergeCommitMessageEnum squashMergeCommitMessage;
+    private Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage = Optional.empty();
 
     /**
      * The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -293,7 +292,7 @@ public class RepositoryWebhooksTemplateRepository {
         }
     }
 
-    private MergeCommitTitleEnum mergeCommitTitle;
+    private Optional<MergeCommitTitleEnum> mergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
@@ -332,16 +331,16 @@ public class RepositoryWebhooksTemplateRepository {
         }
     }
 
-    private MergeCommitMessageEnum mergeCommitMessage;
+    private Optional<MergeCommitMessageEnum> mergeCommitMessage = Optional.empty();
 
-    private Boolean allowMergeCommit;
+    private Optional<Boolean> allowMergeCommit = Optional.empty();
 
-    private Long subscribersCount;
+    private Optional<Long> subscribersCount = Optional.empty();
 
-    private Long networkCount;
+    private Optional<Long> networkCount = Optional.empty();
 
     public RepositoryWebhooksTemplateRepository id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -351,16 +350,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RepositoryWebhooksTemplateRepository nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -370,16 +369,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public RepositoryWebhooksTemplateRepository name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -389,16 +388,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public RepositoryWebhooksTemplateRepository fullName(String fullName) {
-        this.fullName = fullName;
+        this.fullName = Optional.ofNullable(fullName);
         return this;
     }
 
@@ -408,16 +407,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "full_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_name")
-    public String getFullName() {
+    public Optional<String> getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public void setFullName(Optional<String> fullName) {
         this.fullName = fullName;
     }
 
     public RepositoryWebhooksTemplateRepository owner(RepositoryWebhooksTemplateRepositoryOwner owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -428,16 +427,16 @@ public class RepositoryWebhooksTemplateRepository {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public RepositoryWebhooksTemplateRepositoryOwner getOwner() {
+    public Optional<RepositoryWebhooksTemplateRepositoryOwner> getOwner() {
         return owner;
     }
 
-    public void setOwner(RepositoryWebhooksTemplateRepositoryOwner owner) {
+    public void setOwner(Optional<RepositoryWebhooksTemplateRepositoryOwner> owner) {
         this.owner = owner;
     }
 
     public RepositoryWebhooksTemplateRepository _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -447,16 +446,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "private", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 
     public RepositoryWebhooksTemplateRepository htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -466,16 +465,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public RepositoryWebhooksTemplateRepository description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -485,16 +484,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public RepositoryWebhooksTemplateRepository fork(Boolean fork) {
-        this.fork = fork;
+        this.fork = Optional.ofNullable(fork);
         return this;
     }
 
@@ -504,16 +503,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "fork", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fork")
-    public Boolean getFork() {
+    public Optional<Boolean> getFork() {
         return fork;
     }
 
-    public void setFork(Boolean fork) {
+    public void setFork(Optional<Boolean> fork) {
         this.fork = fork;
     }
 
     public RepositoryWebhooksTemplateRepository url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -523,16 +522,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public RepositoryWebhooksTemplateRepository archiveUrl(String archiveUrl) {
-        this.archiveUrl = archiveUrl;
+        this.archiveUrl = Optional.ofNullable(archiveUrl);
         return this;
     }
 
@@ -542,16 +541,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "archive_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archive_url")
-    public String getArchiveUrl() {
+    public Optional<String> getArchiveUrl() {
         return archiveUrl;
     }
 
-    public void setArchiveUrl(String archiveUrl) {
+    public void setArchiveUrl(Optional<String> archiveUrl) {
         this.archiveUrl = archiveUrl;
     }
 
     public RepositoryWebhooksTemplateRepository assigneesUrl(String assigneesUrl) {
-        this.assigneesUrl = assigneesUrl;
+        this.assigneesUrl = Optional.ofNullable(assigneesUrl);
         return this;
     }
 
@@ -561,16 +560,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "assignees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignees_url")
-    public String getAssigneesUrl() {
+    public Optional<String> getAssigneesUrl() {
         return assigneesUrl;
     }
 
-    public void setAssigneesUrl(String assigneesUrl) {
+    public void setAssigneesUrl(Optional<String> assigneesUrl) {
         this.assigneesUrl = assigneesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository blobsUrl(String blobsUrl) {
-        this.blobsUrl = blobsUrl;
+        this.blobsUrl = Optional.ofNullable(blobsUrl);
         return this;
     }
 
@@ -580,16 +579,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "blobs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blobs_url")
-    public String getBlobsUrl() {
+    public Optional<String> getBlobsUrl() {
         return blobsUrl;
     }
 
-    public void setBlobsUrl(String blobsUrl) {
+    public void setBlobsUrl(Optional<String> blobsUrl) {
         this.blobsUrl = blobsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository branchesUrl(String branchesUrl) {
-        this.branchesUrl = branchesUrl;
+        this.branchesUrl = Optional.ofNullable(branchesUrl);
         return this;
     }
 
@@ -599,16 +598,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "branches_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branches_url")
-    public String getBranchesUrl() {
+    public Optional<String> getBranchesUrl() {
         return branchesUrl;
     }
 
-    public void setBranchesUrl(String branchesUrl) {
+    public void setBranchesUrl(Optional<String> branchesUrl) {
         this.branchesUrl = branchesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository collaboratorsUrl(String collaboratorsUrl) {
-        this.collaboratorsUrl = collaboratorsUrl;
+        this.collaboratorsUrl = Optional.ofNullable(collaboratorsUrl);
         return this;
     }
 
@@ -618,16 +617,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "collaborators_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators_url")
-    public String getCollaboratorsUrl() {
+    public Optional<String> getCollaboratorsUrl() {
         return collaboratorsUrl;
     }
 
-    public void setCollaboratorsUrl(String collaboratorsUrl) {
+    public void setCollaboratorsUrl(Optional<String> collaboratorsUrl) {
         this.collaboratorsUrl = collaboratorsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository commentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
+        this.commentsUrl = Optional.ofNullable(commentsUrl);
         return this;
     }
 
@@ -637,16 +636,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "comments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_url")
-    public String getCommentsUrl() {
+    public Optional<String> getCommentsUrl() {
         return commentsUrl;
     }
 
-    public void setCommentsUrl(String commentsUrl) {
+    public void setCommentsUrl(Optional<String> commentsUrl) {
         this.commentsUrl = commentsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository commitsUrl(String commitsUrl) {
-        this.commitsUrl = commitsUrl;
+        this.commitsUrl = Optional.ofNullable(commitsUrl);
         return this;
     }
 
@@ -656,16 +655,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commits_url")
-    public String getCommitsUrl() {
+    public Optional<String> getCommitsUrl() {
         return commitsUrl;
     }
 
-    public void setCommitsUrl(String commitsUrl) {
+    public void setCommitsUrl(Optional<String> commitsUrl) {
         this.commitsUrl = commitsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository compareUrl(String compareUrl) {
-        this.compareUrl = compareUrl;
+        this.compareUrl = Optional.ofNullable(compareUrl);
         return this;
     }
 
@@ -675,16 +674,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "compare_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compare_url")
-    public String getCompareUrl() {
+    public Optional<String> getCompareUrl() {
         return compareUrl;
     }
 
-    public void setCompareUrl(String compareUrl) {
+    public void setCompareUrl(Optional<String> compareUrl) {
         this.compareUrl = compareUrl;
     }
 
     public RepositoryWebhooksTemplateRepository contentsUrl(String contentsUrl) {
-        this.contentsUrl = contentsUrl;
+        this.contentsUrl = Optional.ofNullable(contentsUrl);
         return this;
     }
 
@@ -694,16 +693,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "contents_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents_url")
-    public String getContentsUrl() {
+    public Optional<String> getContentsUrl() {
         return contentsUrl;
     }
 
-    public void setContentsUrl(String contentsUrl) {
+    public void setContentsUrl(Optional<String> contentsUrl) {
         this.contentsUrl = contentsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository contributorsUrl(String contributorsUrl) {
-        this.contributorsUrl = contributorsUrl;
+        this.contributorsUrl = Optional.ofNullable(contributorsUrl);
         return this;
     }
 
@@ -713,16 +712,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "contributors_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contributors_url")
-    public String getContributorsUrl() {
+    public Optional<String> getContributorsUrl() {
         return contributorsUrl;
     }
 
-    public void setContributorsUrl(String contributorsUrl) {
+    public void setContributorsUrl(Optional<String> contributorsUrl) {
         this.contributorsUrl = contributorsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository deploymentsUrl(String deploymentsUrl) {
-        this.deploymentsUrl = deploymentsUrl;
+        this.deploymentsUrl = Optional.ofNullable(deploymentsUrl);
         return this;
     }
 
@@ -732,16 +731,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "deployments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployments_url")
-    public String getDeploymentsUrl() {
+    public Optional<String> getDeploymentsUrl() {
         return deploymentsUrl;
     }
 
-    public void setDeploymentsUrl(String deploymentsUrl) {
+    public void setDeploymentsUrl(Optional<String> deploymentsUrl) {
         this.deploymentsUrl = deploymentsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository downloadsUrl(String downloadsUrl) {
-        this.downloadsUrl = downloadsUrl;
+        this.downloadsUrl = Optional.ofNullable(downloadsUrl);
         return this;
     }
 
@@ -751,16 +750,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "downloads_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downloads_url")
-    public String getDownloadsUrl() {
+    public Optional<String> getDownloadsUrl() {
         return downloadsUrl;
     }
 
-    public void setDownloadsUrl(String downloadsUrl) {
+    public void setDownloadsUrl(Optional<String> downloadsUrl) {
         this.downloadsUrl = downloadsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository eventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
+        this.eventsUrl = Optional.ofNullable(eventsUrl);
         return this;
     }
 
@@ -770,16 +769,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("events_url")
-    public String getEventsUrl() {
+    public Optional<String> getEventsUrl() {
         return eventsUrl;
     }
 
-    public void setEventsUrl(String eventsUrl) {
+    public void setEventsUrl(Optional<String> eventsUrl) {
         this.eventsUrl = eventsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository forksUrl(String forksUrl) {
-        this.forksUrl = forksUrl;
+        this.forksUrl = Optional.ofNullable(forksUrl);
         return this;
     }
 
@@ -789,16 +788,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "forks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_url")
-    public String getForksUrl() {
+    public Optional<String> getForksUrl() {
         return forksUrl;
     }
 
-    public void setForksUrl(String forksUrl) {
+    public void setForksUrl(Optional<String> forksUrl) {
         this.forksUrl = forksUrl;
     }
 
     public RepositoryWebhooksTemplateRepository gitCommitsUrl(String gitCommitsUrl) {
-        this.gitCommitsUrl = gitCommitsUrl;
+        this.gitCommitsUrl = Optional.ofNullable(gitCommitsUrl);
         return this;
     }
 
@@ -808,16 +807,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "git_commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_commits_url")
-    public String getGitCommitsUrl() {
+    public Optional<String> getGitCommitsUrl() {
         return gitCommitsUrl;
     }
 
-    public void setGitCommitsUrl(String gitCommitsUrl) {
+    public void setGitCommitsUrl(Optional<String> gitCommitsUrl) {
         this.gitCommitsUrl = gitCommitsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository gitRefsUrl(String gitRefsUrl) {
-        this.gitRefsUrl = gitRefsUrl;
+        this.gitRefsUrl = Optional.ofNullable(gitRefsUrl);
         return this;
     }
 
@@ -827,16 +826,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "git_refs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_refs_url")
-    public String getGitRefsUrl() {
+    public Optional<String> getGitRefsUrl() {
         return gitRefsUrl;
     }
 
-    public void setGitRefsUrl(String gitRefsUrl) {
+    public void setGitRefsUrl(Optional<String> gitRefsUrl) {
         this.gitRefsUrl = gitRefsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository gitTagsUrl(String gitTagsUrl) {
-        this.gitTagsUrl = gitTagsUrl;
+        this.gitTagsUrl = Optional.ofNullable(gitTagsUrl);
         return this;
     }
 
@@ -846,16 +845,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "git_tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_tags_url")
-    public String getGitTagsUrl() {
+    public Optional<String> getGitTagsUrl() {
         return gitTagsUrl;
     }
 
-    public void setGitTagsUrl(String gitTagsUrl) {
+    public void setGitTagsUrl(Optional<String> gitTagsUrl) {
         this.gitTagsUrl = gitTagsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository gitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = Optional.ofNullable(gitUrl);
         return this;
     }
 
@@ -865,16 +864,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_url")
-    public String getGitUrl() {
+    public Optional<String> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(String gitUrl) {
+    public void setGitUrl(Optional<String> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public RepositoryWebhooksTemplateRepository issueCommentUrl(String issueCommentUrl) {
-        this.issueCommentUrl = issueCommentUrl;
+        this.issueCommentUrl = Optional.ofNullable(issueCommentUrl);
         return this;
     }
 
@@ -884,16 +883,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "issue_comment_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_comment_url")
-    public String getIssueCommentUrl() {
+    public Optional<String> getIssueCommentUrl() {
         return issueCommentUrl;
     }
 
-    public void setIssueCommentUrl(String issueCommentUrl) {
+    public void setIssueCommentUrl(Optional<String> issueCommentUrl) {
         this.issueCommentUrl = issueCommentUrl;
     }
 
     public RepositoryWebhooksTemplateRepository issueEventsUrl(String issueEventsUrl) {
-        this.issueEventsUrl = issueEventsUrl;
+        this.issueEventsUrl = Optional.ofNullable(issueEventsUrl);
         return this;
     }
 
@@ -903,16 +902,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "issue_events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_events_url")
-    public String getIssueEventsUrl() {
+    public Optional<String> getIssueEventsUrl() {
         return issueEventsUrl;
     }
 
-    public void setIssueEventsUrl(String issueEventsUrl) {
+    public void setIssueEventsUrl(Optional<String> issueEventsUrl) {
         this.issueEventsUrl = issueEventsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository issuesUrl(String issuesUrl) {
-        this.issuesUrl = issuesUrl;
+        this.issuesUrl = Optional.ofNullable(issuesUrl);
         return this;
     }
 
@@ -922,16 +921,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "issues_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues_url")
-    public String getIssuesUrl() {
+    public Optional<String> getIssuesUrl() {
         return issuesUrl;
     }
 
-    public void setIssuesUrl(String issuesUrl) {
+    public void setIssuesUrl(Optional<String> issuesUrl) {
         this.issuesUrl = issuesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository keysUrl(String keysUrl) {
-        this.keysUrl = keysUrl;
+        this.keysUrl = Optional.ofNullable(keysUrl);
         return this;
     }
 
@@ -941,16 +940,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "keys_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("keys_url")
-    public String getKeysUrl() {
+    public Optional<String> getKeysUrl() {
         return keysUrl;
     }
 
-    public void setKeysUrl(String keysUrl) {
+    public void setKeysUrl(Optional<String> keysUrl) {
         this.keysUrl = keysUrl;
     }
 
     public RepositoryWebhooksTemplateRepository labelsUrl(String labelsUrl) {
-        this.labelsUrl = labelsUrl;
+        this.labelsUrl = Optional.ofNullable(labelsUrl);
         return this;
     }
 
@@ -960,16 +959,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "labels_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("labels_url")
-    public String getLabelsUrl() {
+    public Optional<String> getLabelsUrl() {
         return labelsUrl;
     }
 
-    public void setLabelsUrl(String labelsUrl) {
+    public void setLabelsUrl(Optional<String> labelsUrl) {
         this.labelsUrl = labelsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository languagesUrl(String languagesUrl) {
-        this.languagesUrl = languagesUrl;
+        this.languagesUrl = Optional.ofNullable(languagesUrl);
         return this;
     }
 
@@ -979,16 +978,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "languages_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("languages_url")
-    public String getLanguagesUrl() {
+    public Optional<String> getLanguagesUrl() {
         return languagesUrl;
     }
 
-    public void setLanguagesUrl(String languagesUrl) {
+    public void setLanguagesUrl(Optional<String> languagesUrl) {
         this.languagesUrl = languagesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository mergesUrl(String mergesUrl) {
-        this.mergesUrl = mergesUrl;
+        this.mergesUrl = Optional.ofNullable(mergesUrl);
         return this;
     }
 
@@ -998,16 +997,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "merges_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merges_url")
-    public String getMergesUrl() {
+    public Optional<String> getMergesUrl() {
         return mergesUrl;
     }
 
-    public void setMergesUrl(String mergesUrl) {
+    public void setMergesUrl(Optional<String> mergesUrl) {
         this.mergesUrl = mergesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository milestonesUrl(String milestonesUrl) {
-        this.milestonesUrl = milestonesUrl;
+        this.milestonesUrl = Optional.ofNullable(milestonesUrl);
         return this;
     }
 
@@ -1017,16 +1016,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "milestones_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestones_url")
-    public String getMilestonesUrl() {
+    public Optional<String> getMilestonesUrl() {
         return milestonesUrl;
     }
 
-    public void setMilestonesUrl(String milestonesUrl) {
+    public void setMilestonesUrl(Optional<String> milestonesUrl) {
         this.milestonesUrl = milestonesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository notificationsUrl(String notificationsUrl) {
-        this.notificationsUrl = notificationsUrl;
+        this.notificationsUrl = Optional.ofNullable(notificationsUrl);
         return this;
     }
 
@@ -1036,16 +1035,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "notifications_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notifications_url")
-    public String getNotificationsUrl() {
+    public Optional<String> getNotificationsUrl() {
         return notificationsUrl;
     }
 
-    public void setNotificationsUrl(String notificationsUrl) {
+    public void setNotificationsUrl(Optional<String> notificationsUrl) {
         this.notificationsUrl = notificationsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository pullsUrl(String pullsUrl) {
-        this.pullsUrl = pullsUrl;
+        this.pullsUrl = Optional.ofNullable(pullsUrl);
         return this;
     }
 
@@ -1055,16 +1054,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "pulls_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pulls_url")
-    public String getPullsUrl() {
+    public Optional<String> getPullsUrl() {
         return pullsUrl;
     }
 
-    public void setPullsUrl(String pullsUrl) {
+    public void setPullsUrl(Optional<String> pullsUrl) {
         this.pullsUrl = pullsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository releasesUrl(String releasesUrl) {
-        this.releasesUrl = releasesUrl;
+        this.releasesUrl = Optional.ofNullable(releasesUrl);
         return this;
     }
 
@@ -1074,16 +1073,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "releases_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("releases_url")
-    public String getReleasesUrl() {
+    public Optional<String> getReleasesUrl() {
         return releasesUrl;
     }
 
-    public void setReleasesUrl(String releasesUrl) {
+    public void setReleasesUrl(Optional<String> releasesUrl) {
         this.releasesUrl = releasesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository sshUrl(String sshUrl) {
-        this.sshUrl = sshUrl;
+        this.sshUrl = Optional.ofNullable(sshUrl);
         return this;
     }
 
@@ -1093,16 +1092,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "ssh_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ssh_url")
-    public String getSshUrl() {
+    public Optional<String> getSshUrl() {
         return sshUrl;
     }
 
-    public void setSshUrl(String sshUrl) {
+    public void setSshUrl(Optional<String> sshUrl) {
         this.sshUrl = sshUrl;
     }
 
     public RepositoryWebhooksTemplateRepository stargazersUrl(String stargazersUrl) {
-        this.stargazersUrl = stargazersUrl;
+        this.stargazersUrl = Optional.ofNullable(stargazersUrl);
         return this;
     }
 
@@ -1112,16 +1111,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "stargazers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_url")
-    public String getStargazersUrl() {
+    public Optional<String> getStargazersUrl() {
         return stargazersUrl;
     }
 
-    public void setStargazersUrl(String stargazersUrl) {
+    public void setStargazersUrl(Optional<String> stargazersUrl) {
         this.stargazersUrl = stargazersUrl;
     }
 
     public RepositoryWebhooksTemplateRepository statusesUrl(String statusesUrl) {
-        this.statusesUrl = statusesUrl;
+        this.statusesUrl = Optional.ofNullable(statusesUrl);
         return this;
     }
 
@@ -1131,16 +1130,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "statuses_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("statuses_url")
-    public String getStatusesUrl() {
+    public Optional<String> getStatusesUrl() {
         return statusesUrl;
     }
 
-    public void setStatusesUrl(String statusesUrl) {
+    public void setStatusesUrl(Optional<String> statusesUrl) {
         this.statusesUrl = statusesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository subscribersUrl(String subscribersUrl) {
-        this.subscribersUrl = subscribersUrl;
+        this.subscribersUrl = Optional.ofNullable(subscribersUrl);
         return this;
     }
 
@@ -1150,16 +1149,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "subscribers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_url")
-    public String getSubscribersUrl() {
+    public Optional<String> getSubscribersUrl() {
         return subscribersUrl;
     }
 
-    public void setSubscribersUrl(String subscribersUrl) {
+    public void setSubscribersUrl(Optional<String> subscribersUrl) {
         this.subscribersUrl = subscribersUrl;
     }
 
     public RepositoryWebhooksTemplateRepository subscriptionUrl(String subscriptionUrl) {
-        this.subscriptionUrl = subscriptionUrl;
+        this.subscriptionUrl = Optional.ofNullable(subscriptionUrl);
         return this;
     }
 
@@ -1169,16 +1168,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "subscription_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscription_url")
-    public String getSubscriptionUrl() {
+    public Optional<String> getSubscriptionUrl() {
         return subscriptionUrl;
     }
 
-    public void setSubscriptionUrl(String subscriptionUrl) {
+    public void setSubscriptionUrl(Optional<String> subscriptionUrl) {
         this.subscriptionUrl = subscriptionUrl;
     }
 
     public RepositoryWebhooksTemplateRepository tagsUrl(String tagsUrl) {
-        this.tagsUrl = tagsUrl;
+        this.tagsUrl = Optional.ofNullable(tagsUrl);
         return this;
     }
 
@@ -1188,16 +1187,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "tags_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tags_url")
-    public String getTagsUrl() {
+    public Optional<String> getTagsUrl() {
         return tagsUrl;
     }
 
-    public void setTagsUrl(String tagsUrl) {
+    public void setTagsUrl(Optional<String> tagsUrl) {
         this.tagsUrl = tagsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository teamsUrl(String teamsUrl) {
-        this.teamsUrl = teamsUrl;
+        this.teamsUrl = Optional.ofNullable(teamsUrl);
         return this;
     }
 
@@ -1207,16 +1206,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "teams_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("teams_url")
-    public String getTeamsUrl() {
+    public Optional<String> getTeamsUrl() {
         return teamsUrl;
     }
 
-    public void setTeamsUrl(String teamsUrl) {
+    public void setTeamsUrl(Optional<String> teamsUrl) {
         this.teamsUrl = teamsUrl;
     }
 
     public RepositoryWebhooksTemplateRepository treesUrl(String treesUrl) {
-        this.treesUrl = treesUrl;
+        this.treesUrl = Optional.ofNullable(treesUrl);
         return this;
     }
 
@@ -1226,16 +1225,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "trees_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("trees_url")
-    public String getTreesUrl() {
+    public Optional<String> getTreesUrl() {
         return treesUrl;
     }
 
-    public void setTreesUrl(String treesUrl) {
+    public void setTreesUrl(Optional<String> treesUrl) {
         this.treesUrl = treesUrl;
     }
 
     public RepositoryWebhooksTemplateRepository cloneUrl(String cloneUrl) {
-        this.cloneUrl = cloneUrl;
+        this.cloneUrl = Optional.ofNullable(cloneUrl);
         return this;
     }
 
@@ -1245,16 +1244,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "clone_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("clone_url")
-    public String getCloneUrl() {
+    public Optional<String> getCloneUrl() {
         return cloneUrl;
     }
 
-    public void setCloneUrl(String cloneUrl) {
+    public void setCloneUrl(Optional<String> cloneUrl) {
         this.cloneUrl = cloneUrl;
     }
 
     public RepositoryWebhooksTemplateRepository mirrorUrl(String mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = Optional.ofNullable(mirrorUrl);
         return this;
     }
 
@@ -1264,16 +1263,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mirror_url")
-    public String getMirrorUrl() {
+    public Optional<String> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(String mirrorUrl) {
+    public void setMirrorUrl(Optional<String> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
     public RepositoryWebhooksTemplateRepository hooksUrl(String hooksUrl) {
-        this.hooksUrl = hooksUrl;
+        this.hooksUrl = Optional.ofNullable(hooksUrl);
         return this;
     }
 
@@ -1283,16 +1282,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "hooks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooks_url")
-    public String getHooksUrl() {
+    public Optional<String> getHooksUrl() {
         return hooksUrl;
     }
 
-    public void setHooksUrl(String hooksUrl) {
+    public void setHooksUrl(Optional<String> hooksUrl) {
         this.hooksUrl = hooksUrl;
     }
 
     public RepositoryWebhooksTemplateRepository svnUrl(String svnUrl) {
-        this.svnUrl = svnUrl;
+        this.svnUrl = Optional.ofNullable(svnUrl);
         return this;
     }
 
@@ -1302,16 +1301,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "svn_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("svn_url")
-    public String getSvnUrl() {
+    public Optional<String> getSvnUrl() {
         return svnUrl;
     }
 
-    public void setSvnUrl(String svnUrl) {
+    public void setSvnUrl(Optional<String> svnUrl) {
         this.svnUrl = svnUrl;
     }
 
     public RepositoryWebhooksTemplateRepository homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -1321,16 +1320,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public Optional<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(Optional<String> homepage) {
         this.homepage = homepage;
     }
 
     public RepositoryWebhooksTemplateRepository language(String language) {
-        this.language = language;
+        this.language = Optional.ofNullable(language);
         return this;
     }
 
@@ -1340,16 +1339,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public Optional<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Optional<String> language) {
         this.language = language;
     }
 
     public RepositoryWebhooksTemplateRepository forksCount(Long forksCount) {
-        this.forksCount = forksCount;
+        this.forksCount = Optional.ofNullable(forksCount);
         return this;
     }
 
@@ -1359,16 +1358,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "forks_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_count")
-    public Long getForksCount() {
+    public Optional<Long> getForksCount() {
         return forksCount;
     }
 
-    public void setForksCount(Long forksCount) {
+    public void setForksCount(Optional<Long> forksCount) {
         this.forksCount = forksCount;
     }
 
     public RepositoryWebhooksTemplateRepository stargazersCount(Long stargazersCount) {
-        this.stargazersCount = stargazersCount;
+        this.stargazersCount = Optional.ofNullable(stargazersCount);
         return this;
     }
 
@@ -1378,16 +1377,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "stargazers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_count")
-    public Long getStargazersCount() {
+    public Optional<Long> getStargazersCount() {
         return stargazersCount;
     }
 
-    public void setStargazersCount(Long stargazersCount) {
+    public void setStargazersCount(Optional<Long> stargazersCount) {
         this.stargazersCount = stargazersCount;
     }
 
     public RepositoryWebhooksTemplateRepository watchersCount(Long watchersCount) {
-        this.watchersCount = watchersCount;
+        this.watchersCount = Optional.ofNullable(watchersCount);
         return this;
     }
 
@@ -1397,16 +1396,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "watchers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("watchers_count")
-    public Long getWatchersCount() {
+    public Optional<Long> getWatchersCount() {
         return watchersCount;
     }
 
-    public void setWatchersCount(Long watchersCount) {
+    public void setWatchersCount(Optional<Long> watchersCount) {
         this.watchersCount = watchersCount;
     }
 
     public RepositoryWebhooksTemplateRepository size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -1416,16 +1415,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public RepositoryWebhooksTemplateRepository defaultBranch(String defaultBranch) {
-        this.defaultBranch = defaultBranch;
+        this.defaultBranch = Optional.ofNullable(defaultBranch);
         return this;
     }
 
@@ -1435,16 +1434,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "default_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch")
-    public String getDefaultBranch() {
+    public Optional<String> getDefaultBranch() {
         return defaultBranch;
     }
 
-    public void setDefaultBranch(String defaultBranch) {
+    public void setDefaultBranch(Optional<String> defaultBranch) {
         this.defaultBranch = defaultBranch;
     }
 
     public RepositoryWebhooksTemplateRepository openIssuesCount(Long openIssuesCount) {
-        this.openIssuesCount = openIssuesCount;
+        this.openIssuesCount = Optional.ofNullable(openIssuesCount);
         return this;
     }
 
@@ -1454,16 +1453,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "open_issues_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_issues_count")
-    public Long getOpenIssuesCount() {
+    public Optional<Long> getOpenIssuesCount() {
         return openIssuesCount;
     }
 
-    public void setOpenIssuesCount(Long openIssuesCount) {
+    public void setOpenIssuesCount(Optional<Long> openIssuesCount) {
         this.openIssuesCount = openIssuesCount;
     }
 
     public RepositoryWebhooksTemplateRepository isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1473,11 +1472,11 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -1509,7 +1508,7 @@ public class RepositoryWebhooksTemplateRepository {
     }
 
     public RepositoryWebhooksTemplateRepository hasIssues(Boolean hasIssues) {
-        this.hasIssues = hasIssues;
+        this.hasIssues = Optional.ofNullable(hasIssues);
         return this;
     }
 
@@ -1519,16 +1518,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "has_issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_issues")
-    public Boolean getHasIssues() {
+    public Optional<Boolean> getHasIssues() {
         return hasIssues;
     }
 
-    public void setHasIssues(Boolean hasIssues) {
+    public void setHasIssues(Optional<Boolean> hasIssues) {
         this.hasIssues = hasIssues;
     }
 
     public RepositoryWebhooksTemplateRepository hasProjects(Boolean hasProjects) {
-        this.hasProjects = hasProjects;
+        this.hasProjects = Optional.ofNullable(hasProjects);
         return this;
     }
 
@@ -1538,16 +1537,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "has_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_projects")
-    public Boolean getHasProjects() {
+    public Optional<Boolean> getHasProjects() {
         return hasProjects;
     }
 
-    public void setHasProjects(Boolean hasProjects) {
+    public void setHasProjects(Optional<Boolean> hasProjects) {
         this.hasProjects = hasProjects;
     }
 
     public RepositoryWebhooksTemplateRepository hasWiki(Boolean hasWiki) {
-        this.hasWiki = hasWiki;
+        this.hasWiki = Optional.ofNullable(hasWiki);
         return this;
     }
 
@@ -1557,16 +1556,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "has_wiki", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_wiki")
-    public Boolean getHasWiki() {
+    public Optional<Boolean> getHasWiki() {
         return hasWiki;
     }
 
-    public void setHasWiki(Boolean hasWiki) {
+    public void setHasWiki(Optional<Boolean> hasWiki) {
         this.hasWiki = hasWiki;
     }
 
     public RepositoryWebhooksTemplateRepository hasPages(Boolean hasPages) {
-        this.hasPages = hasPages;
+        this.hasPages = Optional.ofNullable(hasPages);
         return this;
     }
 
@@ -1576,16 +1575,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "has_pages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pages")
-    public Boolean getHasPages() {
+    public Optional<Boolean> getHasPages() {
         return hasPages;
     }
 
-    public void setHasPages(Boolean hasPages) {
+    public void setHasPages(Optional<Boolean> hasPages) {
         this.hasPages = hasPages;
     }
 
     public RepositoryWebhooksTemplateRepository hasDownloads(Boolean hasDownloads) {
-        this.hasDownloads = hasDownloads;
+        this.hasDownloads = Optional.ofNullable(hasDownloads);
         return this;
     }
 
@@ -1595,16 +1594,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "has_downloads", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_downloads")
-    public Boolean getHasDownloads() {
+    public Optional<Boolean> getHasDownloads() {
         return hasDownloads;
     }
 
-    public void setHasDownloads(Boolean hasDownloads) {
+    public void setHasDownloads(Optional<Boolean> hasDownloads) {
         this.hasDownloads = hasDownloads;
     }
 
     public RepositoryWebhooksTemplateRepository archived(Boolean archived) {
-        this.archived = archived;
+        this.archived = Optional.ofNullable(archived);
         return this;
     }
 
@@ -1614,16 +1613,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "archived", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archived")
-    public Boolean getArchived() {
+    public Optional<Boolean> getArchived() {
         return archived;
     }
 
-    public void setArchived(Boolean archived) {
+    public void setArchived(Optional<Boolean> archived) {
         this.archived = archived;
     }
 
     public RepositoryWebhooksTemplateRepository disabled(Boolean disabled) {
-        this.disabled = disabled;
+        this.disabled = Optional.ofNullable(disabled);
         return this;
     }
 
@@ -1633,16 +1632,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "disabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disabled")
-    public Boolean getDisabled() {
+    public Optional<Boolean> getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Optional<Boolean> disabled) {
         this.disabled = disabled;
     }
 
     public RepositoryWebhooksTemplateRepository visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -1652,16 +1651,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "visibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public RepositoryWebhooksTemplateRepository pushedAt(String pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = Optional.ofNullable(pushedAt);
         return this;
     }
 
@@ -1671,16 +1670,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "pushed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pushed_at")
-    public String getPushedAt() {
+    public Optional<String> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(String pushedAt) {
+    public void setPushedAt(Optional<String> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public RepositoryWebhooksTemplateRepository createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -1690,16 +1689,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public RepositoryWebhooksTemplateRepository updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -1709,16 +1708,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public RepositoryWebhooksTemplateRepository permissions(MinimalRepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -1729,16 +1728,16 @@ public class RepositoryWebhooksTemplateRepository {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public MinimalRepositoryPermissions getPermissions() {
+    public Optional<MinimalRepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(MinimalRepositoryPermissions permissions) {
+    public void setPermissions(Optional<MinimalRepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
     public RepositoryWebhooksTemplateRepository allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -1748,16 +1747,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "allow_rebase_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public RepositoryWebhooksTemplateRepository tempCloneToken(String tempCloneToken) {
-        this.tempCloneToken = tempCloneToken;
+        this.tempCloneToken = Optional.ofNullable(tempCloneToken);
         return this;
     }
 
@@ -1767,16 +1766,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "temp_clone_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_clone_token")
-    public String getTempCloneToken() {
+    public Optional<String> getTempCloneToken() {
         return tempCloneToken;
     }
 
-    public void setTempCloneToken(String tempCloneToken) {
+    public void setTempCloneToken(Optional<String> tempCloneToken) {
         this.tempCloneToken = tempCloneToken;
     }
 
     public RepositoryWebhooksTemplateRepository allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -1786,16 +1785,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "allow_squash_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public RepositoryWebhooksTemplateRepository allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -1805,16 +1804,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "allow_auto_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public RepositoryWebhooksTemplateRepository deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -1824,16 +1823,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "delete_branch_on_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public RepositoryWebhooksTemplateRepository allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -1843,17 +1842,17 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "allow_update_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
     public RepositoryWebhooksTemplateRepository squashMergeCommitTitle(
             SquashMergeCommitTitleEnum squashMergeCommitTitle) {
-        this.squashMergeCommitTitle = squashMergeCommitTitle;
+        this.squashMergeCommitTitle = Optional.ofNullable(squashMergeCommitTitle);
         return this;
     }
 
@@ -1867,17 +1866,17 @@ public class RepositoryWebhooksTemplateRepository {
                     "The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_title")
-    public SquashMergeCommitTitleEnum getSquashMergeCommitTitle() {
+    public Optional<SquashMergeCommitTitleEnum> getSquashMergeCommitTitle() {
         return squashMergeCommitTitle;
     }
 
-    public void setSquashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
+    public void setSquashMergeCommitTitle(Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle) {
         this.squashMergeCommitTitle = squashMergeCommitTitle;
     }
 
     public RepositoryWebhooksTemplateRepository squashMergeCommitMessage(
             SquashMergeCommitMessageEnum squashMergeCommitMessage) {
-        this.squashMergeCommitMessage = squashMergeCommitMessage;
+        this.squashMergeCommitMessage = Optional.ofNullable(squashMergeCommitMessage);
         return this;
     }
 
@@ -1891,16 +1890,16 @@ public class RepositoryWebhooksTemplateRepository {
                     "The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_message")
-    public SquashMergeCommitMessageEnum getSquashMergeCommitMessage() {
+    public Optional<SquashMergeCommitMessageEnum> getSquashMergeCommitMessage() {
         return squashMergeCommitMessage;
     }
 
-    public void setSquashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
+    public void setSquashMergeCommitMessage(Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage) {
         this.squashMergeCommitMessage = squashMergeCommitMessage;
     }
 
     public RepositoryWebhooksTemplateRepository mergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
-        this.mergeCommitTitle = mergeCommitTitle;
+        this.mergeCommitTitle = Optional.ofNullable(mergeCommitTitle);
         return this;
     }
 
@@ -1914,16 +1913,16 @@ public class RepositoryWebhooksTemplateRepository {
                     "The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_title")
-    public MergeCommitTitleEnum getMergeCommitTitle() {
+    public Optional<MergeCommitTitleEnum> getMergeCommitTitle() {
         return mergeCommitTitle;
     }
 
-    public void setMergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
+    public void setMergeCommitTitle(Optional<MergeCommitTitleEnum> mergeCommitTitle) {
         this.mergeCommitTitle = mergeCommitTitle;
     }
 
     public RepositoryWebhooksTemplateRepository mergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
-        this.mergeCommitMessage = mergeCommitMessage;
+        this.mergeCommitMessage = Optional.ofNullable(mergeCommitMessage);
         return this;
     }
 
@@ -1937,16 +1936,16 @@ public class RepositoryWebhooksTemplateRepository {
                     "The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_message")
-    public MergeCommitMessageEnum getMergeCommitMessage() {
+    public Optional<MergeCommitMessageEnum> getMergeCommitMessage() {
         return mergeCommitMessage;
     }
 
-    public void setMergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
+    public void setMergeCommitMessage(Optional<MergeCommitMessageEnum> mergeCommitMessage) {
         this.mergeCommitMessage = mergeCommitMessage;
     }
 
     public RepositoryWebhooksTemplateRepository allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -1956,16 +1955,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "allow_merge_commit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public RepositoryWebhooksTemplateRepository subscribersCount(Long subscribersCount) {
-        this.subscribersCount = subscribersCount;
+        this.subscribersCount = Optional.ofNullable(subscribersCount);
         return this;
     }
 
@@ -1975,16 +1974,16 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "subscribers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_count")
-    public Long getSubscribersCount() {
+    public Optional<Long> getSubscribersCount() {
         return subscribersCount;
     }
 
-    public void setSubscribersCount(Long subscribersCount) {
+    public void setSubscribersCount(Optional<Long> subscribersCount) {
         this.subscribersCount = subscribersCount;
     }
 
     public RepositoryWebhooksTemplateRepository networkCount(Long networkCount) {
-        this.networkCount = networkCount;
+        this.networkCount = Optional.ofNullable(networkCount);
         return this;
     }
 
@@ -1994,11 +1993,11 @@ public class RepositoryWebhooksTemplateRepository {
      */
     @Schema(name = "network_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_count")
-    public Long getNetworkCount() {
+    public Optional<Long> getNetworkCount() {
         return networkCount;
     }
 
-    public void setNetworkCount(Long networkCount) {
+    public void setNetworkCount(Optional<Long> networkCount) {
         this.networkCount = networkCount;
     }
 

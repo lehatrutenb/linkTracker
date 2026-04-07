@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The details of the security advisory, including summary, description, and severity.
@@ -20,11 +21,11 @@ import java.util.Objects;
 @JsonTypeName("webhooks_security_advisory")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksSecurityAdvisory {
 
-    private CvssSeverities cvssSeverities = null;
+    private JsonNullable<CvssSeverities> cvssSeverities = JsonNullable.<CvssSeverities>undefined();
 
     @Valid
     private List<@Valid WebhooksSecurityAdvisoryCwesInner> cwes = new ArrayList<>();
@@ -50,7 +51,7 @@ public class WebhooksSecurityAdvisory {
     @Valid
     private List<@Valid WebhooksSecurityAdvisoryVulnerabilitiesInner> vulnerabilities = new ArrayList<>();
 
-    private String withdrawnAt = null;
+    private JsonNullable<String> withdrawnAt = JsonNullable.<String>undefined();
 
     public WebhooksSecurityAdvisory() {
         super();
@@ -81,11 +82,11 @@ public class WebhooksSecurityAdvisory {
         this.summary = summary;
         this.updatedAt = updatedAt;
         this.vulnerabilities = vulnerabilities;
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
     }
 
     public WebhooksSecurityAdvisory cvssSeverities(CvssSeverities cvssSeverities) {
-        this.cvssSeverities = cvssSeverities;
+        this.cvssSeverities = JsonNullable.of(cvssSeverities);
         return this;
     }
 
@@ -96,11 +97,11 @@ public class WebhooksSecurityAdvisory {
     @Valid
     @Schema(name = "cvss_severities", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_severities")
-    public CvssSeverities getCvssSeverities() {
+    public JsonNullable<CvssSeverities> getCvssSeverities() {
         return cvssSeverities;
     }
 
-    public void setCvssSeverities(CvssSeverities cvssSeverities) {
+    public void setCvssSeverities(JsonNullable<CvssSeverities> cvssSeverities) {
         this.cvssSeverities = cvssSeverities;
     }
 
@@ -343,7 +344,7 @@ public class WebhooksSecurityAdvisory {
     }
 
     public WebhooksSecurityAdvisory withdrawnAt(String withdrawnAt) {
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
         return this;
     }
 
@@ -354,11 +355,11 @@ public class WebhooksSecurityAdvisory {
     @NotNull
     @Schema(name = "withdrawn_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("withdrawn_at")
-    public String getWithdrawnAt() {
+    public JsonNullable<String> getWithdrawnAt() {
         return withdrawnAt;
     }
 
-    public void setWithdrawnAt(String withdrawnAt) {
+    public void setWithdrawnAt(JsonNullable<String> withdrawnAt) {
         this.withdrawnAt = withdrawnAt;
     }
 
@@ -371,7 +372,7 @@ public class WebhooksSecurityAdvisory {
             return false;
         }
         WebhooksSecurityAdvisory webhooksSecurityAdvisory = (WebhooksSecurityAdvisory) o;
-        return Objects.equals(this.cvssSeverities, webhooksSecurityAdvisory.cvssSeverities)
+        return equalsNullable(this.cvssSeverities, webhooksSecurityAdvisory.cvssSeverities)
                 && Objects.equals(this.cwes, webhooksSecurityAdvisory.cwes)
                 && Objects.equals(this.description, webhooksSecurityAdvisory.description)
                 && Objects.equals(this.ghsaId, webhooksSecurityAdvisory.ghsaId)
@@ -385,10 +386,15 @@ public class WebhooksSecurityAdvisory {
                 && Objects.equals(this.withdrawnAt, webhooksSecurityAdvisory.withdrawnAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                cvssSeverities,
+                hashCodeNullable(cvssSeverities),
                 cwes,
                 description,
                 ghsaId,
@@ -400,6 +406,13 @@ public class WebhooksSecurityAdvisory {
                 updatedAt,
                 vulnerabilities,
                 withdrawnAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

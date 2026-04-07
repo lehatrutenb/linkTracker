@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * HostedComputeUpdateNetworkConfigurationForOrgRequest
@@ -19,11 +19,11 @@ import java.util.Objects;
 @JsonTypeName("hosted_compute_update_network_configuration_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HostedComputeUpdateNetworkConfigurationForOrgRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The hosted compute service to use for the network configuration.
@@ -60,13 +60,13 @@ public class HostedComputeUpdateNetworkConfigurationForOrgRequest {
         }
     }
 
-    private ComputeServiceEnum computeService;
+    private Optional<ComputeServiceEnum> computeService = Optional.empty();
 
     @Valid
     private List<String> networkSettingsIds = new ArrayList<>();
 
     public HostedComputeUpdateNetworkConfigurationForOrgRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -80,16 +80,16 @@ public class HostedComputeUpdateNetworkConfigurationForOrgRequest {
                     "Name of the network configuration. Must be between 1 and 100 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public HostedComputeUpdateNetworkConfigurationForOrgRequest computeService(ComputeServiceEnum computeService) {
-        this.computeService = computeService;
+        this.computeService = Optional.ofNullable(computeService);
         return this;
     }
 
@@ -102,11 +102,11 @@ public class HostedComputeUpdateNetworkConfigurationForOrgRequest {
             description = "The hosted compute service to use for the network configuration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compute_service")
-    public ComputeServiceEnum getComputeService() {
+    public Optional<ComputeServiceEnum> getComputeService() {
         return computeService;
     }
 
-    public void setComputeService(ComputeServiceEnum computeService) {
+    public void setComputeService(Optional<ComputeServiceEnum> computeService) {
         this.computeService = computeService;
     }
 

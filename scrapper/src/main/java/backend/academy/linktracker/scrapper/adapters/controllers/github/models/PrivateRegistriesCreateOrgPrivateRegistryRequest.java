@@ -7,12 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PrivateRegistriesCreateOrgPrivateRegistryRequest
@@ -20,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("private_registries_create_org_private_registry_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
 
@@ -89,9 +88,9 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
 
     private URI url;
 
-    private String username = null;
+    private JsonNullable<String> username = JsonNullable.<String>undefined();
 
-    private Boolean replacesBase = false;
+    private Optional<Boolean> replacesBase = Optional.of(false);
 
     private String encryptedValue;
 
@@ -197,7 +196,7 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
     }
 
     public PrivateRegistriesCreateOrgPrivateRegistryRequest username(String username) {
-        this.username = username;
+        this.username = JsonNullable.of(username);
         return this;
     }
 
@@ -211,16 +210,16 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
                     "The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public JsonNullable<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(JsonNullable<String> username) {
         this.username = username;
     }
 
     public PrivateRegistriesCreateOrgPrivateRegistryRequest replacesBase(Boolean replacesBase) {
-        this.replacesBase = replacesBase;
+        this.replacesBase = Optional.ofNullable(replacesBase);
         return this;
     }
 
@@ -234,11 +233,11 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
                     "Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("replaces_base")
-    public Boolean getReplacesBase() {
+    public Optional<Boolean> getReplacesBase() {
         return replacesBase;
     }
 
-    public void setReplacesBase(Boolean replacesBase) {
+    public void setReplacesBase(Optional<Boolean> replacesBase) {
         this.replacesBase = replacesBase;
     }
 
@@ -358,7 +357,7 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
                 (PrivateRegistriesCreateOrgPrivateRegistryRequest) o;
         return Objects.equals(this.registryType, privateRegistriesCreateOrgPrivateRegistryRequest.registryType)
                 && Objects.equals(this.url, privateRegistriesCreateOrgPrivateRegistryRequest.url)
-                && Objects.equals(this.username, privateRegistriesCreateOrgPrivateRegistryRequest.username)
+                && equalsNullable(this.username, privateRegistriesCreateOrgPrivateRegistryRequest.username)
                 && Objects.equals(this.replacesBase, privateRegistriesCreateOrgPrivateRegistryRequest.replacesBase)
                 && Objects.equals(this.encryptedValue, privateRegistriesCreateOrgPrivateRegistryRequest.encryptedValue)
                 && Objects.equals(this.keyId, privateRegistriesCreateOrgPrivateRegistryRequest.keyId)
@@ -368,10 +367,29 @@ public class PrivateRegistriesCreateOrgPrivateRegistryRequest {
                         privateRegistriesCreateOrgPrivateRegistryRequest.selectedRepositoryIds);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                registryType, url, username, replacesBase, encryptedValue, keyId, visibility, selectedRepositoryIds);
+                registryType,
+                url,
+                hashCodeNullable(username),
+                replacesBase,
+                encryptedValue,
+                keyId,
+                visibility,
+                selectedRepositoryIds);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

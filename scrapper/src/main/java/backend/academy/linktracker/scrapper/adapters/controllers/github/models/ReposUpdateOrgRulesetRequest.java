@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateOrgRulesetRequest
@@ -19,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("repos_update_org_ruleset_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateOrgRulesetRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The target of the ruleset
@@ -64,20 +63,20 @@ public class ReposUpdateOrgRulesetRequest {
         }
     }
 
-    private TargetEnum target;
+    private Optional<TargetEnum> target = Optional.empty();
 
-    private RepositoryRuleEnforcement enforcement;
+    private Optional<RepositoryRuleEnforcement> enforcement = Optional.empty();
 
     @Valid
     private List<@Valid RepositoryRulesetBypassActor> bypassActors = new ArrayList<>();
 
-    private OrgRulesetConditions conditions;
+    private Optional<OrgRulesetConditions> conditions = Optional.empty();
 
     @Valid
     private List<@Valid OrgRules> rules = new ArrayList<>();
 
     public ReposUpdateOrgRulesetRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -87,16 +86,16 @@ public class ReposUpdateOrgRulesetRequest {
      */
     @Schema(name = "name", description = "The name of the ruleset.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposUpdateOrgRulesetRequest target(TargetEnum target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -106,16 +105,16 @@ public class ReposUpdateOrgRulesetRequest {
      */
     @Schema(name = "target", description = "The target of the ruleset", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public TargetEnum getTarget() {
+    public Optional<TargetEnum> getTarget() {
         return target;
     }
 
-    public void setTarget(TargetEnum target) {
+    public void setTarget(Optional<TargetEnum> target) {
         this.target = target;
     }
 
     public ReposUpdateOrgRulesetRequest enforcement(RepositoryRuleEnforcement enforcement) {
-        this.enforcement = enforcement;
+        this.enforcement = Optional.ofNullable(enforcement);
         return this;
     }
 
@@ -126,11 +125,11 @@ public class ReposUpdateOrgRulesetRequest {
     @Valid
     @Schema(name = "enforcement", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enforcement")
-    public RepositoryRuleEnforcement getEnforcement() {
+    public Optional<RepositoryRuleEnforcement> getEnforcement() {
         return enforcement;
     }
 
-    public void setEnforcement(RepositoryRuleEnforcement enforcement) {
+    public void setEnforcement(Optional<RepositoryRuleEnforcement> enforcement) {
         this.enforcement = enforcement;
     }
 
@@ -166,7 +165,7 @@ public class ReposUpdateOrgRulesetRequest {
     }
 
     public ReposUpdateOrgRulesetRequest conditions(OrgRulesetConditions conditions) {
-        this.conditions = conditions;
+        this.conditions = Optional.ofNullable(conditions);
         return this;
     }
 
@@ -177,11 +176,11 @@ public class ReposUpdateOrgRulesetRequest {
     @Valid
     @Schema(name = "conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conditions")
-    public OrgRulesetConditions getConditions() {
+    public Optional<OrgRulesetConditions> getConditions() {
         return conditions;
     }
 
-    public void setConditions(OrgRulesetConditions conditions) {
+    public void setConditions(Optional<OrgRulesetConditions> conditions) {
         this.conditions = conditions;
     }
 

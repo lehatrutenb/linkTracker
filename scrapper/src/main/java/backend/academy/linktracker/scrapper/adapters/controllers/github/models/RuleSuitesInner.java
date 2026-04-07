@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,28 +18,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("rule_suites_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuitesInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private Long actorId;
+    private Optional<Long> actorId = Optional.empty();
 
-    private String actorName;
+    private Optional<String> actorName = Optional.empty();
 
-    private String beforeSha;
+    private Optional<String> beforeSha = Optional.empty();
 
-    private String afterSha;
+    private Optional<String> afterSha = Optional.empty();
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
-    private Long repositoryId;
+    private Optional<Long> repositoryId = Optional.empty();
 
-    private String repositoryName;
+    private Optional<String> repositoryName = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt;
+    private Optional<OffsetDateTime> pushedAt = Optional.empty();
 
     /**
      * The result of the rule evaluations for rules with the `active` enforcement status.
@@ -79,7 +78,7 @@ public class RuleSuitesInner {
         }
     }
 
-    private ResultEnum result;
+    private Optional<ResultEnum> result = Optional.empty();
 
     /**
      * The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
@@ -118,10 +117,10 @@ public class RuleSuitesInner {
         }
     }
 
-    private EvaluationResultEnum evaluationResult;
+    private Optional<EvaluationResultEnum> evaluationResult = Optional.empty();
 
     public RuleSuitesInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -134,16 +133,16 @@ public class RuleSuitesInner {
             description = "The unique identifier of the rule insight.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuitesInner actorId(Long actorId) {
-        this.actorId = actorId;
+        this.actorId = Optional.ofNullable(actorId);
         return this;
     }
 
@@ -156,16 +155,16 @@ public class RuleSuitesInner {
             description = "The number that identifies the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_id")
-    public Long getActorId() {
+    public Optional<Long> getActorId() {
         return actorId;
     }
 
-    public void setActorId(Long actorId) {
+    public void setActorId(Optional<Long> actorId) {
         this.actorId = actorId;
     }
 
     public RuleSuitesInner actorName(String actorName) {
-        this.actorName = actorName;
+        this.actorName = Optional.ofNullable(actorName);
         return this;
     }
 
@@ -178,16 +177,16 @@ public class RuleSuitesInner {
             description = "The handle for the GitHub user account.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_name")
-    public String getActorName() {
+    public Optional<String> getActorName() {
         return actorName;
     }
 
-    public void setActorName(String actorName) {
+    public void setActorName(Optional<String> actorName) {
         this.actorName = actorName;
     }
 
     public RuleSuitesInner beforeSha(String beforeSha) {
-        this.beforeSha = beforeSha;
+        this.beforeSha = Optional.ofNullable(beforeSha);
         return this;
     }
 
@@ -200,16 +199,16 @@ public class RuleSuitesInner {
             description = "The first commit sha before the push evaluation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("before_sha")
-    public String getBeforeSha() {
+    public Optional<String> getBeforeSha() {
         return beforeSha;
     }
 
-    public void setBeforeSha(String beforeSha) {
+    public void setBeforeSha(Optional<String> beforeSha) {
         this.beforeSha = beforeSha;
     }
 
     public RuleSuitesInner afterSha(String afterSha) {
-        this.afterSha = afterSha;
+        this.afterSha = Optional.ofNullable(afterSha);
         return this;
     }
 
@@ -222,16 +221,16 @@ public class RuleSuitesInner {
             description = "The last commit sha in the push evaluation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_sha")
-    public String getAfterSha() {
+    public Optional<String> getAfterSha() {
         return afterSha;
     }
 
-    public void setAfterSha(String afterSha) {
+    public void setAfterSha(Optional<String> afterSha) {
         this.afterSha = afterSha;
     }
 
     public RuleSuitesInner ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -244,16 +243,16 @@ public class RuleSuitesInner {
             description = "The ref name that the evaluation ran on.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 
     public RuleSuitesInner repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = Optional.ofNullable(repositoryId);
         return this;
     }
 
@@ -266,16 +265,16 @@ public class RuleSuitesInner {
             description = "The ID of the repository associated with the rule evaluation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public Optional<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(Optional<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public RuleSuitesInner repositoryName(String repositoryName) {
-        this.repositoryName = repositoryName;
+        this.repositoryName = Optional.ofNullable(repositoryName);
         return this;
     }
 
@@ -288,16 +287,16 @@ public class RuleSuitesInner {
             description = "The name of the repository without the `.git` extension.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_name")
-    public String getRepositoryName() {
+    public Optional<String> getRepositoryName() {
         return repositoryName;
     }
 
-    public void setRepositoryName(String repositoryName) {
+    public void setRepositoryName(Optional<String> repositoryName) {
         this.repositoryName = repositoryName;
     }
 
     public RuleSuitesInner pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = Optional.ofNullable(pushedAt);
         return this;
     }
 
@@ -308,16 +307,16 @@ public class RuleSuitesInner {
     @Valid
     @Schema(name = "pushed_at", example = "2011-01-26T19:06:43Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public Optional<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(Optional<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public RuleSuitesInner result(ResultEnum result) {
-        this.result = result;
+        this.result = Optional.ofNullable(result);
         return this;
     }
 
@@ -330,16 +329,16 @@ public class RuleSuitesInner {
             description = "The result of the rule evaluations for rules with the `active` enforcement status.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("result")
-    public ResultEnum getResult() {
+    public Optional<ResultEnum> getResult() {
         return result;
     }
 
-    public void setResult(ResultEnum result) {
+    public void setResult(Optional<ResultEnum> result) {
         this.result = result;
     }
 
     public RuleSuitesInner evaluationResult(EvaluationResultEnum evaluationResult) {
-        this.evaluationResult = evaluationResult;
+        this.evaluationResult = Optional.ofNullable(evaluationResult);
         return this;
     }
 
@@ -353,11 +352,11 @@ public class RuleSuitesInner {
                     "The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("evaluation_result")
-    public EvaluationResultEnum getEvaluationResult() {
+    public Optional<EvaluationResultEnum> getEvaluationResult() {
         return evaluationResult;
     }
 
-    public void setEvaluationResult(EvaluationResultEnum evaluationResult) {
+    public void setEvaluationResult(Optional<EvaluationResultEnum> evaluationResult) {
         this.evaluationResult = evaluationResult;
     }
 

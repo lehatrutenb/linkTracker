@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * EnvironmentProtectionRulesInnerAnyOf1
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("environment_protection_rules_inner_anyOf_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class EnvironmentProtectionRulesInnerAnyOf1 {
 
@@ -25,7 +25,7 @@ public class EnvironmentProtectionRulesInnerAnyOf1 {
 
     private String nodeId;
 
-    private Boolean preventSelfReview;
+    private Optional<Boolean> preventSelfReview = Optional.empty();
 
     private String type;
 
@@ -86,7 +86,7 @@ public class EnvironmentProtectionRulesInnerAnyOf1 {
     }
 
     public EnvironmentProtectionRulesInnerAnyOf1 preventSelfReview(Boolean preventSelfReview) {
-        this.preventSelfReview = preventSelfReview;
+        this.preventSelfReview = Optional.ofNullable(preventSelfReview);
         return this;
     }
 
@@ -101,11 +101,11 @@ public class EnvironmentProtectionRulesInnerAnyOf1 {
                     "Whether deployments to this environment can be approved by the user who created the deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prevent_self_review")
-    public Boolean getPreventSelfReview() {
+    public Optional<Boolean> getPreventSelfReview() {
         return preventSelfReview;
     }
 
-    public void setPreventSelfReview(Boolean preventSelfReview) {
+    public void setPreventSelfReview(Optional<Boolean> preventSelfReview) {
         this.preventSelfReview = preventSelfReview;
     }
 

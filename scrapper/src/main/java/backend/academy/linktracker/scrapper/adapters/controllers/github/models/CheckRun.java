@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("check-run")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CheckRun {
 
@@ -32,13 +33,13 @@ public class CheckRun {
 
     private String nodeId;
 
-    private String externalId = null;
+    private JsonNullable<String> externalId = JsonNullable.<String>undefined();
 
     private String url;
 
-    private String htmlUrl = null;
+    private JsonNullable<String> htmlUrl = JsonNullable.<String>undefined();
 
-    private String detailsUrl = null;
+    private JsonNullable<String> detailsUrl = JsonNullable.<String>undefined();
 
     /**
      * The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
@@ -130,26 +131,26 @@ public class CheckRun {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt = null;
+    private JsonNullable<OffsetDateTime> startedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private CheckRunOutput output;
 
     private String name;
 
-    private CheckRunCheckSuite checkSuite = null;
+    private JsonNullable<CheckRunCheckSuite> checkSuite = JsonNullable.<CheckRunCheckSuite>undefined();
 
-    private NullableIntegration app = null;
+    private JsonNullable<NullableIntegration> app = JsonNullable.<NullableIntegration>undefined();
 
     @Valid
     private List<@Valid PullRequestMinimal> pullRequests = new ArrayList<>();
 
-    private DeploymentSimple deployment;
+    private Optional<DeploymentSimple> deployment = Optional.empty();
 
     public CheckRun() {
         super();
@@ -178,18 +179,18 @@ public class CheckRun {
         this.id = id;
         this.headSha = headSha;
         this.nodeId = nodeId;
-        this.externalId = externalId;
+        this.externalId = JsonNullable.of(externalId);
         this.url = url;
-        this.htmlUrl = htmlUrl;
-        this.detailsUrl = detailsUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
+        this.detailsUrl = JsonNullable.of(detailsUrl);
         this.status = status;
-        this.conclusion = conclusion;
-        this.startedAt = startedAt;
-        this.completedAt = completedAt;
+        this.conclusion = JsonNullable.of(conclusion);
+        this.startedAt = JsonNullable.of(startedAt);
+        this.completedAt = JsonNullable.of(completedAt);
         this.output = output;
         this.name = name;
-        this.checkSuite = checkSuite;
-        this.app = app;
+        this.checkSuite = JsonNullable.of(checkSuite);
+        this.app = JsonNullable.of(app);
         this.pullRequests = pullRequests;
     }
 
@@ -262,7 +263,7 @@ public class CheckRun {
     }
 
     public CheckRun externalId(String externalId) {
-        this.externalId = externalId;
+        this.externalId = JsonNullable.of(externalId);
         return this;
     }
 
@@ -273,11 +274,11 @@ public class CheckRun {
     @NotNull
     @Schema(name = "external_id", example = "42", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("external_id")
-    public String getExternalId() {
+    public JsonNullable<String> getExternalId() {
         return externalId;
     }
 
-    public void setExternalId(String externalId) {
+    public void setExternalId(JsonNullable<String> externalId) {
         this.externalId = externalId;
     }
 
@@ -305,7 +306,7 @@ public class CheckRun {
     }
 
     public CheckRun htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -319,16 +320,16 @@ public class CheckRun {
             example = "https://github.com/github/hello-world/runs/4",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public JsonNullable<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(JsonNullable<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public CheckRun detailsUrl(String detailsUrl) {
-        this.detailsUrl = detailsUrl;
+        this.detailsUrl = JsonNullable.of(detailsUrl);
         return this;
     }
 
@@ -339,11 +340,11 @@ public class CheckRun {
     @NotNull
     @Schema(name = "details_url", example = "https://example.com", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("details_url")
-    public String getDetailsUrl() {
+    public JsonNullable<String> getDetailsUrl() {
         return detailsUrl;
     }
 
-    public void setDetailsUrl(String detailsUrl) {
+    public void setDetailsUrl(JsonNullable<String> detailsUrl) {
         this.detailsUrl = detailsUrl;
     }
 
@@ -373,7 +374,7 @@ public class CheckRun {
     }
 
     public CheckRun conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -384,16 +385,16 @@ public class CheckRun {
     @NotNull
     @Schema(name = "conclusion", example = "neutral", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
     public CheckRun startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         return this;
     }
 
@@ -405,16 +406,16 @@ public class CheckRun {
     @Valid
     @Schema(name = "started_at", example = "2018-05-04T01:14:52Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public JsonNullable<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(JsonNullable<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public CheckRun completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -426,11 +427,11 @@ public class CheckRun {
     @Valid
     @Schema(name = "completed_at", example = "2018-05-04T01:14:52Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -480,7 +481,7 @@ public class CheckRun {
     }
 
     public CheckRun checkSuite(CheckRunCheckSuite checkSuite) {
-        this.checkSuite = checkSuite;
+        this.checkSuite = JsonNullable.of(checkSuite);
         return this;
     }
 
@@ -492,16 +493,16 @@ public class CheckRun {
     @Valid
     @Schema(name = "check_suite", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("check_suite")
-    public CheckRunCheckSuite getCheckSuite() {
+    public JsonNullable<CheckRunCheckSuite> getCheckSuite() {
         return checkSuite;
     }
 
-    public void setCheckSuite(CheckRunCheckSuite checkSuite) {
+    public void setCheckSuite(JsonNullable<CheckRunCheckSuite> checkSuite) {
         this.checkSuite = checkSuite;
     }
 
     public CheckRun app(NullableIntegration app) {
-        this.app = app;
+        this.app = JsonNullable.of(app);
         return this;
     }
 
@@ -513,11 +514,11 @@ public class CheckRun {
     @Valid
     @Schema(name = "app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("app")
-    public NullableIntegration getApp() {
+    public JsonNullable<NullableIntegration> getApp() {
         return app;
     }
 
-    public void setApp(NullableIntegration app) {
+    public void setApp(JsonNullable<NullableIntegration> app) {
         this.app = app;
     }
 
@@ -555,7 +556,7 @@ public class CheckRun {
     }
 
     public CheckRun deployment(DeploymentSimple deployment) {
-        this.deployment = deployment;
+        this.deployment = Optional.ofNullable(deployment);
         return this;
     }
 
@@ -566,11 +567,11 @@ public class CheckRun {
     @Valid
     @Schema(name = "deployment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment")
-    public DeploymentSimple getDeployment() {
+    public Optional<DeploymentSimple> getDeployment() {
         return deployment;
     }
 
-    public void setDeployment(DeploymentSimple deployment) {
+    public void setDeployment(Optional<DeploymentSimple> deployment) {
         this.deployment = deployment;
     }
 

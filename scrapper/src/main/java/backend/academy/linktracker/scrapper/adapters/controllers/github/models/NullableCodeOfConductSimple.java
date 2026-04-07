@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Code of Conduct Simple
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("nullable-code-of-conduct-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableCodeOfConductSimple {
 
@@ -27,7 +27,7 @@ public class NullableCodeOfConductSimple {
 
     private String name;
 
-    private URI htmlUrl = null;
+    private JsonNullable<URI> htmlUrl = JsonNullable.<URI>undefined();
 
     public NullableCodeOfConductSimple() {
         super();
@@ -40,7 +40,7 @@ public class NullableCodeOfConductSimple {
         this.url = url;
         this.key = key;
         this.name = name;
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
     }
 
     public NullableCodeOfConductSimple url(URI url) {
@@ -108,7 +108,7 @@ public class NullableCodeOfConductSimple {
     }
 
     public NullableCodeOfConductSimple htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -123,11 +123,11 @@ public class NullableCodeOfConductSimple {
             example = "https://github.com/github/docs/blob/main/CODE_OF_CONDUCT.md",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public JsonNullable<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(JsonNullable<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 

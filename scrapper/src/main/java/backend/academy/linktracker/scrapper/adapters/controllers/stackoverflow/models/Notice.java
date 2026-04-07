@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -16,19 +15,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Notice", description = "A notice applied to a question.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Notice {
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime creationDate;
+    private Optional<OffsetDateTime> creationDate = Optional.empty();
 
-    private Long ownerUserId;
+    private Optional<Long> ownerUserId = Optional.empty();
 
     public Notice body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class Notice {
      */
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public Notice creationDate(OffsetDateTime creationDate) {
-        this.creationDate = creationDate;
+        this.creationDate = Optional.ofNullable(creationDate);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class Notice {
     @Valid
     @Schema(name = "creation_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creation_date")
-    public OffsetDateTime getCreationDate() {
+    public Optional<OffsetDateTime> getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(OffsetDateTime creationDate) {
+    public void setCreationDate(Optional<OffsetDateTime> creationDate) {
         this.creationDate = creationDate;
     }
 
     public Notice ownerUserId(Long ownerUserId) {
-        this.ownerUserId = ownerUserId;
+        this.ownerUserId = Optional.ofNullable(ownerUserId);
         return this;
     }
 
@@ -80,11 +79,11 @@ public class Notice {
             description = "The user ID of the notice owner, if any.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner_user_id")
-    public Long getOwnerUserId() {
+    public Optional<Long> getOwnerUserId() {
         return ownerUserId;
     }
 
-    public void setOwnerUserId(Long ownerUserId) {
+    public void setOwnerUserId(Optional<Long> ownerUserId) {
         this.ownerUserId = ownerUserId;
     }
 

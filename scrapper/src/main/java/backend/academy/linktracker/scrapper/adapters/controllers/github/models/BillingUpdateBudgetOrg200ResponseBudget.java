@@ -7,9 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingUpdateBudgetOrg200ResponseBudget
@@ -17,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("billing_update_budget_org_200_response_budget")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingUpdateBudgetOrg200ResponseBudget {
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
-    private Float budgetAmount;
+    private Optional<Float> budgetAmount = Optional.empty();
 
-    private Boolean preventFurtherUsage;
+    private Optional<Boolean> preventFurtherUsage = Optional.empty();
 
-    private BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting budgetAlerting;
+    private Optional<BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting> budgetAlerting = Optional.empty();
 
     /**
      * The scope of the budget
@@ -68,9 +67,9 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
         }
     }
 
-    private BudgetScopeEnum budgetScope;
+    private Optional<BudgetScopeEnum> budgetScope = Optional.empty();
 
-    private String budgetEntityName = "";
+    private Optional<String> budgetEntityName = Optional.of("");
 
     /**
      * The type of pricing for the budget
@@ -107,12 +106,12 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
         }
     }
 
-    private BudgetTypeEnum budgetType;
+    private Optional<BudgetTypeEnum> budgetType = Optional.empty();
 
-    private String budgetProductSku;
+    private Optional<String> budgetProductSku = Optional.empty();
 
     public BillingUpdateBudgetOrg200ResponseBudget id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -122,16 +121,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
      */
     @Schema(name = "id", description = "ID of the budget.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetAmount(Float budgetAmount) {
-        this.budgetAmount = budgetAmount;
+        this.budgetAmount = Optional.ofNullable(budgetAmount);
         return this;
     }
 
@@ -145,16 +144,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
                     "The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_amount")
-    public Float getBudgetAmount() {
+    public Optional<Float> getBudgetAmount() {
         return budgetAmount;
     }
 
-    public void setBudgetAmount(Float budgetAmount) {
+    public void setBudgetAmount(Optional<Float> budgetAmount) {
         this.budgetAmount = budgetAmount;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget preventFurtherUsage(Boolean preventFurtherUsage) {
-        this.preventFurtherUsage = preventFurtherUsage;
+        this.preventFurtherUsage = Optional.ofNullable(preventFurtherUsage);
         return this;
     }
 
@@ -167,17 +166,17 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
             description = "Whether to prevent additional spending once the budget is exceeded",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prevent_further_usage")
-    public Boolean getPreventFurtherUsage() {
+    public Optional<Boolean> getPreventFurtherUsage() {
         return preventFurtherUsage;
     }
 
-    public void setPreventFurtherUsage(Boolean preventFurtherUsage) {
+    public void setPreventFurtherUsage(Optional<Boolean> preventFurtherUsage) {
         this.preventFurtherUsage = preventFurtherUsage;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetAlerting(
             BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting budgetAlerting) {
-        this.budgetAlerting = budgetAlerting;
+        this.budgetAlerting = Optional.ofNullable(budgetAlerting);
         return this;
     }
 
@@ -188,16 +187,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
     @Valid
     @Schema(name = "budget_alerting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_alerting")
-    public BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting getBudgetAlerting() {
+    public Optional<BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting> getBudgetAlerting() {
         return budgetAlerting;
     }
 
-    public void setBudgetAlerting(BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting budgetAlerting) {
+    public void setBudgetAlerting(Optional<BillingUpdateBudgetOrg200ResponseBudgetBudgetAlerting> budgetAlerting) {
         this.budgetAlerting = budgetAlerting;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetScope(BudgetScopeEnum budgetScope) {
-        this.budgetScope = budgetScope;
+        this.budgetScope = Optional.ofNullable(budgetScope);
         return this;
     }
 
@@ -210,16 +209,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
             description = "The scope of the budget",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_scope")
-    public BudgetScopeEnum getBudgetScope() {
+    public Optional<BudgetScopeEnum> getBudgetScope() {
         return budgetScope;
     }
 
-    public void setBudgetScope(BudgetScopeEnum budgetScope) {
+    public void setBudgetScope(Optional<BudgetScopeEnum> budgetScope) {
         this.budgetScope = budgetScope;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetEntityName(String budgetEntityName) {
-        this.budgetEntityName = budgetEntityName;
+        this.budgetEntityName = Optional.ofNullable(budgetEntityName);
         return this;
     }
 
@@ -232,16 +231,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
             description = "The name of the entity to apply the budget to",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_entity_name")
-    public String getBudgetEntityName() {
+    public Optional<String> getBudgetEntityName() {
         return budgetEntityName;
     }
 
-    public void setBudgetEntityName(String budgetEntityName) {
+    public void setBudgetEntityName(Optional<String> budgetEntityName) {
         this.budgetEntityName = budgetEntityName;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetType(BudgetTypeEnum budgetType) {
-        this.budgetType = budgetType;
+        this.budgetType = Optional.ofNullable(budgetType);
         return this;
     }
 
@@ -254,16 +253,16 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
             description = "The type of pricing for the budget",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_type")
-    public BudgetTypeEnum getBudgetType() {
+    public Optional<BudgetTypeEnum> getBudgetType() {
         return budgetType;
     }
 
-    public void setBudgetType(BudgetTypeEnum budgetType) {
+    public void setBudgetType(Optional<BudgetTypeEnum> budgetType) {
         this.budgetType = budgetType;
     }
 
     public BillingUpdateBudgetOrg200ResponseBudget budgetProductSku(String budgetProductSku) {
-        this.budgetProductSku = budgetProductSku;
+        this.budgetProductSku = Optional.ofNullable(budgetProductSku);
         return this;
     }
 
@@ -276,11 +275,11 @@ public class BillingUpdateBudgetOrg200ResponseBudget {
             description = "A single product or SKU that will be covered in the budget",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_product_sku")
-    public String getBudgetProductSku() {
+    public Optional<String> getBudgetProductSku() {
         return budgetProductSku;
     }
 
-    public void setBudgetProductSku(String budgetProductSku) {
+    public void setBudgetProductSku(Optional<String> budgetProductSku) {
         this.budgetProductSku = budgetProductSku;
     }
 

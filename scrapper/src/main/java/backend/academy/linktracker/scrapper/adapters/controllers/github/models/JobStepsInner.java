@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("job_steps_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class JobStepsInner {
 
@@ -62,17 +63,17 @@ public class JobStepsInner {
 
     private StatusEnum status;
 
-    private String conclusion = null;
+    private JsonNullable<String> conclusion = JsonNullable.<String>undefined();
 
     private String name;
 
     private Long number;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt = null;
+    private JsonNullable<OffsetDateTime> startedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public JobStepsInner() {
         super();
@@ -83,7 +84,7 @@ public class JobStepsInner {
      */
     public JobStepsInner(StatusEnum status, String conclusion, String name, Long number) {
         this.status = status;
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.name = name;
         this.number = number;
     }
@@ -113,7 +114,7 @@ public class JobStepsInner {
     }
 
     public JobStepsInner conclusion(String conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -128,11 +129,11 @@ public class JobStepsInner {
             description = "The outcome of the job.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public String getConclusion() {
+    public JsonNullable<String> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(String conclusion) {
+    public void setConclusion(JsonNullable<String> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -181,7 +182,7 @@ public class JobStepsInner {
     }
 
     public JobStepsInner startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         return this;
     }
 
@@ -196,16 +197,16 @@ public class JobStepsInner {
             description = "The time that the step started, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public JsonNullable<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(JsonNullable<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public JobStepsInner completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -220,11 +221,11 @@ public class JobStepsInner {
             description = "The time that the job finished, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -241,13 +242,26 @@ public class JobStepsInner {
                 && Objects.equals(this.conclusion, jobStepsInner.conclusion)
                 && Objects.equals(this.name, jobStepsInner.name)
                 && Objects.equals(this.number, jobStepsInner.number)
-                && Objects.equals(this.startedAt, jobStepsInner.startedAt)
-                && Objects.equals(this.completedAt, jobStepsInner.completedAt);
+                && equalsNullable(this.startedAt, jobStepsInner.startedAt)
+                && equalsNullable(this.completedAt, jobStepsInner.completedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(status, conclusion, name, number, startedAt, completedAt);
+        return Objects.hash(
+                status, conclusion, name, number, hashCodeNullable(startedAt), hashCodeNullable(completedAt));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

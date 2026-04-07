@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("codespace")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Codespace {
 
@@ -31,9 +29,9 @@ public class Codespace {
 
     private String name;
 
-    private String displayName = null;
+    private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
-    private String environmentId = null;
+    private JsonNullable<String> environmentId = JsonNullable.<String>undefined();
 
     private SimpleUser owner;
 
@@ -41,11 +39,11 @@ public class Codespace {
 
     private MinimalRepository repository;
 
-    private NullableCodespaceMachine machine = null;
+    private JsonNullable<NullableCodespaceMachine> machine = JsonNullable.<NullableCodespaceMachine>undefined();
 
-    private String devcontainerPath = null;
+    private JsonNullable<String> devcontainerPath = JsonNullable.<String>undefined();
 
-    private Boolean prebuild = null;
+    private JsonNullable<Boolean> prebuild = JsonNullable.<Boolean>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -168,7 +166,7 @@ public class Codespace {
 
     private LocationEnum location;
 
-    private Long idleTimeoutMinutes = null;
+    private JsonNullable<Long> idleTimeoutMinutes = JsonNullable.<Long>undefined();
 
     private URI webUrl;
 
@@ -178,27 +176,27 @@ public class Codespace {
 
     private URI stopUrl;
 
-    private URI publishUrl = null;
+    private JsonNullable<URI> publishUrl = JsonNullable.<URI>undefined();
 
-    private URI pullsUrl = null;
+    private JsonNullable<URI> pullsUrl = JsonNullable.<URI>undefined();
 
     @Valid
     private List<String> recentFolders = new ArrayList<>();
 
-    private CodespaceRuntimeConstraints runtimeConstraints;
+    private Optional<CodespaceRuntimeConstraints> runtimeConstraints = Optional.empty();
 
-    private Boolean pendingOperation = null;
+    private JsonNullable<Boolean> pendingOperation = JsonNullable.<Boolean>undefined();
 
-    private String pendingOperationDisabledReason = null;
+    private JsonNullable<String> pendingOperationDisabledReason = JsonNullable.<String>undefined();
 
-    private String idleTimeoutNotice = null;
+    private JsonNullable<String> idleTimeoutNotice = JsonNullable.<String>undefined();
 
-    private Long retentionPeriodMinutes = null;
+    private JsonNullable<Long> retentionPeriodMinutes = JsonNullable.<Long>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime retentionExpiresAt = null;
+    private JsonNullable<OffsetDateTime> retentionExpiresAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String lastKnownStopNotice = null;
+    private JsonNullable<String> lastKnownStopNotice = JsonNullable.<String>undefined();
 
     public Codespace() {
         super();
@@ -232,12 +230,12 @@ public class Codespace {
             List<String> recentFolders) {
         this.id = id;
         this.name = name;
-        this.environmentId = environmentId;
+        this.environmentId = JsonNullable.of(environmentId);
         this.owner = owner;
         this.billableOwner = billableOwner;
         this.repository = repository;
-        this.machine = machine;
-        this.prebuild = prebuild;
+        this.machine = JsonNullable.of(machine);
+        this.prebuild = JsonNullable.of(prebuild);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.lastUsedAt = lastUsedAt;
@@ -245,12 +243,12 @@ public class Codespace {
         this.url = url;
         this.gitStatus = gitStatus;
         this.location = location;
-        this.idleTimeoutMinutes = idleTimeoutMinutes;
+        this.idleTimeoutMinutes = JsonNullable.of(idleTimeoutMinutes);
         this.webUrl = webUrl;
         this.machinesUrl = machinesUrl;
         this.startUrl = startUrl;
         this.stopUrl = stopUrl;
-        this.pullsUrl = pullsUrl;
+        this.pullsUrl = JsonNullable.of(pullsUrl);
         this.recentFolders = recentFolders;
     }
 
@@ -299,7 +297,7 @@ public class Codespace {
     }
 
     public Codespace displayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = JsonNullable.of(displayName);
         return this;
     }
 
@@ -313,16 +311,16 @@ public class Codespace {
             description = "Display name for this codespace.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public JsonNullable<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(JsonNullable<String> displayName) {
         this.displayName = displayName;
     }
 
     public Codespace environmentId(String environmentId) {
-        this.environmentId = environmentId;
+        this.environmentId = JsonNullable.of(environmentId);
         return this;
     }
 
@@ -337,11 +335,11 @@ public class Codespace {
             description = "UUID identifying this codespace's environment.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("environment_id")
-    public String getEnvironmentId() {
+    public JsonNullable<String> getEnvironmentId() {
         return environmentId;
     }
 
-    public void setEnvironmentId(String environmentId) {
+    public void setEnvironmentId(JsonNullable<String> environmentId) {
         this.environmentId = environmentId;
     }
 
@@ -409,7 +407,7 @@ public class Codespace {
     }
 
     public Codespace machine(NullableCodespaceMachine machine) {
-        this.machine = machine;
+        this.machine = JsonNullable.of(machine);
         return this;
     }
 
@@ -421,16 +419,16 @@ public class Codespace {
     @Valid
     @Schema(name = "machine", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("machine")
-    public NullableCodespaceMachine getMachine() {
+    public JsonNullable<NullableCodespaceMachine> getMachine() {
         return machine;
     }
 
-    public void setMachine(NullableCodespaceMachine machine) {
+    public void setMachine(JsonNullable<NullableCodespaceMachine> machine) {
         this.machine = machine;
     }
 
     public Codespace devcontainerPath(String devcontainerPath) {
-        this.devcontainerPath = devcontainerPath;
+        this.devcontainerPath = JsonNullable.of(devcontainerPath);
         return this;
     }
 
@@ -444,16 +442,16 @@ public class Codespace {
             description = "Path to devcontainer.json from repo root used to create Codespace.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("devcontainer_path")
-    public String getDevcontainerPath() {
+    public JsonNullable<String> getDevcontainerPath() {
         return devcontainerPath;
     }
 
-    public void setDevcontainerPath(String devcontainerPath) {
+    public void setDevcontainerPath(JsonNullable<String> devcontainerPath) {
         this.devcontainerPath = devcontainerPath;
     }
 
     public Codespace prebuild(Boolean prebuild) {
-        this.prebuild = prebuild;
+        this.prebuild = JsonNullable.of(prebuild);
         return this;
     }
 
@@ -468,11 +466,11 @@ public class Codespace {
             description = "Whether the codespace was created from a prebuild.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("prebuild")
-    public Boolean getPrebuild() {
+    public JsonNullable<Boolean> getPrebuild() {
         return prebuild;
     }
 
-    public void setPrebuild(Boolean prebuild) {
+    public void setPrebuild(JsonNullable<Boolean> prebuild) {
         this.prebuild = prebuild;
     }
 
@@ -634,7 +632,7 @@ public class Codespace {
     }
 
     public Codespace idleTimeoutMinutes(Long idleTimeoutMinutes) {
-        this.idleTimeoutMinutes = idleTimeoutMinutes;
+        this.idleTimeoutMinutes = JsonNullable.of(idleTimeoutMinutes);
         return this;
     }
 
@@ -650,11 +648,11 @@ public class Codespace {
                     "The number of minutes of inactivity after which this codespace will be automatically stopped.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("idle_timeout_minutes")
-    public Long getIdleTimeoutMinutes() {
+    public JsonNullable<Long> getIdleTimeoutMinutes() {
         return idleTimeoutMinutes;
     }
 
-    public void setIdleTimeoutMinutes(Long idleTimeoutMinutes) {
+    public void setIdleTimeoutMinutes(JsonNullable<Long> idleTimeoutMinutes) {
         this.idleTimeoutMinutes = idleTimeoutMinutes;
     }
 
@@ -755,7 +753,7 @@ public class Codespace {
     }
 
     public Codespace publishUrl(URI publishUrl) {
-        this.publishUrl = publishUrl;
+        this.publishUrl = JsonNullable.of(publishUrl);
         return this;
     }
 
@@ -769,16 +767,16 @@ public class Codespace {
             description = "API URL to publish this codespace to a new repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("publish_url")
-    public URI getPublishUrl() {
+    public JsonNullable<URI> getPublishUrl() {
         return publishUrl;
     }
 
-    public void setPublishUrl(URI publishUrl) {
+    public void setPublishUrl(JsonNullable<URI> publishUrl) {
         this.publishUrl = publishUrl;
     }
 
     public Codespace pullsUrl(URI pullsUrl) {
-        this.pullsUrl = pullsUrl;
+        this.pullsUrl = JsonNullable.of(pullsUrl);
         return this;
     }
 
@@ -793,11 +791,11 @@ public class Codespace {
             description = "API URL for the Pull Request associated with this codespace, if any.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pulls_url")
-    public URI getPullsUrl() {
+    public JsonNullable<URI> getPullsUrl() {
         return pullsUrl;
     }
 
-    public void setPullsUrl(URI pullsUrl) {
+    public void setPullsUrl(JsonNullable<URI> pullsUrl) {
         this.pullsUrl = pullsUrl;
     }
 
@@ -830,7 +828,7 @@ public class Codespace {
     }
 
     public Codespace runtimeConstraints(CodespaceRuntimeConstraints runtimeConstraints) {
-        this.runtimeConstraints = runtimeConstraints;
+        this.runtimeConstraints = Optional.ofNullable(runtimeConstraints);
         return this;
     }
 
@@ -841,16 +839,16 @@ public class Codespace {
     @Valid
     @Schema(name = "runtime_constraints", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runtime_constraints")
-    public CodespaceRuntimeConstraints getRuntimeConstraints() {
+    public Optional<CodespaceRuntimeConstraints> getRuntimeConstraints() {
         return runtimeConstraints;
     }
 
-    public void setRuntimeConstraints(CodespaceRuntimeConstraints runtimeConstraints) {
+    public void setRuntimeConstraints(Optional<CodespaceRuntimeConstraints> runtimeConstraints) {
         this.runtimeConstraints = runtimeConstraints;
     }
 
     public Codespace pendingOperation(Boolean pendingOperation) {
-        this.pendingOperation = pendingOperation;
+        this.pendingOperation = JsonNullable.of(pendingOperation);
         return this;
     }
 
@@ -864,16 +862,16 @@ public class Codespace {
                     "Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pending_operation")
-    public Boolean getPendingOperation() {
+    public JsonNullable<Boolean> getPendingOperation() {
         return pendingOperation;
     }
 
-    public void setPendingOperation(Boolean pendingOperation) {
+    public void setPendingOperation(JsonNullable<Boolean> pendingOperation) {
         this.pendingOperation = pendingOperation;
     }
 
     public Codespace pendingOperationDisabledReason(String pendingOperationDisabledReason) {
-        this.pendingOperationDisabledReason = pendingOperationDisabledReason;
+        this.pendingOperationDisabledReason = JsonNullable.of(pendingOperationDisabledReason);
         return this;
     }
 
@@ -886,16 +884,16 @@ public class Codespace {
             description = "Text to show user when codespace is disabled by a pending operation",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pending_operation_disabled_reason")
-    public String getPendingOperationDisabledReason() {
+    public JsonNullable<String> getPendingOperationDisabledReason() {
         return pendingOperationDisabledReason;
     }
 
-    public void setPendingOperationDisabledReason(String pendingOperationDisabledReason) {
+    public void setPendingOperationDisabledReason(JsonNullable<String> pendingOperationDisabledReason) {
         this.pendingOperationDisabledReason = pendingOperationDisabledReason;
     }
 
     public Codespace idleTimeoutNotice(String idleTimeoutNotice) {
-        this.idleTimeoutNotice = idleTimeoutNotice;
+        this.idleTimeoutNotice = JsonNullable.of(idleTimeoutNotice);
         return this;
     }
 
@@ -909,16 +907,16 @@ public class Codespace {
                     "Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("idle_timeout_notice")
-    public String getIdleTimeoutNotice() {
+    public JsonNullable<String> getIdleTimeoutNotice() {
         return idleTimeoutNotice;
     }
 
-    public void setIdleTimeoutNotice(String idleTimeoutNotice) {
+    public void setIdleTimeoutNotice(JsonNullable<String> idleTimeoutNotice) {
         this.idleTimeoutNotice = idleTimeoutNotice;
     }
 
     public Codespace retentionPeriodMinutes(Long retentionPeriodMinutes) {
-        this.retentionPeriodMinutes = retentionPeriodMinutes;
+        this.retentionPeriodMinutes = JsonNullable.of(retentionPeriodMinutes);
         return this;
     }
 
@@ -933,16 +931,16 @@ public class Codespace {
                     "Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("retention_period_minutes")
-    public Long getRetentionPeriodMinutes() {
+    public JsonNullable<Long> getRetentionPeriodMinutes() {
         return retentionPeriodMinutes;
     }
 
-    public void setRetentionPeriodMinutes(Long retentionPeriodMinutes) {
+    public void setRetentionPeriodMinutes(JsonNullable<Long> retentionPeriodMinutes) {
         this.retentionPeriodMinutes = retentionPeriodMinutes;
     }
 
     public Codespace retentionExpiresAt(OffsetDateTime retentionExpiresAt) {
-        this.retentionExpiresAt = retentionExpiresAt;
+        this.retentionExpiresAt = JsonNullable.of(retentionExpiresAt);
         return this;
     }
 
@@ -958,16 +956,16 @@ public class Codespace {
                     "When a codespace will be auto-deleted based on the \"retention_period_minutes\" and \"last_used_at\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("retention_expires_at")
-    public OffsetDateTime getRetentionExpiresAt() {
+    public JsonNullable<OffsetDateTime> getRetentionExpiresAt() {
         return retentionExpiresAt;
     }
 
-    public void setRetentionExpiresAt(OffsetDateTime retentionExpiresAt) {
+    public void setRetentionExpiresAt(JsonNullable<OffsetDateTime> retentionExpiresAt) {
         this.retentionExpiresAt = retentionExpiresAt;
     }
 
     public Codespace lastKnownStopNotice(String lastKnownStopNotice) {
-        this.lastKnownStopNotice = lastKnownStopNotice;
+        this.lastKnownStopNotice = JsonNullable.of(lastKnownStopNotice);
         return this;
     }
 
@@ -982,11 +980,11 @@ public class Codespace {
                     "The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_known_stop_notice")
-    public String getLastKnownStopNotice() {
+    public JsonNullable<String> getLastKnownStopNotice() {
         return lastKnownStopNotice;
     }
 
-    public void setLastKnownStopNotice(String lastKnownStopNotice) {
+    public void setLastKnownStopNotice(JsonNullable<String> lastKnownStopNotice) {
         this.lastKnownStopNotice = lastKnownStopNotice;
     }
 
@@ -1001,13 +999,13 @@ public class Codespace {
         Codespace codespace = (Codespace) o;
         return Objects.equals(this.id, codespace.id)
                 && Objects.equals(this.name, codespace.name)
-                && Objects.equals(this.displayName, codespace.displayName)
+                && equalsNullable(this.displayName, codespace.displayName)
                 && Objects.equals(this.environmentId, codespace.environmentId)
                 && Objects.equals(this.owner, codespace.owner)
                 && Objects.equals(this.billableOwner, codespace.billableOwner)
                 && Objects.equals(this.repository, codespace.repository)
                 && Objects.equals(this.machine, codespace.machine)
-                && Objects.equals(this.devcontainerPath, codespace.devcontainerPath)
+                && equalsNullable(this.devcontainerPath, codespace.devcontainerPath)
                 && Objects.equals(this.prebuild, codespace.prebuild)
                 && Objects.equals(this.createdAt, codespace.createdAt)
                 && Objects.equals(this.updatedAt, codespace.updatedAt)
@@ -1021,16 +1019,21 @@ public class Codespace {
                 && Objects.equals(this.machinesUrl, codespace.machinesUrl)
                 && Objects.equals(this.startUrl, codespace.startUrl)
                 && Objects.equals(this.stopUrl, codespace.stopUrl)
-                && Objects.equals(this.publishUrl, codespace.publishUrl)
+                && equalsNullable(this.publishUrl, codespace.publishUrl)
                 && Objects.equals(this.pullsUrl, codespace.pullsUrl)
                 && Objects.equals(this.recentFolders, codespace.recentFolders)
                 && Objects.equals(this.runtimeConstraints, codespace.runtimeConstraints)
-                && Objects.equals(this.pendingOperation, codespace.pendingOperation)
-                && Objects.equals(this.pendingOperationDisabledReason, codespace.pendingOperationDisabledReason)
-                && Objects.equals(this.idleTimeoutNotice, codespace.idleTimeoutNotice)
-                && Objects.equals(this.retentionPeriodMinutes, codespace.retentionPeriodMinutes)
-                && Objects.equals(this.retentionExpiresAt, codespace.retentionExpiresAt)
-                && Objects.equals(this.lastKnownStopNotice, codespace.lastKnownStopNotice);
+                && equalsNullable(this.pendingOperation, codespace.pendingOperation)
+                && equalsNullable(this.pendingOperationDisabledReason, codespace.pendingOperationDisabledReason)
+                && equalsNullable(this.idleTimeoutNotice, codespace.idleTimeoutNotice)
+                && equalsNullable(this.retentionPeriodMinutes, codespace.retentionPeriodMinutes)
+                && equalsNullable(this.retentionExpiresAt, codespace.retentionExpiresAt)
+                && equalsNullable(this.lastKnownStopNotice, codespace.lastKnownStopNotice);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1038,13 +1041,13 @@ public class Codespace {
         return Objects.hash(
                 id,
                 name,
-                displayName,
+                hashCodeNullable(displayName),
                 environmentId,
                 owner,
                 billableOwner,
                 repository,
                 machine,
-                devcontainerPath,
+                hashCodeNullable(devcontainerPath),
                 prebuild,
                 createdAt,
                 updatedAt,
@@ -1058,16 +1061,23 @@ public class Codespace {
                 machinesUrl,
                 startUrl,
                 stopUrl,
-                publishUrl,
+                hashCodeNullable(publishUrl),
                 pullsUrl,
                 recentFolders,
                 runtimeConstraints,
-                pendingOperation,
-                pendingOperationDisabledReason,
-                idleTimeoutNotice,
-                retentionPeriodMinutes,
-                retentionExpiresAt,
-                lastKnownStopNotice);
+                hashCodeNullable(pendingOperation),
+                hashCodeNullable(pendingOperationDisabledReason),
+                hashCodeNullable(idleTimeoutNotice),
+                hashCodeNullable(retentionPeriodMinutes),
+                hashCodeNullable(retentionExpiresAt),
+                hashCodeNullable(lastKnownStopNotice));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

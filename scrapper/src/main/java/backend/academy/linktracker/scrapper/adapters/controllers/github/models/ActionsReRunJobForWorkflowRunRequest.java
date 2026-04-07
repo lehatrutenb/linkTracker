@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsReRunJobForWorkflowRunRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("actions_re_run_job_for_workflow_run_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsReRunJobForWorkflowRunRequest {
 
-    private Boolean enableDebugLogging = false;
+    private Optional<Boolean> enableDebugLogging = Optional.of(false);
 
     public ActionsReRunJobForWorkflowRunRequest enableDebugLogging(Boolean enableDebugLogging) {
-        this.enableDebugLogging = enableDebugLogging;
+        this.enableDebugLogging = Optional.ofNullable(enableDebugLogging);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class ActionsReRunJobForWorkflowRunRequest {
             description = "Whether to enable debug logging for the re-run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enable_debug_logging")
-    public Boolean getEnableDebugLogging() {
+    public Optional<Boolean> getEnableDebugLogging() {
         return enableDebugLogging;
     }
 
-    public void setEnableDebugLogging(Boolean enableDebugLogging) {
+    public void setEnableDebugLogging(Optional<Boolean> enableDebugLogging) {
         this.enableDebugLogging = enableDebugLogging;
     }
 

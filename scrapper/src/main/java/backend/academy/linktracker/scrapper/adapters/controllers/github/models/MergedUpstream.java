@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Results of a successful merge upstream request
@@ -17,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("merged-upstream")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MergedUpstream {
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
     /**
      * Gets or Sets mergeType
@@ -60,12 +59,12 @@ public class MergedUpstream {
         }
     }
 
-    private MergeTypeEnum mergeType;
+    private Optional<MergeTypeEnum> mergeType = Optional.empty();
 
-    private String baseBranch;
+    private Optional<String> baseBranch = Optional.empty();
 
     public MergedUpstream message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class MergedUpstream {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
     public MergedUpstream mergeType(MergeTypeEnum mergeType) {
-        this.mergeType = mergeType;
+        this.mergeType = Optional.ofNullable(mergeType);
         return this;
     }
 
@@ -94,16 +93,16 @@ public class MergedUpstream {
      */
     @Schema(name = "merge_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_type")
-    public MergeTypeEnum getMergeType() {
+    public Optional<MergeTypeEnum> getMergeType() {
         return mergeType;
     }
 
-    public void setMergeType(MergeTypeEnum mergeType) {
+    public void setMergeType(Optional<MergeTypeEnum> mergeType) {
         this.mergeType = mergeType;
     }
 
     public MergedUpstream baseBranch(String baseBranch) {
-        this.baseBranch = baseBranch;
+        this.baseBranch = Optional.ofNullable(baseBranch);
         return this;
     }
 
@@ -113,11 +112,11 @@ public class MergedUpstream {
      */
     @Schema(name = "base_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("base_branch")
-    public String getBaseBranch() {
+    public Optional<String> getBaseBranch() {
         return baseBranch;
     }
 
-    public void setBaseBranch(String baseBranch) {
+    public void setBaseBranch(Optional<String> baseBranch) {
         this.baseBranch = baseBranch;
     }
 

@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookCustomPropertyDeleted
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-custom-property-deleted")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCustomPropertyDeleted {
 
@@ -58,13 +58,13 @@ public class WebhookCustomPropertyDeleted {
 
     private WebhookCustomPropertyDeletedDefinition definition;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookCustomPropertyDeleted() {
         super();
@@ -120,7 +120,7 @@ public class WebhookCustomPropertyDeleted {
     }
 
     public WebhookCustomPropertyDeleted enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -131,16 +131,16 @@ public class WebhookCustomPropertyDeleted {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookCustomPropertyDeleted installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -151,16 +151,16 @@ public class WebhookCustomPropertyDeleted {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookCustomPropertyDeleted organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -171,16 +171,16 @@ public class WebhookCustomPropertyDeleted {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookCustomPropertyDeleted sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -191,11 +191,11 @@ public class WebhookCustomPropertyDeleted {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 

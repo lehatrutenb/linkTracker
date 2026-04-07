@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BranchRestrictionPolicyAppsInnerOwner
@@ -14,60 +13,60 @@ import java.util.Objects;
 @JsonTypeName("branch_restriction_policy_apps_inner_owner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BranchRestrictionPolicyAppsInnerOwner {
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String reposUrl;
+    private Optional<String> reposUrl = Optional.empty();
 
-    private String eventsUrl;
+    private Optional<String> eventsUrl = Optional.empty();
 
-    private String hooksUrl;
+    private Optional<String> hooksUrl = Optional.empty();
 
-    private String issuesUrl;
+    private Optional<String> issuesUrl = Optional.empty();
 
-    private String membersUrl;
+    private Optional<String> membersUrl = Optional.empty();
 
-    private String publicMembersUrl;
+    private Optional<String> publicMembersUrl = Optional.empty();
 
-    private String avatarUrl;
+    private Optional<String> avatarUrl = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private String gravatarId;
+    private Optional<String> gravatarId = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private String followersUrl;
+    private Optional<String> followersUrl = Optional.empty();
 
-    private String followingUrl;
+    private Optional<String> followingUrl = Optional.empty();
 
-    private String gistsUrl;
+    private Optional<String> gistsUrl = Optional.empty();
 
-    private String starredUrl;
+    private Optional<String> starredUrl = Optional.empty();
 
-    private String subscriptionsUrl;
+    private Optional<String> subscriptionsUrl = Optional.empty();
 
-    private String organizationsUrl;
+    private Optional<String> organizationsUrl = Optional.empty();
 
-    private String receivedEventsUrl;
+    private Optional<String> receivedEventsUrl = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private Boolean siteAdmin;
+    private Optional<Boolean> siteAdmin = Optional.empty();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public BranchRestrictionPolicyAppsInnerOwner login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -77,16 +76,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "login", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -96,16 +95,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -115,16 +114,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -134,16 +133,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner reposUrl(String reposUrl) {
-        this.reposUrl = reposUrl;
+        this.reposUrl = Optional.ofNullable(reposUrl);
         return this;
     }
 
@@ -153,16 +152,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "repos_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repos_url")
-    public String getReposUrl() {
+    public Optional<String> getReposUrl() {
         return reposUrl;
     }
 
-    public void setReposUrl(String reposUrl) {
+    public void setReposUrl(Optional<String> reposUrl) {
         this.reposUrl = reposUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner eventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
+        this.eventsUrl = Optional.ofNullable(eventsUrl);
         return this;
     }
 
@@ -172,16 +171,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("events_url")
-    public String getEventsUrl() {
+    public Optional<String> getEventsUrl() {
         return eventsUrl;
     }
 
-    public void setEventsUrl(String eventsUrl) {
+    public void setEventsUrl(Optional<String> eventsUrl) {
         this.eventsUrl = eventsUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner hooksUrl(String hooksUrl) {
-        this.hooksUrl = hooksUrl;
+        this.hooksUrl = Optional.ofNullable(hooksUrl);
         return this;
     }
 
@@ -191,16 +190,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "hooks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooks_url")
-    public String getHooksUrl() {
+    public Optional<String> getHooksUrl() {
         return hooksUrl;
     }
 
-    public void setHooksUrl(String hooksUrl) {
+    public void setHooksUrl(Optional<String> hooksUrl) {
         this.hooksUrl = hooksUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner issuesUrl(String issuesUrl) {
-        this.issuesUrl = issuesUrl;
+        this.issuesUrl = Optional.ofNullable(issuesUrl);
         return this;
     }
 
@@ -210,16 +209,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "issues_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues_url")
-    public String getIssuesUrl() {
+    public Optional<String> getIssuesUrl() {
         return issuesUrl;
     }
 
-    public void setIssuesUrl(String issuesUrl) {
+    public void setIssuesUrl(Optional<String> issuesUrl) {
         this.issuesUrl = issuesUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner membersUrl(String membersUrl) {
-        this.membersUrl = membersUrl;
+        this.membersUrl = Optional.ofNullable(membersUrl);
         return this;
     }
 
@@ -229,16 +228,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "members_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_url")
-    public String getMembersUrl() {
+    public Optional<String> getMembersUrl() {
         return membersUrl;
     }
 
-    public void setMembersUrl(String membersUrl) {
+    public void setMembersUrl(Optional<String> membersUrl) {
         this.membersUrl = membersUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner publicMembersUrl(String publicMembersUrl) {
-        this.publicMembersUrl = publicMembersUrl;
+        this.publicMembersUrl = Optional.ofNullable(publicMembersUrl);
         return this;
     }
 
@@ -248,16 +247,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "public_members_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_members_url")
-    public String getPublicMembersUrl() {
+    public Optional<String> getPublicMembersUrl() {
         return publicMembersUrl;
     }
 
-    public void setPublicMembersUrl(String publicMembersUrl) {
+    public void setPublicMembersUrl(Optional<String> publicMembersUrl) {
         this.publicMembersUrl = publicMembersUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner avatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = Optional.ofNullable(avatarUrl);
         return this;
     }
 
@@ -267,16 +266,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "avatar_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("avatar_url")
-    public String getAvatarUrl() {
+    public Optional<String> getAvatarUrl() {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
+    public void setAvatarUrl(Optional<String> avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -286,16 +285,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = Optional.ofNullable(gravatarId);
         return this;
     }
 
@@ -305,16 +304,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "gravatar_id", example = "\"\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public Optional<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(Optional<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -327,16 +326,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://github.com/testorg-ea8ec76d71c3af4b\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner followersUrl(String followersUrl) {
-        this.followersUrl = followersUrl;
+        this.followersUrl = Optional.ofNullable(followersUrl);
         return this;
     }
 
@@ -349,16 +348,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/followers\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("followers_url")
-    public String getFollowersUrl() {
+    public Optional<String> getFollowersUrl() {
         return followersUrl;
     }
 
-    public void setFollowersUrl(String followersUrl) {
+    public void setFollowersUrl(Optional<String> followersUrl) {
         this.followersUrl = followersUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner followingUrl(String followingUrl) {
-        this.followingUrl = followingUrl;
+        this.followingUrl = Optional.ofNullable(followingUrl);
         return this;
     }
 
@@ -371,16 +370,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/following{/other_user}\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("following_url")
-    public String getFollowingUrl() {
+    public Optional<String> getFollowingUrl() {
         return followingUrl;
     }
 
-    public void setFollowingUrl(String followingUrl) {
+    public void setFollowingUrl(Optional<String> followingUrl) {
         this.followingUrl = followingUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner gistsUrl(String gistsUrl) {
-        this.gistsUrl = gistsUrl;
+        this.gistsUrl = Optional.ofNullable(gistsUrl);
         return this;
     }
 
@@ -393,16 +392,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/gists{/gist_id}\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("gists_url")
-    public String getGistsUrl() {
+    public Optional<String> getGistsUrl() {
         return gistsUrl;
     }
 
-    public void setGistsUrl(String gistsUrl) {
+    public void setGistsUrl(Optional<String> gistsUrl) {
         this.gistsUrl = gistsUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner starredUrl(String starredUrl) {
-        this.starredUrl = starredUrl;
+        this.starredUrl = Optional.ofNullable(starredUrl);
         return this;
     }
 
@@ -415,16 +414,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/starred{/owner}{/repo}\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_url")
-    public String getStarredUrl() {
+    public Optional<String> getStarredUrl() {
         return starredUrl;
     }
 
-    public void setStarredUrl(String starredUrl) {
+    public void setStarredUrl(Optional<String> starredUrl) {
         this.starredUrl = starredUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner subscriptionsUrl(String subscriptionsUrl) {
-        this.subscriptionsUrl = subscriptionsUrl;
+        this.subscriptionsUrl = Optional.ofNullable(subscriptionsUrl);
         return this;
     }
 
@@ -437,16 +436,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/subscriptions\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscriptions_url")
-    public String getSubscriptionsUrl() {
+    public Optional<String> getSubscriptionsUrl() {
         return subscriptionsUrl;
     }
 
-    public void setSubscriptionsUrl(String subscriptionsUrl) {
+    public void setSubscriptionsUrl(Optional<String> subscriptionsUrl) {
         this.subscriptionsUrl = subscriptionsUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner organizationsUrl(String organizationsUrl) {
-        this.organizationsUrl = organizationsUrl;
+        this.organizationsUrl = Optional.ofNullable(organizationsUrl);
         return this;
     }
 
@@ -459,16 +458,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/orgs\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organizations_url")
-    public String getOrganizationsUrl() {
+    public Optional<String> getOrganizationsUrl() {
         return organizationsUrl;
     }
 
-    public void setOrganizationsUrl(String organizationsUrl) {
+    public void setOrganizationsUrl(Optional<String> organizationsUrl) {
         this.organizationsUrl = organizationsUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner receivedEventsUrl(String receivedEventsUrl) {
-        this.receivedEventsUrl = receivedEventsUrl;
+        this.receivedEventsUrl = Optional.ofNullable(receivedEventsUrl);
         return this;
     }
 
@@ -481,16 +480,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
             example = "\"https://api.github.com/users/testorg-ea8ec76d71c3af4b/received_events\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("received_events_url")
-    public String getReceivedEventsUrl() {
+    public Optional<String> getReceivedEventsUrl() {
         return receivedEventsUrl;
     }
 
-    public void setReceivedEventsUrl(String receivedEventsUrl) {
+    public void setReceivedEventsUrl(Optional<String> receivedEventsUrl) {
         this.receivedEventsUrl = receivedEventsUrl;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -500,16 +499,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "type", example = "\"Organization\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner siteAdmin(Boolean siteAdmin) {
-        this.siteAdmin = siteAdmin;
+        this.siteAdmin = Optional.ofNullable(siteAdmin);
         return this;
     }
 
@@ -519,16 +518,16 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "site_admin", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("site_admin")
-    public Boolean getSiteAdmin() {
+    public Optional<Boolean> getSiteAdmin() {
         return siteAdmin;
     }
 
-    public void setSiteAdmin(Boolean siteAdmin) {
+    public void setSiteAdmin(Optional<Boolean> siteAdmin) {
         this.siteAdmin = siteAdmin;
     }
 
     public BranchRestrictionPolicyAppsInnerOwner userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -538,11 +537,11 @@ public class BranchRestrictionPolicyAppsInnerOwner {
      */
     @Schema(name = "user_view_type", example = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 

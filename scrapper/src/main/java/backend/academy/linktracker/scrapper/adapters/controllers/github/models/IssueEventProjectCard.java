@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Issue Event Project Card
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("issue-event-project-card")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueEventProjectCard {
 
@@ -31,7 +31,7 @@ public class IssueEventProjectCard {
 
     private String columnName;
 
-    private String previousColumnName;
+    private Optional<String> previousColumnName = Optional.empty();
 
     public IssueEventProjectCard() {
         super();
@@ -151,7 +151,7 @@ public class IssueEventProjectCard {
     }
 
     public IssueEventProjectCard previousColumnName(String previousColumnName) {
-        this.previousColumnName = previousColumnName;
+        this.previousColumnName = Optional.ofNullable(previousColumnName);
         return this;
     }
 
@@ -161,11 +161,11 @@ public class IssueEventProjectCard {
      */
     @Schema(name = "previous_column_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("previous_column_name")
-    public String getPreviousColumnName() {
+    public Optional<String> getPreviousColumnName() {
         return previousColumnName;
     }
 
-    public void setPreviousColumnName(String previousColumnName) {
+    public void setPreviousColumnName(Optional<String> previousColumnName) {
         this.previousColumnName = previousColumnName;
     }
 

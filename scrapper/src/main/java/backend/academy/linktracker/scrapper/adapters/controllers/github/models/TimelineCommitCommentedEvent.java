@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Timeline Commit Commented Event
@@ -18,21 +17,21 @@ import java.util.Objects;
 @JsonTypeName("timeline-commit-commented-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineCommitCommentedEvent {
 
-    private String event;
+    private Optional<String> event = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String commitId;
+    private Optional<String> commitId = Optional.empty();
 
     @Valid
     private List<@Valid CommitComment> comments = new ArrayList<>();
 
     public TimelineCommitCommentedEvent event(String event) {
-        this.event = event;
+        this.event = Optional.ofNullable(event);
         return this;
     }
 
@@ -42,16 +41,16 @@ public class TimelineCommitCommentedEvent {
      */
     @Schema(name = "event", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("event")
-    public String getEvent() {
+    public Optional<String> getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Optional<String> event) {
         this.event = event;
     }
 
     public TimelineCommitCommentedEvent nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -61,16 +60,16 @@ public class TimelineCommitCommentedEvent {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public TimelineCommitCommentedEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = Optional.ofNullable(commitId);
         return this;
     }
 
@@ -80,11 +79,11 @@ public class TimelineCommitCommentedEvent {
      */
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public Optional<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(Optional<String> commitId) {
         this.commitId = commitId;
     }
 

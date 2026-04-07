@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookBranchProtectionRuleEditedChangesAdminEnforced
@@ -14,11 +14,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_branch_protection_rule_edited_changes_admin_enforced")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookBranchProtectionRuleEditedChangesAdminEnforced {
 
-    private Boolean from = null;
+    private JsonNullable<Boolean> from = JsonNullable.<Boolean>undefined();
 
     public WebhookBranchProtectionRuleEditedChangesAdminEnforced() {
         super();
@@ -28,11 +28,11 @@ public class WebhookBranchProtectionRuleEditedChangesAdminEnforced {
      * Constructor with only required parameters
      */
     public WebhookBranchProtectionRuleEditedChangesAdminEnforced(Boolean from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
     }
 
     public WebhookBranchProtectionRuleEditedChangesAdminEnforced from(Boolean from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -43,11 +43,11 @@ public class WebhookBranchProtectionRuleEditedChangesAdminEnforced {
     @NotNull
     @Schema(name = "from", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("from")
-    public Boolean getFrom() {
+    public JsonNullable<Boolean> getFrom() {
         return from;
     }
 
-    public void setFrom(Boolean from) {
+    public void setFrom(JsonNullable<Boolean> from) {
         this.from = from;
     }
 

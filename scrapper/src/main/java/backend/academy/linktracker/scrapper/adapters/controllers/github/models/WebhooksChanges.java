@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the comment.
@@ -16,14 +15,14 @@ import java.util.Objects;
 @JsonTypeName("webhooks_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksChanges {
 
-    private WebhooksChangesBody body;
+    private Optional<WebhooksChangesBody> body = Optional.empty();
 
     public WebhooksChanges body(WebhooksChangesBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class WebhooksChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhooksChangesBody getBody() {
+    public Optional<WebhooksChangesBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhooksChangesBody body) {
+    public void setBody(Optional<WebhooksChangesBody> body) {
         this.body = body;
     }
 

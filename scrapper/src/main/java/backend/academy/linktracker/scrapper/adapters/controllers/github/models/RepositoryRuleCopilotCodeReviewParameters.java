@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRuleCopilotCodeReviewParameters
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("repository_rule_copilot_code_review_parameters")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleCopilotCodeReviewParameters {
 
-    private Boolean reviewDraftPullRequests;
+    private Optional<Boolean> reviewDraftPullRequests = Optional.empty();
 
-    private Boolean reviewOnPush;
+    private Optional<Boolean> reviewOnPush = Optional.empty();
 
     public RepositoryRuleCopilotCodeReviewParameters reviewDraftPullRequests(Boolean reviewDraftPullRequests) {
-        this.reviewDraftPullRequests = reviewDraftPullRequests;
+        this.reviewDraftPullRequests = Optional.ofNullable(reviewDraftPullRequests);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class RepositoryRuleCopilotCodeReviewParameters {
                     "Copilot automatically reviews draft pull requests before they are marked as ready for review.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("review_draft_pull_requests")
-    public Boolean getReviewDraftPullRequests() {
+    public Optional<Boolean> getReviewDraftPullRequests() {
         return reviewDraftPullRequests;
     }
 
-    public void setReviewDraftPullRequests(Boolean reviewDraftPullRequests) {
+    public void setReviewDraftPullRequests(Optional<Boolean> reviewDraftPullRequests) {
         this.reviewDraftPullRequests = reviewDraftPullRequests;
     }
 
     public RepositoryRuleCopilotCodeReviewParameters reviewOnPush(Boolean reviewOnPush) {
-        this.reviewOnPush = reviewOnPush;
+        this.reviewOnPush = Optional.ofNullable(reviewOnPush);
         return this;
     }
 
@@ -59,11 +58,11 @@ public class RepositoryRuleCopilotCodeReviewParameters {
             description = "Copilot automatically reviews each new push to the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("review_on_push")
-    public Boolean getReviewOnPush() {
+    public Optional<Boolean> getReviewOnPush() {
         return reviewOnPush;
     }
 
-    public void setReviewOnPush(Boolean reviewOnPush) {
+    public void setReviewOnPush(Optional<Boolean> reviewOnPush) {
         this.reviewOnPush = reviewOnPush;
     }
 

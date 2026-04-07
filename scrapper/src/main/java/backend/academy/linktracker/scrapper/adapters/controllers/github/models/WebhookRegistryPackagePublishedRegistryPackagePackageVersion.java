@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersion
@@ -18,19 +15,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
 
-    private WebhookRegistryPackagePublishedRegistryPackageOwner author;
+    private Optional<WebhookRegistryPackagePublishedRegistryPackageOwner> author = Optional.empty();
 
-    private WebhookPackagePublishedPackagePackageVersionBody body;
+    private Optional<WebhookPackagePublishedPackagePackageVersionBody> body = Optional.empty();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata containerMetadata;
+    private Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata> containerMetadata =
+            Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
     private String description;
 
@@ -38,7 +36,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     private List<@Valid WebhookPackagePublishedPackagePackageVersionDockerMetadataInner> dockerMetadata =
             new ArrayList<>();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private String htmlUrl;
 
@@ -46,17 +44,24 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
 
     private String installationCommand;
 
-    private String manifest;
+    private Optional<String> manifest = Optional.empty();
 
     @Valid
     private List<Map<String, Object>> metadata = new ArrayList<>();
 
     private String name;
 
-    private WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata npmMetadata = null;
+    private JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata> npmMetadata =
+            JsonNullable.<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata>undefined();
 
     @Valid
-    private List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner> nugetMetadata;
+    private JsonNullable<List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner>>
+            nugetMetadata =
+                    JsonNullable
+                            .<List<
+                                            @Valid
+                                            WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner>>
+                                    undefined();
 
     @Valid
     private List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner> packageFiles =
@@ -64,22 +69,22 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
 
     private String packageUrl;
 
-    private Boolean prerelease;
+    private Optional<Boolean> prerelease = Optional.empty();
 
-    private WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease release;
+    private Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease> release = Optional.empty();
 
     @Valid
     private List<@Valid WebhookRubygemsMetadata> rubygemsMetadata = new ArrayList<>();
 
     private String summary;
 
-    private String tagName;
+    private Optional<String> tagName = Optional.empty();
 
-    private String targetCommitish;
+    private Optional<String> targetCommitish = Optional.empty();
 
-    private String targetOid;
+    private Optional<String> targetOid = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
     private String version;
 
@@ -115,7 +120,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion author(
             WebhookRegistryPackagePublishedRegistryPackageOwner author) {
-        this.author = author;
+        this.author = Optional.ofNullable(author);
         return this;
     }
 
@@ -126,17 +131,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public WebhookRegistryPackagePublishedRegistryPackageOwner getAuthor() {
+    public Optional<WebhookRegistryPackagePublishedRegistryPackageOwner> getAuthor() {
         return author;
     }
 
-    public void setAuthor(WebhookRegistryPackagePublishedRegistryPackageOwner author) {
+    public void setAuthor(Optional<WebhookRegistryPackagePublishedRegistryPackageOwner> author) {
         this.author = author;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion body(
             WebhookPackagePublishedPackagePackageVersionBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -147,16 +152,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookPackagePublishedPackagePackageVersionBody getBody() {
+    public Optional<WebhookPackagePublishedPackagePackageVersionBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhookPackagePublishedPackagePackageVersionBody body) {
+    public void setBody(Optional<WebhookPackagePublishedPackagePackageVersionBody> body) {
         this.body = body;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -166,17 +171,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion containerMetadata(
             WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata containerMetadata) {
-        this.containerMetadata = containerMetadata;
+        this.containerMetadata = Optional.ofNullable(containerMetadata);
         return this;
     }
 
@@ -187,17 +192,18 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "container_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("container_metadata")
-    public WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata getContainerMetadata() {
+    public Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata>
+            getContainerMetadata() {
         return containerMetadata;
     }
 
     public void setContainerMetadata(
-            WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata containerMetadata) {
+            Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata> containerMetadata) {
         this.containerMetadata = containerMetadata;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -207,11 +213,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -267,7 +273,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -277,11 +283,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -347,7 +353,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion manifest(String manifest) {
-        this.manifest = manifest;
+        this.manifest = Optional.ofNullable(manifest);
         return this;
     }
 
@@ -357,11 +363,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "manifest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("manifest")
-    public String getManifest() {
+    public Optional<String> getManifest() {
         return manifest;
     }
 
-    public void setManifest(String manifest) {
+    public void setManifest(Optional<String> manifest) {
         this.manifest = manifest;
     }
 
@@ -417,7 +423,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion npmMetadata(
             WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata npmMetadata) {
-        this.npmMetadata = npmMetadata;
+        this.npmMetadata = JsonNullable.of(npmMetadata);
         return this;
     }
 
@@ -428,26 +434,27 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "npm_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("npm_metadata")
-    public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata getNpmMetadata() {
+    public JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata> getNpmMetadata() {
         return npmMetadata;
     }
 
-    public void setNpmMetadata(WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata npmMetadata) {
+    public void setNpmMetadata(
+            JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata> npmMetadata) {
         this.npmMetadata = npmMetadata;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion nugetMetadata(
             List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner> nugetMetadata) {
-        this.nugetMetadata = nugetMetadata;
+        this.nugetMetadata = JsonNullable.of(nugetMetadata);
         return this;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion addNugetMetadataItem(
             WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner nugetMetadataItem) {
-        if (this.nugetMetadata == null) {
-            this.nugetMetadata = new ArrayList<>();
+        if (this.nugetMetadata == null || !this.nugetMetadata.isPresent()) {
+            this.nugetMetadata = JsonNullable.of(new ArrayList<>());
         }
-        this.nugetMetadata.add(nugetMetadataItem);
+        this.nugetMetadata.get().add(nugetMetadataItem);
         return this;
     }
 
@@ -458,13 +465,14 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "nuget_metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("nuget_metadata")
-    public List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner>
+    public JsonNullable<List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner>>
             getNugetMetadata() {
         return nugetMetadata;
     }
 
     public void setNugetMetadata(
-            List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner> nugetMetadata) {
+            JsonNullable<List<@Valid WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner>>
+                    nugetMetadata) {
         this.nugetMetadata = nugetMetadata;
     }
 
@@ -522,7 +530,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -532,17 +540,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "prerelease", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion release(
             WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease release) {
-        this.release = release;
+        this.release = Optional.ofNullable(release);
         return this;
     }
 
@@ -553,11 +561,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     @Valid
     @Schema(name = "release", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("release")
-    public WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease getRelease() {
+    public Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease> getRelease() {
         return release;
     }
 
-    public void setRelease(WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease release) {
+    public void setRelease(Optional<WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease> release) {
         this.release = release;
     }
 
@@ -612,7 +620,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion tagName(String tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -622,16 +630,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "tag_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public String getTagName() {
+    public Optional<String> getTagName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName(Optional<String> tagName) {
         this.tagName = tagName;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion targetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish;
+        this.targetCommitish = Optional.ofNullable(targetCommitish);
         return this;
     }
 
@@ -641,16 +649,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "target_commitish", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_commitish")
-    public String getTargetCommitish() {
+    public Optional<String> getTargetCommitish() {
         return targetCommitish;
     }
 
-    public void setTargetCommitish(String targetCommitish) {
+    public void setTargetCommitish(Optional<String> targetCommitish) {
         this.targetCommitish = targetCommitish;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion targetOid(String targetOid) {
-        this.targetOid = targetOid;
+        this.targetOid = Optional.ofNullable(targetOid);
         return this;
     }
 
@@ -660,16 +668,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "target_oid", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_oid")
-    public String getTargetOid() {
+    public Optional<String> getTargetOid() {
         return targetOid;
     }
 
-    public void setTargetOid(String targetOid) {
+    public void setTargetOid(Optional<String> targetOid) {
         this.targetOid = targetOid;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersion updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -679,11 +687,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -740,9 +748,9 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
                 && Objects.equals(this.manifest, webhookRegistryPackagePublishedRegistryPackagePackageVersion.manifest)
                 && Objects.equals(this.metadata, webhookRegistryPackagePublishedRegistryPackagePackageVersion.metadata)
                 && Objects.equals(this.name, webhookRegistryPackagePublishedRegistryPackagePackageVersion.name)
-                && Objects.equals(
+                && equalsNullable(
                         this.npmMetadata, webhookRegistryPackagePublishedRegistryPackagePackageVersion.npmMetadata)
-                && Objects.equals(
+                && equalsNullable(
                         this.nugetMetadata, webhookRegistryPackagePublishedRegistryPackagePackageVersion.nugetMetadata)
                 && Objects.equals(
                         this.packageFiles, webhookRegistryPackagePublishedRegistryPackagePackageVersion.packageFiles)
@@ -766,6 +774,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
                 && Objects.equals(this.version, webhookRegistryPackagePublishedRegistryPackagePackageVersion.version);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -783,8 +796,8 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
                 manifest,
                 metadata,
                 name,
-                npmMetadata,
-                nugetMetadata,
+                hashCodeNullable(npmMetadata),
+                hashCodeNullable(nugetMetadata),
                 packageFiles,
                 packageUrl,
                 prerelease,
@@ -796,6 +809,13 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
                 targetOid,
                 updatedAt,
                 version);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

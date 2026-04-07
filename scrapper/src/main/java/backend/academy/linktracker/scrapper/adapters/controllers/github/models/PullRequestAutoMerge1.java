@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The status of auto merging a pull request.
@@ -18,15 +18,15 @@ import java.util.Objects;
 @JsonTypeName("PullRequestAutoMerge_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestAutoMerge1 {
 
-    private String commitMessage = null;
+    private JsonNullable<String> commitMessage = JsonNullable.<String>undefined();
 
     private String commitTitle;
 
-    private User enabledBy = null;
+    private JsonNullable<User> enabledBy = JsonNullable.<User>undefined();
 
     /**
      * The merge method to use.
@@ -76,14 +76,14 @@ public class PullRequestAutoMerge1 {
      */
     public PullRequestAutoMerge1(
             String commitMessage, String commitTitle, User enabledBy, MergeMethodEnum mergeMethod) {
-        this.commitMessage = commitMessage;
+        this.commitMessage = JsonNullable.of(commitMessage);
         this.commitTitle = commitTitle;
-        this.enabledBy = enabledBy;
+        this.enabledBy = JsonNullable.of(enabledBy);
         this.mergeMethod = mergeMethod;
     }
 
     public PullRequestAutoMerge1 commitMessage(String commitMessage) {
-        this.commitMessage = commitMessage;
+        this.commitMessage = JsonNullable.of(commitMessage);
         return this;
     }
 
@@ -97,11 +97,11 @@ public class PullRequestAutoMerge1 {
             description = "Commit message for the merge commit.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_message")
-    public String getCommitMessage() {
+    public JsonNullable<String> getCommitMessage() {
         return commitMessage;
     }
 
-    public void setCommitMessage(String commitMessage) {
+    public void setCommitMessage(JsonNullable<String> commitMessage) {
         this.commitMessage = commitMessage;
     }
 
@@ -129,7 +129,7 @@ public class PullRequestAutoMerge1 {
     }
 
     public PullRequestAutoMerge1 enabledBy(User enabledBy) {
-        this.enabledBy = enabledBy;
+        this.enabledBy = JsonNullable.of(enabledBy);
         return this;
     }
 
@@ -141,11 +141,11 @@ public class PullRequestAutoMerge1 {
     @Valid
     @Schema(name = "enabled_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("enabled_by")
-    public User getEnabledBy() {
+    public JsonNullable<User> getEnabledBy() {
         return enabledBy;
     }
 
-    public void setEnabledBy(User enabledBy) {
+    public void setEnabledBy(JsonNullable<User> enabledBy) {
         this.enabledBy = enabledBy;
     }
 

@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CopilotListCopilotSeats200Response
@@ -17,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("copilot_list_copilot_seats_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotListCopilotSeats200Response {
 
-    private Long totalSeats;
+    private Optional<Long> totalSeats = Optional.empty();
 
     @Valid
     private List<@Valid CopilotSeatDetails> seats = new ArrayList<>();
 
     public CopilotListCopilotSeats200Response totalSeats(Long totalSeats) {
-        this.totalSeats = totalSeats;
+        this.totalSeats = Optional.ofNullable(totalSeats);
         return this;
     }
 
@@ -40,11 +39,11 @@ public class CopilotListCopilotSeats200Response {
             description = "Total number of Copilot seats for the organization currently being billed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_seats")
-    public Long getTotalSeats() {
+    public Optional<Long> getTotalSeats() {
         return totalSeats;
     }
 
-    public void setTotalSeats(Long totalSeats) {
+    public void setTotalSeats(Optional<Long> totalSeats) {
         this.totalSeats = totalSeats;
     }
 

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GistsGet403Response
@@ -15,18 +14,18 @@ import java.util.Objects;
 @JsonTypeName("gists_get_403_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistsGet403Response {
 
-    private GistsGet403ResponseBlock block;
+    private Optional<GistsGet403ResponseBlock> block = Optional.empty();
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
-    private String documentationUrl;
+    private Optional<String> documentationUrl = Optional.empty();
 
     public GistsGet403Response block(GistsGet403ResponseBlock block) {
-        this.block = block;
+        this.block = Optional.ofNullable(block);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class GistsGet403Response {
     @Valid
     @Schema(name = "block", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("block")
-    public GistsGet403ResponseBlock getBlock() {
+    public Optional<GistsGet403ResponseBlock> getBlock() {
         return block;
     }
 
-    public void setBlock(GistsGet403ResponseBlock block) {
+    public void setBlock(Optional<GistsGet403ResponseBlock> block) {
         this.block = block;
     }
 
     public GistsGet403Response message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class GistsGet403Response {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
     public GistsGet403Response documentationUrl(String documentationUrl) {
-        this.documentationUrl = documentationUrl;
+        this.documentationUrl = Optional.ofNullable(documentationUrl);
         return this;
     }
 
@@ -75,11 +74,11 @@ public class GistsGet403Response {
      */
     @Schema(name = "documentation_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("documentation_url")
-    public String getDocumentationUrl() {
+    public Optional<String> getDocumentationUrl() {
         return documentationUrl;
     }
 
-    public void setDocumentationUrl(String documentationUrl) {
+    public void setDocumentationUrl(Optional<String> documentationUrl) {
         this.documentationUrl = documentationUrl;
     }
 

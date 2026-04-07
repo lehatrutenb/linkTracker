@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("organization-role")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationRole {
 
@@ -30,7 +31,7 @@ public class OrganizationRole {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The system role from which this role inherits permissions.
@@ -73,7 +74,7 @@ public class OrganizationRole {
         }
     }
 
-    private BaseRoleEnum baseRole = null;
+    private JsonNullable<BaseRoleEnum> baseRole = JsonNullable.<BaseRoleEnum>undefined();
 
     /**
      * Source answers the question, \"where did this role come from?\"
@@ -112,12 +113,12 @@ public class OrganizationRole {
         }
     }
 
-    private SourceEnum source = null;
+    private JsonNullable<SourceEnum> source = JsonNullable.<SourceEnum>undefined();
 
     @Valid
     private List<String> permissions = new ArrayList<>();
 
-    private NullableSimpleUser organization = null;
+    private JsonNullable<NullableSimpleUser> organization = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -142,7 +143,7 @@ public class OrganizationRole {
         this.id = id;
         this.name = name;
         this.permissions = permissions;
-        this.organization = organization;
+        this.organization = JsonNullable.of(organization);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -191,7 +192,7 @@ public class OrganizationRole {
     }
 
     public OrganizationRole description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -204,16 +205,16 @@ public class OrganizationRole {
             description = "A short description about who this role is for or what permissions it grants.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public OrganizationRole baseRole(BaseRoleEnum baseRole) {
-        this.baseRole = baseRole;
+        this.baseRole = JsonNullable.of(baseRole);
         return this;
     }
 
@@ -226,16 +227,16 @@ public class OrganizationRole {
             description = "The system role from which this role inherits permissions.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("base_role")
-    public BaseRoleEnum getBaseRole() {
+    public JsonNullable<BaseRoleEnum> getBaseRole() {
         return baseRole;
     }
 
-    public void setBaseRole(BaseRoleEnum baseRole) {
+    public void setBaseRole(JsonNullable<BaseRoleEnum> baseRole) {
         this.baseRole = baseRole;
     }
 
     public OrganizationRole source(SourceEnum source) {
-        this.source = source;
+        this.source = JsonNullable.of(source);
         return this;
     }
 
@@ -248,11 +249,11 @@ public class OrganizationRole {
             description = "Source answers the question, \"where did this role come from?\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public SourceEnum getSource() {
+    public JsonNullable<SourceEnum> getSource() {
         return source;
     }
 
-    public void setSource(SourceEnum source) {
+    public void setSource(JsonNullable<SourceEnum> source) {
         this.source = source;
     }
 
@@ -288,7 +289,7 @@ public class OrganizationRole {
     }
 
     public OrganizationRole organization(NullableSimpleUser organization) {
-        this.organization = organization;
+        this.organization = JsonNullable.of(organization);
         return this;
     }
 
@@ -300,11 +301,11 @@ public class OrganizationRole {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("organization")
-    public NullableSimpleUser getOrganization() {
+    public JsonNullable<NullableSimpleUser> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(NullableSimpleUser organization) {
+    public void setOrganization(JsonNullable<NullableSimpleUser> organization) {
         this.organization = organization;
     }
 
@@ -367,18 +368,39 @@ public class OrganizationRole {
         OrganizationRole organizationRole = (OrganizationRole) o;
         return Objects.equals(this.id, organizationRole.id)
                 && Objects.equals(this.name, organizationRole.name)
-                && Objects.equals(this.description, organizationRole.description)
-                && Objects.equals(this.baseRole, organizationRole.baseRole)
-                && Objects.equals(this.source, organizationRole.source)
+                && equalsNullable(this.description, organizationRole.description)
+                && equalsNullable(this.baseRole, organizationRole.baseRole)
+                && equalsNullable(this.source, organizationRole.source)
                 && Objects.equals(this.permissions, organizationRole.permissions)
                 && Objects.equals(this.organization, organizationRole.organization)
                 && Objects.equals(this.createdAt, organizationRole.createdAt)
                 && Objects.equals(this.updatedAt, organizationRole.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, baseRole, source, permissions, organization, createdAt, updatedAt);
+        return Objects.hash(
+                id,
+                name,
+                hashCodeNullable(description),
+                hashCodeNullable(baseRole),
+                hashCodeNullable(source),
+                permissions,
+                organization,
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

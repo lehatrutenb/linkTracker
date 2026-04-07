@@ -7,12 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-projects-v2-status-update")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableProjectsV2StatusUpdate {
 
@@ -30,9 +32,9 @@ public class NullableProjectsV2StatusUpdate {
 
     private String nodeId;
 
-    private String projectNodeId;
+    private Optional<String> projectNodeId = Optional.empty();
 
-    private SimpleUser creator;
+    private Optional<SimpleUser> creator = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -81,15 +83,15 @@ public class NullableProjectsV2StatusUpdate {
         }
     }
 
-    private StatusEnum status = null;
+    private JsonNullable<StatusEnum> status = JsonNullable.<StatusEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate startDate;
+    private Optional<LocalDate> startDate = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate targetDate;
+    private Optional<LocalDate> targetDate = Optional.empty();
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     public NullableProjectsV2StatusUpdate() {
         super();
@@ -154,7 +156,7 @@ public class NullableProjectsV2StatusUpdate {
     }
 
     public NullableProjectsV2StatusUpdate projectNodeId(String projectNodeId) {
-        this.projectNodeId = projectNodeId;
+        this.projectNodeId = Optional.ofNullable(projectNodeId);
         return this;
     }
 
@@ -167,16 +169,16 @@ public class NullableProjectsV2StatusUpdate {
             description = "The node ID of the project that this status update belongs to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_node_id")
-    public String getProjectNodeId() {
+    public Optional<String> getProjectNodeId() {
         return projectNodeId;
     }
 
-    public void setProjectNodeId(String projectNodeId) {
+    public void setProjectNodeId(Optional<String> projectNodeId) {
         this.projectNodeId = projectNodeId;
     }
 
     public NullableProjectsV2StatusUpdate creator(SimpleUser creator) {
-        this.creator = creator;
+        this.creator = Optional.ofNullable(creator);
         return this;
     }
 
@@ -187,11 +189,11 @@ public class NullableProjectsV2StatusUpdate {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("creator")
-    public SimpleUser getCreator() {
+    public Optional<SimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(SimpleUser creator) {
+    public void setCreator(Optional<SimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -246,7 +248,7 @@ public class NullableProjectsV2StatusUpdate {
     }
 
     public NullableProjectsV2StatusUpdate status(StatusEnum status) {
-        this.status = status;
+        this.status = JsonNullable.of(status);
         return this;
     }
 
@@ -256,16 +258,16 @@ public class NullableProjectsV2StatusUpdate {
      */
     @Schema(name = "status", description = "The current status.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public JsonNullable<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(JsonNullable<StatusEnum> status) {
         this.status = status;
     }
 
     public NullableProjectsV2StatusUpdate startDate(LocalDate startDate) {
-        this.startDate = startDate;
+        this.startDate = Optional.ofNullable(startDate);
         return this;
     }
 
@@ -280,16 +282,16 @@ public class NullableProjectsV2StatusUpdate {
             description = "The start date of the period covered by the update.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_date")
-    public LocalDate getStartDate() {
+    public Optional<LocalDate> getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Optional<LocalDate> startDate) {
         this.startDate = startDate;
     }
 
     public NullableProjectsV2StatusUpdate targetDate(LocalDate targetDate) {
-        this.targetDate = targetDate;
+        this.targetDate = Optional.ofNullable(targetDate);
         return this;
     }
 
@@ -304,16 +306,16 @@ public class NullableProjectsV2StatusUpdate {
             description = "The target date associated with the update.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_date")
-    public LocalDate getTargetDate() {
+    public Optional<LocalDate> getTargetDate() {
         return targetDate;
     }
 
-    public void setTargetDate(LocalDate targetDate) {
+    public void setTargetDate(Optional<LocalDate> targetDate) {
         this.targetDate = targetDate;
     }
 
     public NullableProjectsV2StatusUpdate body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -327,11 +329,11 @@ public class NullableProjectsV2StatusUpdate {
             description = "Body of the status update",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -350,16 +352,37 @@ public class NullableProjectsV2StatusUpdate {
                 && Objects.equals(this.creator, nullableProjectsV2StatusUpdate.creator)
                 && Objects.equals(this.createdAt, nullableProjectsV2StatusUpdate.createdAt)
                 && Objects.equals(this.updatedAt, nullableProjectsV2StatusUpdate.updatedAt)
-                && Objects.equals(this.status, nullableProjectsV2StatusUpdate.status)
+                && equalsNullable(this.status, nullableProjectsV2StatusUpdate.status)
                 && Objects.equals(this.startDate, nullableProjectsV2StatusUpdate.startDate)
                 && Objects.equals(this.targetDate, nullableProjectsV2StatusUpdate.targetDate)
-                && Objects.equals(this.body, nullableProjectsV2StatusUpdate.body);
+                && equalsNullable(this.body, nullableProjectsV2StatusUpdate.body);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, nodeId, projectNodeId, creator, createdAt, updatedAt, status, startDate, targetDate, body);
+                id,
+                nodeId,
+                projectNodeId,
+                creator,
+                createdAt,
+                updatedAt,
+                hashCodeNullable(status),
+                startDate,
+                targetDate,
+                hashCodeNullable(body));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

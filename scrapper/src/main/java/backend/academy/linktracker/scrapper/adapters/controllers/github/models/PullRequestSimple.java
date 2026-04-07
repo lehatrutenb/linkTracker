@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pull-request-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
 
@@ -57,16 +55,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
 
     private String title;
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid PullRequestSimpleLabelsInner> labels = new ArrayList<>();
 
-    private NullableMilestone milestone = null;
+    private JsonNullable<NullableMilestone> milestone = JsonNullable.<NullableMilestone>undefined();
 
-    private String activeLockReason = null;
+    private JsonNullable<String> activeLockReason = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -75,10 +73,10 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt = null;
+    private JsonNullable<OffsetDateTime> mergedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @Valid
     private List<@Valid SimpleUser> assignees = new ArrayList<>();
@@ -97,19 +95,19 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
 
     private AuthorAssociation authorAssociation;
 
-    private AutoMerge autoMerge = null;
+    private JsonNullable<AutoMerge> autoMerge = JsonNullable.<AutoMerge>undefined();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
-    private NullableSimpleUser closedBy = null;
+    private JsonNullable<NullableSimpleUser> closedBy = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private Repository repository;
+    private Optional<Repository> repository = Optional.empty();
 
-    private URI parentIssueUrl = null;
+    private JsonNullable<URI> parentIssueUrl = JsonNullable.<URI>undefined();
 
     public PullRequestSimple() {
         super();
@@ -164,19 +162,19 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
         this.state = state;
         this.locked = locked;
         this.title = title;
-        this.user = user;
-        this.body = body;
+        this.user = JsonNullable.of(user);
+        this.body = JsonNullable.of(body);
         this.labels = labels;
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.closedAt = closedAt;
-        this.mergedAt = mergedAt;
+        this.closedAt = JsonNullable.of(closedAt);
+        this.mergedAt = JsonNullable.of(mergedAt);
         this.head = head;
         this.base = base;
         this.links = links;
         this.authorAssociation = authorAssociation;
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
     }
 
     public PullRequestSimple url(URI url) {
@@ -540,7 +538,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     }
 
     public PullRequestSimple user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -552,16 +550,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
     public PullRequestSimple body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -572,11 +570,11 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @NotNull
     @Schema(name = "body", example = "Please pull these awesome changes", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -610,7 +608,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     }
 
     public PullRequestSimple milestone(NullableMilestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -622,16 +620,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public NullableMilestone getMilestone() {
+    public JsonNullable<NullableMilestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(NullableMilestone milestone) {
+    public void setMilestone(JsonNullable<NullableMilestone> milestone) {
         this.milestone = milestone;
     }
 
     public PullRequestSimple activeLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -641,11 +639,11 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
      */
     @Schema(name = "active_lock_reason", example = "too heated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
+    public JsonNullable<String> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(String activeLockReason) {
+    public void setActiveLockReason(JsonNullable<String> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
@@ -692,7 +690,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     }
 
     public PullRequestSimple closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -704,16 +702,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "closed_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
     public PullRequestSimple mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -725,11 +723,11 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "merged_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public JsonNullable<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(JsonNullable<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
@@ -902,7 +900,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     }
 
     public PullRequestSimple autoMerge(AutoMerge autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         return this;
     }
 
@@ -914,16 +912,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "auto_merge", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("auto_merge")
-    public AutoMerge getAutoMerge() {
+    public JsonNullable<AutoMerge> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(AutoMerge autoMerge) {
+    public void setAutoMerge(JsonNullable<AutoMerge> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
     public PullRequestSimple draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -937,16 +935,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
             description = "Indicates whether or not the pull request is a draft.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
     public PullRequestSimple closedBy(NullableSimpleUser closedBy) {
-        this.closedBy = closedBy;
+        this.closedBy = JsonNullable.of(closedBy);
         return this;
     }
 
@@ -957,16 +955,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "closed_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_by")
-    public NullableSimpleUser getClosedBy() {
+    public JsonNullable<NullableSimpleUser> getClosedBy() {
         return closedBy;
     }
 
-    public void setClosedBy(NullableSimpleUser closedBy) {
+    public void setClosedBy(JsonNullable<NullableSimpleUser> closedBy) {
         this.closedBy = closedBy;
     }
 
     public PullRequestSimple bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -976,16 +974,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public PullRequestSimple bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -995,16 +993,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public PullRequestSimple repository(Repository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -1015,16 +1013,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public Repository getRepository() {
+    public Optional<Repository> getRepository() {
         return repository;
     }
 
-    public void setRepository(Repository repository) {
+    public void setRepository(Optional<Repository> repository) {
         this.repository = repository;
     }
 
     public PullRequestSimple parentIssueUrl(URI parentIssueUrl) {
-        this.parentIssueUrl = parentIssueUrl;
+        this.parentIssueUrl = JsonNullable.of(parentIssueUrl);
         return this;
     }
 
@@ -1038,11 +1036,11 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
             description = "URL to get the parent issue of this issue, if it is a sub-issue",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent_issue_url")
-    public URI getParentIssueUrl() {
+    public JsonNullable<URI> getParentIssueUrl() {
         return parentIssueUrl;
     }
 
-    public void setParentIssueUrl(URI parentIssueUrl) {
+    public void setParentIssueUrl(JsonNullable<URI> parentIssueUrl) {
         this.parentIssueUrl = parentIssueUrl;
     }
 
@@ -1075,7 +1073,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
                 && Objects.equals(this.body, pullRequestSimple.body)
                 && Objects.equals(this.labels, pullRequestSimple.labels)
                 && Objects.equals(this.milestone, pullRequestSimple.milestone)
-                && Objects.equals(this.activeLockReason, pullRequestSimple.activeLockReason)
+                && equalsNullable(this.activeLockReason, pullRequestSimple.activeLockReason)
                 && Objects.equals(this.createdAt, pullRequestSimple.createdAt)
                 && Objects.equals(this.updatedAt, pullRequestSimple.updatedAt)
                 && Objects.equals(this.closedAt, pullRequestSimple.closedAt)
@@ -1089,11 +1087,16 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
                 && Objects.equals(this.authorAssociation, pullRequestSimple.authorAssociation)
                 && Objects.equals(this.autoMerge, pullRequestSimple.autoMerge)
                 && Objects.equals(this.draft, pullRequestSimple.draft)
-                && Objects.equals(this.closedBy, pullRequestSimple.closedBy)
+                && equalsNullable(this.closedBy, pullRequestSimple.closedBy)
                 && Objects.equals(this.bodyHtml, pullRequestSimple.bodyHtml)
                 && Objects.equals(this.bodyText, pullRequestSimple.bodyText)
                 && Objects.equals(this.repository, pullRequestSimple.repository)
-                && Objects.equals(this.parentIssueUrl, pullRequestSimple.parentIssueUrl);
+                && equalsNullable(this.parentIssueUrl, pullRequestSimple.parentIssueUrl);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1119,7 +1122,7 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
                 body,
                 labels,
                 milestone,
-                activeLockReason,
+                hashCodeNullable(activeLockReason),
                 createdAt,
                 updatedAt,
                 closedAt,
@@ -1133,11 +1136,18 @@ public class PullRequestSimple implements ProjectsV2ItemSimpleContent {
                 authorAssociation,
                 autoMerge,
                 draft,
-                closedBy,
+                hashCodeNullable(closedBy),
                 bodyHtml,
                 bodyText,
                 repository,
-                parentIssueUrl);
+                hashCodeNullable(parentIssueUrl));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

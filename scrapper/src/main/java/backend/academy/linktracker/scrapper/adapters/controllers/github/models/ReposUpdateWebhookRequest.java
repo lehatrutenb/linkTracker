@@ -5,12 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * ReposUpdateWebhookRequest
@@ -18,11 +13,11 @@ import java.util.Objects;
 @JsonTypeName("repos_update_webhook_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateWebhookRequest {
 
-    private WebhookConfig config;
+    private Optional<WebhookConfig> config = Optional.empty();
 
     @Valid
     private List<String> events = new ArrayList<>(Arrays.asList("push"));
@@ -33,10 +28,10 @@ public class ReposUpdateWebhookRequest {
     @Valid
     private List<String> removeEvents = new ArrayList<>();
 
-    private Boolean active = true;
+    private Optional<Boolean> active = Optional.of(true);
 
     public ReposUpdateWebhookRequest config(WebhookConfig config) {
-        this.config = config;
+        this.config = Optional.ofNullable(config);
         return this;
     }
 
@@ -47,11 +42,11 @@ public class ReposUpdateWebhookRequest {
     @Valid
     @Schema(name = "config", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("config")
-    public WebhookConfig getConfig() {
+    public Optional<WebhookConfig> getConfig() {
         return config;
     }
 
-    public void setConfig(WebhookConfig config) {
+    public void setConfig(Optional<WebhookConfig> config) {
         this.config = config;
     }
 
@@ -148,7 +143,7 @@ public class ReposUpdateWebhookRequest {
     }
 
     public ReposUpdateWebhookRequest active(Boolean active) {
-        this.active = active;
+        this.active = Optional.ofNullable(active);
         return this;
     }
 
@@ -162,11 +157,11 @@ public class ReposUpdateWebhookRequest {
                     "Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("active")
-    public Boolean getActive() {
+    public Optional<Boolean> getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Optional<Boolean> active) {
         this.active = active;
     }
 

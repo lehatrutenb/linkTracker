@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingPremiumRequestUsageReportOrgTimePeriod
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("billing_premium_request_usage_report_org_timePeriod")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingPremiumRequestUsageReportOrgTimePeriod {
 
     private Long year;
 
-    private Long month;
+    private Optional<Long> month = Optional.empty();
 
-    private Long day;
+    private Optional<Long> day = Optional.empty();
 
     public BillingPremiumRequestUsageReportOrgTimePeriod() {
         super();
@@ -56,7 +56,7 @@ public class BillingPremiumRequestUsageReportOrgTimePeriod {
     }
 
     public BillingPremiumRequestUsageReportOrgTimePeriod month(Long month) {
-        this.month = month;
+        this.month = Optional.ofNullable(month);
         return this;
     }
 
@@ -69,16 +69,16 @@ public class BillingPremiumRequestUsageReportOrgTimePeriod {
             description = "The month for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("month")
-    public Long getMonth() {
+    public Optional<Long> getMonth() {
         return month;
     }
 
-    public void setMonth(Long month) {
+    public void setMonth(Optional<Long> month) {
         this.month = month;
     }
 
     public BillingPremiumRequestUsageReportOrgTimePeriod day(Long day) {
-        this.day = day;
+        this.day = Optional.ofNullable(day);
         return this;
     }
 
@@ -91,11 +91,11 @@ public class BillingPremiumRequestUsageReportOrgTimePeriod {
             description = "The day for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("day")
-    public Long getDay() {
+    public Optional<Long> getDay() {
         return day;
     }
 
-    public void setDay(Long day) {
+    public void setDay(Optional<Long> day) {
         this.day = day;
     }
 

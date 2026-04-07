@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookProjectsV2ItemEditedChangesOneOfFieldValue
@@ -15,24 +16,26 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_item_edited_changes_oneOf_field_value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
 
-    private String fieldNodeId;
+    private Optional<String> fieldNodeId = Optional.empty();
 
-    private String fieldType;
+    private Optional<String> fieldType = Optional.empty();
 
-    private String fieldName;
+    private Optional<String> fieldName = Optional.empty();
 
-    private Long projectNumber;
+    private Optional<Long> projectNumber = Optional.empty();
 
-    private WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom from = null;
+    private JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> from =
+            JsonNullable.<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom>undefined();
 
-    private WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom to = null;
+    private JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> to =
+            JsonNullable.<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom>undefined();
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue fieldNodeId(String fieldNodeId) {
-        this.fieldNodeId = fieldNodeId;
+        this.fieldNodeId = Optional.ofNullable(fieldNodeId);
         return this;
     }
 
@@ -42,16 +45,16 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
      */
     @Schema(name = "field_node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("field_node_id")
-    public String getFieldNodeId() {
+    public Optional<String> getFieldNodeId() {
         return fieldNodeId;
     }
 
-    public void setFieldNodeId(String fieldNodeId) {
+    public void setFieldNodeId(Optional<String> fieldNodeId) {
         this.fieldNodeId = fieldNodeId;
     }
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue fieldType(String fieldType) {
-        this.fieldType = fieldType;
+        this.fieldType = Optional.ofNullable(fieldType);
         return this;
     }
 
@@ -61,16 +64,16 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
      */
     @Schema(name = "field_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("field_type")
-    public String getFieldType() {
+    public Optional<String> getFieldType() {
         return fieldType;
     }
 
-    public void setFieldType(String fieldType) {
+    public void setFieldType(Optional<String> fieldType) {
         this.fieldType = fieldType;
     }
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue fieldName(String fieldName) {
-        this.fieldName = fieldName;
+        this.fieldName = Optional.ofNullable(fieldName);
         return this;
     }
 
@@ -80,16 +83,16 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
      */
     @Schema(name = "field_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("field_name")
-    public String getFieldName() {
+    public Optional<String> getFieldName() {
         return fieldName;
     }
 
-    public void setFieldName(String fieldName) {
+    public void setFieldName(Optional<String> fieldName) {
         this.fieldName = fieldName;
     }
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue projectNumber(Long projectNumber) {
-        this.projectNumber = projectNumber;
+        this.projectNumber = Optional.ofNullable(projectNumber);
         return this;
     }
 
@@ -99,17 +102,17 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
      */
     @Schema(name = "project_number", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_number")
-    public Long getProjectNumber() {
+    public Optional<Long> getProjectNumber() {
         return projectNumber;
     }
 
-    public void setProjectNumber(Long projectNumber) {
+    public void setProjectNumber(Optional<Long> projectNumber) {
         this.projectNumber = projectNumber;
     }
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue from(
             WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -120,17 +123,17 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
     @Valid
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom getFrom() {
+    public JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> getFrom() {
         return from;
     }
 
-    public void setFrom(WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom from) {
+    public void setFrom(JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> from) {
         this.from = from;
     }
 
     public WebhookProjectsV2ItemEditedChangesOneOfFieldValue to(
             WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom to) {
-        this.to = to;
+        this.to = JsonNullable.of(to);
         return this;
     }
 
@@ -141,11 +144,11 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
     @Valid
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom getTo() {
+    public JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> getTo() {
         return to;
     }
 
-    public void setTo(WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom to) {
+    public void setTo(JsonNullable<WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom> to) {
         this.to = to;
     }
 
@@ -163,13 +166,26 @@ public class WebhookProjectsV2ItemEditedChangesOneOfFieldValue {
                 && Objects.equals(this.fieldType, webhookProjectsV2ItemEditedChangesOneOfFieldValue.fieldType)
                 && Objects.equals(this.fieldName, webhookProjectsV2ItemEditedChangesOneOfFieldValue.fieldName)
                 && Objects.equals(this.projectNumber, webhookProjectsV2ItemEditedChangesOneOfFieldValue.projectNumber)
-                && Objects.equals(this.from, webhookProjectsV2ItemEditedChangesOneOfFieldValue.from)
-                && Objects.equals(this.to, webhookProjectsV2ItemEditedChangesOneOfFieldValue.to);
+                && equalsNullable(this.from, webhookProjectsV2ItemEditedChangesOneOfFieldValue.from)
+                && equalsNullable(this.to, webhookProjectsV2ItemEditedChangesOneOfFieldValue.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fieldNodeId, fieldType, fieldName, projectNumber, from, to);
+        return Objects.hash(
+                fieldNodeId, fieldType, fieldName, projectNumber, hashCodeNullable(from), hashCodeNullable(to));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,13 +18,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("timeline-cross-referenced-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineCrossReferencedEvent {
 
     private String event;
 
-    private SimpleUser actor;
+    private Optional<SimpleUser> actor = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -73,7 +73,7 @@ public class TimelineCrossReferencedEvent {
     }
 
     public TimelineCrossReferencedEvent actor(SimpleUser actor) {
-        this.actor = actor;
+        this.actor = Optional.ofNullable(actor);
         return this;
     }
 
@@ -84,11 +84,11 @@ public class TimelineCrossReferencedEvent {
     @Valid
     @Schema(name = "actor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor")
-    public SimpleUser getActor() {
+    public Optional<SimpleUser> getActor() {
         return actor;
     }
 
-    public void setActor(SimpleUser actor) {
+    public void setActor(Optional<SimpleUser> actor) {
         this.actor = actor;
     }
 

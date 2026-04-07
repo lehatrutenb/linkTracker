@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-required-status-checks")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleRequiredStatusChecks implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleRequiredStatusChecks implements OrgRules, RepositoryR
 
     private TypeEnum type;
 
-    private RepositoryRuleRequiredStatusChecksParameters parameters;
+    private Optional<RepositoryRuleRequiredStatusChecksParameters> parameters = Optional.empty();
 
     public RepositoryRuleRequiredStatusChecks() {
         super();
@@ -94,7 +94,7 @@ public class RepositoryRuleRequiredStatusChecks implements OrgRules, RepositoryR
     }
 
     public RepositoryRuleRequiredStatusChecks parameters(RepositoryRuleRequiredStatusChecksParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class RepositoryRuleRequiredStatusChecks implements OrgRules, RepositoryR
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleRequiredStatusChecksParameters getParameters() {
+    public Optional<RepositoryRuleRequiredStatusChecksParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleRequiredStatusChecksParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleRequiredStatusChecksParameters> parameters) {
         this.parameters = parameters;
     }
 

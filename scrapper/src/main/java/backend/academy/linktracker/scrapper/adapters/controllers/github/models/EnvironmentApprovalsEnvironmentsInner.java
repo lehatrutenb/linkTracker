@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,28 +16,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("environment_approvals_environments_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class EnvironmentApprovalsEnvironmentsInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String htmlUrl;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<String> htmlUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     public EnvironmentApprovalsEnvironmentsInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -52,16 +51,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             description = "The id of the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public EnvironmentApprovalsEnvironmentsInner nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -74,16 +73,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             example = "MDExOkVudmlyb25tZW50NTY3ODA0Mjg=",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public EnvironmentApprovalsEnvironmentsInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -97,16 +96,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             description = "The name of the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public EnvironmentApprovalsEnvironmentsInner url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -119,16 +118,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             example = "https://api.github.com/repos/github/hello-world/environments/staging",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public EnvironmentApprovalsEnvironmentsInner htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -141,16 +140,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             example = "https://github.com/github/hello-world/deployments/activity_log?environments_filter=staging",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public EnvironmentApprovalsEnvironmentsInner createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -165,16 +164,16 @@ public class EnvironmentApprovalsEnvironmentsInner {
             description = "The time that the environment was created, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public EnvironmentApprovalsEnvironmentsInner updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -189,11 +188,11 @@ public class EnvironmentApprovalsEnvironmentsInner {
             description = "The time that the environment was last updated, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 

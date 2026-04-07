@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PageBuildError
@@ -14,11 +14,11 @@ import java.util.Objects;
 @JsonTypeName("page_build_error")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PageBuildError {
 
-    private String message = null;
+    private JsonNullable<String> message = JsonNullable.<String>undefined();
 
     public PageBuildError() {
         super();
@@ -28,11 +28,11 @@ public class PageBuildError {
      * Constructor with only required parameters
      */
     public PageBuildError(String message) {
-        this.message = message;
+        this.message = JsonNullable.of(message);
     }
 
     public PageBuildError message(String message) {
-        this.message = message;
+        this.message = JsonNullable.of(message);
         return this;
     }
 
@@ -43,11 +43,11 @@ public class PageBuildError {
     @NotNull
     @Schema(name = "message", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public JsonNullable<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(JsonNullable<String> message) {
         this.message = message;
     }
 

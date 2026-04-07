@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookPackagePublishedPackagePackageVersionNugetMetadataInner
@@ -15,18 +14,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_published_package_package_version_nuget_metadata_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInner {
 
-    private ActionsGetWorkflowWorkflowIdParameter id;
+    private Optional<ActionsGetWorkflowWorkflowIdParameter> id = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value;
+    private Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> value = Optional.empty();
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInner id(ActionsGetWorkflowWorkflowIdParameter id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInner {
     @Valid
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public ActionsGetWorkflowWorkflowIdParameter getId() {
+    public Optional<ActionsGetWorkflowWorkflowIdParameter> getId() {
         return id;
     }
 
-    public void setId(ActionsGetWorkflowWorkflowIdParameter id) {
+    public void setId(Optional<ActionsGetWorkflowWorkflowIdParameter> id) {
         this.id = id;
     }
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -56,17 +55,17 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInner {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInner value(
             WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value) {
-        this.value = value;
+        this.value = Optional.ofNullable(value);
         return this;
     }
 
@@ -77,11 +76,11 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInner {
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("value")
-    public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue getValue() {
+    public Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> getValue() {
         return value;
     }
 
-    public void setValue(WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value) {
+    public void setValue(Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> value) {
         this.value = value;
     }
 

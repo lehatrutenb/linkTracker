@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("team-full")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamFull {
 
@@ -39,7 +41,7 @@ public class TeamFull {
 
     private String slug;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The level of privacy this team should have
@@ -76,7 +78,7 @@ public class TeamFull {
         }
     }
 
-    private PrivacyEnum privacy;
+    private Optional<PrivacyEnum> privacy = Optional.empty();
 
     /**
      * The notification setting the team has set
@@ -113,7 +115,7 @@ public class TeamFull {
         }
     }
 
-    private NotificationSettingEnum notificationSetting;
+    private Optional<NotificationSettingEnum> notificationSetting = Optional.empty();
 
     private String permission;
 
@@ -121,7 +123,7 @@ public class TeamFull {
 
     private URI repositoriesUrl;
 
-    private NullableTeamSimple parent = null;
+    private JsonNullable<NullableTeamSimple> parent = JsonNullable.<NullableTeamSimple>undefined();
 
     private Long membersCount;
 
@@ -135,7 +137,7 @@ public class TeamFull {
 
     private TeamOrganization organization;
 
-    private String ldapDn;
+    private Optional<String> ldapDn = Optional.empty();
 
     /**
      * The ownership type of the team
@@ -174,9 +176,9 @@ public class TeamFull {
 
     private TypeEnum type;
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
     public TeamFull() {
         super();
@@ -208,7 +210,7 @@ public class TeamFull {
         this.htmlUrl = htmlUrl;
         this.name = name;
         this.slug = slug;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.permission = permission;
         this.membersUrl = membersUrl;
         this.repositoriesUrl = repositoriesUrl;
@@ -358,7 +360,7 @@ public class TeamFull {
     }
 
     public TeamFull description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -369,16 +371,16 @@ public class TeamFull {
     @NotNull
     @Schema(name = "description", example = "A great team.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public TeamFull privacy(PrivacyEnum privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -392,16 +394,16 @@ public class TeamFull {
             description = "The level of privacy this team should have",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public PrivacyEnum getPrivacy() {
+    public Optional<PrivacyEnum> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(PrivacyEnum privacy) {
+    public void setPrivacy(Optional<PrivacyEnum> privacy) {
         this.privacy = privacy;
     }
 
     public TeamFull notificationSetting(NotificationSettingEnum notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -415,11 +417,11 @@ public class TeamFull {
             description = "The notification setting the team has set",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public NotificationSettingEnum getNotificationSetting() {
+    public Optional<NotificationSettingEnum> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(NotificationSettingEnum notificationSetting) {
+    public void setNotificationSetting(Optional<NotificationSettingEnum> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
@@ -495,7 +497,7 @@ public class TeamFull {
     }
 
     public TeamFull parent(NullableTeamSimple parent) {
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         return this;
     }
 
@@ -506,11 +508,11 @@ public class TeamFull {
     @Valid
     @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent")
-    public NullableTeamSimple getParent() {
+    public JsonNullable<NullableTeamSimple> getParent() {
         return parent;
     }
 
-    public void setParent(NullableTeamSimple parent) {
+    public void setParent(JsonNullable<NullableTeamSimple> parent) {
         this.parent = parent;
     }
 
@@ -618,7 +620,7 @@ public class TeamFull {
     }
 
     public TeamFull ldapDn(String ldapDn) {
-        this.ldapDn = ldapDn;
+        this.ldapDn = Optional.ofNullable(ldapDn);
         return this;
     }
 
@@ -633,11 +635,11 @@ public class TeamFull {
                     "The [distinguished name](https://www.ldap.com/ldap-dns-and-rdns) (DN) of the LDAP entry to map to a team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ldap_dn")
-    public String getLdapDn() {
+    public Optional<String> getLdapDn() {
         return ldapDn;
     }
 
-    public void setLdapDn(String ldapDn) {
+    public void setLdapDn(Optional<String> ldapDn) {
         this.ldapDn = ldapDn;
     }
 
@@ -662,7 +664,7 @@ public class TeamFull {
     }
 
     public TeamFull organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -676,16 +678,16 @@ public class TeamFull {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public TeamFull enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -699,11 +701,11 @@ public class TeamFull {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 
@@ -728,7 +730,7 @@ public class TeamFull {
                 && Objects.equals(this.permission, teamFull.permission)
                 && Objects.equals(this.membersUrl, teamFull.membersUrl)
                 && Objects.equals(this.repositoriesUrl, teamFull.repositoriesUrl)
-                && Objects.equals(this.parent, teamFull.parent)
+                && equalsNullable(this.parent, teamFull.parent)
                 && Objects.equals(this.membersCount, teamFull.membersCount)
                 && Objects.equals(this.reposCount, teamFull.reposCount)
                 && Objects.equals(this.createdAt, teamFull.createdAt)
@@ -738,6 +740,11 @@ public class TeamFull {
                 && Objects.equals(this.type, teamFull.type)
                 && Objects.equals(this.organizationId, teamFull.organizationId)
                 && Objects.equals(this.enterpriseId, teamFull.enterpriseId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -755,7 +762,7 @@ public class TeamFull {
                 permission,
                 membersUrl,
                 repositoriesUrl,
-                parent,
+                hashCodeNullable(parent),
                 membersCount,
                 reposCount,
                 createdAt,
@@ -765,6 +772,13 @@ public class TeamFull {
                 type,
                 organizationId,
                 enterpriseId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

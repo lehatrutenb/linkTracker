@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Feature options for code scanning default setup
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-default-setup-options")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningDefaultSetupOptions {
 
@@ -58,12 +59,12 @@ public class CodeScanningDefaultSetupOptions {
         }
     }
 
-    private RunnerTypeEnum runnerType;
+    private Optional<RunnerTypeEnum> runnerType = Optional.empty();
 
-    private String runnerLabel = null;
+    private JsonNullable<String> runnerLabel = JsonNullable.<String>undefined();
 
     public CodeScanningDefaultSetupOptions runnerType(RunnerTypeEnum runnerType) {
-        this.runnerType = runnerType;
+        this.runnerType = Optional.ofNullable(runnerType);
         return this;
     }
 
@@ -76,16 +77,16 @@ public class CodeScanningDefaultSetupOptions {
             description = "Whether to use labeled runners or standard GitHub runners.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_type")
-    public RunnerTypeEnum getRunnerType() {
+    public Optional<RunnerTypeEnum> getRunnerType() {
         return runnerType;
     }
 
-    public void setRunnerType(RunnerTypeEnum runnerType) {
+    public void setRunnerType(Optional<RunnerTypeEnum> runnerType) {
         this.runnerType = runnerType;
     }
 
     public CodeScanningDefaultSetupOptions runnerLabel(String runnerLabel) {
-        this.runnerLabel = runnerLabel;
+        this.runnerLabel = JsonNullable.of(runnerLabel);
         return this;
     }
 
@@ -99,11 +100,11 @@ public class CodeScanningDefaultSetupOptions {
                     "The label of the runner to use for code scanning default setup when runner_type is 'labeled'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_label")
-    public String getRunnerLabel() {
+    public JsonNullable<String> getRunnerLabel() {
         return runnerLabel;
     }
 
-    public void setRunnerLabel(String runnerLabel) {
+    public void setRunnerLabel(JsonNullable<String> runnerLabel) {
         this.runnerLabel = runnerLabel;
     }
 
@@ -117,12 +118,24 @@ public class CodeScanningDefaultSetupOptions {
         }
         CodeScanningDefaultSetupOptions codeScanningDefaultSetupOptions = (CodeScanningDefaultSetupOptions) o;
         return Objects.equals(this.runnerType, codeScanningDefaultSetupOptions.runnerType)
-                && Objects.equals(this.runnerLabel, codeScanningDefaultSetupOptions.runnerLabel);
+                && equalsNullable(this.runnerLabel, codeScanningDefaultSetupOptions.runnerLabel);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(runnerType, runnerLabel);
+        return Objects.hash(runnerType, hashCodeNullable(runnerLabel));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

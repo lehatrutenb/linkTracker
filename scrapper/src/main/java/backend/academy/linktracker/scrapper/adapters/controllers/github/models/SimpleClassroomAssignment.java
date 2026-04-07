@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("simple-classroom-assignment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SimpleClassroomAssignment {
 
@@ -77,9 +78,9 @@ public class SimpleClassroomAssignment {
 
     private Boolean feedbackPullRequestsEnabled;
 
-    private Long maxTeams = null;
+    private JsonNullable<Long> maxTeams = JsonNullable.<Long>undefined();
 
-    private Long maxMembers = null;
+    private JsonNullable<Long> maxMembers = JsonNullable.<Long>undefined();
 
     private String editor;
 
@@ -92,7 +93,7 @@ public class SimpleClassroomAssignment {
     private String language;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime deadline = null;
+    private JsonNullable<OffsetDateTime> deadline = JsonNullable.<OffsetDateTime>undefined();
 
     private SimpleClassroom classroom;
 
@@ -134,7 +135,7 @@ public class SimpleClassroomAssignment {
         this.submitted = submitted;
         this.passing = passing;
         this.language = language;
-        this.deadline = deadline;
+        this.deadline = JsonNullable.of(deadline);
         this.classroom = classroom;
     }
 
@@ -356,7 +357,7 @@ public class SimpleClassroomAssignment {
     }
 
     public SimpleClassroomAssignment maxTeams(Long maxTeams) {
-        this.maxTeams = maxTeams;
+        this.maxTeams = JsonNullable.of(maxTeams);
         return this;
     }
 
@@ -370,16 +371,16 @@ public class SimpleClassroomAssignment {
             description = "The maximum allowable teams for the assignment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("max_teams")
-    public Long getMaxTeams() {
+    public JsonNullable<Long> getMaxTeams() {
         return maxTeams;
     }
 
-    public void setMaxTeams(Long maxTeams) {
+    public void setMaxTeams(JsonNullable<Long> maxTeams) {
         this.maxTeams = maxTeams;
     }
 
     public SimpleClassroomAssignment maxMembers(Long maxMembers) {
-        this.maxMembers = maxMembers;
+        this.maxMembers = JsonNullable.of(maxMembers);
         return this;
     }
 
@@ -393,11 +394,11 @@ public class SimpleClassroomAssignment {
             description = "The maximum allowable members per team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("max_members")
-    public Long getMaxMembers() {
+    public JsonNullable<Long> getMaxMembers() {
         return maxMembers;
     }
 
-    public void setMaxMembers(Long maxMembers) {
+    public void setMaxMembers(JsonNullable<Long> maxMembers) {
         this.maxMembers = maxMembers;
     }
 
@@ -522,7 +523,7 @@ public class SimpleClassroomAssignment {
     }
 
     public SimpleClassroomAssignment deadline(OffsetDateTime deadline) {
-        this.deadline = deadline;
+        this.deadline = JsonNullable.of(deadline);
         return this;
     }
 
@@ -538,11 +539,11 @@ public class SimpleClassroomAssignment {
             description = "The time at which the assignment is due.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("deadline")
-    public OffsetDateTime getDeadline() {
+    public JsonNullable<OffsetDateTime> getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(OffsetDateTime deadline) {
+    public void setDeadline(JsonNullable<OffsetDateTime> deadline) {
         this.deadline = deadline;
     }
 
@@ -586,8 +587,8 @@ public class SimpleClassroomAssignment {
                 && Objects.equals(this.studentsAreRepoAdmins, simpleClassroomAssignment.studentsAreRepoAdmins)
                 && Objects.equals(
                         this.feedbackPullRequestsEnabled, simpleClassroomAssignment.feedbackPullRequestsEnabled)
-                && Objects.equals(this.maxTeams, simpleClassroomAssignment.maxTeams)
-                && Objects.equals(this.maxMembers, simpleClassroomAssignment.maxMembers)
+                && equalsNullable(this.maxTeams, simpleClassroomAssignment.maxTeams)
+                && equalsNullable(this.maxMembers, simpleClassroomAssignment.maxMembers)
                 && Objects.equals(this.editor, simpleClassroomAssignment.editor)
                 && Objects.equals(this.accepted, simpleClassroomAssignment.accepted)
                 && Objects.equals(this.submitted, simpleClassroomAssignment.submitted)
@@ -595,6 +596,11 @@ public class SimpleClassroomAssignment {
                 && Objects.equals(this.language, simpleClassroomAssignment.language)
                 && Objects.equals(this.deadline, simpleClassroomAssignment.deadline)
                 && Objects.equals(this.classroom, simpleClassroomAssignment.classroom);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -609,8 +615,8 @@ public class SimpleClassroomAssignment {
                 slug,
                 studentsAreRepoAdmins,
                 feedbackPullRequestsEnabled,
-                maxTeams,
-                maxMembers,
+                hashCodeNullable(maxTeams),
+                hashCodeNullable(maxMembers),
                 editor,
                 accepted,
                 submitted,
@@ -618,6 +624,13 @@ public class SimpleClassroomAssignment {
                 language,
                 deadline,
                 classroom);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

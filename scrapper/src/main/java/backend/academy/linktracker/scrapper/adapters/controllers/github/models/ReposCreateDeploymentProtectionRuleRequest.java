@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateDeploymentProtectionRuleRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("repos_create_deployment_protection_rule_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateDeploymentProtectionRuleRequest {
 
-    private Long integrationId;
+    private Optional<Long> integrationId = Optional.empty();
 
     public ReposCreateDeploymentProtectionRuleRequest integrationId(Long integrationId) {
-        this.integrationId = integrationId;
+        this.integrationId = Optional.ofNullable(integrationId);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class ReposCreateDeploymentProtectionRuleRequest {
             description = "The ID of the custom app that will be enabled on the environment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("integration_id")
-    public Long getIntegrationId() {
+    public Optional<Long> getIntegrationId() {
         return integrationId;
     }
 
-    public void setIntegrationId(Long integrationId) {
+    public void setIntegrationId(Optional<Long> integrationId) {
         this.integrationId = integrationId;
     }
 

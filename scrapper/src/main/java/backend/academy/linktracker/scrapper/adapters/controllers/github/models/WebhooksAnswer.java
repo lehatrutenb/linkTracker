@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_answer")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksAnswer {
 
@@ -87,16 +88,16 @@ public class WebhooksAnswer {
 
     private String nodeId;
 
-    private Object parentId = null;
+    private JsonNullable<Object> parentId = JsonNullable.<Object>undefined();
 
-    private Reactions reactions;
+    private Optional<Reactions> reactions = Optional.empty();
 
     private String repositoryUrl;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhooksAnswer() {
         super();
@@ -126,10 +127,10 @@ public class WebhooksAnswer {
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.nodeId = nodeId;
-        this.parentId = parentId;
+        this.parentId = JsonNullable.of(parentId);
         this.repositoryUrl = repositoryUrl;
         this.updatedAt = updatedAt;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksAnswer authorAssociation(AuthorAssociationEnum authorAssociation) {
@@ -297,7 +298,7 @@ public class WebhooksAnswer {
     }
 
     public WebhooksAnswer parentId(Object parentId) {
-        this.parentId = parentId;
+        this.parentId = JsonNullable.of(parentId);
         return this;
     }
 
@@ -308,16 +309,16 @@ public class WebhooksAnswer {
     @NotNull
     @Schema(name = "parent_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("parent_id")
-    public Object getParentId() {
+    public JsonNullable<Object> getParentId() {
         return parentId;
     }
 
-    public void setParentId(Object parentId) {
+    public void setParentId(JsonNullable<Object> parentId) {
         this.parentId = parentId;
     }
 
     public WebhooksAnswer reactions(Reactions reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -328,11 +329,11 @@ public class WebhooksAnswer {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public Reactions getReactions() {
+    public Optional<Reactions> getReactions() {
         return reactions;
     }
 
-    public void setReactions(Reactions reactions) {
+    public void setReactions(Optional<Reactions> reactions) {
         this.reactions = reactions;
     }
 
@@ -378,7 +379,7 @@ public class WebhooksAnswer {
     }
 
     public WebhooksAnswer user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -390,11 +391,11 @@ public class WebhooksAnswer {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

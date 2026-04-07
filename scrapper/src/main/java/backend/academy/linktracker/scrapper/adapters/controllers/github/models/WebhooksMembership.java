@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The membership between the user and the organization. Not present when the action is &#x60;member_invited&#x60;.
@@ -22,7 +24,7 @@ import java.util.Objects;
 @JsonTypeName("webhooks_membership")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksMembership {
 
@@ -30,7 +32,7 @@ public class WebhooksMembership {
 
     private String role;
 
-    private Boolean directMembership;
+    private Optional<Boolean> directMembership = Optional.empty();
 
     @Valid
     private List<String> enterpriseTeamsProvidingIndirectMembership = new ArrayList<>();
@@ -39,7 +41,7 @@ public class WebhooksMembership {
 
     private URI url;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhooksMembership() {
         super();
@@ -53,7 +55,7 @@ public class WebhooksMembership {
         this.role = role;
         this.state = state;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksMembership organizationUrl(URI organizationUrl) {
@@ -98,7 +100,7 @@ public class WebhooksMembership {
     }
 
     public WebhooksMembership directMembership(Boolean directMembership) {
-        this.directMembership = directMembership;
+        this.directMembership = Optional.ofNullable(directMembership);
         return this;
     }
 
@@ -112,11 +114,11 @@ public class WebhooksMembership {
             description = "Whether the user has direct membership in the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("direct_membership")
-    public Boolean getDirectMembership() {
+    public Optional<Boolean> getDirectMembership() {
         return directMembership;
     }
 
-    public void setDirectMembership(Boolean directMembership) {
+    public void setDirectMembership(Optional<Boolean> directMembership) {
         this.directMembership = directMembership;
     }
 
@@ -197,7 +199,7 @@ public class WebhooksMembership {
     }
 
     public WebhooksMembership user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -209,11 +211,11 @@ public class WebhooksMembership {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

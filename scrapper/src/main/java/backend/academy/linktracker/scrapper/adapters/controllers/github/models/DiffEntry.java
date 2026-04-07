@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Diff Entry
@@ -19,11 +20,11 @@ import java.util.Objects;
 @JsonTypeName("diff-entry")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DiffEntry {
 
-    private String sha = null;
+    private JsonNullable<String> sha = JsonNullable.<String>undefined();
 
     private String filename;
 
@@ -86,9 +87,9 @@ public class DiffEntry {
 
     private URI contentsUrl;
 
-    private String patch;
+    private Optional<String> patch = Optional.empty();
 
-    private String previousFilename;
+    private Optional<String> previousFilename = Optional.empty();
 
     public DiffEntry() {
         super();
@@ -107,7 +108,7 @@ public class DiffEntry {
             URI blobUrl,
             URI rawUrl,
             URI contentsUrl) {
-        this.sha = sha;
+        this.sha = JsonNullable.of(sha);
         this.filename = filename;
         this.status = status;
         this.additions = additions;
@@ -119,7 +120,7 @@ public class DiffEntry {
     }
 
     public DiffEntry sha(String sha) {
-        this.sha = sha;
+        this.sha = JsonNullable.of(sha);
         return this;
     }
 
@@ -133,11 +134,11 @@ public class DiffEntry {
             example = "bbcd538c8e72b8c175046e27cc8f907076331401",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public JsonNullable<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(JsonNullable<String> sha) {
         this.sha = sha;
     }
 
@@ -315,7 +316,7 @@ public class DiffEntry {
     }
 
     public DiffEntry patch(String patch) {
-        this.patch = patch;
+        this.patch = Optional.ofNullable(patch);
         return this;
     }
 
@@ -328,16 +329,16 @@ public class DiffEntry {
             example = "@@ -132,7 +132,7 @@ module Test @@ -1000,7 +1000,7 @@ module Test",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("patch")
-    public String getPatch() {
+    public Optional<String> getPatch() {
         return patch;
     }
 
-    public void setPatch(String patch) {
+    public void setPatch(Optional<String> patch) {
         this.patch = patch;
     }
 
     public DiffEntry previousFilename(String previousFilename) {
-        this.previousFilename = previousFilename;
+        this.previousFilename = Optional.ofNullable(previousFilename);
         return this;
     }
 
@@ -347,11 +348,11 @@ public class DiffEntry {
      */
     @Schema(name = "previous_filename", example = "file.txt", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("previous_filename")
-    public String getPreviousFilename() {
+    public Optional<String> getPreviousFilename() {
         return previousFilename;
     }
 
-    public void setPreviousFilename(String previousFilename) {
+    public void setPreviousFilename(Optional<String> previousFilename) {
         this.previousFilename = previousFilename;
     }
 

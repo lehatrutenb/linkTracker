@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingUpdateBudgetOrg200Response
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("billing_update_budget_org_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingUpdateBudgetOrg200Response {
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
-    private BillingUpdateBudgetOrg200ResponseBudget budget;
+    private Optional<BillingUpdateBudgetOrg200ResponseBudget> budget = Optional.empty();
 
     public BillingUpdateBudgetOrg200Response message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -34,16 +33,16 @@ public class BillingUpdateBudgetOrg200Response {
      */
     @Schema(name = "message", example = "Budget successfully updated.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 
     public BillingUpdateBudgetOrg200Response budget(BillingUpdateBudgetOrg200ResponseBudget budget) {
-        this.budget = budget;
+        this.budget = Optional.ofNullable(budget);
         return this;
     }
 
@@ -54,11 +53,11 @@ public class BillingUpdateBudgetOrg200Response {
     @Valid
     @Schema(name = "budget", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget")
-    public BillingUpdateBudgetOrg200ResponseBudget getBudget() {
+    public Optional<BillingUpdateBudgetOrg200ResponseBudget> getBudget() {
         return budget;
     }
 
-    public void setBudget(BillingUpdateBudgetOrg200ResponseBudget budget) {
+    public void setBudget(Optional<BillingUpdateBudgetOrg200ResponseBudget> budget) {
         this.budget = budget;
     }
 

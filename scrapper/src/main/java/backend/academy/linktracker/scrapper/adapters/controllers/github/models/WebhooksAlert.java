@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_alert")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksAlert {
 
@@ -31,22 +33,22 @@ public class WebhooksAlert {
 
     private String createdAt;
 
-    private String dismissReason;
+    private Optional<String> dismissReason = Optional.empty();
 
-    private String dismissedAt;
+    private Optional<String> dismissedAt = Optional.empty();
 
-    private User2 dismisser = null;
+    private JsonNullable<User2> dismisser = JsonNullable.<User2>undefined();
 
     private String externalIdentifier;
 
-    private URI externalReference = null;
+    private JsonNullable<URI> externalReference = JsonNullable.<URI>undefined();
 
-    private String fixReason;
+    private Optional<String> fixReason = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime fixedAt;
+    private Optional<OffsetDateTime> fixedAt = Optional.empty();
 
-    private String fixedIn;
+    private Optional<String> fixedIn = Optional.empty();
 
     private String ghsaId;
 
@@ -118,7 +120,7 @@ public class WebhooksAlert {
         this.affectedRange = affectedRange;
         this.createdAt = createdAt;
         this.externalIdentifier = externalIdentifier;
-        this.externalReference = externalReference;
+        this.externalReference = JsonNullable.of(externalReference);
         this.ghsaId = ghsaId;
         this.id = id;
         this.nodeId = nodeId;
@@ -188,7 +190,7 @@ public class WebhooksAlert {
     }
 
     public WebhooksAlert dismissReason(String dismissReason) {
-        this.dismissReason = dismissReason;
+        this.dismissReason = Optional.ofNullable(dismissReason);
         return this;
     }
 
@@ -198,16 +200,16 @@ public class WebhooksAlert {
      */
     @Schema(name = "dismiss_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismiss_reason")
-    public String getDismissReason() {
+    public Optional<String> getDismissReason() {
         return dismissReason;
     }
 
-    public void setDismissReason(String dismissReason) {
+    public void setDismissReason(Optional<String> dismissReason) {
         this.dismissReason = dismissReason;
     }
 
     public WebhooksAlert dismissedAt(String dismissedAt) {
-        this.dismissedAt = dismissedAt;
+        this.dismissedAt = Optional.ofNullable(dismissedAt);
         return this;
     }
 
@@ -217,16 +219,16 @@ public class WebhooksAlert {
      */
     @Schema(name = "dismissed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_at")
-    public String getDismissedAt() {
+    public Optional<String> getDismissedAt() {
         return dismissedAt;
     }
 
-    public void setDismissedAt(String dismissedAt) {
+    public void setDismissedAt(Optional<String> dismissedAt) {
         this.dismissedAt = dismissedAt;
     }
 
     public WebhooksAlert dismisser(User2 dismisser) {
-        this.dismisser = dismisser;
+        this.dismisser = JsonNullable.of(dismisser);
         return this;
     }
 
@@ -237,11 +239,11 @@ public class WebhooksAlert {
     @Valid
     @Schema(name = "dismisser", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismisser")
-    public User2 getDismisser() {
+    public JsonNullable<User2> getDismisser() {
         return dismisser;
     }
 
-    public void setDismisser(User2 dismisser) {
+    public void setDismisser(JsonNullable<User2> dismisser) {
         this.dismisser = dismisser;
     }
 
@@ -266,7 +268,7 @@ public class WebhooksAlert {
     }
 
     public WebhooksAlert externalReference(URI externalReference) {
-        this.externalReference = externalReference;
+        this.externalReference = JsonNullable.of(externalReference);
         return this;
     }
 
@@ -278,16 +280,16 @@ public class WebhooksAlert {
     @Valid
     @Schema(name = "external_reference", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("external_reference")
-    public URI getExternalReference() {
+    public JsonNullable<URI> getExternalReference() {
         return externalReference;
     }
 
-    public void setExternalReference(URI externalReference) {
+    public void setExternalReference(JsonNullable<URI> externalReference) {
         this.externalReference = externalReference;
     }
 
     public WebhooksAlert fixReason(String fixReason) {
-        this.fixReason = fixReason;
+        this.fixReason = Optional.ofNullable(fixReason);
         return this;
     }
 
@@ -297,16 +299,16 @@ public class WebhooksAlert {
      */
     @Schema(name = "fix_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fix_reason")
-    public String getFixReason() {
+    public Optional<String> getFixReason() {
         return fixReason;
     }
 
-    public void setFixReason(String fixReason) {
+    public void setFixReason(Optional<String> fixReason) {
         this.fixReason = fixReason;
     }
 
     public WebhooksAlert fixedAt(OffsetDateTime fixedAt) {
-        this.fixedAt = fixedAt;
+        this.fixedAt = Optional.ofNullable(fixedAt);
         return this;
     }
 
@@ -317,16 +319,16 @@ public class WebhooksAlert {
     @Valid
     @Schema(name = "fixed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fixed_at")
-    public OffsetDateTime getFixedAt() {
+    public Optional<OffsetDateTime> getFixedAt() {
         return fixedAt;
     }
 
-    public void setFixedAt(OffsetDateTime fixedAt) {
+    public void setFixedAt(Optional<OffsetDateTime> fixedAt) {
         this.fixedAt = fixedAt;
     }
 
     public WebhooksAlert fixedIn(String fixedIn) {
-        this.fixedIn = fixedIn;
+        this.fixedIn = Optional.ofNullable(fixedIn);
         return this;
     }
 
@@ -336,11 +338,11 @@ public class WebhooksAlert {
      */
     @Schema(name = "fixed_in", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fixed_in")
-    public String getFixedIn() {
+    public Optional<String> getFixedIn() {
         return fixedIn;
     }
 
-    public void setFixedIn(String fixedIn) {
+    public void setFixedIn(Optional<String> fixedIn) {
         this.fixedIn = fixedIn;
     }
 
@@ -478,7 +480,7 @@ public class WebhooksAlert {
                 && Objects.equals(this.createdAt, webhooksAlert.createdAt)
                 && Objects.equals(this.dismissReason, webhooksAlert.dismissReason)
                 && Objects.equals(this.dismissedAt, webhooksAlert.dismissedAt)
-                && Objects.equals(this.dismisser, webhooksAlert.dismisser)
+                && equalsNullable(this.dismisser, webhooksAlert.dismisser)
                 && Objects.equals(this.externalIdentifier, webhooksAlert.externalIdentifier)
                 && Objects.equals(this.externalReference, webhooksAlert.externalReference)
                 && Objects.equals(this.fixReason, webhooksAlert.fixReason)
@@ -492,6 +494,11 @@ public class WebhooksAlert {
                 && Objects.equals(this.state, webhooksAlert.state);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -500,7 +507,7 @@ public class WebhooksAlert {
                 createdAt,
                 dismissReason,
                 dismissedAt,
-                dismisser,
+                hashCodeNullable(dismisser),
                 externalIdentifier,
                 externalReference,
                 fixReason,
@@ -512,6 +519,13 @@ public class WebhooksAlert {
                 number,
                 severity,
                 state);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

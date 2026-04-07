@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The pull request associated with the rule evaluation.
@@ -20,21 +19,21 @@ import java.util.Objects;
 @JsonTypeName("rule_suite_pull_request_pull_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuitePullRequestPullRequest {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private Long number;
+    private Optional<Long> number = Optional.empty();
 
-    private RuleSuitePullRequestPullRequestUser user;
+    private Optional<RuleSuitePullRequestPullRequestUser> user = Optional.empty();
 
     @Valid
     private List<@Valid RuleSuitePullRequestPullRequestReviewsInner> reviews = new ArrayList<>();
 
     public RuleSuitePullRequestPullRequest id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -47,16 +46,16 @@ public class RuleSuitePullRequestPullRequest {
             description = "The unique identifier of the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuitePullRequestPullRequest number(Long number) {
-        this.number = number;
+        this.number = Optional.ofNullable(number);
         return this;
     }
 
@@ -69,16 +68,16 @@ public class RuleSuitePullRequestPullRequest {
             description = "The number of the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("number")
-    public Long getNumber() {
+    public Optional<Long> getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(Optional<Long> number) {
         this.number = number;
     }
 
     public RuleSuitePullRequestPullRequest user(RuleSuitePullRequestPullRequestUser user) {
-        this.user = user;
+        this.user = Optional.ofNullable(user);
         return this;
     }
 
@@ -89,11 +88,11 @@ public class RuleSuitePullRequestPullRequest {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public RuleSuitePullRequestPullRequestUser getUser() {
+    public Optional<RuleSuitePullRequestPullRequestUser> getUser() {
         return user;
     }
 
-    public void setUser(RuleSuitePullRequestPullRequestUser user) {
+    public void setUser(Optional<RuleSuitePullRequestPullRequestUser> user) {
         this.user = user;
     }
 

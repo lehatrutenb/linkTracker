@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Custom property set payload
@@ -20,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("custom-property-set-payload")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CustomPropertySetPayload {
 
@@ -67,14 +65,15 @@ public class CustomPropertySetPayload {
 
     private ValueTypeEnum valueType;
 
-    private Boolean required;
+    private Optional<Boolean> required = Optional.empty();
 
-    private CustomPropertyDefaultValue defaultValue = null;
+    private JsonNullable<CustomPropertyDefaultValue> defaultValue =
+            JsonNullable.<CustomPropertyDefaultValue>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     @Valid
-    private List<String> allowedValues;
+    private JsonNullable<List<String>> allowedValues = JsonNullable.<List<String>>undefined();
 
     /**
      * Who can edit the values of the property
@@ -111,9 +110,9 @@ public class CustomPropertySetPayload {
         }
     }
 
-    private ValuesEditableByEnum valuesEditableBy = null;
+    private JsonNullable<ValuesEditableByEnum> valuesEditableBy = JsonNullable.<ValuesEditableByEnum>undefined();
 
-    private Boolean requireExplicitValues;
+    private Optional<Boolean> requireExplicitValues = Optional.empty();
 
     public CustomPropertySetPayload() {
         super();
@@ -151,7 +150,7 @@ public class CustomPropertySetPayload {
     }
 
     public CustomPropertySetPayload required(Boolean required) {
-        this.required = required;
+        this.required = Optional.ofNullable(required);
         return this;
     }
 
@@ -164,16 +163,16 @@ public class CustomPropertySetPayload {
             description = "Whether the property is required.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required")
-    public Boolean getRequired() {
+    public Optional<Boolean> getRequired() {
         return required;
     }
 
-    public void setRequired(Boolean required) {
+    public void setRequired(Optional<Boolean> required) {
         this.required = required;
     }
 
     public CustomPropertySetPayload defaultValue(CustomPropertyDefaultValue defaultValue) {
-        this.defaultValue = defaultValue;
+        this.defaultValue = JsonNullable.of(defaultValue);
         return this;
     }
 
@@ -184,16 +183,16 @@ public class CustomPropertySetPayload {
     @Valid
     @Schema(name = "default_value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_value")
-    public CustomPropertyDefaultValue getDefaultValue() {
+    public JsonNullable<CustomPropertyDefaultValue> getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(CustomPropertyDefaultValue defaultValue) {
+    public void setDefaultValue(JsonNullable<CustomPropertyDefaultValue> defaultValue) {
         this.defaultValue = defaultValue;
     }
 
     public CustomPropertySetPayload description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -206,24 +205,24 @@ public class CustomPropertySetPayload {
             description = "Short description of the property",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public CustomPropertySetPayload allowedValues(List<String> allowedValues) {
-        this.allowedValues = allowedValues;
+        this.allowedValues = JsonNullable.of(allowedValues);
         return this;
     }
 
     public CustomPropertySetPayload addAllowedValuesItem(String allowedValuesItem) {
-        if (this.allowedValues == null) {
-            this.allowedValues = new ArrayList<>();
+        if (this.allowedValues == null || !this.allowedValues.isPresent()) {
+            this.allowedValues = JsonNullable.of(new ArrayList<>());
         }
-        this.allowedValues.add(allowedValuesItem);
+        this.allowedValues.get().add(allowedValuesItem);
         return this;
     }
 
@@ -237,16 +236,16 @@ public class CustomPropertySetPayload {
                     "An ordered list of the allowed values of the property. The property can have up to 200 allowed values.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allowed_values")
-    public List<String> getAllowedValues() {
+    public JsonNullable<List<String>> getAllowedValues() {
         return allowedValues;
     }
 
-    public void setAllowedValues(List<String> allowedValues) {
+    public void setAllowedValues(JsonNullable<List<String>> allowedValues) {
         this.allowedValues = allowedValues;
     }
 
     public CustomPropertySetPayload valuesEditableBy(ValuesEditableByEnum valuesEditableBy) {
-        this.valuesEditableBy = valuesEditableBy;
+        this.valuesEditableBy = JsonNullable.of(valuesEditableBy);
         return this;
     }
 
@@ -260,16 +259,16 @@ public class CustomPropertySetPayload {
             description = "Who can edit the values of the property",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("values_editable_by")
-    public ValuesEditableByEnum getValuesEditableBy() {
+    public JsonNullable<ValuesEditableByEnum> getValuesEditableBy() {
         return valuesEditableBy;
     }
 
-    public void setValuesEditableBy(ValuesEditableByEnum valuesEditableBy) {
+    public void setValuesEditableBy(JsonNullable<ValuesEditableByEnum> valuesEditableBy) {
         this.valuesEditableBy = valuesEditableBy;
     }
 
     public CustomPropertySetPayload requireExplicitValues(Boolean requireExplicitValues) {
-        this.requireExplicitValues = requireExplicitValues;
+        this.requireExplicitValues = Optional.ofNullable(requireExplicitValues);
         return this;
     }
 
@@ -282,11 +281,11 @@ public class CustomPropertySetPayload {
             description = "Whether setting properties values is mandatory",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_explicit_values")
-    public Boolean getRequireExplicitValues() {
+    public Optional<Boolean> getRequireExplicitValues() {
         return requireExplicitValues;
     }
 
-    public void setRequireExplicitValues(Boolean requireExplicitValues) {
+    public void setRequireExplicitValues(Optional<Boolean> requireExplicitValues) {
         this.requireExplicitValues = requireExplicitValues;
     }
 
@@ -301,17 +300,35 @@ public class CustomPropertySetPayload {
         CustomPropertySetPayload customPropertySetPayload = (CustomPropertySetPayload) o;
         return Objects.equals(this.valueType, customPropertySetPayload.valueType)
                 && Objects.equals(this.required, customPropertySetPayload.required)
-                && Objects.equals(this.defaultValue, customPropertySetPayload.defaultValue)
-                && Objects.equals(this.description, customPropertySetPayload.description)
-                && Objects.equals(this.allowedValues, customPropertySetPayload.allowedValues)
-                && Objects.equals(this.valuesEditableBy, customPropertySetPayload.valuesEditableBy)
+                && equalsNullable(this.defaultValue, customPropertySetPayload.defaultValue)
+                && equalsNullable(this.description, customPropertySetPayload.description)
+                && equalsNullable(this.allowedValues, customPropertySetPayload.allowedValues)
+                && equalsNullable(this.valuesEditableBy, customPropertySetPayload.valuesEditableBy)
                 && Objects.equals(this.requireExplicitValues, customPropertySetPayload.requireExplicitValues);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                valueType, required, defaultValue, description, allowedValues, valuesEditableBy, requireExplicitValues);
+                valueType,
+                required,
+                hashCodeNullable(defaultValue),
+                hashCodeNullable(description),
+                hashCodeNullable(allowedValues),
+                hashCodeNullable(valuesEditableBy),
+                requireExplicitValues);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

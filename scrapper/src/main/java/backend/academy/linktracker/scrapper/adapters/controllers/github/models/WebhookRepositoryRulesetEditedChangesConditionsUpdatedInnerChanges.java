@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges
@@ -15,21 +14,23 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_ruleset_edited_changes_conditions_updated_inner_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges {
 
-    private WebhookOrganizationRenamedChangesLogin conditionType;
+    private Optional<WebhookOrganizationRenamedChangesLogin> conditionType = Optional.empty();
 
-    private WebhookOrganizationRenamedChangesLogin target;
+    private Optional<WebhookOrganizationRenamedChangesLogin> target = Optional.empty();
 
-    private WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude include;
+    private Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> include =
+            Optional.empty();
 
-    private WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude exclude;
+    private Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> exclude =
+            Optional.empty();
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges conditionType(
             WebhookOrganizationRenamedChangesLogin conditionType) {
-        this.conditionType = conditionType;
+        this.conditionType = Optional.ofNullable(conditionType);
         return this;
     }
 
@@ -40,17 +41,17 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges 
     @Valid
     @Schema(name = "condition_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("condition_type")
-    public WebhookOrganizationRenamedChangesLogin getConditionType() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getConditionType() {
         return conditionType;
     }
 
-    public void setConditionType(WebhookOrganizationRenamedChangesLogin conditionType) {
+    public void setConditionType(Optional<WebhookOrganizationRenamedChangesLogin> conditionType) {
         this.conditionType = conditionType;
     }
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges target(
             WebhookOrganizationRenamedChangesLogin target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -61,17 +62,17 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges 
     @Valid
     @Schema(name = "target", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public WebhookOrganizationRenamedChangesLogin getTarget() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getTarget() {
         return target;
     }
 
-    public void setTarget(WebhookOrganizationRenamedChangesLogin target) {
+    public void setTarget(Optional<WebhookOrganizationRenamedChangesLogin> target) {
         this.target = target;
     }
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges include(
             WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude include) {
-        this.include = include;
+        this.include = Optional.ofNullable(include);
         return this;
     }
 
@@ -82,17 +83,18 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges 
     @Valid
     @Schema(name = "include", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("include")
-    public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude getInclude() {
+    public Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> getInclude() {
         return include;
     }
 
-    public void setInclude(WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude include) {
+    public void setInclude(
+            Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> include) {
         this.include = include;
     }
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges exclude(
             WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude exclude) {
-        this.exclude = exclude;
+        this.exclude = Optional.ofNullable(exclude);
         return this;
     }
 
@@ -103,11 +105,12 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges 
     @Valid
     @Schema(name = "exclude", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exclude")
-    public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude getExclude() {
+    public Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> getExclude() {
         return exclude;
     }
 
-    public void setExclude(WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude exclude) {
+    public void setExclude(
+            Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChangesInclude> exclude) {
         this.exclude = exclude;
     }
 

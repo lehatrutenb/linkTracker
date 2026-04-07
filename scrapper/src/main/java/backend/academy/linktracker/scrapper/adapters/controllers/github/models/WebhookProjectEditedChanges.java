@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the project if the action was &#x60;edited&#x60;.
@@ -16,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_project_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectEditedChanges {
 
-    private WebhookProjectEditedChangesBody body;
+    private Optional<WebhookProjectEditedChangesBody> body = Optional.empty();
 
-    private WebhookProjectEditedChangesName name;
+    private Optional<WebhookProjectEditedChangesName> name = Optional.empty();
 
     public WebhookProjectEditedChanges body(WebhookProjectEditedChangesBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class WebhookProjectEditedChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookProjectEditedChangesBody getBody() {
+    public Optional<WebhookProjectEditedChangesBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhookProjectEditedChangesBody body) {
+    public void setBody(Optional<WebhookProjectEditedChangesBody> body) {
         this.body = body;
     }
 
     public WebhookProjectEditedChanges name(WebhookProjectEditedChangesName name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -56,11 +55,11 @@ public class WebhookProjectEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookProjectEditedChangesName getName() {
+    public Optional<WebhookProjectEditedChangesName> getName() {
         return name;
     }
 
-    public void setName(WebhookProjectEditedChangesName name) {
+    public void setName(Optional<WebhookProjectEditedChangesName> name) {
         this.name = name;
     }
 

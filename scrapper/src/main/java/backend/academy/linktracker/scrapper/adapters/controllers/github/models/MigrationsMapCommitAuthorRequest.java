@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MigrationsMapCommitAuthorRequest
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("migrations_map_commit_author_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MigrationsMapCommitAuthorRequest {
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     public MigrationsMapCommitAuthorRequest email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class MigrationsMapCommitAuthorRequest {
      */
     @Schema(name = "email", description = "The new Git author email.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public MigrationsMapCommitAuthorRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class MigrationsMapCommitAuthorRequest {
      */
     @Schema(name = "name", description = "The new Git author name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 

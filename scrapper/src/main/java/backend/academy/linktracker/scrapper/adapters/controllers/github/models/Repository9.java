@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,21 +21,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Repository_9")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Repository9 {
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean allowForking;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowUpdateBranch;
+    private Optional<Boolean> allowUpdateBranch = Optional.empty();
 
     private String archiveUrl;
 
@@ -67,13 +65,13 @@ public class Repository9 {
 
     private String defaultBranch;
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
     private URI deploymentsUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private Boolean disabled;
+    private Optional<Boolean> disabled = Optional.empty();
 
     private URI downloadsUrl;
 
@@ -107,7 +105,7 @@ public class Repository9 {
 
     private Boolean hasWiki = true;
 
-    private String homepage = null;
+    private JsonNullable<String> homepage = JsonNullable.<String>undefined();
 
     private URI hooksUrl;
 
@@ -115,7 +113,7 @@ public class Repository9 {
 
     private Long id;
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
     private String issueCommentUrl;
 
@@ -127,19 +125,19 @@ public class Repository9 {
 
     private String labelsUrl;
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
     private URI languagesUrl;
 
-    private License license = null;
+    private JsonNullable<License> license = JsonNullable.<License>undefined();
 
-    private String masterBranch;
+    private Optional<String> masterBranch = Optional.empty();
 
     private URI mergesUrl;
 
     private String milestonesUrl;
 
-    private URI mirrorUrl = null;
+    private JsonNullable<URI> mirrorUrl = JsonNullable.<URI>undefined();
 
     private String name;
 
@@ -151,29 +149,29 @@ public class Repository9 {
 
     private Long openIssuesCount;
 
-    private String organization;
+    private Optional<String> organization = Optional.empty();
 
-    private User owner = null;
+    private JsonNullable<User> owner = JsonNullable.<User>undefined();
 
-    private RepositoryPermissions permissions;
+    private Optional<RepositoryPermissions> permissions = Optional.empty();
 
     private Boolean _private;
 
-    private Boolean _public;
+    private Optional<Boolean> _public = Optional.empty();
 
     private String pullsUrl;
 
-    private RepositoryPushedAt pushedAt = null;
+    private JsonNullable<RepositoryPushedAt> pushedAt = JsonNullable.<RepositoryPushedAt>undefined();
 
     private String releasesUrl;
 
-    private String roleName = null;
+    private JsonNullable<String> roleName = JsonNullable.<String>undefined();
 
     private Long size;
 
     private String sshUrl;
 
-    private Long stargazers;
+    private Optional<Long> stargazers = Optional.empty();
 
     private Long stargazersCount;
 
@@ -341,7 +339,7 @@ public class Repository9 {
         this.createdAt = createdAt;
         this.defaultBranch = defaultBranch;
         this.deploymentsUrl = deploymentsUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.downloadsUrl = downloadsUrl;
         this.eventsUrl = eventsUrl;
         this.fork = fork;
@@ -358,7 +356,7 @@ public class Repository9 {
         this.hasPages = hasPages;
         this.hasProjects = hasProjects;
         this.hasWiki = hasWiki;
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         this.hooksUrl = hooksUrl;
         this.htmlUrl = htmlUrl;
         this.id = id;
@@ -367,21 +365,21 @@ public class Repository9 {
         this.issuesUrl = issuesUrl;
         this.keysUrl = keysUrl;
         this.labelsUrl = labelsUrl;
-        this.language = language;
+        this.language = JsonNullable.of(language);
         this.languagesUrl = languagesUrl;
-        this.license = license;
+        this.license = JsonNullable.of(license);
         this.mergesUrl = mergesUrl;
         this.milestonesUrl = milestonesUrl;
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         this.name = name;
         this.nodeId = nodeId;
         this.notificationsUrl = notificationsUrl;
         this.openIssues = openIssues;
         this.openIssuesCount = openIssuesCount;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this._private = _private;
         this.pullsUrl = pullsUrl;
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         this.releasesUrl = releasesUrl;
         this.size = size;
         this.sshUrl = sshUrl;
@@ -403,7 +401,7 @@ public class Repository9 {
     }
 
     public Repository9 allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -416,16 +414,16 @@ public class Repository9 {
             description = "Whether to allow auto-merge for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public Repository9 allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -438,16 +436,16 @@ public class Repository9 {
             description = "Whether to allow private forks",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public Repository9 allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -460,16 +458,16 @@ public class Repository9 {
             description = "Whether to allow merge commits for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public Repository9 allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -482,16 +480,16 @@ public class Repository9 {
             description = "Whether to allow rebase merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public Repository9 allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -504,16 +502,16 @@ public class Repository9 {
             description = "Whether to allow squash merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public Repository9 allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -523,11 +521,11 @@ public class Repository9 {
      */
     @Schema(name = "allow_update_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
@@ -821,7 +819,7 @@ public class Repository9 {
     }
 
     public Repository9 deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -834,11 +832,11 @@ public class Repository9 {
             description = "Whether to delete head branches when pull requests are merged",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
@@ -864,7 +862,7 @@ public class Repository9 {
     }
 
     public Repository9 description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -875,16 +873,16 @@ public class Repository9 {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public Repository9 disabled(Boolean disabled) {
-        this.disabled = disabled;
+        this.disabled = Optional.ofNullable(disabled);
         return this;
     }
 
@@ -897,11 +895,11 @@ public class Repository9 {
             description = "Returns whether or not this repository is disabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disabled")
-    public Boolean getDisabled() {
+    public Optional<Boolean> getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Optional<Boolean> disabled) {
         this.disabled = disabled;
     }
 
@@ -1242,7 +1240,7 @@ public class Repository9 {
     }
 
     public Repository9 homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1253,11 +1251,11 @@ public class Repository9 {
     @NotNull
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public JsonNullable<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(JsonNullable<String> homepage) {
         this.homepage = homepage;
     }
 
@@ -1327,7 +1325,7 @@ public class Repository9 {
     }
 
     public Repository9 isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1337,11 +1335,11 @@ public class Repository9 {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -1446,7 +1444,7 @@ public class Repository9 {
     }
 
     public Repository9 language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1457,11 +1455,11 @@ public class Repository9 {
     @NotNull
     @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
@@ -1487,7 +1485,7 @@ public class Repository9 {
     }
 
     public Repository9 license(License license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -1499,16 +1497,16 @@ public class Repository9 {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public License getLicense() {
+    public JsonNullable<License> getLicense() {
         return license;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(JsonNullable<License> license) {
         this.license = license;
     }
 
     public Repository9 masterBranch(String masterBranch) {
-        this.masterBranch = masterBranch;
+        this.masterBranch = Optional.ofNullable(masterBranch);
         return this;
     }
 
@@ -1518,11 +1516,11 @@ public class Repository9 {
      */
     @Schema(name = "master_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("master_branch")
-    public String getMasterBranch() {
+    public Optional<String> getMasterBranch() {
         return masterBranch;
     }
 
-    public void setMasterBranch(String masterBranch) {
+    public void setMasterBranch(Optional<String> masterBranch) {
         this.masterBranch = masterBranch;
     }
 
@@ -1568,7 +1566,7 @@ public class Repository9 {
     }
 
     public Repository9 mirrorUrl(URI mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1580,11 +1578,11 @@ public class Repository9 {
     @Valid
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mirror_url")
-    public URI getMirrorUrl() {
+    public JsonNullable<URI> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(URI mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<URI> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1689,7 +1687,7 @@ public class Repository9 {
     }
 
     public Repository9 organization(String organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -1699,16 +1697,16 @@ public class Repository9 {
      */
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public String getOrganization() {
+    public Optional<String> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(String organization) {
+    public void setOrganization(Optional<String> organization) {
         this.organization = organization;
     }
 
     public Repository9 owner(User owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -1720,16 +1718,16 @@ public class Repository9 {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public User getOwner() {
+    public JsonNullable<User> getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(JsonNullable<User> owner) {
         this.owner = owner;
     }
 
     public Repository9 permissions(RepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -1740,11 +1738,11 @@ public class Repository9 {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public RepositoryPermissions getPermissions() {
+    public Optional<RepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(RepositoryPermissions permissions) {
+    public void setPermissions(Optional<RepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -1772,7 +1770,7 @@ public class Repository9 {
     }
 
     public Repository9 _public(Boolean _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -1782,11 +1780,11 @@ public class Repository9 {
      */
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public Boolean getPublic() {
+    public Optional<Boolean> getPublic() {
         return _public;
     }
 
-    public void setPublic(Boolean _public) {
+    public void setPublic(Optional<Boolean> _public) {
         this._public = _public;
     }
 
@@ -1811,7 +1809,7 @@ public class Repository9 {
     }
 
     public Repository9 pushedAt(RepositoryPushedAt pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         return this;
     }
 
@@ -1823,11 +1821,11 @@ public class Repository9 {
     @Valid
     @Schema(name = "pushed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pushed_at")
-    public RepositoryPushedAt getPushedAt() {
+    public JsonNullable<RepositoryPushedAt> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(RepositoryPushedAt pushedAt) {
+    public void setPushedAt(JsonNullable<RepositoryPushedAt> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
@@ -1852,7 +1850,7 @@ public class Repository9 {
     }
 
     public Repository9 roleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = JsonNullable.of(roleName);
         return this;
     }
 
@@ -1862,11 +1860,11 @@ public class Repository9 {
      */
     @Schema(name = "role_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role_name")
-    public String getRoleName() {
+    public JsonNullable<String> getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(JsonNullable<String> roleName) {
         this.roleName = roleName;
     }
 
@@ -1911,7 +1909,7 @@ public class Repository9 {
     }
 
     public Repository9 stargazers(Long stargazers) {
-        this.stargazers = stargazers;
+        this.stargazers = Optional.ofNullable(stargazers);
         return this;
     }
 
@@ -1921,11 +1919,11 @@ public class Repository9 {
      */
     @Schema(name = "stargazers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers")
-    public Long getStargazers() {
+    public Optional<Long> getStargazers() {
         return stargazers;
     }
 
-    public void setStargazers(Long stargazers) {
+    public void setStargazers(Optional<Long> stargazers) {
         this.stargazers = stargazers;
     }
 
@@ -2324,7 +2322,7 @@ public class Repository9 {
                 && Objects.equals(this.pullsUrl, repository9.pullsUrl)
                 && Objects.equals(this.pushedAt, repository9.pushedAt)
                 && Objects.equals(this.releasesUrl, repository9.releasesUrl)
-                && Objects.equals(this.roleName, repository9.roleName)
+                && equalsNullable(this.roleName, repository9.roleName)
                 && Objects.equals(this.size, repository9.size)
                 && Objects.equals(this.sshUrl, repository9.sshUrl)
                 && Objects.equals(this.stargazers, repository9.stargazers)
@@ -2343,6 +2341,11 @@ public class Repository9 {
                 && Objects.equals(this.visibility, repository9.visibility)
                 && Objects.equals(this.watchers, repository9.watchers)
                 && Objects.equals(this.watchersCount, repository9.watchersCount);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -2418,7 +2421,7 @@ public class Repository9 {
                 pullsUrl,
                 pushedAt,
                 releasesUrl,
-                roleName,
+                hashCodeNullable(roleName),
                 size,
                 sshUrl,
                 stargazers,
@@ -2437,6 +2440,13 @@ public class Repository9 {
                 visibility,
                 watchers,
                 watchersCount);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

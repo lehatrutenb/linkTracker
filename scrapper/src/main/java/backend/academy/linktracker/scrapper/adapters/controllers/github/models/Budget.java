@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Budget
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("budget")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Budget {
 
@@ -66,7 +66,7 @@ public class Budget {
 
     private String budgetScope;
 
-    private String budgetEntityName;
+    private Optional<String> budgetEntityName = Optional.empty();
 
     private String budgetProductSku;
 
@@ -217,7 +217,7 @@ public class Budget {
     }
 
     public Budget budgetEntityName(String budgetEntityName) {
-        this.budgetEntityName = budgetEntityName;
+        this.budgetEntityName = Optional.ofNullable(budgetEntityName);
         return this;
     }
 
@@ -231,11 +231,11 @@ public class Budget {
             description = "The name of the entity for the budget (enterprise does not require a name).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("budget_entity_name")
-    public String getBudgetEntityName() {
+    public Optional<String> getBudgetEntityName() {
         return budgetEntityName;
     }
 
-    public void setBudgetEntityName(String budgetEntityName) {
+    public void setBudgetEntityName(Optional<String> budgetEntityName) {
         this.budgetEntityName = budgetEntityName;
     }
 

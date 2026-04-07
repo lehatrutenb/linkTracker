@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposDeleteFileRequest
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("repos_delete_file_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposDeleteFileRequest {
 
@@ -23,11 +23,11 @@ public class ReposDeleteFileRequest {
 
     private String sha;
 
-    private String branch;
+    private Optional<String> branch = Optional.empty();
 
-    private ReposDeleteFileRequestCommitter committer;
+    private Optional<ReposDeleteFileRequestCommitter> committer = Optional.empty();
 
-    private ReposDeleteFileRequestAuthor author;
+    private Optional<ReposDeleteFileRequestAuthor> author = Optional.empty();
 
     public ReposDeleteFileRequest() {
         super();
@@ -85,7 +85,7 @@ public class ReposDeleteFileRequest {
     }
 
     public ReposDeleteFileRequest branch(String branch) {
-        this.branch = branch;
+        this.branch = Optional.ofNullable(branch);
         return this;
     }
 
@@ -98,16 +98,16 @@ public class ReposDeleteFileRequest {
             description = "The branch name. Default: the repository’s default branch",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branch")
-    public String getBranch() {
+    public Optional<String> getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(Optional<String> branch) {
         this.branch = branch;
     }
 
     public ReposDeleteFileRequest committer(ReposDeleteFileRequestCommitter committer) {
-        this.committer = committer;
+        this.committer = Optional.ofNullable(committer);
         return this;
     }
 
@@ -118,16 +118,16 @@ public class ReposDeleteFileRequest {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("committer")
-    public ReposDeleteFileRequestCommitter getCommitter() {
+    public Optional<ReposDeleteFileRequestCommitter> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(ReposDeleteFileRequestCommitter committer) {
+    public void setCommitter(Optional<ReposDeleteFileRequestCommitter> committer) {
         this.committer = committer;
     }
 
     public ReposDeleteFileRequest author(ReposDeleteFileRequestAuthor author) {
-        this.author = author;
+        this.author = Optional.ofNullable(author);
         return this;
     }
 
@@ -138,11 +138,11 @@ public class ReposDeleteFileRequest {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public ReposDeleteFileRequestAuthor getAuthor() {
+    public Optional<ReposDeleteFileRequestAuthor> getAuthor() {
         return author;
     }
 
-    public void setAuthor(ReposDeleteFileRequestAuthor author) {
+    public void setAuthor(Optional<ReposDeleteFileRequestAuthor> author) {
         this.author = author;
     }
 

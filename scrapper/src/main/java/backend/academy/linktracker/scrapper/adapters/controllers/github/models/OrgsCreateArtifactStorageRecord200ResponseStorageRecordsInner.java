@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner
@@ -14,30 +15,30 @@ import java.util.Objects;
 @JsonTypeName("orgs_create_artifact_storage_record_200_response_storage_records_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String digest;
+    private Optional<String> digest = Optional.empty();
 
-    private String artifactUrl = null;
+    private JsonNullable<String> artifactUrl = JsonNullable.<String>undefined();
 
-    private String registryUrl;
+    private Optional<String> registryUrl = Optional.empty();
 
-    private String repository = null;
+    private JsonNullable<String> repository = JsonNullable.<String>undefined();
 
-    private String status;
+    private Optional<String> status = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -47,16 +48,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -66,16 +67,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner digest(String digest) {
-        this.digest = digest;
+        this.digest = Optional.ofNullable(digest);
         return this;
     }
 
@@ -85,16 +86,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "digest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("digest")
-    public String getDigest() {
+    public Optional<String> getDigest() {
         return digest;
     }
 
-    public void setDigest(String digest) {
+    public void setDigest(Optional<String> digest) {
         this.digest = digest;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner artifactUrl(String artifactUrl) {
-        this.artifactUrl = artifactUrl;
+        this.artifactUrl = JsonNullable.of(artifactUrl);
         return this;
     }
 
@@ -104,16 +105,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "artifact_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_url")
-    public String getArtifactUrl() {
+    public JsonNullable<String> getArtifactUrl() {
         return artifactUrl;
     }
 
-    public void setArtifactUrl(String artifactUrl) {
+    public void setArtifactUrl(JsonNullable<String> artifactUrl) {
         this.artifactUrl = artifactUrl;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner registryUrl(String registryUrl) {
-        this.registryUrl = registryUrl;
+        this.registryUrl = Optional.ofNullable(registryUrl);
         return this;
     }
 
@@ -123,16 +124,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "registry_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("registry_url")
-    public String getRegistryUrl() {
+    public Optional<String> getRegistryUrl() {
         return registryUrl;
     }
 
-    public void setRegistryUrl(String registryUrl) {
+    public void setRegistryUrl(Optional<String> registryUrl) {
         this.registryUrl = registryUrl;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner repository(String repository) {
-        this.repository = repository;
+        this.repository = JsonNullable.of(repository);
         return this;
     }
 
@@ -142,16 +143,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public String getRepository() {
+    public JsonNullable<String> getRepository() {
         return repository;
     }
 
-    public void setRepository(String repository) {
+    public void setRepository(JsonNullable<String> repository) {
         this.repository = repository;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner status(String status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -161,16 +162,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public Optional<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Optional<String> status) {
         this.status = status;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -180,16 +181,16 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -199,11 +200,11 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -221,11 +222,11 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
         return Objects.equals(this.id, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.id)
                 && Objects.equals(this.name, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.name)
                 && Objects.equals(this.digest, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.digest)
-                && Objects.equals(
+                && equalsNullable(
                         this.artifactUrl, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.artifactUrl)
                 && Objects.equals(
                         this.registryUrl, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.registryUrl)
-                && Objects.equals(
+                && equalsNullable(
                         this.repository, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.repository)
                 && Objects.equals(this.status, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.status)
                 && Objects.equals(
@@ -234,9 +235,30 @@ public class OrgsCreateArtifactStorageRecord200ResponseStorageRecordsInner {
                         this.updatedAt, orgsCreateArtifactStorageRecord200ResponseStorageRecordsInner.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, digest, artifactUrl, registryUrl, repository, status, createdAt, updatedAt);
+        return Objects.hash(
+                id,
+                name,
+                digest,
+                hashCodeNullable(artifactUrl),
+                registryUrl,
+                hashCodeNullable(repository),
+                status,
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

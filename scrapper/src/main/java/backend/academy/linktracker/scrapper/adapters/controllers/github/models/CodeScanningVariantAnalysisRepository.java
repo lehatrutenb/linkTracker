@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-variant-analysis-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningVariantAnalysisRepository {
 
@@ -33,7 +33,7 @@ public class CodeScanningVariantAnalysisRepository {
     private Long stargazersCount;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public CodeScanningVariantAnalysisRepository() {
         super();
@@ -49,7 +49,7 @@ public class CodeScanningVariantAnalysisRepository {
         this.fullName = fullName;
         this._private = _private;
         this.stargazersCount = stargazersCount;
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public CodeScanningVariantAnalysisRepository id(Long id) {
@@ -168,7 +168,7 @@ public class CodeScanningVariantAnalysisRepository {
     }
 
     public CodeScanningVariantAnalysisRepository updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -180,11 +180,11 @@ public class CodeScanningVariantAnalysisRepository {
     @Valid
     @Schema(name = "updated_at", example = "2011-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 

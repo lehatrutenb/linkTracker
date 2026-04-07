@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * License Content
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("license-content")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LicenseContent {
 
@@ -31,11 +31,11 @@ public class LicenseContent {
 
     private URI url;
 
-    private URI htmlUrl = null;
+    private JsonNullable<URI> htmlUrl = JsonNullable.<URI>undefined();
 
-    private URI gitUrl = null;
+    private JsonNullable<URI> gitUrl = JsonNullable.<URI>undefined();
 
-    private URI downloadUrl = null;
+    private JsonNullable<URI> downloadUrl = JsonNullable.<URI>undefined();
 
     private String type;
 
@@ -45,7 +45,7 @@ public class LicenseContent {
 
     private ContentTreeEntriesInnerLinks links;
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
     public LicenseContent() {
         super();
@@ -73,14 +73,14 @@ public class LicenseContent {
         this.sha = sha;
         this.size = size;
         this.url = url;
-        this.htmlUrl = htmlUrl;
-        this.gitUrl = gitUrl;
-        this.downloadUrl = downloadUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
+        this.gitUrl = JsonNullable.of(gitUrl);
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         this.type = type;
         this.content = content;
         this.encoding = encoding;
         this.links = links;
-        this.license = license;
+        this.license = JsonNullable.of(license);
     }
 
     public LicenseContent name(String name) {
@@ -185,7 +185,7 @@ public class LicenseContent {
     }
 
     public LicenseContent htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -197,16 +197,16 @@ public class LicenseContent {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public JsonNullable<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(JsonNullable<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public LicenseContent gitUrl(URI gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = JsonNullable.of(gitUrl);
         return this;
     }
 
@@ -218,16 +218,16 @@ public class LicenseContent {
     @Valid
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("git_url")
-    public URI getGitUrl() {
+    public JsonNullable<URI> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(URI gitUrl) {
+    public void setGitUrl(JsonNullable<URI> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public LicenseContent downloadUrl(URI downloadUrl) {
-        this.downloadUrl = downloadUrl;
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         return this;
     }
 
@@ -239,11 +239,11 @@ public class LicenseContent {
     @Valid
     @Schema(name = "download_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("download_url")
-    public URI getDownloadUrl() {
+    public JsonNullable<URI> getDownloadUrl() {
         return downloadUrl;
     }
 
-    public void setDownloadUrl(URI downloadUrl) {
+    public void setDownloadUrl(JsonNullable<URI> downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 
@@ -329,7 +329,7 @@ public class LicenseContent {
     }
 
     public LicenseContent license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -341,11 +341,11 @@ public class LicenseContent {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookSponsorshipEditedChanges
@@ -15,14 +14,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_sponsorship_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookSponsorshipEditedChanges {
 
-    private WebhookSponsorshipEditedChangesPrivacyLevel privacyLevel;
+    private Optional<WebhookSponsorshipEditedChangesPrivacyLevel> privacyLevel = Optional.empty();
 
     public WebhookSponsorshipEditedChanges privacyLevel(WebhookSponsorshipEditedChangesPrivacyLevel privacyLevel) {
-        this.privacyLevel = privacyLevel;
+        this.privacyLevel = Optional.ofNullable(privacyLevel);
         return this;
     }
 
@@ -33,11 +32,11 @@ public class WebhookSponsorshipEditedChanges {
     @Valid
     @Schema(name = "privacy_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy_level")
-    public WebhookSponsorshipEditedChangesPrivacyLevel getPrivacyLevel() {
+    public Optional<WebhookSponsorshipEditedChangesPrivacyLevel> getPrivacyLevel() {
         return privacyLevel;
     }
 
-    public void setPrivacyLevel(WebhookSponsorshipEditedChangesPrivacyLevel privacyLevel) {
+    public void setPrivacyLevel(Optional<WebhookSponsorshipEditedChangesPrivacyLevel> privacyLevel) {
         this.privacyLevel = privacyLevel;
     }
 

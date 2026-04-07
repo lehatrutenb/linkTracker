@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,36 +21,37 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("secret-scanning-alert-webhook")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningAlertWebhook {
 
-    private Long number;
+    private Optional<Long> number = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
-    private URI locationsUrl;
+    private Optional<URI> locationsUrl = Optional.empty();
 
-    private SecretScanningAlertResolutionWebhook resolution = null;
+    private JsonNullable<SecretScanningAlertResolutionWebhook> resolution =
+            JsonNullable.<SecretScanningAlertResolutionWebhook>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime resolvedAt = null;
+    private JsonNullable<OffsetDateTime> resolvedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser resolvedBy = null;
+    private JsonNullable<NullableSimpleUser> resolvedBy = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String resolutionComment = null;
+    private JsonNullable<String> resolutionComment = JsonNullable.<String>undefined();
 
-    private String secretType;
+    private Optional<String> secretType = Optional.empty();
 
-    private String secretTypeDisplayName;
+    private Optional<String> secretTypeDisplayName = Optional.empty();
 
     /**
      * The token status as of the latest validity check.
@@ -88,31 +90,32 @@ public class SecretScanningAlertWebhook {
         }
     }
 
-    private ValidityEnum validity;
+    private Optional<ValidityEnum> validity = Optional.empty();
 
-    private Boolean pushProtectionBypassed = null;
+    private JsonNullable<Boolean> pushProtectionBypassed = JsonNullable.<Boolean>undefined();
 
-    private NullableSimpleUser pushProtectionBypassedBy = null;
+    private JsonNullable<NullableSimpleUser> pushProtectionBypassedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushProtectionBypassedAt = null;
+    private JsonNullable<OffsetDateTime> pushProtectionBypassedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser pushProtectionBypassRequestReviewer = null;
+    private JsonNullable<NullableSimpleUser> pushProtectionBypassRequestReviewer =
+            JsonNullable.<NullableSimpleUser>undefined();
 
-    private String pushProtectionBypassRequestReviewerComment = null;
+    private JsonNullable<String> pushProtectionBypassRequestReviewerComment = JsonNullable.<String>undefined();
 
-    private String pushProtectionBypassRequestComment = null;
+    private JsonNullable<String> pushProtectionBypassRequestComment = JsonNullable.<String>undefined();
 
-    private URI pushProtectionBypassRequestHtmlUrl = null;
+    private JsonNullable<URI> pushProtectionBypassRequestHtmlUrl = JsonNullable.<URI>undefined();
 
-    private Boolean publiclyLeaked = null;
+    private JsonNullable<Boolean> publiclyLeaked = JsonNullable.<Boolean>undefined();
 
-    private Boolean multiRepo = null;
+    private JsonNullable<Boolean> multiRepo = JsonNullable.<Boolean>undefined();
 
-    private NullableSimpleUser assignedTo = null;
+    private JsonNullable<NullableSimpleUser> assignedTo = JsonNullable.<NullableSimpleUser>undefined();
 
     public SecretScanningAlertWebhook number(Long number) {
-        this.number = number;
+        this.number = Optional.ofNullable(number);
         return this;
     }
 
@@ -126,16 +129,16 @@ public class SecretScanningAlertWebhook {
             description = "The security alert number.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("number")
-    public Long getNumber() {
+    public Optional<Long> getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(Optional<Long> number) {
         this.number = number;
     }
 
     public SecretScanningAlertWebhook createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -150,16 +153,16 @@ public class SecretScanningAlertWebhook {
             description = "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public SecretScanningAlertWebhook updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -174,16 +177,16 @@ public class SecretScanningAlertWebhook {
             description = "The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public SecretScanningAlertWebhook url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -198,16 +201,16 @@ public class SecretScanningAlertWebhook {
             description = "The REST API URL of the alert resource.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public SecretScanningAlertWebhook htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -222,16 +225,16 @@ public class SecretScanningAlertWebhook {
             description = "The GitHub URL of the alert resource.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public SecretScanningAlertWebhook locationsUrl(URI locationsUrl) {
-        this.locationsUrl = locationsUrl;
+        this.locationsUrl = Optional.ofNullable(locationsUrl);
         return this;
     }
 
@@ -245,16 +248,16 @@ public class SecretScanningAlertWebhook {
             description = "The REST API URL of the code locations for this alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locations_url")
-    public URI getLocationsUrl() {
+    public Optional<URI> getLocationsUrl() {
         return locationsUrl;
     }
 
-    public void setLocationsUrl(URI locationsUrl) {
+    public void setLocationsUrl(Optional<URI> locationsUrl) {
         this.locationsUrl = locationsUrl;
     }
 
     public SecretScanningAlertWebhook resolution(SecretScanningAlertResolutionWebhook resolution) {
-        this.resolution = resolution;
+        this.resolution = JsonNullable.of(resolution);
         return this;
     }
 
@@ -265,16 +268,16 @@ public class SecretScanningAlertWebhook {
     @Valid
     @Schema(name = "resolution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution")
-    public SecretScanningAlertResolutionWebhook getResolution() {
+    public JsonNullable<SecretScanningAlertResolutionWebhook> getResolution() {
         return resolution;
     }
 
-    public void setResolution(SecretScanningAlertResolutionWebhook resolution) {
+    public void setResolution(JsonNullable<SecretScanningAlertResolutionWebhook> resolution) {
         this.resolution = resolution;
     }
 
     public SecretScanningAlertWebhook resolvedAt(OffsetDateTime resolvedAt) {
-        this.resolvedAt = resolvedAt;
+        this.resolvedAt = JsonNullable.of(resolvedAt);
         return this;
     }
 
@@ -288,16 +291,16 @@ public class SecretScanningAlertWebhook {
             description = "The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolved_at")
-    public OffsetDateTime getResolvedAt() {
+    public JsonNullable<OffsetDateTime> getResolvedAt() {
         return resolvedAt;
     }
 
-    public void setResolvedAt(OffsetDateTime resolvedAt) {
+    public void setResolvedAt(JsonNullable<OffsetDateTime> resolvedAt) {
         this.resolvedAt = resolvedAt;
     }
 
     public SecretScanningAlertWebhook resolvedBy(NullableSimpleUser resolvedBy) {
-        this.resolvedBy = resolvedBy;
+        this.resolvedBy = JsonNullable.of(resolvedBy);
         return this;
     }
 
@@ -308,16 +311,16 @@ public class SecretScanningAlertWebhook {
     @Valid
     @Schema(name = "resolved_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolved_by")
-    public NullableSimpleUser getResolvedBy() {
+    public JsonNullable<NullableSimpleUser> getResolvedBy() {
         return resolvedBy;
     }
 
-    public void setResolvedBy(NullableSimpleUser resolvedBy) {
+    public void setResolvedBy(JsonNullable<NullableSimpleUser> resolvedBy) {
         this.resolvedBy = resolvedBy;
     }
 
     public SecretScanningAlertWebhook resolutionComment(String resolutionComment) {
-        this.resolutionComment = resolutionComment;
+        this.resolutionComment = JsonNullable.of(resolutionComment);
         return this;
     }
 
@@ -330,16 +333,16 @@ public class SecretScanningAlertWebhook {
             description = "An optional comment to resolve an alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution_comment")
-    public String getResolutionComment() {
+    public JsonNullable<String> getResolutionComment() {
         return resolutionComment;
     }
 
-    public void setResolutionComment(String resolutionComment) {
+    public void setResolutionComment(JsonNullable<String> resolutionComment) {
         this.resolutionComment = resolutionComment;
     }
 
     public SecretScanningAlertWebhook secretType(String secretType) {
-        this.secretType = secretType;
+        this.secretType = Optional.ofNullable(secretType);
         return this;
     }
 
@@ -352,16 +355,16 @@ public class SecretScanningAlertWebhook {
             description = "The type of secret that secret scanning detected.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_type")
-    public String getSecretType() {
+    public Optional<String> getSecretType() {
         return secretType;
     }
 
-    public void setSecretType(String secretType) {
+    public void setSecretType(Optional<String> secretType) {
         this.secretType = secretType;
     }
 
     public SecretScanningAlertWebhook secretTypeDisplayName(String secretTypeDisplayName) {
-        this.secretTypeDisplayName = secretTypeDisplayName;
+        this.secretTypeDisplayName = Optional.ofNullable(secretTypeDisplayName);
         return this;
     }
 
@@ -375,16 +378,16 @@ public class SecretScanningAlertWebhook {
                     "User-friendly name for the detected secret, matching the `secret_type`. For a list of built-in patterns, see \"[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_type_display_name")
-    public String getSecretTypeDisplayName() {
+    public Optional<String> getSecretTypeDisplayName() {
         return secretTypeDisplayName;
     }
 
-    public void setSecretTypeDisplayName(String secretTypeDisplayName) {
+    public void setSecretTypeDisplayName(Optional<String> secretTypeDisplayName) {
         this.secretTypeDisplayName = secretTypeDisplayName;
     }
 
     public SecretScanningAlertWebhook validity(ValidityEnum validity) {
-        this.validity = validity;
+        this.validity = Optional.ofNullable(validity);
         return this;
     }
 
@@ -397,16 +400,16 @@ public class SecretScanningAlertWebhook {
             description = "The token status as of the latest validity check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("validity")
-    public ValidityEnum getValidity() {
+    public Optional<ValidityEnum> getValidity() {
         return validity;
     }
 
-    public void setValidity(ValidityEnum validity) {
+    public void setValidity(Optional<ValidityEnum> validity) {
         this.validity = validity;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassed(Boolean pushProtectionBypassed) {
-        this.pushProtectionBypassed = pushProtectionBypassed;
+        this.pushProtectionBypassed = JsonNullable.of(pushProtectionBypassed);
         return this;
     }
 
@@ -419,16 +422,16 @@ public class SecretScanningAlertWebhook {
             description = "Whether push protection was bypassed for the detected secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed")
-    public Boolean getPushProtectionBypassed() {
+    public JsonNullable<Boolean> getPushProtectionBypassed() {
         return pushProtectionBypassed;
     }
 
-    public void setPushProtectionBypassed(Boolean pushProtectionBypassed) {
+    public void setPushProtectionBypassed(JsonNullable<Boolean> pushProtectionBypassed) {
         this.pushProtectionBypassed = pushProtectionBypassed;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassedBy(NullableSimpleUser pushProtectionBypassedBy) {
-        this.pushProtectionBypassedBy = pushProtectionBypassedBy;
+        this.pushProtectionBypassedBy = JsonNullable.of(pushProtectionBypassedBy);
         return this;
     }
 
@@ -439,16 +442,16 @@ public class SecretScanningAlertWebhook {
     @Valid
     @Schema(name = "push_protection_bypassed_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed_by")
-    public NullableSimpleUser getPushProtectionBypassedBy() {
+    public JsonNullable<NullableSimpleUser> getPushProtectionBypassedBy() {
         return pushProtectionBypassedBy;
     }
 
-    public void setPushProtectionBypassedBy(NullableSimpleUser pushProtectionBypassedBy) {
+    public void setPushProtectionBypassedBy(JsonNullable<NullableSimpleUser> pushProtectionBypassedBy) {
         this.pushProtectionBypassedBy = pushProtectionBypassedBy;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassedAt(OffsetDateTime pushProtectionBypassedAt) {
-        this.pushProtectionBypassedAt = pushProtectionBypassedAt;
+        this.pushProtectionBypassedAt = JsonNullable.of(pushProtectionBypassedAt);
         return this;
     }
 
@@ -462,17 +465,17 @@ public class SecretScanningAlertWebhook {
             description = "The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypassed_at")
-    public OffsetDateTime getPushProtectionBypassedAt() {
+    public JsonNullable<OffsetDateTime> getPushProtectionBypassedAt() {
         return pushProtectionBypassedAt;
     }
 
-    public void setPushProtectionBypassedAt(OffsetDateTime pushProtectionBypassedAt) {
+    public void setPushProtectionBypassedAt(JsonNullable<OffsetDateTime> pushProtectionBypassedAt) {
         this.pushProtectionBypassedAt = pushProtectionBypassedAt;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassRequestReviewer(
             NullableSimpleUser pushProtectionBypassRequestReviewer) {
-        this.pushProtectionBypassRequestReviewer = pushProtectionBypassRequestReviewer;
+        this.pushProtectionBypassRequestReviewer = JsonNullable.of(pushProtectionBypassRequestReviewer);
         return this;
     }
 
@@ -483,17 +486,18 @@ public class SecretScanningAlertWebhook {
     @Valid
     @Schema(name = "push_protection_bypass_request_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_reviewer")
-    public NullableSimpleUser getPushProtectionBypassRequestReviewer() {
+    public JsonNullable<NullableSimpleUser> getPushProtectionBypassRequestReviewer() {
         return pushProtectionBypassRequestReviewer;
     }
 
-    public void setPushProtectionBypassRequestReviewer(NullableSimpleUser pushProtectionBypassRequestReviewer) {
+    public void setPushProtectionBypassRequestReviewer(
+            JsonNullable<NullableSimpleUser> pushProtectionBypassRequestReviewer) {
         this.pushProtectionBypassRequestReviewer = pushProtectionBypassRequestReviewer;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassRequestReviewerComment(
             String pushProtectionBypassRequestReviewerComment) {
-        this.pushProtectionBypassRequestReviewerComment = pushProtectionBypassRequestReviewerComment;
+        this.pushProtectionBypassRequestReviewerComment = JsonNullable.of(pushProtectionBypassRequestReviewerComment);
         return this;
     }
 
@@ -506,16 +510,17 @@ public class SecretScanningAlertWebhook {
             description = "An optional comment when reviewing a push protection bypass.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_reviewer_comment")
-    public String getPushProtectionBypassRequestReviewerComment() {
+    public JsonNullable<String> getPushProtectionBypassRequestReviewerComment() {
         return pushProtectionBypassRequestReviewerComment;
     }
 
-    public void setPushProtectionBypassRequestReviewerComment(String pushProtectionBypassRequestReviewerComment) {
+    public void setPushProtectionBypassRequestReviewerComment(
+            JsonNullable<String> pushProtectionBypassRequestReviewerComment) {
         this.pushProtectionBypassRequestReviewerComment = pushProtectionBypassRequestReviewerComment;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassRequestComment(String pushProtectionBypassRequestComment) {
-        this.pushProtectionBypassRequestComment = pushProtectionBypassRequestComment;
+        this.pushProtectionBypassRequestComment = JsonNullable.of(pushProtectionBypassRequestComment);
         return this;
     }
 
@@ -528,16 +533,16 @@ public class SecretScanningAlertWebhook {
             description = "An optional comment when requesting a push protection bypass.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_comment")
-    public String getPushProtectionBypassRequestComment() {
+    public JsonNullable<String> getPushProtectionBypassRequestComment() {
         return pushProtectionBypassRequestComment;
     }
 
-    public void setPushProtectionBypassRequestComment(String pushProtectionBypassRequestComment) {
+    public void setPushProtectionBypassRequestComment(JsonNullable<String> pushProtectionBypassRequestComment) {
         this.pushProtectionBypassRequestComment = pushProtectionBypassRequestComment;
     }
 
     public SecretScanningAlertWebhook pushProtectionBypassRequestHtmlUrl(URI pushProtectionBypassRequestHtmlUrl) {
-        this.pushProtectionBypassRequestHtmlUrl = pushProtectionBypassRequestHtmlUrl;
+        this.pushProtectionBypassRequestHtmlUrl = JsonNullable.of(pushProtectionBypassRequestHtmlUrl);
         return this;
     }
 
@@ -551,16 +556,16 @@ public class SecretScanningAlertWebhook {
             description = "The URL to a push protection bypass request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_bypass_request_html_url")
-    public URI getPushProtectionBypassRequestHtmlUrl() {
+    public JsonNullable<URI> getPushProtectionBypassRequestHtmlUrl() {
         return pushProtectionBypassRequestHtmlUrl;
     }
 
-    public void setPushProtectionBypassRequestHtmlUrl(URI pushProtectionBypassRequestHtmlUrl) {
+    public void setPushProtectionBypassRequestHtmlUrl(JsonNullable<URI> pushProtectionBypassRequestHtmlUrl) {
         this.pushProtectionBypassRequestHtmlUrl = pushProtectionBypassRequestHtmlUrl;
     }
 
     public SecretScanningAlertWebhook publiclyLeaked(Boolean publiclyLeaked) {
-        this.publiclyLeaked = publiclyLeaked;
+        this.publiclyLeaked = JsonNullable.of(publiclyLeaked);
         return this;
     }
 
@@ -573,16 +578,16 @@ public class SecretScanningAlertWebhook {
             description = "Whether the detected secret was publicly leaked.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("publicly_leaked")
-    public Boolean getPubliclyLeaked() {
+    public JsonNullable<Boolean> getPubliclyLeaked() {
         return publiclyLeaked;
     }
 
-    public void setPubliclyLeaked(Boolean publiclyLeaked) {
+    public void setPubliclyLeaked(JsonNullable<Boolean> publiclyLeaked) {
         this.publiclyLeaked = publiclyLeaked;
     }
 
     public SecretScanningAlertWebhook multiRepo(Boolean multiRepo) {
-        this.multiRepo = multiRepo;
+        this.multiRepo = JsonNullable.of(multiRepo);
         return this;
     }
 
@@ -596,16 +601,16 @@ public class SecretScanningAlertWebhook {
                     "Whether the detected secret was found in multiple repositories in the same organization or business.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("multi_repo")
-    public Boolean getMultiRepo() {
+    public JsonNullable<Boolean> getMultiRepo() {
         return multiRepo;
     }
 
-    public void setMultiRepo(Boolean multiRepo) {
+    public void setMultiRepo(JsonNullable<Boolean> multiRepo) {
         this.multiRepo = multiRepo;
     }
 
     public SecretScanningAlertWebhook assignedTo(NullableSimpleUser assignedTo) {
-        this.assignedTo = assignedTo;
+        this.assignedTo = JsonNullable.of(assignedTo);
         return this;
     }
 
@@ -616,11 +621,11 @@ public class SecretScanningAlertWebhook {
     @Valid
     @Schema(name = "assigned_to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assigned_to")
-    public NullableSimpleUser getAssignedTo() {
+    public JsonNullable<NullableSimpleUser> getAssignedTo() {
         return assignedTo;
     }
 
-    public void setAssignedTo(NullableSimpleUser assignedTo) {
+    public void setAssignedTo(JsonNullable<NullableSimpleUser> assignedTo) {
         this.assignedTo = assignedTo;
     }
 
@@ -635,35 +640,40 @@ public class SecretScanningAlertWebhook {
         SecretScanningAlertWebhook secretScanningAlertWebhook = (SecretScanningAlertWebhook) o;
         return Objects.equals(this.number, secretScanningAlertWebhook.number)
                 && Objects.equals(this.createdAt, secretScanningAlertWebhook.createdAt)
-                && Objects.equals(this.updatedAt, secretScanningAlertWebhook.updatedAt)
+                && equalsNullable(this.updatedAt, secretScanningAlertWebhook.updatedAt)
                 && Objects.equals(this.url, secretScanningAlertWebhook.url)
                 && Objects.equals(this.htmlUrl, secretScanningAlertWebhook.htmlUrl)
                 && Objects.equals(this.locationsUrl, secretScanningAlertWebhook.locationsUrl)
-                && Objects.equals(this.resolution, secretScanningAlertWebhook.resolution)
-                && Objects.equals(this.resolvedAt, secretScanningAlertWebhook.resolvedAt)
-                && Objects.equals(this.resolvedBy, secretScanningAlertWebhook.resolvedBy)
-                && Objects.equals(this.resolutionComment, secretScanningAlertWebhook.resolutionComment)
+                && equalsNullable(this.resolution, secretScanningAlertWebhook.resolution)
+                && equalsNullable(this.resolvedAt, secretScanningAlertWebhook.resolvedAt)
+                && equalsNullable(this.resolvedBy, secretScanningAlertWebhook.resolvedBy)
+                && equalsNullable(this.resolutionComment, secretScanningAlertWebhook.resolutionComment)
                 && Objects.equals(this.secretType, secretScanningAlertWebhook.secretType)
                 && Objects.equals(this.secretTypeDisplayName, secretScanningAlertWebhook.secretTypeDisplayName)
                 && Objects.equals(this.validity, secretScanningAlertWebhook.validity)
-                && Objects.equals(this.pushProtectionBypassed, secretScanningAlertWebhook.pushProtectionBypassed)
-                && Objects.equals(this.pushProtectionBypassedBy, secretScanningAlertWebhook.pushProtectionBypassedBy)
-                && Objects.equals(this.pushProtectionBypassedAt, secretScanningAlertWebhook.pushProtectionBypassedAt)
-                && Objects.equals(
+                && equalsNullable(this.pushProtectionBypassed, secretScanningAlertWebhook.pushProtectionBypassed)
+                && equalsNullable(this.pushProtectionBypassedBy, secretScanningAlertWebhook.pushProtectionBypassedBy)
+                && equalsNullable(this.pushProtectionBypassedAt, secretScanningAlertWebhook.pushProtectionBypassedAt)
+                && equalsNullable(
                         this.pushProtectionBypassRequestReviewer,
                         secretScanningAlertWebhook.pushProtectionBypassRequestReviewer)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestReviewerComment,
                         secretScanningAlertWebhook.pushProtectionBypassRequestReviewerComment)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestComment,
                         secretScanningAlertWebhook.pushProtectionBypassRequestComment)
-                && Objects.equals(
+                && equalsNullable(
                         this.pushProtectionBypassRequestHtmlUrl,
                         secretScanningAlertWebhook.pushProtectionBypassRequestHtmlUrl)
-                && Objects.equals(this.publiclyLeaked, secretScanningAlertWebhook.publiclyLeaked)
-                && Objects.equals(this.multiRepo, secretScanningAlertWebhook.multiRepo)
-                && Objects.equals(this.assignedTo, secretScanningAlertWebhook.assignedTo);
+                && equalsNullable(this.publiclyLeaked, secretScanningAlertWebhook.publiclyLeaked)
+                && equalsNullable(this.multiRepo, secretScanningAlertWebhook.multiRepo)
+                && equalsNullable(this.assignedTo, secretScanningAlertWebhook.assignedTo);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -671,27 +681,34 @@ public class SecretScanningAlertWebhook {
         return Objects.hash(
                 number,
                 createdAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 url,
                 htmlUrl,
                 locationsUrl,
-                resolution,
-                resolvedAt,
-                resolvedBy,
-                resolutionComment,
+                hashCodeNullable(resolution),
+                hashCodeNullable(resolvedAt),
+                hashCodeNullable(resolvedBy),
+                hashCodeNullable(resolutionComment),
                 secretType,
                 secretTypeDisplayName,
                 validity,
-                pushProtectionBypassed,
-                pushProtectionBypassedBy,
-                pushProtectionBypassedAt,
-                pushProtectionBypassRequestReviewer,
-                pushProtectionBypassRequestReviewerComment,
-                pushProtectionBypassRequestComment,
-                pushProtectionBypassRequestHtmlUrl,
-                publiclyLeaked,
-                multiRepo,
-                assignedTo);
+                hashCodeNullable(pushProtectionBypassed),
+                hashCodeNullable(pushProtectionBypassedBy),
+                hashCodeNullable(pushProtectionBypassedAt),
+                hashCodeNullable(pushProtectionBypassRequestReviewer),
+                hashCodeNullable(pushProtectionBypassRequestReviewerComment),
+                hashCodeNullable(pushProtectionBypassRequestComment),
+                hashCodeNullable(pushProtectionBypassRequestHtmlUrl),
+                hashCodeNullable(publiclyLeaked),
+                hashCodeNullable(multiRepo),
+                hashCodeNullable(assignedTo));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

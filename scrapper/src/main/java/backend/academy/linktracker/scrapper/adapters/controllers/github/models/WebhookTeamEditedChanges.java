@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the team if the action was &#x60;edited&#x60;.
@@ -16,22 +15,22 @@ import java.util.Objects;
 @JsonTypeName("webhook_team_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookTeamEditedChanges {
 
-    private WebhookLabelEditedChangesDescription description;
+    private Optional<WebhookLabelEditedChangesDescription> description = Optional.empty();
 
-    private WebhookLabelEditedChangesName name;
+    private Optional<WebhookLabelEditedChangesName> name = Optional.empty();
 
-    private WebhookTeamEditedChangesPrivacy privacy;
+    private Optional<WebhookTeamEditedChangesPrivacy> privacy = Optional.empty();
 
-    private WebhookTeamEditedChangesNotificationSetting notificationSetting;
+    private Optional<WebhookTeamEditedChangesNotificationSetting> notificationSetting = Optional.empty();
 
-    private WebhookTeamEditedChangesRepository repository;
+    private Optional<WebhookTeamEditedChangesRepository> repository = Optional.empty();
 
     public WebhookTeamEditedChanges description(WebhookLabelEditedChangesDescription description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -42,16 +41,16 @@ public class WebhookTeamEditedChanges {
     @Valid
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public WebhookLabelEditedChangesDescription getDescription() {
+    public Optional<WebhookLabelEditedChangesDescription> getDescription() {
         return description;
     }
 
-    public void setDescription(WebhookLabelEditedChangesDescription description) {
+    public void setDescription(Optional<WebhookLabelEditedChangesDescription> description) {
         this.description = description;
     }
 
     public WebhookTeamEditedChanges name(WebhookLabelEditedChangesName name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -62,16 +61,16 @@ public class WebhookTeamEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookLabelEditedChangesName getName() {
+    public Optional<WebhookLabelEditedChangesName> getName() {
         return name;
     }
 
-    public void setName(WebhookLabelEditedChangesName name) {
+    public void setName(Optional<WebhookLabelEditedChangesName> name) {
         this.name = name;
     }
 
     public WebhookTeamEditedChanges privacy(WebhookTeamEditedChangesPrivacy privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -82,17 +81,17 @@ public class WebhookTeamEditedChanges {
     @Valid
     @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public WebhookTeamEditedChangesPrivacy getPrivacy() {
+    public Optional<WebhookTeamEditedChangesPrivacy> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(WebhookTeamEditedChangesPrivacy privacy) {
+    public void setPrivacy(Optional<WebhookTeamEditedChangesPrivacy> privacy) {
         this.privacy = privacy;
     }
 
     public WebhookTeamEditedChanges notificationSetting(
             WebhookTeamEditedChangesNotificationSetting notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -103,16 +102,16 @@ public class WebhookTeamEditedChanges {
     @Valid
     @Schema(name = "notification_setting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public WebhookTeamEditedChangesNotificationSetting getNotificationSetting() {
+    public Optional<WebhookTeamEditedChangesNotificationSetting> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(WebhookTeamEditedChangesNotificationSetting notificationSetting) {
+    public void setNotificationSetting(Optional<WebhookTeamEditedChangesNotificationSetting> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
     public WebhookTeamEditedChanges repository(WebhookTeamEditedChangesRepository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -123,11 +122,11 @@ public class WebhookTeamEditedChanges {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public WebhookTeamEditedChangesRepository getRepository() {
+    public Optional<WebhookTeamEditedChangesRepository> getRepository() {
         return repository;
     }
 
-    public void setRepository(WebhookTeamEditedChangesRepository repository) {
+    public void setRepository(Optional<WebhookTeamEditedChangesRepository> repository) {
         this.repository = repository;
     }
 

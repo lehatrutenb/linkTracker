@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookIssueCommentCreatedIssueAllOfReactions
@@ -14,32 +13,32 @@ import java.util.Objects;
 @JsonTypeName("webhook_issue_comment_created_issue_allOf_reactions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookIssueCommentCreatedIssueAllOfReactions {
 
-    private Long plus1;
+    private Optional<Long> plus1 = Optional.empty();
 
-    private Long _1;
+    private Optional<Long> _1 = Optional.empty();
 
-    private Long confused;
+    private Optional<Long> confused = Optional.empty();
 
-    private Long eyes;
+    private Optional<Long> eyes = Optional.empty();
 
-    private Long heart;
+    private Optional<Long> heart = Optional.empty();
 
-    private Long hooray;
+    private Optional<Long> hooray = Optional.empty();
 
-    private Long laugh;
+    private Optional<Long> laugh = Optional.empty();
 
-    private Long rocket;
+    private Optional<Long> rocket = Optional.empty();
 
-    private Long totalCount;
+    private Optional<Long> totalCount = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     public WebhookIssueCommentCreatedIssueAllOfReactions plus1(Long plus1) {
-        this.plus1 = plus1;
+        this.plus1 = Optional.ofNullable(plus1);
         return this;
     }
 
@@ -49,16 +48,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "+1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("+1")
-    public Long getPlus1() {
+    public Optional<Long> getPlus1() {
         return plus1;
     }
 
-    public void setPlus1(Long plus1) {
+    public void setPlus1(Optional<Long> plus1) {
         this.plus1 = plus1;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions _1(Long _1) {
-        this._1 = _1;
+        this._1 = Optional.ofNullable(_1);
         return this;
     }
 
@@ -68,16 +67,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "-1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("-1")
-    public Long get1() {
+    public Optional<Long> get1() {
         return _1;
     }
 
-    public void set1(Long _1) {
+    public void set1(Optional<Long> _1) {
         this._1 = _1;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions confused(Long confused) {
-        this.confused = confused;
+        this.confused = Optional.ofNullable(confused);
         return this;
     }
 
@@ -87,16 +86,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "confused", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("confused")
-    public Long getConfused() {
+    public Optional<Long> getConfused() {
         return confused;
     }
 
-    public void setConfused(Long confused) {
+    public void setConfused(Optional<Long> confused) {
         this.confused = confused;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions eyes(Long eyes) {
-        this.eyes = eyes;
+        this.eyes = Optional.ofNullable(eyes);
         return this;
     }
 
@@ -106,16 +105,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "eyes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("eyes")
-    public Long getEyes() {
+    public Optional<Long> getEyes() {
         return eyes;
     }
 
-    public void setEyes(Long eyes) {
+    public void setEyes(Optional<Long> eyes) {
         this.eyes = eyes;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions heart(Long heart) {
-        this.heart = heart;
+        this.heart = Optional.ofNullable(heart);
         return this;
     }
 
@@ -125,16 +124,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "heart", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("heart")
-    public Long getHeart() {
+    public Optional<Long> getHeart() {
         return heart;
     }
 
-    public void setHeart(Long heart) {
+    public void setHeart(Optional<Long> heart) {
         this.heart = heart;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions hooray(Long hooray) {
-        this.hooray = hooray;
+        this.hooray = Optional.ofNullable(hooray);
         return this;
     }
 
@@ -144,16 +143,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "hooray", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooray")
-    public Long getHooray() {
+    public Optional<Long> getHooray() {
         return hooray;
     }
 
-    public void setHooray(Long hooray) {
+    public void setHooray(Optional<Long> hooray) {
         this.hooray = hooray;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions laugh(Long laugh) {
-        this.laugh = laugh;
+        this.laugh = Optional.ofNullable(laugh);
         return this;
     }
 
@@ -163,16 +162,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "laugh", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("laugh")
-    public Long getLaugh() {
+    public Optional<Long> getLaugh() {
         return laugh;
     }
 
-    public void setLaugh(Long laugh) {
+    public void setLaugh(Optional<Long> laugh) {
         this.laugh = laugh;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions rocket(Long rocket) {
-        this.rocket = rocket;
+        this.rocket = Optional.ofNullable(rocket);
         return this;
     }
 
@@ -182,16 +181,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "rocket", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rocket")
-    public Long getRocket() {
+    public Optional<Long> getRocket() {
         return rocket;
     }
 
-    public void setRocket(Long rocket) {
+    public void setRocket(Optional<Long> rocket) {
         this.rocket = rocket;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions totalCount(Long totalCount) {
-        this.totalCount = totalCount;
+        this.totalCount = Optional.ofNullable(totalCount);
         return this;
     }
 
@@ -201,16 +200,16 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "total_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_count")
-    public Long getTotalCount() {
+    public Optional<Long> getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(Long totalCount) {
+    public void setTotalCount(Optional<Long> totalCount) {
         this.totalCount = totalCount;
     }
 
     public WebhookIssueCommentCreatedIssueAllOfReactions url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -220,11 +219,11 @@ public class WebhookIssueCommentCreatedIssueAllOfReactions {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 

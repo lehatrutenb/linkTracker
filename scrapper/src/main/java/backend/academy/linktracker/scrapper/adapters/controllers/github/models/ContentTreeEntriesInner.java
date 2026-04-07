@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ContentTreeEntriesInner
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("content_tree_entries_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ContentTreeEntriesInner {
 
@@ -32,11 +32,11 @@ public class ContentTreeEntriesInner {
 
     private URI url;
 
-    private URI gitUrl = null;
+    private JsonNullable<URI> gitUrl = JsonNullable.<URI>undefined();
 
-    private URI htmlUrl = null;
+    private JsonNullable<URI> htmlUrl = JsonNullable.<URI>undefined();
 
-    private URI downloadUrl = null;
+    private JsonNullable<URI> downloadUrl = JsonNullable.<URI>undefined();
 
     private ContentTreeEntriesInnerLinks links;
 
@@ -64,9 +64,9 @@ public class ContentTreeEntriesInner {
         this.path = path;
         this.sha = sha;
         this.url = url;
-        this.gitUrl = gitUrl;
-        this.htmlUrl = htmlUrl;
-        this.downloadUrl = downloadUrl;
+        this.gitUrl = JsonNullable.of(gitUrl);
+        this.htmlUrl = JsonNullable.of(htmlUrl);
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         this.links = links;
     }
 
@@ -192,7 +192,7 @@ public class ContentTreeEntriesInner {
     }
 
     public ContentTreeEntriesInner gitUrl(URI gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = JsonNullable.of(gitUrl);
         return this;
     }
 
@@ -204,16 +204,16 @@ public class ContentTreeEntriesInner {
     @Valid
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("git_url")
-    public URI getGitUrl() {
+    public JsonNullable<URI> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(URI gitUrl) {
+    public void setGitUrl(JsonNullable<URI> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public ContentTreeEntriesInner htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -225,16 +225,16 @@ public class ContentTreeEntriesInner {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public JsonNullable<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(JsonNullable<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public ContentTreeEntriesInner downloadUrl(URI downloadUrl) {
-        this.downloadUrl = downloadUrl;
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         return this;
     }
 
@@ -246,11 +246,11 @@ public class ContentTreeEntriesInner {
     @Valid
     @Schema(name = "download_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("download_url")
-    public URI getDownloadUrl() {
+    public JsonNullable<URI> getDownloadUrl() {
         return downloadUrl;
     }
 
-    public void setDownloadUrl(URI downloadUrl) {
+    public void setDownloadUrl(JsonNullable<URI> downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 

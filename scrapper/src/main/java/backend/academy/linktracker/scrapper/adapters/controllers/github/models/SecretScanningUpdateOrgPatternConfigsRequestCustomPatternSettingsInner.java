@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner
@@ -16,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("secret_scanning_update_org_pattern_configs_request_custom_pattern_settings_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner {
 
-    private String tokenType;
+    private Optional<String> tokenType = Optional.empty();
 
-    private String customPatternVersion = null;
+    private JsonNullable<String> customPatternVersion = JsonNullable.<String>undefined();
 
     /**
      * Push protection setting to set for the pattern.
@@ -59,10 +60,10 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
         }
     }
 
-    private PushProtectionSettingEnum pushProtectionSetting;
+    private Optional<PushProtectionSettingEnum> pushProtectionSetting = Optional.empty();
 
     public SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner tokenType(String tokenType) {
-        this.tokenType = tokenType;
+        this.tokenType = Optional.ofNullable(tokenType);
         return this;
     }
 
@@ -75,17 +76,17 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
             description = "The ID of the pattern to configure.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("token_type")
-    public String getTokenType() {
+    public Optional<String> getTokenType() {
         return tokenType;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(Optional<String> tokenType) {
         this.tokenType = tokenType;
     }
 
     public SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner customPatternVersion(
             String customPatternVersion) {
-        this.customPatternVersion = customPatternVersion;
+        this.customPatternVersion = JsonNullable.of(customPatternVersion);
         return this;
     }
 
@@ -99,17 +100,17 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
                     "The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_pattern_version")
-    public String getCustomPatternVersion() {
+    public JsonNullable<String> getCustomPatternVersion() {
         return customPatternVersion;
     }
 
-    public void setCustomPatternVersion(String customPatternVersion) {
+    public void setCustomPatternVersion(JsonNullable<String> customPatternVersion) {
         this.customPatternVersion = customPatternVersion;
     }
 
     public SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner pushProtectionSetting(
             PushProtectionSettingEnum pushProtectionSetting) {
-        this.pushProtectionSetting = pushProtectionSetting;
+        this.pushProtectionSetting = Optional.ofNullable(pushProtectionSetting);
         return this;
     }
 
@@ -122,11 +123,11 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
             description = "Push protection setting to set for the pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_setting")
-    public PushProtectionSettingEnum getPushProtectionSetting() {
+    public Optional<PushProtectionSettingEnum> getPushProtectionSetting() {
         return pushProtectionSetting;
     }
 
-    public void setPushProtectionSetting(PushProtectionSettingEnum pushProtectionSetting) {
+    public void setPushProtectionSetting(Optional<PushProtectionSettingEnum> pushProtectionSetting) {
         this.pushProtectionSetting = pushProtectionSetting;
     }
 
@@ -144,7 +145,7 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
         return Objects.equals(
                         this.tokenType,
                         secretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner.tokenType)
-                && Objects.equals(
+                && equalsNullable(
                         this.customPatternVersion,
                         secretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner.customPatternVersion)
                 && Objects.equals(
@@ -152,9 +153,21 @@ public class SecretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsIn
                         secretScanningUpdateOrgPatternConfigsRequestCustomPatternSettingsInner.pushProtectionSetting);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(tokenType, customPatternVersion, pushProtectionSetting);
+        return Objects.hash(tokenType, hashCodeNullable(customPatternVersion), pushProtectionSetting);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

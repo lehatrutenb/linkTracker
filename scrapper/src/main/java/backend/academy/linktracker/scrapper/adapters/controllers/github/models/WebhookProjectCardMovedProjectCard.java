@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookProjectCardMovedProjectCard
@@ -17,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_project_card_moved_project_card")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectCardMovedProjectCard {
 
-    private BigDecimal afterId = null;
+    private JsonNullable<BigDecimal> afterId = JsonNullable.<BigDecimal>undefined();
 
     private Boolean archived;
 
@@ -29,17 +30,18 @@ public class WebhookProjectCardMovedProjectCard {
 
     private String columnUrl;
 
-    private URI contentUrl;
+    private Optional<URI> contentUrl = Optional.empty();
 
     private String createdAt;
 
-    private WebhookProjectCardMovedProjectCardAllOfCreator creator = null;
+    private JsonNullable<WebhookProjectCardMovedProjectCardAllOfCreator> creator =
+            JsonNullable.<WebhookProjectCardMovedProjectCardAllOfCreator>undefined();
 
     private Long id;
 
     private String nodeId;
 
-    private String note = null;
+    private JsonNullable<String> note = JsonNullable.<String>undefined();
 
     private String projectUrl;
 
@@ -67,22 +69,22 @@ public class WebhookProjectCardMovedProjectCard {
             String projectUrl,
             String updatedAt,
             String url) {
-        this.afterId = afterId;
+        this.afterId = JsonNullable.of(afterId);
         this.archived = archived;
         this.columnId = columnId;
         this.columnUrl = columnUrl;
         this.createdAt = createdAt;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.id = id;
         this.nodeId = nodeId;
-        this.note = note;
+        this.note = JsonNullable.of(note);
         this.projectUrl = projectUrl;
         this.updatedAt = updatedAt;
         this.url = url;
     }
 
     public WebhookProjectCardMovedProjectCard afterId(BigDecimal afterId) {
-        this.afterId = afterId;
+        this.afterId = JsonNullable.of(afterId);
         return this;
     }
 
@@ -94,11 +96,11 @@ public class WebhookProjectCardMovedProjectCard {
     @Valid
     @Schema(name = "after_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("after_id")
-    public BigDecimal getAfterId() {
+    public JsonNullable<BigDecimal> getAfterId() {
         return afterId;
     }
 
-    public void setAfterId(BigDecimal afterId) {
+    public void setAfterId(JsonNullable<BigDecimal> afterId) {
         this.afterId = afterId;
     }
 
@@ -163,7 +165,7 @@ public class WebhookProjectCardMovedProjectCard {
     }
 
     public WebhookProjectCardMovedProjectCard contentUrl(URI contentUrl) {
-        this.contentUrl = contentUrl;
+        this.contentUrl = Optional.ofNullable(contentUrl);
         return this;
     }
 
@@ -174,11 +176,11 @@ public class WebhookProjectCardMovedProjectCard {
     @Valid
     @Schema(name = "content_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_url")
-    public URI getContentUrl() {
+    public Optional<URI> getContentUrl() {
         return contentUrl;
     }
 
-    public void setContentUrl(URI contentUrl) {
+    public void setContentUrl(Optional<URI> contentUrl) {
         this.contentUrl = contentUrl;
     }
 
@@ -203,7 +205,7 @@ public class WebhookProjectCardMovedProjectCard {
     }
 
     public WebhookProjectCardMovedProjectCard creator(WebhookProjectCardMovedProjectCardAllOfCreator creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -215,11 +217,11 @@ public class WebhookProjectCardMovedProjectCard {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public WebhookProjectCardMovedProjectCardAllOfCreator getCreator() {
+    public JsonNullable<WebhookProjectCardMovedProjectCardAllOfCreator> getCreator() {
         return creator;
     }
 
-    public void setCreator(WebhookProjectCardMovedProjectCardAllOfCreator creator) {
+    public void setCreator(JsonNullable<WebhookProjectCardMovedProjectCardAllOfCreator> creator) {
         this.creator = creator;
     }
 
@@ -264,7 +266,7 @@ public class WebhookProjectCardMovedProjectCard {
     }
 
     public WebhookProjectCardMovedProjectCard note(String note) {
-        this.note = note;
+        this.note = JsonNullable.of(note);
         return this;
     }
 
@@ -275,11 +277,11 @@ public class WebhookProjectCardMovedProjectCard {
     @NotNull
     @Schema(name = "note", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("note")
-    public String getNote() {
+    public JsonNullable<String> getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(JsonNullable<String> note) {
         this.note = note;
     }
 

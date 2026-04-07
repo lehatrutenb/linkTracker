@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("commit-comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitComment {
 
@@ -33,15 +34,15 @@ public class CommitComment {
 
     private String body;
 
-    private String path = null;
+    private JsonNullable<String> path = JsonNullable.<String>undefined();
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
-    private Long line = null;
+    private JsonNullable<Long> line = JsonNullable.<Long>undefined();
 
     private String commitId;
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -51,7 +52,7 @@ public class CommitComment {
 
     private AuthorAssociation authorAssociation;
 
-    private ReactionRollup reactions;
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
     public CommitComment() {
         super();
@@ -79,11 +80,11 @@ public class CommitComment {
         this.id = id;
         this.nodeId = nodeId;
         this.body = body;
-        this.path = path;
-        this.position = position;
-        this.line = line;
+        this.path = JsonNullable.of(path);
+        this.position = JsonNullable.of(position);
+        this.line = JsonNullable.of(line);
         this.commitId = commitId;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.authorAssociation = authorAssociation;
@@ -192,7 +193,7 @@ public class CommitComment {
     }
 
     public CommitComment path(String path) {
-        this.path = path;
+        this.path = JsonNullable.of(path);
         return this;
     }
 
@@ -203,16 +204,16 @@ public class CommitComment {
     @NotNull
     @Schema(name = "path", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public JsonNullable<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(JsonNullable<String> path) {
         this.path = path;
     }
 
     public CommitComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -223,16 +224,16 @@ public class CommitComment {
     @NotNull
     @Schema(name = "position", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
     public CommitComment line(Long line) {
-        this.line = line;
+        this.line = JsonNullable.of(line);
         return this;
     }
 
@@ -243,11 +244,11 @@ public class CommitComment {
     @NotNull
     @Schema(name = "line", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public JsonNullable<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(JsonNullable<Long> line) {
         this.line = line;
     }
 
@@ -272,7 +273,7 @@ public class CommitComment {
     }
 
     public CommitComment user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -284,11 +285,11 @@ public class CommitComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
@@ -356,7 +357,7 @@ public class CommitComment {
     }
 
     public CommitComment reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -367,11 +368,11 @@ public class CommitComment {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 

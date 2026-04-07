@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettingsInner
@@ -16,11 +15,11 @@ import java.util.Objects;
 @JsonTypeName("secret_scanning_update_org_pattern_configs_request_provider_pattern_settings_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettingsInner {
 
-    private String tokenType;
+    private Optional<String> tokenType = Optional.empty();
 
     /**
      * Push protection setting to set for the pattern.
@@ -59,10 +58,10 @@ public class SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettings
         }
     }
 
-    private PushProtectionSettingEnum pushProtectionSetting;
+    private Optional<PushProtectionSettingEnum> pushProtectionSetting = Optional.empty();
 
     public SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettingsInner tokenType(String tokenType) {
-        this.tokenType = tokenType;
+        this.tokenType = Optional.ofNullable(tokenType);
         return this;
     }
 
@@ -75,17 +74,17 @@ public class SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettings
             description = "The ID of the pattern to configure.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("token_type")
-    public String getTokenType() {
+    public Optional<String> getTokenType() {
         return tokenType;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(Optional<String> tokenType) {
         this.tokenType = tokenType;
     }
 
     public SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettingsInner pushProtectionSetting(
             PushProtectionSettingEnum pushProtectionSetting) {
-        this.pushProtectionSetting = pushProtectionSetting;
+        this.pushProtectionSetting = Optional.ofNullable(pushProtectionSetting);
         return this;
     }
 
@@ -98,11 +97,11 @@ public class SecretScanningUpdateOrgPatternConfigsRequestProviderPatternSettings
             description = "Push protection setting to set for the pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push_protection_setting")
-    public PushProtectionSettingEnum getPushProtectionSetting() {
+    public Optional<PushProtectionSettingEnum> getPushProtectionSetting() {
         return pushProtectionSetting;
     }
 
-    public void setPushProtectionSetting(PushProtectionSettingEnum pushProtectionSetting) {
+    public void setPushProtectionSetting(Optional<PushProtectionSettingEnum> pushProtectionSetting) {
         this.pushProtectionSetting = pushProtectionSetting;
     }
 

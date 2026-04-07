@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MigrationsUpdateImportRequest
@@ -16,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("migrations_update_import_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MigrationsUpdateImportRequest {
 
-    private String vcsUsername;
+    private Optional<String> vcsUsername = Optional.empty();
 
-    private String vcsPassword;
+    private Optional<String> vcsPassword = Optional.empty();
 
     /**
      * The type of version control system you are migrating from.
@@ -63,12 +62,12 @@ public class MigrationsUpdateImportRequest {
         }
     }
 
-    private VcsEnum vcs;
+    private Optional<VcsEnum> vcs = Optional.empty();
 
-    private String tfvcProject;
+    private Optional<String> tfvcProject = Optional.empty();
 
     public MigrationsUpdateImportRequest vcsUsername(String vcsUsername) {
-        this.vcsUsername = vcsUsername;
+        this.vcsUsername = Optional.ofNullable(vcsUsername);
         return this;
     }
 
@@ -81,16 +80,16 @@ public class MigrationsUpdateImportRequest {
             description = "The username to provide to the originating repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs_username")
-    public String getVcsUsername() {
+    public Optional<String> getVcsUsername() {
         return vcsUsername;
     }
 
-    public void setVcsUsername(String vcsUsername) {
+    public void setVcsUsername(Optional<String> vcsUsername) {
         this.vcsUsername = vcsUsername;
     }
 
     public MigrationsUpdateImportRequest vcsPassword(String vcsPassword) {
-        this.vcsPassword = vcsPassword;
+        this.vcsPassword = Optional.ofNullable(vcsPassword);
         return this;
     }
 
@@ -103,16 +102,16 @@ public class MigrationsUpdateImportRequest {
             description = "The password to provide to the originating repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs_password")
-    public String getVcsPassword() {
+    public Optional<String> getVcsPassword() {
         return vcsPassword;
     }
 
-    public void setVcsPassword(String vcsPassword) {
+    public void setVcsPassword(Optional<String> vcsPassword) {
         this.vcsPassword = vcsPassword;
     }
 
     public MigrationsUpdateImportRequest vcs(VcsEnum vcs) {
-        this.vcs = vcs;
+        this.vcs = Optional.ofNullable(vcs);
         return this;
     }
 
@@ -126,16 +125,16 @@ public class MigrationsUpdateImportRequest {
             description = "The type of version control system you are migrating from.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs")
-    public VcsEnum getVcs() {
+    public Optional<VcsEnum> getVcs() {
         return vcs;
     }
 
-    public void setVcs(VcsEnum vcs) {
+    public void setVcs(Optional<VcsEnum> vcs) {
         this.vcs = vcs;
     }
 
     public MigrationsUpdateImportRequest tfvcProject(String tfvcProject) {
-        this.tfvcProject = tfvcProject;
+        this.tfvcProject = Optional.ofNullable(tfvcProject);
         return this;
     }
 
@@ -149,11 +148,11 @@ public class MigrationsUpdateImportRequest {
             description = "For a tfvc import, the name of the project that is being imported.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tfvc_project")
-    public String getTfvcProject() {
+    public Optional<String> getTfvcProject() {
         return tfvcProject;
     }
 
-    public void setTfvcProject(String tfvcProject) {
+    public void setTfvcProject(Optional<String> tfvcProject) {
         this.tfvcProject = tfvcProject;
     }
 

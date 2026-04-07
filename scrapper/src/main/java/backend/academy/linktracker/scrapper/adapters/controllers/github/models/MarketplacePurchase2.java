@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MarketplacePurchase2
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("Marketplace_Purchase_2")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplacePurchase2 {
 
@@ -23,9 +23,9 @@ public class MarketplacePurchase2 {
 
     private String billingCycle;
 
-    private Object freeTrialEndsOn = null;
+    private JsonNullable<Object> freeTrialEndsOn = JsonNullable.<Object>undefined();
 
-    private String nextBillingDate = null;
+    private JsonNullable<String> nextBillingDate = JsonNullable.<String>undefined();
 
     private Boolean onFreeTrial;
 
@@ -50,8 +50,8 @@ public class MarketplacePurchase2 {
             Long unitCount) {
         this.account = account;
         this.billingCycle = billingCycle;
-        this.freeTrialEndsOn = freeTrialEndsOn;
-        this.nextBillingDate = nextBillingDate;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
         this.onFreeTrial = onFreeTrial;
         this.plan = plan;
         this.unitCount = unitCount;
@@ -99,7 +99,7 @@ public class MarketplacePurchase2 {
     }
 
     public MarketplacePurchase2 freeTrialEndsOn(Object freeTrialEndsOn) {
-        this.freeTrialEndsOn = freeTrialEndsOn;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
         return this;
     }
 
@@ -110,16 +110,16 @@ public class MarketplacePurchase2 {
     @NotNull
     @Schema(name = "free_trial_ends_on", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("free_trial_ends_on")
-    public Object getFreeTrialEndsOn() {
+    public JsonNullable<Object> getFreeTrialEndsOn() {
         return freeTrialEndsOn;
     }
 
-    public void setFreeTrialEndsOn(Object freeTrialEndsOn) {
+    public void setFreeTrialEndsOn(JsonNullable<Object> freeTrialEndsOn) {
         this.freeTrialEndsOn = freeTrialEndsOn;
     }
 
     public MarketplacePurchase2 nextBillingDate(String nextBillingDate) {
-        this.nextBillingDate = nextBillingDate;
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
         return this;
     }
 
@@ -130,11 +130,11 @@ public class MarketplacePurchase2 {
     @NotNull
     @Schema(name = "next_billing_date", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("next_billing_date")
-    public String getNextBillingDate() {
+    public JsonNullable<String> getNextBillingDate() {
         return nextBillingDate;
     }
 
-    public void setNextBillingDate(String nextBillingDate) {
+    public void setNextBillingDate(JsonNullable<String> nextBillingDate) {
         this.nextBillingDate = nextBillingDate;
     }
 

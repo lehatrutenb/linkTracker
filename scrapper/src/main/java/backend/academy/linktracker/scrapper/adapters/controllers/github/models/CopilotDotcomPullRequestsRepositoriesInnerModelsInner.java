@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CopilotDotcomPullRequestsRepositoriesInnerModelsInner
@@ -14,22 +15,22 @@ import java.util.Objects;
 @JsonTypeName("copilot_dotcom_pull_requests_repositories_inner_models_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Boolean isCustomModel;
+    private Optional<Boolean> isCustomModel = Optional.empty();
 
-    private String customModelTrainingDate = null;
+    private JsonNullable<String> customModelTrainingDate = JsonNullable.<String>undefined();
 
-    private Long totalPrSummariesCreated;
+    private Optional<Long> totalPrSummariesCreated = Optional.empty();
 
-    private Long totalEngagedUsers;
+    private Optional<Long> totalEngagedUsers = Optional.empty();
 
     public CopilotDotcomPullRequestsRepositoriesInnerModelsInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -43,16 +44,16 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
                     "Name of the model used for Copilot pull request summaries. If the default model is used will appear as 'default'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CopilotDotcomPullRequestsRepositoriesInnerModelsInner isCustomModel(Boolean isCustomModel) {
-        this.isCustomModel = isCustomModel;
+        this.isCustomModel = Optional.ofNullable(isCustomModel);
         return this;
     }
 
@@ -65,17 +66,17 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
             description = "Indicates whether a model is custom or default.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_custom_model")
-    public Boolean getIsCustomModel() {
+    public Optional<Boolean> getIsCustomModel() {
         return isCustomModel;
     }
 
-    public void setIsCustomModel(Boolean isCustomModel) {
+    public void setIsCustomModel(Optional<Boolean> isCustomModel) {
         this.isCustomModel = isCustomModel;
     }
 
     public CopilotDotcomPullRequestsRepositoriesInnerModelsInner customModelTrainingDate(
             String customModelTrainingDate) {
-        this.customModelTrainingDate = customModelTrainingDate;
+        this.customModelTrainingDate = JsonNullable.of(customModelTrainingDate);
         return this;
     }
 
@@ -88,16 +89,16 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
             description = "The training date for the custom model.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_model_training_date")
-    public String getCustomModelTrainingDate() {
+    public JsonNullable<String> getCustomModelTrainingDate() {
         return customModelTrainingDate;
     }
 
-    public void setCustomModelTrainingDate(String customModelTrainingDate) {
+    public void setCustomModelTrainingDate(JsonNullable<String> customModelTrainingDate) {
         this.customModelTrainingDate = customModelTrainingDate;
     }
 
     public CopilotDotcomPullRequestsRepositoriesInnerModelsInner totalPrSummariesCreated(Long totalPrSummariesCreated) {
-        this.totalPrSummariesCreated = totalPrSummariesCreated;
+        this.totalPrSummariesCreated = Optional.ofNullable(totalPrSummariesCreated);
         return this;
     }
 
@@ -111,16 +112,16 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
                     "The number of pull request summaries generated using Copilot for Pull Requests in the given repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_pr_summaries_created")
-    public Long getTotalPrSummariesCreated() {
+    public Optional<Long> getTotalPrSummariesCreated() {
         return totalPrSummariesCreated;
     }
 
-    public void setTotalPrSummariesCreated(Long totalPrSummariesCreated) {
+    public void setTotalPrSummariesCreated(Optional<Long> totalPrSummariesCreated) {
         this.totalPrSummariesCreated = totalPrSummariesCreated;
     }
 
     public CopilotDotcomPullRequestsRepositoriesInnerModelsInner totalEngagedUsers(Long totalEngagedUsers) {
-        this.totalEngagedUsers = totalEngagedUsers;
+        this.totalEngagedUsers = Optional.ofNullable(totalEngagedUsers);
         return this;
     }
 
@@ -134,11 +135,11 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
                     "The number of users who generated pull request summaries using Copilot for Pull Requests in the given repository and model.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_engaged_users")
-    public Long getTotalEngagedUsers() {
+    public Optional<Long> getTotalEngagedUsers() {
         return totalEngagedUsers;
     }
 
-    public void setTotalEngagedUsers(Long totalEngagedUsers) {
+    public void setTotalEngagedUsers(Optional<Long> totalEngagedUsers) {
         this.totalEngagedUsers = totalEngagedUsers;
     }
 
@@ -155,7 +156,7 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
         return Objects.equals(this.name, copilotDotcomPullRequestsRepositoriesInnerModelsInner.name)
                 && Objects.equals(
                         this.isCustomModel, copilotDotcomPullRequestsRepositoriesInnerModelsInner.isCustomModel)
-                && Objects.equals(
+                && equalsNullable(
                         this.customModelTrainingDate,
                         copilotDotcomPullRequestsRepositoriesInnerModelsInner.customModelTrainingDate)
                 && Objects.equals(
@@ -166,9 +167,26 @@ public class CopilotDotcomPullRequestsRepositoriesInnerModelsInner {
                         copilotDotcomPullRequestsRepositoriesInnerModelsInner.totalEngagedUsers);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, isCustomModel, customModelTrainingDate, totalPrSummariesCreated, totalEngagedUsers);
+        return Objects.hash(
+                name,
+                isCustomModel,
+                hashCodeNullable(customModelTrainingDate),
+                totalPrSummariesCreated,
+                totalEngagedUsers);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

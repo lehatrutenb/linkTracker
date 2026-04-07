@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AlertInstance
@@ -19,24 +19,24 @@ import java.util.Objects;
 @JsonTypeName("Alert_Instance")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AlertInstance {
 
     private String analysisKey;
 
-    private String category;
+    private Optional<String> category = Optional.empty();
 
     @Valid
     private List<String> classifications = new ArrayList<>();
 
-    private String commitSha;
+    private Optional<String> commitSha = Optional.empty();
 
     private String environment;
 
-    private AlertInstanceLocation location;
+    private Optional<AlertInstanceLocation> location = Optional.empty();
 
-    private CodeScanningAlertInstanceMessage message;
+    private Optional<CodeScanningAlertInstanceMessage> message = Optional.empty();
 
     private String ref;
 
@@ -118,7 +118,7 @@ public class AlertInstance {
     }
 
     public AlertInstance category(String category) {
-        this.category = category;
+        this.category = Optional.ofNullable(category);
         return this;
     }
 
@@ -131,11 +131,11 @@ public class AlertInstance {
             description = "Identifies the configuration under which the analysis was executed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("category")
-    public String getCategory() {
+    public Optional<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Optional<String> category) {
         this.category = category;
     }
 
@@ -167,7 +167,7 @@ public class AlertInstance {
     }
 
     public AlertInstance commitSha(String commitSha) {
-        this.commitSha = commitSha;
+        this.commitSha = Optional.ofNullable(commitSha);
         return this;
     }
 
@@ -177,11 +177,11 @@ public class AlertInstance {
      */
     @Schema(name = "commit_sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_sha")
-    public String getCommitSha() {
+    public Optional<String> getCommitSha() {
         return commitSha;
     }
 
-    public void setCommitSha(String commitSha) {
+    public void setCommitSha(Optional<String> commitSha) {
         this.commitSha = commitSha;
     }
 
@@ -210,7 +210,7 @@ public class AlertInstance {
     }
 
     public AlertInstance location(AlertInstanceLocation location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -221,16 +221,16 @@ public class AlertInstance {
     @Valid
     @Schema(name = "location", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public AlertInstanceLocation getLocation() {
+    public Optional<AlertInstanceLocation> getLocation() {
         return location;
     }
 
-    public void setLocation(AlertInstanceLocation location) {
+    public void setLocation(Optional<AlertInstanceLocation> location) {
         this.location = location;
     }
 
     public AlertInstance message(CodeScanningAlertInstanceMessage message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -241,11 +241,11 @@ public class AlertInstance {
     @Valid
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public CodeScanningAlertInstanceMessage getMessage() {
+    public Optional<CodeScanningAlertInstanceMessage> getMessage() {
         return message;
     }
 
-    public void setMessage(CodeScanningAlertInstanceMessage message) {
+    public void setMessage(Optional<CodeScanningAlertInstanceMessage> message) {
         this.message = message;
     }
 

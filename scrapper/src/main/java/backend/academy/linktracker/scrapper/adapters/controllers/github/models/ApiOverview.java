@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Api Overview
@@ -18,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("api-overview")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiOverview {
 
     private Boolean verifiablePasswordAuthentication;
 
-    private ApiOverviewSshKeyFingerprints sshKeyFingerprints;
+    private Optional<ApiOverviewSshKeyFingerprints> sshKeyFingerprints = Optional.empty();
 
     @Valid
     private List<String> sshKeys = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ApiOverview {
     @Valid
     private List<String> copilot = new ArrayList<>();
 
-    private ApiOverviewDomains domains;
+    private Optional<ApiOverviewDomains> domains = Optional.empty();
 
     public ApiOverview() {
         super();
@@ -102,7 +102,7 @@ public class ApiOverview {
     }
 
     public ApiOverview sshKeyFingerprints(ApiOverviewSshKeyFingerprints sshKeyFingerprints) {
-        this.sshKeyFingerprints = sshKeyFingerprints;
+        this.sshKeyFingerprints = Optional.ofNullable(sshKeyFingerprints);
         return this;
     }
 
@@ -113,11 +113,11 @@ public class ApiOverview {
     @Valid
     @Schema(name = "ssh_key_fingerprints", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ssh_key_fingerprints")
-    public ApiOverviewSshKeyFingerprints getSshKeyFingerprints() {
+    public Optional<ApiOverviewSshKeyFingerprints> getSshKeyFingerprints() {
         return sshKeyFingerprints;
     }
 
-    public void setSshKeyFingerprints(ApiOverviewSshKeyFingerprints sshKeyFingerprints) {
+    public void setSshKeyFingerprints(Optional<ApiOverviewSshKeyFingerprints> sshKeyFingerprints) {
         this.sshKeyFingerprints = sshKeyFingerprints;
     }
 
@@ -506,7 +506,7 @@ public class ApiOverview {
     }
 
     public ApiOverview domains(ApiOverviewDomains domains) {
-        this.domains = domains;
+        this.domains = Optional.ofNullable(domains);
         return this;
     }
 
@@ -517,11 +517,11 @@ public class ApiOverview {
     @Valid
     @Schema(name = "domains", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("domains")
-    public ApiOverviewDomains getDomains() {
+    public Optional<ApiOverviewDomains> getDomains() {
         return domains;
     }
 
-    public void setDomains(ApiOverviewDomains domains) {
+    public void setDomains(Optional<ApiOverviewDomains> domains) {
         this.domains = domains;
     }
 

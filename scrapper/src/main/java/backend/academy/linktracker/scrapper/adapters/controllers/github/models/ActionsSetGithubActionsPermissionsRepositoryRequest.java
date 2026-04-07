@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsSetGithubActionsPermissionsRepositoryRequest
@@ -15,15 +15,15 @@ import java.util.Objects;
 @JsonTypeName("actions_set_github_actions_permissions_repository_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsSetGithubActionsPermissionsRepositoryRequest {
 
     private Boolean enabled;
 
-    private AllowedActions allowedActions;
+    private Optional<AllowedActions> allowedActions = Optional.empty();
 
-    private Boolean shaPinningRequired;
+    private Optional<Boolean> shaPinningRequired = Optional.empty();
 
     public ActionsSetGithubActionsPermissionsRepositoryRequest() {
         super();
@@ -60,7 +60,7 @@ public class ActionsSetGithubActionsPermissionsRepositoryRequest {
     }
 
     public ActionsSetGithubActionsPermissionsRepositoryRequest allowedActions(AllowedActions allowedActions) {
-        this.allowedActions = allowedActions;
+        this.allowedActions = Optional.ofNullable(allowedActions);
         return this;
     }
 
@@ -71,16 +71,16 @@ public class ActionsSetGithubActionsPermissionsRepositoryRequest {
     @Valid
     @Schema(name = "allowed_actions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allowed_actions")
-    public AllowedActions getAllowedActions() {
+    public Optional<AllowedActions> getAllowedActions() {
         return allowedActions;
     }
 
-    public void setAllowedActions(AllowedActions allowedActions) {
+    public void setAllowedActions(Optional<AllowedActions> allowedActions) {
         this.allowedActions = allowedActions;
     }
 
     public ActionsSetGithubActionsPermissionsRepositoryRequest shaPinningRequired(Boolean shaPinningRequired) {
-        this.shaPinningRequired = shaPinningRequired;
+        this.shaPinningRequired = Optional.ofNullable(shaPinningRequired);
         return this;
     }
 
@@ -93,11 +93,11 @@ public class ActionsSetGithubActionsPermissionsRepositoryRequest {
             description = "Whether actions must be pinned to a full-length commit SHA.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha_pinning_required")
-    public Boolean getShaPinningRequired() {
+    public Optional<Boolean> getShaPinningRequired() {
         return shaPinningRequired;
     }
 
-    public void setShaPinningRequired(Boolean shaPinningRequired) {
+    public void setShaPinningRequired(Optional<Boolean> shaPinningRequired) {
         this.shaPinningRequired = shaPinningRequired;
     }
 

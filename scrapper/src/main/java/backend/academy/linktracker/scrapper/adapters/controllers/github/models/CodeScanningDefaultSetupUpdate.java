@@ -7,11 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Configuration for code scanning default setup.
@@ -20,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-default-setup-update")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningDefaultSetupUpdate {
 
@@ -59,7 +56,7 @@ public class CodeScanningDefaultSetupUpdate {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
     /**
      * Runner type to be used.
@@ -96,9 +93,9 @@ public class CodeScanningDefaultSetupUpdate {
         }
     }
 
-    private RunnerTypeEnum runnerType;
+    private Optional<RunnerTypeEnum> runnerType = Optional.empty();
 
-    private String runnerLabel = null;
+    private JsonNullable<String> runnerLabel = JsonNullable.<String>undefined();
 
     /**
      * CodeQL query suite to be used.
@@ -135,7 +132,7 @@ public class CodeScanningDefaultSetupUpdate {
         }
     }
 
-    private QuerySuiteEnum querySuite;
+    private Optional<QuerySuiteEnum> querySuite = Optional.empty();
 
     /**
      * Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
@@ -172,7 +169,7 @@ public class CodeScanningDefaultSetupUpdate {
         }
     }
 
-    private ThreatModelEnum threatModel;
+    private Optional<ThreatModelEnum> threatModel = Optional.empty();
 
     /**
      * Gets or Sets languages
@@ -227,7 +224,7 @@ public class CodeScanningDefaultSetupUpdate {
     private List<LanguagesEnum> languages = new ArrayList<>();
 
     public CodeScanningDefaultSetupUpdate state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -240,16 +237,16 @@ public class CodeScanningDefaultSetupUpdate {
             description = "The desired state of code scanning default setup.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public CodeScanningDefaultSetupUpdate runnerType(RunnerTypeEnum runnerType) {
-        this.runnerType = runnerType;
+        this.runnerType = Optional.ofNullable(runnerType);
         return this;
     }
 
@@ -262,16 +259,16 @@ public class CodeScanningDefaultSetupUpdate {
             description = "Runner type to be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_type")
-    public RunnerTypeEnum getRunnerType() {
+    public Optional<RunnerTypeEnum> getRunnerType() {
         return runnerType;
     }
 
-    public void setRunnerType(RunnerTypeEnum runnerType) {
+    public void setRunnerType(Optional<RunnerTypeEnum> runnerType) {
         this.runnerType = runnerType;
     }
 
     public CodeScanningDefaultSetupUpdate runnerLabel(String runnerLabel) {
-        this.runnerLabel = runnerLabel;
+        this.runnerLabel = JsonNullable.of(runnerLabel);
         return this;
     }
 
@@ -285,16 +282,16 @@ public class CodeScanningDefaultSetupUpdate {
             description = "Runner label to be used if the runner type is labeled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_label")
-    public String getRunnerLabel() {
+    public JsonNullable<String> getRunnerLabel() {
         return runnerLabel;
     }
 
-    public void setRunnerLabel(String runnerLabel) {
+    public void setRunnerLabel(JsonNullable<String> runnerLabel) {
         this.runnerLabel = runnerLabel;
     }
 
     public CodeScanningDefaultSetupUpdate querySuite(QuerySuiteEnum querySuite) {
-        this.querySuite = querySuite;
+        this.querySuite = Optional.ofNullable(querySuite);
         return this;
     }
 
@@ -307,16 +304,16 @@ public class CodeScanningDefaultSetupUpdate {
             description = "CodeQL query suite to be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("query_suite")
-    public QuerySuiteEnum getQuerySuite() {
+    public Optional<QuerySuiteEnum> getQuerySuite() {
         return querySuite;
     }
 
-    public void setQuerySuite(QuerySuiteEnum querySuite) {
+    public void setQuerySuite(Optional<QuerySuiteEnum> querySuite) {
         this.querySuite = querySuite;
     }
 
     public CodeScanningDefaultSetupUpdate threatModel(ThreatModelEnum threatModel) {
-        this.threatModel = threatModel;
+        this.threatModel = Optional.ofNullable(threatModel);
         return this;
     }
 
@@ -330,11 +327,11 @@ public class CodeScanningDefaultSetupUpdate {
                     "Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("threat_model")
-    public ThreatModelEnum getThreatModel() {
+    public Optional<ThreatModelEnum> getThreatModel() {
         return threatModel;
     }
 
-    public void setThreatModel(ThreatModelEnum threatModel) {
+    public void setThreatModel(Optional<ThreatModelEnum> threatModel) {
         this.threatModel = threatModel;
     }
 
@@ -379,15 +376,27 @@ public class CodeScanningDefaultSetupUpdate {
         CodeScanningDefaultSetupUpdate codeScanningDefaultSetupUpdate = (CodeScanningDefaultSetupUpdate) o;
         return Objects.equals(this.state, codeScanningDefaultSetupUpdate.state)
                 && Objects.equals(this.runnerType, codeScanningDefaultSetupUpdate.runnerType)
-                && Objects.equals(this.runnerLabel, codeScanningDefaultSetupUpdate.runnerLabel)
+                && equalsNullable(this.runnerLabel, codeScanningDefaultSetupUpdate.runnerLabel)
                 && Objects.equals(this.querySuite, codeScanningDefaultSetupUpdate.querySuite)
                 && Objects.equals(this.threatModel, codeScanningDefaultSetupUpdate.threatModel)
                 && Objects.equals(this.languages, codeScanningDefaultSetupUpdate.languages);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(state, runnerType, runnerLabel, querySuite, threatModel, languages);
+        return Objects.hash(state, runnerType, hashCodeNullable(runnerLabel), querySuite, threatModel, languages);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

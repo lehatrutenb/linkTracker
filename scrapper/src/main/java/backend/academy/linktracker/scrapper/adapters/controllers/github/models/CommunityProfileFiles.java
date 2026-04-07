@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CommunityProfileFiles
@@ -15,23 +15,28 @@ import java.util.Objects;
 @JsonTypeName("community_profile_files")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommunityProfileFiles {
 
-    private NullableCodeOfConductSimple codeOfConduct = null;
+    private JsonNullable<NullableCodeOfConductSimple> codeOfConduct =
+            JsonNullable.<NullableCodeOfConductSimple>undefined();
 
-    private NullableCommunityHealthFile codeOfConductFile = null;
+    private JsonNullable<NullableCommunityHealthFile> codeOfConductFile =
+            JsonNullable.<NullableCommunityHealthFile>undefined();
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
-    private NullableCommunityHealthFile contributing = null;
+    private JsonNullable<NullableCommunityHealthFile> contributing =
+            JsonNullable.<NullableCommunityHealthFile>undefined();
 
-    private NullableCommunityHealthFile readme = null;
+    private JsonNullable<NullableCommunityHealthFile> readme = JsonNullable.<NullableCommunityHealthFile>undefined();
 
-    private NullableCommunityHealthFile issueTemplate = null;
+    private JsonNullable<NullableCommunityHealthFile> issueTemplate =
+            JsonNullable.<NullableCommunityHealthFile>undefined();
 
-    private NullableCommunityHealthFile pullRequestTemplate = null;
+    private JsonNullable<NullableCommunityHealthFile> pullRequestTemplate =
+            JsonNullable.<NullableCommunityHealthFile>undefined();
 
     public CommunityProfileFiles() {
         super();
@@ -48,17 +53,17 @@ public class CommunityProfileFiles {
             NullableCommunityHealthFile readme,
             NullableCommunityHealthFile issueTemplate,
             NullableCommunityHealthFile pullRequestTemplate) {
-        this.codeOfConduct = codeOfConduct;
-        this.codeOfConductFile = codeOfConductFile;
-        this.license = license;
-        this.contributing = contributing;
-        this.readme = readme;
-        this.issueTemplate = issueTemplate;
-        this.pullRequestTemplate = pullRequestTemplate;
+        this.codeOfConduct = JsonNullable.of(codeOfConduct);
+        this.codeOfConductFile = JsonNullable.of(codeOfConductFile);
+        this.license = JsonNullable.of(license);
+        this.contributing = JsonNullable.of(contributing);
+        this.readme = JsonNullable.of(readme);
+        this.issueTemplate = JsonNullable.of(issueTemplate);
+        this.pullRequestTemplate = JsonNullable.of(pullRequestTemplate);
     }
 
     public CommunityProfileFiles codeOfConduct(NullableCodeOfConductSimple codeOfConduct) {
-        this.codeOfConduct = codeOfConduct;
+        this.codeOfConduct = JsonNullable.of(codeOfConduct);
         return this;
     }
 
@@ -70,16 +75,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "code_of_conduct", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("code_of_conduct")
-    public NullableCodeOfConductSimple getCodeOfConduct() {
+    public JsonNullable<NullableCodeOfConductSimple> getCodeOfConduct() {
         return codeOfConduct;
     }
 
-    public void setCodeOfConduct(NullableCodeOfConductSimple codeOfConduct) {
+    public void setCodeOfConduct(JsonNullable<NullableCodeOfConductSimple> codeOfConduct) {
         this.codeOfConduct = codeOfConduct;
     }
 
     public CommunityProfileFiles codeOfConductFile(NullableCommunityHealthFile codeOfConductFile) {
-        this.codeOfConductFile = codeOfConductFile;
+        this.codeOfConductFile = JsonNullable.of(codeOfConductFile);
         return this;
     }
 
@@ -91,16 +96,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "code_of_conduct_file", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("code_of_conduct_file")
-    public NullableCommunityHealthFile getCodeOfConductFile() {
+    public JsonNullable<NullableCommunityHealthFile> getCodeOfConductFile() {
         return codeOfConductFile;
     }
 
-    public void setCodeOfConductFile(NullableCommunityHealthFile codeOfConductFile) {
+    public void setCodeOfConductFile(JsonNullable<NullableCommunityHealthFile> codeOfConductFile) {
         this.codeOfConductFile = codeOfConductFile;
     }
 
     public CommunityProfileFiles license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -112,16 +117,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 
     public CommunityProfileFiles contributing(NullableCommunityHealthFile contributing) {
-        this.contributing = contributing;
+        this.contributing = JsonNullable.of(contributing);
         return this;
     }
 
@@ -133,16 +138,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "contributing", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("contributing")
-    public NullableCommunityHealthFile getContributing() {
+    public JsonNullable<NullableCommunityHealthFile> getContributing() {
         return contributing;
     }
 
-    public void setContributing(NullableCommunityHealthFile contributing) {
+    public void setContributing(JsonNullable<NullableCommunityHealthFile> contributing) {
         this.contributing = contributing;
     }
 
     public CommunityProfileFiles readme(NullableCommunityHealthFile readme) {
-        this.readme = readme;
+        this.readme = JsonNullable.of(readme);
         return this;
     }
 
@@ -154,16 +159,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "readme", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("readme")
-    public NullableCommunityHealthFile getReadme() {
+    public JsonNullable<NullableCommunityHealthFile> getReadme() {
         return readme;
     }
 
-    public void setReadme(NullableCommunityHealthFile readme) {
+    public void setReadme(JsonNullable<NullableCommunityHealthFile> readme) {
         this.readme = readme;
     }
 
     public CommunityProfileFiles issueTemplate(NullableCommunityHealthFile issueTemplate) {
-        this.issueTemplate = issueTemplate;
+        this.issueTemplate = JsonNullable.of(issueTemplate);
         return this;
     }
 
@@ -175,16 +180,16 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "issue_template", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("issue_template")
-    public NullableCommunityHealthFile getIssueTemplate() {
+    public JsonNullable<NullableCommunityHealthFile> getIssueTemplate() {
         return issueTemplate;
     }
 
-    public void setIssueTemplate(NullableCommunityHealthFile issueTemplate) {
+    public void setIssueTemplate(JsonNullable<NullableCommunityHealthFile> issueTemplate) {
         this.issueTemplate = issueTemplate;
     }
 
     public CommunityProfileFiles pullRequestTemplate(NullableCommunityHealthFile pullRequestTemplate) {
-        this.pullRequestTemplate = pullRequestTemplate;
+        this.pullRequestTemplate = JsonNullable.of(pullRequestTemplate);
         return this;
     }
 
@@ -196,11 +201,11 @@ public class CommunityProfileFiles {
     @Valid
     @Schema(name = "pull_request_template", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pull_request_template")
-    public NullableCommunityHealthFile getPullRequestTemplate() {
+    public JsonNullable<NullableCommunityHealthFile> getPullRequestTemplate() {
         return pullRequestTemplate;
     }
 
-    public void setPullRequestTemplate(NullableCommunityHealthFile pullRequestTemplate) {
+    public void setPullRequestTemplate(JsonNullable<NullableCommunityHealthFile> pullRequestTemplate) {
         this.pullRequestTemplate = pullRequestTemplate;
     }
 

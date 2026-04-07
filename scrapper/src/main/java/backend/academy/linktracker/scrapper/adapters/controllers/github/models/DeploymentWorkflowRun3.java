@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,21 +20,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Deployment_Workflow_Run_3")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeploymentWorkflowRun3 {
 
-    private User actor = null;
+    private JsonNullable<User> actor = JsonNullable.<User>undefined();
 
-    private String artifactsUrl;
+    private Optional<String> artifactsUrl = Optional.empty();
 
-    private String cancelUrl;
+    private Optional<String> cancelUrl = Optional.empty();
 
     private Long checkSuiteId;
 
     private String checkSuiteNodeId;
 
-    private String checkSuiteUrl;
+    private Optional<String> checkSuiteUrl = Optional.empty();
 
     /**
      * Gets or Sets conclusion
@@ -83,7 +81,7 @@ public class DeploymentWorkflowRun3 {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -92,9 +90,9 @@ public class DeploymentWorkflowRun3 {
 
     private String headBranch;
 
-    private Object headCommit = null;
+    private JsonNullable<Object> headCommit = JsonNullable.<Object>undefined();
 
-    private DeploymentWorkflowRun1HeadRepository headRepository;
+    private Optional<DeploymentWorkflowRun1HeadRepository> headRepository = Optional.empty();
 
     private String headSha;
 
@@ -102,9 +100,9 @@ public class DeploymentWorkflowRun3 {
 
     private Long id;
 
-    private String jobsUrl;
+    private Optional<String> jobsUrl = Optional.empty();
 
-    private String logsUrl;
+    private Optional<String> logsUrl = Optional.empty();
 
     private String name;
 
@@ -112,17 +110,18 @@ public class DeploymentWorkflowRun3 {
 
     private String path;
 
-    private String previousAttemptUrl = null;
+    private JsonNullable<String> previousAttemptUrl = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid CheckRunPullRequest> pullRequests = new ArrayList<>();
 
     @Valid
-    private List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows;
+    private JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> referencedWorkflows =
+            JsonNullable.<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>>undefined();
 
-    private DeploymentWorkflowRun1HeadRepository repository;
+    private Optional<DeploymentWorkflowRun1HeadRepository> repository = Optional.empty();
 
-    private String rerunUrl;
+    private Optional<String> rerunUrl = Optional.empty();
 
     private Long runAttempt;
 
@@ -176,7 +175,7 @@ public class DeploymentWorkflowRun3 {
 
     private StatusEnum status;
 
-    private User triggeringActor = null;
+    private JsonNullable<User> triggeringActor = JsonNullable.<User>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
@@ -185,7 +184,7 @@ public class DeploymentWorkflowRun3 {
 
     private Long workflowId;
 
-    private String workflowUrl;
+    private Optional<String> workflowUrl = Optional.empty();
 
     private String displayTitle;
 
@@ -220,10 +219,10 @@ public class DeploymentWorkflowRun3 {
             URI url,
             Long workflowId,
             String displayTitle) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         this.checkSuiteId = checkSuiteId;
         this.checkSuiteNodeId = checkSuiteNodeId;
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
         this.event = event;
         this.headBranch = headBranch;
@@ -238,7 +237,7 @@ public class DeploymentWorkflowRun3 {
         this.runNumber = runNumber;
         this.runStartedAt = runStartedAt;
         this.status = status;
-        this.triggeringActor = triggeringActor;
+        this.triggeringActor = JsonNullable.of(triggeringActor);
         this.updatedAt = updatedAt;
         this.url = url;
         this.workflowId = workflowId;
@@ -246,7 +245,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 actor(User actor) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         return this;
     }
 
@@ -258,16 +257,16 @@ public class DeploymentWorkflowRun3 {
     @Valid
     @Schema(name = "actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("actor")
-    public User getActor() {
+    public JsonNullable<User> getActor() {
         return actor;
     }
 
-    public void setActor(User actor) {
+    public void setActor(JsonNullable<User> actor) {
         this.actor = actor;
     }
 
     public DeploymentWorkflowRun3 artifactsUrl(String artifactsUrl) {
-        this.artifactsUrl = artifactsUrl;
+        this.artifactsUrl = Optional.ofNullable(artifactsUrl);
         return this;
     }
 
@@ -277,16 +276,16 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "artifacts_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifacts_url")
-    public String getArtifactsUrl() {
+    public Optional<String> getArtifactsUrl() {
         return artifactsUrl;
     }
 
-    public void setArtifactsUrl(String artifactsUrl) {
+    public void setArtifactsUrl(Optional<String> artifactsUrl) {
         this.artifactsUrl = artifactsUrl;
     }
 
     public DeploymentWorkflowRun3 cancelUrl(String cancelUrl) {
-        this.cancelUrl = cancelUrl;
+        this.cancelUrl = Optional.ofNullable(cancelUrl);
         return this;
     }
 
@@ -296,11 +295,11 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "cancel_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cancel_url")
-    public String getCancelUrl() {
+    public Optional<String> getCancelUrl() {
         return cancelUrl;
     }
 
-    public void setCancelUrl(String cancelUrl) {
+    public void setCancelUrl(Optional<String> cancelUrl) {
         this.cancelUrl = cancelUrl;
     }
 
@@ -345,7 +344,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 checkSuiteUrl(String checkSuiteUrl) {
-        this.checkSuiteUrl = checkSuiteUrl;
+        this.checkSuiteUrl = Optional.ofNullable(checkSuiteUrl);
         return this;
     }
 
@@ -355,16 +354,16 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "check_suite_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("check_suite_url")
-    public String getCheckSuiteUrl() {
+    public Optional<String> getCheckSuiteUrl() {
         return checkSuiteUrl;
     }
 
-    public void setCheckSuiteUrl(String checkSuiteUrl) {
+    public void setCheckSuiteUrl(Optional<String> checkSuiteUrl) {
         this.checkSuiteUrl = checkSuiteUrl;
     }
 
     public DeploymentWorkflowRun3 conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -375,11 +374,11 @@ public class DeploymentWorkflowRun3 {
     @NotNull
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -445,7 +444,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 headCommit(Object headCommit) {
-        this.headCommit = headCommit;
+        this.headCommit = JsonNullable.of(headCommit);
         return this;
     }
 
@@ -455,16 +454,16 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "head_commit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_commit")
-    public Object getHeadCommit() {
+    public JsonNullable<Object> getHeadCommit() {
         return headCommit;
     }
 
-    public void setHeadCommit(Object headCommit) {
+    public void setHeadCommit(JsonNullable<Object> headCommit) {
         this.headCommit = headCommit;
     }
 
     public DeploymentWorkflowRun3 headRepository(DeploymentWorkflowRun1HeadRepository headRepository) {
-        this.headRepository = headRepository;
+        this.headRepository = Optional.ofNullable(headRepository);
         return this;
     }
 
@@ -475,11 +474,11 @@ public class DeploymentWorkflowRun3 {
     @Valid
     @Schema(name = "head_repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_repository")
-    public DeploymentWorkflowRun1HeadRepository getHeadRepository() {
+    public Optional<DeploymentWorkflowRun1HeadRepository> getHeadRepository() {
         return headRepository;
     }
 
-    public void setHeadRepository(DeploymentWorkflowRun1HeadRepository headRepository) {
+    public void setHeadRepository(Optional<DeploymentWorkflowRun1HeadRepository> headRepository) {
         this.headRepository = headRepository;
     }
 
@@ -545,7 +544,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 jobsUrl(String jobsUrl) {
-        this.jobsUrl = jobsUrl;
+        this.jobsUrl = Optional.ofNullable(jobsUrl);
         return this;
     }
 
@@ -555,16 +554,16 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "jobs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("jobs_url")
-    public String getJobsUrl() {
+    public Optional<String> getJobsUrl() {
         return jobsUrl;
     }
 
-    public void setJobsUrl(String jobsUrl) {
+    public void setJobsUrl(Optional<String> jobsUrl) {
         this.jobsUrl = jobsUrl;
     }
 
     public DeploymentWorkflowRun3 logsUrl(String logsUrl) {
-        this.logsUrl = logsUrl;
+        this.logsUrl = Optional.ofNullable(logsUrl);
         return this;
     }
 
@@ -574,11 +573,11 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "logs_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("logs_url")
-    public String getLogsUrl() {
+    public Optional<String> getLogsUrl() {
         return logsUrl;
     }
 
-    public void setLogsUrl(String logsUrl) {
+    public void setLogsUrl(Optional<String> logsUrl) {
         this.logsUrl = logsUrl;
     }
 
@@ -643,7 +642,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 previousAttemptUrl(String previousAttemptUrl) {
-        this.previousAttemptUrl = previousAttemptUrl;
+        this.previousAttemptUrl = JsonNullable.of(previousAttemptUrl);
         return this;
     }
 
@@ -653,11 +652,11 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "previous_attempt_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("previous_attempt_url")
-    public String getPreviousAttemptUrl() {
+    public JsonNullable<String> getPreviousAttemptUrl() {
         return previousAttemptUrl;
     }
 
-    public void setPreviousAttemptUrl(String previousAttemptUrl) {
+    public void setPreviousAttemptUrl(JsonNullable<String> previousAttemptUrl) {
         this.previousAttemptUrl = previousAttemptUrl;
     }
 
@@ -692,16 +691,16 @@ public class DeploymentWorkflowRun3 {
 
     public DeploymentWorkflowRun3 referencedWorkflows(
             List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows) {
-        this.referencedWorkflows = referencedWorkflows;
+        this.referencedWorkflows = JsonNullable.of(referencedWorkflows);
         return this;
     }
 
     public DeploymentWorkflowRun3 addReferencedWorkflowsItem(
             DeploymentWorkflowRunReferencedWorkflowsInner referencedWorkflowsItem) {
-        if (this.referencedWorkflows == null) {
-            this.referencedWorkflows = new ArrayList<>();
+        if (this.referencedWorkflows == null || !this.referencedWorkflows.isPresent()) {
+            this.referencedWorkflows = JsonNullable.of(new ArrayList<>());
         }
-        this.referencedWorkflows.add(referencedWorkflowsItem);
+        this.referencedWorkflows.get().add(referencedWorkflowsItem);
         return this;
     }
 
@@ -712,16 +711,17 @@ public class DeploymentWorkflowRun3 {
     @Valid
     @Schema(name = "referenced_workflows", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("referenced_workflows")
-    public List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> getReferencedWorkflows() {
+    public JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> getReferencedWorkflows() {
         return referencedWorkflows;
     }
 
-    public void setReferencedWorkflows(List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner> referencedWorkflows) {
+    public void setReferencedWorkflows(
+            JsonNullable<List<@Valid DeploymentWorkflowRunReferencedWorkflowsInner>> referencedWorkflows) {
         this.referencedWorkflows = referencedWorkflows;
     }
 
     public DeploymentWorkflowRun3 repository(DeploymentWorkflowRun1HeadRepository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -732,16 +732,16 @@ public class DeploymentWorkflowRun3 {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public DeploymentWorkflowRun1HeadRepository getRepository() {
+    public Optional<DeploymentWorkflowRun1HeadRepository> getRepository() {
         return repository;
     }
 
-    public void setRepository(DeploymentWorkflowRun1HeadRepository repository) {
+    public void setRepository(Optional<DeploymentWorkflowRun1HeadRepository> repository) {
         this.repository = repository;
     }
 
     public DeploymentWorkflowRun3 rerunUrl(String rerunUrl) {
-        this.rerunUrl = rerunUrl;
+        this.rerunUrl = Optional.ofNullable(rerunUrl);
         return this;
     }
 
@@ -751,11 +751,11 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "rerun_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rerun_url")
-    public String getRerunUrl() {
+    public Optional<String> getRerunUrl() {
         return rerunUrl;
     }
 
-    public void setRerunUrl(String rerunUrl) {
+    public void setRerunUrl(Optional<String> rerunUrl) {
         this.rerunUrl = rerunUrl;
     }
 
@@ -841,7 +841,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 triggeringActor(User triggeringActor) {
-        this.triggeringActor = triggeringActor;
+        this.triggeringActor = JsonNullable.of(triggeringActor);
         return this;
     }
 
@@ -853,11 +853,11 @@ public class DeploymentWorkflowRun3 {
     @Valid
     @Schema(name = "triggering_actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("triggering_actor")
-    public User getTriggeringActor() {
+    public JsonNullable<User> getTriggeringActor() {
         return triggeringActor;
     }
 
-    public void setTriggeringActor(User triggeringActor) {
+    public void setTriggeringActor(JsonNullable<User> triggeringActor) {
         this.triggeringActor = triggeringActor;
     }
 
@@ -924,7 +924,7 @@ public class DeploymentWorkflowRun3 {
     }
 
     public DeploymentWorkflowRun3 workflowUrl(String workflowUrl) {
-        this.workflowUrl = workflowUrl;
+        this.workflowUrl = Optional.ofNullable(workflowUrl);
         return this;
     }
 
@@ -934,11 +934,11 @@ public class DeploymentWorkflowRun3 {
      */
     @Schema(name = "workflow_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("workflow_url")
-    public String getWorkflowUrl() {
+    public Optional<String> getWorkflowUrl() {
         return workflowUrl;
     }
 
-    public void setWorkflowUrl(String workflowUrl) {
+    public void setWorkflowUrl(Optional<String> workflowUrl) {
         this.workflowUrl = workflowUrl;
     }
 
@@ -981,7 +981,7 @@ public class DeploymentWorkflowRun3 {
                 && Objects.equals(this.createdAt, deploymentWorkflowRun3.createdAt)
                 && Objects.equals(this.event, deploymentWorkflowRun3.event)
                 && Objects.equals(this.headBranch, deploymentWorkflowRun3.headBranch)
-                && Objects.equals(this.headCommit, deploymentWorkflowRun3.headCommit)
+                && equalsNullable(this.headCommit, deploymentWorkflowRun3.headCommit)
                 && Objects.equals(this.headRepository, deploymentWorkflowRun3.headRepository)
                 && Objects.equals(this.headSha, deploymentWorkflowRun3.headSha)
                 && Objects.equals(this.htmlUrl, deploymentWorkflowRun3.htmlUrl)
@@ -991,9 +991,9 @@ public class DeploymentWorkflowRun3 {
                 && Objects.equals(this.name, deploymentWorkflowRun3.name)
                 && Objects.equals(this.nodeId, deploymentWorkflowRun3.nodeId)
                 && Objects.equals(this.path, deploymentWorkflowRun3.path)
-                && Objects.equals(this.previousAttemptUrl, deploymentWorkflowRun3.previousAttemptUrl)
+                && equalsNullable(this.previousAttemptUrl, deploymentWorkflowRun3.previousAttemptUrl)
                 && Objects.equals(this.pullRequests, deploymentWorkflowRun3.pullRequests)
-                && Objects.equals(this.referencedWorkflows, deploymentWorkflowRun3.referencedWorkflows)
+                && equalsNullable(this.referencedWorkflows, deploymentWorkflowRun3.referencedWorkflows)
                 && Objects.equals(this.repository, deploymentWorkflowRun3.repository)
                 && Objects.equals(this.rerunUrl, deploymentWorkflowRun3.rerunUrl)
                 && Objects.equals(this.runAttempt, deploymentWorkflowRun3.runAttempt)
@@ -1006,6 +1006,11 @@ public class DeploymentWorkflowRun3 {
                 && Objects.equals(this.workflowId, deploymentWorkflowRun3.workflowId)
                 && Objects.equals(this.workflowUrl, deploymentWorkflowRun3.workflowUrl)
                 && Objects.equals(this.displayTitle, deploymentWorkflowRun3.displayTitle);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1021,7 +1026,7 @@ public class DeploymentWorkflowRun3 {
                 createdAt,
                 event,
                 headBranch,
-                headCommit,
+                hashCodeNullable(headCommit),
                 headRepository,
                 headSha,
                 htmlUrl,
@@ -1031,9 +1036,9 @@ public class DeploymentWorkflowRun3 {
                 name,
                 nodeId,
                 path,
-                previousAttemptUrl,
+                hashCodeNullable(previousAttemptUrl),
                 pullRequests,
-                referencedWorkflows,
+                hashCodeNullable(referencedWorkflows),
                 repository,
                 rerunUrl,
                 runAttempt,
@@ -1046,6 +1051,13 @@ public class DeploymentWorkflowRun3 {
                 workflowId,
                 workflowUrl,
                 displayTitle);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

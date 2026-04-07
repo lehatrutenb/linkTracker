@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The &#x60;tier_changed&#x60; and &#x60;pending_tier_change&#x60; will include the original tier before the change or pending change. For more information, see the pending tier change payload.
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("Sponsorship_Tier")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SponsorshipTier {
 
@@ -26,9 +26,9 @@ public class SponsorshipTier {
 
     private String description;
 
-    private Boolean isCustomAmmount;
+    private Optional<Boolean> isCustomAmmount = Optional.empty();
 
-    private Boolean isCustomAmount;
+    private Optional<Boolean> isCustomAmount = Optional.empty();
 
     private Boolean isOneTime;
 
@@ -105,7 +105,7 @@ public class SponsorshipTier {
     }
 
     public SponsorshipTier isCustomAmmount(Boolean isCustomAmmount) {
-        this.isCustomAmmount = isCustomAmmount;
+        this.isCustomAmmount = Optional.ofNullable(isCustomAmmount);
         return this;
     }
 
@@ -115,16 +115,16 @@ public class SponsorshipTier {
      */
     @Schema(name = "is_custom_ammount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_custom_ammount")
-    public Boolean getIsCustomAmmount() {
+    public Optional<Boolean> getIsCustomAmmount() {
         return isCustomAmmount;
     }
 
-    public void setIsCustomAmmount(Boolean isCustomAmmount) {
+    public void setIsCustomAmmount(Optional<Boolean> isCustomAmmount) {
         this.isCustomAmmount = isCustomAmmount;
     }
 
     public SponsorshipTier isCustomAmount(Boolean isCustomAmount) {
-        this.isCustomAmount = isCustomAmount;
+        this.isCustomAmount = Optional.ofNullable(isCustomAmount);
         return this;
     }
 
@@ -134,11 +134,11 @@ public class SponsorshipTier {
      */
     @Schema(name = "is_custom_amount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_custom_amount")
-    public Boolean getIsCustomAmount() {
+    public Optional<Boolean> getIsCustomAmount() {
         return isCustomAmount;
     }
 
-    public void setIsCustomAmount(Boolean isCustomAmount) {
+    public void setIsCustomAmount(Optional<Boolean> isCustomAmount) {
         this.isCustomAmount = isCustomAmount;
     }
 

@@ -4,13 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,122 +17,122 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Question", description = "Represents a question on a Stack Exchange site.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Question implements ApiResponseItemsInner {
 
-    private Long acceptedAnswerId = null;
+    private JsonNullable<Long> acceptedAnswerId = JsonNullable.<Long>undefined();
 
-    private Long answerCount;
+    private Optional<Long> answerCount = Optional.empty();
 
     @Valid
     private List<@Valid Answer> answers = new ArrayList<>();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private String bodyMarkdown;
+    private Optional<String> bodyMarkdown = Optional.empty();
 
-    private Long bountyAmount = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime bountyClosesDate = null;
-
-    private ShallowUser bountyUser;
-
-    private Boolean canAnswer;
-
-    private Boolean canClose;
-
-    private Boolean canComment;
-
-    private Boolean canEdit;
-
-    private Boolean canFlag;
-
-    private Boolean canSuggestEdit;
-
-    private Long closeVoteCount;
+    private JsonNullable<Long> bountyAmount = JsonNullable.<Long>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedDate = null;
+    private JsonNullable<OffsetDateTime> bountyClosesDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private Object closedDetails;
+    private Optional<ShallowUser> bountyUser = Optional.empty();
 
-    private String closedReason = null;
+    private Optional<Boolean> canAnswer = Optional.empty();
+
+    private Optional<Boolean> canClose = Optional.empty();
+
+    private Optional<Boolean> canComment = Optional.empty();
+
+    private Optional<Boolean> canEdit = Optional.empty();
+
+    private Optional<Boolean> canFlag = Optional.empty();
+
+    private Optional<Boolean> canSuggestEdit = Optional.empty();
+
+    private Optional<Long> closeVoteCount = Optional.empty();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> closedDate = JsonNullable.<OffsetDateTime>undefined();
+
+    private Optional<Object> closedDetails = Optional.empty();
+
+    private JsonNullable<String> closedReason = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid Collective> collectives = new ArrayList<>();
 
-    private Long commentCount;
+    private Optional<Long> commentCount = Optional.empty();
 
     @Valid
     private List<@Valid Comment> comments = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime communityOwnedDate = null;
+    private JsonNullable<OffsetDateTime> communityOwnedDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private String contentLicense;
+    private Optional<String> contentLicense = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime creationDate;
 
-    private Long deleteVoteCount;
+    private Optional<Long> deleteVoteCount = Optional.empty();
 
-    private Long downVoteCount;
+    private Optional<Long> downVoteCount = Optional.empty();
 
-    private Boolean downvoted;
+    private Optional<Boolean> downvoted = Optional.empty();
 
-    private Long favoriteCount;
+    private Optional<Long> favoriteCount = Optional.empty();
 
-    private Boolean favorited;
+    private Optional<Boolean> favorited = Optional.empty();
 
-    private Boolean isAnswered;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastActivityDate;
+    private Optional<Boolean> isAnswered = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastEditDate = null;
+    private Optional<OffsetDateTime> lastActivityDate = Optional.empty();
 
-    private ShallowUser lastEditor;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> lastEditDate = JsonNullable.<OffsetDateTime>undefined();
+
+    private Optional<ShallowUser> lastEditor = Optional.empty();
 
     private URI link;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lockedDate = null;
+    private JsonNullable<OffsetDateTime> lockedDate = JsonNullable.<OffsetDateTime>undefined();
 
-    private MigrationInfo migratedFrom;
+    private Optional<MigrationInfo> migratedFrom = Optional.empty();
 
-    private MigrationInfo migratedTo;
+    private Optional<MigrationInfo> migratedTo = Optional.empty();
 
-    private Notice notice;
+    private Optional<Notice> notice = Optional.empty();
 
-    private ShallowUser owner;
+    private Optional<ShallowUser> owner = Optional.empty();
 
     @Valid
     private List<@Valid Collective> postedByCollectives = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime protectedDate = null;
+    private JsonNullable<OffsetDateTime> protectedDate = JsonNullable.<OffsetDateTime>undefined();
 
     private Long questionId;
 
-    private Long reopenVoteCount;
+    private Optional<Long> reopenVoteCount = Optional.empty();
 
-    private Long score;
+    private Optional<Long> score = Optional.empty();
 
-    private URI shareLink;
+    private Optional<URI> shareLink = Optional.empty();
 
     @Valid
     private List<String> tags = new ArrayList<>();
 
     private String title;
 
-    private Long upVoteCount;
+    private Optional<Long> upVoteCount = Optional.empty();
 
-    private Boolean upvoted;
+    private Optional<Boolean> upvoted = Optional.empty();
 
-    private Long viewCount;
+    private Optional<Long> viewCount = Optional.empty();
 
     public Question() {
         super();
@@ -151,7 +149,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question acceptedAnswerId(Long acceptedAnswerId) {
-        this.acceptedAnswerId = acceptedAnswerId;
+        this.acceptedAnswerId = JsonNullable.of(acceptedAnswerId);
         return this;
     }
 
@@ -164,16 +162,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The ID of the accepted answer, if any.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("accepted_answer_id")
-    public Long getAcceptedAnswerId() {
+    public JsonNullable<Long> getAcceptedAnswerId() {
         return acceptedAnswerId;
     }
 
-    public void setAcceptedAnswerId(Long acceptedAnswerId) {
+    public void setAcceptedAnswerId(JsonNullable<Long> acceptedAnswerId) {
         this.acceptedAnswerId = acceptedAnswerId;
     }
 
     public Question answerCount(Long answerCount) {
-        this.answerCount = answerCount;
+        this.answerCount = Optional.ofNullable(answerCount);
         return this;
     }
 
@@ -186,11 +184,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The total number of answers for this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("answer_count")
-    public Long getAnswerCount() {
+    public Optional<Long> getAnswerCount() {
         return answerCount;
     }
 
-    public void setAnswerCount(Long answerCount) {
+    public void setAnswerCount(Optional<Long> answerCount) {
         this.answerCount = answerCount;
     }
 
@@ -226,7 +224,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -239,16 +237,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The main body of the question in HTML format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public Question bodyMarkdown(String bodyMarkdown) {
-        this.bodyMarkdown = bodyMarkdown;
+        this.bodyMarkdown = Optional.ofNullable(bodyMarkdown);
         return this;
     }
 
@@ -261,16 +259,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The main body of the question in Markdown format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_markdown")
-    public String getBodyMarkdown() {
+    public Optional<String> getBodyMarkdown() {
         return bodyMarkdown;
     }
 
-    public void setBodyMarkdown(String bodyMarkdown) {
+    public void setBodyMarkdown(Optional<String> bodyMarkdown) {
         this.bodyMarkdown = bodyMarkdown;
     }
 
     public Question bountyAmount(Long bountyAmount) {
-        this.bountyAmount = bountyAmount;
+        this.bountyAmount = JsonNullable.of(bountyAmount);
         return this;
     }
 
@@ -283,16 +281,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The amount of bounty on this question, if any.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bounty_amount")
-    public Long getBountyAmount() {
+    public JsonNullable<Long> getBountyAmount() {
         return bountyAmount;
     }
 
-    public void setBountyAmount(Long bountyAmount) {
+    public void setBountyAmount(JsonNullable<Long> bountyAmount) {
         this.bountyAmount = bountyAmount;
     }
 
     public Question bountyClosesDate(OffsetDateTime bountyClosesDate) {
-        this.bountyClosesDate = bountyClosesDate;
+        this.bountyClosesDate = JsonNullable.of(bountyClosesDate);
         return this;
     }
 
@@ -306,16 +304,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date when the bounty closes, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bounty_closes_date")
-    public OffsetDateTime getBountyClosesDate() {
+    public JsonNullable<OffsetDateTime> getBountyClosesDate() {
         return bountyClosesDate;
     }
 
-    public void setBountyClosesDate(OffsetDateTime bountyClosesDate) {
+    public void setBountyClosesDate(JsonNullable<OffsetDateTime> bountyClosesDate) {
         this.bountyClosesDate = bountyClosesDate;
     }
 
     public Question bountyUser(ShallowUser bountyUser) {
-        this.bountyUser = bountyUser;
+        this.bountyUser = Optional.ofNullable(bountyUser);
         return this;
     }
 
@@ -326,16 +324,16 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "bounty_user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bounty_user")
-    public ShallowUser getBountyUser() {
+    public Optional<ShallowUser> getBountyUser() {
         return bountyUser;
     }
 
-    public void setBountyUser(ShallowUser bountyUser) {
+    public void setBountyUser(Optional<ShallowUser> bountyUser) {
         this.bountyUser = bountyUser;
     }
 
     public Question canAnswer(Boolean canAnswer) {
-        this.canAnswer = canAnswer;
+        this.canAnswer = Optional.ofNullable(canAnswer);
         return this;
     }
 
@@ -348,16 +346,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can answer this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_answer")
-    public Boolean getCanAnswer() {
+    public Optional<Boolean> getCanAnswer() {
         return canAnswer;
     }
 
-    public void setCanAnswer(Boolean canAnswer) {
+    public void setCanAnswer(Optional<Boolean> canAnswer) {
         this.canAnswer = canAnswer;
     }
 
     public Question canClose(Boolean canClose) {
-        this.canClose = canClose;
+        this.canClose = Optional.ofNullable(canClose);
         return this;
     }
 
@@ -370,16 +368,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can close this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_close")
-    public Boolean getCanClose() {
+    public Optional<Boolean> getCanClose() {
         return canClose;
     }
 
-    public void setCanClose(Boolean canClose) {
+    public void setCanClose(Optional<Boolean> canClose) {
         this.canClose = canClose;
     }
 
     public Question canComment(Boolean canComment) {
-        this.canComment = canComment;
+        this.canComment = Optional.ofNullable(canComment);
         return this;
     }
 
@@ -392,16 +390,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can comment on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_comment")
-    public Boolean getCanComment() {
+    public Optional<Boolean> getCanComment() {
         return canComment;
     }
 
-    public void setCanComment(Boolean canComment) {
+    public void setCanComment(Optional<Boolean> canComment) {
         this.canComment = canComment;
     }
 
     public Question canEdit(Boolean canEdit) {
-        this.canEdit = canEdit;
+        this.canEdit = Optional.ofNullable(canEdit);
         return this;
     }
 
@@ -414,16 +412,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can edit this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_edit")
-    public Boolean getCanEdit() {
+    public Optional<Boolean> getCanEdit() {
         return canEdit;
     }
 
-    public void setCanEdit(Boolean canEdit) {
+    public void setCanEdit(Optional<Boolean> canEdit) {
         this.canEdit = canEdit;
     }
 
     public Question canFlag(Boolean canFlag) {
-        this.canFlag = canFlag;
+        this.canFlag = Optional.ofNullable(canFlag);
         return this;
     }
 
@@ -436,16 +434,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can flag this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_flag")
-    public Boolean getCanFlag() {
+    public Optional<Boolean> getCanFlag() {
         return canFlag;
     }
 
-    public void setCanFlag(Boolean canFlag) {
+    public void setCanFlag(Optional<Boolean> canFlag) {
         this.canFlag = canFlag;
     }
 
     public Question canSuggestEdit(Boolean canSuggestEdit) {
-        this.canSuggestEdit = canSuggestEdit;
+        this.canSuggestEdit = Optional.ofNullable(canSuggestEdit);
         return this;
     }
 
@@ -458,16 +456,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user can suggest an edit for this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_suggest_edit")
-    public Boolean getCanSuggestEdit() {
+    public Optional<Boolean> getCanSuggestEdit() {
         return canSuggestEdit;
     }
 
-    public void setCanSuggestEdit(Boolean canSuggestEdit) {
+    public void setCanSuggestEdit(Optional<Boolean> canSuggestEdit) {
         this.canSuggestEdit = canSuggestEdit;
     }
 
     public Question closeVoteCount(Long closeVoteCount) {
-        this.closeVoteCount = closeVoteCount;
+        this.closeVoteCount = Optional.ofNullable(closeVoteCount);
         return this;
     }
 
@@ -480,16 +478,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of close votes on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("close_vote_count")
-    public Long getCloseVoteCount() {
+    public Optional<Long> getCloseVoteCount() {
         return closeVoteCount;
     }
 
-    public void setCloseVoteCount(Long closeVoteCount) {
+    public void setCloseVoteCount(Optional<Long> closeVoteCount) {
         this.closeVoteCount = closeVoteCount;
     }
 
     public Question closedDate(OffsetDateTime closedDate) {
-        this.closedDate = closedDate;
+        this.closedDate = JsonNullable.of(closedDate);
         return this;
     }
 
@@ -503,16 +501,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date when this question was closed, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_date")
-    public OffsetDateTime getClosedDate() {
+    public JsonNullable<OffsetDateTime> getClosedDate() {
         return closedDate;
     }
 
-    public void setClosedDate(OffsetDateTime closedDate) {
+    public void setClosedDate(JsonNullable<OffsetDateTime> closedDate) {
         this.closedDate = closedDate;
     }
 
     public Question closedDetails(Object closedDetails) {
-        this.closedDetails = closedDetails;
+        this.closedDetails = Optional.ofNullable(closedDetails);
         return this;
     }
 
@@ -525,16 +523,16 @@ public class Question implements ApiResponseItemsInner {
             description = "Detailed information about why the question was closed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_details")
-    public Object getClosedDetails() {
+    public Optional<Object> getClosedDetails() {
         return closedDetails;
     }
 
-    public void setClosedDetails(Object closedDetails) {
+    public void setClosedDetails(Optional<Object> closedDetails) {
         this.closedDetails = closedDetails;
     }
 
     public Question closedReason(String closedReason) {
-        this.closedReason = closedReason;
+        this.closedReason = JsonNullable.of(closedReason);
         return this;
     }
 
@@ -547,11 +545,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The reason this question was closed, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_reason")
-    public String getClosedReason() {
+    public JsonNullable<String> getClosedReason() {
         return closedReason;
     }
 
-    public void setClosedReason(String closedReason) {
+    public void setClosedReason(JsonNullable<String> closedReason) {
         this.closedReason = closedReason;
     }
 
@@ -587,7 +585,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question commentCount(Long commentCount) {
-        this.commentCount = commentCount;
+        this.commentCount = Optional.ofNullable(commentCount);
         return this;
     }
 
@@ -600,11 +598,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The total number of comments on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comment_count")
-    public Long getCommentCount() {
+    public Optional<Long> getCommentCount() {
         return commentCount;
     }
 
-    public void setCommentCount(Long commentCount) {
+    public void setCommentCount(Optional<Long> commentCount) {
         this.commentCount = commentCount;
     }
 
@@ -640,7 +638,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question communityOwnedDate(OffsetDateTime communityOwnedDate) {
-        this.communityOwnedDate = communityOwnedDate;
+        this.communityOwnedDate = JsonNullable.of(communityOwnedDate);
         return this;
     }
 
@@ -654,16 +652,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date when this question became community owned, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("community_owned_date")
-    public OffsetDateTime getCommunityOwnedDate() {
+    public JsonNullable<OffsetDateTime> getCommunityOwnedDate() {
         return communityOwnedDate;
     }
 
-    public void setCommunityOwnedDate(OffsetDateTime communityOwnedDate) {
+    public void setCommunityOwnedDate(JsonNullable<OffsetDateTime> communityOwnedDate) {
         this.communityOwnedDate = communityOwnedDate;
     }
 
     public Question contentLicense(String contentLicense) {
-        this.contentLicense = contentLicense;
+        this.contentLicense = Optional.ofNullable(contentLicense);
         return this;
     }
 
@@ -677,11 +675,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The content license for this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_license")
-    public String getContentLicense() {
+    public Optional<String> getContentLicense() {
         return contentLicense;
     }
 
-    public void setContentLicense(String contentLicense) {
+    public void setContentLicense(Optional<String> contentLicense) {
         this.contentLicense = contentLicense;
     }
 
@@ -711,7 +709,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question deleteVoteCount(Long deleteVoteCount) {
-        this.deleteVoteCount = deleteVoteCount;
+        this.deleteVoteCount = Optional.ofNullable(deleteVoteCount);
         return this;
     }
 
@@ -724,16 +722,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of delete votes on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_vote_count")
-    public Long getDeleteVoteCount() {
+    public Optional<Long> getDeleteVoteCount() {
         return deleteVoteCount;
     }
 
-    public void setDeleteVoteCount(Long deleteVoteCount) {
+    public void setDeleteVoteCount(Optional<Long> deleteVoteCount) {
         this.deleteVoteCount = deleteVoteCount;
     }
 
     public Question downVoteCount(Long downVoteCount) {
-        this.downVoteCount = downVoteCount;
+        this.downVoteCount = Optional.ofNullable(downVoteCount);
         return this;
     }
 
@@ -747,16 +745,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of downvotes on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("down_vote_count")
-    public Long getDownVoteCount() {
+    public Optional<Long> getDownVoteCount() {
         return downVoteCount;
     }
 
-    public void setDownVoteCount(Long downVoteCount) {
+    public void setDownVoteCount(Optional<Long> downVoteCount) {
         this.downVoteCount = downVoteCount;
     }
 
     public Question downvoted(Boolean downvoted) {
-        this.downvoted = downvoted;
+        this.downvoted = Optional.ofNullable(downvoted);
         return this;
     }
 
@@ -769,16 +767,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user has downvoted this question. Requires private_info scope.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("downvoted")
-    public Boolean getDownvoted() {
+    public Optional<Boolean> getDownvoted() {
         return downvoted;
     }
 
-    public void setDownvoted(Boolean downvoted) {
+    public void setDownvoted(Optional<Boolean> downvoted) {
         this.downvoted = downvoted;
     }
 
     public Question favoriteCount(Long favoriteCount) {
-        this.favoriteCount = favoriteCount;
+        this.favoriteCount = Optional.ofNullable(favoriteCount);
         return this;
     }
 
@@ -792,16 +790,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of times this question has been favorited.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("favorite_count")
-    public Long getFavoriteCount() {
+    public Optional<Long> getFavoriteCount() {
         return favoriteCount;
     }
 
-    public void setFavoriteCount(Long favoriteCount) {
+    public void setFavoriteCount(Optional<Long> favoriteCount) {
         this.favoriteCount = favoriteCount;
     }
 
     public Question favorited(Boolean favorited) {
-        this.favorited = favorited;
+        this.favorited = Optional.ofNullable(favorited);
         return this;
     }
 
@@ -814,16 +812,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user has favorited this question. Requires private_info scope.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("favorited")
-    public Boolean getFavorited() {
+    public Optional<Boolean> getFavorited() {
         return favorited;
     }
 
-    public void setFavorited(Boolean favorited) {
+    public void setFavorited(Optional<Boolean> favorited) {
         this.favorited = favorited;
     }
 
     public Question isAnswered(Boolean isAnswered) {
-        this.isAnswered = isAnswered;
+        this.isAnswered = Optional.ofNullable(isAnswered);
         return this;
     }
 
@@ -837,16 +835,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if this question has at least one answer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_answered")
-    public Boolean getIsAnswered() {
+    public Optional<Boolean> getIsAnswered() {
         return isAnswered;
     }
 
-    public void setIsAnswered(Boolean isAnswered) {
+    public void setIsAnswered(Optional<Boolean> isAnswered) {
         this.isAnswered = isAnswered;
     }
 
     public Question lastActivityDate(OffsetDateTime lastActivityDate) {
-        this.lastActivityDate = lastActivityDate;
+        this.lastActivityDate = Optional.ofNullable(lastActivityDate);
         return this;
     }
 
@@ -861,16 +859,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date of the last activity on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_activity_date")
-    public OffsetDateTime getLastActivityDate() {
+    public Optional<OffsetDateTime> getLastActivityDate() {
         return lastActivityDate;
     }
 
-    public void setLastActivityDate(OffsetDateTime lastActivityDate) {
+    public void setLastActivityDate(Optional<OffsetDateTime> lastActivityDate) {
         this.lastActivityDate = lastActivityDate;
     }
 
     public Question lastEditDate(OffsetDateTime lastEditDate) {
-        this.lastEditDate = lastEditDate;
+        this.lastEditDate = JsonNullable.of(lastEditDate);
         return this;
     }
 
@@ -885,16 +883,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date of the last edit to this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_edit_date")
-    public OffsetDateTime getLastEditDate() {
+    public JsonNullable<OffsetDateTime> getLastEditDate() {
         return lastEditDate;
     }
 
-    public void setLastEditDate(OffsetDateTime lastEditDate) {
+    public void setLastEditDate(JsonNullable<OffsetDateTime> lastEditDate) {
         this.lastEditDate = lastEditDate;
     }
 
     public Question lastEditor(ShallowUser lastEditor) {
-        this.lastEditor = lastEditor;
+        this.lastEditor = Optional.ofNullable(lastEditor);
         return this;
     }
 
@@ -905,11 +903,11 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "last_editor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_editor")
-    public ShallowUser getLastEditor() {
+    public Optional<ShallowUser> getLastEditor() {
         return lastEditor;
     }
 
-    public void setLastEditor(ShallowUser lastEditor) {
+    public void setLastEditor(Optional<ShallowUser> lastEditor) {
         this.lastEditor = lastEditor;
     }
 
@@ -939,7 +937,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question lockedDate(OffsetDateTime lockedDate) {
-        this.lockedDate = lockedDate;
+        this.lockedDate = JsonNullable.of(lockedDate);
         return this;
     }
 
@@ -953,16 +951,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The date when this question was locked, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locked_date")
-    public OffsetDateTime getLockedDate() {
+    public JsonNullable<OffsetDateTime> getLockedDate() {
         return lockedDate;
     }
 
-    public void setLockedDate(OffsetDateTime lockedDate) {
+    public void setLockedDate(JsonNullable<OffsetDateTime> lockedDate) {
         this.lockedDate = lockedDate;
     }
 
     public Question migratedFrom(MigrationInfo migratedFrom) {
-        this.migratedFrom = migratedFrom;
+        this.migratedFrom = Optional.ofNullable(migratedFrom);
         return this;
     }
 
@@ -973,16 +971,16 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "migrated_from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("migrated_from")
-    public MigrationInfo getMigratedFrom() {
+    public Optional<MigrationInfo> getMigratedFrom() {
         return migratedFrom;
     }
 
-    public void setMigratedFrom(MigrationInfo migratedFrom) {
+    public void setMigratedFrom(Optional<MigrationInfo> migratedFrom) {
         this.migratedFrom = migratedFrom;
     }
 
     public Question migratedTo(MigrationInfo migratedTo) {
-        this.migratedTo = migratedTo;
+        this.migratedTo = Optional.ofNullable(migratedTo);
         return this;
     }
 
@@ -993,16 +991,16 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "migrated_to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("migrated_to")
-    public MigrationInfo getMigratedTo() {
+    public Optional<MigrationInfo> getMigratedTo() {
         return migratedTo;
     }
 
-    public void setMigratedTo(MigrationInfo migratedTo) {
+    public void setMigratedTo(Optional<MigrationInfo> migratedTo) {
         this.migratedTo = migratedTo;
     }
 
     public Question notice(Notice notice) {
-        this.notice = notice;
+        this.notice = Optional.ofNullable(notice);
         return this;
     }
 
@@ -1013,16 +1011,16 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "notice", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notice")
-    public Notice getNotice() {
+    public Optional<Notice> getNotice() {
         return notice;
     }
 
-    public void setNotice(Notice notice) {
+    public void setNotice(Optional<Notice> notice) {
         this.notice = notice;
     }
 
     public Question owner(ShallowUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -1033,11 +1031,11 @@ public class Question implements ApiResponseItemsInner {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public ShallowUser getOwner() {
+    public Optional<ShallowUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(ShallowUser owner) {
+    public void setOwner(Optional<ShallowUser> owner) {
         this.owner = owner;
     }
 
@@ -1073,7 +1071,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question protectedDate(OffsetDateTime protectedDate) {
-        this.protectedDate = protectedDate;
+        this.protectedDate = JsonNullable.of(protectedDate);
         return this;
     }
 
@@ -1087,11 +1085,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The date when this question was protected, if applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protected_date")
-    public OffsetDateTime getProtectedDate() {
+    public JsonNullable<OffsetDateTime> getProtectedDate() {
         return protectedDate;
     }
 
-    public void setProtectedDate(OffsetDateTime protectedDate) {
+    public void setProtectedDate(JsonNullable<OffsetDateTime> protectedDate) {
         this.protectedDate = protectedDate;
     }
 
@@ -1120,7 +1118,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question reopenVoteCount(Long reopenVoteCount) {
-        this.reopenVoteCount = reopenVoteCount;
+        this.reopenVoteCount = Optional.ofNullable(reopenVoteCount);
         return this;
     }
 
@@ -1133,16 +1131,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of reopen votes on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reopen_vote_count")
-    public Long getReopenVoteCount() {
+    public Optional<Long> getReopenVoteCount() {
         return reopenVoteCount;
     }
 
-    public void setReopenVoteCount(Long reopenVoteCount) {
+    public void setReopenVoteCount(Optional<Long> reopenVoteCount) {
         this.reopenVoteCount = reopenVoteCount;
     }
 
     public Question score(Long score) {
-        this.score = score;
+        this.score = Optional.ofNullable(score);
         return this;
     }
 
@@ -1156,16 +1154,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The current score (upvotes - downvotes) of this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("score")
-    public Long getScore() {
+    public Optional<Long> getScore() {
         return score;
     }
 
-    public void setScore(Long score) {
+    public void setScore(Optional<Long> score) {
         this.score = score;
     }
 
     public Question shareLink(URI shareLink) {
-        this.shareLink = shareLink;
+        this.shareLink = Optional.ofNullable(shareLink);
         return this;
     }
 
@@ -1179,11 +1177,11 @@ public class Question implements ApiResponseItemsInner {
             description = "A short link suitable for sharing this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("share_link")
-    public URI getShareLink() {
+    public Optional<URI> getShareLink() {
         return shareLink;
     }
 
-    public void setShareLink(URI shareLink) {
+    public void setShareLink(Optional<URI> shareLink) {
         this.shareLink = shareLink;
     }
 
@@ -1243,7 +1241,7 @@ public class Question implements ApiResponseItemsInner {
     }
 
     public Question upVoteCount(Long upVoteCount) {
-        this.upVoteCount = upVoteCount;
+        this.upVoteCount = Optional.ofNullable(upVoteCount);
         return this;
     }
 
@@ -1257,16 +1255,16 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of upvotes on this question.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("up_vote_count")
-    public Long getUpVoteCount() {
+    public Optional<Long> getUpVoteCount() {
         return upVoteCount;
     }
 
-    public void setUpVoteCount(Long upVoteCount) {
+    public void setUpVoteCount(Optional<Long> upVoteCount) {
         this.upVoteCount = upVoteCount;
     }
 
     public Question upvoted(Boolean upvoted) {
-        this.upvoted = upvoted;
+        this.upvoted = Optional.ofNullable(upvoted);
         return this;
     }
 
@@ -1279,16 +1277,16 @@ public class Question implements ApiResponseItemsInner {
             description = "True if the authenticated user has upvoted this question. Requires private_info scope.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("upvoted")
-    public Boolean getUpvoted() {
+    public Optional<Boolean> getUpvoted() {
         return upvoted;
     }
 
-    public void setUpvoted(Boolean upvoted) {
+    public void setUpvoted(Optional<Boolean> upvoted) {
         this.upvoted = upvoted;
     }
 
     public Question viewCount(Long viewCount) {
-        this.viewCount = viewCount;
+        this.viewCount = Optional.ofNullable(viewCount);
         return this;
     }
 
@@ -1302,11 +1300,11 @@ public class Question implements ApiResponseItemsInner {
             description = "The number of times this question has been viewed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("view_count")
-    public Long getViewCount() {
+    public Optional<Long> getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(Long viewCount) {
+    public void setViewCount(Optional<Long> viewCount) {
         this.viewCount = viewCount;
     }
 
@@ -1319,13 +1317,13 @@ public class Question implements ApiResponseItemsInner {
             return false;
         }
         Question question = (Question) o;
-        return Objects.equals(this.acceptedAnswerId, question.acceptedAnswerId)
+        return equalsNullable(this.acceptedAnswerId, question.acceptedAnswerId)
                 && Objects.equals(this.answerCount, question.answerCount)
                 && Objects.equals(this.answers, question.answers)
                 && Objects.equals(this.body, question.body)
                 && Objects.equals(this.bodyMarkdown, question.bodyMarkdown)
-                && Objects.equals(this.bountyAmount, question.bountyAmount)
-                && Objects.equals(this.bountyClosesDate, question.bountyClosesDate)
+                && equalsNullable(this.bountyAmount, question.bountyAmount)
+                && equalsNullable(this.bountyClosesDate, question.bountyClosesDate)
                 && Objects.equals(this.bountyUser, question.bountyUser)
                 && Objects.equals(this.canAnswer, question.canAnswer)
                 && Objects.equals(this.canClose, question.canClose)
@@ -1334,13 +1332,13 @@ public class Question implements ApiResponseItemsInner {
                 && Objects.equals(this.canFlag, question.canFlag)
                 && Objects.equals(this.canSuggestEdit, question.canSuggestEdit)
                 && Objects.equals(this.closeVoteCount, question.closeVoteCount)
-                && Objects.equals(this.closedDate, question.closedDate)
+                && equalsNullable(this.closedDate, question.closedDate)
                 && Objects.equals(this.closedDetails, question.closedDetails)
-                && Objects.equals(this.closedReason, question.closedReason)
+                && equalsNullable(this.closedReason, question.closedReason)
                 && Objects.equals(this.collectives, question.collectives)
                 && Objects.equals(this.commentCount, question.commentCount)
                 && Objects.equals(this.comments, question.comments)
-                && Objects.equals(this.communityOwnedDate, question.communityOwnedDate)
+                && equalsNullable(this.communityOwnedDate, question.communityOwnedDate)
                 && Objects.equals(this.contentLicense, question.contentLicense)
                 && Objects.equals(this.creationDate, question.creationDate)
                 && Objects.equals(this.deleteVoteCount, question.deleteVoteCount)
@@ -1350,16 +1348,16 @@ public class Question implements ApiResponseItemsInner {
                 && Objects.equals(this.favorited, question.favorited)
                 && Objects.equals(this.isAnswered, question.isAnswered)
                 && Objects.equals(this.lastActivityDate, question.lastActivityDate)
-                && Objects.equals(this.lastEditDate, question.lastEditDate)
+                && equalsNullable(this.lastEditDate, question.lastEditDate)
                 && Objects.equals(this.lastEditor, question.lastEditor)
                 && Objects.equals(this.link, question.link)
-                && Objects.equals(this.lockedDate, question.lockedDate)
+                && equalsNullable(this.lockedDate, question.lockedDate)
                 && Objects.equals(this.migratedFrom, question.migratedFrom)
                 && Objects.equals(this.migratedTo, question.migratedTo)
                 && Objects.equals(this.notice, question.notice)
                 && Objects.equals(this.owner, question.owner)
                 && Objects.equals(this.postedByCollectives, question.postedByCollectives)
-                && Objects.equals(this.protectedDate, question.protectedDate)
+                && equalsNullable(this.protectedDate, question.protectedDate)
                 && Objects.equals(this.questionId, question.questionId)
                 && Objects.equals(this.reopenVoteCount, question.reopenVoteCount)
                 && Objects.equals(this.score, question.score)
@@ -1371,16 +1369,21 @@ public class Question implements ApiResponseItemsInner {
                 && Objects.equals(this.viewCount, question.viewCount);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                acceptedAnswerId,
+                hashCodeNullable(acceptedAnswerId),
                 answerCount,
                 answers,
                 body,
                 bodyMarkdown,
-                bountyAmount,
-                bountyClosesDate,
+                hashCodeNullable(bountyAmount),
+                hashCodeNullable(bountyClosesDate),
                 bountyUser,
                 canAnswer,
                 canClose,
@@ -1389,13 +1392,13 @@ public class Question implements ApiResponseItemsInner {
                 canFlag,
                 canSuggestEdit,
                 closeVoteCount,
-                closedDate,
+                hashCodeNullable(closedDate),
                 closedDetails,
-                closedReason,
+                hashCodeNullable(closedReason),
                 collectives,
                 commentCount,
                 comments,
-                communityOwnedDate,
+                hashCodeNullable(communityOwnedDate),
                 contentLicense,
                 creationDate,
                 deleteVoteCount,
@@ -1405,16 +1408,16 @@ public class Question implements ApiResponseItemsInner {
                 favorited,
                 isAnswered,
                 lastActivityDate,
-                lastEditDate,
+                hashCodeNullable(lastEditDate),
                 lastEditor,
                 link,
-                lockedDate,
+                hashCodeNullable(lockedDate),
                 migratedFrom,
                 migratedTo,
                 notice,
                 owner,
                 postedByCollectives,
-                protectedDate,
+                hashCodeNullable(protectedDate),
                 questionId,
                 reopenVoteCount,
                 score,
@@ -1424,6 +1427,13 @@ public class Question implements ApiResponseItemsInner {
                 upVoteCount,
                 upvoted,
                 viewCount);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

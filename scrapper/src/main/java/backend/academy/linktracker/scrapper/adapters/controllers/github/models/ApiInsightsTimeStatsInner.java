@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ApiInsightsTimeStatsInner
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("api_insights_time_stats_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiInsightsTimeStatsInner {
 
-    private String timestamp;
+    private Optional<String> timestamp = Optional.empty();
 
-    private Long totalRequestCount;
+    private Optional<Long> totalRequestCount = Optional.empty();
 
-    private Long rateLimitedRequestCount;
+    private Optional<Long> rateLimitedRequestCount = Optional.empty();
 
     public ApiInsightsTimeStatsInner timestamp(String timestamp) {
-        this.timestamp = timestamp;
+        this.timestamp = Optional.ofNullable(timestamp);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class ApiInsightsTimeStatsInner {
      */
     @Schema(name = "timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("timestamp")
-    public String getTimestamp() {
+    public Optional<String> getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Optional<String> timestamp) {
         this.timestamp = timestamp;
     }
 
     public ApiInsightsTimeStatsInner totalRequestCount(Long totalRequestCount) {
-        this.totalRequestCount = totalRequestCount;
+        this.totalRequestCount = Optional.ofNullable(totalRequestCount);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class ApiInsightsTimeStatsInner {
      */
     @Schema(name = "total_request_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_request_count")
-    public Long getTotalRequestCount() {
+    public Optional<Long> getTotalRequestCount() {
         return totalRequestCount;
     }
 
-    public void setTotalRequestCount(Long totalRequestCount) {
+    public void setTotalRequestCount(Optional<Long> totalRequestCount) {
         this.totalRequestCount = totalRequestCount;
     }
 
     public ApiInsightsTimeStatsInner rateLimitedRequestCount(Long rateLimitedRequestCount) {
-        this.rateLimitedRequestCount = rateLimitedRequestCount;
+        this.rateLimitedRequestCount = Optional.ofNullable(rateLimitedRequestCount);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class ApiInsightsTimeStatsInner {
      */
     @Schema(name = "rate_limited_request_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rate_limited_request_count")
-    public Long getRateLimitedRequestCount() {
+    public Optional<Long> getRateLimitedRequestCount() {
         return rateLimitedRequestCount;
     }
 
-    public void setRateLimitedRequestCount(Long rateLimitedRequestCount) {
+    public void setRateLimitedRequestCount(Optional<Long> rateLimitedRequestCount) {
         this.rateLimitedRequestCount = rateLimitedRequestCount;
     }
 

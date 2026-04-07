@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Required status check
@@ -15,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-params-status-check-configuration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleParamsStatusCheckConfiguration {
 
     private String context;
 
-    private Long integrationId;
+    private Optional<Long> integrationId = Optional.empty();
 
     public RepositoryRuleParamsStatusCheckConfiguration() {
         super();
@@ -58,7 +58,7 @@ public class RepositoryRuleParamsStatusCheckConfiguration {
     }
 
     public RepositoryRuleParamsStatusCheckConfiguration integrationId(Long integrationId) {
-        this.integrationId = integrationId;
+        this.integrationId = Optional.ofNullable(integrationId);
         return this;
     }
 
@@ -71,11 +71,11 @@ public class RepositoryRuleParamsStatusCheckConfiguration {
             description = "The optional integration ID that this status check must originate from.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("integration_id")
-    public Long getIntegrationId() {
+    public Optional<Long> getIntegrationId() {
         return integrationId;
     }
 
-    public void setIntegrationId(Long integrationId) {
+    public void setIntegrationId(Optional<Long> integrationId) {
         this.integrationId = integrationId;
     }
 

@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitCreateTagRequest
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("git_create_tag_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateTagRequest {
 
@@ -66,7 +66,7 @@ public class GitCreateTagRequest {
 
     private TypeEnum type;
 
-    private GitCreateTagRequestTagger tagger;
+    private Optional<GitCreateTagRequestTagger> tagger = Optional.empty();
 
     public GitCreateTagRequest() {
         super();
@@ -173,7 +173,7 @@ public class GitCreateTagRequest {
     }
 
     public GitCreateTagRequest tagger(GitCreateTagRequestTagger tagger) {
-        this.tagger = tagger;
+        this.tagger = Optional.ofNullable(tagger);
         return this;
     }
 
@@ -184,11 +184,11 @@ public class GitCreateTagRequest {
     @Valid
     @Schema(name = "tagger", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tagger")
-    public GitCreateTagRequestTagger getTagger() {
+    public Optional<GitCreateTagRequestTagger> getTagger() {
         return tagger;
     }
 
-    public void setTagger(GitCreateTagRequestTagger tagger) {
+    public void setTagger(Optional<GitCreateTagRequestTagger> tagger) {
         this.tagger = tagger;
     }
 

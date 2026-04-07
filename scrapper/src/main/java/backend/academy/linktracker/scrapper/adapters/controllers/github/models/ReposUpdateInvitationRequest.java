@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateInvitationRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("repos_update_invitation_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateInvitationRequest {
 
@@ -61,10 +60,10 @@ public class ReposUpdateInvitationRequest {
         }
     }
 
-    private PermissionsEnum permissions;
+    private Optional<PermissionsEnum> permissions = Optional.empty();
 
     public ReposUpdateInvitationRequest permissions(PermissionsEnum permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -78,11 +77,11 @@ public class ReposUpdateInvitationRequest {
                     "The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public PermissionsEnum getPermissions() {
+    public Optional<PermissionsEnum> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(PermissionsEnum permissions) {
+    public void setPermissions(Optional<PermissionsEnum> permissions) {
         this.permissions = permissions;
     }
 

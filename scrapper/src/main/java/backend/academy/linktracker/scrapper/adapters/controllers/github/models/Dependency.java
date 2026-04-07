@@ -7,13 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * Dependency
@@ -21,11 +17,11 @@ import java.util.Objects;
 @JsonTypeName("dependency")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Dependency {
 
-    private String packageUrl;
+    private Optional<@Pattern(regexp = "^pkg") String> packageUrl = Optional.empty();
 
     @Valid
     private Map<String, MetadataValue> metadata = new HashMap<>();
@@ -65,7 +61,7 @@ public class Dependency {
         }
     }
 
-    private RelationshipEnum relationship;
+    private Optional<RelationshipEnum> relationship = Optional.empty();
 
     /**
      * A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.
@@ -102,13 +98,13 @@ public class Dependency {
         }
     }
 
-    private ScopeEnum scope;
+    private Optional<ScopeEnum> scope = Optional.empty();
 
     @Valid
     private List<String> dependencies = new ArrayList<>();
 
     public Dependency packageUrl(String packageUrl) {
-        this.packageUrl = packageUrl;
+        this.packageUrl = Optional.ofNullable(packageUrl);
         return this;
     }
 
@@ -116,7 +112,6 @@ public class Dependency {
      * Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.
      * @return packageUrl
      */
-    @Pattern(regexp = "^pkg")
     @Schema(
             name = "package_url",
             example = "pkg:/npm/%40actions/http-client@1.0.11",
@@ -124,11 +119,11 @@ public class Dependency {
                     "Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("package_url")
-    public String getPackageUrl() {
+    public Optional<@Pattern(regexp = "^pkg") String> getPackageUrl() {
         return packageUrl;
     }
 
-    public void setPackageUrl(String packageUrl) {
+    public void setPackageUrl(Optional<String> packageUrl) {
         this.packageUrl = packageUrl;
     }
 
@@ -166,7 +161,7 @@ public class Dependency {
     }
 
     public Dependency relationship(RelationshipEnum relationship) {
-        this.relationship = relationship;
+        this.relationship = Optional.ofNullable(relationship);
         return this;
     }
 
@@ -181,16 +176,16 @@ public class Dependency {
                     "A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("relationship")
-    public RelationshipEnum getRelationship() {
+    public Optional<RelationshipEnum> getRelationship() {
         return relationship;
     }
 
-    public void setRelationship(RelationshipEnum relationship) {
+    public void setRelationship(Optional<RelationshipEnum> relationship) {
         this.relationship = relationship;
     }
 
     public Dependency scope(ScopeEnum scope) {
-        this.scope = scope;
+        this.scope = Optional.ofNullable(scope);
         return this;
     }
 
@@ -205,11 +200,11 @@ public class Dependency {
                     "A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("scope")
-    public ScopeEnum getScope() {
+    public Optional<ScopeEnum> getScope() {
         return scope;
     }
 
-    public void setScope(ScopeEnum scope) {
+    public void setScope(Optional<ScopeEnum> scope) {
         this.scope = scope;
     }
 

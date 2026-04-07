@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RepositoryLite
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("Repository_Lite")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryLite {
 
@@ -42,7 +42,7 @@ public class RepositoryLite {
 
     private URI deploymentsUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI downloadsUrl;
 
@@ -88,7 +88,7 @@ public class RepositoryLite {
 
     private String notificationsUrl;
 
-    private User owner = null;
+    private JsonNullable<User> owner = JsonNullable.<User>undefined();
 
     private Boolean _private;
 
@@ -177,7 +177,7 @@ public class RepositoryLite {
         this.contentsUrl = contentsUrl;
         this.contributorsUrl = contributorsUrl;
         this.deploymentsUrl = deploymentsUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.downloadsUrl = downloadsUrl;
         this.eventsUrl = eventsUrl;
         this.fork = fork;
@@ -200,7 +200,7 @@ public class RepositoryLite {
         this.name = name;
         this.nodeId = nodeId;
         this.notificationsUrl = notificationsUrl;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this._private = _private;
         this.pullsUrl = pullsUrl;
         this.releasesUrl = releasesUrl;
@@ -437,7 +437,7 @@ public class RepositoryLite {
     }
 
     public RepositoryLite description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -448,11 +448,11 @@ public class RepositoryLite {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -907,7 +907,7 @@ public class RepositoryLite {
     }
 
     public RepositoryLite owner(User owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -919,11 +919,11 @@ public class RepositoryLite {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public User getOwner() {
+    public JsonNullable<User> getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(JsonNullable<User> owner) {
         this.owner = owner;
     }
 

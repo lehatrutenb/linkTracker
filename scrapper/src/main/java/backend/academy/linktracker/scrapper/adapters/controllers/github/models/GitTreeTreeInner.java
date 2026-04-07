@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitTreeTreeInner
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("git_tree_tree_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitTreeTreeInner {
 
@@ -26,9 +26,9 @@ public class GitTreeTreeInner {
 
     private String sha;
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     public GitTreeTreeInner() {
         super();
@@ -128,7 +128,7 @@ public class GitTreeTreeInner {
     }
 
     public GitTreeTreeInner size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -138,16 +138,16 @@ public class GitTreeTreeInner {
      */
     @Schema(name = "size", example = "12", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public GitTreeTreeInner url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -161,11 +161,11 @@ public class GitTreeTreeInner {
                     "https://api.github.com/repos/owner-482f3203ecf01f67e9deb18e/BBB_Private_Repo/git/blobs/23f6827669e43831def8a7ad935069c8bd418261",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 

@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("campaign-summary")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CampaignSummary {
 
@@ -33,7 +31,7 @@ public class CampaignSummary {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     private String description;
 
@@ -44,19 +42,19 @@ public class CampaignSummary {
     private List<@Valid Team> teamManagers = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime publishedAt;
+    private Optional<OffsetDateTime> publishedAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime endsAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private CampaignState state;
 
-    private URI contactLink = null;
+    private JsonNullable<URI> contactLink = JsonNullable.<URI>undefined();
 
-    private CampaignSummaryAlertStats alertStats;
+    private Optional<CampaignSummaryAlertStats> alertStats = Optional.empty();
 
     public CampaignSummary() {
         super();
@@ -81,7 +79,7 @@ public class CampaignSummary {
         this.managers = managers;
         this.endsAt = endsAt;
         this.state = state;
-        this.contactLink = contactLink;
+        this.contactLink = JsonNullable.of(contactLink);
     }
 
     public CampaignSummary number(Long number) {
@@ -157,7 +155,7 @@ public class CampaignSummary {
     }
 
     public CampaignSummary name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -167,11 +165,11 @@ public class CampaignSummary {
      */
     @Schema(name = "name", description = "The campaign name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
@@ -256,7 +254,7 @@ public class CampaignSummary {
     }
 
     public CampaignSummary publishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
+        this.publishedAt = Optional.ofNullable(publishedAt);
         return this;
     }
 
@@ -270,11 +268,11 @@ public class CampaignSummary {
             description = "The date and time the campaign was published, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("published_at")
-    public OffsetDateTime getPublishedAt() {
+    public Optional<OffsetDateTime> getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(OffsetDateTime publishedAt) {
+    public void setPublishedAt(Optional<OffsetDateTime> publishedAt) {
         this.publishedAt = publishedAt;
     }
 
@@ -303,7 +301,7 @@ public class CampaignSummary {
     }
 
     public CampaignSummary closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -318,11 +316,11 @@ public class CampaignSummary {
                     "The date and time the campaign was closed, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. Will be null if the campaign is still open.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -348,7 +346,7 @@ public class CampaignSummary {
     }
 
     public CampaignSummary contactLink(URI contactLink) {
-        this.contactLink = contactLink;
+        this.contactLink = JsonNullable.of(contactLink);
         return this;
     }
 
@@ -363,16 +361,16 @@ public class CampaignSummary {
             description = "The contact link of the campaign.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("contact_link")
-    public URI getContactLink() {
+    public JsonNullable<URI> getContactLink() {
         return contactLink;
     }
 
-    public void setContactLink(URI contactLink) {
+    public void setContactLink(JsonNullable<URI> contactLink) {
         this.contactLink = contactLink;
     }
 
     public CampaignSummary alertStats(CampaignSummaryAlertStats alertStats) {
-        this.alertStats = alertStats;
+        this.alertStats = Optional.ofNullable(alertStats);
         return this;
     }
 
@@ -383,11 +381,11 @@ public class CampaignSummary {
     @Valid
     @Schema(name = "alert_stats", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("alert_stats")
-    public CampaignSummaryAlertStats getAlertStats() {
+    public Optional<CampaignSummaryAlertStats> getAlertStats() {
         return alertStats;
     }
 
-    public void setAlertStats(CampaignSummaryAlertStats alertStats) {
+    public void setAlertStats(Optional<CampaignSummaryAlertStats> alertStats) {
         this.alertStats = alertStats;
     }
 
@@ -409,10 +407,15 @@ public class CampaignSummary {
                 && Objects.equals(this.teamManagers, campaignSummary.teamManagers)
                 && Objects.equals(this.publishedAt, campaignSummary.publishedAt)
                 && Objects.equals(this.endsAt, campaignSummary.endsAt)
-                && Objects.equals(this.closedAt, campaignSummary.closedAt)
+                && equalsNullable(this.closedAt, campaignSummary.closedAt)
                 && Objects.equals(this.state, campaignSummary.state)
                 && Objects.equals(this.contactLink, campaignSummary.contactLink)
                 && Objects.equals(this.alertStats, campaignSummary.alertStats);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -427,10 +430,17 @@ public class CampaignSummary {
                 teamManagers,
                 publishedAt,
                 endsAt,
-                closedAt,
+                hashCodeNullable(closedAt),
                 state,
                 contactLink,
                 alertStats);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

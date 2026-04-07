@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("key")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Key {
 
@@ -38,7 +39,7 @@ public class Key {
     private Boolean readOnly;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastUsed = null;
+    private JsonNullable<OffsetDateTime> lastUsed = JsonNullable.<OffsetDateTime>undefined();
 
     public Key() {
         super();
@@ -206,7 +207,7 @@ public class Key {
     }
 
     public Key lastUsed(OffsetDateTime lastUsed) {
-        this.lastUsed = lastUsed;
+        this.lastUsed = JsonNullable.of(lastUsed);
         return this;
     }
 
@@ -217,11 +218,11 @@ public class Key {
     @Valid
     @Schema(name = "last_used", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_used")
-    public OffsetDateTime getLastUsed() {
+    public JsonNullable<OffsetDateTime> getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(OffsetDateTime lastUsed) {
+    public void setLastUsed(JsonNullable<OffsetDateTime> lastUsed) {
         this.lastUsed = lastUsed;
     }
 
@@ -241,12 +242,24 @@ public class Key {
                 && Objects.equals(this.createdAt, key.createdAt)
                 && Objects.equals(this.verified, key.verified)
                 && Objects.equals(this.readOnly, key.readOnly)
-                && Objects.equals(this.lastUsed, key.lastUsed);
+                && equalsNullable(this.lastUsed, key.lastUsed);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(key, id, url, title, createdAt, verified, readOnly, lastUsed);
+        return Objects.hash(key, id, url, title, createdAt, verified, readOnly, hashCodeNullable(lastUsed));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrganizationUpdateIssueType
@@ -16,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("organization-update-issue-type")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationUpdateIssueType {
 
@@ -24,7 +25,7 @@ public class OrganizationUpdateIssueType {
 
     private Boolean isEnabled;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * Color for the issue type.
@@ -73,7 +74,7 @@ public class OrganizationUpdateIssueType {
         }
     }
 
-    private ColorEnum color = null;
+    private JsonNullable<ColorEnum> color = JsonNullable.<ColorEnum>undefined();
 
     public OrganizationUpdateIssueType() {
         super();
@@ -131,7 +132,7 @@ public class OrganizationUpdateIssueType {
     }
 
     public OrganizationUpdateIssueType description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -144,16 +145,16 @@ public class OrganizationUpdateIssueType {
             description = "Description of the issue type.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public OrganizationUpdateIssueType color(ColorEnum color) {
-        this.color = color;
+        this.color = JsonNullable.of(color);
         return this;
     }
 
@@ -163,11 +164,11 @@ public class OrganizationUpdateIssueType {
      */
     @Schema(name = "color", description = "Color for the issue type.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public ColorEnum getColor() {
+    public JsonNullable<ColorEnum> getColor() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(JsonNullable<ColorEnum> color) {
         this.color = color;
     }
 
@@ -182,13 +183,25 @@ public class OrganizationUpdateIssueType {
         OrganizationUpdateIssueType organizationUpdateIssueType = (OrganizationUpdateIssueType) o;
         return Objects.equals(this.name, organizationUpdateIssueType.name)
                 && Objects.equals(this.isEnabled, organizationUpdateIssueType.isEnabled)
-                && Objects.equals(this.description, organizationUpdateIssueType.description)
-                && Objects.equals(this.color, organizationUpdateIssueType.color);
+                && equalsNullable(this.description, organizationUpdateIssueType.description)
+                && equalsNullable(this.color, organizationUpdateIssueType.color);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, isEnabled, description, color);
+        return Objects.hash(name, isEnabled, hashCodeNullable(description), hashCodeNullable(color));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookSecurityAndAnalysisChangesFrom
@@ -15,14 +15,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_security_and_analysis_changes_from")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookSecurityAndAnalysisChangesFrom {
 
-    private SecurityAndAnalysis securityAndAnalysis = null;
+    private JsonNullable<SecurityAndAnalysis> securityAndAnalysis = JsonNullable.<SecurityAndAnalysis>undefined();
 
     public WebhookSecurityAndAnalysisChangesFrom securityAndAnalysis(SecurityAndAnalysis securityAndAnalysis) {
-        this.securityAndAnalysis = securityAndAnalysis;
+        this.securityAndAnalysis = JsonNullable.of(securityAndAnalysis);
         return this;
     }
 
@@ -33,11 +33,11 @@ public class WebhookSecurityAndAnalysisChangesFrom {
     @Valid
     @Schema(name = "security_and_analysis", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_and_analysis")
-    public SecurityAndAnalysis getSecurityAndAnalysis() {
+    public JsonNullable<SecurityAndAnalysis> getSecurityAndAnalysis() {
         return securityAndAnalysis;
     }
 
-    public void setSecurityAndAnalysis(SecurityAndAnalysis securityAndAnalysis) {
+    public void setSecurityAndAnalysis(JsonNullable<SecurityAndAnalysis> securityAndAnalysis) {
         this.securityAndAnalysis = securityAndAnalysis;
     }
 
@@ -51,12 +51,24 @@ public class WebhookSecurityAndAnalysisChangesFrom {
         }
         WebhookSecurityAndAnalysisChangesFrom webhookSecurityAndAnalysisChangesFrom =
                 (WebhookSecurityAndAnalysisChangesFrom) o;
-        return Objects.equals(this.securityAndAnalysis, webhookSecurityAndAnalysisChangesFrom.securityAndAnalysis);
+        return equalsNullable(this.securityAndAnalysis, webhookSecurityAndAnalysisChangesFrom.securityAndAnalysis);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(securityAndAnalysis);
+        return Objects.hash(hashCodeNullable(securityAndAnalysis));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

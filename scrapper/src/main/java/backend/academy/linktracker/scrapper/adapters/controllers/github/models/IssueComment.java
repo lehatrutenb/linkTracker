@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueComment {
 
@@ -89,7 +90,7 @@ public class IssueComment {
 
     private String nodeId;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     private Reactions reactions;
 
@@ -98,9 +99,9 @@ public class IssueComment {
 
     private URI url;
 
-    private NullablePinnedIssueComment pin = null;
+    private JsonNullable<NullablePinnedIssueComment> pin = JsonNullable.<NullablePinnedIssueComment>undefined();
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public IssueComment() {
         super();
@@ -129,11 +130,11 @@ public class IssueComment {
         this.id = id;
         this.issueUrl = issueUrl;
         this.nodeId = nodeId;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.reactions = reactions;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public IssueComment authorAssociation(AuthorAssociationEnum authorAssociation) {
@@ -286,7 +287,7 @@ public class IssueComment {
     }
 
     public IssueComment performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -298,11 +299,11 @@ public class IssueComment {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -370,7 +371,7 @@ public class IssueComment {
     }
 
     public IssueComment pin(NullablePinnedIssueComment pin) {
-        this.pin = pin;
+        this.pin = JsonNullable.of(pin);
         return this;
     }
 
@@ -381,16 +382,16 @@ public class IssueComment {
     @Valid
     @Schema(name = "pin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pin")
-    public NullablePinnedIssueComment getPin() {
+    public JsonNullable<NullablePinnedIssueComment> getPin() {
         return pin;
     }
 
-    public void setPin(NullablePinnedIssueComment pin) {
+    public void setPin(JsonNullable<NullablePinnedIssueComment> pin) {
         this.pin = pin;
     }
 
     public IssueComment user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -402,11 +403,11 @@ public class IssueComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 
@@ -430,8 +431,13 @@ public class IssueComment {
                 && Objects.equals(this.reactions, issueComment.reactions)
                 && Objects.equals(this.updatedAt, issueComment.updatedAt)
                 && Objects.equals(this.url, issueComment.url)
-                && Objects.equals(this.pin, issueComment.pin)
+                && equalsNullable(this.pin, issueComment.pin)
                 && Objects.equals(this.user, issueComment.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -448,8 +454,15 @@ public class IssueComment {
                 reactions,
                 updatedAt,
                 url,
-                pin,
+                hashCodeNullable(pin),
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

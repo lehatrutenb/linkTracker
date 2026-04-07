@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ImportProjectChoicesInner
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("import_project_choices_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ImportProjectChoicesInner {
 
-    private String vcs;
+    private Optional<String> vcs = Optional.empty();
 
-    private String tfvcProject;
+    private Optional<String> tfvcProject = Optional.empty();
 
-    private String humanName;
+    private Optional<String> humanName = Optional.empty();
 
     public ImportProjectChoicesInner vcs(String vcs) {
-        this.vcs = vcs;
+        this.vcs = Optional.ofNullable(vcs);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class ImportProjectChoicesInner {
      */
     @Schema(name = "vcs", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("vcs")
-    public String getVcs() {
+    public Optional<String> getVcs() {
         return vcs;
     }
 
-    public void setVcs(String vcs) {
+    public void setVcs(Optional<String> vcs) {
         this.vcs = vcs;
     }
 
     public ImportProjectChoicesInner tfvcProject(String tfvcProject) {
-        this.tfvcProject = tfvcProject;
+        this.tfvcProject = Optional.ofNullable(tfvcProject);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class ImportProjectChoicesInner {
      */
     @Schema(name = "tfvc_project", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tfvc_project")
-    public String getTfvcProject() {
+    public Optional<String> getTfvcProject() {
         return tfvcProject;
     }
 
-    public void setTfvcProject(String tfvcProject) {
+    public void setTfvcProject(Optional<String> tfvcProject) {
         this.tfvcProject = tfvcProject;
     }
 
     public ImportProjectChoicesInner humanName(String humanName) {
-        this.humanName = humanName;
+        this.humanName = Optional.ofNullable(humanName);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class ImportProjectChoicesInner {
      */
     @Schema(name = "human_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("human_name")
-    public String getHumanName() {
+    public Optional<String> getHumanName() {
         return humanName;
     }
 
-    public void setHumanName(String humanName) {
+    public void setHumanName(Optional<String> humanName) {
         this.humanName = humanName;
     }
 

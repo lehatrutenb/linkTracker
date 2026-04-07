@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookPing
@@ -15,24 +14,24 @@ import java.util.Objects;
 @JsonTypeName("webhook-ping")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPing {
 
-    private Webhook hook;
+    private Optional<Webhook> hook = Optional.empty();
 
-    private Long hookId;
+    private Optional<Long> hookId = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
-    private String zen;
+    private Optional<String> zen = Optional.empty();
 
     public WebhookPing hook(Webhook hook) {
-        this.hook = hook;
+        this.hook = Optional.ofNullable(hook);
         return this;
     }
 
@@ -43,16 +42,16 @@ public class WebhookPing {
     @Valid
     @Schema(name = "hook", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hook")
-    public Webhook getHook() {
+    public Optional<Webhook> getHook() {
         return hook;
     }
 
-    public void setHook(Webhook hook) {
+    public void setHook(Optional<Webhook> hook) {
         this.hook = hook;
     }
 
     public WebhookPing hookId(Long hookId) {
-        this.hookId = hookId;
+        this.hookId = Optional.ofNullable(hookId);
         return this;
     }
 
@@ -65,16 +64,16 @@ public class WebhookPing {
             description = "The ID of the webhook that triggered the ping.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hook_id")
-    public Long getHookId() {
+    public Optional<Long> getHookId() {
         return hookId;
     }
 
-    public void setHookId(Long hookId) {
+    public void setHookId(Optional<Long> hookId) {
         this.hookId = hookId;
     }
 
     public WebhookPing organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -85,16 +84,16 @@ public class WebhookPing {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookPing repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -105,16 +104,16 @@ public class WebhookPing {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
     public WebhookPing sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -125,16 +124,16 @@ public class WebhookPing {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 
     public WebhookPing zen(String zen) {
-        this.zen = zen;
+        this.zen = Optional.ofNullable(zen);
         return this;
     }
 
@@ -144,11 +143,11 @@ public class WebhookPing {
      */
     @Schema(name = "zen", description = "Random string of GitHub zen.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("zen")
-    public String getZen() {
+    public Optional<String> getZen() {
         return zen;
     }
 
-    public void setZen(String zen) {
+    public void setZen(Optional<String> zen) {
         this.zen = zen;
     }
 

@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsGenerateRunnerJitconfigForOrgRequest
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("actions_generate_runner_jitconfig_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsGenerateRunnerJitconfigForOrgRequest {
 
@@ -28,7 +29,7 @@ public class ActionsGenerateRunnerJitconfigForOrgRequest {
     @Valid
     private List<String> labels = new ArrayList<>();
 
-    private String workFolder = "_work";
+    private Optional<String> workFolder = Optional.of("_work");
 
     public ActionsGenerateRunnerJitconfigForOrgRequest() {
         super();
@@ -120,7 +121,7 @@ public class ActionsGenerateRunnerJitconfigForOrgRequest {
     }
 
     public ActionsGenerateRunnerJitconfigForOrgRequest workFolder(String workFolder) {
-        this.workFolder = workFolder;
+        this.workFolder = Optional.ofNullable(workFolder);
         return this;
     }
 
@@ -134,11 +135,11 @@ public class ActionsGenerateRunnerJitconfigForOrgRequest {
                     "The working directory to be used for job execution, relative to the runner install directory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("work_folder")
-    public String getWorkFolder() {
+    public Optional<String> getWorkFolder() {
         return workFolder;
     }
 
-    public void setWorkFolder(String workFolder) {
+    public void setWorkFolder(Optional<String> workFolder) {
         this.workFolder = workFolder;
     }
 

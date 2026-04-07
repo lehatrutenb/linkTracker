@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseDevcontainersInner
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("codespaces_list_devcontainers_in_repository_for_authenticated_user_200_response_devcontainers_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseDevcontainersInner {
 
     private String path;
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String displayName;
+    private Optional<String> displayName = Optional.empty();
 
     public CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseDevcontainersInner() {
         super();
@@ -56,7 +56,7 @@ public class CodespacesListDevcontainersInRepositoryForAuthenticatedUser200Respo
     }
 
     public CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseDevcontainersInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -66,17 +66,17 @@ public class CodespacesListDevcontainersInRepositoryForAuthenticatedUser200Respo
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CodespacesListDevcontainersInRepositoryForAuthenticatedUser200ResponseDevcontainersInner displayName(
             String displayName) {
-        this.displayName = displayName;
+        this.displayName = Optional.ofNullable(displayName);
         return this;
     }
 
@@ -86,11 +86,11 @@ public class CodespacesListDevcontainersInRepositoryForAuthenticatedUser200Respo
      */
     @Schema(name = "display_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public Optional<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(Optional<String> displayName) {
         this.displayName = displayName;
     }
 

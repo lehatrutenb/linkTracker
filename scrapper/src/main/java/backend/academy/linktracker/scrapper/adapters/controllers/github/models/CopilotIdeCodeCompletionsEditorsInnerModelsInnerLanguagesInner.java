@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Usage metrics for a given language for the given editor for Copilot code completions.
@@ -17,24 +16,24 @@ import java.util.Objects;
 @JsonTypeName("copilot_ide_code_completions_editors_inner_models_inner_languages_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Long totalEngagedUsers;
+    private Optional<Long> totalEngagedUsers = Optional.empty();
 
-    private Long totalCodeSuggestions;
+    private Optional<Long> totalCodeSuggestions = Optional.empty();
 
-    private Long totalCodeAcceptances;
+    private Optional<Long> totalCodeAcceptances = Optional.empty();
 
-    private Long totalCodeLinesSuggested;
+    private Optional<Long> totalCodeLinesSuggested = Optional.empty();
 
-    private Long totalCodeLinesAccepted;
+    private Optional<Long> totalCodeLinesAccepted = Optional.empty();
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -47,16 +46,16 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
             description = "Name of the language used for Copilot code completion suggestions, for the given editor.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner totalEngagedUsers(Long totalEngagedUsers) {
-        this.totalEngagedUsers = totalEngagedUsers;
+        this.totalEngagedUsers = Optional.ofNullable(totalEngagedUsers);
         return this;
     }
 
@@ -70,17 +69,17 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
                     "Number of users who accepted at least one Copilot code completion suggestion for the given editor, for the given language. Includes both full and partial acceptances.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_engaged_users")
-    public Long getTotalEngagedUsers() {
+    public Optional<Long> getTotalEngagedUsers() {
         return totalEngagedUsers;
     }
 
-    public void setTotalEngagedUsers(Long totalEngagedUsers) {
+    public void setTotalEngagedUsers(Optional<Long> totalEngagedUsers) {
         this.totalEngagedUsers = totalEngagedUsers;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner totalCodeSuggestions(
             Long totalCodeSuggestions) {
-        this.totalCodeSuggestions = totalCodeSuggestions;
+        this.totalCodeSuggestions = Optional.ofNullable(totalCodeSuggestions);
         return this;
     }
 
@@ -94,17 +93,17 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
                     "The number of Copilot code suggestions generated for the given editor, for the given language.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_code_suggestions")
-    public Long getTotalCodeSuggestions() {
+    public Optional<Long> getTotalCodeSuggestions() {
         return totalCodeSuggestions;
     }
 
-    public void setTotalCodeSuggestions(Long totalCodeSuggestions) {
+    public void setTotalCodeSuggestions(Optional<Long> totalCodeSuggestions) {
         this.totalCodeSuggestions = totalCodeSuggestions;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner totalCodeAcceptances(
             Long totalCodeAcceptances) {
-        this.totalCodeAcceptances = totalCodeAcceptances;
+        this.totalCodeAcceptances = Optional.ofNullable(totalCodeAcceptances);
         return this;
     }
 
@@ -118,17 +117,17 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
                     "The number of Copilot code suggestions accepted for the given editor, for the given language. Includes both full and partial acceptances.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_code_acceptances")
-    public Long getTotalCodeAcceptances() {
+    public Optional<Long> getTotalCodeAcceptances() {
         return totalCodeAcceptances;
     }
 
-    public void setTotalCodeAcceptances(Long totalCodeAcceptances) {
+    public void setTotalCodeAcceptances(Optional<Long> totalCodeAcceptances) {
         this.totalCodeAcceptances = totalCodeAcceptances;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner totalCodeLinesSuggested(
             Long totalCodeLinesSuggested) {
-        this.totalCodeLinesSuggested = totalCodeLinesSuggested;
+        this.totalCodeLinesSuggested = Optional.ofNullable(totalCodeLinesSuggested);
         return this;
     }
 
@@ -142,17 +141,17 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
                     "The number of lines of code suggested by Copilot code completions for the given editor, for the given language.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_code_lines_suggested")
-    public Long getTotalCodeLinesSuggested() {
+    public Optional<Long> getTotalCodeLinesSuggested() {
         return totalCodeLinesSuggested;
     }
 
-    public void setTotalCodeLinesSuggested(Long totalCodeLinesSuggested) {
+    public void setTotalCodeLinesSuggested(Optional<Long> totalCodeLinesSuggested) {
         this.totalCodeLinesSuggested = totalCodeLinesSuggested;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner totalCodeLinesAccepted(
             Long totalCodeLinesAccepted) {
-        this.totalCodeLinesAccepted = totalCodeLinesAccepted;
+        this.totalCodeLinesAccepted = Optional.ofNullable(totalCodeLinesAccepted);
         return this;
     }
 
@@ -166,11 +165,11 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner {
                     "The number of lines of code accepted from Copilot code suggestions for the given editor, for the given language.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_code_lines_accepted")
-    public Long getTotalCodeLinesAccepted() {
+    public Optional<Long> getTotalCodeLinesAccepted() {
         return totalCodeLinesAccepted;
     }
 
-    public void setTotalCodeLinesAccepted(Long totalCodeLinesAccepted) {
+    public void setTotalCodeLinesAccepted(Optional<Long> totalCodeLinesAccepted) {
         this.totalCodeLinesAccepted = totalCodeLinesAccepted;
     }
 

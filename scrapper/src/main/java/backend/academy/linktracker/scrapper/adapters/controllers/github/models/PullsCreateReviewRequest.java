@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsCreateReviewRequest
@@ -19,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("pulls_create_review_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsCreateReviewRequest {
 
-    private String commitId;
+    private Optional<String> commitId = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
     /**
      * The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.
@@ -64,13 +63,13 @@ public class PullsCreateReviewRequest {
         }
     }
 
-    private EventEnum event;
+    private Optional<EventEnum> event = Optional.empty();
 
     @Valid
     private List<@Valid PullsCreateReviewRequestCommentsInner> comments = new ArrayList<>();
 
     public PullsCreateReviewRequest commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = Optional.ofNullable(commitId);
         return this;
     }
 
@@ -84,16 +83,16 @@ public class PullsCreateReviewRequest {
                     "The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public Optional<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(Optional<String> commitId) {
         this.commitId = commitId;
     }
 
     public PullsCreateReviewRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -107,16 +106,16 @@ public class PullsCreateReviewRequest {
                     "**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public PullsCreateReviewRequest event(EventEnum event) {
-        this.event = event;
+        this.event = Optional.ofNullable(event);
         return this;
     }
 
@@ -130,11 +129,11 @@ public class PullsCreateReviewRequest {
                     "The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("event")
-    public EventEnum getEvent() {
+    public Optional<EventEnum> getEvent() {
         return event;
     }
 
-    public void setEvent(EventEnum event) {
+    public void setEvent(Optional<EventEnum> event) {
         this.event = event;
     }
 

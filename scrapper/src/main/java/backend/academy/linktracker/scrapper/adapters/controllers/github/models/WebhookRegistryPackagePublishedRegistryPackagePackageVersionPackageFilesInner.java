@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version_package_files_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner {
 
@@ -26,17 +26,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
 
     private Long id;
 
-    private String md5 = null;
+    private JsonNullable<String> md5 = JsonNullable.<String>undefined();
 
     private String name;
 
-    private String sha1 = null;
+    private JsonNullable<String> sha1 = JsonNullable.<String>undefined();
 
-    private String sha256 = null;
+    private JsonNullable<String> sha256 = JsonNullable.<String>undefined();
 
     private Long size;
 
-    private String state = null;
+    private JsonNullable<String> state = JsonNullable.<String>undefined();
 
     private String updatedAt;
 
@@ -63,12 +63,12 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
         this.createdAt = createdAt;
         this.downloadUrl = downloadUrl;
         this.id = id;
-        this.md5 = md5;
+        this.md5 = JsonNullable.of(md5);
         this.name = name;
-        this.sha1 = sha1;
-        this.sha256 = sha256;
+        this.sha1 = JsonNullable.of(sha1);
+        this.sha256 = JsonNullable.of(sha256);
         this.size = size;
-        this.state = state;
+        this.state = JsonNullable.of(state);
         this.updatedAt = updatedAt;
     }
 
@@ -155,7 +155,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner md5(String md5) {
-        this.md5 = md5;
+        this.md5 = JsonNullable.of(md5);
         return this;
     }
 
@@ -166,11 +166,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     @NotNull
     @Schema(name = "md5", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("md5")
-    public String getMd5() {
+    public JsonNullable<String> getMd5() {
         return md5;
     }
 
-    public void setMd5(String md5) {
+    public void setMd5(JsonNullable<String> md5) {
         this.md5 = md5;
     }
 
@@ -195,7 +195,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner sha1(String sha1) {
-        this.sha1 = sha1;
+        this.sha1 = JsonNullable.of(sha1);
         return this;
     }
 
@@ -206,16 +206,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     @NotNull
     @Schema(name = "sha1", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sha1")
-    public String getSha1() {
+    public JsonNullable<String> getSha1() {
         return sha1;
     }
 
-    public void setSha1(String sha1) {
+    public void setSha1(JsonNullable<String> sha1) {
         this.sha1 = sha1;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner sha256(String sha256) {
-        this.sha256 = sha256;
+        this.sha256 = JsonNullable.of(sha256);
         return this;
     }
 
@@ -226,11 +226,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     @NotNull
     @Schema(name = "sha256", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sha256")
-    public String getSha256() {
+    public JsonNullable<String> getSha256() {
         return sha256;
     }
 
-    public void setSha256(String sha256) {
+    public void setSha256(JsonNullable<String> sha256) {
         this.sha256 = sha256;
     }
 
@@ -255,7 +255,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesInner state(String state) {
-        this.state = state;
+        this.state = JsonNullable.of(state);
         return this;
     }
 
@@ -266,11 +266,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackage
     @NotNull
     @Schema(name = "state", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public JsonNullable<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(JsonNullable<String> state) {
         this.state = state;
     }
 

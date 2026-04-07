@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Scim Error
@@ -18,25 +15,25 @@ import java.util.Objects;
 @JsonTypeName("scim-error")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ScimError {
 
-    private String message = null;
+    private JsonNullable<String> message = JsonNullable.<String>undefined();
 
-    private String documentationUrl = null;
+    private JsonNullable<String> documentationUrl = JsonNullable.<String>undefined();
 
-    private String detail = null;
+    private JsonNullable<String> detail = JsonNullable.<String>undefined();
 
-    private Long status;
+    private Optional<Long> status = Optional.empty();
 
-    private String scimType = null;
+    private JsonNullable<String> scimType = JsonNullable.<String>undefined();
 
     @Valid
     private List<String> schemas = new ArrayList<>();
 
     public ScimError message(String message) {
-        this.message = message;
+        this.message = JsonNullable.of(message);
         return this;
     }
 
@@ -46,16 +43,16 @@ public class ScimError {
      */
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public JsonNullable<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(JsonNullable<String> message) {
         this.message = message;
     }
 
     public ScimError documentationUrl(String documentationUrl) {
-        this.documentationUrl = documentationUrl;
+        this.documentationUrl = JsonNullable.of(documentationUrl);
         return this;
     }
 
@@ -65,16 +62,16 @@ public class ScimError {
      */
     @Schema(name = "documentation_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("documentation_url")
-    public String getDocumentationUrl() {
+    public JsonNullable<String> getDocumentationUrl() {
         return documentationUrl;
     }
 
-    public void setDocumentationUrl(String documentationUrl) {
+    public void setDocumentationUrl(JsonNullable<String> documentationUrl) {
         this.documentationUrl = documentationUrl;
     }
 
     public ScimError detail(String detail) {
-        this.detail = detail;
+        this.detail = JsonNullable.of(detail);
         return this;
     }
 
@@ -84,16 +81,16 @@ public class ScimError {
      */
     @Schema(name = "detail", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("detail")
-    public String getDetail() {
+    public JsonNullable<String> getDetail() {
         return detail;
     }
 
-    public void setDetail(String detail) {
+    public void setDetail(JsonNullable<String> detail) {
         this.detail = detail;
     }
 
     public ScimError status(Long status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -103,16 +100,16 @@ public class ScimError {
      */
     @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public Long getStatus() {
+    public Optional<Long> getStatus() {
         return status;
     }
 
-    public void setStatus(Long status) {
+    public void setStatus(Optional<Long> status) {
         this.status = status;
     }
 
     public ScimError scimType(String scimType) {
-        this.scimType = scimType;
+        this.scimType = JsonNullable.of(scimType);
         return this;
     }
 
@@ -122,11 +119,11 @@ public class ScimError {
      */
     @Schema(name = "scimType", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("scimType")
-    public String getScimType() {
+    public JsonNullable<String> getScimType() {
         return scimType;
     }
 
-    public void setScimType(String scimType) {
+    public void setScimType(JsonNullable<String> scimType) {
         this.scimType = scimType;
     }
 
@@ -166,17 +163,35 @@ public class ScimError {
             return false;
         }
         ScimError scimError = (ScimError) o;
-        return Objects.equals(this.message, scimError.message)
-                && Objects.equals(this.documentationUrl, scimError.documentationUrl)
-                && Objects.equals(this.detail, scimError.detail)
+        return equalsNullable(this.message, scimError.message)
+                && equalsNullable(this.documentationUrl, scimError.documentationUrl)
+                && equalsNullable(this.detail, scimError.detail)
                 && Objects.equals(this.status, scimError.status)
-                && Objects.equals(this.scimType, scimError.scimType)
+                && equalsNullable(this.scimType, scimError.scimType)
                 && Objects.equals(this.schemas, scimError.schemas);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(message, documentationUrl, detail, status, scimType, schemas);
+        return Objects.hash(
+                hashCodeNullable(message),
+                hashCodeNullable(documentationUrl),
+                hashCodeNullable(detail),
+                status,
+                hashCodeNullable(scimType),
+                schemas);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryPermissions
@@ -14,19 +14,19 @@ import java.util.Objects;
 @JsonTypeName("Repository_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryPermissions {
 
     private Boolean admin;
 
-    private Boolean maintain;
+    private Optional<Boolean> maintain = Optional.empty();
 
     private Boolean pull;
 
     private Boolean push;
 
-    private Boolean triage;
+    private Optional<Boolean> triage = Optional.empty();
 
     public RepositoryPermissions() {
         super();
@@ -62,7 +62,7 @@ public class RepositoryPermissions {
     }
 
     public RepositoryPermissions maintain(Boolean maintain) {
-        this.maintain = maintain;
+        this.maintain = Optional.ofNullable(maintain);
         return this;
     }
 
@@ -72,11 +72,11 @@ public class RepositoryPermissions {
      */
     @Schema(name = "maintain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintain")
-    public Boolean getMaintain() {
+    public Optional<Boolean> getMaintain() {
         return maintain;
     }
 
-    public void setMaintain(Boolean maintain) {
+    public void setMaintain(Optional<Boolean> maintain) {
         this.maintain = maintain;
     }
 
@@ -121,7 +121,7 @@ public class RepositoryPermissions {
     }
 
     public RepositoryPermissions triage(Boolean triage) {
-        this.triage = triage;
+        this.triage = Optional.ofNullable(triage);
         return this;
     }
 
@@ -131,11 +131,11 @@ public class RepositoryPermissions {
      */
     @Schema(name = "triage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("triage")
-    public Boolean getTriage() {
+    public Optional<Boolean> getTriage() {
         return triage;
     }
 
-    public void setTriage(Boolean triage) {
+    public void setTriage(Optional<Boolean> triage) {
         this.triage = triage;
     }
 

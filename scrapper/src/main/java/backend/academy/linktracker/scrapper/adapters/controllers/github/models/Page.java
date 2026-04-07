@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("page")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Page {
 
@@ -64,9 +66,9 @@ public class Page {
         }
     }
 
-    private StatusEnum status = null;
+    private JsonNullable<StatusEnum> status = JsonNullable.<StatusEnum>undefined();
 
-    private String cname = null;
+    private JsonNullable<String> cname = JsonNullable.<String>undefined();
 
     /**
      * The state if the domain is verified
@@ -105,14 +107,15 @@ public class Page {
         }
     }
 
-    private ProtectedDomainStateEnum protectedDomainState = null;
+    private JsonNullable<ProtectedDomainStateEnum> protectedDomainState =
+            JsonNullable.<ProtectedDomainStateEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pendingDomainUnverifiedAt = null;
+    private JsonNullable<OffsetDateTime> pendingDomainUnverifiedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private Boolean custom404 = false;
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
     /**
      * The process in which the Page will be built.
@@ -149,15 +152,15 @@ public class Page {
         }
     }
 
-    private BuildTypeEnum buildType = null;
+    private JsonNullable<BuildTypeEnum> buildType = JsonNullable.<BuildTypeEnum>undefined();
 
-    private PagesSourceHash source;
+    private Optional<PagesSourceHash> source = Optional.empty();
 
     private Boolean _public;
 
-    private PagesHttpsCertificate httpsCertificate;
+    private Optional<PagesHttpsCertificate> httpsCertificate = Optional.empty();
 
-    private Boolean httpsEnforced;
+    private Optional<Boolean> httpsEnforced = Optional.empty();
 
     public Page() {
         super();
@@ -168,8 +171,8 @@ public class Page {
      */
     public Page(URI url, StatusEnum status, String cname, Boolean custom404, Boolean _public) {
         this.url = url;
-        this.status = status;
-        this.cname = cname;
+        this.status = JsonNullable.of(status);
+        this.cname = JsonNullable.of(cname);
         this.custom404 = custom404;
         this._public = _public;
     }
@@ -200,7 +203,7 @@ public class Page {
     }
 
     public Page status(StatusEnum status) {
-        this.status = status;
+        this.status = JsonNullable.of(status);
         return this;
     }
 
@@ -215,16 +218,16 @@ public class Page {
             description = "The status of the most recent build of the Page.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public JsonNullable<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(JsonNullable<StatusEnum> status) {
         this.status = status;
     }
 
     public Page cname(String cname) {
-        this.cname = cname;
+        this.cname = JsonNullable.of(cname);
         return this;
     }
 
@@ -239,16 +242,16 @@ public class Page {
             description = "The Pages site's custom domain",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cname")
-    public String getCname() {
+    public JsonNullable<String> getCname() {
         return cname;
     }
 
-    public void setCname(String cname) {
+    public void setCname(JsonNullable<String> cname) {
         this.cname = cname;
     }
 
     public Page protectedDomainState(ProtectedDomainStateEnum protectedDomainState) {
-        this.protectedDomainState = protectedDomainState;
+        this.protectedDomainState = JsonNullable.of(protectedDomainState);
         return this;
     }
 
@@ -262,16 +265,16 @@ public class Page {
             description = "The state if the domain is verified",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protected_domain_state")
-    public ProtectedDomainStateEnum getProtectedDomainState() {
+    public JsonNullable<ProtectedDomainStateEnum> getProtectedDomainState() {
         return protectedDomainState;
     }
 
-    public void setProtectedDomainState(ProtectedDomainStateEnum protectedDomainState) {
+    public void setProtectedDomainState(JsonNullable<ProtectedDomainStateEnum> protectedDomainState) {
         this.protectedDomainState = protectedDomainState;
     }
 
     public Page pendingDomainUnverifiedAt(OffsetDateTime pendingDomainUnverifiedAt) {
-        this.pendingDomainUnverifiedAt = pendingDomainUnverifiedAt;
+        this.pendingDomainUnverifiedAt = JsonNullable.of(pendingDomainUnverifiedAt);
         return this;
     }
 
@@ -285,11 +288,11 @@ public class Page {
             description = "The timestamp when a pending domain becomes unverified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pending_domain_unverified_at")
-    public OffsetDateTime getPendingDomainUnverifiedAt() {
+    public JsonNullable<OffsetDateTime> getPendingDomainUnverifiedAt() {
         return pendingDomainUnverifiedAt;
     }
 
-    public void setPendingDomainUnverifiedAt(OffsetDateTime pendingDomainUnverifiedAt) {
+    public void setPendingDomainUnverifiedAt(JsonNullable<OffsetDateTime> pendingDomainUnverifiedAt) {
         this.pendingDomainUnverifiedAt = pendingDomainUnverifiedAt;
     }
 
@@ -318,7 +321,7 @@ public class Page {
     }
 
     public Page htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -333,16 +336,16 @@ public class Page {
             description = "The web address the Page can be accessed from.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public Page buildType(BuildTypeEnum buildType) {
-        this.buildType = buildType;
+        this.buildType = JsonNullable.of(buildType);
         return this;
     }
 
@@ -356,16 +359,16 @@ public class Page {
             description = "The process in which the Page will be built.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("build_type")
-    public BuildTypeEnum getBuildType() {
+    public JsonNullable<BuildTypeEnum> getBuildType() {
         return buildType;
     }
 
-    public void setBuildType(BuildTypeEnum buildType) {
+    public void setBuildType(JsonNullable<BuildTypeEnum> buildType) {
         this.buildType = buildType;
     }
 
     public Page source(PagesSourceHash source) {
-        this.source = source;
+        this.source = Optional.ofNullable(source);
         return this;
     }
 
@@ -376,11 +379,11 @@ public class Page {
     @Valid
     @Schema(name = "source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public PagesSourceHash getSource() {
+    public Optional<PagesSourceHash> getSource() {
         return source;
     }
 
-    public void setSource(PagesSourceHash source) {
+    public void setSource(Optional<PagesSourceHash> source) {
         this.source = source;
     }
 
@@ -410,7 +413,7 @@ public class Page {
     }
 
     public Page httpsCertificate(PagesHttpsCertificate httpsCertificate) {
-        this.httpsCertificate = httpsCertificate;
+        this.httpsCertificate = Optional.ofNullable(httpsCertificate);
         return this;
     }
 
@@ -421,16 +424,16 @@ public class Page {
     @Valid
     @Schema(name = "https_certificate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("https_certificate")
-    public PagesHttpsCertificate getHttpsCertificate() {
+    public Optional<PagesHttpsCertificate> getHttpsCertificate() {
         return httpsCertificate;
     }
 
-    public void setHttpsCertificate(PagesHttpsCertificate httpsCertificate) {
+    public void setHttpsCertificate(Optional<PagesHttpsCertificate> httpsCertificate) {
         this.httpsCertificate = httpsCertificate;
     }
 
     public Page httpsEnforced(Boolean httpsEnforced) {
-        this.httpsEnforced = httpsEnforced;
+        this.httpsEnforced = Optional.ofNullable(httpsEnforced);
         return this;
     }
 
@@ -444,11 +447,11 @@ public class Page {
             description = "Whether https is enabled on the domain",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("https_enforced")
-    public Boolean getHttpsEnforced() {
+    public Optional<Boolean> getHttpsEnforced() {
         return httpsEnforced;
     }
 
-    public void setHttpsEnforced(Boolean httpsEnforced) {
+    public void setHttpsEnforced(Optional<Boolean> httpsEnforced) {
         this.httpsEnforced = httpsEnforced;
     }
 
@@ -464,15 +467,20 @@ public class Page {
         return Objects.equals(this.url, page.url)
                 && Objects.equals(this.status, page.status)
                 && Objects.equals(this.cname, page.cname)
-                && Objects.equals(this.protectedDomainState, page.protectedDomainState)
-                && Objects.equals(this.pendingDomainUnverifiedAt, page.pendingDomainUnverifiedAt)
+                && equalsNullable(this.protectedDomainState, page.protectedDomainState)
+                && equalsNullable(this.pendingDomainUnverifiedAt, page.pendingDomainUnverifiedAt)
                 && Objects.equals(this.custom404, page.custom404)
                 && Objects.equals(this.htmlUrl, page.htmlUrl)
-                && Objects.equals(this.buildType, page.buildType)
+                && equalsNullable(this.buildType, page.buildType)
                 && Objects.equals(this.source, page.source)
                 && Objects.equals(this._public, page._public)
                 && Objects.equals(this.httpsCertificate, page.httpsCertificate)
                 && Objects.equals(this.httpsEnforced, page.httpsEnforced);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -481,15 +489,22 @@ public class Page {
                 url,
                 status,
                 cname,
-                protectedDomainState,
-                pendingDomainUnverifiedAt,
+                hashCodeNullable(protectedDomainState),
+                hashCodeNullable(pendingDomainUnverifiedAt),
                 custom404,
                 htmlUrl,
-                buildType,
+                hashCodeNullable(buildType),
                 source,
                 _public,
                 httpsCertificate,
                 httpsEnforced);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

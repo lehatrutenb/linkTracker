@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Issue Event for Issue
@@ -16,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("issue-event-for-issue")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueEventForIssue {
 
@@ -30,13 +31,13 @@ public class IssueEventForIssue {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private Integration performedViaGithubApp = null;
+    private JsonNullable<Integration> performedViaGithubApp = JsonNullable.<Integration>undefined();
 
     private LabeledIssueEventLabel label;
 
@@ -50,15 +51,15 @@ public class IssueEventForIssue {
 
     private SimpleUser reviewRequester;
 
-    private Team requestedTeam;
+    private Optional<Team> requestedTeam = Optional.empty();
 
-    private SimpleUser requestedReviewer;
+    private Optional<SimpleUser> requestedReviewer = Optional.empty();
 
     private ReviewDismissedIssueEventDismissedReview dismissedReview;
 
-    private String lockReason = null;
+    private JsonNullable<String> lockReason = JsonNullable.<String>undefined();
 
-    private AddedToProjectIssueEventProjectCard projectCard;
+    private Optional<AddedToProjectIssueEventProjectCard> projectCard = Optional.empty();
 
     public IssueEventForIssue() {
         super();
@@ -90,10 +91,10 @@ public class IssueEventForIssue {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.label = label;
         this.assignee = assignee;
         this.assigner = assigner;
@@ -101,7 +102,7 @@ public class IssueEventForIssue {
         this.rename = rename;
         this.reviewRequester = reviewRequester;
         this.dismissedReview = dismissedReview;
-        this.lockReason = lockReason;
+        this.lockReason = JsonNullable.of(lockReason);
     }
 
     public IssueEventForIssue id(Long id) {
@@ -206,7 +207,7 @@ public class IssueEventForIssue {
     }
 
     public IssueEventForIssue commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -217,16 +218,16 @@ public class IssueEventForIssue {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public IssueEventForIssue commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -237,11 +238,11 @@ public class IssueEventForIssue {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -266,7 +267,7 @@ public class IssueEventForIssue {
     }
 
     public IssueEventForIssue performedViaGithubApp(Integration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -278,11 +279,11 @@ public class IssueEventForIssue {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public Integration getPerformedViaGithubApp() {
+    public JsonNullable<Integration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(Integration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<Integration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -413,7 +414,7 @@ public class IssueEventForIssue {
     }
 
     public IssueEventForIssue requestedTeam(Team requestedTeam) {
-        this.requestedTeam = requestedTeam;
+        this.requestedTeam = Optional.ofNullable(requestedTeam);
         return this;
     }
 
@@ -424,16 +425,16 @@ public class IssueEventForIssue {
     @Valid
     @Schema(name = "requested_team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_team")
-    public Team getRequestedTeam() {
+    public Optional<Team> getRequestedTeam() {
         return requestedTeam;
     }
 
-    public void setRequestedTeam(Team requestedTeam) {
+    public void setRequestedTeam(Optional<Team> requestedTeam) {
         this.requestedTeam = requestedTeam;
     }
 
     public IssueEventForIssue requestedReviewer(SimpleUser requestedReviewer) {
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = Optional.ofNullable(requestedReviewer);
         return this;
     }
 
@@ -444,11 +445,11 @@ public class IssueEventForIssue {
     @Valid
     @Schema(name = "requested_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_reviewer")
-    public SimpleUser getRequestedReviewer() {
+    public Optional<SimpleUser> getRequestedReviewer() {
         return requestedReviewer;
     }
 
-    public void setRequestedReviewer(SimpleUser requestedReviewer) {
+    public void setRequestedReviewer(Optional<SimpleUser> requestedReviewer) {
         this.requestedReviewer = requestedReviewer;
     }
 
@@ -474,7 +475,7 @@ public class IssueEventForIssue {
     }
 
     public IssueEventForIssue lockReason(String lockReason) {
-        this.lockReason = lockReason;
+        this.lockReason = JsonNullable.of(lockReason);
         return this;
     }
 
@@ -485,16 +486,16 @@ public class IssueEventForIssue {
     @NotNull
     @Schema(name = "lock_reason", example = "\"off-topic\"", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("lock_reason")
-    public String getLockReason() {
+    public JsonNullable<String> getLockReason() {
         return lockReason;
     }
 
-    public void setLockReason(String lockReason) {
+    public void setLockReason(JsonNullable<String> lockReason) {
         this.lockReason = lockReason;
     }
 
     public IssueEventForIssue projectCard(AddedToProjectIssueEventProjectCard projectCard) {
-        this.projectCard = projectCard;
+        this.projectCard = Optional.ofNullable(projectCard);
         return this;
     }
 
@@ -505,11 +506,11 @@ public class IssueEventForIssue {
     @Valid
     @Schema(name = "project_card", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_card")
-    public AddedToProjectIssueEventProjectCard getProjectCard() {
+    public Optional<AddedToProjectIssueEventProjectCard> getProjectCard() {
         return projectCard;
     }
 
-    public void setProjectCard(AddedToProjectIssueEventProjectCard projectCard) {
+    public void setProjectCard(Optional<AddedToProjectIssueEventProjectCard> projectCard) {
         this.projectCard = projectCard;
     }
 

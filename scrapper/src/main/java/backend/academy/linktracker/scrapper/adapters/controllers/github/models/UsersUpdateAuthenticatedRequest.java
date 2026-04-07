@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * UsersUpdateAuthenticatedRequest
@@ -14,28 +15,28 @@ import java.util.Objects;
 @JsonTypeName("users_update_authenticated_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class UsersUpdateAuthenticatedRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
-    private String blog;
+    private Optional<String> blog = Optional.empty();
 
-    private String twitterUsername = null;
+    private JsonNullable<String> twitterUsername = JsonNullable.<String>undefined();
 
-    private String company;
+    private Optional<String> company = Optional.empty();
 
-    private String location;
+    private Optional<String> location = Optional.empty();
 
-    private Boolean hireable;
+    private Optional<Boolean> hireable = Optional.empty();
 
-    private String bio;
+    private Optional<String> bio = Optional.empty();
 
     public UsersUpdateAuthenticatedRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -49,16 +50,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new name of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public UsersUpdateAuthenticatedRequest email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -72,16 +73,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The publicly visible email address of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public UsersUpdateAuthenticatedRequest blog(String blog) {
-        this.blog = blog;
+        this.blog = Optional.ofNullable(blog);
         return this;
     }
 
@@ -95,16 +96,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new blog URL of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blog")
-    public String getBlog() {
+    public Optional<String> getBlog() {
         return blog;
     }
 
-    public void setBlog(String blog) {
+    public void setBlog(Optional<String> blog) {
         this.blog = blog;
     }
 
     public UsersUpdateAuthenticatedRequest twitterUsername(String twitterUsername) {
-        this.twitterUsername = twitterUsername;
+        this.twitterUsername = JsonNullable.of(twitterUsername);
         return this;
     }
 
@@ -118,16 +119,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new Twitter username of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("twitter_username")
-    public String getTwitterUsername() {
+    public JsonNullable<String> getTwitterUsername() {
         return twitterUsername;
     }
 
-    public void setTwitterUsername(String twitterUsername) {
+    public void setTwitterUsername(JsonNullable<String> twitterUsername) {
         this.twitterUsername = twitterUsername;
     }
 
     public UsersUpdateAuthenticatedRequest company(String company) {
-        this.company = company;
+        this.company = Optional.ofNullable(company);
         return this;
     }
 
@@ -141,16 +142,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new company of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public Optional<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Optional<String> company) {
         this.company = company;
     }
 
     public UsersUpdateAuthenticatedRequest location(String location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -164,16 +165,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new location of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public Optional<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Optional<String> location) {
         this.location = location;
     }
 
     public UsersUpdateAuthenticatedRequest hireable(Boolean hireable) {
-        this.hireable = hireable;
+        this.hireable = Optional.ofNullable(hireable);
         return this;
     }
 
@@ -186,16 +187,16 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new hiring availability of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hireable")
-    public Boolean getHireable() {
+    public Optional<Boolean> getHireable() {
         return hireable;
     }
 
-    public void setHireable(Boolean hireable) {
+    public void setHireable(Optional<Boolean> hireable) {
         this.hireable = hireable;
     }
 
     public UsersUpdateAuthenticatedRequest bio(String bio) {
-        this.bio = bio;
+        this.bio = Optional.ofNullable(bio);
         return this;
     }
 
@@ -208,11 +209,11 @@ public class UsersUpdateAuthenticatedRequest {
             description = "The new short biography of the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bio")
-    public String getBio() {
+    public Optional<String> getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
+    public void setBio(Optional<String> bio) {
         this.bio = bio;
     }
 
@@ -228,16 +229,28 @@ public class UsersUpdateAuthenticatedRequest {
         return Objects.equals(this.name, usersUpdateAuthenticatedRequest.name)
                 && Objects.equals(this.email, usersUpdateAuthenticatedRequest.email)
                 && Objects.equals(this.blog, usersUpdateAuthenticatedRequest.blog)
-                && Objects.equals(this.twitterUsername, usersUpdateAuthenticatedRequest.twitterUsername)
+                && equalsNullable(this.twitterUsername, usersUpdateAuthenticatedRequest.twitterUsername)
                 && Objects.equals(this.company, usersUpdateAuthenticatedRequest.company)
                 && Objects.equals(this.location, usersUpdateAuthenticatedRequest.location)
                 && Objects.equals(this.hireable, usersUpdateAuthenticatedRequest.hireable)
                 && Objects.equals(this.bio, usersUpdateAuthenticatedRequest.bio);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, email, blog, twitterUsername, company, location, hireable, bio);
+        return Objects.hash(name, email, blog, hashCodeNullable(twitterUsername), company, location, hireable, bio);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

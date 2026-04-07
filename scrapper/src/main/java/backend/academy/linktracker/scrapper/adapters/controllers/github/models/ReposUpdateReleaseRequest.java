@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateReleaseRequest
@@ -16,21 +15,21 @@ import java.util.Objects;
 @JsonTypeName("repos_update_release_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateReleaseRequest {
 
-    private String tagName;
+    private Optional<String> tagName = Optional.empty();
 
-    private String targetCommitish;
+    private Optional<String> targetCommitish = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
-    private Boolean prerelease;
+    private Optional<Boolean> prerelease = Optional.empty();
 
     /**
      * Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
@@ -69,12 +68,12 @@ public class ReposUpdateReleaseRequest {
         }
     }
 
-    private MakeLatestEnum makeLatest = MakeLatestEnum.TRUE;
+    private Optional<MakeLatestEnum> makeLatest = Optional.of(MakeLatestEnum.TRUE);
 
-    private String discussionCategoryName;
+    private Optional<String> discussionCategoryName = Optional.empty();
 
     public ReposUpdateReleaseRequest tagName(String tagName) {
-        this.tagName = tagName;
+        this.tagName = Optional.ofNullable(tagName);
         return this;
     }
 
@@ -84,16 +83,16 @@ public class ReposUpdateReleaseRequest {
      */
     @Schema(name = "tag_name", description = "The name of the tag.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag_name")
-    public String getTagName() {
+    public Optional<String> getTagName() {
         return tagName;
     }
 
-    public void setTagName(String tagName) {
+    public void setTagName(Optional<String> tagName) {
         this.tagName = tagName;
     }
 
     public ReposUpdateReleaseRequest targetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish;
+        this.targetCommitish = Optional.ofNullable(targetCommitish);
         return this;
     }
 
@@ -107,16 +106,16 @@ public class ReposUpdateReleaseRequest {
                     "Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_commitish")
-    public String getTargetCommitish() {
+    public Optional<String> getTargetCommitish() {
         return targetCommitish;
     }
 
-    public void setTargetCommitish(String targetCommitish) {
+    public void setTargetCommitish(Optional<String> targetCommitish) {
         this.targetCommitish = targetCommitish;
     }
 
     public ReposUpdateReleaseRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -126,16 +125,16 @@ public class ReposUpdateReleaseRequest {
      */
     @Schema(name = "name", description = "The name of the release.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposUpdateReleaseRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -148,16 +147,16 @@ public class ReposUpdateReleaseRequest {
             description = "Text describing the contents of the tag.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public ReposUpdateReleaseRequest draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -170,16 +169,16 @@ public class ReposUpdateReleaseRequest {
             description = "`true` makes the release a draft, and `false` publishes the release.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
     public ReposUpdateReleaseRequest prerelease(Boolean prerelease) {
-        this.prerelease = prerelease;
+        this.prerelease = Optional.ofNullable(prerelease);
         return this;
     }
 
@@ -193,16 +192,16 @@ public class ReposUpdateReleaseRequest {
                     "`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prerelease")
-    public Boolean getPrerelease() {
+    public Optional<Boolean> getPrerelease() {
         return prerelease;
     }
 
-    public void setPrerelease(Boolean prerelease) {
+    public void setPrerelease(Optional<Boolean> prerelease) {
         this.prerelease = prerelease;
     }
 
     public ReposUpdateReleaseRequest makeLatest(MakeLatestEnum makeLatest) {
-        this.makeLatest = makeLatest;
+        this.makeLatest = Optional.ofNullable(makeLatest);
         return this;
     }
 
@@ -216,16 +215,16 @@ public class ReposUpdateReleaseRequest {
                     "Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("make_latest")
-    public MakeLatestEnum getMakeLatest() {
+    public Optional<MakeLatestEnum> getMakeLatest() {
         return makeLatest;
     }
 
-    public void setMakeLatest(MakeLatestEnum makeLatest) {
+    public void setMakeLatest(Optional<MakeLatestEnum> makeLatest) {
         this.makeLatest = makeLatest;
     }
 
     public ReposUpdateReleaseRequest discussionCategoryName(String discussionCategoryName) {
-        this.discussionCategoryName = discussionCategoryName;
+        this.discussionCategoryName = Optional.ofNullable(discussionCategoryName);
         return this;
     }
 
@@ -239,11 +238,11 @@ public class ReposUpdateReleaseRequest {
                     "If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see \"[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("discussion_category_name")
-    public String getDiscussionCategoryName() {
+    public Optional<String> getDiscussionCategoryName() {
         return discussionCategoryName;
     }
 
-    public void setDiscussionCategoryName(String discussionCategoryName) {
+    public void setDiscussionCategoryName(Optional<String> discussionCategoryName) {
         this.discussionCategoryName = discussionCategoryName;
     }
 

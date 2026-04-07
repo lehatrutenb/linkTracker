@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-milestone")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableMilestone {
 
@@ -76,9 +76,9 @@ public class NullableMilestone {
 
     private String title;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private NullableSimpleUser creator = null;
+    private JsonNullable<NullableSimpleUser> creator = JsonNullable.<NullableSimpleUser>undefined();
 
     private Long openIssues;
 
@@ -91,10 +91,10 @@ public class NullableMilestone {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime dueOn = null;
+    private JsonNullable<OffsetDateTime> dueOn = JsonNullable.<OffsetDateTime>undefined();
 
     public NullableMilestone() {
         super();
@@ -128,14 +128,14 @@ public class NullableMilestone {
         this.number = number;
         this.state = state;
         this.title = title;
-        this.description = description;
-        this.creator = creator;
+        this.description = JsonNullable.of(description);
+        this.creator = JsonNullable.of(creator);
         this.openIssues = openIssues;
         this.closedIssues = closedIssues;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.closedAt = closedAt;
-        this.dueOn = dueOn;
+        this.closedAt = JsonNullable.of(closedAt);
+        this.dueOn = JsonNullable.of(dueOn);
     }
 
     public NullableMilestone url(URI url) {
@@ -323,7 +323,7 @@ public class NullableMilestone {
     }
 
     public NullableMilestone description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -337,16 +337,16 @@ public class NullableMilestone {
             example = "Tracking milestone for version 1.0",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public NullableMilestone creator(NullableSimpleUser creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -358,11 +358,11 @@ public class NullableMilestone {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public NullableSimpleUser getCreator() {
+    public JsonNullable<NullableSimpleUser> getCreator() {
         return creator;
     }
 
-    public void setCreator(NullableSimpleUser creator) {
+    public void setCreator(JsonNullable<NullableSimpleUser> creator) {
         this.creator = creator;
     }
 
@@ -449,7 +449,7 @@ public class NullableMilestone {
     }
 
     public NullableMilestone closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -461,16 +461,16 @@ public class NullableMilestone {
     @Valid
     @Schema(name = "closed_at", example = "2013-02-12T13:22:01Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
     public NullableMilestone dueOn(OffsetDateTime dueOn) {
-        this.dueOn = dueOn;
+        this.dueOn = JsonNullable.of(dueOn);
         return this;
     }
 
@@ -482,11 +482,11 @@ public class NullableMilestone {
     @Valid
     @Schema(name = "due_on", example = "2012-10-09T23:39:01Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("due_on")
-    public OffsetDateTime getDueOn() {
+    public JsonNullable<OffsetDateTime> getDueOn() {
         return dueOn;
     }
 
-    public void setDueOn(OffsetDateTime dueOn) {
+    public void setDueOn(JsonNullable<OffsetDateTime> dueOn) {
         this.dueOn = dueOn;
     }
 

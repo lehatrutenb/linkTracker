@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-view")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2View {
 
@@ -86,7 +84,7 @@ public class ProjectsV2View {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String filter = null;
+    private JsonNullable<String> filter = JsonNullable.<String>undefined();
 
     @Valid
     private List<Long> visibleFields = new ArrayList<>();
@@ -365,7 +363,7 @@ public class ProjectsV2View {
     }
 
     public ProjectsV2View filter(String filter) {
-        this.filter = filter;
+        this.filter = JsonNullable.of(filter);
         return this;
     }
 
@@ -379,11 +377,11 @@ public class ProjectsV2View {
             description = "The filter query for the view.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filter")
-    public String getFilter() {
+    public JsonNullable<String> getFilter() {
         return filter;
     }
 
-    public void setFilter(String filter) {
+    public void setFilter(JsonNullable<String> filter) {
         this.filter = filter;
     }
 
@@ -532,11 +530,16 @@ public class ProjectsV2View {
                 && Objects.equals(this.creator, projectsV2View.creator)
                 && Objects.equals(this.createdAt, projectsV2View.createdAt)
                 && Objects.equals(this.updatedAt, projectsV2View.updatedAt)
-                && Objects.equals(this.filter, projectsV2View.filter)
+                && equalsNullable(this.filter, projectsV2View.filter)
                 && Objects.equals(this.visibleFields, projectsV2View.visibleFields)
                 && Objects.equals(this.sortBy, projectsV2View.sortBy)
                 && Objects.equals(this.groupBy, projectsV2View.groupBy)
                 && Objects.equals(this.verticalGroupBy, projectsV2View.verticalGroupBy);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -552,11 +555,18 @@ public class ProjectsV2View {
                 creator,
                 createdAt,
                 updatedAt,
-                filter,
+                hashCodeNullable(filter),
                 visibleFields,
                 sortBy,
                 groupBy,
                 verticalGroupBy);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

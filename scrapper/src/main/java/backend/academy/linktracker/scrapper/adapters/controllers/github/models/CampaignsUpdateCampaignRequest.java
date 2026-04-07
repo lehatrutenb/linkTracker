@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,13 +18,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("campaigns_update_campaign_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CampaignsUpdateCampaignRequest {
 
-    private String name;
+    private Optional<@Size(min = 1, max = 50) String> name = Optional.empty();
 
-    private String description;
+    private Optional<@Size(min = 1, max = 255) String> description = Optional.empty();
 
     @Valid
     private List<String> managers = new ArrayList<>();
@@ -35,14 +33,14 @@ public class CampaignsUpdateCampaignRequest {
     private List<String> teamManagers = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime endsAt;
+    private Optional<OffsetDateTime> endsAt = Optional.empty();
 
-    private URI contactLink = null;
+    private JsonNullable<URI> contactLink = JsonNullable.<URI>undefined();
 
-    private CampaignState state;
+    private Optional<CampaignState> state = Optional.empty();
 
     public CampaignsUpdateCampaignRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -50,19 +48,18 @@ public class CampaignsUpdateCampaignRequest {
      * The name of the campaign
      * @return name
      */
-    @Size(min = 1, max = 50)
     @Schema(name = "name", description = "The name of the campaign", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<@Size(min = 1, max = 50) String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CampaignsUpdateCampaignRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -70,17 +67,16 @@ public class CampaignsUpdateCampaignRequest {
      * A description for the campaign
      * @return description
      */
-    @Size(min = 1, max = 255)
     @Schema(
             name = "description",
             description = "A description for the campaign",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<@Size(min = 1, max = 255) String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -148,7 +144,7 @@ public class CampaignsUpdateCampaignRequest {
     }
 
     public CampaignsUpdateCampaignRequest endsAt(OffsetDateTime endsAt) {
-        this.endsAt = endsAt;
+        this.endsAt = Optional.ofNullable(endsAt);
         return this;
     }
 
@@ -162,16 +158,16 @@ public class CampaignsUpdateCampaignRequest {
             description = "The end date and time of the campaign, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ends_at")
-    public OffsetDateTime getEndsAt() {
+    public Optional<OffsetDateTime> getEndsAt() {
         return endsAt;
     }
 
-    public void setEndsAt(OffsetDateTime endsAt) {
+    public void setEndsAt(Optional<OffsetDateTime> endsAt) {
         this.endsAt = endsAt;
     }
 
     public CampaignsUpdateCampaignRequest contactLink(URI contactLink) {
-        this.contactLink = contactLink;
+        this.contactLink = JsonNullable.of(contactLink);
         return this;
     }
 
@@ -185,16 +181,16 @@ public class CampaignsUpdateCampaignRequest {
             description = "The contact link of the campaign. Must be a URI.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contact_link")
-    public URI getContactLink() {
+    public JsonNullable<URI> getContactLink() {
         return contactLink;
     }
 
-    public void setContactLink(URI contactLink) {
+    public void setContactLink(JsonNullable<URI> contactLink) {
         this.contactLink = contactLink;
     }
 
     public CampaignsUpdateCampaignRequest state(CampaignState state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -205,11 +201,11 @@ public class CampaignsUpdateCampaignRequest {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public CampaignState getState() {
+    public Optional<CampaignState> getState() {
         return state;
     }
 
-    public void setState(CampaignState state) {
+    public void setState(Optional<CampaignState> state) {
         this.state = state;
     }
 
@@ -227,13 +223,25 @@ public class CampaignsUpdateCampaignRequest {
                 && Objects.equals(this.managers, campaignsUpdateCampaignRequest.managers)
                 && Objects.equals(this.teamManagers, campaignsUpdateCampaignRequest.teamManagers)
                 && Objects.equals(this.endsAt, campaignsUpdateCampaignRequest.endsAt)
-                && Objects.equals(this.contactLink, campaignsUpdateCampaignRequest.contactLink)
+                && equalsNullable(this.contactLink, campaignsUpdateCampaignRequest.contactLink)
                 && Objects.equals(this.state, campaignsUpdateCampaignRequest.state);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, managers, teamManagers, endsAt, contactLink, state);
+        return Objects.hash(name, description, managers, teamManagers, endsAt, hashCodeNullable(contactLink), state);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

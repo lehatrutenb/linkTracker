@@ -6,11 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The set of permissions for the GitHub app
@@ -19,22 +18,22 @@ import java.util.Objects;
 @JsonTypeName("integration_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IntegrationPermissions {
 
-    private String issues;
+    private Optional<String> issues = Optional.empty();
 
-    private String checks;
+    private Optional<String> checks = Optional.empty();
 
-    private String metadata;
+    private Optional<String> metadata = Optional.empty();
 
-    private String contents;
+    private Optional<String> contents = Optional.empty();
 
-    private String deployments;
+    private Optional<String> deployments = Optional.empty();
 
     public IntegrationPermissions issues(String issues) {
-        this.issues = issues;
+        this.issues = Optional.ofNullable(issues);
         return this;
     }
 
@@ -44,16 +43,16 @@ public class IntegrationPermissions {
      */
     @Schema(name = "issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues")
-    public String getIssues() {
+    public Optional<String> getIssues() {
         return issues;
     }
 
-    public void setIssues(String issues) {
+    public void setIssues(Optional<String> issues) {
         this.issues = issues;
     }
 
     public IntegrationPermissions checks(String checks) {
-        this.checks = checks;
+        this.checks = Optional.ofNullable(checks);
         return this;
     }
 
@@ -63,16 +62,16 @@ public class IntegrationPermissions {
      */
     @Schema(name = "checks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("checks")
-    public String getChecks() {
+    public Optional<String> getChecks() {
         return checks;
     }
 
-    public void setChecks(String checks) {
+    public void setChecks(Optional<String> checks) {
         this.checks = checks;
     }
 
     public IntegrationPermissions metadata(String metadata) {
-        this.metadata = metadata;
+        this.metadata = Optional.ofNullable(metadata);
         return this;
     }
 
@@ -82,16 +81,16 @@ public class IntegrationPermissions {
      */
     @Schema(name = "metadata", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("metadata")
-    public String getMetadata() {
+    public Optional<String> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(String metadata) {
+    public void setMetadata(Optional<String> metadata) {
         this.metadata = metadata;
     }
 
     public IntegrationPermissions contents(String contents) {
-        this.contents = contents;
+        this.contents = Optional.ofNullable(contents);
         return this;
     }
 
@@ -101,16 +100,16 @@ public class IntegrationPermissions {
      */
     @Schema(name = "contents", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contents")
-    public String getContents() {
+    public Optional<String> getContents() {
         return contents;
     }
 
-    public void setContents(String contents) {
+    public void setContents(Optional<String> contents) {
         this.contents = contents;
     }
 
     public IntegrationPermissions deployments(String deployments) {
-        this.deployments = deployments;
+        this.deployments = Optional.ofNullable(deployments);
         return this;
     }
 
@@ -120,11 +119,11 @@ public class IntegrationPermissions {
      */
     @Schema(name = "deployments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployments")
-    public String getDeployments() {
+    public Optional<String> getDeployments() {
         return deployments;
     }
 
-    public void setDeployments(String deployments) {
+    public void setDeployments(Optional<String> deployments) {
         this.deployments = deployments;
     }
     /**

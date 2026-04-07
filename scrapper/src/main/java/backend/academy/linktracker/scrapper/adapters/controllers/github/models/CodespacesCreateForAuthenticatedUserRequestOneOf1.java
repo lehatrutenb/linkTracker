@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesCreateForAuthenticatedUserRequestOneOf1
@@ -17,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("codespaces_create_for_authenticated_user_request_oneOf_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements CodespacesCreateForAuthenticatedUserRequest {
 
     private CodespacesCreateForAuthenticatedUserRequestOneOf1PullRequest pullRequest;
 
-    private String location;
+    private Optional<String> location = Optional.empty();
 
     /**
      * The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.
@@ -64,15 +64,15 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
         }
     }
 
-    private GeoEnum geo;
+    private Optional<GeoEnum> geo = Optional.empty();
 
-    private String machine;
+    private Optional<String> machine = Optional.empty();
 
-    private String devcontainerPath;
+    private Optional<String> devcontainerPath = Optional.empty();
 
-    private String workingDirectory;
+    private Optional<String> workingDirectory = Optional.empty();
 
-    private Long idleTimeoutMinutes;
+    private Optional<Long> idleTimeoutMinutes = Optional.empty();
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1() {
         super();
@@ -109,7 +109,7 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 location(String location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -123,16 +123,16 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
                     "The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public Optional<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Optional<String> location) {
         this.location = location;
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 geo(GeoEnum geo) {
-        this.geo = geo;
+        this.geo = Optional.ofNullable(geo);
         return this;
     }
 
@@ -146,16 +146,16 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
                     "The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("geo")
-    public GeoEnum getGeo() {
+    public Optional<GeoEnum> getGeo() {
         return geo;
     }
 
-    public void setGeo(GeoEnum geo) {
+    public void setGeo(Optional<GeoEnum> geo) {
         this.geo = geo;
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 machine(String machine) {
-        this.machine = machine;
+        this.machine = Optional.ofNullable(machine);
         return this;
     }
 
@@ -168,16 +168,16 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
             description = "Machine type to use for this codespace",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("machine")
-    public String getMachine() {
+    public Optional<String> getMachine() {
         return machine;
     }
 
-    public void setMachine(String machine) {
+    public void setMachine(Optional<String> machine) {
         this.machine = machine;
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 devcontainerPath(String devcontainerPath) {
-        this.devcontainerPath = devcontainerPath;
+        this.devcontainerPath = Optional.ofNullable(devcontainerPath);
         return this;
     }
 
@@ -190,16 +190,16 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
             description = "Path to devcontainer.json config to use for this codespace",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("devcontainer_path")
-    public String getDevcontainerPath() {
+    public Optional<String> getDevcontainerPath() {
         return devcontainerPath;
     }
 
-    public void setDevcontainerPath(String devcontainerPath) {
+    public void setDevcontainerPath(Optional<String> devcontainerPath) {
         this.devcontainerPath = devcontainerPath;
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 workingDirectory(String workingDirectory) {
-        this.workingDirectory = workingDirectory;
+        this.workingDirectory = Optional.ofNullable(workingDirectory);
         return this;
     }
 
@@ -212,16 +212,16 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
             description = "Working directory for this codespace",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("working_directory")
-    public String getWorkingDirectory() {
+    public Optional<String> getWorkingDirectory() {
         return workingDirectory;
     }
 
-    public void setWorkingDirectory(String workingDirectory) {
+    public void setWorkingDirectory(Optional<String> workingDirectory) {
         this.workingDirectory = workingDirectory;
     }
 
     public CodespacesCreateForAuthenticatedUserRequestOneOf1 idleTimeoutMinutes(Long idleTimeoutMinutes) {
-        this.idleTimeoutMinutes = idleTimeoutMinutes;
+        this.idleTimeoutMinutes = Optional.ofNullable(idleTimeoutMinutes);
         return this;
     }
 
@@ -234,11 +234,11 @@ public class CodespacesCreateForAuthenticatedUserRequestOneOf1 implements Codesp
             description = "Time in minutes before codespace stops from inactivity",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("idle_timeout_minutes")
-    public Long getIdleTimeoutMinutes() {
+    public Optional<Long> getIdleTimeoutMinutes() {
         return idleTimeoutMinutes;
     }
 
-    public void setIdleTimeoutMinutes(Long idleTimeoutMinutes) {
+    public void setIdleTimeoutMinutes(Optional<Long> idleTimeoutMinutes) {
         this.idleTimeoutMinutes = idleTimeoutMinutes;
     }
 

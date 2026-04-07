@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProjectsV2FieldSingleSelectOption
@@ -16,11 +15,11 @@ import java.util.Objects;
 @JsonTypeName("projects-v2-field-single-select-option")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2FieldSingleSelectOption {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The color associated with the option.
@@ -69,12 +68,12 @@ public class ProjectsV2FieldSingleSelectOption {
         }
     }
 
-    private ColorEnum color;
+    private Optional<ColorEnum> color = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     public ProjectsV2FieldSingleSelectOption name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -87,16 +86,16 @@ public class ProjectsV2FieldSingleSelectOption {
             description = "The display name of the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ProjectsV2FieldSingleSelectOption color(ColorEnum color) {
-        this.color = color;
+        this.color = Optional.ofNullable(color);
         return this;
     }
 
@@ -109,16 +108,16 @@ public class ProjectsV2FieldSingleSelectOption {
             description = "The color associated with the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public ColorEnum getColor() {
+    public Optional<ColorEnum> getColor() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(Optional<ColorEnum> color) {
         this.color = color;
     }
 
     public ProjectsV2FieldSingleSelectOption description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -131,11 +130,11 @@ public class ProjectsV2FieldSingleSelectOption {
             description = "The description of the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 

@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookSecretScanningAlertLocationCreated
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-secret-scanning-alert-location-created")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookSecretScanningAlertLocationCreated {
 
@@ -54,15 +54,15 @@ public class WebhookSecretScanningAlertLocationCreated {
         }
     }
 
-    private ActionEnum action;
+    private Optional<ActionEnum> action = Optional.empty();
 
     private SecretScanningAlertWebhook alert;
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private SecretScanningLocation location;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -87,7 +87,7 @@ public class WebhookSecretScanningAlertLocationCreated {
     }
 
     public WebhookSecretScanningAlertLocationCreated action(ActionEnum action) {
-        this.action = action;
+        this.action = Optional.ofNullable(action);
         return this;
     }
 
@@ -97,11 +97,11 @@ public class WebhookSecretScanningAlertLocationCreated {
      */
     @Schema(name = "action", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("action")
-    public ActionEnum getAction() {
+    public Optional<ActionEnum> getAction() {
         return action;
     }
 
-    public void setAction(ActionEnum action) {
+    public void setAction(Optional<ActionEnum> action) {
         this.action = action;
     }
 
@@ -127,7 +127,7 @@ public class WebhookSecretScanningAlertLocationCreated {
     }
 
     public WebhookSecretScanningAlertLocationCreated installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -138,11 +138,11 @@ public class WebhookSecretScanningAlertLocationCreated {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -168,7 +168,7 @@ public class WebhookSecretScanningAlertLocationCreated {
     }
 
     public WebhookSecretScanningAlertLocationCreated organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -179,11 +179,11 @@ public class WebhookSecretScanningAlertLocationCreated {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

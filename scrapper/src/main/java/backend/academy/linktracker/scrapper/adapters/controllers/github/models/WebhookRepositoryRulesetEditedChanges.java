@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRepositoryRulesetEditedChanges
@@ -15,20 +14,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_ruleset_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryRulesetEditedChanges {
 
-    private WebhookOrganizationRenamedChangesLogin name;
+    private Optional<WebhookOrganizationRenamedChangesLogin> name = Optional.empty();
 
-    private WebhookOrganizationRenamedChangesLogin enforcement;
+    private Optional<WebhookOrganizationRenamedChangesLogin> enforcement = Optional.empty();
 
-    private WebhookRepositoryRulesetEditedChangesConditions conditions;
+    private Optional<WebhookRepositoryRulesetEditedChangesConditions> conditions = Optional.empty();
 
-    private WebhookRepositoryRulesetEditedChangesRules rules;
+    private Optional<WebhookRepositoryRulesetEditedChangesRules> rules = Optional.empty();
 
     public WebhookRepositoryRulesetEditedChanges name(WebhookOrganizationRenamedChangesLogin name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookRepositoryRulesetEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookOrganizationRenamedChangesLogin getName() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getName() {
         return name;
     }
 
-    public void setName(WebhookOrganizationRenamedChangesLogin name) {
+    public void setName(Optional<WebhookOrganizationRenamedChangesLogin> name) {
         this.name = name;
     }
 
     public WebhookRepositoryRulesetEditedChanges enforcement(WebhookOrganizationRenamedChangesLogin enforcement) {
-        this.enforcement = enforcement;
+        this.enforcement = Optional.ofNullable(enforcement);
         return this;
     }
 
@@ -59,17 +58,17 @@ public class WebhookRepositoryRulesetEditedChanges {
     @Valid
     @Schema(name = "enforcement", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enforcement")
-    public WebhookOrganizationRenamedChangesLogin getEnforcement() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getEnforcement() {
         return enforcement;
     }
 
-    public void setEnforcement(WebhookOrganizationRenamedChangesLogin enforcement) {
+    public void setEnforcement(Optional<WebhookOrganizationRenamedChangesLogin> enforcement) {
         this.enforcement = enforcement;
     }
 
     public WebhookRepositoryRulesetEditedChanges conditions(
             WebhookRepositoryRulesetEditedChangesConditions conditions) {
-        this.conditions = conditions;
+        this.conditions = Optional.ofNullable(conditions);
         return this;
     }
 
@@ -80,16 +79,16 @@ public class WebhookRepositoryRulesetEditedChanges {
     @Valid
     @Schema(name = "conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conditions")
-    public WebhookRepositoryRulesetEditedChangesConditions getConditions() {
+    public Optional<WebhookRepositoryRulesetEditedChangesConditions> getConditions() {
         return conditions;
     }
 
-    public void setConditions(WebhookRepositoryRulesetEditedChangesConditions conditions) {
+    public void setConditions(Optional<WebhookRepositoryRulesetEditedChangesConditions> conditions) {
         this.conditions = conditions;
     }
 
     public WebhookRepositoryRulesetEditedChanges rules(WebhookRepositoryRulesetEditedChangesRules rules) {
-        this.rules = rules;
+        this.rules = Optional.ofNullable(rules);
         return this;
     }
 
@@ -100,11 +99,11 @@ public class WebhookRepositoryRulesetEditedChanges {
     @Valid
     @Schema(name = "rules", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rules")
-    public WebhookRepositoryRulesetEditedChangesRules getRules() {
+    public Optional<WebhookRepositoryRulesetEditedChangesRules> getRules() {
         return rules;
     }
 
-    public void setRules(WebhookRepositoryRulesetEditedChangesRules rules) {
+    public void setRules(Optional<WebhookRepositoryRulesetEditedChangesRules> rules) {
         this.rules = rules;
     }
 

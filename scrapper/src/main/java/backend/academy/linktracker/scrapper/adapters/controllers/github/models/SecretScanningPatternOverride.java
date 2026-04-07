@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SecretScanningPatternOverride
@@ -16,27 +17,27 @@ import java.util.Objects;
 @JsonTypeName("secret-scanning-pattern-override")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningPatternOverride {
 
-    private String tokenType;
+    private Optional<String> tokenType = Optional.empty();
 
-    private String customPatternVersion = null;
+    private JsonNullable<String> customPatternVersion = JsonNullable.<String>undefined();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
-    private String displayName;
+    private Optional<String> displayName = Optional.empty();
 
-    private Long alertTotal;
+    private Optional<Long> alertTotal = Optional.empty();
 
-    private Long alertTotalPercentage;
+    private Optional<Long> alertTotalPercentage = Optional.empty();
 
-    private Long falsePositives;
+    private Optional<Long> falsePositives = Optional.empty();
 
-    private Long falsePositiveRate;
+    private Optional<Long> falsePositiveRate = Optional.empty();
 
-    private Long bypassRate;
+    private Optional<Long> bypassRate = Optional.empty();
 
     /**
      * The default push protection setting for this pattern.
@@ -73,7 +74,7 @@ public class SecretScanningPatternOverride {
         }
     }
 
-    private DefaultSettingEnum defaultSetting;
+    private Optional<DefaultSettingEnum> defaultSetting = Optional.empty();
 
     /**
      * The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.
@@ -112,7 +113,7 @@ public class SecretScanningPatternOverride {
         }
     }
 
-    private EnterpriseSettingEnum enterpriseSetting = null;
+    private JsonNullable<EnterpriseSettingEnum> enterpriseSetting = JsonNullable.<EnterpriseSettingEnum>undefined();
 
     /**
      * The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.
@@ -151,10 +152,10 @@ public class SecretScanningPatternOverride {
         }
     }
 
-    private SettingEnum setting;
+    private Optional<SettingEnum> setting = Optional.empty();
 
     public SecretScanningPatternOverride tokenType(String tokenType) {
-        this.tokenType = tokenType;
+        this.tokenType = Optional.ofNullable(tokenType);
         return this;
     }
 
@@ -167,16 +168,16 @@ public class SecretScanningPatternOverride {
             description = "The ID of the pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("token_type")
-    public String getTokenType() {
+    public Optional<String> getTokenType() {
         return tokenType;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(Optional<String> tokenType) {
         this.tokenType = tokenType;
     }
 
     public SecretScanningPatternOverride customPatternVersion(String customPatternVersion) {
-        this.customPatternVersion = customPatternVersion;
+        this.customPatternVersion = JsonNullable.of(customPatternVersion);
         return this;
     }
 
@@ -189,16 +190,16 @@ public class SecretScanningPatternOverride {
             description = "The version of this pattern if it's a custom pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_pattern_version")
-    public String getCustomPatternVersion() {
+    public JsonNullable<String> getCustomPatternVersion() {
         return customPatternVersion;
     }
 
-    public void setCustomPatternVersion(String customPatternVersion) {
+    public void setCustomPatternVersion(JsonNullable<String> customPatternVersion) {
         this.customPatternVersion = customPatternVersion;
     }
 
     public SecretScanningPatternOverride slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -208,16 +209,16 @@ public class SecretScanningPatternOverride {
      */
     @Schema(name = "slug", description = "The slug of the pattern.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public SecretScanningPatternOverride displayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = Optional.ofNullable(displayName);
         return this;
     }
 
@@ -230,16 +231,16 @@ public class SecretScanningPatternOverride {
             description = "The user-friendly name for the pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public Optional<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(Optional<String> displayName) {
         this.displayName = displayName;
     }
 
     public SecretScanningPatternOverride alertTotal(Long alertTotal) {
-        this.alertTotal = alertTotal;
+        this.alertTotal = Optional.ofNullable(alertTotal);
         return this;
     }
 
@@ -252,16 +253,16 @@ public class SecretScanningPatternOverride {
             description = "The total number of alerts generated by this pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("alert_total")
-    public Long getAlertTotal() {
+    public Optional<Long> getAlertTotal() {
         return alertTotal;
     }
 
-    public void setAlertTotal(Long alertTotal) {
+    public void setAlertTotal(Optional<Long> alertTotal) {
         this.alertTotal = alertTotal;
     }
 
     public SecretScanningPatternOverride alertTotalPercentage(Long alertTotalPercentage) {
-        this.alertTotalPercentage = alertTotalPercentage;
+        this.alertTotalPercentage = Optional.ofNullable(alertTotalPercentage);
         return this;
     }
 
@@ -274,16 +275,16 @@ public class SecretScanningPatternOverride {
             description = "The percentage of all alerts that this pattern represents, rounded to the nearest integer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("alert_total_percentage")
-    public Long getAlertTotalPercentage() {
+    public Optional<Long> getAlertTotalPercentage() {
         return alertTotalPercentage;
     }
 
-    public void setAlertTotalPercentage(Long alertTotalPercentage) {
+    public void setAlertTotalPercentage(Optional<Long> alertTotalPercentage) {
         this.alertTotalPercentage = alertTotalPercentage;
     }
 
     public SecretScanningPatternOverride falsePositives(Long falsePositives) {
-        this.falsePositives = falsePositives;
+        this.falsePositives = Optional.ofNullable(falsePositives);
         return this;
     }
 
@@ -296,16 +297,16 @@ public class SecretScanningPatternOverride {
             description = "The number of false positive alerts generated by this pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("false_positives")
-    public Long getFalsePositives() {
+    public Optional<Long> getFalsePositives() {
         return falsePositives;
     }
 
-    public void setFalsePositives(Long falsePositives) {
+    public void setFalsePositives(Optional<Long> falsePositives) {
         this.falsePositives = falsePositives;
     }
 
     public SecretScanningPatternOverride falsePositiveRate(Long falsePositiveRate) {
-        this.falsePositiveRate = falsePositiveRate;
+        this.falsePositiveRate = Optional.ofNullable(falsePositiveRate);
         return this;
     }
 
@@ -319,16 +320,16 @@ public class SecretScanningPatternOverride {
                     "The percentage of alerts from this pattern that are false positives, rounded to the nearest integer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("false_positive_rate")
-    public Long getFalsePositiveRate() {
+    public Optional<Long> getFalsePositiveRate() {
         return falsePositiveRate;
     }
 
-    public void setFalsePositiveRate(Long falsePositiveRate) {
+    public void setFalsePositiveRate(Optional<Long> falsePositiveRate) {
         this.falsePositiveRate = falsePositiveRate;
     }
 
     public SecretScanningPatternOverride bypassRate(Long bypassRate) {
-        this.bypassRate = bypassRate;
+        this.bypassRate = Optional.ofNullable(bypassRate);
         return this;
     }
 
@@ -342,16 +343,16 @@ public class SecretScanningPatternOverride {
                     "The percentage of blocks for this pattern that were bypassed, rounded to the nearest integer.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bypass_rate")
-    public Long getBypassRate() {
+    public Optional<Long> getBypassRate() {
         return bypassRate;
     }
 
-    public void setBypassRate(Long bypassRate) {
+    public void setBypassRate(Optional<Long> bypassRate) {
         this.bypassRate = bypassRate;
     }
 
     public SecretScanningPatternOverride defaultSetting(DefaultSettingEnum defaultSetting) {
-        this.defaultSetting = defaultSetting;
+        this.defaultSetting = Optional.ofNullable(defaultSetting);
         return this;
     }
 
@@ -364,16 +365,16 @@ public class SecretScanningPatternOverride {
             description = "The default push protection setting for this pattern.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_setting")
-    public DefaultSettingEnum getDefaultSetting() {
+    public Optional<DefaultSettingEnum> getDefaultSetting() {
         return defaultSetting;
     }
 
-    public void setDefaultSetting(DefaultSettingEnum defaultSetting) {
+    public void setDefaultSetting(Optional<DefaultSettingEnum> defaultSetting) {
         this.defaultSetting = defaultSetting;
     }
 
     public SecretScanningPatternOverride enterpriseSetting(EnterpriseSettingEnum enterpriseSetting) {
-        this.enterpriseSetting = enterpriseSetting;
+        this.enterpriseSetting = JsonNullable.of(enterpriseSetting);
         return this;
     }
 
@@ -387,16 +388,16 @@ public class SecretScanningPatternOverride {
                     "The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_setting")
-    public EnterpriseSettingEnum getEnterpriseSetting() {
+    public JsonNullable<EnterpriseSettingEnum> getEnterpriseSetting() {
         return enterpriseSetting;
     }
 
-    public void setEnterpriseSetting(EnterpriseSettingEnum enterpriseSetting) {
+    public void setEnterpriseSetting(JsonNullable<EnterpriseSettingEnum> enterpriseSetting) {
         this.enterpriseSetting = enterpriseSetting;
     }
 
     public SecretScanningPatternOverride setting(SettingEnum setting) {
-        this.setting = setting;
+        this.setting = Optional.ofNullable(setting);
         return this;
     }
 
@@ -410,11 +411,11 @@ public class SecretScanningPatternOverride {
                     "The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("setting")
-    public SettingEnum getSetting() {
+    public Optional<SettingEnum> getSetting() {
         return setting;
     }
 
-    public void setSetting(SettingEnum setting) {
+    public void setSetting(Optional<SettingEnum> setting) {
         this.setting = setting;
     }
 
@@ -428,7 +429,7 @@ public class SecretScanningPatternOverride {
         }
         SecretScanningPatternOverride secretScanningPatternOverride = (SecretScanningPatternOverride) o;
         return Objects.equals(this.tokenType, secretScanningPatternOverride.tokenType)
-                && Objects.equals(this.customPatternVersion, secretScanningPatternOverride.customPatternVersion)
+                && equalsNullable(this.customPatternVersion, secretScanningPatternOverride.customPatternVersion)
                 && Objects.equals(this.slug, secretScanningPatternOverride.slug)
                 && Objects.equals(this.displayName, secretScanningPatternOverride.displayName)
                 && Objects.equals(this.alertTotal, secretScanningPatternOverride.alertTotal)
@@ -437,15 +438,20 @@ public class SecretScanningPatternOverride {
                 && Objects.equals(this.falsePositiveRate, secretScanningPatternOverride.falsePositiveRate)
                 && Objects.equals(this.bypassRate, secretScanningPatternOverride.bypassRate)
                 && Objects.equals(this.defaultSetting, secretScanningPatternOverride.defaultSetting)
-                && Objects.equals(this.enterpriseSetting, secretScanningPatternOverride.enterpriseSetting)
+                && equalsNullable(this.enterpriseSetting, secretScanningPatternOverride.enterpriseSetting)
                 && Objects.equals(this.setting, secretScanningPatternOverride.setting);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 tokenType,
-                customPatternVersion,
+                hashCodeNullable(customPatternVersion),
                 slug,
                 displayName,
                 alertTotal,
@@ -454,8 +460,15 @@ public class SecretScanningPatternOverride {
                 falsePositiveRate,
                 bypassRate,
                 defaultSetting,
-                enterpriseSetting,
+                hashCodeNullable(enterpriseSetting),
                 setting);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

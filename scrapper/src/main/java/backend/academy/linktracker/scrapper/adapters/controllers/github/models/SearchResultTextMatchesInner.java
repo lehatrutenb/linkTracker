@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SearchResultTextMatchesInner
@@ -17,23 +14,23 @@ import java.util.Objects;
 @JsonTypeName("search_result_text_matches_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SearchResultTextMatchesInner {
 
-    private String objectUrl;
+    private Optional<String> objectUrl = Optional.empty();
 
-    private String objectType = null;
+    private JsonNullable<String> objectType = JsonNullable.<String>undefined();
 
-    private String property;
+    private Optional<String> property = Optional.empty();
 
-    private String fragment;
+    private Optional<String> fragment = Optional.empty();
 
     @Valid
     private List<@Valid SearchResultTextMatchesInnerMatchesInner> matches = new ArrayList<>();
 
     public SearchResultTextMatchesInner objectUrl(String objectUrl) {
-        this.objectUrl = objectUrl;
+        this.objectUrl = Optional.ofNullable(objectUrl);
         return this;
     }
 
@@ -43,16 +40,16 @@ public class SearchResultTextMatchesInner {
      */
     @Schema(name = "object_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("object_url")
-    public String getObjectUrl() {
+    public Optional<String> getObjectUrl() {
         return objectUrl;
     }
 
-    public void setObjectUrl(String objectUrl) {
+    public void setObjectUrl(Optional<String> objectUrl) {
         this.objectUrl = objectUrl;
     }
 
     public SearchResultTextMatchesInner objectType(String objectType) {
-        this.objectType = objectType;
+        this.objectType = JsonNullable.of(objectType);
         return this;
     }
 
@@ -62,16 +59,16 @@ public class SearchResultTextMatchesInner {
      */
     @Schema(name = "object_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("object_type")
-    public String getObjectType() {
+    public JsonNullable<String> getObjectType() {
         return objectType;
     }
 
-    public void setObjectType(String objectType) {
+    public void setObjectType(JsonNullable<String> objectType) {
         this.objectType = objectType;
     }
 
     public SearchResultTextMatchesInner property(String property) {
-        this.property = property;
+        this.property = Optional.ofNullable(property);
         return this;
     }
 
@@ -81,16 +78,16 @@ public class SearchResultTextMatchesInner {
      */
     @Schema(name = "property", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("property")
-    public String getProperty() {
+    public Optional<String> getProperty() {
         return property;
     }
 
-    public void setProperty(String property) {
+    public void setProperty(Optional<String> property) {
         this.property = property;
     }
 
     public SearchResultTextMatchesInner fragment(String fragment) {
-        this.fragment = fragment;
+        this.fragment = Optional.ofNullable(fragment);
         return this;
     }
 
@@ -100,11 +97,11 @@ public class SearchResultTextMatchesInner {
      */
     @Schema(name = "fragment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fragment")
-    public String getFragment() {
+    public Optional<String> getFragment() {
         return fragment;
     }
 
-    public void setFragment(String fragment) {
+    public void setFragment(Optional<String> fragment) {
         this.fragment = fragment;
     }
 
@@ -146,15 +143,27 @@ public class SearchResultTextMatchesInner {
         }
         SearchResultTextMatchesInner searchResultTextMatchesInner = (SearchResultTextMatchesInner) o;
         return Objects.equals(this.objectUrl, searchResultTextMatchesInner.objectUrl)
-                && Objects.equals(this.objectType, searchResultTextMatchesInner.objectType)
+                && equalsNullable(this.objectType, searchResultTextMatchesInner.objectType)
                 && Objects.equals(this.property, searchResultTextMatchesInner.property)
                 && Objects.equals(this.fragment, searchResultTextMatchesInner.fragment)
                 && Objects.equals(this.matches, searchResultTextMatchesInner.matches);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(objectUrl, objectType, property, fragment, matches);
+        return Objects.hash(objectUrl, hashCodeNullable(objectType), property, fragment, matches);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentReviewRejectedWorkflowJobRunsInner
@@ -14,28 +15,28 @@ import java.util.Objects;
 @JsonTypeName("webhook_deployment_review_rejected_workflow_job_runs_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
 
-    private String conclusion = null;
+    private JsonNullable<String> conclusion = JsonNullable.<String>undefined();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String environment;
+    private Optional<String> environment = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String status;
+    private Optional<String> status = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner conclusion(String conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -45,16 +46,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conclusion")
-    public String getConclusion() {
+    public JsonNullable<String> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(String conclusion) {
+    public void setConclusion(JsonNullable<String> conclusion) {
         this.conclusion = conclusion;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -64,16 +65,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -83,16 +84,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "environment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -102,16 +103,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -121,16 +122,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -140,16 +141,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner status(String status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -159,16 +160,16 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public Optional<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Optional<String> status) {
         this.status = status;
     }
 
     public WebhookDeploymentReviewRejectedWorkflowJobRunsInner updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -178,11 +179,11 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -196,19 +197,39 @@ public class WebhookDeploymentReviewRejectedWorkflowJobRunsInner {
         }
         WebhookDeploymentReviewRejectedWorkflowJobRunsInner webhookDeploymentReviewRejectedWorkflowJobRunsInner =
                 (WebhookDeploymentReviewRejectedWorkflowJobRunsInner) o;
-        return Objects.equals(this.conclusion, webhookDeploymentReviewRejectedWorkflowJobRunsInner.conclusion)
+        return equalsNullable(this.conclusion, webhookDeploymentReviewRejectedWorkflowJobRunsInner.conclusion)
                 && Objects.equals(this.createdAt, webhookDeploymentReviewRejectedWorkflowJobRunsInner.createdAt)
                 && Objects.equals(this.environment, webhookDeploymentReviewRejectedWorkflowJobRunsInner.environment)
                 && Objects.equals(this.htmlUrl, webhookDeploymentReviewRejectedWorkflowJobRunsInner.htmlUrl)
                 && Objects.equals(this.id, webhookDeploymentReviewRejectedWorkflowJobRunsInner.id)
-                && Objects.equals(this.name, webhookDeploymentReviewRejectedWorkflowJobRunsInner.name)
+                && equalsNullable(this.name, webhookDeploymentReviewRejectedWorkflowJobRunsInner.name)
                 && Objects.equals(this.status, webhookDeploymentReviewRejectedWorkflowJobRunsInner.status)
                 && Objects.equals(this.updatedAt, webhookDeploymentReviewRejectedWorkflowJobRunsInner.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(conclusion, createdAt, environment, htmlUrl, id, name, status, updatedAt);
+        return Objects.hash(
+                hashCodeNullable(conclusion),
+                createdAt,
+                environment,
+                htmlUrl,
+                id,
+                hashCodeNullable(name),
+                status,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

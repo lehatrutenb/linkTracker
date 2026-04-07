@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Short Branch
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("short-branch")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ShortBranch {
 
@@ -27,9 +27,9 @@ public class ShortBranch {
 
     private Boolean _protected;
 
-    private BranchProtection protection;
+    private Optional<BranchProtection> protection = Optional.empty();
 
-    private URI protectionUrl;
+    private Optional<URI> protectionUrl = Optional.empty();
 
     public ShortBranch() {
         super();
@@ -106,7 +106,7 @@ public class ShortBranch {
     }
 
     public ShortBranch protection(BranchProtection protection) {
-        this.protection = protection;
+        this.protection = Optional.ofNullable(protection);
         return this;
     }
 
@@ -117,16 +117,16 @@ public class ShortBranch {
     @Valid
     @Schema(name = "protection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protection")
-    public BranchProtection getProtection() {
+    public Optional<BranchProtection> getProtection() {
         return protection;
     }
 
-    public void setProtection(BranchProtection protection) {
+    public void setProtection(Optional<BranchProtection> protection) {
         this.protection = protection;
     }
 
     public ShortBranch protectionUrl(URI protectionUrl) {
-        this.protectionUrl = protectionUrl;
+        this.protectionUrl = Optional.ofNullable(protectionUrl);
         return this;
     }
 
@@ -137,11 +137,11 @@ public class ShortBranch {
     @Valid
     @Schema(name = "protection_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protection_url")
-    public URI getProtectionUrl() {
+    public Optional<URI> getProtectionUrl() {
         return protectionUrl;
     }
 
-    public void setProtectionUrl(URI protectionUrl) {
+    public void setProtectionUrl(Optional<URI> protectionUrl) {
         this.protectionUrl = protectionUrl;
     }
 

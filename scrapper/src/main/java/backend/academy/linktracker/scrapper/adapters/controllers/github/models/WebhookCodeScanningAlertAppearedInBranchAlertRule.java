@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookCodeScanningAlertAppearedInBranchAlertRule
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_code_scanning_alert_appeared_in_branch_alert_rule")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertAppearedInBranchAlertRule {
 
@@ -63,7 +63,7 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertRule {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
     public WebhookCodeScanningAlertAppearedInBranchAlertRule() {
         super();
@@ -75,7 +75,7 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertRule {
     public WebhookCodeScanningAlertAppearedInBranchAlertRule(String description, String id, SeverityEnum severity) {
         this.description = description;
         this.id = id;
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
     }
 
     public WebhookCodeScanningAlertAppearedInBranchAlertRule description(String description) {
@@ -125,7 +125,7 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertRule {
     }
 
     public WebhookCodeScanningAlertAppearedInBranchAlertRule severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -136,11 +136,11 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertRule {
     @NotNull
     @Schema(name = "severity", description = "The severity of the alert.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 

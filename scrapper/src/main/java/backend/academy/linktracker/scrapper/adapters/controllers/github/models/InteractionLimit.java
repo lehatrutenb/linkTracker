@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Limit interactions to a specific type of user for a specified duration
@@ -18,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("interaction-limit")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class InteractionLimit {
 
     private InteractionGroup limit;
 
-    private InteractionExpiry expiry;
+    private Optional<InteractionExpiry> expiry = Optional.empty();
 
     public InteractionLimit() {
         super();
@@ -59,7 +59,7 @@ public class InteractionLimit {
     }
 
     public InteractionLimit expiry(InteractionExpiry expiry) {
-        this.expiry = expiry;
+        this.expiry = Optional.ofNullable(expiry);
         return this;
     }
 
@@ -70,11 +70,11 @@ public class InteractionLimit {
     @Valid
     @Schema(name = "expiry", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("expiry")
-    public InteractionExpiry getExpiry() {
+    public Optional<InteractionExpiry> getExpiry() {
         return expiry;
     }
 
-    public void setExpiry(InteractionExpiry expiry) {
+    public void setExpiry(Optional<InteractionExpiry> expiry) {
         this.expiry = expiry;
     }
 

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsForkPrWorkflowsPrivateReposRequest
@@ -14,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("actions-fork-pr-workflows-private-repos-request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsForkPrWorkflowsPrivateReposRequest {
 
     private Boolean runWorkflowsFromForkPullRequests;
 
-    private Boolean sendWriteTokensToWorkflows;
+    private Optional<Boolean> sendWriteTokensToWorkflows = Optional.empty();
 
-    private Boolean sendSecretsAndVariables;
+    private Optional<Boolean> sendSecretsAndVariables = Optional.empty();
 
-    private Boolean requireApprovalForForkPrWorkflows;
+    private Optional<Boolean> requireApprovalForForkPrWorkflows = Optional.empty();
 
     public ActionsForkPrWorkflowsPrivateReposRequest() {
         super();
@@ -63,7 +63,7 @@ public class ActionsForkPrWorkflowsPrivateReposRequest {
     }
 
     public ActionsForkPrWorkflowsPrivateReposRequest sendWriteTokensToWorkflows(Boolean sendWriteTokensToWorkflows) {
-        this.sendWriteTokensToWorkflows = sendWriteTokensToWorkflows;
+        this.sendWriteTokensToWorkflows = Optional.ofNullable(sendWriteTokensToWorkflows);
         return this;
     }
 
@@ -77,16 +77,16 @@ public class ActionsForkPrWorkflowsPrivateReposRequest {
                     "Whether GitHub Actions can create pull requests or submit approving pull request reviews from a workflow triggered by a fork pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("send_write_tokens_to_workflows")
-    public Boolean getSendWriteTokensToWorkflows() {
+    public Optional<Boolean> getSendWriteTokensToWorkflows() {
         return sendWriteTokensToWorkflows;
     }
 
-    public void setSendWriteTokensToWorkflows(Boolean sendWriteTokensToWorkflows) {
+    public void setSendWriteTokensToWorkflows(Optional<Boolean> sendWriteTokensToWorkflows) {
         this.sendWriteTokensToWorkflows = sendWriteTokensToWorkflows;
     }
 
     public ActionsForkPrWorkflowsPrivateReposRequest sendSecretsAndVariables(Boolean sendSecretsAndVariables) {
-        this.sendSecretsAndVariables = sendSecretsAndVariables;
+        this.sendSecretsAndVariables = Optional.ofNullable(sendSecretsAndVariables);
         return this;
     }
 
@@ -100,17 +100,17 @@ public class ActionsForkPrWorkflowsPrivateReposRequest {
                     "Whether to make secrets and variables available to workflows triggered by pull requests from forks.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("send_secrets_and_variables")
-    public Boolean getSendSecretsAndVariables() {
+    public Optional<Boolean> getSendSecretsAndVariables() {
         return sendSecretsAndVariables;
     }
 
-    public void setSendSecretsAndVariables(Boolean sendSecretsAndVariables) {
+    public void setSendSecretsAndVariables(Optional<Boolean> sendSecretsAndVariables) {
         this.sendSecretsAndVariables = sendSecretsAndVariables;
     }
 
     public ActionsForkPrWorkflowsPrivateReposRequest requireApprovalForForkPrWorkflows(
             Boolean requireApprovalForForkPrWorkflows) {
-        this.requireApprovalForForkPrWorkflows = requireApprovalForForkPrWorkflows;
+        this.requireApprovalForForkPrWorkflows = Optional.ofNullable(requireApprovalForForkPrWorkflows);
         return this;
     }
 
@@ -124,11 +124,11 @@ public class ActionsForkPrWorkflowsPrivateReposRequest {
                     "Whether workflows triggered by pull requests from forks require approval from a repository administrator to run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_approval_for_fork_pr_workflows")
-    public Boolean getRequireApprovalForForkPrWorkflows() {
+    public Optional<Boolean> getRequireApprovalForForkPrWorkflows() {
         return requireApprovalForForkPrWorkflows;
     }
 
-    public void setRequireApprovalForForkPrWorkflows(Boolean requireApprovalForForkPrWorkflows) {
+    public void setRequireApprovalForForkPrWorkflows(Optional<Boolean> requireApprovalForForkPrWorkflows) {
         this.requireApprovalForForkPrWorkflows = requireApprovalForForkPrWorkflows;
     }
 

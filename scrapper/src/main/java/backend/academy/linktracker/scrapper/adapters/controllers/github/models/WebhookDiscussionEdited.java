@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookDiscussionEdited
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-discussion-edited")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDiscussionEdited {
 
@@ -56,15 +56,15 @@ public class WebhookDiscussionEdited {
 
     private ActionEnum action;
 
-    private WebhookDiscussionEditedChanges changes;
+    private Optional<WebhookDiscussionEditedChanges> changes = Optional.empty();
 
     private Discussion discussion;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -106,7 +106,7 @@ public class WebhookDiscussionEdited {
     }
 
     public WebhookDiscussionEdited changes(WebhookDiscussionEditedChanges changes) {
-        this.changes = changes;
+        this.changes = Optional.ofNullable(changes);
         return this;
     }
 
@@ -117,11 +117,11 @@ public class WebhookDiscussionEdited {
     @Valid
     @Schema(name = "changes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("changes")
-    public WebhookDiscussionEditedChanges getChanges() {
+    public Optional<WebhookDiscussionEditedChanges> getChanges() {
         return changes;
     }
 
-    public void setChanges(WebhookDiscussionEditedChanges changes) {
+    public void setChanges(Optional<WebhookDiscussionEditedChanges> changes) {
         this.changes = changes;
     }
 
@@ -147,7 +147,7 @@ public class WebhookDiscussionEdited {
     }
 
     public WebhookDiscussionEdited enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -158,16 +158,16 @@ public class WebhookDiscussionEdited {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookDiscussionEdited installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -178,16 +178,16 @@ public class WebhookDiscussionEdited {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookDiscussionEdited organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -198,11 +198,11 @@ public class WebhookDiscussionEdited {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

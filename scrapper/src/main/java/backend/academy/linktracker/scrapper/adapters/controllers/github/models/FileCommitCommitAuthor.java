@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * FileCommitCommitAuthor
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("file_commit_commit_author")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommitCommitAuthor {
 
-    private String date;
+    private Optional<String> date = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
     public FileCommitCommitAuthor date(String date) {
-        this.date = date;
+        this.date = Optional.ofNullable(date);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class FileCommitCommitAuthor {
      */
     @Schema(name = "date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("date")
-    public String getDate() {
+    public Optional<String> getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Optional<String> date) {
         this.date = date;
     }
 
     public FileCommitCommitAuthor name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class FileCommitCommitAuthor {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public FileCommitCommitAuthor email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class FileCommitCommitAuthor {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 

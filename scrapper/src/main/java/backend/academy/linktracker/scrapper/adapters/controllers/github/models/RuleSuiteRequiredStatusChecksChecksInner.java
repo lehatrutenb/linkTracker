@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RuleSuiteRequiredStatusChecksChecksInner
@@ -15,22 +16,23 @@ import java.util.Objects;
 @JsonTypeName("rule_suite_required_status_checks_checks_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuiteRequiredStatusChecksChecksInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String context;
+    private Optional<String> context = Optional.empty();
 
-    private String state;
+    private Optional<String> state = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private RuleSuiteRequiredStatusChecksChecksInnerApp app = null;
+    private JsonNullable<RuleSuiteRequiredStatusChecksChecksInnerApp> app =
+            JsonNullable.<RuleSuiteRequiredStatusChecksChecksInnerApp>undefined();
 
     public RuleSuiteRequiredStatusChecksChecksInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -43,16 +45,16 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
             description = "The unique identifier of the status check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInner context(String context) {
-        this.context = context;
+        this.context = Optional.ofNullable(context);
         return this;
     }
 
@@ -65,16 +67,16 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
             description = "The context name of the status check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("context")
-    public String getContext() {
+    public Optional<String> getContext() {
         return context;
     }
 
-    public void setContext(String context) {
+    public void setContext(Optional<String> context) {
         this.context = context;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInner state(String state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -87,16 +89,16 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
             description = "The state of the status check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public Optional<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Optional<String> state) {
         this.state = state;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInner type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -109,16 +111,16 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
             description = "The type of the status check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInner app(RuleSuiteRequiredStatusChecksChecksInnerApp app) {
-        this.app = app;
+        this.app = JsonNullable.of(app);
         return this;
     }
 
@@ -129,11 +131,11 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
     @Valid
     @Schema(name = "app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("app")
-    public RuleSuiteRequiredStatusChecksChecksInnerApp getApp() {
+    public JsonNullable<RuleSuiteRequiredStatusChecksChecksInnerApp> getApp() {
         return app;
     }
 
-    public void setApp(RuleSuiteRequiredStatusChecksChecksInnerApp app) {
+    public void setApp(JsonNullable<RuleSuiteRequiredStatusChecksChecksInnerApp> app) {
         this.app = app;
     }
 
@@ -151,12 +153,24 @@ public class RuleSuiteRequiredStatusChecksChecksInner {
                 && Objects.equals(this.context, ruleSuiteRequiredStatusChecksChecksInner.context)
                 && Objects.equals(this.state, ruleSuiteRequiredStatusChecksChecksInner.state)
                 && Objects.equals(this.type, ruleSuiteRequiredStatusChecksChecksInner.type)
-                && Objects.equals(this.app, ruleSuiteRequiredStatusChecksChecksInner.app);
+                && equalsNullable(this.app, ruleSuiteRequiredStatusChecksChecksInner.app);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, context, state, type, app);
+        return Objects.hash(id, context, state, type, hashCodeNullable(app));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

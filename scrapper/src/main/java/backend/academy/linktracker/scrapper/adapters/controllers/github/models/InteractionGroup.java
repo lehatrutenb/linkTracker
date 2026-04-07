@@ -3,15 +3,13 @@ package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 
 /**
  * The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
  */
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public enum InteractionGroup {
     EXISTING_USERS("existing_users"),

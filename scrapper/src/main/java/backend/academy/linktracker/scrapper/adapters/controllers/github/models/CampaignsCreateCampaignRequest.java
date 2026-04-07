@@ -5,13 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("campaigns_create_campaign_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CampaignsCreateCampaignRequest {
 
@@ -37,12 +36,13 @@ public class CampaignsCreateCampaignRequest {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime endsAt;
 
-    private URI contactLink = null;
+    private JsonNullable<URI> contactLink = JsonNullable.<URI>undefined();
 
     @Valid
-    private List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner> codeScanningAlerts;
+    private JsonNullable<List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner>> codeScanningAlerts =
+            JsonNullable.<List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner>>undefined();
 
-    private Boolean generateIssues = false;
+    private Optional<Boolean> generateIssues = Optional.of(false);
 
     public CampaignsCreateCampaignRequest() {
         super();
@@ -190,7 +190,7 @@ public class CampaignsCreateCampaignRequest {
     }
 
     public CampaignsCreateCampaignRequest contactLink(URI contactLink) {
-        this.contactLink = contactLink;
+        this.contactLink = JsonNullable.of(contactLink);
         return this;
     }
 
@@ -204,26 +204,26 @@ public class CampaignsCreateCampaignRequest {
             description = "The contact link of the campaign. Must be a URI.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contact_link")
-    public URI getContactLink() {
+    public JsonNullable<URI> getContactLink() {
         return contactLink;
     }
 
-    public void setContactLink(URI contactLink) {
+    public void setContactLink(JsonNullable<URI> contactLink) {
         this.contactLink = contactLink;
     }
 
     public CampaignsCreateCampaignRequest codeScanningAlerts(
             List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner> codeScanningAlerts) {
-        this.codeScanningAlerts = codeScanningAlerts;
+        this.codeScanningAlerts = JsonNullable.of(codeScanningAlerts);
         return this;
     }
 
     public CampaignsCreateCampaignRequest addCodeScanningAlertsItem(
             CampaignsCreateCampaignRequestCodeScanningAlertsInner codeScanningAlertsItem) {
-        if (this.codeScanningAlerts == null) {
-            this.codeScanningAlerts = new ArrayList<>();
+        if (this.codeScanningAlerts == null || !this.codeScanningAlerts.isPresent()) {
+            this.codeScanningAlerts = JsonNullable.of(new ArrayList<>());
         }
-        this.codeScanningAlerts.add(codeScanningAlertsItem);
+        this.codeScanningAlerts.get().add(codeScanningAlertsItem);
         return this;
     }
 
@@ -238,17 +238,17 @@ public class CampaignsCreateCampaignRequest {
             description = "The code scanning alerts to include in this campaign",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_alerts")
-    public List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner> getCodeScanningAlerts() {
+    public JsonNullable<List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner>> getCodeScanningAlerts() {
         return codeScanningAlerts;
     }
 
     public void setCodeScanningAlerts(
-            List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner> codeScanningAlerts) {
+            JsonNullable<List<@Valid CampaignsCreateCampaignRequestCodeScanningAlertsInner>> codeScanningAlerts) {
         this.codeScanningAlerts = codeScanningAlerts;
     }
 
     public CampaignsCreateCampaignRequest generateIssues(Boolean generateIssues) {
-        this.generateIssues = generateIssues;
+        this.generateIssues = Optional.ofNullable(generateIssues);
         return this;
     }
 
@@ -261,11 +261,11 @@ public class CampaignsCreateCampaignRequest {
             description = "If true, will automatically generate issues for the campaign. The default is false.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("generate_issues")
-    public Boolean getGenerateIssues() {
+    public Optional<Boolean> getGenerateIssues() {
         return generateIssues;
     }
 
-    public void setGenerateIssues(Boolean generateIssues) {
+    public void setGenerateIssues(Optional<Boolean> generateIssues) {
         this.generateIssues = generateIssues;
     }
 
@@ -283,15 +283,34 @@ public class CampaignsCreateCampaignRequest {
                 && Objects.equals(this.managers, campaignsCreateCampaignRequest.managers)
                 && Objects.equals(this.teamManagers, campaignsCreateCampaignRequest.teamManagers)
                 && Objects.equals(this.endsAt, campaignsCreateCampaignRequest.endsAt)
-                && Objects.equals(this.contactLink, campaignsCreateCampaignRequest.contactLink)
-                && Objects.equals(this.codeScanningAlerts, campaignsCreateCampaignRequest.codeScanningAlerts)
+                && equalsNullable(this.contactLink, campaignsCreateCampaignRequest.contactLink)
+                && equalsNullable(this.codeScanningAlerts, campaignsCreateCampaignRequest.codeScanningAlerts)
                 && Objects.equals(this.generateIssues, campaignsCreateCampaignRequest.generateIssues);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                name, description, managers, teamManagers, endsAt, contactLink, codeScanningAlerts, generateIssues);
+                name,
+                description,
+                managers,
+                teamManagers,
+                endsAt,
+                hashCodeNullable(contactLink),
+                hashCodeNullable(codeScanningAlerts),
+                generateIssues);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

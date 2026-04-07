@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SelectedActions
@@ -17,19 +16,19 @@ import java.util.Objects;
 @JsonTypeName("selected-actions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SelectedActions {
 
-    private Boolean githubOwnedAllowed;
+    private Optional<Boolean> githubOwnedAllowed = Optional.empty();
 
-    private Boolean verifiedAllowed;
+    private Optional<Boolean> verifiedAllowed = Optional.empty();
 
     @Valid
     private List<String> patternsAllowed = new ArrayList<>();
 
     public SelectedActions githubOwnedAllowed(Boolean githubOwnedAllowed) {
-        this.githubOwnedAllowed = githubOwnedAllowed;
+        this.githubOwnedAllowed = Optional.ofNullable(githubOwnedAllowed);
         return this;
     }
 
@@ -43,16 +42,16 @@ public class SelectedActions {
                     "Whether GitHub-owned actions are allowed. For example, this includes the actions in the `actions` organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("github_owned_allowed")
-    public Boolean getGithubOwnedAllowed() {
+    public Optional<Boolean> getGithubOwnedAllowed() {
         return githubOwnedAllowed;
     }
 
-    public void setGithubOwnedAllowed(Boolean githubOwnedAllowed) {
+    public void setGithubOwnedAllowed(Optional<Boolean> githubOwnedAllowed) {
         this.githubOwnedAllowed = githubOwnedAllowed;
     }
 
     public SelectedActions verifiedAllowed(Boolean verifiedAllowed) {
-        this.verifiedAllowed = verifiedAllowed;
+        this.verifiedAllowed = Optional.ofNullable(verifiedAllowed);
         return this;
     }
 
@@ -66,11 +65,11 @@ public class SelectedActions {
                     "Whether actions from GitHub Marketplace verified creators are allowed. Set to `true` to allow all actions by GitHub Marketplace verified creators.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verified_allowed")
-    public Boolean getVerifiedAllowed() {
+    public Optional<Boolean> getVerifiedAllowed() {
         return verifiedAllowed;
     }
 
-    public void setVerifiedAllowed(Boolean verifiedAllowed) {
+    public void setVerifiedAllowed(Optional<Boolean> verifiedAllowed) {
         this.verifiedAllowed = verifiedAllowed;
     }
 

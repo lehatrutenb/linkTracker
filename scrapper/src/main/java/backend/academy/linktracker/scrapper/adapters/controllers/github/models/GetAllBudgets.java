@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GetAllBudgets
@@ -17,16 +17,16 @@ import java.util.Objects;
 @JsonTypeName("get_all_budgets")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GetAllBudgets {
 
     @Valid
     private List<@Valid Budget> budgets = new ArrayList<>();
 
-    private Boolean hasNextPage;
+    private Optional<Boolean> hasNextPage = Optional.empty();
 
-    private Long totalCount;
+    private Optional<Long> totalCount = Optional.empty();
 
     public GetAllBudgets() {
         super();
@@ -72,7 +72,7 @@ public class GetAllBudgets {
     }
 
     public GetAllBudgets hasNextPage(Boolean hasNextPage) {
-        this.hasNextPage = hasNextPage;
+        this.hasNextPage = Optional.ofNullable(hasNextPage);
         return this;
     }
 
@@ -86,16 +86,16 @@ public class GetAllBudgets {
                     "Indicates if there are more pages of results available (maps to hasNextPage from billing platform)",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_next_page")
-    public Boolean getHasNextPage() {
+    public Optional<Boolean> getHasNextPage() {
         return hasNextPage;
     }
 
-    public void setHasNextPage(Boolean hasNextPage) {
+    public void setHasNextPage(Optional<Boolean> hasNextPage) {
         this.hasNextPage = hasNextPage;
     }
 
     public GetAllBudgets totalCount(Long totalCount) {
-        this.totalCount = totalCount;
+        this.totalCount = Optional.ofNullable(totalCount);
         return this;
     }
 
@@ -108,11 +108,11 @@ public class GetAllBudgets {
             description = "Total number of budgets matching the query",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_count")
-    public Long getTotalCount() {
+    public Optional<Long> getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(Long totalCount) {
+    public void setTotalCount(Optional<Long> totalCount) {
         this.totalCount = totalCount;
     }
 

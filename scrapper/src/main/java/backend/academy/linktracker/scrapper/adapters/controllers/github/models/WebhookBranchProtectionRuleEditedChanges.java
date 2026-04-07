@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * If the action was &#x60;edited&#x60;, the changes to the rule.
@@ -18,38 +17,42 @@ import java.util.Objects;
 @JsonTypeName("webhook_branch_protection_rule_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookBranchProtectionRuleEditedChanges {
 
-    private WebhookBranchProtectionRuleEditedChangesAdminEnforced adminEnforced;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> adminEnforced = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames authorizedActorNames;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> authorizedActorNames =
+            Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedActorsOnly;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> authorizedActorsOnly = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedDismissalActorsOnly;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> authorizedDismissalActorsOnly =
+            Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
-            linearHistoryRequirementEnforcementLevel;
+    private Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
+            linearHistoryRequirementEnforcementLevel = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel lockBranchEnforcementLevel;
+    private Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
+            lockBranchEnforcementLevel = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAdminEnforced lockAllowsForkSync;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> lockAllowsForkSync = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
-            pullRequestReviewsEnforcementLevel;
+    private Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
+            pullRequestReviewsEnforcementLevel = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAdminEnforced requireLastPushApproval;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> requireLastPushApproval = Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames requiredStatusChecks;
+    private Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> requiredStatusChecks =
+            Optional.empty();
 
-    private WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
-            requiredStatusChecksEnforcementLevel;
+    private Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
+            requiredStatusChecksEnforcementLevel = Optional.empty();
 
     public WebhookBranchProtectionRuleEditedChanges adminEnforced(
             WebhookBranchProtectionRuleEditedChangesAdminEnforced adminEnforced) {
-        this.adminEnforced = adminEnforced;
+        this.adminEnforced = Optional.ofNullable(adminEnforced);
         return this;
     }
 
@@ -60,17 +63,17 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "admin_enforced", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("admin_enforced")
-    public WebhookBranchProtectionRuleEditedChangesAdminEnforced getAdminEnforced() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> getAdminEnforced() {
         return adminEnforced;
     }
 
-    public void setAdminEnforced(WebhookBranchProtectionRuleEditedChangesAdminEnforced adminEnforced) {
+    public void setAdminEnforced(Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> adminEnforced) {
         this.adminEnforced = adminEnforced;
     }
 
     public WebhookBranchProtectionRuleEditedChanges authorizedActorNames(
             WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames authorizedActorNames) {
-        this.authorizedActorNames = authorizedActorNames;
+        this.authorizedActorNames = Optional.ofNullable(authorizedActorNames);
         return this;
     }
 
@@ -81,18 +84,18 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "authorized_actor_names", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("authorized_actor_names")
-    public WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames getAuthorizedActorNames() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> getAuthorizedActorNames() {
         return authorizedActorNames;
     }
 
     public void setAuthorizedActorNames(
-            WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames authorizedActorNames) {
+            Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> authorizedActorNames) {
         this.authorizedActorNames = authorizedActorNames;
     }
 
     public WebhookBranchProtectionRuleEditedChanges authorizedActorsOnly(
             WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedActorsOnly) {
-        this.authorizedActorsOnly = authorizedActorsOnly;
+        this.authorizedActorsOnly = Optional.ofNullable(authorizedActorsOnly);
         return this;
     }
 
@@ -103,17 +106,18 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "authorized_actors_only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("authorized_actors_only")
-    public WebhookBranchProtectionRuleEditedChangesAdminEnforced getAuthorizedActorsOnly() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> getAuthorizedActorsOnly() {
         return authorizedActorsOnly;
     }
 
-    public void setAuthorizedActorsOnly(WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedActorsOnly) {
+    public void setAuthorizedActorsOnly(
+            Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> authorizedActorsOnly) {
         this.authorizedActorsOnly = authorizedActorsOnly;
     }
 
     public WebhookBranchProtectionRuleEditedChanges authorizedDismissalActorsOnly(
             WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedDismissalActorsOnly) {
-        this.authorizedDismissalActorsOnly = authorizedDismissalActorsOnly;
+        this.authorizedDismissalActorsOnly = Optional.ofNullable(authorizedDismissalActorsOnly);
         return this;
     }
 
@@ -124,19 +128,19 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "authorized_dismissal_actors_only", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("authorized_dismissal_actors_only")
-    public WebhookBranchProtectionRuleEditedChangesAdminEnforced getAuthorizedDismissalActorsOnly() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> getAuthorizedDismissalActorsOnly() {
         return authorizedDismissalActorsOnly;
     }
 
     public void setAuthorizedDismissalActorsOnly(
-            WebhookBranchProtectionRuleEditedChangesAdminEnforced authorizedDismissalActorsOnly) {
+            Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> authorizedDismissalActorsOnly) {
         this.authorizedDismissalActorsOnly = authorizedDismissalActorsOnly;
     }
 
     public WebhookBranchProtectionRuleEditedChanges linearHistoryRequirementEnforcementLevel(
             WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
                     linearHistoryRequirementEnforcementLevel) {
-        this.linearHistoryRequirementEnforcementLevel = linearHistoryRequirementEnforcementLevel;
+        this.linearHistoryRequirementEnforcementLevel = Optional.ofNullable(linearHistoryRequirementEnforcementLevel);
         return this;
     }
 
@@ -147,13 +151,13 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "linear_history_requirement_enforcement_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("linear_history_requirement_enforcement_level")
-    public WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+    public Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
             getLinearHistoryRequirementEnforcementLevel() {
         return linearHistoryRequirementEnforcementLevel;
     }
 
     public void setLinearHistoryRequirementEnforcementLevel(
-            WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+            Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
                     linearHistoryRequirementEnforcementLevel) {
         this.linearHistoryRequirementEnforcementLevel = linearHistoryRequirementEnforcementLevel;
     }
@@ -161,7 +165,7 @@ public class WebhookBranchProtectionRuleEditedChanges {
     public WebhookBranchProtectionRuleEditedChanges lockBranchEnforcementLevel(
             WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
                     lockBranchEnforcementLevel) {
-        this.lockBranchEnforcementLevel = lockBranchEnforcementLevel;
+        this.lockBranchEnforcementLevel = Optional.ofNullable(lockBranchEnforcementLevel);
         return this;
     }
 
@@ -172,20 +176,20 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "lock_branch_enforcement_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_branch_enforcement_level")
-    public WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+    public Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
             getLockBranchEnforcementLevel() {
         return lockBranchEnforcementLevel;
     }
 
     public void setLockBranchEnforcementLevel(
-            WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+            Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
                     lockBranchEnforcementLevel) {
         this.lockBranchEnforcementLevel = lockBranchEnforcementLevel;
     }
 
     public WebhookBranchProtectionRuleEditedChanges lockAllowsForkSync(
             WebhookBranchProtectionRuleEditedChangesAdminEnforced lockAllowsForkSync) {
-        this.lockAllowsForkSync = lockAllowsForkSync;
+        this.lockAllowsForkSync = Optional.ofNullable(lockAllowsForkSync);
         return this;
     }
 
@@ -196,18 +200,19 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "lock_allows_fork_sync", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_allows_fork_sync")
-    public WebhookBranchProtectionRuleEditedChangesAdminEnforced getLockAllowsForkSync() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> getLockAllowsForkSync() {
         return lockAllowsForkSync;
     }
 
-    public void setLockAllowsForkSync(WebhookBranchProtectionRuleEditedChangesAdminEnforced lockAllowsForkSync) {
+    public void setLockAllowsForkSync(
+            Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> lockAllowsForkSync) {
         this.lockAllowsForkSync = lockAllowsForkSync;
     }
 
     public WebhookBranchProtectionRuleEditedChanges pullRequestReviewsEnforcementLevel(
             WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
                     pullRequestReviewsEnforcementLevel) {
-        this.pullRequestReviewsEnforcementLevel = pullRequestReviewsEnforcementLevel;
+        this.pullRequestReviewsEnforcementLevel = Optional.ofNullable(pullRequestReviewsEnforcementLevel);
         return this;
     }
 
@@ -218,20 +223,20 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "pull_request_reviews_enforcement_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_reviews_enforcement_level")
-    public WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+    public Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
             getPullRequestReviewsEnforcementLevel() {
         return pullRequestReviewsEnforcementLevel;
     }
 
     public void setPullRequestReviewsEnforcementLevel(
-            WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+            Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
                     pullRequestReviewsEnforcementLevel) {
         this.pullRequestReviewsEnforcementLevel = pullRequestReviewsEnforcementLevel;
     }
 
     public WebhookBranchProtectionRuleEditedChanges requireLastPushApproval(
             WebhookBranchProtectionRuleEditedChangesAdminEnforced requireLastPushApproval) {
-        this.requireLastPushApproval = requireLastPushApproval;
+        this.requireLastPushApproval = Optional.ofNullable(requireLastPushApproval);
         return this;
     }
 
@@ -242,18 +247,18 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "require_last_push_approval", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_last_push_approval")
-    public WebhookBranchProtectionRuleEditedChangesAdminEnforced getRequireLastPushApproval() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> getRequireLastPushApproval() {
         return requireLastPushApproval;
     }
 
     public void setRequireLastPushApproval(
-            WebhookBranchProtectionRuleEditedChangesAdminEnforced requireLastPushApproval) {
+            Optional<WebhookBranchProtectionRuleEditedChangesAdminEnforced> requireLastPushApproval) {
         this.requireLastPushApproval = requireLastPushApproval;
     }
 
     public WebhookBranchProtectionRuleEditedChanges requiredStatusChecks(
             WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames requiredStatusChecks) {
-        this.requiredStatusChecks = requiredStatusChecks;
+        this.requiredStatusChecks = Optional.ofNullable(requiredStatusChecks);
         return this;
     }
 
@@ -264,19 +269,19 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "required_status_checks", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_status_checks")
-    public WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames getRequiredStatusChecks() {
+    public Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> getRequiredStatusChecks() {
         return requiredStatusChecks;
     }
 
     public void setRequiredStatusChecks(
-            WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames requiredStatusChecks) {
+            Optional<WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames> requiredStatusChecks) {
         this.requiredStatusChecks = requiredStatusChecks;
     }
 
     public WebhookBranchProtectionRuleEditedChanges requiredStatusChecksEnforcementLevel(
             WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
                     requiredStatusChecksEnforcementLevel) {
-        this.requiredStatusChecksEnforcementLevel = requiredStatusChecksEnforcementLevel;
+        this.requiredStatusChecksEnforcementLevel = Optional.ofNullable(requiredStatusChecksEnforcementLevel);
         return this;
     }
 
@@ -287,13 +292,13 @@ public class WebhookBranchProtectionRuleEditedChanges {
     @Valid
     @Schema(name = "required_status_checks_enforcement_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_status_checks_enforcement_level")
-    public WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+    public Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
             getRequiredStatusChecksEnforcementLevel() {
         return requiredStatusChecksEnforcementLevel;
     }
 
     public void setRequiredStatusChecksEnforcementLevel(
-            WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel
+            Optional<WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel>
                     requiredStatusChecksEnforcementLevel) {
         this.requiredStatusChecksEnforcementLevel = requiredStatusChecksEnforcementLevel;
     }

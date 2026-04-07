@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The source branch and directory used to publish your Pages site.
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_pages_site_request_source")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreatePagesSiteRequestSource {
 
@@ -60,7 +60,7 @@ public class ReposCreatePagesSiteRequestSource {
         }
     }
 
-    private PathEnum path = PathEnum.SLASH;
+    private Optional<PathEnum> path = Optional.of(PathEnum.SLASH);
 
     public ReposCreatePagesSiteRequestSource() {
         super();
@@ -97,7 +97,7 @@ public class ReposCreatePagesSiteRequestSource {
     }
 
     public ReposCreatePagesSiteRequestSource path(PathEnum path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -111,11 +111,11 @@ public class ReposCreatePagesSiteRequestSource {
                     "The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public PathEnum getPath() {
+    public Optional<PathEnum> getPath() {
         return path;
     }
 
-    public void setPath(PathEnum path) {
+    public void setPath(Optional<PathEnum> path) {
         this.path = path;
     }
 

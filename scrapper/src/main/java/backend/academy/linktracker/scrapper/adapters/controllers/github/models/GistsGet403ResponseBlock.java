@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GistsGet403ResponseBlock
@@ -14,18 +15,18 @@ import java.util.Objects;
 @JsonTypeName("gists_get_403_response_block")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistsGet403ResponseBlock {
 
-    private String reason;
+    private Optional<String> reason = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String htmlUrl = null;
+    private JsonNullable<String> htmlUrl = JsonNullable.<String>undefined();
 
     public GistsGet403ResponseBlock reason(String reason) {
-        this.reason = reason;
+        this.reason = Optional.ofNullable(reason);
         return this;
     }
 
@@ -35,16 +36,16 @@ public class GistsGet403ResponseBlock {
      */
     @Schema(name = "reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public Optional<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(Optional<String> reason) {
         this.reason = reason;
     }
 
     public GistsGet403ResponseBlock createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -54,16 +55,16 @@ public class GistsGet403ResponseBlock {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public GistsGet403ResponseBlock htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -73,11 +74,11 @@ public class GistsGet403ResponseBlock {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public JsonNullable<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(JsonNullable<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -92,12 +93,24 @@ public class GistsGet403ResponseBlock {
         GistsGet403ResponseBlock gistsGet403ResponseBlock = (GistsGet403ResponseBlock) o;
         return Objects.equals(this.reason, gistsGet403ResponseBlock.reason)
                 && Objects.equals(this.createdAt, gistsGet403ResponseBlock.createdAt)
-                && Objects.equals(this.htmlUrl, gistsGet403ResponseBlock.htmlUrl);
+                && equalsNullable(this.htmlUrl, gistsGet403ResponseBlock.htmlUrl);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reason, createdAt, htmlUrl);
+        return Objects.hash(reason, createdAt, hashCodeNullable(htmlUrl));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

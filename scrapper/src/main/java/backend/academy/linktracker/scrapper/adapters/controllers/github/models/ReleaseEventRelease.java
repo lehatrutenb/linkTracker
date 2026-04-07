@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("release_event_release")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReleaseEventRelease {
 
@@ -32,9 +30,9 @@ public class ReleaseEventRelease {
 
     private String uploadUrl;
 
-    private URI tarballUrl = null;
+    private JsonNullable<URI> tarballUrl = JsonNullable.<URI>undefined();
 
-    private URI zipballUrl = null;
+    private JsonNullable<URI> zipballUrl = JsonNullable.<URI>undefined();
 
     private Long id;
 
@@ -44,43 +42,43 @@ public class ReleaseEventRelease {
 
     private String targetCommitish;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     private Boolean draft;
 
     private Boolean prerelease;
 
-    private Boolean immutable;
+    private Optional<Boolean> immutable = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime publishedAt = null;
+    private JsonNullable<OffsetDateTime> publishedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private SimpleUser author;
 
     @Valid
     private List<@Valid ReleaseAsset> assets = new ArrayList<>();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private Long mentionsCount;
+    private Optional<Long> mentionsCount = Optional.empty();
 
-    private URI discussionUrl;
+    private Optional<URI> discussionUrl = Optional.empty();
 
-    private ReactionRollup reactions;
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
-    private Boolean isShortDescriptionHtmlTruncated;
+    private Optional<Boolean> isShortDescriptionHtmlTruncated = Optional.empty();
 
-    private String shortDescriptionHtml;
+    private Optional<String> shortDescriptionHtml = Optional.empty();
 
     public ReleaseEventRelease() {
         super();
@@ -111,17 +109,17 @@ public class ReleaseEventRelease {
         this.htmlUrl = htmlUrl;
         this.assetsUrl = assetsUrl;
         this.uploadUrl = uploadUrl;
-        this.tarballUrl = tarballUrl;
-        this.zipballUrl = zipballUrl;
+        this.tarballUrl = JsonNullable.of(tarballUrl);
+        this.zipballUrl = JsonNullable.of(zipballUrl);
         this.id = id;
         this.nodeId = nodeId;
         this.tagName = tagName;
         this.targetCommitish = targetCommitish;
-        this.name = name;
+        this.name = JsonNullable.of(name);
         this.draft = draft;
         this.prerelease = prerelease;
         this.createdAt = createdAt;
-        this.publishedAt = publishedAt;
+        this.publishedAt = JsonNullable.of(publishedAt);
         this.author = author;
         this.assets = assets;
     }
@@ -210,7 +208,7 @@ public class ReleaseEventRelease {
     }
 
     public ReleaseEventRelease tarballUrl(URI tarballUrl) {
-        this.tarballUrl = tarballUrl;
+        this.tarballUrl = JsonNullable.of(tarballUrl);
         return this;
     }
 
@@ -222,16 +220,16 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "tarball_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("tarball_url")
-    public URI getTarballUrl() {
+    public JsonNullable<URI> getTarballUrl() {
         return tarballUrl;
     }
 
-    public void setTarballUrl(URI tarballUrl) {
+    public void setTarballUrl(JsonNullable<URI> tarballUrl) {
         this.tarballUrl = tarballUrl;
     }
 
     public ReleaseEventRelease zipballUrl(URI zipballUrl) {
-        this.zipballUrl = zipballUrl;
+        this.zipballUrl = JsonNullable.of(zipballUrl);
         return this;
     }
 
@@ -243,11 +241,11 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "zipball_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("zipball_url")
-    public URI getZipballUrl() {
+    public JsonNullable<URI> getZipballUrl() {
         return zipballUrl;
     }
 
-    public void setZipballUrl(URI zipballUrl) {
+    public void setZipballUrl(JsonNullable<URI> zipballUrl) {
         this.zipballUrl = zipballUrl;
     }
 
@@ -340,7 +338,7 @@ public class ReleaseEventRelease {
     }
 
     public ReleaseEventRelease name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -351,16 +349,16 @@ public class ReleaseEventRelease {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public ReleaseEventRelease body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -370,11 +368,11 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -427,7 +425,7 @@ public class ReleaseEventRelease {
     }
 
     public ReleaseEventRelease immutable(Boolean immutable) {
-        this.immutable = immutable;
+        this.immutable = Optional.ofNullable(immutable);
         return this;
     }
 
@@ -441,11 +439,11 @@ public class ReleaseEventRelease {
             description = "Whether or not the release is immutable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("immutable")
-    public Boolean getImmutable() {
+    public Optional<Boolean> getImmutable() {
         return immutable;
     }
 
-    public void setImmutable(Boolean immutable) {
+    public void setImmutable(Optional<Boolean> immutable) {
         this.immutable = immutable;
     }
 
@@ -471,7 +469,7 @@ public class ReleaseEventRelease {
     }
 
     public ReleaseEventRelease publishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
+        this.publishedAt = JsonNullable.of(publishedAt);
         return this;
     }
 
@@ -483,16 +481,16 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "published_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("published_at")
-    public OffsetDateTime getPublishedAt() {
+    public JsonNullable<OffsetDateTime> getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(OffsetDateTime publishedAt) {
+    public void setPublishedAt(JsonNullable<OffsetDateTime> publishedAt) {
         this.publishedAt = publishedAt;
     }
 
     public ReleaseEventRelease updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -503,11 +501,11 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -562,7 +560,7 @@ public class ReleaseEventRelease {
     }
 
     public ReleaseEventRelease bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -572,16 +570,16 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public ReleaseEventRelease bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -591,16 +589,16 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public ReleaseEventRelease mentionsCount(Long mentionsCount) {
-        this.mentionsCount = mentionsCount;
+        this.mentionsCount = Optional.ofNullable(mentionsCount);
         return this;
     }
 
@@ -610,16 +608,16 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "mentions_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mentions_count")
-    public Long getMentionsCount() {
+    public Optional<Long> getMentionsCount() {
         return mentionsCount;
     }
 
-    public void setMentionsCount(Long mentionsCount) {
+    public void setMentionsCount(Optional<Long> mentionsCount) {
         this.mentionsCount = mentionsCount;
     }
 
     public ReleaseEventRelease discussionUrl(URI discussionUrl) {
-        this.discussionUrl = discussionUrl;
+        this.discussionUrl = Optional.ofNullable(discussionUrl);
         return this;
     }
 
@@ -633,16 +631,16 @@ public class ReleaseEventRelease {
             description = "The URL of the release discussion.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("discussion_url")
-    public URI getDiscussionUrl() {
+    public Optional<URI> getDiscussionUrl() {
         return discussionUrl;
     }
 
-    public void setDiscussionUrl(URI discussionUrl) {
+    public void setDiscussionUrl(Optional<URI> discussionUrl) {
         this.discussionUrl = discussionUrl;
     }
 
     public ReleaseEventRelease reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -653,16 +651,16 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 
     public ReleaseEventRelease isShortDescriptionHtmlTruncated(Boolean isShortDescriptionHtmlTruncated) {
-        this.isShortDescriptionHtmlTruncated = isShortDescriptionHtmlTruncated;
+        this.isShortDescriptionHtmlTruncated = Optional.ofNullable(isShortDescriptionHtmlTruncated);
         return this;
     }
 
@@ -672,16 +670,16 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "is_short_description_html_truncated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_short_description_html_truncated")
-    public Boolean getIsShortDescriptionHtmlTruncated() {
+    public Optional<Boolean> getIsShortDescriptionHtmlTruncated() {
         return isShortDescriptionHtmlTruncated;
     }
 
-    public void setIsShortDescriptionHtmlTruncated(Boolean isShortDescriptionHtmlTruncated) {
+    public void setIsShortDescriptionHtmlTruncated(Optional<Boolean> isShortDescriptionHtmlTruncated) {
         this.isShortDescriptionHtmlTruncated = isShortDescriptionHtmlTruncated;
     }
 
     public ReleaseEventRelease shortDescriptionHtml(String shortDescriptionHtml) {
-        this.shortDescriptionHtml = shortDescriptionHtml;
+        this.shortDescriptionHtml = Optional.ofNullable(shortDescriptionHtml);
         return this;
     }
 
@@ -691,11 +689,11 @@ public class ReleaseEventRelease {
      */
     @Schema(name = "short_description_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("short_description_html")
-    public String getShortDescriptionHtml() {
+    public Optional<String> getShortDescriptionHtml() {
         return shortDescriptionHtml;
     }
 
-    public void setShortDescriptionHtml(String shortDescriptionHtml) {
+    public void setShortDescriptionHtml(Optional<String> shortDescriptionHtml) {
         this.shortDescriptionHtml = shortDescriptionHtml;
     }
 
@@ -719,13 +717,13 @@ public class ReleaseEventRelease {
                 && Objects.equals(this.tagName, releaseEventRelease.tagName)
                 && Objects.equals(this.targetCommitish, releaseEventRelease.targetCommitish)
                 && Objects.equals(this.name, releaseEventRelease.name)
-                && Objects.equals(this.body, releaseEventRelease.body)
+                && equalsNullable(this.body, releaseEventRelease.body)
                 && Objects.equals(this.draft, releaseEventRelease.draft)
                 && Objects.equals(this.prerelease, releaseEventRelease.prerelease)
                 && Objects.equals(this.immutable, releaseEventRelease.immutable)
                 && Objects.equals(this.createdAt, releaseEventRelease.createdAt)
                 && Objects.equals(this.publishedAt, releaseEventRelease.publishedAt)
-                && Objects.equals(this.updatedAt, releaseEventRelease.updatedAt)
+                && equalsNullable(this.updatedAt, releaseEventRelease.updatedAt)
                 && Objects.equals(this.author, releaseEventRelease.author)
                 && Objects.equals(this.assets, releaseEventRelease.assets)
                 && Objects.equals(this.bodyHtml, releaseEventRelease.bodyHtml)
@@ -736,6 +734,11 @@ public class ReleaseEventRelease {
                 && Objects.equals(
                         this.isShortDescriptionHtmlTruncated, releaseEventRelease.isShortDescriptionHtmlTruncated)
                 && Objects.equals(this.shortDescriptionHtml, releaseEventRelease.shortDescriptionHtml);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -752,13 +755,13 @@ public class ReleaseEventRelease {
                 tagName,
                 targetCommitish,
                 name,
-                body,
+                hashCodeNullable(body),
                 draft,
                 prerelease,
                 immutable,
                 createdAt,
                 publishedAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 author,
                 assets,
                 bodyHtml,
@@ -768,6 +771,13 @@ public class ReleaseEventRelease {
                 reactions,
                 isShortDescriptionHtmlTruncated,
                 shortDescriptionHtml);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

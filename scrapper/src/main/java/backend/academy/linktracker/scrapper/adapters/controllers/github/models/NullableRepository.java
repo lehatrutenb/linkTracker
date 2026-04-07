@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableRepository {
 
@@ -35,11 +36,11 @@ public class NullableRepository {
 
     private String fullName;
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
     private Long forks;
 
-    private RepositoryPermissions permissions;
+    private Optional<RepositoryPermissions> permissions = Optional.empty();
 
     private SimpleUser owner;
 
@@ -47,7 +48,7 @@ public class NullableRepository {
 
     private URI htmlUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean fork;
 
@@ -129,15 +130,15 @@ public class NullableRepository {
 
     private String cloneUrl;
 
-    private URI mirrorUrl = null;
+    private JsonNullable<URI> mirrorUrl = JsonNullable.<URI>undefined();
 
     private URI hooksUrl;
 
     private URI svnUrl;
 
-    private URI homepage = null;
+    private JsonNullable<URI> homepage = JsonNullable.<URI>undefined();
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
     private Long forksCount;
 
@@ -151,7 +152,7 @@ public class NullableRepository {
 
     private Long openIssuesCount;
 
-    private Boolean isTemplate = false;
+    private Optional<Boolean> isTemplate = Optional.of(false);
 
     @Valid
     private List<String> topics = new ArrayList<>();
@@ -164,9 +165,9 @@ public class NullableRepository {
 
     private Boolean hasPages;
 
-    private Boolean hasDiscussions = false;
+    private Optional<Boolean> hasDiscussions = Optional.of(false);
 
-    private Boolean hasPullRequests = true;
+    private Optional<Boolean> hasPullRequests = Optional.of(true);
 
     /**
      * The policy controlling who can create pull requests: all or collaborators_only.
@@ -203,36 +204,36 @@ public class NullableRepository {
         }
     }
 
-    private PullRequestCreationPolicyEnum pullRequestCreationPolicy;
+    private Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy = Optional.empty();
 
-    private Boolean hasCommitComments = true;
+    private Optional<Boolean> hasCommitComments = Optional.of(true);
 
     private Boolean archived = false;
 
     private Boolean disabled;
 
-    private String visibility = "public";
+    private Optional<String> visibility = Optional.of("public");
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt = null;
+    private JsonNullable<OffsetDateTime> pushedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private String tempCloneToken;
+    private Optional<String> tempCloneToken = Optional.empty();
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
-    private Boolean allowUpdateBranch = false;
+    private Optional<Boolean> allowUpdateBranch = Optional.of(false);
 
     /**
      * The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -269,7 +270,7 @@ public class NullableRepository {
         }
     }
 
-    private SquashMergeCommitTitleEnum squashMergeCommitTitle;
+    private Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
@@ -308,7 +309,7 @@ public class NullableRepository {
         }
     }
 
-    private SquashMergeCommitMessageEnum squashMergeCommitMessage;
+    private Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage = Optional.empty();
 
     /**
      * The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -345,7 +346,7 @@ public class NullableRepository {
         }
     }
 
-    private MergeCommitTitleEnum mergeCommitTitle;
+    private Optional<MergeCommitTitleEnum> mergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
@@ -384,23 +385,23 @@ public class NullableRepository {
         }
     }
 
-    private MergeCommitMessageEnum mergeCommitMessage;
+    private Optional<MergeCommitMessageEnum> mergeCommitMessage = Optional.empty();
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowForking;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private Boolean webCommitSignoffRequired = false;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.of(false);
 
     private Long openIssues;
 
     private Long watchers;
 
-    private String starredAt;
+    private Optional<String> starredAt = Optional.empty();
 
-    private Boolean anonymousAccessEnabled;
+    private Optional<Boolean> anonymousAccessEnabled = Optional.empty();
 
-    private RepositoryCodeSearchIndexStatus codeSearchIndexStatus;
+    private Optional<RepositoryCodeSearchIndexStatus> codeSearchIndexStatus = Optional.empty();
 
     public NullableRepository() {
         super();
@@ -486,12 +487,12 @@ public class NullableRepository {
         this.nodeId = nodeId;
         this.name = name;
         this.fullName = fullName;
-        this.license = license;
+        this.license = JsonNullable.of(license);
         this.forks = forks;
         this.owner = owner;
         this._private = _private;
         this.htmlUrl = htmlUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.fork = fork;
         this.url = url;
         this.archiveUrl = archiveUrl;
@@ -532,11 +533,11 @@ public class NullableRepository {
         this.teamsUrl = teamsUrl;
         this.treesUrl = treesUrl;
         this.cloneUrl = cloneUrl;
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         this.hooksUrl = hooksUrl;
         this.svnUrl = svnUrl;
-        this.homepage = homepage;
-        this.language = language;
+        this.homepage = JsonNullable.of(homepage);
+        this.language = JsonNullable.of(language);
         this.forksCount = forksCount;
         this.stargazersCount = stargazersCount;
         this.watchersCount = watchersCount;
@@ -549,9 +550,9 @@ public class NullableRepository {
         this.hasPages = hasPages;
         this.archived = archived;
         this.disabled = disabled;
-        this.pushedAt = pushedAt;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.openIssues = openIssues;
         this.watchers = watchers;
     }
@@ -645,7 +646,7 @@ public class NullableRepository {
     }
 
     public NullableRepository license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -657,11 +658,11 @@ public class NullableRepository {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 
@@ -686,7 +687,7 @@ public class NullableRepository {
     }
 
     public NullableRepository permissions(RepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -697,11 +698,11 @@ public class NullableRepository {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public RepositoryPermissions getPermissions() {
+    public Optional<RepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(RepositoryPermissions permissions) {
+    public void setPermissions(Optional<RepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -774,7 +775,7 @@ public class NullableRepository {
     }
 
     public NullableRepository description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -785,11 +786,11 @@ public class NullableRepository {
     @NotNull
     @Schema(name = "description", example = "This your first repo!", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -1724,7 +1725,7 @@ public class NullableRepository {
     }
 
     public NullableRepository mirrorUrl(URI mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1739,11 +1740,11 @@ public class NullableRepository {
             example = "git:git.example.com/octocat/Hello-World",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mirror_url")
-    public URI getMirrorUrl() {
+    public JsonNullable<URI> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(URI mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<URI> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1796,7 +1797,7 @@ public class NullableRepository {
     }
 
     public NullableRepository homepage(URI homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1808,16 +1809,16 @@ public class NullableRepository {
     @Valid
     @Schema(name = "homepage", example = "https://github.com", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("homepage")
-    public URI getHomepage() {
+    public JsonNullable<URI> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(URI homepage) {
+    public void setHomepage(JsonNullable<URI> homepage) {
         this.homepage = homepage;
     }
 
     public NullableRepository language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1828,11 +1829,11 @@ public class NullableRepository {
     @NotNull
     @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
@@ -1966,7 +1967,7 @@ public class NullableRepository {
     }
 
     public NullableRepository isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1980,11 +1981,11 @@ public class NullableRepository {
             description = "Whether this repository acts as a template that can be used to generate new repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -2108,7 +2109,7 @@ public class NullableRepository {
     }
 
     public NullableRepository hasDiscussions(Boolean hasDiscussions) {
-        this.hasDiscussions = hasDiscussions;
+        this.hasDiscussions = Optional.ofNullable(hasDiscussions);
         return this;
     }
 
@@ -2122,16 +2123,16 @@ public class NullableRepository {
             description = "Whether discussions are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_discussions")
-    public Boolean getHasDiscussions() {
+    public Optional<Boolean> getHasDiscussions() {
         return hasDiscussions;
     }
 
-    public void setHasDiscussions(Boolean hasDiscussions) {
+    public void setHasDiscussions(Optional<Boolean> hasDiscussions) {
         this.hasDiscussions = hasDiscussions;
     }
 
     public NullableRepository hasPullRequests(Boolean hasPullRequests) {
-        this.hasPullRequests = hasPullRequests;
+        this.hasPullRequests = Optional.ofNullable(hasPullRequests);
         return this;
     }
 
@@ -2145,16 +2146,16 @@ public class NullableRepository {
             description = "Whether pull requests are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pull_requests")
-    public Boolean getHasPullRequests() {
+    public Optional<Boolean> getHasPullRequests() {
         return hasPullRequests;
     }
 
-    public void setHasPullRequests(Boolean hasPullRequests) {
+    public void setHasPullRequests(Optional<Boolean> hasPullRequests) {
         this.hasPullRequests = hasPullRequests;
     }
 
     public NullableRepository pullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
-        this.pullRequestCreationPolicy = pullRequestCreationPolicy;
+        this.pullRequestCreationPolicy = Optional.ofNullable(pullRequestCreationPolicy);
         return this;
     }
 
@@ -2168,16 +2169,16 @@ public class NullableRepository {
             description = "The policy controlling who can create pull requests: all or collaborators_only.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_creation_policy")
-    public PullRequestCreationPolicyEnum getPullRequestCreationPolicy() {
+    public Optional<PullRequestCreationPolicyEnum> getPullRequestCreationPolicy() {
         return pullRequestCreationPolicy;
     }
 
-    public void setPullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
+    public void setPullRequestCreationPolicy(Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy) {
         this.pullRequestCreationPolicy = pullRequestCreationPolicy;
     }
 
     public NullableRepository hasCommitComments(Boolean hasCommitComments) {
-        this.hasCommitComments = hasCommitComments;
+        this.hasCommitComments = Optional.ofNullable(hasCommitComments);
         return this;
     }
 
@@ -2191,11 +2192,11 @@ public class NullableRepository {
             description = "Whether commit comments are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_commit_comments")
-    public Boolean getHasCommitComments() {
+    public Optional<Boolean> getHasCommitComments() {
         return hasCommitComments;
     }
 
-    public void setHasCommitComments(Boolean hasCommitComments) {
+    public void setHasCommitComments(Optional<Boolean> hasCommitComments) {
         this.hasCommitComments = hasCommitComments;
     }
 
@@ -2246,7 +2247,7 @@ public class NullableRepository {
     }
 
     public NullableRepository visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -2259,16 +2260,16 @@ public class NullableRepository {
             description = "The repository visibility: public, private, or internal.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public NullableRepository pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         return this;
     }
 
@@ -2280,16 +2281,16 @@ public class NullableRepository {
     @Valid
     @Schema(name = "pushed_at", example = "2011-01-26T19:06:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public JsonNullable<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(JsonNullable<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public NullableRepository createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -2301,16 +2302,16 @@ public class NullableRepository {
     @Valid
     @Schema(name = "created_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public NullableRepository updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -2322,16 +2323,16 @@ public class NullableRepository {
     @Valid
     @Schema(name = "updated_at", example = "2011-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public NullableRepository allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -2345,16 +2346,16 @@ public class NullableRepository {
             description = "Whether to allow rebase merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public NullableRepository tempCloneToken(String tempCloneToken) {
-        this.tempCloneToken = tempCloneToken;
+        this.tempCloneToken = Optional.ofNullable(tempCloneToken);
         return this;
     }
 
@@ -2364,16 +2365,16 @@ public class NullableRepository {
      */
     @Schema(name = "temp_clone_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_clone_token")
-    public String getTempCloneToken() {
+    public Optional<String> getTempCloneToken() {
         return tempCloneToken;
     }
 
-    public void setTempCloneToken(String tempCloneToken) {
+    public void setTempCloneToken(Optional<String> tempCloneToken) {
         this.tempCloneToken = tempCloneToken;
     }
 
     public NullableRepository allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -2387,16 +2388,16 @@ public class NullableRepository {
             description = "Whether to allow squash merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public NullableRepository allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -2410,16 +2411,16 @@ public class NullableRepository {
             description = "Whether to allow Auto-merge to be used on pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public NullableRepository deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -2433,16 +2434,16 @@ public class NullableRepository {
             description = "Whether to delete head branches when pull requests are merged",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public NullableRepository allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -2457,16 +2458,16 @@ public class NullableRepository {
                     "Whether or not a pull request head branch that is behind its base branch can always be updated even if it is not required to be up to date before merging.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
     public NullableRepository squashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
-        this.squashMergeCommitTitle = squashMergeCommitTitle;
+        this.squashMergeCommitTitle = Optional.ofNullable(squashMergeCommitTitle);
         return this;
     }
 
@@ -2480,16 +2481,16 @@ public class NullableRepository {
                     "The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_title")
-    public SquashMergeCommitTitleEnum getSquashMergeCommitTitle() {
+    public Optional<SquashMergeCommitTitleEnum> getSquashMergeCommitTitle() {
         return squashMergeCommitTitle;
     }
 
-    public void setSquashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
+    public void setSquashMergeCommitTitle(Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle) {
         this.squashMergeCommitTitle = squashMergeCommitTitle;
     }
 
     public NullableRepository squashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
-        this.squashMergeCommitMessage = squashMergeCommitMessage;
+        this.squashMergeCommitMessage = Optional.ofNullable(squashMergeCommitMessage);
         return this;
     }
 
@@ -2503,16 +2504,16 @@ public class NullableRepository {
                     "The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_message")
-    public SquashMergeCommitMessageEnum getSquashMergeCommitMessage() {
+    public Optional<SquashMergeCommitMessageEnum> getSquashMergeCommitMessage() {
         return squashMergeCommitMessage;
     }
 
-    public void setSquashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
+    public void setSquashMergeCommitMessage(Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage) {
         this.squashMergeCommitMessage = squashMergeCommitMessage;
     }
 
     public NullableRepository mergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
-        this.mergeCommitTitle = mergeCommitTitle;
+        this.mergeCommitTitle = Optional.ofNullable(mergeCommitTitle);
         return this;
     }
 
@@ -2526,16 +2527,16 @@ public class NullableRepository {
                     "The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_title")
-    public MergeCommitTitleEnum getMergeCommitTitle() {
+    public Optional<MergeCommitTitleEnum> getMergeCommitTitle() {
         return mergeCommitTitle;
     }
 
-    public void setMergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
+    public void setMergeCommitTitle(Optional<MergeCommitTitleEnum> mergeCommitTitle) {
         this.mergeCommitTitle = mergeCommitTitle;
     }
 
     public NullableRepository mergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
-        this.mergeCommitMessage = mergeCommitMessage;
+        this.mergeCommitMessage = Optional.ofNullable(mergeCommitMessage);
         return this;
     }
 
@@ -2549,16 +2550,16 @@ public class NullableRepository {
                     "The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_message")
-    public MergeCommitMessageEnum getMergeCommitMessage() {
+    public Optional<MergeCommitMessageEnum> getMergeCommitMessage() {
         return mergeCommitMessage;
     }
 
-    public void setMergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
+    public void setMergeCommitMessage(Optional<MergeCommitMessageEnum> mergeCommitMessage) {
         this.mergeCommitMessage = mergeCommitMessage;
     }
 
     public NullableRepository allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -2572,16 +2573,16 @@ public class NullableRepository {
             description = "Whether to allow merge commits for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public NullableRepository allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -2594,16 +2595,16 @@ public class NullableRepository {
             description = "Whether to allow forking this repo",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public NullableRepository webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -2616,11 +2617,11 @@ public class NullableRepository {
             description = "Whether to require contributors to sign off on web-based commits",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
@@ -2665,7 +2666,7 @@ public class NullableRepository {
     }
 
     public NullableRepository starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
 
@@ -2675,16 +2676,16 @@ public class NullableRepository {
      */
     @Schema(name = "starred_at", example = "\"2020-07-09T00:17:42Z\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public Optional<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(Optional<String> starredAt) {
         this.starredAt = starredAt;
     }
 
     public NullableRepository anonymousAccessEnabled(Boolean anonymousAccessEnabled) {
-        this.anonymousAccessEnabled = anonymousAccessEnabled;
+        this.anonymousAccessEnabled = Optional.ofNullable(anonymousAccessEnabled);
         return this;
     }
 
@@ -2697,16 +2698,16 @@ public class NullableRepository {
             description = "Whether anonymous git access is enabled for this repository",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("anonymous_access_enabled")
-    public Boolean getAnonymousAccessEnabled() {
+    public Optional<Boolean> getAnonymousAccessEnabled() {
         return anonymousAccessEnabled;
     }
 
-    public void setAnonymousAccessEnabled(Boolean anonymousAccessEnabled) {
+    public void setAnonymousAccessEnabled(Optional<Boolean> anonymousAccessEnabled) {
         this.anonymousAccessEnabled = anonymousAccessEnabled;
     }
 
     public NullableRepository codeSearchIndexStatus(RepositoryCodeSearchIndexStatus codeSearchIndexStatus) {
-        this.codeSearchIndexStatus = codeSearchIndexStatus;
+        this.codeSearchIndexStatus = Optional.ofNullable(codeSearchIndexStatus);
         return this;
     }
 
@@ -2717,11 +2718,11 @@ public class NullableRepository {
     @Valid
     @Schema(name = "code_search_index_status", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_search_index_status")
-    public RepositoryCodeSearchIndexStatus getCodeSearchIndexStatus() {
+    public Optional<RepositoryCodeSearchIndexStatus> getCodeSearchIndexStatus() {
         return codeSearchIndexStatus;
     }
 
-    public void setCodeSearchIndexStatus(RepositoryCodeSearchIndexStatus codeSearchIndexStatus) {
+    public void setCodeSearchIndexStatus(Optional<RepositoryCodeSearchIndexStatus> codeSearchIndexStatus) {
         this.codeSearchIndexStatus = codeSearchIndexStatus;
     }
 

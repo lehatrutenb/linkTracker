@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MarketplacePurchaseMarketplacePurchase
@@ -15,28 +16,28 @@ import java.util.Objects;
 @JsonTypeName("marketplace_purchase_marketplace_purchase")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplacePurchaseMarketplacePurchase {
 
-    private String billingCycle;
+    private Optional<String> billingCycle = Optional.empty();
 
-    private String nextBillingDate = null;
+    private JsonNullable<String> nextBillingDate = JsonNullable.<String>undefined();
 
-    private Boolean isInstalled;
+    private Optional<Boolean> isInstalled = Optional.empty();
 
-    private Long unitCount = null;
+    private JsonNullable<Long> unitCount = JsonNullable.<Long>undefined();
 
-    private Boolean onFreeTrial;
+    private Optional<Boolean> onFreeTrial = Optional.empty();
 
-    private String freeTrialEndsOn = null;
+    private JsonNullable<String> freeTrialEndsOn = JsonNullable.<String>undefined();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
-    private MarketplaceListingPlan plan;
+    private Optional<MarketplaceListingPlan> plan = Optional.empty();
 
     public MarketplacePurchaseMarketplacePurchase billingCycle(String billingCycle) {
-        this.billingCycle = billingCycle;
+        this.billingCycle = Optional.ofNullable(billingCycle);
         return this;
     }
 
@@ -46,16 +47,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "billing_cycle", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("billing_cycle")
-    public String getBillingCycle() {
+    public Optional<String> getBillingCycle() {
         return billingCycle;
     }
 
-    public void setBillingCycle(String billingCycle) {
+    public void setBillingCycle(Optional<String> billingCycle) {
         this.billingCycle = billingCycle;
     }
 
     public MarketplacePurchaseMarketplacePurchase nextBillingDate(String nextBillingDate) {
-        this.nextBillingDate = nextBillingDate;
+        this.nextBillingDate = JsonNullable.of(nextBillingDate);
         return this;
     }
 
@@ -65,16 +66,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "next_billing_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("next_billing_date")
-    public String getNextBillingDate() {
+    public JsonNullable<String> getNextBillingDate() {
         return nextBillingDate;
     }
 
-    public void setNextBillingDate(String nextBillingDate) {
+    public void setNextBillingDate(JsonNullable<String> nextBillingDate) {
         this.nextBillingDate = nextBillingDate;
     }
 
     public MarketplacePurchaseMarketplacePurchase isInstalled(Boolean isInstalled) {
-        this.isInstalled = isInstalled;
+        this.isInstalled = Optional.ofNullable(isInstalled);
         return this;
     }
 
@@ -84,16 +85,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "is_installed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_installed")
-    public Boolean getIsInstalled() {
+    public Optional<Boolean> getIsInstalled() {
         return isInstalled;
     }
 
-    public void setIsInstalled(Boolean isInstalled) {
+    public void setIsInstalled(Optional<Boolean> isInstalled) {
         this.isInstalled = isInstalled;
     }
 
     public MarketplacePurchaseMarketplacePurchase unitCount(Long unitCount) {
-        this.unitCount = unitCount;
+        this.unitCount = JsonNullable.of(unitCount);
         return this;
     }
 
@@ -103,16 +104,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "unit_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("unit_count")
-    public Long getUnitCount() {
+    public JsonNullable<Long> getUnitCount() {
         return unitCount;
     }
 
-    public void setUnitCount(Long unitCount) {
+    public void setUnitCount(JsonNullable<Long> unitCount) {
         this.unitCount = unitCount;
     }
 
     public MarketplacePurchaseMarketplacePurchase onFreeTrial(Boolean onFreeTrial) {
-        this.onFreeTrial = onFreeTrial;
+        this.onFreeTrial = Optional.ofNullable(onFreeTrial);
         return this;
     }
 
@@ -122,16 +123,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "on_free_trial", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("on_free_trial")
-    public Boolean getOnFreeTrial() {
+    public Optional<Boolean> getOnFreeTrial() {
         return onFreeTrial;
     }
 
-    public void setOnFreeTrial(Boolean onFreeTrial) {
+    public void setOnFreeTrial(Optional<Boolean> onFreeTrial) {
         this.onFreeTrial = onFreeTrial;
     }
 
     public MarketplacePurchaseMarketplacePurchase freeTrialEndsOn(String freeTrialEndsOn) {
-        this.freeTrialEndsOn = freeTrialEndsOn;
+        this.freeTrialEndsOn = JsonNullable.of(freeTrialEndsOn);
         return this;
     }
 
@@ -141,16 +142,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "free_trial_ends_on", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("free_trial_ends_on")
-    public String getFreeTrialEndsOn() {
+    public JsonNullable<String> getFreeTrialEndsOn() {
         return freeTrialEndsOn;
     }
 
-    public void setFreeTrialEndsOn(String freeTrialEndsOn) {
+    public void setFreeTrialEndsOn(JsonNullable<String> freeTrialEndsOn) {
         this.freeTrialEndsOn = freeTrialEndsOn;
     }
 
     public MarketplacePurchaseMarketplacePurchase updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -160,16 +161,16 @@ public class MarketplacePurchaseMarketplacePurchase {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public MarketplacePurchaseMarketplacePurchase plan(MarketplaceListingPlan plan) {
-        this.plan = plan;
+        this.plan = Optional.ofNullable(plan);
         return this;
     }
 
@@ -180,11 +181,11 @@ public class MarketplacePurchaseMarketplacePurchase {
     @Valid
     @Schema(name = "plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan")
-    public MarketplaceListingPlan getPlan() {
+    public Optional<MarketplaceListingPlan> getPlan() {
         return plan;
     }
 
-    public void setPlan(MarketplaceListingPlan plan) {
+    public void setPlan(Optional<MarketplaceListingPlan> plan) {
         this.plan = plan;
     }
 
@@ -199,19 +200,38 @@ public class MarketplacePurchaseMarketplacePurchase {
         MarketplacePurchaseMarketplacePurchase marketplacePurchaseMarketplacePurchase =
                 (MarketplacePurchaseMarketplacePurchase) o;
         return Objects.equals(this.billingCycle, marketplacePurchaseMarketplacePurchase.billingCycle)
-                && Objects.equals(this.nextBillingDate, marketplacePurchaseMarketplacePurchase.nextBillingDate)
+                && equalsNullable(this.nextBillingDate, marketplacePurchaseMarketplacePurchase.nextBillingDate)
                 && Objects.equals(this.isInstalled, marketplacePurchaseMarketplacePurchase.isInstalled)
-                && Objects.equals(this.unitCount, marketplacePurchaseMarketplacePurchase.unitCount)
+                && equalsNullable(this.unitCount, marketplacePurchaseMarketplacePurchase.unitCount)
                 && Objects.equals(this.onFreeTrial, marketplacePurchaseMarketplacePurchase.onFreeTrial)
-                && Objects.equals(this.freeTrialEndsOn, marketplacePurchaseMarketplacePurchase.freeTrialEndsOn)
+                && equalsNullable(this.freeTrialEndsOn, marketplacePurchaseMarketplacePurchase.freeTrialEndsOn)
                 && Objects.equals(this.updatedAt, marketplacePurchaseMarketplacePurchase.updatedAt)
                 && Objects.equals(this.plan, marketplacePurchaseMarketplacePurchase.plan);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                billingCycle, nextBillingDate, isInstalled, unitCount, onFreeTrial, freeTrialEndsOn, updatedAt, plan);
+                billingCycle,
+                hashCodeNullable(nextBillingDate),
+                isInstalled,
+                hashCodeNullable(unitCount),
+                onFreeTrial,
+                hashCodeNullable(freeTrialEndsOn),
+                updatedAt,
+                plan);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

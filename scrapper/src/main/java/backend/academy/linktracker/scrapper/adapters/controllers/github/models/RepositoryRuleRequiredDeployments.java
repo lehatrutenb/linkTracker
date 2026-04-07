@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-required-deployments")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleRequiredDeployments implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleRequiredDeployments implements OrgRules, RepositoryRu
 
     private TypeEnum type;
 
-    private RepositoryRuleRequiredDeploymentsParameters parameters;
+    private Optional<RepositoryRuleRequiredDeploymentsParameters> parameters = Optional.empty();
 
     public RepositoryRuleRequiredDeployments() {
         super();
@@ -94,7 +94,7 @@ public class RepositoryRuleRequiredDeployments implements OrgRules, RepositoryRu
     }
 
     public RepositoryRuleRequiredDeployments parameters(RepositoryRuleRequiredDeploymentsParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class RepositoryRuleRequiredDeployments implements OrgRules, RepositoryRu
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleRequiredDeploymentsParameters getParameters() {
+    public Optional<RepositoryRuleRequiredDeploymentsParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleRequiredDeploymentsParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleRequiredDeploymentsParameters> parameters) {
         this.parameters = parameters;
     }
 

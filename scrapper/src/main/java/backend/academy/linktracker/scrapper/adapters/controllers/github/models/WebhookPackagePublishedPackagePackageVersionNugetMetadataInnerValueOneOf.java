@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf
@@ -14,21 +13,21 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_published_package_package_version_nuget_metadata_inner_value_oneOf")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf
         implements WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue {
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String branch;
+    private Optional<String> branch = Optional.empty();
 
-    private String commit;
+    private Optional<String> commit = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf branch(String branch) {
-        this.branch = branch;
+        this.branch = Optional.ofNullable(branch);
         return this;
     }
 
@@ -57,16 +56,16 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue
      */
     @Schema(name = "branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branch")
-    public String getBranch() {
+    public Optional<String> getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(Optional<String> branch) {
         this.branch = branch;
     }
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf commit(String commit) {
-        this.commit = commit;
+        this.commit = Optional.ofNullable(commit);
         return this;
     }
 
@@ -76,16 +75,16 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue
      */
     @Schema(name = "commit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit")
-    public String getCommit() {
+    public Optional<String> getCommit() {
         return commit;
     }
 
-    public void setCommit(String commit) {
+    public void setCommit(Optional<String> commit) {
         this.commit = commit;
     }
 
     public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValueOneOf type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -95,11 +94,11 @@ public class WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 

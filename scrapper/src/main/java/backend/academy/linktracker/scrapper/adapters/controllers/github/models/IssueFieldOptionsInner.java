@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue_field_options_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueFieldOptionsInner {
 
@@ -27,7 +29,7 @@ public class IssueFieldOptionsInner {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The color of the option.
@@ -76,15 +78,15 @@ public class IssueFieldOptionsInner {
         }
     }
 
-    private ColorEnum color = null;
+    private JsonNullable<ColorEnum> color = JsonNullable.<ColorEnum>undefined();
 
-    private Long priority = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private JsonNullable<Long> priority = JsonNullable.<Long>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     public IssueFieldOptionsInner() {
         super();
@@ -142,7 +144,7 @@ public class IssueFieldOptionsInner {
     }
 
     public IssueFieldOptionsInner description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -155,16 +157,16 @@ public class IssueFieldOptionsInner {
             description = "The description of the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public IssueFieldOptionsInner color(ColorEnum color) {
-        this.color = color;
+        this.color = JsonNullable.of(color);
         return this;
     }
 
@@ -174,16 +176,16 @@ public class IssueFieldOptionsInner {
      */
     @Schema(name = "color", description = "The color of the option.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public ColorEnum getColor() {
+    public JsonNullable<ColorEnum> getColor() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(JsonNullable<ColorEnum> color) {
         this.color = color;
     }
 
     public IssueFieldOptionsInner priority(Long priority) {
-        this.priority = priority;
+        this.priority = JsonNullable.of(priority);
         return this;
     }
 
@@ -196,16 +198,16 @@ public class IssueFieldOptionsInner {
             description = "The priority of the option for ordering.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("priority")
-    public Long getPriority() {
+    public JsonNullable<Long> getPriority() {
         return priority;
     }
 
-    public void setPriority(Long priority) {
+    public void setPriority(JsonNullable<Long> priority) {
         this.priority = priority;
     }
 
     public IssueFieldOptionsInner createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -219,16 +221,16 @@ public class IssueFieldOptionsInner {
             description = "The time the option was created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public IssueFieldOptionsInner updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -242,11 +244,11 @@ public class IssueFieldOptionsInner {
             description = "The time the option was last updated.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -261,16 +263,35 @@ public class IssueFieldOptionsInner {
         IssueFieldOptionsInner issueFieldOptionsInner = (IssueFieldOptionsInner) o;
         return Objects.equals(this.id, issueFieldOptionsInner.id)
                 && Objects.equals(this.name, issueFieldOptionsInner.name)
-                && Objects.equals(this.description, issueFieldOptionsInner.description)
-                && Objects.equals(this.color, issueFieldOptionsInner.color)
-                && Objects.equals(this.priority, issueFieldOptionsInner.priority)
+                && equalsNullable(this.description, issueFieldOptionsInner.description)
+                && equalsNullable(this.color, issueFieldOptionsInner.color)
+                && equalsNullable(this.priority, issueFieldOptionsInner.priority)
                 && Objects.equals(this.createdAt, issueFieldOptionsInner.createdAt)
                 && Objects.equals(this.updatedAt, issueFieldOptionsInner.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, color, priority, createdAt, updatedAt);
+        return Objects.hash(
+                id,
+                name,
+                hashCodeNullable(description),
+                hashCodeNullable(color),
+                hashCodeNullable(priority),
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

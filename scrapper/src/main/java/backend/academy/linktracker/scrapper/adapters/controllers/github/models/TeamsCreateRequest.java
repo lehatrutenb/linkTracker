@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TeamsCreateRequest
@@ -19,13 +19,13 @@ import java.util.Objects;
 @JsonTypeName("teams_create_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamsCreateRequest {
 
     private String name;
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     @Valid
     private List<String> maintainers = new ArrayList<>();
@@ -68,7 +68,7 @@ public class TeamsCreateRequest {
         }
     }
 
-    private PrivacyEnum privacy;
+    private Optional<PrivacyEnum> privacy = Optional.empty();
 
     /**
      * The notification setting the team has chosen. The options are:    * `notifications_enabled` - team members receive notifications when the team is @mentioned.    * `notifications_disabled` - no one receives notifications.   Default: `notifications_enabled`
@@ -105,9 +105,9 @@ public class TeamsCreateRequest {
         }
     }
 
-    private NotificationSettingEnum notificationSetting;
+    private Optional<NotificationSettingEnum> notificationSetting = Optional.empty();
 
-    private Long parentTeamId;
+    private Optional<Long> parentTeamId = Optional.empty();
 
     public TeamsCreateRequest() {
         super();
@@ -141,7 +141,7 @@ public class TeamsCreateRequest {
     }
 
     public TeamsCreateRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -154,11 +154,11 @@ public class TeamsCreateRequest {
             description = "The description of the team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -224,7 +224,7 @@ public class TeamsCreateRequest {
     }
 
     public TeamsCreateRequest privacy(PrivacyEnum privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -238,16 +238,16 @@ public class TeamsCreateRequest {
                     "The level of privacy this team should have. The options are:   **For a non-nested team:**    * `secret` - only visible to organization owners and members of this team.    * `closed` - visible to all members of this organization.   Default: `secret`   **For a parent or child team:**    * `closed` - visible to all members of this organization.   Default for child team: `closed`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public PrivacyEnum getPrivacy() {
+    public Optional<PrivacyEnum> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(PrivacyEnum privacy) {
+    public void setPrivacy(Optional<PrivacyEnum> privacy) {
         this.privacy = privacy;
     }
 
     public TeamsCreateRequest notificationSetting(NotificationSettingEnum notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -261,16 +261,16 @@ public class TeamsCreateRequest {
                     "The notification setting the team has chosen. The options are:    * `notifications_enabled` - team members receive notifications when the team is @mentioned.    * `notifications_disabled` - no one receives notifications.   Default: `notifications_enabled`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public NotificationSettingEnum getNotificationSetting() {
+    public Optional<NotificationSettingEnum> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(NotificationSettingEnum notificationSetting) {
+    public void setNotificationSetting(Optional<NotificationSettingEnum> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
     public TeamsCreateRequest parentTeamId(Long parentTeamId) {
-        this.parentTeamId = parentTeamId;
+        this.parentTeamId = Optional.ofNullable(parentTeamId);
         return this;
     }
 
@@ -283,11 +283,11 @@ public class TeamsCreateRequest {
             description = "The ID of a team to set as the parent team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent_team_id")
-    public Long getParentTeamId() {
+    public Optional<Long> getParentTeamId() {
         return parentTeamId;
     }
 
-    public void setParentTeamId(Long parentTeamId) {
+    public void setParentTeamId(Optional<Long> parentTeamId) {
         this.parentTeamId = parentTeamId;
     }
 

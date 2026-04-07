@@ -6,9 +6,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * An actor that can bypass rules in a ruleset
@@ -17,11 +19,11 @@ import java.util.Objects;
 @JsonTypeName("repository-ruleset-bypass-actor")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRulesetBypassActor {
 
-    private Long actorId = null;
+    private JsonNullable<Long> actorId = JsonNullable.<Long>undefined();
 
     /**
      * The type of actor that can bypass a ruleset.
@@ -103,7 +105,7 @@ public class RepositoryRulesetBypassActor {
         }
     }
 
-    private BypassModeEnum bypassMode = BypassModeEnum.ALWAYS;
+    private Optional<BypassModeEnum> bypassMode = Optional.of(BypassModeEnum.ALWAYS);
 
     public RepositoryRulesetBypassActor() {
         super();
@@ -117,7 +119,7 @@ public class RepositoryRulesetBypassActor {
     }
 
     public RepositoryRulesetBypassActor actorId(Long actorId) {
-        this.actorId = actorId;
+        this.actorId = JsonNullable.of(actorId);
         return this;
     }
 
@@ -131,11 +133,11 @@ public class RepositoryRulesetBypassActor {
                     "The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, and `Team` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_id")
-    public Long getActorId() {
+    public JsonNullable<Long> getActorId() {
         return actorId;
     }
 
-    public void setActorId(Long actorId) {
+    public void setActorId(JsonNullable<Long> actorId) {
         this.actorId = actorId;
     }
 
@@ -163,7 +165,7 @@ public class RepositoryRulesetBypassActor {
     }
 
     public RepositoryRulesetBypassActor bypassMode(BypassModeEnum bypassMode) {
-        this.bypassMode = bypassMode;
+        this.bypassMode = Optional.ofNullable(bypassMode);
         return this;
     }
 
@@ -177,11 +179,11 @@ public class RepositoryRulesetBypassActor {
                     "When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bypass_mode")
-    public BypassModeEnum getBypassMode() {
+    public Optional<BypassModeEnum> getBypassMode() {
         return bypassMode;
     }
 
-    public void setBypassMode(BypassModeEnum bypassMode) {
+    public void setBypassMode(Optional<BypassModeEnum> bypassMode) {
         this.bypassMode = bypassMode;
     }
 
@@ -194,14 +196,26 @@ public class RepositoryRulesetBypassActor {
             return false;
         }
         RepositoryRulesetBypassActor repositoryRulesetBypassActor = (RepositoryRulesetBypassActor) o;
-        return Objects.equals(this.actorId, repositoryRulesetBypassActor.actorId)
+        return equalsNullable(this.actorId, repositoryRulesetBypassActor.actorId)
                 && Objects.equals(this.actorType, repositoryRulesetBypassActor.actorType)
                 && Objects.equals(this.bypassMode, repositoryRulesetBypassActor.bypassMode);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(actorId, actorType, bypassMode);
+        return Objects.hash(hashCodeNullable(actorId), actorType, bypassMode);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

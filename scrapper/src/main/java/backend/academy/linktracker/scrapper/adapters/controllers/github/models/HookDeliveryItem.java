@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("hook-delivery-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HookDeliveryItem {
 
@@ -42,14 +43,14 @@ public class HookDeliveryItem {
 
     private String event;
 
-    private String action = null;
+    private JsonNullable<String> action = JsonNullable.<String>undefined();
 
-    private Long installationId = null;
+    private JsonNullable<Long> installationId = JsonNullable.<Long>undefined();
 
-    private Long repositoryId = null;
+    private JsonNullable<Long> repositoryId = JsonNullable.<Long>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime throttledAt = null;
+    private JsonNullable<OffsetDateTime> throttledAt = JsonNullable.<OffsetDateTime>undefined();
 
     public HookDeliveryItem() {
         super();
@@ -78,9 +79,9 @@ public class HookDeliveryItem {
         this.status = status;
         this.statusCode = statusCode;
         this.event = event;
-        this.action = action;
-        this.installationId = installationId;
-        this.repositoryId = repositoryId;
+        this.action = JsonNullable.of(action);
+        this.installationId = JsonNullable.of(installationId);
+        this.repositoryId = JsonNullable.of(repositoryId);
     }
 
     public HookDeliveryItem id(Long id) {
@@ -279,7 +280,7 @@ public class HookDeliveryItem {
     }
 
     public HookDeliveryItem action(String action) {
-        this.action = action;
+        this.action = JsonNullable.of(action);
         return this;
     }
 
@@ -294,16 +295,16 @@ public class HookDeliveryItem {
             description = "The type of activity for the event that triggered the delivery.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("action")
-    public String getAction() {
+    public JsonNullable<String> getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(JsonNullable<String> action) {
         this.action = action;
     }
 
     public HookDeliveryItem installationId(Long installationId) {
-        this.installationId = installationId;
+        this.installationId = JsonNullable.of(installationId);
         return this;
     }
 
@@ -318,16 +319,16 @@ public class HookDeliveryItem {
             description = "The id of the GitHub App installation associated with this event.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("installation_id")
-    public Long getInstallationId() {
+    public JsonNullable<Long> getInstallationId() {
         return installationId;
     }
 
-    public void setInstallationId(Long installationId) {
+    public void setInstallationId(JsonNullable<Long> installationId) {
         this.installationId = installationId;
     }
 
     public HookDeliveryItem repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = JsonNullable.of(repositoryId);
         return this;
     }
 
@@ -342,16 +343,16 @@ public class HookDeliveryItem {
             description = "The id of the repository associated with this event.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public JsonNullable<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(JsonNullable<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public HookDeliveryItem throttledAt(OffsetDateTime throttledAt) {
-        this.throttledAt = throttledAt;
+        this.throttledAt = JsonNullable.of(throttledAt);
         return this;
     }
 
@@ -366,11 +367,11 @@ public class HookDeliveryItem {
             description = "Time when the webhook delivery was throttled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("throttled_at")
-    public OffsetDateTime getThrottledAt() {
+    public JsonNullable<OffsetDateTime> getThrottledAt() {
         return throttledAt;
     }
 
-    public void setThrottledAt(OffsetDateTime throttledAt) {
+    public void setThrottledAt(JsonNullable<OffsetDateTime> throttledAt) {
         this.throttledAt = throttledAt;
     }
 
@@ -394,7 +395,12 @@ public class HookDeliveryItem {
                 && Objects.equals(this.action, hookDeliveryItem.action)
                 && Objects.equals(this.installationId, hookDeliveryItem.installationId)
                 && Objects.equals(this.repositoryId, hookDeliveryItem.repositoryId)
-                && Objects.equals(this.throttledAt, hookDeliveryItem.throttledAt);
+                && equalsNullable(this.throttledAt, hookDeliveryItem.throttledAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -411,7 +417,14 @@ public class HookDeliveryItem {
                 action,
                 installationId,
                 repositoryId,
-                throttledAt);
+                hashCodeNullable(throttledAt));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

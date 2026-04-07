@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * MinimalRepositoryLicense
@@ -14,22 +15,22 @@ import java.util.Objects;
 @JsonTypeName("minimal_repository_license")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MinimalRepositoryLicense {
 
-    private String key;
+    private Optional<String> key = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String spdxId;
+    private Optional<String> spdxId = Optional.empty();
 
-    private String url = null;
+    private JsonNullable<String> url = JsonNullable.<String>undefined();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
     public MinimalRepositoryLicense key(String key) {
-        this.key = key;
+        this.key = Optional.ofNullable(key);
         return this;
     }
 
@@ -39,16 +40,16 @@ public class MinimalRepositoryLicense {
      */
     @Schema(name = "key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("key")
-    public String getKey() {
+    public Optional<String> getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(Optional<String> key) {
         this.key = key;
     }
 
     public MinimalRepositoryLicense name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -58,16 +59,16 @@ public class MinimalRepositoryLicense {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public MinimalRepositoryLicense spdxId(String spdxId) {
-        this.spdxId = spdxId;
+        this.spdxId = Optional.ofNullable(spdxId);
         return this;
     }
 
@@ -77,16 +78,16 @@ public class MinimalRepositoryLicense {
      */
     @Schema(name = "spdx_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("spdx_id")
-    public String getSpdxId() {
+    public Optional<String> getSpdxId() {
         return spdxId;
     }
 
-    public void setSpdxId(String spdxId) {
+    public void setSpdxId(Optional<String> spdxId) {
         this.spdxId = spdxId;
     }
 
     public MinimalRepositoryLicense url(String url) {
-        this.url = url;
+        this.url = JsonNullable.of(url);
         return this;
     }
 
@@ -96,16 +97,16 @@ public class MinimalRepositoryLicense {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public JsonNullable<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(JsonNullable<String> url) {
         this.url = url;
     }
 
     public MinimalRepositoryLicense nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -115,11 +116,11 @@ public class MinimalRepositoryLicense {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -135,13 +136,25 @@ public class MinimalRepositoryLicense {
         return Objects.equals(this.key, minimalRepositoryLicense.key)
                 && Objects.equals(this.name, minimalRepositoryLicense.name)
                 && Objects.equals(this.spdxId, minimalRepositoryLicense.spdxId)
-                && Objects.equals(this.url, minimalRepositoryLicense.url)
+                && equalsNullable(this.url, minimalRepositoryLicense.url)
                 && Objects.equals(this.nodeId, minimalRepositoryLicense.nodeId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(key, name, spdxId, url, nodeId);
+        return Objects.hash(key, name, spdxId, hashCodeNullable(url), nodeId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

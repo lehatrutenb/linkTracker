@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPullRequestReviewCommentCreatedPullRequestHead
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_pull_request_review_comment_created_pull_request_head")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
 
@@ -23,11 +23,11 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
 
     private String ref;
 
-    private Repository8 repo = null;
+    private JsonNullable<Repository8> repo = JsonNullable.<Repository8>undefined();
 
     private String sha;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhookPullRequestReviewCommentCreatedPullRequestHead() {
         super();
@@ -40,9 +40,9 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
             String label, String ref, Repository8 repo, String sha, User1 user) {
         this.label = label;
         this.ref = ref;
-        this.repo = repo;
+        this.repo = JsonNullable.of(repo);
         this.sha = sha;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhookPullRequestReviewCommentCreatedPullRequestHead label(String label) {
@@ -86,7 +86,7 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
     }
 
     public WebhookPullRequestReviewCommentCreatedPullRequestHead repo(Repository8 repo) {
-        this.repo = repo;
+        this.repo = JsonNullable.of(repo);
         return this;
     }
 
@@ -98,11 +98,11 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
     @Valid
     @Schema(name = "repo", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("repo")
-    public Repository8 getRepo() {
+    public JsonNullable<Repository8> getRepo() {
         return repo;
     }
 
-    public void setRepo(Repository8 repo) {
+    public void setRepo(JsonNullable<Repository8> repo) {
         this.repo = repo;
     }
 
@@ -127,7 +127,7 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
     }
 
     public WebhookPullRequestReviewCommentCreatedPullRequestHead user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -139,11 +139,11 @@ public class WebhookPullRequestReviewCommentCreatedPullRequestHead {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

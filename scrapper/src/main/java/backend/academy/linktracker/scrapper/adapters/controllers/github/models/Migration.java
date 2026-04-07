@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,13 +22,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("migration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Migration {
 
     private Long id;
 
-    private NullableSimpleUser owner = null;
+    private JsonNullable<NullableSimpleUser> owner = JsonNullable.<NullableSimpleUser>undefined();
 
     private String guid;
 
@@ -60,7 +61,7 @@ public class Migration {
 
     private String nodeId;
 
-    private URI archiveUrl;
+    private Optional<URI> archiveUrl = Optional.empty();
 
     @Valid
     private List<String> exclude = new ArrayList<>();
@@ -90,7 +91,7 @@ public class Migration {
             OffsetDateTime updatedAt,
             String nodeId) {
         this.id = id;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this.guid = guid;
         this.state = state;
         this.lockRepositories = lockRepositories;
@@ -128,7 +129,7 @@ public class Migration {
     }
 
     public Migration owner(NullableSimpleUser owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -140,11 +141,11 @@ public class Migration {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public NullableSimpleUser getOwner() {
+    public JsonNullable<NullableSimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(NullableSimpleUser owner) {
+    public void setOwner(JsonNullable<NullableSimpleUser> owner) {
         this.owner = owner;
     }
 
@@ -450,7 +451,7 @@ public class Migration {
     }
 
     public Migration archiveUrl(URI archiveUrl) {
-        this.archiveUrl = archiveUrl;
+        this.archiveUrl = Optional.ofNullable(archiveUrl);
         return this;
     }
 
@@ -461,11 +462,11 @@ public class Migration {
     @Valid
     @Schema(name = "archive_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archive_url")
-    public URI getArchiveUrl() {
+    public Optional<URI> getArchiveUrl() {
         return archiveUrl;
     }
 
-    public void setArchiveUrl(URI archiveUrl) {
+    public void setArchiveUrl(Optional<URI> archiveUrl) {
         this.archiveUrl = archiveUrl;
     }
 

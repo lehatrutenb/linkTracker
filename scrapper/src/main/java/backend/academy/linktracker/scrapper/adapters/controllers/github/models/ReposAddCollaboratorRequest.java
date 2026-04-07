@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposAddCollaboratorRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("repos_add_collaborator_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposAddCollaboratorRequest {
 
-    private String permission = "push";
+    private Optional<String> permission = Optional.of("push");
 
     public ReposAddCollaboratorRequest permission(String permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -35,11 +34,11 @@ public class ReposAddCollaboratorRequest {
                     "The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public String getPermission() {
+    public Optional<String> getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) {
+    public void setPermission(Optional<String> permission) {
         this.permission = permission;
     }
 

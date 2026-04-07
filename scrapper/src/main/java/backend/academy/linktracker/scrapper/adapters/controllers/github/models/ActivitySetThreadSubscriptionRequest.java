@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActivitySetThreadSubscriptionRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("activity_set_thread_subscription_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActivitySetThreadSubscriptionRequest {
 
-    private Boolean ignored = false;
+    private Optional<Boolean> ignored = Optional.of(false);
 
     public ActivitySetThreadSubscriptionRequest ignored(Boolean ignored) {
-        this.ignored = ignored;
+        this.ignored = Optional.ofNullable(ignored);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class ActivitySetThreadSubscriptionRequest {
             description = "Whether to block all notifications from a thread.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ignored")
-    public Boolean getIgnored() {
+    public Optional<Boolean> getIgnored() {
         return ignored;
     }
 
-    public void setIgnored(Boolean ignored) {
+    public void setIgnored(Optional<Boolean> ignored) {
         this.ignored = ignored;
     }
 

@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_release")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksRelease {
 
@@ -32,17 +33,17 @@ public class WebhooksRelease {
 
     private URI assetsUrl;
 
-    private User author = null;
+    private JsonNullable<User> author = JsonNullable.<User>undefined();
 
-    private String body = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI discussionUrl;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
+
+    private Optional<URI> discussionUrl = Optional.empty();
 
     private Boolean draft;
 
@@ -52,20 +53,20 @@ public class WebhooksRelease {
 
     private Boolean immutable;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
     private String nodeId;
 
     private Boolean prerelease;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime publishedAt = null;
+    private JsonNullable<OffsetDateTime> publishedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Reactions reactions;
+    private Optional<Reactions> reactions = Optional.empty();
 
     private String tagName;
 
-    private URI tarballUrl = null;
+    private JsonNullable<URI> tarballUrl = JsonNullable.<URI>undefined();
 
     private String targetCommitish;
 
@@ -73,7 +74,7 @@ public class WebhooksRelease {
 
     private URI url;
 
-    private URI zipballUrl = null;
+    private JsonNullable<URI> zipballUrl = JsonNullable.<URI>undefined();
 
     public WebhooksRelease() {
         super();
@@ -105,24 +106,24 @@ public class WebhooksRelease {
             URI zipballUrl) {
         this.assets = assets;
         this.assetsUrl = assetsUrl;
-        this.author = author;
-        this.body = body;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.author = JsonNullable.of(author);
+        this.body = JsonNullable.of(body);
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.draft = draft;
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.immutable = immutable;
-        this.name = name;
+        this.name = JsonNullable.of(name);
         this.nodeId = nodeId;
         this.prerelease = prerelease;
-        this.publishedAt = publishedAt;
+        this.publishedAt = JsonNullable.of(publishedAt);
         this.tagName = tagName;
-        this.tarballUrl = tarballUrl;
+        this.tarballUrl = JsonNullable.of(tarballUrl);
         this.targetCommitish = targetCommitish;
         this.uploadUrl = uploadUrl;
         this.url = url;
-        this.zipballUrl = zipballUrl;
+        this.zipballUrl = JsonNullable.of(zipballUrl);
     }
 
     public WebhooksRelease assets(List<@Valid ReleaseAsset> assets) {
@@ -176,7 +177,7 @@ public class WebhooksRelease {
     }
 
     public WebhooksRelease author(User author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -188,16 +189,16 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public User getAuthor() {
+    public JsonNullable<User> getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(JsonNullable<User> author) {
         this.author = author;
     }
 
     public WebhooksRelease body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -208,16 +209,16 @@ public class WebhooksRelease {
     @NotNull
     @Schema(name = "body", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public WebhooksRelease createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -229,16 +230,16 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public WebhooksRelease updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -250,16 +251,16 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public WebhooksRelease discussionUrl(URI discussionUrl) {
-        this.discussionUrl = discussionUrl;
+        this.discussionUrl = Optional.ofNullable(discussionUrl);
         return this;
     }
 
@@ -270,11 +271,11 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "discussion_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("discussion_url")
-    public URI getDiscussionUrl() {
+    public Optional<URI> getDiscussionUrl() {
         return discussionUrl;
     }
 
-    public void setDiscussionUrl(URI discussionUrl) {
+    public void setDiscussionUrl(Optional<URI> discussionUrl) {
         this.discussionUrl = discussionUrl;
     }
 
@@ -366,7 +367,7 @@ public class WebhooksRelease {
     }
 
     public WebhooksRelease name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -377,11 +378,11 @@ public class WebhooksRelease {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
@@ -429,7 +430,7 @@ public class WebhooksRelease {
     }
 
     public WebhooksRelease publishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
+        this.publishedAt = JsonNullable.of(publishedAt);
         return this;
     }
 
@@ -441,16 +442,16 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "published_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("published_at")
-    public OffsetDateTime getPublishedAt() {
+    public JsonNullable<OffsetDateTime> getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(OffsetDateTime publishedAt) {
+    public void setPublishedAt(JsonNullable<OffsetDateTime> publishedAt) {
         this.publishedAt = publishedAt;
     }
 
     public WebhooksRelease reactions(Reactions reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -461,11 +462,11 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public Reactions getReactions() {
+    public Optional<Reactions> getReactions() {
         return reactions;
     }
 
-    public void setReactions(Reactions reactions) {
+    public void setReactions(Optional<Reactions> reactions) {
         this.reactions = reactions;
     }
 
@@ -490,7 +491,7 @@ public class WebhooksRelease {
     }
 
     public WebhooksRelease tarballUrl(URI tarballUrl) {
-        this.tarballUrl = tarballUrl;
+        this.tarballUrl = JsonNullable.of(tarballUrl);
         return this;
     }
 
@@ -502,11 +503,11 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "tarball_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("tarball_url")
-    public URI getTarballUrl() {
+    public JsonNullable<URI> getTarballUrl() {
         return tarballUrl;
     }
 
-    public void setTarballUrl(URI tarballUrl) {
+    public void setTarballUrl(JsonNullable<URI> tarballUrl) {
         this.tarballUrl = tarballUrl;
     }
 
@@ -575,7 +576,7 @@ public class WebhooksRelease {
     }
 
     public WebhooksRelease zipballUrl(URI zipballUrl) {
-        this.zipballUrl = zipballUrl;
+        this.zipballUrl = JsonNullable.of(zipballUrl);
         return this;
     }
 
@@ -587,11 +588,11 @@ public class WebhooksRelease {
     @Valid
     @Schema(name = "zipball_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("zipball_url")
-    public URI getZipballUrl() {
+    public JsonNullable<URI> getZipballUrl() {
         return zipballUrl;
     }
 
-    public void setZipballUrl(URI zipballUrl) {
+    public void setZipballUrl(JsonNullable<URI> zipballUrl) {
         this.zipballUrl = zipballUrl;
     }
 

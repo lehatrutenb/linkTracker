@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * FileCommitContent
@@ -15,32 +14,32 @@ import java.util.Objects;
 @JsonTypeName("file_commit_content")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommitContent {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String path;
+    private Optional<String> path = Optional.empty();
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
-    private String gitUrl;
+    private Optional<String> gitUrl = Optional.empty();
 
-    private String downloadUrl;
+    private Optional<String> downloadUrl = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private FileCommitContentLinks links;
+    private Optional<FileCommitContentLinks> links = Optional.empty();
 
     public FileCommitContent name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -50,16 +49,16 @@ public class FileCommitContent {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public FileCommitContent path(String path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -69,16 +68,16 @@ public class FileCommitContent {
      */
     @Schema(name = "path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public Optional<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(Optional<String> path) {
         this.path = path;
     }
 
     public FileCommitContent sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -88,16 +87,16 @@ public class FileCommitContent {
      */
     @Schema(name = "sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 
     public FileCommitContent size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -107,16 +106,16 @@ public class FileCommitContent {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public FileCommitContent url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -126,16 +125,16 @@ public class FileCommitContent {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public FileCommitContent htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -145,16 +144,16 @@ public class FileCommitContent {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public FileCommitContent gitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = Optional.ofNullable(gitUrl);
         return this;
     }
 
@@ -164,16 +163,16 @@ public class FileCommitContent {
      */
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_url")
-    public String getGitUrl() {
+    public Optional<String> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(String gitUrl) {
+    public void setGitUrl(Optional<String> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public FileCommitContent downloadUrl(String downloadUrl) {
-        this.downloadUrl = downloadUrl;
+        this.downloadUrl = Optional.ofNullable(downloadUrl);
         return this;
     }
 
@@ -183,16 +182,16 @@ public class FileCommitContent {
      */
     @Schema(name = "download_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("download_url")
-    public String getDownloadUrl() {
+    public Optional<String> getDownloadUrl() {
         return downloadUrl;
     }
 
-    public void setDownloadUrl(String downloadUrl) {
+    public void setDownloadUrl(Optional<String> downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 
     public FileCommitContent type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -202,16 +201,16 @@ public class FileCommitContent {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public FileCommitContent links(FileCommitContentLinks links) {
-        this.links = links;
+        this.links = Optional.ofNullable(links);
         return this;
     }
 
@@ -222,11 +221,11 @@ public class FileCommitContent {
     @Valid
     @Schema(name = "_links", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("_links")
-    public FileCommitContentLinks getLinks() {
+    public Optional<FileCommitContentLinks> getLinks() {
         return links;
     }
 
-    public void setLinks(FileCommitContentLinks links) {
+    public void setLinks(Optional<FileCommitContentLinks> links) {
         this.links = links;
     }
 

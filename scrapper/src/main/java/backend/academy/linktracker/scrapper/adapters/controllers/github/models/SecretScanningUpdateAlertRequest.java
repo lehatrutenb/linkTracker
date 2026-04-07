@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SecretScanningUpdateAlertRequest
@@ -15,20 +16,21 @@ import java.util.Objects;
 @JsonTypeName("secret_scanning_update_alert_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningUpdateAlertRequest {
 
-    private SecretScanningAlertState state;
+    private Optional<SecretScanningAlertState> state = Optional.empty();
 
-    private SecretScanningAlertResolution resolution = null;
+    private JsonNullable<SecretScanningAlertResolution> resolution =
+            JsonNullable.<SecretScanningAlertResolution>undefined();
 
-    private String resolutionComment = null;
+    private JsonNullable<String> resolutionComment = JsonNullable.<String>undefined();
 
-    private String assignee = null;
+    private JsonNullable<String> assignee = JsonNullable.<String>undefined();
 
     public SecretScanningUpdateAlertRequest state(SecretScanningAlertState state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -39,16 +41,16 @@ public class SecretScanningUpdateAlertRequest {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public SecretScanningAlertState getState() {
+    public Optional<SecretScanningAlertState> getState() {
         return state;
     }
 
-    public void setState(SecretScanningAlertState state) {
+    public void setState(Optional<SecretScanningAlertState> state) {
         this.state = state;
     }
 
     public SecretScanningUpdateAlertRequest resolution(SecretScanningAlertResolution resolution) {
-        this.resolution = resolution;
+        this.resolution = JsonNullable.of(resolution);
         return this;
     }
 
@@ -59,16 +61,16 @@ public class SecretScanningUpdateAlertRequest {
     @Valid
     @Schema(name = "resolution", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution")
-    public SecretScanningAlertResolution getResolution() {
+    public JsonNullable<SecretScanningAlertResolution> getResolution() {
         return resolution;
     }
 
-    public void setResolution(SecretScanningAlertResolution resolution) {
+    public void setResolution(JsonNullable<SecretScanningAlertResolution> resolution) {
         this.resolution = resolution;
     }
 
     public SecretScanningUpdateAlertRequest resolutionComment(String resolutionComment) {
-        this.resolutionComment = resolutionComment;
+        this.resolutionComment = JsonNullable.of(resolutionComment);
         return this;
     }
 
@@ -81,16 +83,16 @@ public class SecretScanningUpdateAlertRequest {
             description = "An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("resolution_comment")
-    public String getResolutionComment() {
+    public JsonNullable<String> getResolutionComment() {
         return resolutionComment;
     }
 
-    public void setResolutionComment(String resolutionComment) {
+    public void setResolutionComment(JsonNullable<String> resolutionComment) {
         this.resolutionComment = resolutionComment;
     }
 
     public SecretScanningUpdateAlertRequest assignee(String assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -103,11 +105,11 @@ public class SecretScanningUpdateAlertRequest {
             description = "The username of the user to assign to the alert. Set to `null` to unassign the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public String getAssignee() {
+    public JsonNullable<String> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(String assignee) {
+    public void setAssignee(JsonNullable<String> assignee) {
         this.assignee = assignee;
     }
 
@@ -121,14 +123,27 @@ public class SecretScanningUpdateAlertRequest {
         }
         SecretScanningUpdateAlertRequest secretScanningUpdateAlertRequest = (SecretScanningUpdateAlertRequest) o;
         return Objects.equals(this.state, secretScanningUpdateAlertRequest.state)
-                && Objects.equals(this.resolution, secretScanningUpdateAlertRequest.resolution)
-                && Objects.equals(this.resolutionComment, secretScanningUpdateAlertRequest.resolutionComment)
-                && Objects.equals(this.assignee, secretScanningUpdateAlertRequest.assignee);
+                && equalsNullable(this.resolution, secretScanningUpdateAlertRequest.resolution)
+                && equalsNullable(this.resolutionComment, secretScanningUpdateAlertRequest.resolutionComment)
+                && equalsNullable(this.assignee, secretScanningUpdateAlertRequest.assignee);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, resolution, resolutionComment, assignee);
+        return Objects.hash(
+                state, hashCodeNullable(resolution), hashCodeNullable(resolutionComment), hashCodeNullable(assignee));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

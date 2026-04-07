@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ChecksCreateRequestOutputImagesInner
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("checks_create_request_output_images_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ChecksCreateRequestOutputImagesInner {
 
@@ -22,7 +22,7 @@ public class ChecksCreateRequestOutputImagesInner {
 
     private String imageUrl;
 
-    private String caption;
+    private Optional<String> caption = Optional.empty();
 
     public ChecksCreateRequestOutputImagesInner() {
         super();
@@ -80,7 +80,7 @@ public class ChecksCreateRequestOutputImagesInner {
     }
 
     public ChecksCreateRequestOutputImagesInner caption(String caption) {
-        this.caption = caption;
+        this.caption = Optional.ofNullable(caption);
         return this;
     }
 
@@ -93,11 +93,11 @@ public class ChecksCreateRequestOutputImagesInner {
             description = "A short image description.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("caption")
-    public String getCaption() {
+    public Optional<String> getCaption() {
         return caption;
     }
 
-    public void setCaption(String caption) {
+    public void setCaption(Optional<String> caption) {
         this.caption = caption;
     }
 

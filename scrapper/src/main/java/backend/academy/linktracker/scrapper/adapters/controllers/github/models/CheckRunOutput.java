@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CheckRunOutput
@@ -16,15 +16,15 @@ import java.util.Objects;
 @JsonTypeName("check_run_output")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CheckRunOutput {
 
-    private String title = null;
+    private JsonNullable<String> title = JsonNullable.<String>undefined();
 
-    private String summary = null;
+    private JsonNullable<String> summary = JsonNullable.<String>undefined();
 
-    private String text = null;
+    private JsonNullable<String> text = JsonNullable.<String>undefined();
 
     private Long annotationsCount;
 
@@ -38,15 +38,15 @@ public class CheckRunOutput {
      * Constructor with only required parameters
      */
     public CheckRunOutput(String title, String summary, String text, Long annotationsCount, URI annotationsUrl) {
-        this.title = title;
-        this.summary = summary;
-        this.text = text;
+        this.title = JsonNullable.of(title);
+        this.summary = JsonNullable.of(summary);
+        this.text = JsonNullable.of(text);
         this.annotationsCount = annotationsCount;
         this.annotationsUrl = annotationsUrl;
     }
 
     public CheckRunOutput title(String title) {
-        this.title = title;
+        this.title = JsonNullable.of(title);
         return this;
     }
 
@@ -57,16 +57,16 @@ public class CheckRunOutput {
     @NotNull
     @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public JsonNullable<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(JsonNullable<String> title) {
         this.title = title;
     }
 
     public CheckRunOutput summary(String summary) {
-        this.summary = summary;
+        this.summary = JsonNullable.of(summary);
         return this;
     }
 
@@ -77,16 +77,16 @@ public class CheckRunOutput {
     @NotNull
     @Schema(name = "summary", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("summary")
-    public String getSummary() {
+    public JsonNullable<String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(JsonNullable<String> summary) {
         this.summary = summary;
     }
 
     public CheckRunOutput text(String text) {
-        this.text = text;
+        this.text = JsonNullable.of(text);
         return this;
     }
 
@@ -97,11 +97,11 @@ public class CheckRunOutput {
     @NotNull
     @Schema(name = "text", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("text")
-    public String getText() {
+    public JsonNullable<String> getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(JsonNullable<String> text) {
         this.text = text;
     }
 

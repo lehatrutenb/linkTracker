@@ -7,13 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,13 +22,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("repository-advisory")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisory {
 
     private String ghsaId;
 
-    private String cveId = null;
+    private JsonNullable<String> cveId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -37,7 +36,7 @@ public class RepositoryAdvisory {
 
     private String summary;
 
-    private String description = null;
+    private JsonNullable<@Size(max = 65535) String> description = JsonNullable.<String>undefined();
 
     /**
      * The severity of the advisory.
@@ -78,11 +77,11 @@ public class RepositoryAdvisory {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
-    private SimpleUser author = null;
+    private JsonNullable<SimpleUser> author = JsonNullable.<SimpleUser>undefined();
 
-    private SimpleUser publisher = null;
+    private JsonNullable<SimpleUser> publisher = JsonNullable.<SimpleUser>undefined();
 
     @Valid
     private List<@Valid GlobalAdvisoryIdentifiersInner> identifiers = new ArrayList<>();
@@ -131,46 +130,52 @@ public class RepositoryAdvisory {
     private StateEnum state;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime publishedAt = null;
+    private JsonNullable<OffsetDateTime> publishedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime withdrawnAt = null;
+    private JsonNullable<OffsetDateTime> withdrawnAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private RepositoryAdvisorySubmission submission = null;
-
-    @Valid
-    private List<@Valid RepositoryAdvisoryVulnerability> vulnerabilities;
-
-    private CvssSeverities cvssSeverities = null;
+    private JsonNullable<RepositoryAdvisorySubmission> submission =
+            JsonNullable.<RepositoryAdvisorySubmission>undefined();
 
     @Valid
-    private List<@Valid GlobalAdvisoryCwesInner> cwes;
+    private JsonNullable<List<@Valid RepositoryAdvisoryVulnerability>> vulnerabilities =
+            JsonNullable.<List<@Valid RepositoryAdvisoryVulnerability>>undefined();
+
+    private JsonNullable<CvssSeverities> cvssSeverities = JsonNullable.<CvssSeverities>undefined();
 
     @Valid
-    private List<String> cweIds;
+    private JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> cwes =
+            JsonNullable.<List<@Valid GlobalAdvisoryCwesInner>>undefined();
 
     @Valid
-    private List<@Valid RepositoryAdvisoryCreditsInner> credits;
+    private JsonNullable<List<String>> cweIds = JsonNullable.<List<String>>undefined();
 
     @Valid
-    private List<@Valid RepositoryAdvisoryCredit> creditsDetailed;
+    private JsonNullable<List<@Valid RepositoryAdvisoryCreditsInner>> credits =
+            JsonNullable.<List<@Valid RepositoryAdvisoryCreditsInner>>undefined();
 
     @Valid
-    private List<@Valid SimpleUser> collaboratingUsers;
+    private JsonNullable<List<@Valid RepositoryAdvisoryCredit>> creditsDetailed =
+            JsonNullable.<List<@Valid RepositoryAdvisoryCredit>>undefined();
 
     @Valid
-    private List<@Valid Team> collaboratingTeams;
+    private JsonNullable<List<@Valid SimpleUser>> collaboratingUsers =
+            JsonNullable.<List<@Valid SimpleUser>>undefined();
 
-    private SimpleRepository privateFork = null;
+    @Valid
+    private JsonNullable<List<@Valid Team>> collaboratingTeams = JsonNullable.<List<@Valid Team>>undefined();
+
+    private JsonNullable<SimpleRepository> privateFork = JsonNullable.<SimpleRepository>undefined();
 
     public RepositoryAdvisory() {
         super();
@@ -206,30 +211,30 @@ public class RepositoryAdvisory {
             List<@Valid Team> collaboratingTeams,
             SimpleRepository privateFork) {
         this.ghsaId = ghsaId;
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.summary = summary;
-        this.description = description;
-        this.severity = severity;
-        this.author = author;
-        this.publisher = publisher;
+        this.description = JsonNullable.of(description);
+        this.severity = JsonNullable.of(severity);
+        this.author = JsonNullable.of(author);
+        this.publisher = JsonNullable.of(publisher);
         this.identifiers = identifiers;
         this.state = state;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.publishedAt = publishedAt;
-        this.closedAt = closedAt;
-        this.withdrawnAt = withdrawnAt;
-        this.submission = submission;
-        this.vulnerabilities = vulnerabilities;
-        this.cwes = cwes;
-        this.cweIds = cweIds;
-        this.credits = credits;
-        this.creditsDetailed = creditsDetailed;
-        this.collaboratingUsers = collaboratingUsers;
-        this.collaboratingTeams = collaboratingTeams;
-        this.privateFork = privateFork;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
+        this.publishedAt = JsonNullable.of(publishedAt);
+        this.closedAt = JsonNullable.of(closedAt);
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
+        this.submission = JsonNullable.of(submission);
+        this.vulnerabilities = JsonNullable.of(vulnerabilities);
+        this.cwes = JsonNullable.of(cwes);
+        this.cweIds = JsonNullable.of(cweIds);
+        this.credits = JsonNullable.of(credits);
+        this.creditsDetailed = JsonNullable.of(creditsDetailed);
+        this.collaboratingUsers = JsonNullable.of(collaboratingUsers);
+        this.collaboratingTeams = JsonNullable.of(collaboratingTeams);
+        this.privateFork = JsonNullable.of(privateFork);
     }
 
     public RepositoryAdvisory ghsaId(String ghsaId) {
@@ -256,7 +261,7 @@ public class RepositoryAdvisory {
     }
 
     public RepositoryAdvisory cveId(String cveId) {
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         return this;
     }
 
@@ -270,11 +275,11 @@ public class RepositoryAdvisory {
             description = "The Common Vulnerabilities and Exposures (CVE) ID.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cve_id")
-    public String getCveId() {
+    public JsonNullable<String> getCveId() {
         return cveId;
     }
 
-    public void setCveId(String cveId) {
+    public void setCveId(JsonNullable<String> cveId) {
         this.cveId = cveId;
     }
 
@@ -351,7 +356,7 @@ public class RepositoryAdvisory {
     }
 
     public RepositoryAdvisory description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -366,16 +371,16 @@ public class RepositoryAdvisory {
             description = "A detailed description of what the advisory entails.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<@Size(max = 65535) String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public RepositoryAdvisory severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -389,16 +394,16 @@ public class RepositoryAdvisory {
             description = "The severity of the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 
     public RepositoryAdvisory author(SimpleUser author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -413,16 +418,16 @@ public class RepositoryAdvisory {
             description = "The author of the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public SimpleUser getAuthor() {
+    public JsonNullable<SimpleUser> getAuthor() {
         return author;
     }
 
-    public void setAuthor(SimpleUser author) {
+    public void setAuthor(JsonNullable<SimpleUser> author) {
         this.author = author;
     }
 
     public RepositoryAdvisory publisher(SimpleUser publisher) {
-        this.publisher = publisher;
+        this.publisher = JsonNullable.of(publisher);
         return this;
     }
 
@@ -437,11 +442,11 @@ public class RepositoryAdvisory {
             description = "The publisher of the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("publisher")
-    public SimpleUser getPublisher() {
+    public JsonNullable<SimpleUser> getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(SimpleUser publisher) {
+    public void setPublisher(JsonNullable<SimpleUser> publisher) {
         this.publisher = publisher;
     }
 
@@ -494,7 +499,7 @@ public class RepositoryAdvisory {
     }
 
     public RepositoryAdvisory createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -509,16 +514,16 @@ public class RepositoryAdvisory {
             description = "The date and time of when the advisory was created, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public RepositoryAdvisory updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -533,16 +538,16 @@ public class RepositoryAdvisory {
             description = "The date and time of when the advisory was last updated, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public RepositoryAdvisory publishedAt(OffsetDateTime publishedAt) {
-        this.publishedAt = publishedAt;
+        this.publishedAt = JsonNullable.of(publishedAt);
         return this;
     }
 
@@ -557,16 +562,16 @@ public class RepositoryAdvisory {
             description = "The date and time of when the advisory was published, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("published_at")
-    public OffsetDateTime getPublishedAt() {
+    public JsonNullable<OffsetDateTime> getPublishedAt() {
         return publishedAt;
     }
 
-    public void setPublishedAt(OffsetDateTime publishedAt) {
+    public void setPublishedAt(JsonNullable<OffsetDateTime> publishedAt) {
         this.publishedAt = publishedAt;
     }
 
     public RepositoryAdvisory closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -581,16 +586,16 @@ public class RepositoryAdvisory {
             description = "The date and time of when the advisory was closed, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
     public RepositoryAdvisory withdrawnAt(OffsetDateTime withdrawnAt) {
-        this.withdrawnAt = withdrawnAt;
+        this.withdrawnAt = JsonNullable.of(withdrawnAt);
         return this;
     }
 
@@ -605,16 +610,16 @@ public class RepositoryAdvisory {
             description = "The date and time of when the advisory was withdrawn, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("withdrawn_at")
-    public OffsetDateTime getWithdrawnAt() {
+    public JsonNullable<OffsetDateTime> getWithdrawnAt() {
         return withdrawnAt;
     }
 
-    public void setWithdrawnAt(OffsetDateTime withdrawnAt) {
+    public void setWithdrawnAt(JsonNullable<OffsetDateTime> withdrawnAt) {
         this.withdrawnAt = withdrawnAt;
     }
 
     public RepositoryAdvisory submission(RepositoryAdvisorySubmission submission) {
-        this.submission = submission;
+        this.submission = JsonNullable.of(submission);
         return this;
     }
 
@@ -626,24 +631,24 @@ public class RepositoryAdvisory {
     @Valid
     @Schema(name = "submission", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("submission")
-    public RepositoryAdvisorySubmission getSubmission() {
+    public JsonNullable<RepositoryAdvisorySubmission> getSubmission() {
         return submission;
     }
 
-    public void setSubmission(RepositoryAdvisorySubmission submission) {
+    public void setSubmission(JsonNullable<RepositoryAdvisorySubmission> submission) {
         this.submission = submission;
     }
 
     public RepositoryAdvisory vulnerabilities(List<@Valid RepositoryAdvisoryVulnerability> vulnerabilities) {
-        this.vulnerabilities = vulnerabilities;
+        this.vulnerabilities = JsonNullable.of(vulnerabilities);
         return this;
     }
 
     public RepositoryAdvisory addVulnerabilitiesItem(RepositoryAdvisoryVulnerability vulnerabilitiesItem) {
-        if (this.vulnerabilities == null) {
-            this.vulnerabilities = new ArrayList<>();
+        if (this.vulnerabilities == null || !this.vulnerabilities.isPresent()) {
+            this.vulnerabilities = JsonNullable.of(new ArrayList<>());
         }
-        this.vulnerabilities.add(vulnerabilitiesItem);
+        this.vulnerabilities.get().add(vulnerabilitiesItem);
         return this;
     }
 
@@ -655,16 +660,16 @@ public class RepositoryAdvisory {
     @Valid
     @Schema(name = "vulnerabilities", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("vulnerabilities")
-    public List<@Valid RepositoryAdvisoryVulnerability> getVulnerabilities() {
+    public JsonNullable<List<@Valid RepositoryAdvisoryVulnerability>> getVulnerabilities() {
         return vulnerabilities;
     }
 
-    public void setVulnerabilities(List<@Valid RepositoryAdvisoryVulnerability> vulnerabilities) {
+    public void setVulnerabilities(JsonNullable<List<@Valid RepositoryAdvisoryVulnerability>> vulnerabilities) {
         this.vulnerabilities = vulnerabilities;
     }
 
     public RepositoryAdvisory cvssSeverities(CvssSeverities cvssSeverities) {
-        this.cvssSeverities = cvssSeverities;
+        this.cvssSeverities = JsonNullable.of(cvssSeverities);
         return this;
     }
 
@@ -675,24 +680,24 @@ public class RepositoryAdvisory {
     @Valid
     @Schema(name = "cvss_severities", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_severities")
-    public CvssSeverities getCvssSeverities() {
+    public JsonNullable<CvssSeverities> getCvssSeverities() {
         return cvssSeverities;
     }
 
-    public void setCvssSeverities(CvssSeverities cvssSeverities) {
+    public void setCvssSeverities(JsonNullable<CvssSeverities> cvssSeverities) {
         this.cvssSeverities = cvssSeverities;
     }
 
     public RepositoryAdvisory cwes(List<@Valid GlobalAdvisoryCwesInner> cwes) {
-        this.cwes = cwes;
+        this.cwes = JsonNullable.of(cwes);
         return this;
     }
 
     public RepositoryAdvisory addCwesItem(GlobalAdvisoryCwesInner cwesItem) {
-        if (this.cwes == null) {
-            this.cwes = new ArrayList<>();
+        if (this.cwes == null || !this.cwes.isPresent()) {
+            this.cwes = JsonNullable.of(new ArrayList<>());
         }
-        this.cwes.add(cwesItem);
+        this.cwes.get().add(cwesItem);
         return this;
     }
 
@@ -703,24 +708,24 @@ public class RepositoryAdvisory {
     @Valid
     @Schema(name = "cwes", accessMode = Schema.AccessMode.READ_ONLY, requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cwes")
-    public List<@Valid GlobalAdvisoryCwesInner> getCwes() {
+    public JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> getCwes() {
         return cwes;
     }
 
-    public void setCwes(List<@Valid GlobalAdvisoryCwesInner> cwes) {
+    public void setCwes(JsonNullable<List<@Valid GlobalAdvisoryCwesInner>> cwes) {
         this.cwes = cwes;
     }
 
     public RepositoryAdvisory cweIds(List<String> cweIds) {
-        this.cweIds = cweIds;
+        this.cweIds = JsonNullable.of(cweIds);
         return this;
     }
 
     public RepositoryAdvisory addCweIdsItem(String cweIdsItem) {
-        if (this.cweIds == null) {
-            this.cweIds = new ArrayList<>();
+        if (this.cweIds == null || !this.cweIds.isPresent()) {
+            this.cweIds = JsonNullable.of(new ArrayList<>());
         }
-        this.cweIds.add(cweIdsItem);
+        this.cweIds.get().add(cweIdsItem);
         return this;
     }
 
@@ -731,24 +736,24 @@ public class RepositoryAdvisory {
     @NotNull
     @Schema(name = "cwe_ids", description = "A list of only the CWE IDs.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("cwe_ids")
-    public List<String> getCweIds() {
+    public JsonNullable<List<String>> getCweIds() {
         return cweIds;
     }
 
-    public void setCweIds(List<String> cweIds) {
+    public void setCweIds(JsonNullable<List<String>> cweIds) {
         this.cweIds = cweIds;
     }
 
     public RepositoryAdvisory credits(List<@Valid RepositoryAdvisoryCreditsInner> credits) {
-        this.credits = credits;
+        this.credits = JsonNullable.of(credits);
         return this;
     }
 
     public RepositoryAdvisory addCreditsItem(RepositoryAdvisoryCreditsInner creditsItem) {
-        if (this.credits == null) {
-            this.credits = new ArrayList<>();
+        if (this.credits == null || !this.credits.isPresent()) {
+            this.credits = JsonNullable.of(new ArrayList<>());
         }
-        this.credits.add(creditsItem);
+        this.credits.get().add(creditsItem);
         return this;
     }
 
@@ -760,24 +765,24 @@ public class RepositoryAdvisory {
     @Valid
     @Schema(name = "credits", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("credits")
-    public List<@Valid RepositoryAdvisoryCreditsInner> getCredits() {
+    public JsonNullable<List<@Valid RepositoryAdvisoryCreditsInner>> getCredits() {
         return credits;
     }
 
-    public void setCredits(List<@Valid RepositoryAdvisoryCreditsInner> credits) {
+    public void setCredits(JsonNullable<List<@Valid RepositoryAdvisoryCreditsInner>> credits) {
         this.credits = credits;
     }
 
     public RepositoryAdvisory creditsDetailed(List<@Valid RepositoryAdvisoryCredit> creditsDetailed) {
-        this.creditsDetailed = creditsDetailed;
+        this.creditsDetailed = JsonNullable.of(creditsDetailed);
         return this;
     }
 
     public RepositoryAdvisory addCreditsDetailedItem(RepositoryAdvisoryCredit creditsDetailedItem) {
-        if (this.creditsDetailed == null) {
-            this.creditsDetailed = new ArrayList<>();
+        if (this.creditsDetailed == null || !this.creditsDetailed.isPresent()) {
+            this.creditsDetailed = JsonNullable.of(new ArrayList<>());
         }
-        this.creditsDetailed.add(creditsDetailedItem);
+        this.creditsDetailed.get().add(creditsDetailedItem);
         return this;
     }
 
@@ -791,24 +796,24 @@ public class RepositoryAdvisory {
             accessMode = Schema.AccessMode.READ_ONLY,
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("credits_detailed")
-    public List<@Valid RepositoryAdvisoryCredit> getCreditsDetailed() {
+    public JsonNullable<List<@Valid RepositoryAdvisoryCredit>> getCreditsDetailed() {
         return creditsDetailed;
     }
 
-    public void setCreditsDetailed(List<@Valid RepositoryAdvisoryCredit> creditsDetailed) {
+    public void setCreditsDetailed(JsonNullable<List<@Valid RepositoryAdvisoryCredit>> creditsDetailed) {
         this.creditsDetailed = creditsDetailed;
     }
 
     public RepositoryAdvisory collaboratingUsers(List<@Valid SimpleUser> collaboratingUsers) {
-        this.collaboratingUsers = collaboratingUsers;
+        this.collaboratingUsers = JsonNullable.of(collaboratingUsers);
         return this;
     }
 
     public RepositoryAdvisory addCollaboratingUsersItem(SimpleUser collaboratingUsersItem) {
-        if (this.collaboratingUsers == null) {
-            this.collaboratingUsers = new ArrayList<>();
+        if (this.collaboratingUsers == null || !this.collaboratingUsers.isPresent()) {
+            this.collaboratingUsers = JsonNullable.of(new ArrayList<>());
         }
-        this.collaboratingUsers.add(collaboratingUsersItem);
+        this.collaboratingUsers.get().add(collaboratingUsersItem);
         return this;
     }
 
@@ -823,24 +828,24 @@ public class RepositoryAdvisory {
             description = "A list of users that collaborate on the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("collaborating_users")
-    public List<@Valid SimpleUser> getCollaboratingUsers() {
+    public JsonNullable<List<@Valid SimpleUser>> getCollaboratingUsers() {
         return collaboratingUsers;
     }
 
-    public void setCollaboratingUsers(List<@Valid SimpleUser> collaboratingUsers) {
+    public void setCollaboratingUsers(JsonNullable<List<@Valid SimpleUser>> collaboratingUsers) {
         this.collaboratingUsers = collaboratingUsers;
     }
 
     public RepositoryAdvisory collaboratingTeams(List<@Valid Team> collaboratingTeams) {
-        this.collaboratingTeams = collaboratingTeams;
+        this.collaboratingTeams = JsonNullable.of(collaboratingTeams);
         return this;
     }
 
     public RepositoryAdvisory addCollaboratingTeamsItem(Team collaboratingTeamsItem) {
-        if (this.collaboratingTeams == null) {
-            this.collaboratingTeams = new ArrayList<>();
+        if (this.collaboratingTeams == null || !this.collaboratingTeams.isPresent()) {
+            this.collaboratingTeams = JsonNullable.of(new ArrayList<>());
         }
-        this.collaboratingTeams.add(collaboratingTeamsItem);
+        this.collaboratingTeams.get().add(collaboratingTeamsItem);
         return this;
     }
 
@@ -855,16 +860,16 @@ public class RepositoryAdvisory {
             description = "A list of teams that collaborate on the advisory.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("collaborating_teams")
-    public List<@Valid Team> getCollaboratingTeams() {
+    public JsonNullable<List<@Valid Team>> getCollaboratingTeams() {
         return collaboratingTeams;
     }
 
-    public void setCollaboratingTeams(List<@Valid Team> collaboratingTeams) {
+    public void setCollaboratingTeams(JsonNullable<List<@Valid Team>> collaboratingTeams) {
         this.collaboratingTeams = collaboratingTeams;
     }
 
     public RepositoryAdvisory privateFork(SimpleRepository privateFork) {
-        this.privateFork = privateFork;
+        this.privateFork = JsonNullable.of(privateFork);
         return this;
     }
 
@@ -879,11 +884,11 @@ public class RepositoryAdvisory {
             description = "A temporary private fork of the advisory's repository for collaborating on a fix.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("private_fork")
-    public SimpleRepository getPrivateFork() {
+    public JsonNullable<SimpleRepository> getPrivateFork() {
         return privateFork;
     }
 
-    public void setPrivateFork(SimpleRepository privateFork) {
+    public void setPrivateFork(JsonNullable<SimpleRepository> privateFork) {
         this.privateFork = privateFork;
     }
 
@@ -914,7 +919,7 @@ public class RepositoryAdvisory {
                 && Objects.equals(this.withdrawnAt, repositoryAdvisory.withdrawnAt)
                 && Objects.equals(this.submission, repositoryAdvisory.submission)
                 && Objects.equals(this.vulnerabilities, repositoryAdvisory.vulnerabilities)
-                && Objects.equals(this.cvssSeverities, repositoryAdvisory.cvssSeverities)
+                && equalsNullable(this.cvssSeverities, repositoryAdvisory.cvssSeverities)
                 && Objects.equals(this.cwes, repositoryAdvisory.cwes)
                 && Objects.equals(this.cweIds, repositoryAdvisory.cweIds)
                 && Objects.equals(this.credits, repositoryAdvisory.credits)
@@ -922,6 +927,11 @@ public class RepositoryAdvisory {
                 && Objects.equals(this.collaboratingUsers, repositoryAdvisory.collaboratingUsers)
                 && Objects.equals(this.collaboratingTeams, repositoryAdvisory.collaboratingTeams)
                 && Objects.equals(this.privateFork, repositoryAdvisory.privateFork);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -945,7 +955,7 @@ public class RepositoryAdvisory {
                 withdrawnAt,
                 submission,
                 vulnerabilities,
-                cvssSeverities,
+                hashCodeNullable(cvssSeverities),
                 cwes,
                 cweIds,
                 credits,
@@ -953,6 +963,13 @@ public class RepositoryAdvisory {
                 collaboratingUsers,
                 collaboratingTeams,
                 privateFork);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

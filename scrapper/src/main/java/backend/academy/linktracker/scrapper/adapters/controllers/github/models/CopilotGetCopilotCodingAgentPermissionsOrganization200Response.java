@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CopilotGetCopilotCodingAgentPermissionsOrganization200Response
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("copilot_get_copilot_coding_agent_permissions_organization_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotGetCopilotCodingAgentPermissionsOrganization200Response {
 
@@ -59,7 +59,7 @@ public class CopilotGetCopilotCodingAgentPermissionsOrganization200Response {
 
     private EnabledRepositoriesEnum enabledRepositories;
 
-    private String selectedRepositoriesUrl;
+    private Optional<String> selectedRepositoriesUrl = Optional.empty();
 
     public CopilotGetCopilotCodingAgentPermissionsOrganization200Response() {
         super();
@@ -99,7 +99,7 @@ public class CopilotGetCopilotCodingAgentPermissionsOrganization200Response {
 
     public CopilotGetCopilotCodingAgentPermissionsOrganization200Response selectedRepositoriesUrl(
             String selectedRepositoriesUrl) {
-        this.selectedRepositoriesUrl = selectedRepositoriesUrl;
+        this.selectedRepositoriesUrl = Optional.ofNullable(selectedRepositoriesUrl);
         return this;
     }
 
@@ -113,11 +113,11 @@ public class CopilotGetCopilotCodingAgentPermissionsOrganization200Response {
                     "The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("selected_repositories_url")
-    public String getSelectedRepositoriesUrl() {
+    public Optional<String> getSelectedRepositoriesUrl() {
         return selectedRepositoriesUrl;
     }
 
-    public void setSelectedRepositoriesUrl(String selectedRepositoriesUrl) {
+    public void setSelectedRepositoriesUrl(Optional<String> selectedRepositoriesUrl) {
         this.selectedRepositoriesUrl = selectedRepositoriesUrl;
     }
 

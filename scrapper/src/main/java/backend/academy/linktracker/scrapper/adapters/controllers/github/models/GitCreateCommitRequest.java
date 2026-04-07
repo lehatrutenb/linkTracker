@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitCreateCommitRequest
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("git_create_commit_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateCommitRequest {
 
@@ -28,11 +28,11 @@ public class GitCreateCommitRequest {
     @Valid
     private List<String> parents = new ArrayList<>();
 
-    private GitCreateCommitRequestAuthor author;
+    private Optional<GitCreateCommitRequestAuthor> author = Optional.empty();
 
-    private GitCreateCommitRequestCommitter committer;
+    private Optional<GitCreateCommitRequestCommitter> committer = Optional.empty();
 
-    private String signature;
+    private Optional<String> signature = Optional.empty();
 
     public GitCreateCommitRequest() {
         super();
@@ -121,7 +121,7 @@ public class GitCreateCommitRequest {
     }
 
     public GitCreateCommitRequest author(GitCreateCommitRequestAuthor author) {
-        this.author = author;
+        this.author = Optional.ofNullable(author);
         return this;
     }
 
@@ -132,16 +132,16 @@ public class GitCreateCommitRequest {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author")
-    public GitCreateCommitRequestAuthor getAuthor() {
+    public Optional<GitCreateCommitRequestAuthor> getAuthor() {
         return author;
     }
 
-    public void setAuthor(GitCreateCommitRequestAuthor author) {
+    public void setAuthor(Optional<GitCreateCommitRequestAuthor> author) {
         this.author = author;
     }
 
     public GitCreateCommitRequest committer(GitCreateCommitRequestCommitter committer) {
-        this.committer = committer;
+        this.committer = Optional.ofNullable(committer);
         return this;
     }
 
@@ -152,16 +152,16 @@ public class GitCreateCommitRequest {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("committer")
-    public GitCreateCommitRequestCommitter getCommitter() {
+    public Optional<GitCreateCommitRequestCommitter> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(GitCreateCommitRequestCommitter committer) {
+    public void setCommitter(Optional<GitCreateCommitRequestCommitter> committer) {
         this.committer = committer;
     }
 
     public GitCreateCommitRequest signature(String signature) {
-        this.signature = signature;
+        this.signature = Optional.ofNullable(signature);
         return this;
     }
 
@@ -175,11 +175,11 @@ public class GitCreateCommitRequest {
                     "The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("signature")
-    public String getSignature() {
+    public Optional<String> getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(Optional<String> signature) {
         this.signature = signature;
     }
 

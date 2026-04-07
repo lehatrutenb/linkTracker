@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Manifest
@@ -17,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("manifest")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Manifest {
 
     private String name;
 
-    private ManifestFile file;
+    private Optional<ManifestFile> file = Optional.empty();
 
     @Valid
     private Map<String, MetadataValue> metadata = new HashMap<>();
@@ -67,7 +68,7 @@ public class Manifest {
     }
 
     public Manifest file(ManifestFile file) {
-        this.file = file;
+        this.file = Optional.ofNullable(file);
         return this;
     }
 
@@ -78,11 +79,11 @@ public class Manifest {
     @Valid
     @Schema(name = "file", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("file")
-    public ManifestFile getFile() {
+    public Optional<ManifestFile> getFile() {
         return file;
     }
 
-    public void setFile(ManifestFile file) {
+    public void setFile(Optional<ManifestFile> file) {
         this.file = file;
     }
 

@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProtectedBranchPullRequestReviewDismissalRestrictions
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("protected_branch_pull_request_review_dismissal_restrictions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProtectedBranchPullRequestReviewDismissalRestrictions {
 
@@ -30,11 +29,11 @@ public class ProtectedBranchPullRequestReviewDismissalRestrictions {
     @Valid
     private List<@Valid Integration> apps = new ArrayList<>();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String usersUrl;
+    private Optional<String> usersUrl = Optional.empty();
 
-    private String teamsUrl;
+    private Optional<String> teamsUrl = Optional.empty();
 
     public ProtectedBranchPullRequestReviewDismissalRestrictions users(List<@Valid SimpleUser> users) {
         this.users = users;
@@ -130,7 +129,7 @@ public class ProtectedBranchPullRequestReviewDismissalRestrictions {
     }
 
     public ProtectedBranchPullRequestReviewDismissalRestrictions url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -144,16 +143,16 @@ public class ProtectedBranchPullRequestReviewDismissalRestrictions {
                     "\"https://api.github.com/repos/the-org/an-org-repo/branches/master/protection/dismissal_restrictions\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public ProtectedBranchPullRequestReviewDismissalRestrictions usersUrl(String usersUrl) {
-        this.usersUrl = usersUrl;
+        this.usersUrl = Optional.ofNullable(usersUrl);
         return this;
     }
 
@@ -167,16 +166,16 @@ public class ProtectedBranchPullRequestReviewDismissalRestrictions {
                     "\"https://api.github.com/repos/the-org/an-org-repo/branches/master/protection/dismissal_restrictions/users\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("users_url")
-    public String getUsersUrl() {
+    public Optional<String> getUsersUrl() {
         return usersUrl;
     }
 
-    public void setUsersUrl(String usersUrl) {
+    public void setUsersUrl(Optional<String> usersUrl) {
         this.usersUrl = usersUrl;
     }
 
     public ProtectedBranchPullRequestReviewDismissalRestrictions teamsUrl(String teamsUrl) {
-        this.teamsUrl = teamsUrl;
+        this.teamsUrl = Optional.ofNullable(teamsUrl);
         return this;
     }
 
@@ -190,11 +189,11 @@ public class ProtectedBranchPullRequestReviewDismissalRestrictions {
                     "\"https://api.github.com/repos/the-org/an-org-repo/branches/master/protection/dismissal_restrictions/teams\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("teams_url")
-    public String getTeamsUrl() {
+    public Optional<String> getTeamsUrl() {
         return teamsUrl;
     }
 
-    public void setTeamsUrl(String teamsUrl) {
+    public void setTeamsUrl(Optional<String> teamsUrl) {
         this.teamsUrl = teamsUrl;
     }
 

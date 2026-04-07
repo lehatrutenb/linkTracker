@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,23 +19,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_issue_pull_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksIssuePullRequest {
 
-    private URI diffUrl;
+    private Optional<URI> diffUrl = Optional.empty();
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt = null;
+    private JsonNullable<OffsetDateTime> mergedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private URI patchUrl;
+    private Optional<URI> patchUrl = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
     public WebhooksIssuePullRequest diffUrl(URI diffUrl) {
-        this.diffUrl = diffUrl;
+        this.diffUrl = Optional.ofNullable(diffUrl);
         return this;
     }
 
@@ -45,16 +46,16 @@ public class WebhooksIssuePullRequest {
     @Valid
     @Schema(name = "diff_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("diff_url")
-    public URI getDiffUrl() {
+    public Optional<URI> getDiffUrl() {
         return diffUrl;
     }
 
-    public void setDiffUrl(URI diffUrl) {
+    public void setDiffUrl(Optional<URI> diffUrl) {
         this.diffUrl = diffUrl;
     }
 
     public WebhooksIssuePullRequest htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -65,16 +66,16 @@ public class WebhooksIssuePullRequest {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public WebhooksIssuePullRequest mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -85,16 +86,16 @@ public class WebhooksIssuePullRequest {
     @Valid
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public JsonNullable<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(JsonNullable<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
     public WebhooksIssuePullRequest patchUrl(URI patchUrl) {
-        this.patchUrl = patchUrl;
+        this.patchUrl = Optional.ofNullable(patchUrl);
         return this;
     }
 
@@ -105,16 +106,16 @@ public class WebhooksIssuePullRequest {
     @Valid
     @Schema(name = "patch_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("patch_url")
-    public URI getPatchUrl() {
+    public Optional<URI> getPatchUrl() {
         return patchUrl;
     }
 
-    public void setPatchUrl(URI patchUrl) {
+    public void setPatchUrl(Optional<URI> patchUrl) {
         this.patchUrl = patchUrl;
     }
 
     public WebhooksIssuePullRequest url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -125,11 +126,11 @@ public class WebhooksIssuePullRequest {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
@@ -144,14 +145,26 @@ public class WebhooksIssuePullRequest {
         WebhooksIssuePullRequest webhooksIssuePullRequest = (WebhooksIssuePullRequest) o;
         return Objects.equals(this.diffUrl, webhooksIssuePullRequest.diffUrl)
                 && Objects.equals(this.htmlUrl, webhooksIssuePullRequest.htmlUrl)
-                && Objects.equals(this.mergedAt, webhooksIssuePullRequest.mergedAt)
+                && equalsNullable(this.mergedAt, webhooksIssuePullRequest.mergedAt)
                 && Objects.equals(this.patchUrl, webhooksIssuePullRequest.patchUrl)
                 && Objects.equals(this.url, webhooksIssuePullRequest.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(diffUrl, htmlUrl, mergedAt, patchUrl, url);
+        return Objects.hash(diffUrl, htmlUrl, hashCodeNullable(mergedAt), patchUrl, url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

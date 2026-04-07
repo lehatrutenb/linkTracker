@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingPremiumRequestUsageReportUser
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("billing-premium-request-usage-report-user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingPremiumRequestUsageReportUser {
 
@@ -25,9 +25,9 @@ public class BillingPremiumRequestUsageReportUser {
 
     private String user;
 
-    private String product;
+    private Optional<String> product = Optional.empty();
 
-    private String model;
+    private Optional<String> model = Optional.empty();
 
     @Valid
     private List<@Valid BillingPremiumRequestUsageReportOrgUsageItemsInner> usageItems = new ArrayList<>();
@@ -93,7 +93,7 @@ public class BillingPremiumRequestUsageReportUser {
     }
 
     public BillingPremiumRequestUsageReportUser product(String product) {
-        this.product = product;
+        this.product = Optional.ofNullable(product);
         return this;
     }
 
@@ -106,16 +106,16 @@ public class BillingPremiumRequestUsageReportUser {
             description = "The product for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("product")
-    public String getProduct() {
+    public Optional<String> getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(Optional<String> product) {
         this.product = product;
     }
 
     public BillingPremiumRequestUsageReportUser model(String model) {
-        this.model = model;
+        this.model = Optional.ofNullable(model);
         return this;
     }
 
@@ -128,11 +128,11 @@ public class BillingPremiumRequestUsageReportUser {
             description = "The model for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("model")
-    public String getModel() {
+    public Optional<String> getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(Optional<String> model) {
         this.model = model;
     }
 

@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CopilotIdeCodeCompletionsEditorsInnerModelsInner
@@ -17,23 +14,23 @@ import java.util.Objects;
 @JsonTypeName("copilot_ide_code_completions_editors_inner_models_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Boolean isCustomModel;
+    private Optional<Boolean> isCustomModel = Optional.empty();
 
-    private String customModelTrainingDate = null;
+    private JsonNullable<String> customModelTrainingDate = JsonNullable.<String>undefined();
 
-    private Long totalEngagedUsers;
+    private Optional<Long> totalEngagedUsers = Optional.empty();
 
     @Valid
     private List<@Valid CopilotIdeCodeCompletionsEditorsInnerModelsInnerLanguagesInner> languages = new ArrayList<>();
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -47,16 +44,16 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
                     "Name of the model used for Copilot code completion suggestions. If the default model is used will appear as 'default'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInner isCustomModel(Boolean isCustomModel) {
-        this.isCustomModel = isCustomModel;
+        this.isCustomModel = Optional.ofNullable(isCustomModel);
         return this;
     }
 
@@ -69,16 +66,16 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
             description = "Indicates whether a model is custom or default.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_custom_model")
-    public Boolean getIsCustomModel() {
+    public Optional<Boolean> getIsCustomModel() {
         return isCustomModel;
     }
 
-    public void setIsCustomModel(Boolean isCustomModel) {
+    public void setIsCustomModel(Optional<Boolean> isCustomModel) {
         this.isCustomModel = isCustomModel;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInner customModelTrainingDate(String customModelTrainingDate) {
-        this.customModelTrainingDate = customModelTrainingDate;
+        this.customModelTrainingDate = JsonNullable.of(customModelTrainingDate);
         return this;
     }
 
@@ -91,16 +88,16 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
             description = "The training date for the custom model.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_model_training_date")
-    public String getCustomModelTrainingDate() {
+    public JsonNullable<String> getCustomModelTrainingDate() {
         return customModelTrainingDate;
     }
 
-    public void setCustomModelTrainingDate(String customModelTrainingDate) {
+    public void setCustomModelTrainingDate(JsonNullable<String> customModelTrainingDate) {
         this.customModelTrainingDate = customModelTrainingDate;
     }
 
     public CopilotIdeCodeCompletionsEditorsInnerModelsInner totalEngagedUsers(Long totalEngagedUsers) {
-        this.totalEngagedUsers = totalEngagedUsers;
+        this.totalEngagedUsers = Optional.ofNullable(totalEngagedUsers);
         return this;
     }
 
@@ -114,11 +111,11 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
                     "Number of users who accepted at least one Copilot code completion suggestion for the given editor, for the given language and model. Includes both full and partial acceptances.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_engaged_users")
-    public Long getTotalEngagedUsers() {
+    public Optional<Long> getTotalEngagedUsers() {
         return totalEngagedUsers;
     }
 
-    public void setTotalEngagedUsers(Long totalEngagedUsers) {
+    public void setTotalEngagedUsers(Optional<Long> totalEngagedUsers) {
         this.totalEngagedUsers = totalEngagedUsers;
     }
 
@@ -167,7 +164,7 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
                 (CopilotIdeCodeCompletionsEditorsInnerModelsInner) o;
         return Objects.equals(this.name, copilotIdeCodeCompletionsEditorsInnerModelsInner.name)
                 && Objects.equals(this.isCustomModel, copilotIdeCodeCompletionsEditorsInnerModelsInner.isCustomModel)
-                && Objects.equals(
+                && equalsNullable(
                         this.customModelTrainingDate,
                         copilotIdeCodeCompletionsEditorsInnerModelsInner.customModelTrainingDate)
                 && Objects.equals(
@@ -175,9 +172,22 @@ public class CopilotIdeCodeCompletionsEditorsInnerModelsInner {
                 && Objects.equals(this.languages, copilotIdeCodeCompletionsEditorsInnerModelsInner.languages);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, isCustomModel, customModelTrainingDate, totalEngagedUsers, languages);
+        return Objects.hash(
+                name, isCustomModel, hashCodeNullable(customModelTrainingDate), totalEngagedUsers, languages);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

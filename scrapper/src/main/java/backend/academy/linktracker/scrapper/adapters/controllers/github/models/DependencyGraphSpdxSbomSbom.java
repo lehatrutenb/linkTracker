@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DependencyGraphSpdxSbomSbom
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("dependency_graph_spdx_sbom_sbom")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependencyGraphSpdxSbomSbom {
 
@@ -25,7 +25,7 @@ public class DependencyGraphSpdxSbomSbom {
 
     private String spdxVersion;
 
-    private String comment;
+    private Optional<String> comment = Optional.empty();
 
     private DependencyGraphSpdxSbomSbomCreationInfo creationInfo;
 
@@ -114,7 +114,7 @@ public class DependencyGraphSpdxSbomSbom {
     }
 
     public DependencyGraphSpdxSbomSbom comment(String comment) {
-        this.comment = comment;
+        this.comment = Optional.ofNullable(comment);
         return this;
     }
 
@@ -129,11 +129,11 @@ public class DependencyGraphSpdxSbomSbom {
             description = "An optional comment about the SPDX document.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comment")
-    public String getComment() {
+    public Optional<String> getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(Optional<String> comment) {
         this.comment = comment;
     }
 

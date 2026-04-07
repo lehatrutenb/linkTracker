@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Feature options for code scanning
@@ -15,14 +15,14 @@ import java.util.Objects;
 @JsonTypeName("code_security_configuration_code_scanning_options")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityConfigurationCodeScanningOptions {
 
-    private Boolean allowAdvanced = null;
+    private JsonNullable<Boolean> allowAdvanced = JsonNullable.<Boolean>undefined();
 
     public CodeSecurityConfigurationCodeScanningOptions allowAdvanced(Boolean allowAdvanced) {
-        this.allowAdvanced = allowAdvanced;
+        this.allowAdvanced = JsonNullable.of(allowAdvanced);
         return this;
     }
 
@@ -35,11 +35,11 @@ public class CodeSecurityConfigurationCodeScanningOptions {
             description = "Whether to allow repos which use advanced setup",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_advanced")
-    public Boolean getAllowAdvanced() {
+    public JsonNullable<Boolean> getAllowAdvanced() {
         return allowAdvanced;
     }
 
-    public void setAllowAdvanced(Boolean allowAdvanced) {
+    public void setAllowAdvanced(JsonNullable<Boolean> allowAdvanced) {
         this.allowAdvanced = allowAdvanced;
     }
 
@@ -53,12 +53,24 @@ public class CodeSecurityConfigurationCodeScanningOptions {
         }
         CodeSecurityConfigurationCodeScanningOptions codeSecurityConfigurationCodeScanningOptions =
                 (CodeSecurityConfigurationCodeScanningOptions) o;
-        return Objects.equals(this.allowAdvanced, codeSecurityConfigurationCodeScanningOptions.allowAdvanced);
+        return equalsNullable(this.allowAdvanced, codeSecurityConfigurationCodeScanningOptions.allowAdvanced);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allowAdvanced);
+        return Objects.hash(hashCodeNullable(allowAdvanced));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

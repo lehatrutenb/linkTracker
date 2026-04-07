@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,15 +22,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2-field")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2Field {
 
     private Long id;
 
-    private Long issueFieldId;
+    private Optional<Long> issueFieldId = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
     private String projectUrl;
 
@@ -102,7 +102,7 @@ public class ProjectsV2Field {
     @Valid
     private List<@Valid ProjectsV2SingleSelectOptions> options = new ArrayList<>();
 
-    private ProjectsV2FieldConfiguration _configuration;
+    private Optional<ProjectsV2FieldConfiguration> _configuration = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -156,7 +156,7 @@ public class ProjectsV2Field {
     }
 
     public ProjectsV2Field issueFieldId(Long issueFieldId) {
-        this.issueFieldId = issueFieldId;
+        this.issueFieldId = Optional.ofNullable(issueFieldId);
         return this;
     }
 
@@ -169,16 +169,16 @@ public class ProjectsV2Field {
             description = "The ID of the issue field.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_field_id")
-    public Long getIssueFieldId() {
+    public Optional<Long> getIssueFieldId() {
         return issueFieldId;
     }
 
-    public void setIssueFieldId(Long issueFieldId) {
+    public void setIssueFieldId(Optional<Long> issueFieldId) {
         this.issueFieldId = issueFieldId;
     }
 
     public ProjectsV2Field nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -191,11 +191,11 @@ public class ProjectsV2Field {
             description = "The node ID of the field.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -295,7 +295,7 @@ public class ProjectsV2Field {
     }
 
     public ProjectsV2Field _configuration(ProjectsV2FieldConfiguration _configuration) {
-        this._configuration = _configuration;
+        this._configuration = Optional.ofNullable(_configuration);
         return this;
     }
 
@@ -306,11 +306,11 @@ public class ProjectsV2Field {
     @Valid
     @Schema(name = "configuration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("configuration")
-    public ProjectsV2FieldConfiguration getConfiguration() {
+    public Optional<ProjectsV2FieldConfiguration> getConfiguration() {
         return _configuration;
     }
 
-    public void setConfiguration(ProjectsV2FieldConfiguration _configuration) {
+    public void setConfiguration(Optional<ProjectsV2FieldConfiguration> _configuration) {
         this._configuration = _configuration;
     }
 

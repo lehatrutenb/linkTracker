@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The GitHub App associated with the status check.
@@ -17,18 +16,18 @@ import java.util.Objects;
 @JsonTypeName("rule_suite_required_status_checks_checks_inner_app")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuiteRequiredStatusChecksChecksInnerApp {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     public RuleSuiteRequiredStatusChecksChecksInnerApp id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -41,16 +40,16 @@ public class RuleSuiteRequiredStatusChecksChecksInnerApp {
             description = "The unique identifier of the GitHub App.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInnerApp slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -60,16 +59,16 @@ public class RuleSuiteRequiredStatusChecksChecksInnerApp {
      */
     @Schema(name = "slug", description = "The slug of the GitHub App.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public RuleSuiteRequiredStatusChecksChecksInnerApp name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -79,11 +78,11 @@ public class RuleSuiteRequiredStatusChecksChecksInnerApp {
      */
     @Schema(name = "name", description = "The name of the GitHub App.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 

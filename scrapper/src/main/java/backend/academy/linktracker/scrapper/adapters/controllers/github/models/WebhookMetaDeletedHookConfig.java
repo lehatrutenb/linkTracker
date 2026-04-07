@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookMetaDeletedHookConfig
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_meta_deleted_hook_config")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMetaDeletedHookConfig {
 
@@ -61,7 +61,7 @@ public class WebhookMetaDeletedHookConfig {
 
     private String insecureSsl;
 
-    private String secret;
+    private Optional<String> secret = Optional.empty();
 
     private URI url;
 
@@ -119,7 +119,7 @@ public class WebhookMetaDeletedHookConfig {
     }
 
     public WebhookMetaDeletedHookConfig secret(String secret) {
-        this.secret = secret;
+        this.secret = Optional.ofNullable(secret);
         return this;
     }
 
@@ -129,11 +129,11 @@ public class WebhookMetaDeletedHookConfig {
      */
     @Schema(name = "secret", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret")
-    public String getSecret() {
+    public Optional<String> getSecret() {
         return secret;
     }
 
-    public void setSecret(String secret) {
+    public void setSecret(Optional<String> secret) {
         this.secret = secret;
     }
 

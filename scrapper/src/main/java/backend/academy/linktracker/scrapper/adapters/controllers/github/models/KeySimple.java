@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("key-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class KeySimple {
 
@@ -27,10 +29,10 @@ public class KeySimple {
     private String key;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastUsed = null;
+    private JsonNullable<OffsetDateTime> lastUsed = JsonNullable.<OffsetDateTime>undefined();
 
     public KeySimple() {
         super();
@@ -85,7 +87,7 @@ public class KeySimple {
     }
 
     public KeySimple createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -96,16 +98,16 @@ public class KeySimple {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public KeySimple lastUsed(OffsetDateTime lastUsed) {
-        this.lastUsed = lastUsed;
+        this.lastUsed = JsonNullable.of(lastUsed);
         return this;
     }
 
@@ -116,11 +118,11 @@ public class KeySimple {
     @Valid
     @Schema(name = "last_used", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_used")
-    public OffsetDateTime getLastUsed() {
+    public JsonNullable<OffsetDateTime> getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(OffsetDateTime lastUsed) {
+    public void setLastUsed(JsonNullable<OffsetDateTime> lastUsed) {
         this.lastUsed = lastUsed;
     }
 
@@ -136,12 +138,24 @@ public class KeySimple {
         return Objects.equals(this.id, keySimple.id)
                 && Objects.equals(this.key, keySimple.key)
                 && Objects.equals(this.createdAt, keySimple.createdAt)
-                && Objects.equals(this.lastUsed, keySimple.lastUsed);
+                && equalsNullable(this.lastUsed, keySimple.lastUsed);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, key, createdAt, lastUsed);
+        return Objects.hash(id, key, createdAt, hashCodeNullable(lastUsed));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

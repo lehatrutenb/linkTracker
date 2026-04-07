@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * DependencyGraphDiffInner
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("dependency_graph_diff_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependencyGraphDiffInner {
 
@@ -68,11 +68,11 @@ public class DependencyGraphDiffInner {
 
     private String version;
 
-    private String packageUrl = null;
+    private JsonNullable<String> packageUrl = JsonNullable.<String>undefined();
 
-    private String license = null;
+    private JsonNullable<String> license = JsonNullable.<String>undefined();
 
-    private String sourceRepositoryUrl = null;
+    private JsonNullable<String> sourceRepositoryUrl = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid DependencyGraphDiffInnerVulnerabilitiesInner> vulnerabilities = new ArrayList<>();
@@ -139,9 +139,9 @@ public class DependencyGraphDiffInner {
         this.ecosystem = ecosystem;
         this.name = name;
         this.version = version;
-        this.packageUrl = packageUrl;
-        this.license = license;
-        this.sourceRepositoryUrl = sourceRepositoryUrl;
+        this.packageUrl = JsonNullable.of(packageUrl);
+        this.license = JsonNullable.of(license);
+        this.sourceRepositoryUrl = JsonNullable.of(sourceRepositoryUrl);
         this.vulnerabilities = vulnerabilities;
         this.scope = scope;
     }
@@ -247,7 +247,7 @@ public class DependencyGraphDiffInner {
     }
 
     public DependencyGraphDiffInner packageUrl(String packageUrl) {
-        this.packageUrl = packageUrl;
+        this.packageUrl = JsonNullable.of(packageUrl);
         return this;
     }
 
@@ -261,16 +261,16 @@ public class DependencyGraphDiffInner {
             example = "pkg:/npm/%40actions/core@1.1.0",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("package_url")
-    public String getPackageUrl() {
+    public JsonNullable<String> getPackageUrl() {
         return packageUrl;
     }
 
-    public void setPackageUrl(String packageUrl) {
+    public void setPackageUrl(JsonNullable<String> packageUrl) {
         this.packageUrl = packageUrl;
     }
 
     public DependencyGraphDiffInner license(String license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -281,16 +281,16 @@ public class DependencyGraphDiffInner {
     @NotNull
     @Schema(name = "license", example = "MIT", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public String getLicense() {
+    public JsonNullable<String> getLicense() {
         return license;
     }
 
-    public void setLicense(String license) {
+    public void setLicense(JsonNullable<String> license) {
         this.license = license;
     }
 
     public DependencyGraphDiffInner sourceRepositoryUrl(String sourceRepositoryUrl) {
-        this.sourceRepositoryUrl = sourceRepositoryUrl;
+        this.sourceRepositoryUrl = JsonNullable.of(sourceRepositoryUrl);
         return this;
     }
 
@@ -304,11 +304,11 @@ public class DependencyGraphDiffInner {
             example = "https://github.com/github/actions",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("source_repository_url")
-    public String getSourceRepositoryUrl() {
+    public JsonNullable<String> getSourceRepositoryUrl() {
         return sourceRepositoryUrl;
     }
 
-    public void setSourceRepositoryUrl(String sourceRepositoryUrl) {
+    public void setSourceRepositoryUrl(JsonNullable<String> sourceRepositoryUrl) {
         this.sourceRepositoryUrl = sourceRepositoryUrl;
     }
 

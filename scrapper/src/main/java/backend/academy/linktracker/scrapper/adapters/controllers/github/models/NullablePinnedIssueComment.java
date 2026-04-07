@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,14 +20,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-pinned-issue-comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullablePinnedIssueComment {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime pinnedAt;
 
-    private NullableSimpleUser pinnedBy = null;
+    private JsonNullable<NullableSimpleUser> pinnedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     public NullablePinnedIssueComment() {
         super();
@@ -38,7 +38,7 @@ public class NullablePinnedIssueComment {
      */
     public NullablePinnedIssueComment(OffsetDateTime pinnedAt, NullableSimpleUser pinnedBy) {
         this.pinnedAt = pinnedAt;
-        this.pinnedBy = pinnedBy;
+        this.pinnedBy = JsonNullable.of(pinnedBy);
     }
 
     public NullablePinnedIssueComment pinnedAt(OffsetDateTime pinnedAt) {
@@ -63,7 +63,7 @@ public class NullablePinnedIssueComment {
     }
 
     public NullablePinnedIssueComment pinnedBy(NullableSimpleUser pinnedBy) {
-        this.pinnedBy = pinnedBy;
+        this.pinnedBy = JsonNullable.of(pinnedBy);
         return this;
     }
 
@@ -75,11 +75,11 @@ public class NullablePinnedIssueComment {
     @Valid
     @Schema(name = "pinned_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pinned_by")
-    public NullableSimpleUser getPinnedBy() {
+    public JsonNullable<NullableSimpleUser> getPinnedBy() {
         return pinnedBy;
     }
 
-    public void setPinnedBy(NullableSimpleUser pinnedBy) {
+    public void setPinnedBy(JsonNullable<NullableSimpleUser> pinnedBy) {
         this.pinnedBy = pinnedBy;
     }
 

@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import org.springframework.lang.Nullable;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReposCreateDeploymentRequest
@@ -18,28 +15,28 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("repos_create_deployment_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateDeploymentRequest {
 
     private String ref;
 
-    private String task = "deploy";
+    private Optional<String> task = Optional.of("deploy");
 
-    private Boolean autoMerge = true;
+    private Optional<Boolean> autoMerge = Optional.of(true);
 
     @Valid
     private List<String> requiredContexts = new ArrayList<>();
 
-    private ReposCreateDeploymentRequestPayload payload;
+    private Optional<ReposCreateDeploymentRequestPayload> payload = Optional.empty();
 
-    private String environment = "production";
+    private Optional<String> environment = Optional.of("production");
 
-    private @Nullable String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private Boolean transientEnvironment = false;
+    private Optional<Boolean> transientEnvironment = Optional.of(false);
 
-    private Boolean productionEnvironment;
+    private Optional<Boolean> productionEnvironment = Optional.empty();
 
     public ReposCreateDeploymentRequest() {
         super();
@@ -76,7 +73,7 @@ public class ReposCreateDeploymentRequest {
     }
 
     public ReposCreateDeploymentRequest task(String task) {
-        this.task = task;
+        this.task = Optional.ofNullable(task);
         return this;
     }
 
@@ -89,16 +86,16 @@ public class ReposCreateDeploymentRequest {
             description = "Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("task")
-    public String getTask() {
+    public Optional<String> getTask() {
         return task;
     }
 
-    public void setTask(String task) {
+    public void setTask(Optional<String> task) {
         this.task = task;
     }
 
     public ReposCreateDeploymentRequest autoMerge(Boolean autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = Optional.ofNullable(autoMerge);
         return this;
     }
 
@@ -112,11 +109,11 @@ public class ReposCreateDeploymentRequest {
                     "Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("auto_merge")
-    public Boolean getAutoMerge() {
+    public Optional<Boolean> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(Boolean autoMerge) {
+    public void setAutoMerge(Optional<Boolean> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
@@ -152,7 +149,7 @@ public class ReposCreateDeploymentRequest {
     }
 
     public ReposCreateDeploymentRequest payload(ReposCreateDeploymentRequestPayload payload) {
-        this.payload = payload;
+        this.payload = Optional.ofNullable(payload);
         return this;
     }
 
@@ -163,16 +160,16 @@ public class ReposCreateDeploymentRequest {
     @Valid
     @Schema(name = "payload", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("payload")
-    public ReposCreateDeploymentRequestPayload getPayload() {
+    public Optional<ReposCreateDeploymentRequestPayload> getPayload() {
         return payload;
     }
 
-    public void setPayload(ReposCreateDeploymentRequestPayload payload) {
+    public void setPayload(Optional<ReposCreateDeploymentRequestPayload> payload) {
         this.payload = payload;
     }
 
     public ReposCreateDeploymentRequest environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -185,16 +182,16 @@ public class ReposCreateDeploymentRequest {
             description = "Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
-    public ReposCreateDeploymentRequest description(@Nullable String description) {
-        this.description = description;
+    public ReposCreateDeploymentRequest description(String description) {
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -207,16 +204,16 @@ public class ReposCreateDeploymentRequest {
             description = "Short description of the deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public @Nullable String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public ReposCreateDeploymentRequest transientEnvironment(Boolean transientEnvironment) {
-        this.transientEnvironment = transientEnvironment;
+        this.transientEnvironment = Optional.ofNullable(transientEnvironment);
         return this;
     }
 
@@ -230,16 +227,16 @@ public class ReposCreateDeploymentRequest {
                     "Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("transient_environment")
-    public Boolean getTransientEnvironment() {
+    public Optional<Boolean> getTransientEnvironment() {
         return transientEnvironment;
     }
 
-    public void setTransientEnvironment(Boolean transientEnvironment) {
+    public void setTransientEnvironment(Optional<Boolean> transientEnvironment) {
         this.transientEnvironment = transientEnvironment;
     }
 
     public ReposCreateDeploymentRequest productionEnvironment(Boolean productionEnvironment) {
-        this.productionEnvironment = productionEnvironment;
+        this.productionEnvironment = Optional.ofNullable(productionEnvironment);
         return this;
     }
 
@@ -253,11 +250,11 @@ public class ReposCreateDeploymentRequest {
                     "Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("production_environment")
-    public Boolean getProductionEnvironment() {
+    public Optional<Boolean> getProductionEnvironment() {
         return productionEnvironment;
     }
 
-    public void setProductionEnvironment(Boolean productionEnvironment) {
+    public void setProductionEnvironment(Optional<Boolean> productionEnvironment) {
         this.productionEnvironment = productionEnvironment;
     }
 
@@ -276,9 +273,14 @@ public class ReposCreateDeploymentRequest {
                 && Objects.equals(this.requiredContexts, reposCreateDeploymentRequest.requiredContexts)
                 && Objects.equals(this.payload, reposCreateDeploymentRequest.payload)
                 && Objects.equals(this.environment, reposCreateDeploymentRequest.environment)
-                && Objects.equals(this.description, reposCreateDeploymentRequest.description)
+                && equalsNullable(this.description, reposCreateDeploymentRequest.description)
                 && Objects.equals(this.transientEnvironment, reposCreateDeploymentRequest.transientEnvironment)
                 && Objects.equals(this.productionEnvironment, reposCreateDeploymentRequest.productionEnvironment);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -290,9 +292,16 @@ public class ReposCreateDeploymentRequest {
                 requiredContexts,
                 payload,
                 environment,
-                description,
+                hashCodeNullable(description),
                 transientEnvironment,
                 productionEnvironment);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

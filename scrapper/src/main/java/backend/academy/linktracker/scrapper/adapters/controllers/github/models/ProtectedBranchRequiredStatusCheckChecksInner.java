@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ProtectedBranchRequiredStatusCheckChecksInner
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("protected_branch_required_status_check_checks_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProtectedBranchRequiredStatusCheckChecksInner {
 
     private String context;
 
-    private Long appId = null;
+    private JsonNullable<Long> appId = JsonNullable.<Long>undefined();
 
     public ProtectedBranchRequiredStatusCheckChecksInner() {
         super();
@@ -31,7 +31,7 @@ public class ProtectedBranchRequiredStatusCheckChecksInner {
      */
     public ProtectedBranchRequiredStatusCheckChecksInner(String context, Long appId) {
         this.context = context;
-        this.appId = appId;
+        this.appId = JsonNullable.of(appId);
     }
 
     public ProtectedBranchRequiredStatusCheckChecksInner context(String context) {
@@ -55,7 +55,7 @@ public class ProtectedBranchRequiredStatusCheckChecksInner {
     }
 
     public ProtectedBranchRequiredStatusCheckChecksInner appId(Long appId) {
-        this.appId = appId;
+        this.appId = JsonNullable.of(appId);
         return this;
     }
 
@@ -66,11 +66,11 @@ public class ProtectedBranchRequiredStatusCheckChecksInner {
     @NotNull
     @Schema(name = "app_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("app_id")
-    public Long getAppId() {
+    public JsonNullable<Long> getAppId() {
         return appId;
     }
 
-    public void setAppId(Long appId) {
+    public void setAppId(JsonNullable<Long> appId) {
         this.appId = appId;
     }
 

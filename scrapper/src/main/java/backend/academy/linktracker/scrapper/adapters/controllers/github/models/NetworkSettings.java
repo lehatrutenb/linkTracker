@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A hosted compute network settings resource.
@@ -15,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("network-settings")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NetworkSettings {
 
     private String id;
 
-    private String networkConfigurationId;
+    private Optional<String> networkConfigurationId = Optional.empty();
 
     private String name;
 
@@ -68,7 +68,7 @@ public class NetworkSettings {
     }
 
     public NetworkSettings networkConfigurationId(String networkConfigurationId) {
-        this.networkConfigurationId = networkConfigurationId;
+        this.networkConfigurationId = Optional.ofNullable(networkConfigurationId);
         return this;
     }
 
@@ -82,11 +82,11 @@ public class NetworkSettings {
             description = "The identifier of the network configuration that is using this settings resource.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_configuration_id")
-    public String getNetworkConfigurationId() {
+    public Optional<String> getNetworkConfigurationId() {
         return networkConfigurationId;
     }
 
-    public void setNetworkConfigurationId(String networkConfigurationId) {
+    public void setNetworkConfigurationId(Optional<String> networkConfigurationId) {
         this.networkConfigurationId = networkConfigurationId;
     }
 

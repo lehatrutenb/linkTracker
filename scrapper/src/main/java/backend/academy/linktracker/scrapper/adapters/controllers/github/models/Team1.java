@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Groups of organization members that gives permissions on specified repositories.
@@ -21,13 +23,13 @@ import java.util.Objects;
 @JsonTypeName("Team_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRequestedReviewersInner {
 
-    private Boolean deleted;
+    private Optional<Boolean> deleted = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI htmlUrl;
 
@@ -39,7 +41,7 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
 
     private String nodeId;
 
-    private TeamParent parent = null;
+    private JsonNullable<TeamParent> parent = JsonNullable.<TeamParent>undefined();
 
     private String permission;
 
@@ -107,7 +109,7 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
             URI repositoriesUrl,
             String slug,
             URI url) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.membersUrl = membersUrl;
@@ -121,7 +123,7 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
     }
 
     public Team1 deleted(Boolean deleted) {
-        this.deleted = deleted;
+        this.deleted = Optional.ofNullable(deleted);
         return this;
     }
 
@@ -131,16 +133,16 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
      */
     @Schema(name = "deleted", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deleted")
-    public Boolean getDeleted() {
+    public Optional<Boolean> getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(Optional<Boolean> deleted) {
         this.deleted = deleted;
     }
 
     public Team1 description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -151,11 +153,11 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
     @NotNull
     @Schema(name = "description", description = "Description of the team", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -261,7 +263,7 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
     }
 
     public Team1 parent(TeamParent parent) {
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         return this;
     }
 
@@ -272,11 +274,11 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
     @Valid
     @Schema(name = "parent", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent")
-    public TeamParent getParent() {
+    public JsonNullable<TeamParent> getParent() {
         return parent;
     }
 
-    public void setParent(TeamParent parent) {
+    public void setParent(JsonNullable<TeamParent> parent) {
         this.parent = parent;
     }
 
@@ -401,12 +403,17 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
                 && Objects.equals(this.membersUrl, team1.membersUrl)
                 && Objects.equals(this.name, team1.name)
                 && Objects.equals(this.nodeId, team1.nodeId)
-                && Objects.equals(this.parent, team1.parent)
+                && equalsNullable(this.parent, team1.parent)
                 && Objects.equals(this.permission, team1.permission)
                 && Objects.equals(this.privacy, team1.privacy)
                 && Objects.equals(this.repositoriesUrl, team1.repositoriesUrl)
                 && Objects.equals(this.slug, team1.slug)
                 && Objects.equals(this.url, team1.url);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -419,12 +426,19 @@ public class Team1 implements PullRequest6RequestedReviewersInner, PullRequestRe
                 membersUrl,
                 name,
                 nodeId,
-                parent,
+                hashCodeNullable(parent),
                 permission,
                 privacy,
                 repositoriesUrl,
                 slug,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

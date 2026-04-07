@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateStatusCheckProtectionRequest
@@ -17,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("repos_update_status_check_protection_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateStatusCheckProtectionRequest {
 
-    private Boolean strict;
+    private Optional<Boolean> strict = Optional.empty();
 
     @Deprecated
     @Valid
@@ -31,7 +30,7 @@ public class ReposUpdateStatusCheckProtectionRequest {
     private List<@Valid ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner> checks = new ArrayList<>();
 
     public ReposUpdateStatusCheckProtectionRequest strict(Boolean strict) {
-        this.strict = strict;
+        this.strict = Optional.ofNullable(strict);
         return this;
     }
 
@@ -44,11 +43,11 @@ public class ReposUpdateStatusCheckProtectionRequest {
             description = "Require branches to be up to date before merging.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("strict")
-    public Boolean getStrict() {
+    public Optional<Boolean> getStrict() {
         return strict;
     }
 
-    public void setStrict(Boolean strict) {
+    public void setStrict(Optional<Boolean> strict) {
         this.strict = strict;
     }
 

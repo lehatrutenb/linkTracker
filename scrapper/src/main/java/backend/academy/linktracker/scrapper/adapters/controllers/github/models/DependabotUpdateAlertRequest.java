@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DependabotUpdateAlertRequest
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("dependabot_update_alert_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotUpdateAlertRequest {
 
@@ -58,7 +58,7 @@ public class DependabotUpdateAlertRequest {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
     /**
      * **Required when `state` is `dismissed`.** A reason for dismissing the alert.
@@ -101,15 +101,15 @@ public class DependabotUpdateAlertRequest {
         }
     }
 
-    private DismissedReasonEnum dismissedReason;
+    private Optional<DismissedReasonEnum> dismissedReason = Optional.empty();
 
-    private String dismissedComment;
+    private Optional<@Size(max = 280) String> dismissedComment = Optional.empty();
 
     @Valid
     private List<String> assignees = new ArrayList<>();
 
     public DependabotUpdateAlertRequest state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -123,16 +123,16 @@ public class DependabotUpdateAlertRequest {
                     "The state of the Dependabot alert. A `dismissed_reason` must be provided when setting the state to `dismissed`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public DependabotUpdateAlertRequest dismissedReason(DismissedReasonEnum dismissedReason) {
-        this.dismissedReason = dismissedReason;
+        this.dismissedReason = Optional.ofNullable(dismissedReason);
         return this;
     }
 
@@ -145,16 +145,16 @@ public class DependabotUpdateAlertRequest {
             description = "**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_reason")
-    public DismissedReasonEnum getDismissedReason() {
+    public Optional<DismissedReasonEnum> getDismissedReason() {
         return dismissedReason;
     }
 
-    public void setDismissedReason(DismissedReasonEnum dismissedReason) {
+    public void setDismissedReason(Optional<DismissedReasonEnum> dismissedReason) {
         this.dismissedReason = dismissedReason;
     }
 
     public DependabotUpdateAlertRequest dismissedComment(String dismissedComment) {
-        this.dismissedComment = dismissedComment;
+        this.dismissedComment = Optional.ofNullable(dismissedComment);
         return this;
     }
 
@@ -162,17 +162,16 @@ public class DependabotUpdateAlertRequest {
      * An optional comment associated with dismissing the alert.
      * @return dismissedComment
      */
-    @Size(max = 280)
     @Schema(
             name = "dismissed_comment",
             description = "An optional comment associated with dismissing the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_comment")
-    public String getDismissedComment() {
+    public Optional<@Size(max = 280) String> getDismissedComment() {
         return dismissedComment;
     }
 
-    public void setDismissedComment(String dismissedComment) {
+    public void setDismissedComment(Optional<String> dismissedComment) {
         this.dismissedComment = dismissedComment;
     }
 

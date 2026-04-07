@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodeScanningAlertInstance
@@ -17,33 +14,33 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-alert-instance")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAlertInstance {
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
-    private String analysisKey;
+    private Optional<String> analysisKey = Optional.empty();
 
-    private String environment;
+    private Optional<String> environment = Optional.empty();
 
-    private String category;
+    private Optional<String> category = Optional.empty();
 
-    private CodeScanningAlertState state = null;
+    private JsonNullable<CodeScanningAlertState> state = JsonNullable.<CodeScanningAlertState>undefined();
 
-    private String commitSha;
+    private Optional<String> commitSha = Optional.empty();
 
-    private CodeScanningAlertInstanceMessage message;
+    private Optional<CodeScanningAlertInstanceMessage> message = Optional.empty();
 
-    private CodeScanningAlertLocation location;
+    private Optional<CodeScanningAlertLocation> location = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
     @Valid
     private List<CodeScanningAlertClassification> classifications = new ArrayList<>();
 
     public CodeScanningAlertInstance ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -57,16 +54,16 @@ public class CodeScanningAlertInstance {
                     "The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`, `refs/heads/<branch name>` or simply `<branch name>`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 
     public CodeScanningAlertInstance analysisKey(String analysisKey) {
-        this.analysisKey = analysisKey;
+        this.analysisKey = Optional.ofNullable(analysisKey);
         return this;
     }
 
@@ -80,16 +77,16 @@ public class CodeScanningAlertInstance {
                     "Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("analysis_key")
-    public String getAnalysisKey() {
+    public Optional<String> getAnalysisKey() {
         return analysisKey;
     }
 
-    public void setAnalysisKey(String analysisKey) {
+    public void setAnalysisKey(Optional<String> analysisKey) {
         this.analysisKey = analysisKey;
     }
 
     public CodeScanningAlertInstance environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -103,16 +100,16 @@ public class CodeScanningAlertInstance {
                     "Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
     public CodeScanningAlertInstance category(String category) {
-        this.category = category;
+        this.category = Optional.ofNullable(category);
         return this;
     }
 
@@ -126,16 +123,16 @@ public class CodeScanningAlertInstance {
                     "Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("category")
-    public String getCategory() {
+    public Optional<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Optional<String> category) {
         this.category = category;
     }
 
     public CodeScanningAlertInstance state(CodeScanningAlertState state) {
-        this.state = state;
+        this.state = JsonNullable.of(state);
         return this;
     }
 
@@ -146,16 +143,16 @@ public class CodeScanningAlertInstance {
     @Valid
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public CodeScanningAlertState getState() {
+    public JsonNullable<CodeScanningAlertState> getState() {
         return state;
     }
 
-    public void setState(CodeScanningAlertState state) {
+    public void setState(JsonNullable<CodeScanningAlertState> state) {
         this.state = state;
     }
 
     public CodeScanningAlertInstance commitSha(String commitSha) {
-        this.commitSha = commitSha;
+        this.commitSha = Optional.ofNullable(commitSha);
         return this;
     }
 
@@ -165,16 +162,16 @@ public class CodeScanningAlertInstance {
      */
     @Schema(name = "commit_sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_sha")
-    public String getCommitSha() {
+    public Optional<String> getCommitSha() {
         return commitSha;
     }
 
-    public void setCommitSha(String commitSha) {
+    public void setCommitSha(Optional<String> commitSha) {
         this.commitSha = commitSha;
     }
 
     public CodeScanningAlertInstance message(CodeScanningAlertInstanceMessage message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -185,16 +182,16 @@ public class CodeScanningAlertInstance {
     @Valid
     @Schema(name = "message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public CodeScanningAlertInstanceMessage getMessage() {
+    public Optional<CodeScanningAlertInstanceMessage> getMessage() {
         return message;
     }
 
-    public void setMessage(CodeScanningAlertInstanceMessage message) {
+    public void setMessage(Optional<CodeScanningAlertInstanceMessage> message) {
         this.message = message;
     }
 
     public CodeScanningAlertInstance location(CodeScanningAlertLocation location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -205,16 +202,16 @@ public class CodeScanningAlertInstance {
     @Valid
     @Schema(name = "location", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public CodeScanningAlertLocation getLocation() {
+    public Optional<CodeScanningAlertLocation> getLocation() {
         return location;
     }
 
-    public void setLocation(CodeScanningAlertLocation location) {
+    public void setLocation(Optional<CodeScanningAlertLocation> location) {
         this.location = location;
     }
 
     public CodeScanningAlertInstance htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -224,11 +221,11 @@ public class CodeScanningAlertInstance {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -277,7 +274,7 @@ public class CodeScanningAlertInstance {
                 && Objects.equals(this.analysisKey, codeScanningAlertInstance.analysisKey)
                 && Objects.equals(this.environment, codeScanningAlertInstance.environment)
                 && Objects.equals(this.category, codeScanningAlertInstance.category)
-                && Objects.equals(this.state, codeScanningAlertInstance.state)
+                && equalsNullable(this.state, codeScanningAlertInstance.state)
                 && Objects.equals(this.commitSha, codeScanningAlertInstance.commitSha)
                 && Objects.equals(this.message, codeScanningAlertInstance.message)
                 && Objects.equals(this.location, codeScanningAlertInstance.location)
@@ -285,10 +282,31 @@ public class CodeScanningAlertInstance {
                 && Objects.equals(this.classifications, codeScanningAlertInstance.classifications);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                ref, analysisKey, environment, category, state, commitSha, message, location, htmlUrl, classifications);
+                ref,
+                analysisKey,
+                environment,
+                category,
+                hashCodeNullable(state),
+                commitSha,
+                message,
+                location,
+                htmlUrl,
+                classifications);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

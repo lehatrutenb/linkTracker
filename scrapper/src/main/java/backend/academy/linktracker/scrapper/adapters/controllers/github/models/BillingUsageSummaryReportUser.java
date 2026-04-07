@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BillingUsageSummaryReportUser
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("billing-usage-summary-report-user")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BillingUsageSummaryReportUser {
 
@@ -25,11 +25,11 @@ public class BillingUsageSummaryReportUser {
 
     private String user;
 
-    private String repository;
+    private Optional<String> repository = Optional.empty();
 
-    private String product;
+    private Optional<String> product = Optional.empty();
 
-    private String sku;
+    private Optional<String> sku = Optional.empty();
 
     @Valid
     private List<@Valid BillingUsageSummaryReportOrgUsageItemsInner> usageItems = new ArrayList<>();
@@ -95,7 +95,7 @@ public class BillingUsageSummaryReportUser {
     }
 
     public BillingUsageSummaryReportUser repository(String repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -108,16 +108,16 @@ public class BillingUsageSummaryReportUser {
             description = "The name of the repository for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public String getRepository() {
+    public Optional<String> getRepository() {
         return repository;
     }
 
-    public void setRepository(String repository) {
+    public void setRepository(Optional<String> repository) {
         this.repository = repository;
     }
 
     public BillingUsageSummaryReportUser product(String product) {
-        this.product = product;
+        this.product = Optional.ofNullable(product);
         return this;
     }
 
@@ -130,16 +130,16 @@ public class BillingUsageSummaryReportUser {
             description = "The product for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("product")
-    public String getProduct() {
+    public Optional<String> getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(Optional<String> product) {
         this.product = product;
     }
 
     public BillingUsageSummaryReportUser sku(String sku) {
-        this.sku = sku;
+        this.sku = Optional.ofNullable(sku);
         return this;
     }
 
@@ -152,11 +152,11 @@ public class BillingUsageSummaryReportUser {
             description = "The SKU for the usage report.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sku")
-    public String getSku() {
+    public Optional<String> getSku() {
         return sku;
     }
 
-    public void setSku(String sku) {
+    public void setSku(Optional<String> sku) {
         this.sku = sku;
     }
 

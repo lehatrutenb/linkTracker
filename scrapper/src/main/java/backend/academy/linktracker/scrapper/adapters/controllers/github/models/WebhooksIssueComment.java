@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_issue_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksIssueComment {
 
@@ -89,7 +90,7 @@ public class WebhooksIssueComment {
 
     private String nodeId;
 
-    private Integration performedViaGithubApp = null;
+    private JsonNullable<Integration> performedViaGithubApp = JsonNullable.<Integration>undefined();
 
     private Reactions reactions;
 
@@ -98,9 +99,9 @@ public class WebhooksIssueComment {
 
     private URI url;
 
-    private User3 user = null;
+    private JsonNullable<User3> user = JsonNullable.<User3>undefined();
 
-    private NullablePinnedIssueComment pin = null;
+    private JsonNullable<NullablePinnedIssueComment> pin = JsonNullable.<NullablePinnedIssueComment>undefined();
 
     public WebhooksIssueComment() {
         super();
@@ -129,11 +130,11 @@ public class WebhooksIssueComment {
         this.id = id;
         this.issueUrl = issueUrl;
         this.nodeId = nodeId;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.reactions = reactions;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksIssueComment authorAssociation(AuthorAssociationEnum authorAssociation) {
@@ -286,7 +287,7 @@ public class WebhooksIssueComment {
     }
 
     public WebhooksIssueComment performedViaGithubApp(Integration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -298,11 +299,11 @@ public class WebhooksIssueComment {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public Integration getPerformedViaGithubApp() {
+    public JsonNullable<Integration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(Integration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<Integration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -370,7 +371,7 @@ public class WebhooksIssueComment {
     }
 
     public WebhooksIssueComment user(User3 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -382,16 +383,16 @@ public class WebhooksIssueComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User3 getUser() {
+    public JsonNullable<User3> getUser() {
         return user;
     }
 
-    public void setUser(User3 user) {
+    public void setUser(JsonNullable<User3> user) {
         this.user = user;
     }
 
     public WebhooksIssueComment pin(NullablePinnedIssueComment pin) {
-        this.pin = pin;
+        this.pin = JsonNullable.of(pin);
         return this;
     }
 
@@ -402,11 +403,11 @@ public class WebhooksIssueComment {
     @Valid
     @Schema(name = "pin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pin")
-    public NullablePinnedIssueComment getPin() {
+    public JsonNullable<NullablePinnedIssueComment> getPin() {
         return pin;
     }
 
-    public void setPin(NullablePinnedIssueComment pin) {
+    public void setPin(JsonNullable<NullablePinnedIssueComment> pin) {
         this.pin = pin;
     }
 
@@ -431,7 +432,12 @@ public class WebhooksIssueComment {
                 && Objects.equals(this.updatedAt, webhooksIssueComment.updatedAt)
                 && Objects.equals(this.url, webhooksIssueComment.url)
                 && Objects.equals(this.user, webhooksIssueComment.user)
-                && Objects.equals(this.pin, webhooksIssueComment.pin);
+                && equalsNullable(this.pin, webhooksIssueComment.pin);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -449,7 +455,14 @@ public class WebhooksIssueComment {
                 updatedAt,
                 url,
                 user,
-                pin);
+                hashCodeNullable(pin));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

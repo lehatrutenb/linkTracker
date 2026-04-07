@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectsV2ProjectEditedChangesPublic
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_project_edited_changes_public")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ProjectEditedChangesPublic {
 
-    private Boolean from;
+    private Optional<Boolean> from = Optional.empty();
 
-    private Boolean to;
+    private Optional<Boolean> to = Optional.empty();
 
     public WebhookProjectsV2ProjectEditedChangesPublic from(Boolean from) {
-        this.from = from;
+        this.from = Optional.ofNullable(from);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class WebhookProjectsV2ProjectEditedChangesPublic {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public Boolean getFrom() {
+    public Optional<Boolean> getFrom() {
         return from;
     }
 
-    public void setFrom(Boolean from) {
+    public void setFrom(Optional<Boolean> from) {
         this.from = from;
     }
 
     public WebhookProjectsV2ProjectEditedChangesPublic to(Boolean to) {
-        this.to = to;
+        this.to = Optional.ofNullable(to);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class WebhookProjectsV2ProjectEditedChangesPublic {
      */
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public Boolean getTo() {
+    public Optional<Boolean> getTo() {
         return to;
     }
 
-    public void setTo(Boolean to) {
+    public void setTo(Optional<Boolean> to) {
         this.to = to;
     }
 

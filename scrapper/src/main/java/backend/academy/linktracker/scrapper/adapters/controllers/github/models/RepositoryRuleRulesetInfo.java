@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
@@ -20,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-ruleset-info")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleRulesetInfo {
 
@@ -59,14 +58,14 @@ public class RepositoryRuleRulesetInfo {
         }
     }
 
-    private RulesetSourceTypeEnum rulesetSourceType;
+    private Optional<RulesetSourceTypeEnum> rulesetSourceType = Optional.empty();
 
-    private String rulesetSource;
+    private Optional<String> rulesetSource = Optional.empty();
 
-    private Long rulesetId;
+    private Optional<Long> rulesetId = Optional.empty();
 
     public RepositoryRuleRulesetInfo rulesetSourceType(RulesetSourceTypeEnum rulesetSourceType) {
-        this.rulesetSourceType = rulesetSourceType;
+        this.rulesetSourceType = Optional.ofNullable(rulesetSourceType);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class RepositoryRuleRulesetInfo {
             description = "The type of source for the ruleset that includes this rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ruleset_source_type")
-    public RulesetSourceTypeEnum getRulesetSourceType() {
+    public Optional<RulesetSourceTypeEnum> getRulesetSourceType() {
         return rulesetSourceType;
     }
 
-    public void setRulesetSourceType(RulesetSourceTypeEnum rulesetSourceType) {
+    public void setRulesetSourceType(Optional<RulesetSourceTypeEnum> rulesetSourceType) {
         this.rulesetSourceType = rulesetSourceType;
     }
 
     public RepositoryRuleRulesetInfo rulesetSource(String rulesetSource) {
-        this.rulesetSource = rulesetSource;
+        this.rulesetSource = Optional.ofNullable(rulesetSource);
         return this;
     }
 
@@ -101,16 +100,16 @@ public class RepositoryRuleRulesetInfo {
             description = "The name of the source of the ruleset that includes this rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ruleset_source")
-    public String getRulesetSource() {
+    public Optional<String> getRulesetSource() {
         return rulesetSource;
     }
 
-    public void setRulesetSource(String rulesetSource) {
+    public void setRulesetSource(Optional<String> rulesetSource) {
         this.rulesetSource = rulesetSource;
     }
 
     public RepositoryRuleRulesetInfo rulesetId(Long rulesetId) {
-        this.rulesetId = rulesetId;
+        this.rulesetId = Optional.ofNullable(rulesetId);
         return this;
     }
 
@@ -123,11 +122,11 @@ public class RepositoryRuleRulesetInfo {
             description = "The ID of the ruleset that includes this rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ruleset_id")
-    public Long getRulesetId() {
+    public Optional<Long> getRulesetId() {
         return rulesetId;
     }
 
-    public void setRulesetId(Long rulesetId) {
+    public void setRulesetId(Optional<Long> rulesetId) {
         this.rulesetId = rulesetId;
     }
 

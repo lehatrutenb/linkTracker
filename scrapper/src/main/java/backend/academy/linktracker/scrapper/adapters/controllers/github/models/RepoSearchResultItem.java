@@ -7,14 +7,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("repo-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepoSearchResultItem {
 
@@ -36,13 +37,13 @@ public class RepoSearchResultItem {
 
     private String fullName;
 
-    private NullableSimpleUser owner = null;
+    private JsonNullable<NullableSimpleUser> owner = JsonNullable.<NullableSimpleUser>undefined();
 
     private Boolean _private;
 
     private URI htmlUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean fork;
 
@@ -57,7 +58,7 @@ public class RepoSearchResultItem {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime pushedAt;
 
-    private URI homepage = null;
+    private JsonNullable<URI> homepage = JsonNullable.<URI>undefined();
 
     private Long size;
 
@@ -65,13 +66,13 @@ public class RepoSearchResultItem {
 
     private Long watchersCount;
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
     private Long forksCount;
 
     private Long openIssuesCount;
 
-    private String masterBranch;
+    private Optional<String> masterBranch = Optional.empty();
 
     private String defaultBranch;
 
@@ -166,7 +167,7 @@ public class RepoSearchResultItem {
     @Valid
     private List<String> topics = new ArrayList<>();
 
-    private URI mirrorUrl = null;
+    private JsonNullable<URI> mirrorUrl = JsonNullable.<URI>undefined();
 
     private Boolean hasIssues;
 
@@ -178,9 +179,9 @@ public class RepoSearchResultItem {
 
     private Boolean hasDownloads;
 
-    private Boolean hasDiscussions;
+    private Optional<Boolean> hasDiscussions = Optional.empty();
 
-    private Boolean hasPullRequests;
+    private Optional<Boolean> hasPullRequests = Optional.empty();
 
     /**
      * The policy controlling who can create pull requests: all or collaborators_only.
@@ -217,40 +218,40 @@ public class RepoSearchResultItem {
         }
     }
 
-    private PullRequestCreationPolicyEnum pullRequestCreationPolicy;
+    private Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy = Optional.empty();
 
-    private Boolean hasCommitComments;
+    private Optional<Boolean> hasCommitComments = Optional.empty();
 
     private Boolean archived;
 
     private Boolean disabled;
 
-    private String visibility;
+    private Optional<String> visibility = Optional.empty();
 
-    private NullableLicenseSimple license = null;
+    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
 
-    private FullRepositoryPermissions permissions;
+    private Optional<FullRepositoryPermissions> permissions = Optional.empty();
 
     @Valid
     private List<@Valid SearchResultTextMatchesInner> textMatches = new ArrayList<>();
 
-    private String tempCloneToken;
+    private Optional<String> tempCloneToken = Optional.empty();
 
-    private Boolean allowMergeCommit;
+    private Optional<Boolean> allowMergeCommit = Optional.empty();
 
-    private Boolean allowSquashMerge;
+    private Optional<Boolean> allowSquashMerge = Optional.empty();
 
-    private Boolean allowRebaseMerge;
+    private Optional<Boolean> allowRebaseMerge = Optional.empty();
 
-    private Boolean allowAutoMerge;
+    private Optional<Boolean> allowAutoMerge = Optional.empty();
 
-    private Boolean deleteBranchOnMerge;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.empty();
 
-    private Boolean allowForking;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
-    private Boolean webCommitSignoffRequired;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
 
     public RepoSearchResultItem() {
         super();
@@ -338,20 +339,20 @@ public class RepoSearchResultItem {
         this.nodeId = nodeId;
         this.name = name;
         this.fullName = fullName;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this._private = _private;
         this.htmlUrl = htmlUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.fork = fork;
         this.url = url;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.pushedAt = pushedAt;
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         this.size = size;
         this.stargazersCount = stargazersCount;
         this.watchersCount = watchersCount;
-        this.language = language;
+        this.language = JsonNullable.of(language);
         this.forksCount = forksCount;
         this.openIssuesCount = openIssuesCount;
         this.defaultBranch = defaultBranch;
@@ -399,7 +400,7 @@ public class RepoSearchResultItem {
         this.forks = forks;
         this.openIssues = openIssues;
         this.watchers = watchers;
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         this.hasIssues = hasIssues;
         this.hasProjects = hasProjects;
         this.hasPages = hasPages;
@@ -407,7 +408,7 @@ public class RepoSearchResultItem {
         this.hasDownloads = hasDownloads;
         this.archived = archived;
         this.disabled = disabled;
-        this.license = license;
+        this.license = JsonNullable.of(license);
     }
 
     public RepoSearchResultItem id(Long id) {
@@ -491,7 +492,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem owner(NullableSimpleUser owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -503,11 +504,11 @@ public class RepoSearchResultItem {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public NullableSimpleUser getOwner() {
+    public JsonNullable<NullableSimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(NullableSimpleUser owner) {
+    public void setOwner(JsonNullable<NullableSimpleUser> owner) {
         this.owner = owner;
     }
 
@@ -553,7 +554,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -564,11 +565,11 @@ public class RepoSearchResultItem {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -677,7 +678,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem homepage(URI homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -689,11 +690,11 @@ public class RepoSearchResultItem {
     @Valid
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("homepage")
-    public URI getHomepage() {
+    public JsonNullable<URI> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(URI homepage) {
+    public void setHomepage(JsonNullable<URI> homepage) {
         this.homepage = homepage;
     }
 
@@ -758,7 +759,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -769,11 +770,11 @@ public class RepoSearchResultItem {
     @NotNull
     @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
@@ -818,7 +819,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem masterBranch(String masterBranch) {
-        this.masterBranch = masterBranch;
+        this.masterBranch = Optional.ofNullable(masterBranch);
         return this;
     }
 
@@ -828,11 +829,11 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "master_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("master_branch")
-    public String getMasterBranch() {
+    public Optional<String> getMasterBranch() {
         return masterBranch;
     }
 
-    public void setMasterBranch(String masterBranch) {
+    public void setMasterBranch(Optional<String> masterBranch) {
         this.masterBranch = masterBranch;
     }
 
@@ -1779,7 +1780,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem mirrorUrl(URI mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1791,11 +1792,11 @@ public class RepoSearchResultItem {
     @Valid
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mirror_url")
-    public URI getMirrorUrl() {
+    public JsonNullable<URI> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(URI mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<URI> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1900,7 +1901,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem hasDiscussions(Boolean hasDiscussions) {
-        this.hasDiscussions = hasDiscussions;
+        this.hasDiscussions = Optional.ofNullable(hasDiscussions);
         return this;
     }
 
@@ -1910,16 +1911,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "has_discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_discussions")
-    public Boolean getHasDiscussions() {
+    public Optional<Boolean> getHasDiscussions() {
         return hasDiscussions;
     }
 
-    public void setHasDiscussions(Boolean hasDiscussions) {
+    public void setHasDiscussions(Optional<Boolean> hasDiscussions) {
         this.hasDiscussions = hasDiscussions;
     }
 
     public RepoSearchResultItem hasPullRequests(Boolean hasPullRequests) {
-        this.hasPullRequests = hasPullRequests;
+        this.hasPullRequests = Optional.ofNullable(hasPullRequests);
         return this;
     }
 
@@ -1929,16 +1930,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "has_pull_requests", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pull_requests")
-    public Boolean getHasPullRequests() {
+    public Optional<Boolean> getHasPullRequests() {
         return hasPullRequests;
     }
 
-    public void setHasPullRequests(Boolean hasPullRequests) {
+    public void setHasPullRequests(Optional<Boolean> hasPullRequests) {
         this.hasPullRequests = hasPullRequests;
     }
 
     public RepoSearchResultItem pullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
-        this.pullRequestCreationPolicy = pullRequestCreationPolicy;
+        this.pullRequestCreationPolicy = Optional.ofNullable(pullRequestCreationPolicy);
         return this;
     }
 
@@ -1951,16 +1952,16 @@ public class RepoSearchResultItem {
             description = "The policy controlling who can create pull requests: all or collaborators_only.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_creation_policy")
-    public PullRequestCreationPolicyEnum getPullRequestCreationPolicy() {
+    public Optional<PullRequestCreationPolicyEnum> getPullRequestCreationPolicy() {
         return pullRequestCreationPolicy;
     }
 
-    public void setPullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
+    public void setPullRequestCreationPolicy(Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy) {
         this.pullRequestCreationPolicy = pullRequestCreationPolicy;
     }
 
     public RepoSearchResultItem hasCommitComments(Boolean hasCommitComments) {
-        this.hasCommitComments = hasCommitComments;
+        this.hasCommitComments = Optional.ofNullable(hasCommitComments);
         return this;
     }
 
@@ -1970,11 +1971,11 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "has_commit_comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_commit_comments")
-    public Boolean getHasCommitComments() {
+    public Optional<Boolean> getHasCommitComments() {
         return hasCommitComments;
     }
 
-    public void setHasCommitComments(Boolean hasCommitComments) {
+    public void setHasCommitComments(Optional<Boolean> hasCommitComments) {
         this.hasCommitComments = hasCommitComments;
     }
 
@@ -2022,7 +2023,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -2035,16 +2036,16 @@ public class RepoSearchResultItem {
             description = "The repository visibility: public, private, or internal.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public RepoSearchResultItem license(NullableLicenseSimple license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -2056,16 +2057,16 @@ public class RepoSearchResultItem {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public NullableLicenseSimple getLicense() {
+    public JsonNullable<NullableLicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(NullableLicenseSimple license) {
+    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
         this.license = license;
     }
 
     public RepoSearchResultItem permissions(FullRepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -2076,11 +2077,11 @@ public class RepoSearchResultItem {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public FullRepositoryPermissions getPermissions() {
+    public Optional<FullRepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(FullRepositoryPermissions permissions) {
+    public void setPermissions(Optional<FullRepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -2113,7 +2114,7 @@ public class RepoSearchResultItem {
     }
 
     public RepoSearchResultItem tempCloneToken(String tempCloneToken) {
-        this.tempCloneToken = tempCloneToken;
+        this.tempCloneToken = Optional.ofNullable(tempCloneToken);
         return this;
     }
 
@@ -2123,16 +2124,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "temp_clone_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_clone_token")
-    public String getTempCloneToken() {
+    public Optional<String> getTempCloneToken() {
         return tempCloneToken;
     }
 
-    public void setTempCloneToken(String tempCloneToken) {
+    public void setTempCloneToken(Optional<String> tempCloneToken) {
         this.tempCloneToken = tempCloneToken;
     }
 
     public RepoSearchResultItem allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -2142,16 +2143,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "allow_merge_commit", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public RepoSearchResultItem allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -2161,16 +2162,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "allow_squash_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public RepoSearchResultItem allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -2180,16 +2181,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "allow_rebase_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public RepoSearchResultItem allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -2199,16 +2200,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "allow_auto_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public RepoSearchResultItem deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -2218,16 +2219,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "delete_branch_on_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public RepoSearchResultItem allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -2237,16 +2238,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "allow_forking", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public RepoSearchResultItem isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -2256,16 +2257,16 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
     public RepoSearchResultItem webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -2275,11 +2276,11 @@ public class RepoSearchResultItem {
      */
     @Schema(name = "web_commit_signoff_required", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 

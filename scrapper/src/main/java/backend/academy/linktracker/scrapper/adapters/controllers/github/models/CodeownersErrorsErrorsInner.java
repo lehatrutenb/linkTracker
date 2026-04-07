@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodeownersErrorsErrorsInner
@@ -14,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("codeowners_errors_errors_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeownersErrorsErrorsInner {
 
@@ -22,11 +24,11 @@ public class CodeownersErrorsErrorsInner {
 
     private Long column;
 
-    private String source;
+    private Optional<String> source = Optional.empty();
 
     private String kind;
 
-    private String suggestion = null;
+    private JsonNullable<String> suggestion = JsonNullable.<String>undefined();
 
     private String message;
 
@@ -96,7 +98,7 @@ public class CodeownersErrorsErrorsInner {
     }
 
     public CodeownersErrorsErrorsInner source(String source) {
-        this.source = source;
+        this.source = Optional.ofNullable(source);
         return this;
     }
 
@@ -110,11 +112,11 @@ public class CodeownersErrorsErrorsInner {
             description = "The contents of the line where the error occurs.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public String getSource() {
+    public Optional<String> getSource() {
         return source;
     }
 
-    public void setSource(String source) {
+    public void setSource(Optional<String> source) {
         this.source = source;
     }
 
@@ -143,7 +145,7 @@ public class CodeownersErrorsErrorsInner {
     }
 
     public CodeownersErrorsErrorsInner suggestion(String suggestion) {
-        this.suggestion = suggestion;
+        this.suggestion = JsonNullable.of(suggestion);
         return this;
     }
 
@@ -158,11 +160,11 @@ public class CodeownersErrorsErrorsInner {
                     "Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("suggestion")
-    public String getSuggestion() {
+    public JsonNullable<String> getSuggestion() {
         return suggestion;
     }
 
-    public void setSuggestion(String suggestion) {
+    public void setSuggestion(JsonNullable<String> suggestion) {
         this.suggestion = suggestion;
     }
 
@@ -228,14 +230,26 @@ public class CodeownersErrorsErrorsInner {
                 && Objects.equals(this.column, codeownersErrorsErrorsInner.column)
                 && Objects.equals(this.source, codeownersErrorsErrorsInner.source)
                 && Objects.equals(this.kind, codeownersErrorsErrorsInner.kind)
-                && Objects.equals(this.suggestion, codeownersErrorsErrorsInner.suggestion)
+                && equalsNullable(this.suggestion, codeownersErrorsErrorsInner.suggestion)
                 && Objects.equals(this.message, codeownersErrorsErrorsInner.message)
                 && Objects.equals(this.path, codeownersErrorsErrorsInner.path);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(line, column, source, kind, suggestion, message, path);
+        return Objects.hash(line, column, source, kind, hashCodeNullable(suggestion), message, path);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

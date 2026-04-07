@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Sample API response wrapper for demonstration purposes.
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("ApiResponse")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ModelApiResponse {
 
@@ -31,21 +31,21 @@ public class ModelApiResponse {
 
     private Long quotaRemaining;
 
-    private Long page;
+    private Optional<Long> page = Optional.empty();
 
-    private Long pageSize;
+    private Optional<Long> pageSize = Optional.empty();
 
-    private Long total;
+    private Optional<Long> total = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private Long backoff;
+    private Optional<Long> backoff = Optional.empty();
 
-    private Long errorId;
+    private Optional<Long> errorId = Optional.empty();
 
-    private String errorMessage;
+    private Optional<String> errorMessage = Optional.empty();
 
-    private String errorName;
+    private Optional<String> errorName = Optional.empty();
 
     public ModelApiResponse() {
         super();
@@ -166,7 +166,7 @@ public class ModelApiResponse {
     }
 
     public ModelApiResponse page(Long page) {
-        this.page = page;
+        this.page = Optional.ofNullable(page);
         return this;
     }
 
@@ -180,16 +180,16 @@ public class ModelApiResponse {
             description = "Current page number.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page")
-    public Long getPage() {
+    public Optional<Long> getPage() {
         return page;
     }
 
-    public void setPage(Long page) {
+    public void setPage(Optional<Long> page) {
         this.page = page;
     }
 
     public ModelApiResponse pageSize(Long pageSize) {
-        this.pageSize = pageSize;
+        this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
 
@@ -203,16 +203,16 @@ public class ModelApiResponse {
             description = "Number of items per page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page_size")
-    public Long getPageSize() {
+    public Optional<Long> getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(Long pageSize) {
+    public void setPageSize(Optional<Long> pageSize) {
         this.pageSize = pageSize;
     }
 
     public ModelApiResponse total(Long total) {
-        this.total = total;
+        this.total = Optional.ofNullable(total);
         return this;
     }
 
@@ -226,16 +226,16 @@ public class ModelApiResponse {
             description = "Total number of items available.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total")
-    public Long getTotal() {
+    public Optional<Long> getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Optional<Long> total) {
         this.total = total;
     }
 
     public ModelApiResponse type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -249,16 +249,16 @@ public class ModelApiResponse {
             description = "Type of items returned.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public ModelApiResponse backoff(Long backoff) {
-        this.backoff = backoff;
+        this.backoff = Optional.ofNullable(backoff);
         return this;
     }
 
@@ -271,16 +271,16 @@ public class ModelApiResponse {
             description = "Number of seconds to wait before making another request to avoid throttling.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("backoff")
-    public Long getBackoff() {
+    public Optional<Long> getBackoff() {
         return backoff;
     }
 
-    public void setBackoff(Long backoff) {
+    public void setBackoff(Optional<Long> backoff) {
         this.backoff = backoff;
     }
 
     public ModelApiResponse errorId(Long errorId) {
-        this.errorId = errorId;
+        this.errorId = Optional.ofNullable(errorId);
         return this;
     }
 
@@ -290,16 +290,16 @@ public class ModelApiResponse {
      */
     @Schema(name = "error_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_id")
-    public Long getErrorId() {
+    public Optional<Long> getErrorId() {
         return errorId;
     }
 
-    public void setErrorId(Long errorId) {
+    public void setErrorId(Optional<Long> errorId) {
         this.errorId = errorId;
     }
 
     public ModelApiResponse errorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+        this.errorMessage = Optional.ofNullable(errorMessage);
         return this;
     }
 
@@ -309,16 +309,16 @@ public class ModelApiResponse {
      */
     @Schema(name = "error_message", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_message")
-    public String getErrorMessage() {
+    public Optional<String> getErrorMessage() {
         return errorMessage;
     }
 
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(Optional<String> errorMessage) {
         this.errorMessage = errorMessage;
     }
 
     public ModelApiResponse errorName(String errorName) {
-        this.errorName = errorName;
+        this.errorName = Optional.ofNullable(errorName);
         return this;
     }
 
@@ -328,11 +328,11 @@ public class ModelApiResponse {
      */
     @Schema(name = "error_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_name")
-    public String getErrorName() {
+    public Optional<String> getErrorName() {
         return errorName;
     }
 
-    public void setErrorName(String errorName) {
+    public void setErrorName(Optional<String> errorName) {
         this.errorName = errorName;
     }
 

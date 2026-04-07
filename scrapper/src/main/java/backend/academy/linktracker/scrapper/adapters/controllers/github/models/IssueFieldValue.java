@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A value assigned to an issue field
@@ -18,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("issue-field-value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueFieldValue {
 
@@ -67,9 +68,10 @@ public class IssueFieldValue {
 
     private DataTypeEnum dataType;
 
-    private IssueFieldValueValue value = null;
+    private JsonNullable<IssueFieldValueValue> value = JsonNullable.<IssueFieldValueValue>undefined();
 
-    private IssueFieldValueSingleSelectOption singleSelectOption = null;
+    private JsonNullable<IssueFieldValueSingleSelectOption> singleSelectOption =
+            JsonNullable.<IssueFieldValueSingleSelectOption>undefined();
 
     public IssueFieldValue() {
         super();
@@ -82,7 +84,7 @@ public class IssueFieldValue {
         this.issueFieldId = issueFieldId;
         this.nodeId = nodeId;
         this.dataType = dataType;
-        this.value = value;
+        this.value = JsonNullable.of(value);
     }
 
     public IssueFieldValue issueFieldId(Long issueFieldId) {
@@ -154,7 +156,7 @@ public class IssueFieldValue {
     }
 
     public IssueFieldValue value(IssueFieldValueValue value) {
-        this.value = value;
+        this.value = JsonNullable.of(value);
         return this;
     }
 
@@ -166,16 +168,16 @@ public class IssueFieldValue {
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("value")
-    public IssueFieldValueValue getValue() {
+    public JsonNullable<IssueFieldValueValue> getValue() {
         return value;
     }
 
-    public void setValue(IssueFieldValueValue value) {
+    public void setValue(JsonNullable<IssueFieldValueValue> value) {
         this.value = value;
     }
 
     public IssueFieldValue singleSelectOption(IssueFieldValueSingleSelectOption singleSelectOption) {
-        this.singleSelectOption = singleSelectOption;
+        this.singleSelectOption = JsonNullable.of(singleSelectOption);
         return this;
     }
 
@@ -186,11 +188,11 @@ public class IssueFieldValue {
     @Valid
     @Schema(name = "single_select_option", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("single_select_option")
-    public IssueFieldValueSingleSelectOption getSingleSelectOption() {
+    public JsonNullable<IssueFieldValueSingleSelectOption> getSingleSelectOption() {
         return singleSelectOption;
     }
 
-    public void setSingleSelectOption(IssueFieldValueSingleSelectOption singleSelectOption) {
+    public void setSingleSelectOption(JsonNullable<IssueFieldValueSingleSelectOption> singleSelectOption) {
         this.singleSelectOption = singleSelectOption;
     }
 
@@ -207,12 +209,24 @@ public class IssueFieldValue {
                 && Objects.equals(this.nodeId, issueFieldValue.nodeId)
                 && Objects.equals(this.dataType, issueFieldValue.dataType)
                 && Objects.equals(this.value, issueFieldValue.value)
-                && Objects.equals(this.singleSelectOption, issueFieldValue.singleSelectOption);
+                && equalsNullable(this.singleSelectOption, issueFieldValue.singleSelectOption);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(issueFieldId, nodeId, dataType, value, singleSelectOption);
+        return Objects.hash(issueFieldId, nodeId, dataType, value, hashCodeNullable(singleSelectOption));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

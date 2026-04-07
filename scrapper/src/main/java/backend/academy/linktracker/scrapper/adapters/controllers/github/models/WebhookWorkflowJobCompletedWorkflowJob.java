@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookWorkflowJobCompletedWorkflowJob
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_workflow_job_completed_workflow_job")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookWorkflowJobCompletedWorkflowJob {
 
@@ -96,21 +96,21 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
 
     private String runUrl;
 
-    private BigDecimal runnerGroupId = null;
+    private JsonNullable<BigDecimal> runnerGroupId = JsonNullable.<BigDecimal>undefined();
 
-    private String runnerGroupName = null;
+    private JsonNullable<String> runnerGroupName = JsonNullable.<String>undefined();
 
-    private BigDecimal runnerId = null;
+    private JsonNullable<BigDecimal> runnerId = JsonNullable.<BigDecimal>undefined();
 
-    private String runnerName = null;
+    private JsonNullable<String> runnerName = JsonNullable.<String>undefined();
 
     private String startedAt;
 
     private String status;
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
-    private String workflowName = null;
+    private JsonNullable<String> workflowName = JsonNullable.<String>undefined();
 
     @Valid
     private List<Object> steps = new ArrayList<>();
@@ -161,14 +161,14 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
         this.runAttempt = runAttempt;
         this.runId = runId;
         this.runUrl = runUrl;
-        this.runnerGroupId = runnerGroupId;
-        this.runnerGroupName = runnerGroupName;
-        this.runnerId = runnerId;
-        this.runnerName = runnerName;
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
+        this.runnerId = JsonNullable.of(runnerId);
+        this.runnerName = JsonNullable.of(runnerName);
         this.startedAt = startedAt;
         this.status = status;
-        this.headBranch = headBranch;
-        this.workflowName = workflowName;
+        this.headBranch = JsonNullable.of(headBranch);
+        this.workflowName = JsonNullable.of(workflowName);
         this.steps = steps;
         this.url = url;
     }
@@ -445,7 +445,7 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob runnerGroupId(BigDecimal runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
         return this;
     }
 
@@ -457,16 +457,16 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     @Valid
     @Schema(name = "runner_group_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_id")
-    public BigDecimal getRunnerGroupId() {
+    public JsonNullable<BigDecimal> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(BigDecimal runnerGroupId) {
+    public void setRunnerGroupId(JsonNullable<BigDecimal> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob runnerGroupName(String runnerGroupName) {
-        this.runnerGroupName = runnerGroupName;
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
         return this;
     }
 
@@ -477,16 +477,16 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     @NotNull
     @Schema(name = "runner_group_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_name")
-    public String getRunnerGroupName() {
+    public JsonNullable<String> getRunnerGroupName() {
         return runnerGroupName;
     }
 
-    public void setRunnerGroupName(String runnerGroupName) {
+    public void setRunnerGroupName(JsonNullable<String> runnerGroupName) {
         this.runnerGroupName = runnerGroupName;
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob runnerId(BigDecimal runnerId) {
-        this.runnerId = runnerId;
+        this.runnerId = JsonNullable.of(runnerId);
         return this;
     }
 
@@ -498,16 +498,16 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     @Valid
     @Schema(name = "runner_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_id")
-    public BigDecimal getRunnerId() {
+    public JsonNullable<BigDecimal> getRunnerId() {
         return runnerId;
     }
 
-    public void setRunnerId(BigDecimal runnerId) {
+    public void setRunnerId(JsonNullable<BigDecimal> runnerId) {
         this.runnerId = runnerId;
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob runnerName(String runnerName) {
-        this.runnerName = runnerName;
+        this.runnerName = JsonNullable.of(runnerName);
         return this;
     }
 
@@ -518,11 +518,11 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     @NotNull
     @Schema(name = "runner_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_name")
-    public String getRunnerName() {
+    public JsonNullable<String> getRunnerName() {
         return runnerName;
     }
 
-    public void setRunnerName(String runnerName) {
+    public void setRunnerName(JsonNullable<String> runnerName) {
         this.runnerName = runnerName;
     }
 
@@ -567,7 +567,7 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -581,16 +581,16 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
             description = "The name of the current branch.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 
     public WebhookWorkflowJobCompletedWorkflowJob workflowName(String workflowName) {
-        this.workflowName = workflowName;
+        this.workflowName = JsonNullable.of(workflowName);
         return this;
     }
 
@@ -604,11 +604,11 @@ public class WebhookWorkflowJobCompletedWorkflowJob {
             description = "The name of the workflow.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_name")
-    public String getWorkflowName() {
+    public JsonNullable<String> getWorkflowName() {
         return workflowName;
     }
 
-    public void setWorkflowName(String workflowName) {
+    public void setWorkflowName(JsonNullable<String> workflowName) {
         this.workflowName = workflowName;
     }
 

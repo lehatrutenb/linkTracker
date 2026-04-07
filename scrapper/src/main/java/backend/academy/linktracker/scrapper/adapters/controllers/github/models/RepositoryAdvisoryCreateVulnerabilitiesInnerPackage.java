@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The name of the package affected by the vulnerability.
@@ -18,13 +19,13 @@ import java.util.Objects;
 @JsonTypeName("repository_advisory_create_vulnerabilities_inner_package")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisoryCreateVulnerabilitiesInnerPackage {
 
     private SecurityAdvisoryEcosystems ecosystem;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
     public RepositoryAdvisoryCreateVulnerabilitiesInnerPackage() {
         super();
@@ -59,7 +60,7 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInnerPackage {
     }
 
     public RepositoryAdvisoryCreateVulnerabilitiesInnerPackage name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -72,11 +73,11 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInnerPackage {
             description = "The unique package name within its ecosystem.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
@@ -91,12 +92,24 @@ public class RepositoryAdvisoryCreateVulnerabilitiesInnerPackage {
         RepositoryAdvisoryCreateVulnerabilitiesInnerPackage repositoryAdvisoryCreateVulnerabilitiesInnerPackage =
                 (RepositoryAdvisoryCreateVulnerabilitiesInnerPackage) o;
         return Objects.equals(this.ecosystem, repositoryAdvisoryCreateVulnerabilitiesInnerPackage.ecosystem)
-                && Objects.equals(this.name, repositoryAdvisoryCreateVulnerabilitiesInnerPackage.name);
+                && equalsNullable(this.name, repositoryAdvisoryCreateVulnerabilitiesInnerPackage.name);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ecosystem, name);
+        return Objects.hash(ecosystem, hashCodeNullable(name));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

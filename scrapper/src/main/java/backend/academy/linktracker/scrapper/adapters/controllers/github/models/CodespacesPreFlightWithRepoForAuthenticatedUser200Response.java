@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesPreFlightWithRepoForAuthenticatedUser200Response
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("codespaces_pre_flight_with_repo_for_authenticated_user_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesPreFlightWithRepoForAuthenticatedUser200Response {
 
-    private SimpleUser billableOwner;
+    private Optional<SimpleUser> billableOwner = Optional.empty();
 
-    private CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults defaults;
+    private Optional<CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults> defaults = Optional.empty();
 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200Response billableOwner(SimpleUser billableOwner) {
-        this.billableOwner = billableOwner;
+        this.billableOwner = Optional.ofNullable(billableOwner);
         return this;
     }
 
@@ -35,17 +34,17 @@ public class CodespacesPreFlightWithRepoForAuthenticatedUser200Response {
     @Valid
     @Schema(name = "billable_owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("billable_owner")
-    public SimpleUser getBillableOwner() {
+    public Optional<SimpleUser> getBillableOwner() {
         return billableOwner;
     }
 
-    public void setBillableOwner(SimpleUser billableOwner) {
+    public void setBillableOwner(Optional<SimpleUser> billableOwner) {
         this.billableOwner = billableOwner;
     }
 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200Response defaults(
             CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults defaults) {
-        this.defaults = defaults;
+        this.defaults = Optional.ofNullable(defaults);
         return this;
     }
 
@@ -56,11 +55,11 @@ public class CodespacesPreFlightWithRepoForAuthenticatedUser200Response {
     @Valid
     @Schema(name = "defaults", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("defaults")
-    public CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults getDefaults() {
+    public Optional<CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults> getDefaults() {
         return defaults;
     }
 
-    public void setDefaults(CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults defaults) {
+    public void setDefaults(Optional<CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults> defaults) {
         this.defaults = defaults;
     }
 

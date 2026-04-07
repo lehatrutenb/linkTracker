@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsCreateArtifactStorageRecordRequest
@@ -18,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("orgs_create_artifact_storage_record_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsCreateArtifactStorageRecordRequest {
 
@@ -26,15 +28,15 @@ public class OrgsCreateArtifactStorageRecordRequest {
 
     private String digest;
 
-    private String version;
+    private Optional<@Size(min = 1, max = 100) String> version = Optional.empty();
 
-    private URI artifactUrl;
+    private Optional<@Pattern(regexp = "^https://") URI> artifactUrl = Optional.empty();
 
-    private URI path;
+    private Optional<URI> path = Optional.empty();
 
     private URI registryUrl;
 
-    private String repository;
+    private Optional<String> repository = Optional.empty();
 
     /**
      * The status of the artifact (e.g., active, inactive).
@@ -73,9 +75,10 @@ public class OrgsCreateArtifactStorageRecordRequest {
         }
     }
 
-    private StatusEnum status = StatusEnum.ACTIVE;
+    private Optional<StatusEnum> status = Optional.of(StatusEnum.ACTIVE);
 
-    private String githubRepository;
+    private Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(min = 1, max = 100) String> githubRepository =
+            Optional.empty();
 
     public OrgsCreateArtifactStorageRecordRequest() {
         super();
@@ -142,7 +145,7 @@ public class OrgsCreateArtifactStorageRecordRequest {
     }
 
     public OrgsCreateArtifactStorageRecordRequest version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -150,23 +153,22 @@ public class OrgsCreateArtifactStorageRecordRequest {
      * The artifact version.
      * @return version
      */
-    @Size(min = 1, max = 100)
     @Schema(
             name = "version",
             example = "1.2.3",
             description = "The artifact version.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<@Size(min = 1, max = 100) String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 
     public OrgsCreateArtifactStorageRecordRequest artifactUrl(URI artifactUrl) {
-        this.artifactUrl = artifactUrl;
+        this.artifactUrl = Optional.ofNullable(artifactUrl);
         return this;
     }
 
@@ -175,23 +177,22 @@ public class OrgsCreateArtifactStorageRecordRequest {
      * @return artifactUrl
      */
     @Valid
-    @Pattern(regexp = "^https://")
     @Schema(
             name = "artifact_url",
             example = "https://reg.example.com/artifactory/bar/libfoo-1.2.3",
             description = "The URL where the artifact is stored.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_url")
-    public URI getArtifactUrl() {
+    public Optional<@Pattern(regexp = "^https://") URI> getArtifactUrl() {
         return artifactUrl;
     }
 
-    public void setArtifactUrl(URI artifactUrl) {
+    public void setArtifactUrl(Optional<URI> artifactUrl) {
         this.artifactUrl = artifactUrl;
     }
 
     public OrgsCreateArtifactStorageRecordRequest path(URI path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -206,11 +207,11 @@ public class OrgsCreateArtifactStorageRecordRequest {
             description = "The path of the artifact.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public URI getPath() {
+    public Optional<URI> getPath() {
         return path;
     }
 
-    public void setPath(URI path) {
+    public void setPath(Optional<URI> path) {
         this.path = path;
     }
 
@@ -242,7 +243,7 @@ public class OrgsCreateArtifactStorageRecordRequest {
     }
 
     public OrgsCreateArtifactStorageRecordRequest repository(String repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -256,16 +257,16 @@ public class OrgsCreateArtifactStorageRecordRequest {
             description = "The repository name within the registry.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public String getRepository() {
+    public Optional<String> getRepository() {
         return repository;
     }
 
-    public void setRepository(String repository) {
+    public void setRepository(Optional<String> repository) {
         this.repository = repository;
     }
 
     public OrgsCreateArtifactStorageRecordRequest status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -279,16 +280,16 @@ public class OrgsCreateArtifactStorageRecordRequest {
             description = "The status of the artifact (e.g., active, inactive).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
     public OrgsCreateArtifactStorageRecordRequest githubRepository(String githubRepository) {
-        this.githubRepository = githubRepository;
+        this.githubRepository = Optional.ofNullable(githubRepository);
         return this;
     }
 
@@ -296,8 +297,6 @@ public class OrgsCreateArtifactStorageRecordRequest {
      * The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.
      * @return githubRepository
      */
-    @Pattern(regexp = "^[A-Za-z0-9.\\-_]+$")
-    @Size(min = 1, max = 100)
     @Schema(
             name = "github_repository",
             example = "my-github-repo",
@@ -305,11 +304,11 @@ public class OrgsCreateArtifactStorageRecordRequest {
                     "The name of the GitHub repository associated with the artifact. This should be used when there are no provenance attestations available for the artifact. The repository must belong to the organization specified in the path parameter.  If a provenance attestation is available for the artifact, the API will use the repository information from the attestation instead of this parameter.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("github_repository")
-    public String getGithubRepository() {
+    public Optional<@Pattern(regexp = "^[A-Za-z0-9.\\-_]+$") @Size(min = 1, max = 100) String> getGithubRepository() {
         return githubRepository;
     }
 
-    public void setGithubRepository(String githubRepository) {
+    public void setGithubRepository(Optional<String> githubRepository) {
         this.githubRepository = githubRepository;
     }
 

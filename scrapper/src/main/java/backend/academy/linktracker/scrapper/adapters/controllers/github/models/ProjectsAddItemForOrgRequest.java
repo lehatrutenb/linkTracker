@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ProjectsAddItemForOrgRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("projects_add_item_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsAddItemForOrgRequest {
 
@@ -57,13 +57,13 @@ public class ProjectsAddItemForOrgRequest {
 
     private TypeEnum type;
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String owner;
+    private Optional<String> owner = Optional.empty();
 
-    private String repo;
+    private Optional<String> repo = Optional.empty();
 
-    private Long number;
+    private Optional<Long> number = Optional.empty();
 
     public ProjectsAddItemForOrgRequest() {
         super();
@@ -100,7 +100,7 @@ public class ProjectsAddItemForOrgRequest {
     }
 
     public ProjectsAddItemForOrgRequest id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -113,16 +113,16 @@ public class ProjectsAddItemForOrgRequest {
             description = "The unique identifier of the issue or pull request to add to the project.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public ProjectsAddItemForOrgRequest owner(String owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -135,16 +135,16 @@ public class ProjectsAddItemForOrgRequest {
             description = "The repository owner login.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public String getOwner() {
+    public Optional<String> getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Optional<String> owner) {
         this.owner = owner;
     }
 
     public ProjectsAddItemForOrgRequest repo(String repo) {
-        this.repo = repo;
+        this.repo = Optional.ofNullable(repo);
         return this;
     }
 
@@ -154,16 +154,16 @@ public class ProjectsAddItemForOrgRequest {
      */
     @Schema(name = "repo", description = "The repository name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repo")
-    public String getRepo() {
+    public Optional<String> getRepo() {
         return repo;
     }
 
-    public void setRepo(String repo) {
+    public void setRepo(Optional<String> repo) {
         this.repo = repo;
     }
 
     public ProjectsAddItemForOrgRequest number(Long number) {
-        this.number = number;
+        this.number = Optional.ofNullable(number);
         return this;
     }
 
@@ -176,11 +176,11 @@ public class ProjectsAddItemForOrgRequest {
             description = "The issue or pull request number.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("number")
-    public Long getNumber() {
+    public Optional<Long> getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(Optional<Long> number) {
         this.number = number;
     }
 

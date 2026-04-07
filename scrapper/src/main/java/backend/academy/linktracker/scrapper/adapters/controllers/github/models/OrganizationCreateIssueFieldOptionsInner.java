@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * OrganizationCreateIssueFieldOptionsInner
@@ -16,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("organization_create_issue_field_options_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationCreateIssueFieldOptionsInner {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * Color for the option.
@@ -109,7 +110,7 @@ public class OrganizationCreateIssueFieldOptionsInner {
     }
 
     public OrganizationCreateIssueFieldOptionsInner description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -122,11 +123,11 @@ public class OrganizationCreateIssueFieldOptionsInner {
             description = "Description of the option.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -184,14 +185,26 @@ public class OrganizationCreateIssueFieldOptionsInner {
         OrganizationCreateIssueFieldOptionsInner organizationCreateIssueFieldOptionsInner =
                 (OrganizationCreateIssueFieldOptionsInner) o;
         return Objects.equals(this.name, organizationCreateIssueFieldOptionsInner.name)
-                && Objects.equals(this.description, organizationCreateIssueFieldOptionsInner.description)
+                && equalsNullable(this.description, organizationCreateIssueFieldOptionsInner.description)
                 && Objects.equals(this.color, organizationCreateIssueFieldOptionsInner.color)
                 && Objects.equals(this.priority, organizationCreateIssueFieldOptionsInner.priority);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, color, priority);
+        return Objects.hash(name, hashCodeNullable(description), color, priority);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

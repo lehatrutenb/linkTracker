@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,40 +19,40 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("commit_comment_event_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitCommentEventComment {
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private String path = null;
+    private JsonNullable<String> path = JsonNullable.<String>undefined();
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
-    private Long line = null;
+    private JsonNullable<Long> line = JsonNullable.<Long>undefined();
 
-    private String commitId;
+    private Optional<String> commitId = Optional.empty();
 
-    private NullableSimpleUser user = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
-    private ReactionRollup reactions;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
+
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
     public CommitCommentEventComment htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -62,16 +63,16 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public CommitCommentEventComment url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -82,16 +83,16 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public CommitCommentEventComment id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -101,16 +102,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public CommitCommentEventComment nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -120,16 +121,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public CommitCommentEventComment body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -139,16 +140,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public CommitCommentEventComment path(String path) {
-        this.path = path;
+        this.path = JsonNullable.of(path);
         return this;
     }
 
@@ -158,16 +159,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public JsonNullable<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(JsonNullable<String> path) {
         this.path = path;
     }
 
     public CommitCommentEventComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -177,16 +178,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "position", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
     public CommitCommentEventComment line(Long line) {
-        this.line = line;
+        this.line = JsonNullable.of(line);
         return this;
     }
 
@@ -196,16 +197,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "line", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public JsonNullable<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(JsonNullable<Long> line) {
         this.line = line;
     }
 
     public CommitCommentEventComment commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = Optional.ofNullable(commitId);
         return this;
     }
 
@@ -215,16 +216,16 @@ public class CommitCommentEventComment {
      */
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public Optional<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(Optional<String> commitId) {
         this.commitId = commitId;
     }
 
     public CommitCommentEventComment user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -235,16 +236,16 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
     public CommitCommentEventComment createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -255,16 +256,16 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public CommitCommentEventComment updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -275,16 +276,16 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public CommitCommentEventComment reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -295,11 +296,11 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 
@@ -317,20 +318,44 @@ public class CommitCommentEventComment {
                 && Objects.equals(this.id, commitCommentEventComment.id)
                 && Objects.equals(this.nodeId, commitCommentEventComment.nodeId)
                 && Objects.equals(this.body, commitCommentEventComment.body)
-                && Objects.equals(this.path, commitCommentEventComment.path)
-                && Objects.equals(this.position, commitCommentEventComment.position)
-                && Objects.equals(this.line, commitCommentEventComment.line)
+                && equalsNullable(this.path, commitCommentEventComment.path)
+                && equalsNullable(this.position, commitCommentEventComment.position)
+                && equalsNullable(this.line, commitCommentEventComment.line)
                 && Objects.equals(this.commitId, commitCommentEventComment.commitId)
-                && Objects.equals(this.user, commitCommentEventComment.user)
+                && equalsNullable(this.user, commitCommentEventComment.user)
                 && Objects.equals(this.createdAt, commitCommentEventComment.createdAt)
                 && Objects.equals(this.updatedAt, commitCommentEventComment.updatedAt)
                 && Objects.equals(this.reactions, commitCommentEventComment.reactions);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                htmlUrl, url, id, nodeId, body, path, position, line, commitId, user, createdAt, updatedAt, reactions);
+                htmlUrl,
+                url,
+                id,
+                nodeId,
+                body,
+                hashCodeNullable(path),
+                hashCodeNullable(position),
+                hashCodeNullable(line),
+                commitId,
+                hashCodeNullable(user),
+                createdAt,
+                updatedAt,
+                reactions);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPackageUpdatedPackagePackageVersionPackageFilesInner
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_updated_package_package_version_package_files_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
 
@@ -28,11 +28,11 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
 
     private Long id;
 
-    private String md5 = null;
+    private JsonNullable<String> md5 = JsonNullable.<String>undefined();
 
     private String name;
 
-    private String sha1 = null;
+    private JsonNullable<String> sha1 = JsonNullable.<String>undefined();
 
     private String sha256;
 
@@ -65,9 +65,9 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
         this.createdAt = createdAt;
         this.downloadUrl = downloadUrl;
         this.id = id;
-        this.md5 = md5;
+        this.md5 = JsonNullable.of(md5);
         this.name = name;
-        this.sha1 = sha1;
+        this.sha1 = JsonNullable.of(sha1);
         this.sha256 = sha256;
         this.size = size;
         this.state = state;
@@ -156,7 +156,7 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
     }
 
     public WebhookPackageUpdatedPackagePackageVersionPackageFilesInner md5(String md5) {
-        this.md5 = md5;
+        this.md5 = JsonNullable.of(md5);
         return this;
     }
 
@@ -167,11 +167,11 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
     @NotNull
     @Schema(name = "md5", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("md5")
-    public String getMd5() {
+    public JsonNullable<String> getMd5() {
         return md5;
     }
 
-    public void setMd5(String md5) {
+    public void setMd5(JsonNullable<String> md5) {
         this.md5 = md5;
     }
 
@@ -196,7 +196,7 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
     }
 
     public WebhookPackageUpdatedPackagePackageVersionPackageFilesInner sha1(String sha1) {
-        this.sha1 = sha1;
+        this.sha1 = JsonNullable.of(sha1);
         return this;
     }
 
@@ -207,11 +207,11 @@ public class WebhookPackageUpdatedPackagePackageVersionPackageFilesInner {
     @NotNull
     @Schema(name = "sha1", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sha1")
-    public String getSha1() {
+    public JsonNullable<String> getSha1() {
         return sha1;
     }
 
-    public void setSha1(String sha1) {
+    public void setSha1(JsonNullable<String> sha1) {
         this.sha1 = sha1;
     }
 

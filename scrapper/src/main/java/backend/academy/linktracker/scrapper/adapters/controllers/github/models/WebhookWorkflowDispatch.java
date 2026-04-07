@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookWorkflowDispatch
@@ -17,18 +15,18 @@ import java.util.Objects;
 @JsonTypeName("webhook-workflow-dispatch")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookWorkflowDispatch {
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     @Valid
-    private Map<String, Object> inputs;
+    private JsonNullable<Map<String, Object>> inputs = JsonNullable.<Map<String, Object>>undefined();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private String ref;
 
@@ -47,7 +45,7 @@ public class WebhookWorkflowDispatch {
      */
     public WebhookWorkflowDispatch(
             Map<String, Object> inputs, String ref, RepositoryWebhooks repository, SimpleUser sender, String workflow) {
-        this.inputs = inputs;
+        this.inputs = JsonNullable.of(inputs);
         this.ref = ref;
         this.repository = repository;
         this.sender = sender;
@@ -55,7 +53,7 @@ public class WebhookWorkflowDispatch {
     }
 
     public WebhookWorkflowDispatch enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -66,24 +64,24 @@ public class WebhookWorkflowDispatch {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookWorkflowDispatch inputs(Map<String, Object> inputs) {
-        this.inputs = inputs;
+        this.inputs = JsonNullable.of(inputs);
         return this;
     }
 
     public WebhookWorkflowDispatch putInputsItem(String key, Object inputsItem) {
-        if (this.inputs == null) {
-            this.inputs = new HashMap<>();
+        if (this.inputs == null || !this.inputs.isPresent()) {
+            this.inputs = JsonNullable.of(new HashMap<>());
         }
-        this.inputs.put(key, inputsItem);
+        this.inputs.get().put(key, inputsItem);
         return this;
     }
 
@@ -94,16 +92,16 @@ public class WebhookWorkflowDispatch {
     @NotNull
     @Schema(name = "inputs", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("inputs")
-    public Map<String, Object> getInputs() {
+    public JsonNullable<Map<String, Object>> getInputs() {
         return inputs;
     }
 
-    public void setInputs(Map<String, Object> inputs) {
+    public void setInputs(JsonNullable<Map<String, Object>> inputs) {
         this.inputs = inputs;
     }
 
     public WebhookWorkflowDispatch installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -114,16 +112,16 @@ public class WebhookWorkflowDispatch {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookWorkflowDispatch organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -134,11 +132,11 @@ public class WebhookWorkflowDispatch {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

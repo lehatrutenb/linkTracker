@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookProjectsV2StatusUpdateEditedChangesStatus
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_status_update_edited_changes_status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
 
@@ -61,7 +61,7 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
         }
     }
 
-    private FromEnum from = null;
+    private JsonNullable<FromEnum> from = JsonNullable.<FromEnum>undefined();
 
     /**
      * Gets or Sets to
@@ -104,10 +104,10 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
         }
     }
 
-    private ToEnum to = null;
+    private JsonNullable<ToEnum> to = JsonNullable.<ToEnum>undefined();
 
     public WebhookProjectsV2StatusUpdateEditedChangesStatus from(FromEnum from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -117,16 +117,16 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public FromEnum getFrom() {
+    public JsonNullable<FromEnum> getFrom() {
         return from;
     }
 
-    public void setFrom(FromEnum from) {
+    public void setFrom(JsonNullable<FromEnum> from) {
         this.from = from;
     }
 
     public WebhookProjectsV2StatusUpdateEditedChangesStatus to(ToEnum to) {
-        this.to = to;
+        this.to = JsonNullable.of(to);
         return this;
     }
 
@@ -136,11 +136,11 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
      */
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public ToEnum getTo() {
+    public JsonNullable<ToEnum> getTo() {
         return to;
     }
 
-    public void setTo(ToEnum to) {
+    public void setTo(JsonNullable<ToEnum> to) {
         this.to = to;
     }
 
@@ -154,13 +154,25 @@ public class WebhookProjectsV2StatusUpdateEditedChangesStatus {
         }
         WebhookProjectsV2StatusUpdateEditedChangesStatus webhookProjectsV2StatusUpdateEditedChangesStatus =
                 (WebhookProjectsV2StatusUpdateEditedChangesStatus) o;
-        return Objects.equals(this.from, webhookProjectsV2StatusUpdateEditedChangesStatus.from)
-                && Objects.equals(this.to, webhookProjectsV2StatusUpdateEditedChangesStatus.to);
+        return equalsNullable(this.from, webhookProjectsV2StatusUpdateEditedChangesStatus.from)
+                && equalsNullable(this.to, webhookProjectsV2StatusUpdateEditedChangesStatus.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(hashCodeNullable(from), hashCodeNullable(to));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

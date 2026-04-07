@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * HostedComputeCreateNetworkConfigurationForOrgRequest
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("hosted_compute_create_network_configuration_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HostedComputeCreateNetworkConfigurationForOrgRequest {
 
@@ -60,7 +61,7 @@ public class HostedComputeCreateNetworkConfigurationForOrgRequest {
         }
     }
 
-    private ComputeServiceEnum computeService;
+    private Optional<ComputeServiceEnum> computeService = Optional.empty();
 
     @Valid
     private List<String> networkSettingsIds = new ArrayList<>();
@@ -102,7 +103,7 @@ public class HostedComputeCreateNetworkConfigurationForOrgRequest {
     }
 
     public HostedComputeCreateNetworkConfigurationForOrgRequest computeService(ComputeServiceEnum computeService) {
-        this.computeService = computeService;
+        this.computeService = Optional.ofNullable(computeService);
         return this;
     }
 
@@ -115,11 +116,11 @@ public class HostedComputeCreateNetworkConfigurationForOrgRequest {
             description = "The hosted compute service to use for the network configuration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("compute_service")
-    public ComputeServiceEnum getComputeService() {
+    public Optional<ComputeServiceEnum> getComputeService() {
         return computeService;
     }
 
-    public void setComputeService(ComputeServiceEnum computeService) {
+    public void setComputeService(Optional<ComputeServiceEnum> computeService) {
         this.computeService = computeService;
     }
 

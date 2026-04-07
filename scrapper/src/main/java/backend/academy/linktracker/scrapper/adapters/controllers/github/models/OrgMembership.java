@@ -7,12 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Org Membership
@@ -21,7 +23,7 @@ import java.util.Objects;
 @JsonTypeName("org-membership")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgMembership {
 
@@ -103,7 +105,7 @@ public class OrgMembership {
 
     private RoleEnum role;
 
-    private Boolean directMembership;
+    private Optional<Boolean> directMembership = Optional.empty();
 
     @Valid
     private List<String> enterpriseTeamsProvidingIndirectMembership = new ArrayList<>();
@@ -112,9 +114,9 @@ public class OrgMembership {
 
     private OrganizationSimple organization;
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
-    private OrgMembershipPermissions permissions;
+    private Optional<OrgMembershipPermissions> permissions = Optional.empty();
 
     public OrgMembership() {
         super();
@@ -135,7 +137,7 @@ public class OrgMembership {
         this.role = role;
         this.organizationUrl = organizationUrl;
         this.organization = organization;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public OrgMembership url(URI url) {
@@ -212,7 +214,7 @@ public class OrgMembership {
     }
 
     public OrgMembership directMembership(Boolean directMembership) {
-        this.directMembership = directMembership;
+        this.directMembership = Optional.ofNullable(directMembership);
         return this;
     }
 
@@ -226,11 +228,11 @@ public class OrgMembership {
             description = "Whether the user has direct membership in the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("direct_membership")
-    public Boolean getDirectMembership() {
+    public Optional<Boolean> getDirectMembership() {
         return directMembership;
     }
 
-    public void setDirectMembership(Boolean directMembership) {
+    public void setDirectMembership(Optional<Boolean> directMembership) {
         this.directMembership = directMembership;
     }
 
@@ -315,7 +317,7 @@ public class OrgMembership {
     }
 
     public OrgMembership user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -327,16 +329,16 @@ public class OrgMembership {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
     public OrgMembership permissions(OrgMembershipPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -347,11 +349,11 @@ public class OrgMembership {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public OrgMembershipPermissions getPermissions() {
+    public Optional<OrgMembershipPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(OrgMembershipPermissions permissions) {
+    public void setPermissions(Optional<OrgMembershipPermissions> permissions) {
         this.permissions = permissions;
     }
 

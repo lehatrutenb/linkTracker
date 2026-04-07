@@ -7,10 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,11 +18,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issues_update_milestone_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesUpdateMilestoneRequest {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
     /**
      * The state of the milestone. Either `open` or `closed`.
@@ -60,15 +59,15 @@ public class IssuesUpdateMilestoneRequest {
         }
     }
 
-    private StateEnum state = StateEnum.OPEN;
+    private Optional<StateEnum> state = Optional.of(StateEnum.OPEN);
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime dueOn;
+    private Optional<OffsetDateTime> dueOn = Optional.empty();
 
     public IssuesUpdateMilestoneRequest title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -81,16 +80,16 @@ public class IssuesUpdateMilestoneRequest {
             description = "The title of the milestone.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
     public IssuesUpdateMilestoneRequest state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -103,16 +102,16 @@ public class IssuesUpdateMilestoneRequest {
             description = "The state of the milestone. Either `open` or `closed`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public IssuesUpdateMilestoneRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -125,16 +124,16 @@ public class IssuesUpdateMilestoneRequest {
             description = "A description of the milestone.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public IssuesUpdateMilestoneRequest dueOn(OffsetDateTime dueOn) {
-        this.dueOn = dueOn;
+        this.dueOn = Optional.ofNullable(dueOn);
         return this;
     }
 
@@ -149,11 +148,11 @@ public class IssuesUpdateMilestoneRequest {
                     "The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("due_on")
-    public OffsetDateTime getDueOn() {
+    public Optional<OffsetDateTime> getDueOn() {
         return dueOn;
     }
 
-    public void setDueOn(OffsetDateTime dueOn) {
+    public void setDueOn(Optional<OffsetDateTime> dueOn) {
         this.dueOn = dueOn;
     }
 

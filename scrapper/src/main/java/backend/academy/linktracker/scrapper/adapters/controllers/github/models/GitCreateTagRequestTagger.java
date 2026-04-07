@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("git_create_tag_request_tagger")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateTagRequestTagger {
 
@@ -29,7 +29,7 @@ public class GitCreateTagRequestTagger {
     private String email;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime date;
+    private Optional<OffsetDateTime> date = Optional.empty();
 
     public GitCreateTagRequestTagger() {
         super();
@@ -90,7 +90,7 @@ public class GitCreateTagRequestTagger {
     }
 
     public GitCreateTagRequestTagger date(OffsetDateTime date) {
-        this.date = date;
+        this.date = Optional.ofNullable(date);
         return this;
     }
 
@@ -105,11 +105,11 @@ public class GitCreateTagRequestTagger {
                     "When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("date")
-    public OffsetDateTime getDate() {
+    public Optional<OffsetDateTime> getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(Optional<OffsetDateTime> date) {
         this.date = date;
     }
 

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitCreateBlobRequest
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("git_create_blob_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitCreateBlobRequest {
 
     private String content;
 
-    private String encoding = "utf-8";
+    private Optional<String> encoding = Optional.of("utf-8");
 
     public GitCreateBlobRequest() {
         super();
@@ -54,7 +54,7 @@ public class GitCreateBlobRequest {
     }
 
     public GitCreateBlobRequest encoding(String encoding) {
-        this.encoding = encoding;
+        this.encoding = Optional.ofNullable(encoding);
         return this;
     }
 
@@ -67,11 +67,11 @@ public class GitCreateBlobRequest {
             description = "The encoding used for `content`. Currently, `\"utf-8\"` and `\"base64\"` are supported.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encoding")
-    public String getEncoding() {
+    public Optional<String> getEncoding() {
         return encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(Optional<String> encoding) {
         this.encoding = encoding;
     }
 

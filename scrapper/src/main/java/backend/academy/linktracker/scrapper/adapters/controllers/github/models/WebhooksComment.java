@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhooksComment
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("webhooks_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksComment {
 
@@ -84,7 +84,7 @@ public class WebhooksComment {
 
     private String nodeId;
 
-    private Long parentId = null;
+    private JsonNullable<Long> parentId = JsonNullable.<Long>undefined();
 
     private Reactions reactions;
 
@@ -92,7 +92,7 @@ public class WebhooksComment {
 
     private String updatedAt;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhooksComment() {
         super();
@@ -123,11 +123,11 @@ public class WebhooksComment {
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.nodeId = nodeId;
-        this.parentId = parentId;
+        this.parentId = JsonNullable.of(parentId);
         this.reactions = reactions;
         this.repositoryUrl = repositoryUrl;
         this.updatedAt = updatedAt;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksComment authorAssociation(AuthorAssociationEnum authorAssociation) {
@@ -294,7 +294,7 @@ public class WebhooksComment {
     }
 
     public WebhooksComment parentId(Long parentId) {
-        this.parentId = parentId;
+        this.parentId = JsonNullable.of(parentId);
         return this;
     }
 
@@ -305,11 +305,11 @@ public class WebhooksComment {
     @NotNull
     @Schema(name = "parent_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("parent_id")
-    public Long getParentId() {
+    public JsonNullable<Long> getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(JsonNullable<Long> parentId) {
         this.parentId = parentId;
     }
 
@@ -375,7 +375,7 @@ public class WebhooksComment {
     }
 
     public WebhooksComment user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -387,11 +387,11 @@ public class WebhooksComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

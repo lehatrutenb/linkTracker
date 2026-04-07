@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhooksSponsorship
@@ -15,21 +16,21 @@ import java.util.Objects;
 @JsonTypeName("webhooks_sponsorship")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksSponsorship {
 
     private String createdAt;
 
-    private WebhooksSponsorshipMaintainer maintainer;
+    private Optional<WebhooksSponsorshipMaintainer> maintainer = Optional.empty();
 
     private String nodeId;
 
     private String privacyLevel;
 
-    private User sponsor = null;
+    private JsonNullable<User> sponsor = JsonNullable.<User>undefined();
 
-    private User sponsorable = null;
+    private JsonNullable<User> sponsorable = JsonNullable.<User>undefined();
 
     private SponsorshipTier tier;
 
@@ -50,8 +51,8 @@ public class WebhooksSponsorship {
         this.createdAt = createdAt;
         this.nodeId = nodeId;
         this.privacyLevel = privacyLevel;
-        this.sponsor = sponsor;
-        this.sponsorable = sponsorable;
+        this.sponsor = JsonNullable.of(sponsor);
+        this.sponsorable = JsonNullable.of(sponsorable);
         this.tier = tier;
     }
 
@@ -76,7 +77,7 @@ public class WebhooksSponsorship {
     }
 
     public WebhooksSponsorship maintainer(WebhooksSponsorshipMaintainer maintainer) {
-        this.maintainer = maintainer;
+        this.maintainer = Optional.ofNullable(maintainer);
         return this;
     }
 
@@ -87,11 +88,11 @@ public class WebhooksSponsorship {
     @Valid
     @Schema(name = "maintainer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintainer")
-    public WebhooksSponsorshipMaintainer getMaintainer() {
+    public Optional<WebhooksSponsorshipMaintainer> getMaintainer() {
         return maintainer;
     }
 
-    public void setMaintainer(WebhooksSponsorshipMaintainer maintainer) {
+    public void setMaintainer(Optional<WebhooksSponsorshipMaintainer> maintainer) {
         this.maintainer = maintainer;
     }
 
@@ -136,7 +137,7 @@ public class WebhooksSponsorship {
     }
 
     public WebhooksSponsorship sponsor(User sponsor) {
-        this.sponsor = sponsor;
+        this.sponsor = JsonNullable.of(sponsor);
         return this;
     }
 
@@ -148,16 +149,16 @@ public class WebhooksSponsorship {
     @Valid
     @Schema(name = "sponsor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sponsor")
-    public User getSponsor() {
+    public JsonNullable<User> getSponsor() {
         return sponsor;
     }
 
-    public void setSponsor(User sponsor) {
+    public void setSponsor(JsonNullable<User> sponsor) {
         this.sponsor = sponsor;
     }
 
     public WebhooksSponsorship sponsorable(User sponsorable) {
-        this.sponsorable = sponsorable;
+        this.sponsorable = JsonNullable.of(sponsorable);
         return this;
     }
 
@@ -169,11 +170,11 @@ public class WebhooksSponsorship {
     @Valid
     @Schema(name = "sponsorable", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sponsorable")
-    public User getSponsorable() {
+    public JsonNullable<User> getSponsorable() {
         return sponsorable;
     }
 
-    public void setSponsorable(User sponsorable) {
+    public void setSponsorable(JsonNullable<User> sponsorable) {
         this.sponsorable = sponsorable;
     }
 

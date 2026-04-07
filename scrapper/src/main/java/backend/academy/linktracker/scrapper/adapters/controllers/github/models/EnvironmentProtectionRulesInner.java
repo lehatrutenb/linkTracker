@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * EnvironmentProtectionRulesInner
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("environment_protection_rules_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class EnvironmentProtectionRulesInner {
 
@@ -27,9 +27,9 @@ public class EnvironmentProtectionRulesInner {
 
     private String type;
 
-    private Long waitTimer;
+    private Optional<Long> waitTimer = Optional.empty();
 
-    private Boolean preventSelfReview;
+    private Optional<Boolean> preventSelfReview = Optional.empty();
 
     @Valid
     private List<@Valid PendingDeploymentReviewersInner> reviewers = new ArrayList<>();
@@ -108,7 +108,7 @@ public class EnvironmentProtectionRulesInner {
     }
 
     public EnvironmentProtectionRulesInner waitTimer(Long waitTimer) {
-        this.waitTimer = waitTimer;
+        this.waitTimer = Optional.ofNullable(waitTimer);
         return this;
     }
 
@@ -123,16 +123,16 @@ public class EnvironmentProtectionRulesInner {
                     "The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("wait_timer")
-    public Long getWaitTimer() {
+    public Optional<Long> getWaitTimer() {
         return waitTimer;
     }
 
-    public void setWaitTimer(Long waitTimer) {
+    public void setWaitTimer(Optional<Long> waitTimer) {
         this.waitTimer = waitTimer;
     }
 
     public EnvironmentProtectionRulesInner preventSelfReview(Boolean preventSelfReview) {
-        this.preventSelfReview = preventSelfReview;
+        this.preventSelfReview = Optional.ofNullable(preventSelfReview);
         return this;
     }
 
@@ -147,11 +147,11 @@ public class EnvironmentProtectionRulesInner {
                     "Whether deployments to this environment can be approved by the user who created the deployment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prevent_self_review")
-    public Boolean getPreventSelfReview() {
+    public Optional<Boolean> getPreventSelfReview() {
         return preventSelfReview;
     }
 
-    public void setPreventSelfReview(Boolean preventSelfReview) {
+    public void setPreventSelfReview(Optional<Boolean> preventSelfReview) {
         this.preventSelfReview = preventSelfReview;
     }
 

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsRepositoryPermissions
@@ -15,17 +15,17 @@ import java.util.Objects;
 @JsonTypeName("actions-repository-permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsRepositoryPermissions {
 
     private Boolean enabled;
 
-    private AllowedActions allowedActions;
+    private Optional<AllowedActions> allowedActions = Optional.empty();
 
-    private String selectedActionsUrl;
+    private Optional<String> selectedActionsUrl = Optional.empty();
 
-    private Boolean shaPinningRequired;
+    private Optional<Boolean> shaPinningRequired = Optional.empty();
 
     public ActionsRepositoryPermissions() {
         super();
@@ -62,7 +62,7 @@ public class ActionsRepositoryPermissions {
     }
 
     public ActionsRepositoryPermissions allowedActions(AllowedActions allowedActions) {
-        this.allowedActions = allowedActions;
+        this.allowedActions = Optional.ofNullable(allowedActions);
         return this;
     }
 
@@ -73,16 +73,16 @@ public class ActionsRepositoryPermissions {
     @Valid
     @Schema(name = "allowed_actions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allowed_actions")
-    public AllowedActions getAllowedActions() {
+    public Optional<AllowedActions> getAllowedActions() {
         return allowedActions;
     }
 
-    public void setAllowedActions(AllowedActions allowedActions) {
+    public void setAllowedActions(Optional<AllowedActions> allowedActions) {
         this.allowedActions = allowedActions;
     }
 
     public ActionsRepositoryPermissions selectedActionsUrl(String selectedActionsUrl) {
-        this.selectedActionsUrl = selectedActionsUrl;
+        this.selectedActionsUrl = Optional.ofNullable(selectedActionsUrl);
         return this;
     }
 
@@ -96,16 +96,16 @@ public class ActionsRepositoryPermissions {
                     "The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("selected_actions_url")
-    public String getSelectedActionsUrl() {
+    public Optional<String> getSelectedActionsUrl() {
         return selectedActionsUrl;
     }
 
-    public void setSelectedActionsUrl(String selectedActionsUrl) {
+    public void setSelectedActionsUrl(Optional<String> selectedActionsUrl) {
         this.selectedActionsUrl = selectedActionsUrl;
     }
 
     public ActionsRepositoryPermissions shaPinningRequired(Boolean shaPinningRequired) {
-        this.shaPinningRequired = shaPinningRequired;
+        this.shaPinningRequired = Optional.ofNullable(shaPinningRequired);
         return this;
     }
 
@@ -118,11 +118,11 @@ public class ActionsRepositoryPermissions {
             description = "Whether actions must be pinned to a full-length commit SHA.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha_pinning_required")
-    public Boolean getShaPinningRequired() {
+    public Optional<Boolean> getShaPinningRequired() {
         return shaPinningRequired;
     }
 
-    public void setShaPinningRequired(Boolean shaPinningRequired) {
+    public void setShaPinningRequired(Optional<Boolean> shaPinningRequired) {
         this.shaPinningRequired = shaPinningRequired;
     }
 

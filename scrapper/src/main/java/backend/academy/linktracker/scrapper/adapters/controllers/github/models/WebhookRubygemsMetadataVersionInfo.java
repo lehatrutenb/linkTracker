@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRubygemsMetadataVersionInfo
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_rubygems_metadata_version_info")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRubygemsMetadataVersionInfo {
 
-    private String version;
+    private Optional<String> version = Optional.empty();
 
     public WebhookRubygemsMetadataVersionInfo version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -31,11 +30,11 @@ public class WebhookRubygemsMetadataVersionInfo {
      */
     @Schema(name = "version", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 

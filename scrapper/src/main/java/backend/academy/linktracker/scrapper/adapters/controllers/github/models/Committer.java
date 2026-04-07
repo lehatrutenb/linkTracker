@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -16,18 +17,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Committer", description = "Metaproperties for Git author/committer information.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Committer {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime date;
+    private Optional<OffsetDateTime> date = Optional.empty();
 
-    private String email = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> email = JsonNullable.<String>undefined();
 
     private String name;
 
-    private String username;
+    private Optional<String> username = Optional.empty();
 
     public Committer() {
         super();
@@ -37,12 +38,12 @@ public class Committer {
      * Constructor with only required parameters
      */
     public Committer(String email, String name) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         this.name = name;
     }
 
     public Committer date(OffsetDateTime date) {
-        this.date = date;
+        this.date = Optional.ofNullable(date);
         return this;
     }
 
@@ -53,16 +54,16 @@ public class Committer {
     @Valid
     @Schema(name = "date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("date")
-    public OffsetDateTime getDate() {
+    public Optional<OffsetDateTime> getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(Optional<OffsetDateTime> date) {
         this.date = date;
     }
 
     public Committer email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -74,11 +75,11 @@ public class Committer {
     @jakarta.validation.constraints.Email
     @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -103,7 +104,7 @@ public class Committer {
     }
 
     public Committer username(String username) {
-        this.username = username;
+        this.username = Optional.ofNullable(username);
         return this;
     }
 
@@ -113,11 +114,11 @@ public class Committer {
      */
     @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public Optional<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Optional<String> username) {
         this.username = username;
     }
 

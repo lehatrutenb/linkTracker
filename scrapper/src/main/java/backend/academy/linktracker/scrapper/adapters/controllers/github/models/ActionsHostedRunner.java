@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("actions-hosted-runner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsHostedRunner {
 
@@ -30,9 +28,10 @@ public class ActionsHostedRunner {
 
     private String name;
 
-    private Long runnerGroupId;
+    private Optional<Long> runnerGroupId = Optional.empty();
 
-    private NullableActionsHostedRunnerPoolImage imageDetails = null;
+    private JsonNullable<NullableActionsHostedRunnerPoolImage> imageDetails =
+            JsonNullable.<NullableActionsHostedRunnerPoolImage>undefined();
 
     private ActionsHostedRunnerMachineSpec machineSizeDetails;
 
@@ -81,7 +80,7 @@ public class ActionsHostedRunner {
 
     private String platform;
 
-    private Long maximumRunners = 10L;
+    private Optional<Long> maximumRunners = Optional.of(10L);
 
     private Boolean publicIpEnabled;
 
@@ -89,9 +88,9 @@ public class ActionsHostedRunner {
     private List<@Valid PublicIp> publicIps = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastActiveOn = null;
+    private JsonNullable<OffsetDateTime> lastActiveOn = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean imageGen;
+    private Optional<Boolean> imageGen = Optional.empty();
 
     public ActionsHostedRunner() {
         super();
@@ -110,7 +109,7 @@ public class ActionsHostedRunner {
             Boolean publicIpEnabled) {
         this.id = id;
         this.name = name;
-        this.imageDetails = imageDetails;
+        this.imageDetails = JsonNullable.of(imageDetails);
         this.machineSizeDetails = machineSizeDetails;
         this.status = status;
         this.platform = platform;
@@ -166,7 +165,7 @@ public class ActionsHostedRunner {
     }
 
     public ActionsHostedRunner runnerGroupId(Long runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = Optional.ofNullable(runnerGroupId);
         return this;
     }
 
@@ -180,16 +179,16 @@ public class ActionsHostedRunner {
             description = "The unique identifier of the group that the hosted runner belongs to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_group_id")
-    public Long getRunnerGroupId() {
+    public Optional<Long> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(Long runnerGroupId) {
+    public void setRunnerGroupId(Optional<Long> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
     public ActionsHostedRunner imageDetails(NullableActionsHostedRunnerPoolImage imageDetails) {
-        this.imageDetails = imageDetails;
+        this.imageDetails = JsonNullable.of(imageDetails);
         return this;
     }
 
@@ -201,11 +200,11 @@ public class ActionsHostedRunner {
     @Valid
     @Schema(name = "image_details", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("image_details")
-    public NullableActionsHostedRunnerPoolImage getImageDetails() {
+    public JsonNullable<NullableActionsHostedRunnerPoolImage> getImageDetails() {
         return imageDetails;
     }
 
-    public void setImageDetails(NullableActionsHostedRunnerPoolImage imageDetails) {
+    public void setImageDetails(JsonNullable<NullableActionsHostedRunnerPoolImage> imageDetails) {
         this.imageDetails = imageDetails;
     }
 
@@ -279,7 +278,7 @@ public class ActionsHostedRunner {
     }
 
     public ActionsHostedRunner maximumRunners(Long maximumRunners) {
-        this.maximumRunners = maximumRunners;
+        this.maximumRunners = Optional.ofNullable(maximumRunners);
         return this;
     }
 
@@ -294,11 +293,11 @@ public class ActionsHostedRunner {
                     "The maximum amount of hosted runners. Runners will not scale automatically above this number. Use this setting to limit your cost.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maximum_runners")
-    public Long getMaximumRunners() {
+    public Optional<Long> getMaximumRunners() {
         return maximumRunners;
     }
 
-    public void setMaximumRunners(Long maximumRunners) {
+    public void setMaximumRunners(Optional<Long> maximumRunners) {
         this.maximumRunners = maximumRunners;
     }
 
@@ -358,7 +357,7 @@ public class ActionsHostedRunner {
     }
 
     public ActionsHostedRunner lastActiveOn(OffsetDateTime lastActiveOn) {
-        this.lastActiveOn = lastActiveOn;
+        this.lastActiveOn = JsonNullable.of(lastActiveOn);
         return this;
     }
 
@@ -373,16 +372,16 @@ public class ActionsHostedRunner {
             description = "The time at which the runner was last used, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_active_on")
-    public OffsetDateTime getLastActiveOn() {
+    public JsonNullable<OffsetDateTime> getLastActiveOn() {
         return lastActiveOn;
     }
 
-    public void setLastActiveOn(OffsetDateTime lastActiveOn) {
+    public void setLastActiveOn(JsonNullable<OffsetDateTime> lastActiveOn) {
         this.lastActiveOn = lastActiveOn;
     }
 
     public ActionsHostedRunner imageGen(Boolean imageGen) {
-        this.imageGen = imageGen;
+        this.imageGen = Optional.ofNullable(imageGen);
         return this;
     }
 
@@ -395,11 +394,11 @@ public class ActionsHostedRunner {
             description = "Whether custom image generation is enabled for the hosted runners.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("image_gen")
-    public Boolean getImageGen() {
+    public Optional<Boolean> getImageGen() {
         return imageGen;
     }
 
-    public void setImageGen(Boolean imageGen) {
+    public void setImageGen(Optional<Boolean> imageGen) {
         this.imageGen = imageGen;
     }
 
@@ -422,8 +421,13 @@ public class ActionsHostedRunner {
                 && Objects.equals(this.maximumRunners, actionsHostedRunner.maximumRunners)
                 && Objects.equals(this.publicIpEnabled, actionsHostedRunner.publicIpEnabled)
                 && Objects.equals(this.publicIps, actionsHostedRunner.publicIps)
-                && Objects.equals(this.lastActiveOn, actionsHostedRunner.lastActiveOn)
+                && equalsNullable(this.lastActiveOn, actionsHostedRunner.lastActiveOn)
                 && Objects.equals(this.imageGen, actionsHostedRunner.imageGen);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -439,8 +443,15 @@ public class ActionsHostedRunner {
                 maximumRunners,
                 publicIpEnabled,
                 publicIps,
-                lastActiveOn,
+                hashCodeNullable(lastActiveOn),
                 imageGen);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

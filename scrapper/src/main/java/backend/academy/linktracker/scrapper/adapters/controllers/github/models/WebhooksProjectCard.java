@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,11 +20,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_project_card")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksProjectCard {
 
-    private Long afterId = null;
+    private JsonNullable<Long> afterId = JsonNullable.<Long>undefined();
 
     private Boolean archived;
 
@@ -30,18 +32,18 @@ public class WebhooksProjectCard {
 
     private URI columnUrl;
 
-    private URI contentUrl;
+    private Optional<URI> contentUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private User creator = null;
+    private JsonNullable<User> creator = JsonNullable.<User>undefined();
 
     private Long id;
 
     private String nodeId;
 
-    private String note = null;
+    private JsonNullable<String> note = JsonNullable.<String>undefined();
 
     private URI projectUrl;
 
@@ -73,17 +75,17 @@ public class WebhooksProjectCard {
         this.columnId = columnId;
         this.columnUrl = columnUrl;
         this.createdAt = createdAt;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.id = id;
         this.nodeId = nodeId;
-        this.note = note;
+        this.note = JsonNullable.of(note);
         this.projectUrl = projectUrl;
         this.updatedAt = updatedAt;
         this.url = url;
     }
 
     public WebhooksProjectCard afterId(Long afterId) {
-        this.afterId = afterId;
+        this.afterId = JsonNullable.of(afterId);
         return this;
     }
 
@@ -93,11 +95,11 @@ public class WebhooksProjectCard {
      */
     @Schema(name = "after_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_id")
-    public Long getAfterId() {
+    public JsonNullable<Long> getAfterId() {
         return afterId;
     }
 
-    public void setAfterId(Long afterId) {
+    public void setAfterId(JsonNullable<Long> afterId) {
         this.afterId = afterId;
     }
 
@@ -166,7 +168,7 @@ public class WebhooksProjectCard {
     }
 
     public WebhooksProjectCard contentUrl(URI contentUrl) {
-        this.contentUrl = contentUrl;
+        this.contentUrl = Optional.ofNullable(contentUrl);
         return this;
     }
 
@@ -177,11 +179,11 @@ public class WebhooksProjectCard {
     @Valid
     @Schema(name = "content_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_url")
-    public URI getContentUrl() {
+    public Optional<URI> getContentUrl() {
         return contentUrl;
     }
 
-    public void setContentUrl(URI contentUrl) {
+    public void setContentUrl(Optional<URI> contentUrl) {
         this.contentUrl = contentUrl;
     }
 
@@ -207,7 +209,7 @@ public class WebhooksProjectCard {
     }
 
     public WebhooksProjectCard creator(User creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -219,11 +221,11 @@ public class WebhooksProjectCard {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public User getCreator() {
+    public JsonNullable<User> getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(JsonNullable<User> creator) {
         this.creator = creator;
     }
 
@@ -268,7 +270,7 @@ public class WebhooksProjectCard {
     }
 
     public WebhooksProjectCard note(String note) {
-        this.note = note;
+        this.note = JsonNullable.of(note);
         return this;
     }
 
@@ -279,11 +281,11 @@ public class WebhooksProjectCard {
     @NotNull
     @Schema(name = "note", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("note")
-    public String getNote() {
+    public JsonNullable<String> getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(JsonNullable<String> note) {
         this.note = note;
     }
 
@@ -359,7 +361,7 @@ public class WebhooksProjectCard {
             return false;
         }
         WebhooksProjectCard webhooksProjectCard = (WebhooksProjectCard) o;
-        return Objects.equals(this.afterId, webhooksProjectCard.afterId)
+        return equalsNullable(this.afterId, webhooksProjectCard.afterId)
                 && Objects.equals(this.archived, webhooksProjectCard.archived)
                 && Objects.equals(this.columnId, webhooksProjectCard.columnId)
                 && Objects.equals(this.columnUrl, webhooksProjectCard.columnUrl)
@@ -374,10 +376,15 @@ public class WebhooksProjectCard {
                 && Objects.equals(this.url, webhooksProjectCard.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                afterId,
+                hashCodeNullable(afterId),
                 archived,
                 columnId,
                 columnUrl,
@@ -390,6 +397,13 @@ public class WebhooksProjectCard {
                 projectUrl,
                 updatedAt,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

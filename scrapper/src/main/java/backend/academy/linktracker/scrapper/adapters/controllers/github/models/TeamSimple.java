@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Groups of organization members that gives permissions on specified repositories.
@@ -21,7 +22,7 @@ import java.util.Objects;
 @JsonTypeName("team-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamSimple {
 
@@ -35,13 +36,13 @@ public class TeamSimple {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private String permission;
 
-    private String privacy;
+    private Optional<String> privacy = Optional.empty();
 
-    private String notificationSetting;
+    private Optional<String> notificationSetting = Optional.empty();
 
     private URI htmlUrl;
 
@@ -49,7 +50,7 @@ public class TeamSimple {
 
     private String slug;
 
-    private String ldapDn;
+    private Optional<String> ldapDn = Optional.empty();
 
     /**
      * The ownership type of the team
@@ -88,9 +89,9 @@ public class TeamSimple {
 
     private TypeEnum type;
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
     public TeamSimple() {
         super();
@@ -116,7 +117,7 @@ public class TeamSimple {
         this.url = url;
         this.membersUrl = membersUrl;
         this.name = name;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.permission = permission;
         this.htmlUrl = htmlUrl;
         this.repositoriesUrl = repositoriesUrl;
@@ -241,7 +242,7 @@ public class TeamSimple {
     }
 
     public TeamSimple description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -256,11 +257,11 @@ public class TeamSimple {
             description = "Description of the team",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -289,7 +290,7 @@ public class TeamSimple {
     }
 
     public TeamSimple privacy(String privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -303,16 +304,16 @@ public class TeamSimple {
             description = "The level of privacy this team should have",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public String getPrivacy() {
+    public Optional<String> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(String privacy) {
+    public void setPrivacy(Optional<String> privacy) {
         this.privacy = privacy;
     }
 
     public TeamSimple notificationSetting(String notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -326,11 +327,11 @@ public class TeamSimple {
             description = "The notification setting the team has set",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public String getNotificationSetting() {
+    public Optional<String> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(String notificationSetting) {
+    public void setNotificationSetting(Optional<String> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
@@ -403,7 +404,7 @@ public class TeamSimple {
     }
 
     public TeamSimple ldapDn(String ldapDn) {
-        this.ldapDn = ldapDn;
+        this.ldapDn = Optional.ofNullable(ldapDn);
         return this;
     }
 
@@ -417,11 +418,11 @@ public class TeamSimple {
             description = "Distinguished Name (DN) that team maps to within LDAP environment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ldap_dn")
-    public String getLdapDn() {
+    public Optional<String> getLdapDn() {
         return ldapDn;
     }
 
-    public void setLdapDn(String ldapDn) {
+    public void setLdapDn(Optional<String> ldapDn) {
         this.ldapDn = ldapDn;
     }
 
@@ -446,7 +447,7 @@ public class TeamSimple {
     }
 
     public TeamSimple organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -460,16 +461,16 @@ public class TeamSimple {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public TeamSimple enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -483,11 +484,11 @@ public class TeamSimple {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 

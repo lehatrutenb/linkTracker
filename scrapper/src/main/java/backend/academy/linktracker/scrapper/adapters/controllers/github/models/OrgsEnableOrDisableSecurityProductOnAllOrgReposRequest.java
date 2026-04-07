@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("orgs_enable_or_disable_security_product_on_all_org_repos_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
 
@@ -55,10 +54,10 @@ public class OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
         }
     }
 
-    private QuerySuiteEnum querySuite;
+    private Optional<QuerySuiteEnum> querySuite = Optional.empty();
 
     public OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest querySuite(QuerySuiteEnum querySuite) {
-        this.querySuite = querySuite;
+        this.querySuite = Optional.ofNullable(querySuite);
         return this;
     }
 
@@ -72,11 +71,11 @@ public class OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
                     "CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured. If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("query_suite")
-    public QuerySuiteEnum getQuerySuite() {
+    public Optional<QuerySuiteEnum> getQuerySuite() {
         return querySuite;
     }
 
-    public void setQuerySuite(QuerySuiteEnum querySuite) {
+    public void setQuerySuite(Optional<QuerySuiteEnum> querySuite) {
         this.querySuite = querySuite;
     }
 

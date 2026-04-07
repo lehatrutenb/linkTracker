@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The Relationship a Team has with a role.
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("team-role-assignment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamRoleAssignment {
 
@@ -60,7 +61,7 @@ public class TeamRoleAssignment {
         }
     }
 
-    private AssignmentEnum assignment;
+    private Optional<AssignmentEnum> assignment = Optional.empty();
 
     private Long id;
 
@@ -70,15 +71,15 @@ public class TeamRoleAssignment {
 
     private String slug;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String privacy;
+    private Optional<String> privacy = Optional.empty();
 
-    private String notificationSetting;
+    private Optional<String> notificationSetting = Optional.empty();
 
     private String permission;
 
-    private TeamPermissions permissions;
+    private Optional<TeamPermissions> permissions = Optional.empty();
 
     private URI url;
 
@@ -88,7 +89,7 @@ public class TeamRoleAssignment {
 
     private URI repositoriesUrl;
 
-    private NullableTeamSimple parent = null;
+    private JsonNullable<NullableTeamSimple> parent = JsonNullable.<NullableTeamSimple>undefined();
 
     /**
      * The ownership type of the team
@@ -127,9 +128,9 @@ public class TeamRoleAssignment {
 
     private TypeEnum type;
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
     public TeamRoleAssignment() {
         super();
@@ -155,18 +156,18 @@ public class TeamRoleAssignment {
         this.nodeId = nodeId;
         this.name = name;
         this.slug = slug;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.permission = permission;
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.membersUrl = membersUrl;
         this.repositoriesUrl = repositoriesUrl;
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         this.type = type;
     }
 
     public TeamRoleAssignment assignment(AssignmentEnum assignment) {
-        this.assignment = assignment;
+        this.assignment = Optional.ofNullable(assignment);
         return this;
     }
 
@@ -180,11 +181,11 @@ public class TeamRoleAssignment {
             description = "Determines if the team has a direct, indirect, or mixed relationship to a role",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignment")
-    public AssignmentEnum getAssignment() {
+    public Optional<AssignmentEnum> getAssignment() {
         return assignment;
     }
 
-    public void setAssignment(AssignmentEnum assignment) {
+    public void setAssignment(Optional<AssignmentEnum> assignment) {
         this.assignment = assignment;
     }
 
@@ -269,7 +270,7 @@ public class TeamRoleAssignment {
     }
 
     public TeamRoleAssignment description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -280,16 +281,16 @@ public class TeamRoleAssignment {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public TeamRoleAssignment privacy(String privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -299,16 +300,16 @@ public class TeamRoleAssignment {
      */
     @Schema(name = "privacy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public String getPrivacy() {
+    public Optional<String> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(String privacy) {
+    public void setPrivacy(Optional<String> privacy) {
         this.privacy = privacy;
     }
 
     public TeamRoleAssignment notificationSetting(String notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -318,11 +319,11 @@ public class TeamRoleAssignment {
      */
     @Schema(name = "notification_setting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public String getNotificationSetting() {
+    public Optional<String> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(String notificationSetting) {
+    public void setNotificationSetting(Optional<String> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
@@ -347,7 +348,7 @@ public class TeamRoleAssignment {
     }
 
     public TeamRoleAssignment permissions(TeamPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -358,11 +359,11 @@ public class TeamRoleAssignment {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public TeamPermissions getPermissions() {
+    public Optional<TeamPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(TeamPermissions permissions) {
+    public void setPermissions(Optional<TeamPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -453,7 +454,7 @@ public class TeamRoleAssignment {
     }
 
     public TeamRoleAssignment parent(NullableTeamSimple parent) {
-        this.parent = parent;
+        this.parent = JsonNullable.of(parent);
         return this;
     }
 
@@ -465,11 +466,11 @@ public class TeamRoleAssignment {
     @Valid
     @Schema(name = "parent", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("parent")
-    public NullableTeamSimple getParent() {
+    public JsonNullable<NullableTeamSimple> getParent() {
         return parent;
     }
 
-    public void setParent(NullableTeamSimple parent) {
+    public void setParent(JsonNullable<NullableTeamSimple> parent) {
         this.parent = parent;
     }
 
@@ -494,7 +495,7 @@ public class TeamRoleAssignment {
     }
 
     public TeamRoleAssignment organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -508,16 +509,16 @@ public class TeamRoleAssignment {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public TeamRoleAssignment enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -531,11 +532,11 @@ public class TeamRoleAssignment {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 

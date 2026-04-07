@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectsV2ProjectEditedChanges
@@ -15,20 +14,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_project_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ProjectEditedChanges {
 
-    private WebhookMemberEditedChangesPermission description;
+    private Optional<WebhookMemberEditedChangesPermission> description = Optional.empty();
 
-    private WebhookProjectsV2ProjectEditedChangesPublic _public;
+    private Optional<WebhookProjectsV2ProjectEditedChangesPublic> _public = Optional.empty();
 
-    private WebhookMemberEditedChangesPermission shortDescription;
+    private Optional<WebhookMemberEditedChangesPermission> shortDescription = Optional.empty();
 
-    private WebhookProjectsV2ProjectEditedChangesTitle title;
+    private Optional<WebhookProjectsV2ProjectEditedChangesTitle> title = Optional.empty();
 
     public WebhookProjectsV2ProjectEditedChanges description(WebhookMemberEditedChangesPermission description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookProjectsV2ProjectEditedChanges {
     @Valid
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public WebhookMemberEditedChangesPermission getDescription() {
+    public Optional<WebhookMemberEditedChangesPermission> getDescription() {
         return description;
     }
 
-    public void setDescription(WebhookMemberEditedChangesPermission description) {
+    public void setDescription(Optional<WebhookMemberEditedChangesPermission> description) {
         this.description = description;
     }
 
     public WebhookProjectsV2ProjectEditedChanges _public(WebhookProjectsV2ProjectEditedChangesPublic _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -59,17 +58,17 @@ public class WebhookProjectsV2ProjectEditedChanges {
     @Valid
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public WebhookProjectsV2ProjectEditedChangesPublic getPublic() {
+    public Optional<WebhookProjectsV2ProjectEditedChangesPublic> getPublic() {
         return _public;
     }
 
-    public void setPublic(WebhookProjectsV2ProjectEditedChangesPublic _public) {
+    public void setPublic(Optional<WebhookProjectsV2ProjectEditedChangesPublic> _public) {
         this._public = _public;
     }
 
     public WebhookProjectsV2ProjectEditedChanges shortDescription(
             WebhookMemberEditedChangesPermission shortDescription) {
-        this.shortDescription = shortDescription;
+        this.shortDescription = Optional.ofNullable(shortDescription);
         return this;
     }
 
@@ -80,16 +79,16 @@ public class WebhookProjectsV2ProjectEditedChanges {
     @Valid
     @Schema(name = "short_description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("short_description")
-    public WebhookMemberEditedChangesPermission getShortDescription() {
+    public Optional<WebhookMemberEditedChangesPermission> getShortDescription() {
         return shortDescription;
     }
 
-    public void setShortDescription(WebhookMemberEditedChangesPermission shortDescription) {
+    public void setShortDescription(Optional<WebhookMemberEditedChangesPermission> shortDescription) {
         this.shortDescription = shortDescription;
     }
 
     public WebhookProjectsV2ProjectEditedChanges title(WebhookProjectsV2ProjectEditedChangesTitle title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -100,11 +99,11 @@ public class WebhookProjectsV2ProjectEditedChanges {
     @Valid
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public WebhookProjectsV2ProjectEditedChangesTitle getTitle() {
+    public Optional<WebhookProjectsV2ProjectEditedChangesTitle> getTitle() {
         return title;
     }
 
-    public void setTitle(WebhookProjectsV2ProjectEditedChangesTitle title) {
+    public void setTitle(Optional<WebhookProjectsV2ProjectEditedChangesTitle> title) {
         this.title = title;
     }
 

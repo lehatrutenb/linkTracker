@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRulesetConditionsRepositoryNameTargetRepositoryName
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("repository_ruleset_conditions_repository_name_target_repository_name")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
 
@@ -27,7 +26,7 @@ public class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
     @Valid
     private List<String> exclude = new ArrayList<>();
 
-    private Boolean _protected;
+    private Optional<Boolean> _protected = Optional.empty();
 
     public RepositoryRulesetConditionsRepositoryNameTargetRepositoryName include(List<String> include) {
         this.include = include;
@@ -92,7 +91,7 @@ public class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
     }
 
     public RepositoryRulesetConditionsRepositoryNameTargetRepositoryName _protected(Boolean _protected) {
-        this._protected = _protected;
+        this._protected = Optional.ofNullable(_protected);
         return this;
     }
 
@@ -105,11 +104,11 @@ public class RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
             description = "Whether renaming of target repositories is prevented.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("protected")
-    public Boolean getProtected() {
+    public Optional<Boolean> getProtected() {
         return _protected;
     }
 
-    public void setProtected(Boolean _protected) {
+    public void setProtected(Optional<Boolean> _protected) {
         this._protected = _protected;
     }
 

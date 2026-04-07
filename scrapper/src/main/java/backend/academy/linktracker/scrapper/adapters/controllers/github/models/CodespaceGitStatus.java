@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Details about the codespace&#39;s git repository.
@@ -15,22 +14,22 @@ import java.util.Objects;
 @JsonTypeName("codespace_git_status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespaceGitStatus {
 
-    private Long ahead;
+    private Optional<Long> ahead = Optional.empty();
 
-    private Long behind;
+    private Optional<Long> behind = Optional.empty();
 
-    private Boolean hasUnpushedChanges;
+    private Optional<Boolean> hasUnpushedChanges = Optional.empty();
 
-    private Boolean hasUncommittedChanges;
+    private Optional<Boolean> hasUncommittedChanges = Optional.empty();
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
     public CodespaceGitStatus ahead(Long ahead) {
-        this.ahead = ahead;
+        this.ahead = Optional.ofNullable(ahead);
         return this;
     }
 
@@ -44,16 +43,16 @@ public class CodespaceGitStatus {
             description = "The number of commits the local repository is ahead of the remote.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ahead")
-    public Long getAhead() {
+    public Optional<Long> getAhead() {
         return ahead;
     }
 
-    public void setAhead(Long ahead) {
+    public void setAhead(Optional<Long> ahead) {
         this.ahead = ahead;
     }
 
     public CodespaceGitStatus behind(Long behind) {
-        this.behind = behind;
+        this.behind = Optional.ofNullable(behind);
         return this;
     }
 
@@ -67,16 +66,16 @@ public class CodespaceGitStatus {
             description = "The number of commits the local repository is behind the remote.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("behind")
-    public Long getBehind() {
+    public Optional<Long> getBehind() {
         return behind;
     }
 
-    public void setBehind(Long behind) {
+    public void setBehind(Optional<Long> behind) {
         this.behind = behind;
     }
 
     public CodespaceGitStatus hasUnpushedChanges(Boolean hasUnpushedChanges) {
-        this.hasUnpushedChanges = hasUnpushedChanges;
+        this.hasUnpushedChanges = Optional.ofNullable(hasUnpushedChanges);
         return this;
     }
 
@@ -89,16 +88,16 @@ public class CodespaceGitStatus {
             description = "Whether the local repository has unpushed changes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_unpushed_changes")
-    public Boolean getHasUnpushedChanges() {
+    public Optional<Boolean> getHasUnpushedChanges() {
         return hasUnpushedChanges;
     }
 
-    public void setHasUnpushedChanges(Boolean hasUnpushedChanges) {
+    public void setHasUnpushedChanges(Optional<Boolean> hasUnpushedChanges) {
         this.hasUnpushedChanges = hasUnpushedChanges;
     }
 
     public CodespaceGitStatus hasUncommittedChanges(Boolean hasUncommittedChanges) {
-        this.hasUncommittedChanges = hasUncommittedChanges;
+        this.hasUncommittedChanges = Optional.ofNullable(hasUncommittedChanges);
         return this;
     }
 
@@ -111,16 +110,16 @@ public class CodespaceGitStatus {
             description = "Whether the local repository has uncommitted changes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_uncommitted_changes")
-    public Boolean getHasUncommittedChanges() {
+    public Optional<Boolean> getHasUncommittedChanges() {
         return hasUncommittedChanges;
     }
 
-    public void setHasUncommittedChanges(Boolean hasUncommittedChanges) {
+    public void setHasUncommittedChanges(Optional<Boolean> hasUncommittedChanges) {
         this.hasUncommittedChanges = hasUncommittedChanges;
     }
 
     public CodespaceGitStatus ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -134,11 +133,11 @@ public class CodespaceGitStatus {
             description = "The current branch (or SHA if in detached HEAD state) of the local repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 

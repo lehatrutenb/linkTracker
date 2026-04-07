@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookTeamEditedChangesRepositoryPermissionsFrom
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_team_edited_changes_repository_permissions_from")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookTeamEditedChangesRepositoryPermissionsFrom {
 
-    private Boolean admin;
+    private Optional<Boolean> admin = Optional.empty();
 
-    private Boolean pull;
+    private Optional<Boolean> pull = Optional.empty();
 
-    private Boolean push;
+    private Optional<Boolean> push = Optional.empty();
 
     public WebhookTeamEditedChangesRepositoryPermissionsFrom admin(Boolean admin) {
-        this.admin = admin;
+        this.admin = Optional.ofNullable(admin);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookTeamEditedChangesRepositoryPermissionsFrom {
                     "The previous version of the team member's `admin` permission on a repository, if the action was `edited`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("admin")
-    public Boolean getAdmin() {
+    public Optional<Boolean> getAdmin() {
         return admin;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setAdmin(Optional<Boolean> admin) {
         this.admin = admin;
     }
 
     public WebhookTeamEditedChangesRepositoryPermissionsFrom pull(Boolean pull) {
-        this.pull = pull;
+        this.pull = Optional.ofNullable(pull);
         return this;
     }
 
@@ -62,16 +61,16 @@ public class WebhookTeamEditedChangesRepositoryPermissionsFrom {
                     "The previous version of the team member's `pull` permission on a repository, if the action was `edited`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull")
-    public Boolean getPull() {
+    public Optional<Boolean> getPull() {
         return pull;
     }
 
-    public void setPull(Boolean pull) {
+    public void setPull(Optional<Boolean> pull) {
         this.pull = pull;
     }
 
     public WebhookTeamEditedChangesRepositoryPermissionsFrom push(Boolean push) {
-        this.push = push;
+        this.push = Optional.ofNullable(push);
         return this;
     }
 
@@ -85,11 +84,11 @@ public class WebhookTeamEditedChangesRepositoryPermissionsFrom {
                     "The previous version of the team member's `push` permission on a repository, if the action was `edited`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push")
-    public Boolean getPush() {
+    public Optional<Boolean> getPush() {
         return push;
     }
 
-    public void setPush(Boolean push) {
+    public void setPush(Optional<Boolean> push) {
         this.push = push;
     }
 

@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("deployment-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DeploymentSimple {
 
@@ -34,11 +36,11 @@ public class DeploymentSimple {
 
     private String task;
 
-    private String originalEnvironment;
+    private Optional<String> originalEnvironment = Optional.empty();
 
     private String environment;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -50,11 +52,11 @@ public class DeploymentSimple {
 
     private URI repositoryUrl;
 
-    private Boolean transientEnvironment;
+    private Optional<Boolean> transientEnvironment = Optional.empty();
 
-    private Boolean productionEnvironment;
+    private Optional<Boolean> productionEnvironment = Optional.empty();
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     public DeploymentSimple() {
         super();
@@ -79,7 +81,7 @@ public class DeploymentSimple {
         this.nodeId = nodeId;
         this.task = task;
         this.environment = environment;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.statusesUrl = statusesUrl;
@@ -179,7 +181,7 @@ public class DeploymentSimple {
     }
 
     public DeploymentSimple originalEnvironment(String originalEnvironment) {
-        this.originalEnvironment = originalEnvironment;
+        this.originalEnvironment = Optional.ofNullable(originalEnvironment);
         return this;
     }
 
@@ -189,11 +191,11 @@ public class DeploymentSimple {
      */
     @Schema(name = "original_environment", example = "staging", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("original_environment")
-    public String getOriginalEnvironment() {
+    public Optional<String> getOriginalEnvironment() {
         return originalEnvironment;
     }
 
-    public void setOriginalEnvironment(String originalEnvironment) {
+    public void setOriginalEnvironment(Optional<String> originalEnvironment) {
         this.originalEnvironment = originalEnvironment;
     }
 
@@ -222,7 +224,7 @@ public class DeploymentSimple {
     }
 
     public DeploymentSimple description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -233,11 +235,11 @@ public class DeploymentSimple {
     @NotNull
     @Schema(name = "description", example = "Deploy request from hubot", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -332,7 +334,7 @@ public class DeploymentSimple {
     }
 
     public DeploymentSimple transientEnvironment(Boolean transientEnvironment) {
-        this.transientEnvironment = transientEnvironment;
+        this.transientEnvironment = Optional.ofNullable(transientEnvironment);
         return this;
     }
 
@@ -347,16 +349,16 @@ public class DeploymentSimple {
                     "Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("transient_environment")
-    public Boolean getTransientEnvironment() {
+    public Optional<Boolean> getTransientEnvironment() {
         return transientEnvironment;
     }
 
-    public void setTransientEnvironment(Boolean transientEnvironment) {
+    public void setTransientEnvironment(Optional<Boolean> transientEnvironment) {
         this.transientEnvironment = transientEnvironment;
     }
 
     public DeploymentSimple productionEnvironment(Boolean productionEnvironment) {
-        this.productionEnvironment = productionEnvironment;
+        this.productionEnvironment = Optional.ofNullable(productionEnvironment);
         return this;
     }
 
@@ -371,16 +373,16 @@ public class DeploymentSimple {
                     "Specifies if the given environment is one that end-users directly interact with. Default: false.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("production_environment")
-    public Boolean getProductionEnvironment() {
+    public Optional<Boolean> getProductionEnvironment() {
         return productionEnvironment;
     }
 
-    public void setProductionEnvironment(Boolean productionEnvironment) {
+    public void setProductionEnvironment(Optional<Boolean> productionEnvironment) {
         this.productionEnvironment = productionEnvironment;
     }
 
     public DeploymentSimple performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -391,11 +393,11 @@ public class DeploymentSimple {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -421,7 +423,12 @@ public class DeploymentSimple {
                 && Objects.equals(this.repositoryUrl, deploymentSimple.repositoryUrl)
                 && Objects.equals(this.transientEnvironment, deploymentSimple.transientEnvironment)
                 && Objects.equals(this.productionEnvironment, deploymentSimple.productionEnvironment)
-                && Objects.equals(this.performedViaGithubApp, deploymentSimple.performedViaGithubApp);
+                && equalsNullable(this.performedViaGithubApp, deploymentSimple.performedViaGithubApp);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -440,7 +447,14 @@ public class DeploymentSimple {
                 repositoryUrl,
                 transientEnvironment,
                 productionEnvironment,
-                performedViaGithubApp);
+                hashCodeNullable(performedViaGithubApp));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

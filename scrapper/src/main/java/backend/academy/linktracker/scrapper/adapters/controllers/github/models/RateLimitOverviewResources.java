@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RateLimitOverviewResources
@@ -15,33 +15,33 @@ import java.util.Objects;
 @JsonTypeName("rate_limit_overview_resources")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RateLimitOverviewResources {
 
     private RateLimit core;
 
-    private RateLimit graphql;
+    private Optional<RateLimit> graphql = Optional.empty();
 
     private RateLimit search;
 
-    private RateLimit codeSearch;
+    private Optional<RateLimit> codeSearch = Optional.empty();
 
-    private RateLimit sourceImport;
+    private Optional<RateLimit> sourceImport = Optional.empty();
 
-    private RateLimit integrationManifest;
+    private Optional<RateLimit> integrationManifest = Optional.empty();
 
-    private RateLimit codeScanningUpload;
+    private Optional<RateLimit> codeScanningUpload = Optional.empty();
 
-    private RateLimit actionsRunnerRegistration;
+    private Optional<RateLimit> actionsRunnerRegistration = Optional.empty();
 
-    private RateLimit scim;
+    private Optional<RateLimit> scim = Optional.empty();
 
-    private RateLimit dependencySnapshots;
+    private Optional<RateLimit> dependencySnapshots = Optional.empty();
 
-    private RateLimit dependencySbom;
+    private Optional<RateLimit> dependencySbom = Optional.empty();
 
-    private RateLimit codeScanningAutofix;
+    private Optional<RateLimit> codeScanningAutofix = Optional.empty();
 
     public RateLimitOverviewResources() {
         super();
@@ -77,7 +77,7 @@ public class RateLimitOverviewResources {
     }
 
     public RateLimitOverviewResources graphql(RateLimit graphql) {
-        this.graphql = graphql;
+        this.graphql = Optional.ofNullable(graphql);
         return this;
     }
 
@@ -88,11 +88,11 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "graphql", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("graphql")
-    public RateLimit getGraphql() {
+    public Optional<RateLimit> getGraphql() {
         return graphql;
     }
 
-    public void setGraphql(RateLimit graphql) {
+    public void setGraphql(Optional<RateLimit> graphql) {
         this.graphql = graphql;
     }
 
@@ -118,7 +118,7 @@ public class RateLimitOverviewResources {
     }
 
     public RateLimitOverviewResources codeSearch(RateLimit codeSearch) {
-        this.codeSearch = codeSearch;
+        this.codeSearch = Optional.ofNullable(codeSearch);
         return this;
     }
 
@@ -129,16 +129,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "code_search", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_search")
-    public RateLimit getCodeSearch() {
+    public Optional<RateLimit> getCodeSearch() {
         return codeSearch;
     }
 
-    public void setCodeSearch(RateLimit codeSearch) {
+    public void setCodeSearch(Optional<RateLimit> codeSearch) {
         this.codeSearch = codeSearch;
     }
 
     public RateLimitOverviewResources sourceImport(RateLimit sourceImport) {
-        this.sourceImport = sourceImport;
+        this.sourceImport = Optional.ofNullable(sourceImport);
         return this;
     }
 
@@ -149,16 +149,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "source_import", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source_import")
-    public RateLimit getSourceImport() {
+    public Optional<RateLimit> getSourceImport() {
         return sourceImport;
     }
 
-    public void setSourceImport(RateLimit sourceImport) {
+    public void setSourceImport(Optional<RateLimit> sourceImport) {
         this.sourceImport = sourceImport;
     }
 
     public RateLimitOverviewResources integrationManifest(RateLimit integrationManifest) {
-        this.integrationManifest = integrationManifest;
+        this.integrationManifest = Optional.ofNullable(integrationManifest);
         return this;
     }
 
@@ -169,16 +169,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "integration_manifest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("integration_manifest")
-    public RateLimit getIntegrationManifest() {
+    public Optional<RateLimit> getIntegrationManifest() {
         return integrationManifest;
     }
 
-    public void setIntegrationManifest(RateLimit integrationManifest) {
+    public void setIntegrationManifest(Optional<RateLimit> integrationManifest) {
         this.integrationManifest = integrationManifest;
     }
 
     public RateLimitOverviewResources codeScanningUpload(RateLimit codeScanningUpload) {
-        this.codeScanningUpload = codeScanningUpload;
+        this.codeScanningUpload = Optional.ofNullable(codeScanningUpload);
         return this;
     }
 
@@ -189,16 +189,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "code_scanning_upload", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_upload")
-    public RateLimit getCodeScanningUpload() {
+    public Optional<RateLimit> getCodeScanningUpload() {
         return codeScanningUpload;
     }
 
-    public void setCodeScanningUpload(RateLimit codeScanningUpload) {
+    public void setCodeScanningUpload(Optional<RateLimit> codeScanningUpload) {
         this.codeScanningUpload = codeScanningUpload;
     }
 
     public RateLimitOverviewResources actionsRunnerRegistration(RateLimit actionsRunnerRegistration) {
-        this.actionsRunnerRegistration = actionsRunnerRegistration;
+        this.actionsRunnerRegistration = Optional.ofNullable(actionsRunnerRegistration);
         return this;
     }
 
@@ -209,16 +209,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "actions_runner_registration", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actions_runner_registration")
-    public RateLimit getActionsRunnerRegistration() {
+    public Optional<RateLimit> getActionsRunnerRegistration() {
         return actionsRunnerRegistration;
     }
 
-    public void setActionsRunnerRegistration(RateLimit actionsRunnerRegistration) {
+    public void setActionsRunnerRegistration(Optional<RateLimit> actionsRunnerRegistration) {
         this.actionsRunnerRegistration = actionsRunnerRegistration;
     }
 
     public RateLimitOverviewResources scim(RateLimit scim) {
-        this.scim = scim;
+        this.scim = Optional.ofNullable(scim);
         return this;
     }
 
@@ -229,16 +229,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "scim", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("scim")
-    public RateLimit getScim() {
+    public Optional<RateLimit> getScim() {
         return scim;
     }
 
-    public void setScim(RateLimit scim) {
+    public void setScim(Optional<RateLimit> scim) {
         this.scim = scim;
     }
 
     public RateLimitOverviewResources dependencySnapshots(RateLimit dependencySnapshots) {
-        this.dependencySnapshots = dependencySnapshots;
+        this.dependencySnapshots = Optional.ofNullable(dependencySnapshots);
         return this;
     }
 
@@ -249,16 +249,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "dependency_snapshots", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_snapshots")
-    public RateLimit getDependencySnapshots() {
+    public Optional<RateLimit> getDependencySnapshots() {
         return dependencySnapshots;
     }
 
-    public void setDependencySnapshots(RateLimit dependencySnapshots) {
+    public void setDependencySnapshots(Optional<RateLimit> dependencySnapshots) {
         this.dependencySnapshots = dependencySnapshots;
     }
 
     public RateLimitOverviewResources dependencySbom(RateLimit dependencySbom) {
-        this.dependencySbom = dependencySbom;
+        this.dependencySbom = Optional.ofNullable(dependencySbom);
         return this;
     }
 
@@ -269,16 +269,16 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "dependency_sbom", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_sbom")
-    public RateLimit getDependencySbom() {
+    public Optional<RateLimit> getDependencySbom() {
         return dependencySbom;
     }
 
-    public void setDependencySbom(RateLimit dependencySbom) {
+    public void setDependencySbom(Optional<RateLimit> dependencySbom) {
         this.dependencySbom = dependencySbom;
     }
 
     public RateLimitOverviewResources codeScanningAutofix(RateLimit codeScanningAutofix) {
-        this.codeScanningAutofix = codeScanningAutofix;
+        this.codeScanningAutofix = Optional.ofNullable(codeScanningAutofix);
         return this;
     }
 
@@ -289,11 +289,11 @@ public class RateLimitOverviewResources {
     @Valid
     @Schema(name = "code_scanning_autofix", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_scanning_autofix")
-    public RateLimit getCodeScanningAutofix() {
+    public Optional<RateLimit> getCodeScanningAutofix() {
         return codeScanningAutofix;
     }
 
-    public void setCodeScanningAutofix(RateLimit codeScanningAutofix) {
+    public void setCodeScanningAutofix(Optional<RateLimit> codeScanningAutofix) {
         this.codeScanningAutofix = codeScanningAutofix;
     }
 

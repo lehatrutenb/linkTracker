@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectsV2ItemConvertedChanges
@@ -15,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_item_converted_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ItemConvertedChanges {
 
-    private WebhookProjectsV2ItemConvertedChangesContentType contentType;
+    private Optional<WebhookProjectsV2ItemConvertedChangesContentType> contentType = Optional.empty();
 
     public WebhookProjectsV2ItemConvertedChanges contentType(
             WebhookProjectsV2ItemConvertedChangesContentType contentType) {
-        this.contentType = contentType;
+        this.contentType = Optional.ofNullable(contentType);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class WebhookProjectsV2ItemConvertedChanges {
     @Valid
     @Schema(name = "content_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_type")
-    public WebhookProjectsV2ItemConvertedChangesContentType getContentType() {
+    public Optional<WebhookProjectsV2ItemConvertedChangesContentType> getContentType() {
         return contentType;
     }
 
-    public void setContentType(WebhookProjectsV2ItemConvertedChangesContentType contentType) {
+    public void setContentType(Optional<WebhookProjectsV2ItemConvertedChangesContentType> contentType) {
         this.contentType = contentType;
     }
 

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsCreateRequest
@@ -14,25 +14,25 @@ import java.util.Objects;
 @JsonTypeName("pulls_create_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsCreateRequest {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
     private String head;
 
-    private String headRepo;
+    private Optional<String> headRepo = Optional.empty();
 
     private String base;
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private Boolean maintainerCanModify;
+    private Optional<Boolean> maintainerCanModify = Optional.empty();
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
-    private Long issue;
+    private Optional<Long> issue = Optional.empty();
 
     public PullsCreateRequest() {
         super();
@@ -47,7 +47,7 @@ public class PullsCreateRequest {
     }
 
     public PullsCreateRequest title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -60,11 +60,11 @@ public class PullsCreateRequest {
             description = "The title of the new pull request. Required unless `issue` is specified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
@@ -93,7 +93,7 @@ public class PullsCreateRequest {
     }
 
     public PullsCreateRequest headRepo(String headRepo) {
-        this.headRepo = headRepo;
+        this.headRepo = Optional.ofNullable(headRepo);
         return this;
     }
 
@@ -108,11 +108,11 @@ public class PullsCreateRequest {
                     "The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_repo")
-    public String getHeadRepo() {
+    public Optional<String> getHeadRepo() {
         return headRepo;
     }
 
-    public void setHeadRepo(String headRepo) {
+    public void setHeadRepo(Optional<String> headRepo) {
         this.headRepo = headRepo;
     }
 
@@ -141,7 +141,7 @@ public class PullsCreateRequest {
     }
 
     public PullsCreateRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -154,16 +154,16 @@ public class PullsCreateRequest {
             description = "The contents of the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public PullsCreateRequest maintainerCanModify(Boolean maintainerCanModify) {
-        this.maintainerCanModify = maintainerCanModify;
+        this.maintainerCanModify = Optional.ofNullable(maintainerCanModify);
         return this;
     }
 
@@ -177,16 +177,16 @@ public class PullsCreateRequest {
                     "Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintainer_can_modify")
-    public Boolean getMaintainerCanModify() {
+    public Optional<Boolean> getMaintainerCanModify() {
         return maintainerCanModify;
     }
 
-    public void setMaintainerCanModify(Boolean maintainerCanModify) {
+    public void setMaintainerCanModify(Optional<Boolean> maintainerCanModify) {
         this.maintainerCanModify = maintainerCanModify;
     }
 
     public PullsCreateRequest draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -200,16 +200,16 @@ public class PullsCreateRequest {
                     "Indicates whether the pull request is a draft. See \"[Draft Pull Requests](https://docs.github.com/articles/about-pull-requests#draft-pull-requests)\" in the GitHub Help documentation to learn more.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
     public PullsCreateRequest issue(Long issue) {
-        this.issue = issue;
+        this.issue = Optional.ofNullable(issue);
         return this;
     }
 
@@ -224,11 +224,11 @@ public class PullsCreateRequest {
                     "An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue")
-    public Long getIssue() {
+    public Optional<Long> getIssue() {
         return issue;
     }
 
-    public void setIssue(Long issue) {
+    public void setIssue(Optional<Long> issue) {
         this.issue = issue;
     }
 

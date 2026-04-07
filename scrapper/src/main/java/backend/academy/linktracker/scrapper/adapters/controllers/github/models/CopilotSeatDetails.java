@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,33 +25,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("copilot-seat-details")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotSeatDetails {
 
-    private NullableSimpleUser assignee = null;
+    private JsonNullable<NullableSimpleUser> assignee = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableOrganizationSimple organization = null;
+    private JsonNullable<NullableOrganizationSimple> organization =
+            JsonNullable.<NullableOrganizationSimple>undefined();
 
-    private CopilotSeatDetailsAssigningTeam assigningTeam = null;
+    private JsonNullable<CopilotSeatDetailsAssigningTeam> assigningTeam =
+            JsonNullable.<CopilotSeatDetailsAssigningTeam>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate pendingCancellationDate = null;
+    private JsonNullable<LocalDate> pendingCancellationDate = JsonNullable.<LocalDate>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastActivityAt = null;
+    private JsonNullable<OffsetDateTime> lastActivityAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String lastActivityEditor = null;
+    private JsonNullable<String> lastActivityEditor = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastAuthenticatedAt = null;
+    private JsonNullable<OffsetDateTime> lastAuthenticatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
     @Deprecated
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     /**
      * The Copilot plan of the organization, or the parent enterprise, when applicable.
@@ -88,7 +92,7 @@ public class CopilotSeatDetails {
         }
     }
 
-    private PlanTypeEnum planType;
+    private Optional<PlanTypeEnum> planType = Optional.empty();
 
     public CopilotSeatDetails() {
         super();
@@ -102,7 +106,7 @@ public class CopilotSeatDetails {
     }
 
     public CopilotSeatDetails assignee(NullableSimpleUser assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -113,16 +117,16 @@ public class CopilotSeatDetails {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public NullableSimpleUser getAssignee() {
+    public JsonNullable<NullableSimpleUser> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(NullableSimpleUser assignee) {
+    public void setAssignee(JsonNullable<NullableSimpleUser> assignee) {
         this.assignee = assignee;
     }
 
     public CopilotSeatDetails organization(NullableOrganizationSimple organization) {
-        this.organization = organization;
+        this.organization = JsonNullable.of(organization);
         return this;
     }
 
@@ -133,16 +137,16 @@ public class CopilotSeatDetails {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public NullableOrganizationSimple getOrganization() {
+    public JsonNullable<NullableOrganizationSimple> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(NullableOrganizationSimple organization) {
+    public void setOrganization(JsonNullable<NullableOrganizationSimple> organization) {
         this.organization = organization;
     }
 
     public CopilotSeatDetails assigningTeam(CopilotSeatDetailsAssigningTeam assigningTeam) {
-        this.assigningTeam = assigningTeam;
+        this.assigningTeam = JsonNullable.of(assigningTeam);
         return this;
     }
 
@@ -153,16 +157,16 @@ public class CopilotSeatDetails {
     @Valid
     @Schema(name = "assigning_team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assigning_team")
-    public CopilotSeatDetailsAssigningTeam getAssigningTeam() {
+    public JsonNullable<CopilotSeatDetailsAssigningTeam> getAssigningTeam() {
         return assigningTeam;
     }
 
-    public void setAssigningTeam(CopilotSeatDetailsAssigningTeam assigningTeam) {
+    public void setAssigningTeam(JsonNullable<CopilotSeatDetailsAssigningTeam> assigningTeam) {
         this.assigningTeam = assigningTeam;
     }
 
     public CopilotSeatDetails pendingCancellationDate(LocalDate pendingCancellationDate) {
-        this.pendingCancellationDate = pendingCancellationDate;
+        this.pendingCancellationDate = JsonNullable.of(pendingCancellationDate);
         return this;
     }
 
@@ -177,16 +181,16 @@ public class CopilotSeatDetails {
                     "The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pending_cancellation_date")
-    public LocalDate getPendingCancellationDate() {
+    public JsonNullable<LocalDate> getPendingCancellationDate() {
         return pendingCancellationDate;
     }
 
-    public void setPendingCancellationDate(LocalDate pendingCancellationDate) {
+    public void setPendingCancellationDate(JsonNullable<LocalDate> pendingCancellationDate) {
         this.pendingCancellationDate = pendingCancellationDate;
     }
 
     public CopilotSeatDetails lastActivityAt(OffsetDateTime lastActivityAt) {
-        this.lastActivityAt = lastActivityAt;
+        this.lastActivityAt = JsonNullable.of(lastActivityAt);
         return this;
     }
 
@@ -200,16 +204,16 @@ public class CopilotSeatDetails {
             description = "Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_activity_at")
-    public OffsetDateTime getLastActivityAt() {
+    public JsonNullable<OffsetDateTime> getLastActivityAt() {
         return lastActivityAt;
     }
 
-    public void setLastActivityAt(OffsetDateTime lastActivityAt) {
+    public void setLastActivityAt(JsonNullable<OffsetDateTime> lastActivityAt) {
         this.lastActivityAt = lastActivityAt;
     }
 
     public CopilotSeatDetails lastActivityEditor(String lastActivityEditor) {
-        this.lastActivityEditor = lastActivityEditor;
+        this.lastActivityEditor = JsonNullable.of(lastActivityEditor);
         return this;
     }
 
@@ -222,16 +226,16 @@ public class CopilotSeatDetails {
             description = "Last editor that was used by the user for a GitHub Copilot completion.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_activity_editor")
-    public String getLastActivityEditor() {
+    public JsonNullable<String> getLastActivityEditor() {
         return lastActivityEditor;
     }
 
-    public void setLastActivityEditor(String lastActivityEditor) {
+    public void setLastActivityEditor(JsonNullable<String> lastActivityEditor) {
         this.lastActivityEditor = lastActivityEditor;
     }
 
     public CopilotSeatDetails lastAuthenticatedAt(OffsetDateTime lastAuthenticatedAt) {
-        this.lastAuthenticatedAt = lastAuthenticatedAt;
+        this.lastAuthenticatedAt = JsonNullable.of(lastAuthenticatedAt);
         return this;
     }
 
@@ -245,11 +249,11 @@ public class CopilotSeatDetails {
             description = "Timestamp of the last time the user authenticated with GitHub Copilot, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_authenticated_at")
-    public OffsetDateTime getLastAuthenticatedAt() {
+    public JsonNullable<OffsetDateTime> getLastAuthenticatedAt() {
         return lastAuthenticatedAt;
     }
 
-    public void setLastAuthenticatedAt(OffsetDateTime lastAuthenticatedAt) {
+    public void setLastAuthenticatedAt(JsonNullable<OffsetDateTime> lastAuthenticatedAt) {
         this.lastAuthenticatedAt = lastAuthenticatedAt;
     }
 
@@ -279,7 +283,7 @@ public class CopilotSeatDetails {
     }
 
     public CopilotSeatDetails updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -297,7 +301,7 @@ public class CopilotSeatDetails {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
     @Deprecated
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
@@ -305,12 +309,12 @@ public class CopilotSeatDetails {
      * @deprecated
      */
     @Deprecated
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public CopilotSeatDetails planType(PlanTypeEnum planType) {
-        this.planType = planType;
+        this.planType = Optional.ofNullable(planType);
         return this;
     }
 
@@ -323,11 +327,11 @@ public class CopilotSeatDetails {
             description = "The Copilot plan of the organization, or the parent enterprise, when applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan_type")
-    public PlanTypeEnum getPlanType() {
+    public Optional<PlanTypeEnum> getPlanType() {
         return planType;
     }
 
-    public void setPlanType(PlanTypeEnum planType) {
+    public void setPlanType(Optional<PlanTypeEnum> planType) {
         this.planType = planType;
     }
 
@@ -340,31 +344,43 @@ public class CopilotSeatDetails {
             return false;
         }
         CopilotSeatDetails copilotSeatDetails = (CopilotSeatDetails) o;
-        return Objects.equals(this.assignee, copilotSeatDetails.assignee)
-                && Objects.equals(this.organization, copilotSeatDetails.organization)
-                && Objects.equals(this.assigningTeam, copilotSeatDetails.assigningTeam)
-                && Objects.equals(this.pendingCancellationDate, copilotSeatDetails.pendingCancellationDate)
-                && Objects.equals(this.lastActivityAt, copilotSeatDetails.lastActivityAt)
-                && Objects.equals(this.lastActivityEditor, copilotSeatDetails.lastActivityEditor)
-                && Objects.equals(this.lastAuthenticatedAt, copilotSeatDetails.lastAuthenticatedAt)
+        return equalsNullable(this.assignee, copilotSeatDetails.assignee)
+                && equalsNullable(this.organization, copilotSeatDetails.organization)
+                && equalsNullable(this.assigningTeam, copilotSeatDetails.assigningTeam)
+                && equalsNullable(this.pendingCancellationDate, copilotSeatDetails.pendingCancellationDate)
+                && equalsNullable(this.lastActivityAt, copilotSeatDetails.lastActivityAt)
+                && equalsNullable(this.lastActivityEditor, copilotSeatDetails.lastActivityEditor)
+                && equalsNullable(this.lastAuthenticatedAt, copilotSeatDetails.lastAuthenticatedAt)
                 && Objects.equals(this.createdAt, copilotSeatDetails.createdAt)
                 && Objects.equals(this.updatedAt, copilotSeatDetails.updatedAt)
                 && Objects.equals(this.planType, copilotSeatDetails.planType);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                assignee,
-                organization,
-                assigningTeam,
-                pendingCancellationDate,
-                lastActivityAt,
-                lastActivityEditor,
-                lastAuthenticatedAt,
+                hashCodeNullable(assignee),
+                hashCodeNullable(organization),
+                hashCodeNullable(assigningTeam),
+                hashCodeNullable(pendingCancellationDate),
+                hashCodeNullable(lastActivityAt),
+                hashCodeNullable(lastActivityEditor),
+                hashCodeNullable(lastAuthenticatedAt),
                 createdAt,
                 updatedAt,
                 planType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("thread-subscription")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ThreadSubscription {
 
@@ -27,16 +28,16 @@ public class ThreadSubscription {
 
     private Boolean ignored;
 
-    private String reason = null;
+    private JsonNullable<String> reason = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     private URI url;
 
-    private URI threadUrl;
+    private Optional<URI> threadUrl = Optional.empty();
 
-    private URI repositoryUrl;
+    private Optional<URI> repositoryUrl = Optional.empty();
 
     public ThreadSubscription() {
         super();
@@ -48,8 +49,8 @@ public class ThreadSubscription {
     public ThreadSubscription(Boolean subscribed, Boolean ignored, String reason, OffsetDateTime createdAt, URI url) {
         this.subscribed = subscribed;
         this.ignored = ignored;
-        this.reason = reason;
-        this.createdAt = createdAt;
+        this.reason = JsonNullable.of(reason);
+        this.createdAt = JsonNullable.of(createdAt);
         this.url = url;
     }
 
@@ -94,7 +95,7 @@ public class ThreadSubscription {
     }
 
     public ThreadSubscription reason(String reason) {
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         return this;
     }
 
@@ -105,16 +106,16 @@ public class ThreadSubscription {
     @NotNull
     @Schema(name = "reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public JsonNullable<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(JsonNullable<String> reason) {
         this.reason = reason;
     }
 
     public ThreadSubscription createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -126,11 +127,11 @@ public class ThreadSubscription {
     @Valid
     @Schema(name = "created_at", example = "2012-10-06T21:34:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -159,7 +160,7 @@ public class ThreadSubscription {
     }
 
     public ThreadSubscription threadUrl(URI threadUrl) {
-        this.threadUrl = threadUrl;
+        this.threadUrl = Optional.ofNullable(threadUrl);
         return this;
     }
 
@@ -173,16 +174,16 @@ public class ThreadSubscription {
             example = "https://api.github.com/notifications/threads/1",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("thread_url")
-    public URI getThreadUrl() {
+    public Optional<URI> getThreadUrl() {
         return threadUrl;
     }
 
-    public void setThreadUrl(URI threadUrl) {
+    public void setThreadUrl(Optional<URI> threadUrl) {
         this.threadUrl = threadUrl;
     }
 
     public ThreadSubscription repositoryUrl(URI repositoryUrl) {
-        this.repositoryUrl = repositoryUrl;
+        this.repositoryUrl = Optional.ofNullable(repositoryUrl);
         return this;
     }
 
@@ -196,11 +197,11 @@ public class ThreadSubscription {
             example = "https://api.github.com/repos/1",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_url")
-    public URI getRepositoryUrl() {
+    public Optional<URI> getRepositoryUrl() {
         return repositoryUrl;
     }
 
-    public void setRepositoryUrl(URI repositoryUrl) {
+    public void setRepositoryUrl(Optional<URI> repositoryUrl) {
         this.repositoryUrl = repositoryUrl;
     }
 

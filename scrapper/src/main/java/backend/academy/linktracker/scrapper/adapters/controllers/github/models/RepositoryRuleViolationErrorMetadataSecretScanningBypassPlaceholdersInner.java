@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersInner
@@ -14,17 +13,17 @@ import java.util.Objects;
 @JsonTypeName("repository_rule_violation_error_metadata_secret_scanning_bypass_placeholders_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersInner {
 
-    private String placeholderId;
+    private Optional<String> placeholderId = Optional.empty();
 
-    private String tokenType;
+    private Optional<String> tokenType = Optional.empty();
 
     public RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersInner placeholderId(
             String placeholderId) {
-        this.placeholderId = placeholderId;
+        this.placeholderId = Optional.ofNullable(placeholderId);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholder
                     "The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("placeholder_id")
-    public String getPlaceholderId() {
+    public Optional<String> getPlaceholderId() {
         return placeholderId;
     }
 
-    public void setPlaceholderId(String placeholderId) {
+    public void setPlaceholderId(Optional<String> placeholderId) {
         this.placeholderId = placeholderId;
     }
 
     public RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholdersInner tokenType(String tokenType) {
-        this.tokenType = tokenType;
+        this.tokenType = Optional.ofNullable(tokenType);
         return this;
     }
 
@@ -57,11 +56,11 @@ public class RepositoryRuleViolationErrorMetadataSecretScanningBypassPlaceholder
      */
     @Schema(name = "token_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("token_type")
-    public String getTokenType() {
+    public Optional<String> getTokenType() {
         return tokenType;
     }
 
-    public void setTokenType(String tokenType) {
+    public void setTokenType(Optional<String> tokenType) {
         this.tokenType = tokenType;
     }
 

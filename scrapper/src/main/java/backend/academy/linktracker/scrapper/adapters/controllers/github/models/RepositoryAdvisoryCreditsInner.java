@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RepositoryAdvisoryCreditsInner
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("repository_advisory_credits_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisoryCreditsInner {
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
-    private SecurityAdvisoryCreditTypes type;
+    private Optional<SecurityAdvisoryCreditTypes> type = Optional.empty();
 
     public RepositoryAdvisoryCreditsInner login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class RepositoryAdvisoryCreditsInner {
             description = "The username of the user credited.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 
     public RepositoryAdvisoryCreditsInner type(SecurityAdvisoryCreditTypes type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -57,11 +56,11 @@ public class RepositoryAdvisoryCreditsInner {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public SecurityAdvisoryCreditTypes getType() {
+    public Optional<SecurityAdvisoryCreditTypes> getType() {
         return type;
     }
 
-    public void setType(SecurityAdvisoryCreditTypes type) {
+    public void setType(Optional<SecurityAdvisoryCreditTypes> type) {
         this.type = type;
     }
 

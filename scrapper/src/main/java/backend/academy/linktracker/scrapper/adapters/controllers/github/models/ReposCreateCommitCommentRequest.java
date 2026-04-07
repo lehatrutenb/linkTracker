@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateCommitCommentRequest
@@ -14,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("repos_create_commit_comment_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateCommitCommentRequest {
 
     private String body;
 
-    private String path;
+    private Optional<String> path = Optional.empty();
 
-    private Long position;
+    private Optional<Long> position = Optional.empty();
 
-    private Long line;
+    private Optional<Long> line = Optional.empty();
 
     public ReposCreateCommitCommentRequest() {
         super();
@@ -58,7 +58,7 @@ public class ReposCreateCommitCommentRequest {
     }
 
     public ReposCreateCommitCommentRequest path(String path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -71,16 +71,16 @@ public class ReposCreateCommitCommentRequest {
             description = "Relative path of the file to comment on.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public Optional<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(Optional<String> path) {
         this.path = path;
     }
 
     public ReposCreateCommitCommentRequest position(Long position) {
-        this.position = position;
+        this.position = Optional.ofNullable(position);
         return this;
     }
 
@@ -93,16 +93,16 @@ public class ReposCreateCommitCommentRequest {
             description = "Line index in the diff to comment on.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public Optional<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(Optional<Long> position) {
         this.position = position;
     }
 
     public ReposCreateCommitCommentRequest line(Long line) {
-        this.line = line;
+        this.line = Optional.ofNullable(line);
         return this;
     }
 
@@ -116,11 +116,11 @@ public class ReposCreateCommitCommentRequest {
                     "**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public Optional<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(Optional<Long> line) {
         this.line = line;
     }
 

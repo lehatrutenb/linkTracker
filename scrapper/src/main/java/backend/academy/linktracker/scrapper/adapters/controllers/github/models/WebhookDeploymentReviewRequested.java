@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentReviewRequested
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-deployment-review-requested")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentReviewRequested {
 
@@ -58,17 +59,17 @@ public class WebhookDeploymentReviewRequested {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private String environment;
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private OrganizationSimpleWebhooks organization;
 
     private RepositoryWebhooks repository;
 
-    private WebhooksUser requestor = null;
+    private JsonNullable<WebhooksUser> requestor = JsonNullable.<WebhooksUser>undefined();
 
     @Valid
     private List<@Valid WebhookDeploymentReviewRequestedReviewersInner> reviewers = new ArrayList<>();
@@ -79,7 +80,7 @@ public class WebhookDeploymentReviewRequested {
 
     private WebhookDeploymentReviewRequestedWorkflowJobRun workflowJobRun;
 
-    private DeploymentWorkflowRun3 workflowRun = null;
+    private JsonNullable<DeploymentWorkflowRun3> workflowRun = JsonNullable.<DeploymentWorkflowRun3>undefined();
 
     public WebhookDeploymentReviewRequested() {
         super();
@@ -103,12 +104,12 @@ public class WebhookDeploymentReviewRequested {
         this.environment = environment;
         this.organization = organization;
         this.repository = repository;
-        this.requestor = requestor;
+        this.requestor = JsonNullable.of(requestor);
         this.reviewers = reviewers;
         this.sender = sender;
         this.since = since;
         this.workflowJobRun = workflowJobRun;
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
     }
 
     public WebhookDeploymentReviewRequested action(ActionEnum action) {
@@ -132,7 +133,7 @@ public class WebhookDeploymentReviewRequested {
     }
 
     public WebhookDeploymentReviewRequested enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -143,11 +144,11 @@ public class WebhookDeploymentReviewRequested {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -172,7 +173,7 @@ public class WebhookDeploymentReviewRequested {
     }
 
     public WebhookDeploymentReviewRequested installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -183,11 +184,11 @@ public class WebhookDeploymentReviewRequested {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -234,7 +235,7 @@ public class WebhookDeploymentReviewRequested {
     }
 
     public WebhookDeploymentReviewRequested requestor(WebhooksUser requestor) {
-        this.requestor = requestor;
+        this.requestor = JsonNullable.of(requestor);
         return this;
     }
 
@@ -246,11 +247,11 @@ public class WebhookDeploymentReviewRequested {
     @Valid
     @Schema(name = "requestor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("requestor")
-    public WebhooksUser getRequestor() {
+    public JsonNullable<WebhooksUser> getRequestor() {
         return requestor;
     }
 
-    public void setRequestor(WebhooksUser requestor) {
+    public void setRequestor(JsonNullable<WebhooksUser> requestor) {
         this.requestor = requestor;
     }
 
@@ -349,7 +350,7 @@ public class WebhookDeploymentReviewRequested {
     }
 
     public WebhookDeploymentReviewRequested workflowRun(DeploymentWorkflowRun3 workflowRun) {
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
         return this;
     }
 
@@ -361,11 +362,11 @@ public class WebhookDeploymentReviewRequested {
     @Valid
     @Schema(name = "workflow_run", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_run")
-    public DeploymentWorkflowRun3 getWorkflowRun() {
+    public JsonNullable<DeploymentWorkflowRun3> getWorkflowRun() {
         return workflowRun;
     }
 
-    public void setWorkflowRun(DeploymentWorkflowRun3 workflowRun) {
+    public void setWorkflowRun(JsonNullable<DeploymentWorkflowRun3> workflowRun) {
         this.workflowRun = workflowRun;
     }
 

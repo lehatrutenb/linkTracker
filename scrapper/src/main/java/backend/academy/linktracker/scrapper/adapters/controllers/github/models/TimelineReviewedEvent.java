@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("timeline-reviewed-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineReviewedEvent {
 
@@ -31,7 +33,7 @@ public class TimelineReviewedEvent {
 
     private SimpleUser user;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     private String state;
 
@@ -42,16 +44,16 @@ public class TimelineReviewedEvent {
     private TimelineReviewedEventLinks links;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime submittedAt;
+    private Optional<OffsetDateTime> submittedAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private String commitId;
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
     private AuthorAssociation authorAssociation;
 
@@ -78,7 +80,7 @@ public class TimelineReviewedEvent {
         this.id = id;
         this.nodeId = nodeId;
         this.user = user;
-        this.body = body;
+        this.body = JsonNullable.of(body);
         this.state = state;
         this.htmlUrl = htmlUrl;
         this.pullRequestUrl = pullRequestUrl;
@@ -173,7 +175,7 @@ public class TimelineReviewedEvent {
     }
 
     public TimelineReviewedEvent body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -188,11 +190,11 @@ public class TimelineReviewedEvent {
             description = "The text of the review.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -286,7 +288,7 @@ public class TimelineReviewedEvent {
     }
 
     public TimelineReviewedEvent submittedAt(OffsetDateTime submittedAt) {
-        this.submittedAt = submittedAt;
+        this.submittedAt = Optional.ofNullable(submittedAt);
         return this;
     }
 
@@ -297,16 +299,16 @@ public class TimelineReviewedEvent {
     @Valid
     @Schema(name = "submitted_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("submitted_at")
-    public OffsetDateTime getSubmittedAt() {
+    public Optional<OffsetDateTime> getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(OffsetDateTime submittedAt) {
+    public void setSubmittedAt(Optional<OffsetDateTime> submittedAt) {
         this.submittedAt = submittedAt;
     }
 
     public TimelineReviewedEvent updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -317,11 +319,11 @@ public class TimelineReviewedEvent {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -350,7 +352,7 @@ public class TimelineReviewedEvent {
     }
 
     public TimelineReviewedEvent bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -360,16 +362,16 @@ public class TimelineReviewedEvent {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public TimelineReviewedEvent bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -379,11 +381,11 @@ public class TimelineReviewedEvent {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
@@ -427,11 +429,16 @@ public class TimelineReviewedEvent {
                 && Objects.equals(this.pullRequestUrl, timelineReviewedEvent.pullRequestUrl)
                 && Objects.equals(this.links, timelineReviewedEvent.links)
                 && Objects.equals(this.submittedAt, timelineReviewedEvent.submittedAt)
-                && Objects.equals(this.updatedAt, timelineReviewedEvent.updatedAt)
+                && equalsNullable(this.updatedAt, timelineReviewedEvent.updatedAt)
                 && Objects.equals(this.commitId, timelineReviewedEvent.commitId)
                 && Objects.equals(this.bodyHtml, timelineReviewedEvent.bodyHtml)
                 && Objects.equals(this.bodyText, timelineReviewedEvent.bodyText)
                 && Objects.equals(this.authorAssociation, timelineReviewedEvent.authorAssociation);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -447,11 +454,18 @@ public class TimelineReviewedEvent {
                 pullRequestUrl,
                 links,
                 submittedAt,
-                updatedAt,
+                hashCodeNullable(updatedAt),
                 commitId,
                 bodyHtml,
                 bodyText,
                 authorAssociation);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

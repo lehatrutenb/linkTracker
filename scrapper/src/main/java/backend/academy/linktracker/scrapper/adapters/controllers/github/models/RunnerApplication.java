@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Runner Application
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("runner-application")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RunnerApplication {
 
@@ -27,9 +27,9 @@ public class RunnerApplication {
 
     private String filename;
 
-    private String tempDownloadToken;
+    private Optional<String> tempDownloadToken = Optional.empty();
 
-    private String sha256Checksum;
+    private Optional<String> sha256Checksum = Optional.empty();
 
     public RunnerApplication() {
         super();
@@ -126,7 +126,7 @@ public class RunnerApplication {
     }
 
     public RunnerApplication tempDownloadToken(String tempDownloadToken) {
-        this.tempDownloadToken = tempDownloadToken;
+        this.tempDownloadToken = Optional.ofNullable(tempDownloadToken);
         return this;
     }
 
@@ -139,16 +139,16 @@ public class RunnerApplication {
             description = "A short lived bearer token used to download the runner, if needed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_download_token")
-    public String getTempDownloadToken() {
+    public Optional<String> getTempDownloadToken() {
         return tempDownloadToken;
     }
 
-    public void setTempDownloadToken(String tempDownloadToken) {
+    public void setTempDownloadToken(Optional<String> tempDownloadToken) {
         this.tempDownloadToken = tempDownloadToken;
     }
 
     public RunnerApplication sha256Checksum(String sha256Checksum) {
-        this.sha256Checksum = sha256Checksum;
+        this.sha256Checksum = Optional.ofNullable(sha256Checksum);
         return this;
     }
 
@@ -158,11 +158,11 @@ public class RunnerApplication {
      */
     @Schema(name = "sha256_checksum", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha256_checksum")
-    public String getSha256Checksum() {
+    public Optional<String> getSha256Checksum() {
         return sha256Checksum;
     }
 
-    public void setSha256Checksum(String sha256Checksum) {
+    public void setSha256Checksum(Optional<String> sha256Checksum) {
         this.sha256Checksum = sha256Checksum;
     }
 

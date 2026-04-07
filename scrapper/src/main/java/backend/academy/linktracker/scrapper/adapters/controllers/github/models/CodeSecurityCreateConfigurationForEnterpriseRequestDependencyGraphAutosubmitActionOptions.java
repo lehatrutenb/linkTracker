@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Feature options for Automatic dependency submission
@@ -17,15 +16,15 @@ import java.util.Objects;
 @JsonTypeName("code_security_create_configuration_for_enterprise_request_dependency_graph_autosubmit_action_options")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityCreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitActionOptions {
 
-    private Boolean labeledRunners = false;
+    private Optional<Boolean> labeledRunners = Optional.of(false);
 
     public CodeSecurityCreateConfigurationForEnterpriseRequestDependencyGraphAutosubmitActionOptions labeledRunners(
             Boolean labeledRunners) {
-        this.labeledRunners = labeledRunners;
+        this.labeledRunners = Optional.ofNullable(labeledRunners);
         return this;
     }
 
@@ -38,11 +37,11 @@ public class CodeSecurityCreateConfigurationForEnterpriseRequestDependencyGraphA
             description = "Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("labeled_runners")
-    public Boolean getLabeledRunners() {
+    public Optional<Boolean> getLabeledRunners() {
         return labeledRunners;
     }
 
-    public void setLabeledRunners(Boolean labeledRunners) {
+    public void setLabeledRunners(Optional<Boolean> labeledRunners) {
         this.labeledRunners = labeledRunners;
     }
 

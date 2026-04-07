@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookCodeScanningAlertAppearedInBranchAlertTool
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("webhook_code_scanning_alert_appeared_in_branch_alert_tool")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertAppearedInBranchAlertTool {
 
     private String name;
 
-    private String version = null;
+    private JsonNullable<String> version = JsonNullable.<String>undefined();
 
     public WebhookCodeScanningAlertAppearedInBranchAlertTool() {
         super();
@@ -31,7 +31,7 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertTool {
      */
     public WebhookCodeScanningAlertAppearedInBranchAlertTool(String name, String version) {
         this.name = name;
-        this.version = version;
+        this.version = JsonNullable.of(version);
     }
 
     public WebhookCodeScanningAlertAppearedInBranchAlertTool name(String name) {
@@ -58,7 +58,7 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertTool {
     }
 
     public WebhookCodeScanningAlertAppearedInBranchAlertTool version(String version) {
-        this.version = version;
+        this.version = JsonNullable.of(version);
         return this;
     }
 
@@ -72,11 +72,11 @@ public class WebhookCodeScanningAlertAppearedInBranchAlertTool {
             description = "The version of the tool used to detect the alert.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public JsonNullable<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(JsonNullable<String> version) {
         this.version = version;
     }
 

@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * TeamsUpdateInOrgRequest
@@ -16,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("teams_update_in_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamsUpdateInOrgRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     /**
      * The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:   **For a non-nested team:**    * `secret` - only visible to organization owners and members of this team.    * `closed` - visible to all members of this organization.   **For a parent or child team:**    * `closed` - visible to all members of this organization.
@@ -59,7 +60,7 @@ public class TeamsUpdateInOrgRequest {
         }
     }
 
-    private PrivacyEnum privacy;
+    private Optional<PrivacyEnum> privacy = Optional.empty();
 
     /**
      * The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:   * `notifications_enabled` - team members receive notifications when the team is @mentioned.    * `notifications_disabled` - no one receives notifications.
@@ -96,7 +97,7 @@ public class TeamsUpdateInOrgRequest {
         }
     }
 
-    private NotificationSettingEnum notificationSetting;
+    private Optional<NotificationSettingEnum> notificationSetting = Optional.empty();
 
     /**
      * **Closing down notice**. The permission that new repositories will be added to the team with when none is specified.
@@ -135,12 +136,12 @@ public class TeamsUpdateInOrgRequest {
         }
     }
 
-    private PermissionEnum permission = PermissionEnum.PULL;
+    private Optional<PermissionEnum> permission = Optional.of(PermissionEnum.PULL);
 
-    private Long parentTeamId = null;
+    private JsonNullable<Long> parentTeamId = JsonNullable.<Long>undefined();
 
     public TeamsUpdateInOrgRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -150,16 +151,16 @@ public class TeamsUpdateInOrgRequest {
      */
     @Schema(name = "name", description = "The name of the team.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public TeamsUpdateInOrgRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -172,16 +173,16 @@ public class TeamsUpdateInOrgRequest {
             description = "The description of the team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public TeamsUpdateInOrgRequest privacy(PrivacyEnum privacy) {
-        this.privacy = privacy;
+        this.privacy = Optional.ofNullable(privacy);
         return this;
     }
 
@@ -195,16 +196,16 @@ public class TeamsUpdateInOrgRequest {
                     "The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:   **For a non-nested team:**    * `secret` - only visible to organization owners and members of this team.    * `closed` - visible to all members of this organization.   **For a parent or child team:**    * `closed` - visible to all members of this organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("privacy")
-    public PrivacyEnum getPrivacy() {
+    public Optional<PrivacyEnum> getPrivacy() {
         return privacy;
     }
 
-    public void setPrivacy(PrivacyEnum privacy) {
+    public void setPrivacy(Optional<PrivacyEnum> privacy) {
         this.privacy = privacy;
     }
 
     public TeamsUpdateInOrgRequest notificationSetting(NotificationSettingEnum notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -218,16 +219,16 @@ public class TeamsUpdateInOrgRequest {
                     "The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:   * `notifications_enabled` - team members receive notifications when the team is @mentioned.    * `notifications_disabled` - no one receives notifications.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public NotificationSettingEnum getNotificationSetting() {
+    public Optional<NotificationSettingEnum> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(NotificationSettingEnum notificationSetting) {
+    public void setNotificationSetting(Optional<NotificationSettingEnum> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
     public TeamsUpdateInOrgRequest permission(PermissionEnum permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -241,16 +242,16 @@ public class TeamsUpdateInOrgRequest {
                     "**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public PermissionEnum getPermission() {
+    public Optional<PermissionEnum> getPermission() {
         return permission;
     }
 
-    public void setPermission(PermissionEnum permission) {
+    public void setPermission(Optional<PermissionEnum> permission) {
         this.permission = permission;
     }
 
     public TeamsUpdateInOrgRequest parentTeamId(Long parentTeamId) {
-        this.parentTeamId = parentTeamId;
+        this.parentTeamId = JsonNullable.of(parentTeamId);
         return this;
     }
 
@@ -263,11 +264,11 @@ public class TeamsUpdateInOrgRequest {
             description = "The ID of a team to set as the parent team.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parent_team_id")
-    public Long getParentTeamId() {
+    public JsonNullable<Long> getParentTeamId() {
         return parentTeamId;
     }
 
-    public void setParentTeamId(Long parentTeamId) {
+    public void setParentTeamId(JsonNullable<Long> parentTeamId) {
         this.parentTeamId = parentTeamId;
     }
 
@@ -285,12 +286,25 @@ public class TeamsUpdateInOrgRequest {
                 && Objects.equals(this.privacy, teamsUpdateInOrgRequest.privacy)
                 && Objects.equals(this.notificationSetting, teamsUpdateInOrgRequest.notificationSetting)
                 && Objects.equals(this.permission, teamsUpdateInOrgRequest.permission)
-                && Objects.equals(this.parentTeamId, teamsUpdateInOrgRequest.parentTeamId);
+                && equalsNullable(this.parentTeamId, teamsUpdateInOrgRequest.parentTeamId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, privacy, notificationSetting, permission, parentTeamId);
+        return Objects.hash(
+                name, description, privacy, notificationSetting, permission, hashCodeNullable(parentTeamId));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

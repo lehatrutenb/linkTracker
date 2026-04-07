@@ -5,14 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,21 +20,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("topic-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TopicSearchResultItem {
 
     private String name;
 
-    private String displayName = null;
+    private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
-    private String shortDescription = null;
+    private JsonNullable<String> shortDescription = JsonNullable.<String>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String createdBy = null;
+    private JsonNullable<String> createdBy = JsonNullable.<String>undefined();
 
-    private String released = null;
+    private JsonNullable<String> released = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -50,18 +48,20 @@ public class TopicSearchResultItem {
 
     private BigDecimal score;
 
-    private Long repositoryCount = null;
+    private JsonNullable<Long> repositoryCount = JsonNullable.<Long>undefined();
 
-    private URI logoUrl = null;
+    private JsonNullable<URI> logoUrl = JsonNullable.<URI>undefined();
 
     @Valid
     private List<@Valid SearchResultTextMatchesInner> textMatches = new ArrayList<>();
 
     @Valid
-    private List<@Valid TopicSearchResultItemRelatedInner> related;
+    private JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> related =
+            JsonNullable.<List<@Valid TopicSearchResultItemRelatedInner>>undefined();
 
     @Valid
-    private List<@Valid TopicSearchResultItemRelatedInner> aliases;
+    private JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> aliases =
+            JsonNullable.<List<@Valid TopicSearchResultItemRelatedInner>>undefined();
 
     public TopicSearchResultItem() {
         super();
@@ -83,11 +83,11 @@ public class TopicSearchResultItem {
             Boolean curated,
             BigDecimal score) {
         this.name = name;
-        this.displayName = displayName;
-        this.shortDescription = shortDescription;
-        this.description = description;
-        this.createdBy = createdBy;
-        this.released = released;
+        this.displayName = JsonNullable.of(displayName);
+        this.shortDescription = JsonNullable.of(shortDescription);
+        this.description = JsonNullable.of(description);
+        this.createdBy = JsonNullable.of(createdBy);
+        this.released = JsonNullable.of(released);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.featured = featured;
@@ -116,7 +116,7 @@ public class TopicSearchResultItem {
     }
 
     public TopicSearchResultItem displayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = JsonNullable.of(displayName);
         return this;
     }
 
@@ -127,16 +127,16 @@ public class TopicSearchResultItem {
     @NotNull
     @Schema(name = "display_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public JsonNullable<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(JsonNullable<String> displayName) {
         this.displayName = displayName;
     }
 
     public TopicSearchResultItem shortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+        this.shortDescription = JsonNullable.of(shortDescription);
         return this;
     }
 
@@ -147,16 +147,16 @@ public class TopicSearchResultItem {
     @NotNull
     @Schema(name = "short_description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("short_description")
-    public String getShortDescription() {
+    public JsonNullable<String> getShortDescription() {
         return shortDescription;
     }
 
-    public void setShortDescription(String shortDescription) {
+    public void setShortDescription(JsonNullable<String> shortDescription) {
         this.shortDescription = shortDescription;
     }
 
     public TopicSearchResultItem description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -167,16 +167,16 @@ public class TopicSearchResultItem {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public TopicSearchResultItem createdBy(String createdBy) {
-        this.createdBy = createdBy;
+        this.createdBy = JsonNullable.of(createdBy);
         return this;
     }
 
@@ -187,16 +187,16 @@ public class TopicSearchResultItem {
     @NotNull
     @Schema(name = "created_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_by")
-    public String getCreatedBy() {
+    public JsonNullable<String> getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(JsonNullable<String> createdBy) {
         this.createdBy = createdBy;
     }
 
     public TopicSearchResultItem released(String released) {
-        this.released = released;
+        this.released = JsonNullable.of(released);
         return this;
     }
 
@@ -207,11 +207,11 @@ public class TopicSearchResultItem {
     @NotNull
     @Schema(name = "released", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("released")
-    public String getReleased() {
+    public JsonNullable<String> getReleased() {
         return released;
     }
 
-    public void setReleased(String released) {
+    public void setReleased(JsonNullable<String> released) {
         this.released = released;
     }
 
@@ -319,7 +319,7 @@ public class TopicSearchResultItem {
     }
 
     public TopicSearchResultItem repositoryCount(Long repositoryCount) {
-        this.repositoryCount = repositoryCount;
+        this.repositoryCount = JsonNullable.of(repositoryCount);
         return this;
     }
 
@@ -329,16 +329,16 @@ public class TopicSearchResultItem {
      */
     @Schema(name = "repository_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_count")
-    public Long getRepositoryCount() {
+    public JsonNullable<Long> getRepositoryCount() {
         return repositoryCount;
     }
 
-    public void setRepositoryCount(Long repositoryCount) {
+    public void setRepositoryCount(JsonNullable<Long> repositoryCount) {
         this.repositoryCount = repositoryCount;
     }
 
     public TopicSearchResultItem logoUrl(URI logoUrl) {
-        this.logoUrl = logoUrl;
+        this.logoUrl = JsonNullable.of(logoUrl);
         return this;
     }
 
@@ -349,11 +349,11 @@ public class TopicSearchResultItem {
     @Valid
     @Schema(name = "logo_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("logo_url")
-    public URI getLogoUrl() {
+    public JsonNullable<URI> getLogoUrl() {
         return logoUrl;
     }
 
-    public void setLogoUrl(URI logoUrl) {
+    public void setLogoUrl(JsonNullable<URI> logoUrl) {
         this.logoUrl = logoUrl;
     }
 
@@ -386,15 +386,15 @@ public class TopicSearchResultItem {
     }
 
     public TopicSearchResultItem related(List<@Valid TopicSearchResultItemRelatedInner> related) {
-        this.related = related;
+        this.related = JsonNullable.of(related);
         return this;
     }
 
     public TopicSearchResultItem addRelatedItem(TopicSearchResultItemRelatedInner relatedItem) {
-        if (this.related == null) {
-            this.related = new ArrayList<>();
+        if (this.related == null || !this.related.isPresent()) {
+            this.related = JsonNullable.of(new ArrayList<>());
         }
-        this.related.add(relatedItem);
+        this.related.get().add(relatedItem);
         return this;
     }
 
@@ -405,24 +405,24 @@ public class TopicSearchResultItem {
     @Valid
     @Schema(name = "related", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("related")
-    public List<@Valid TopicSearchResultItemRelatedInner> getRelated() {
+    public JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> getRelated() {
         return related;
     }
 
-    public void setRelated(List<@Valid TopicSearchResultItemRelatedInner> related) {
+    public void setRelated(JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> related) {
         this.related = related;
     }
 
     public TopicSearchResultItem aliases(List<@Valid TopicSearchResultItemRelatedInner> aliases) {
-        this.aliases = aliases;
+        this.aliases = JsonNullable.of(aliases);
         return this;
     }
 
     public TopicSearchResultItem addAliasesItem(TopicSearchResultItemRelatedInner aliasesItem) {
-        if (this.aliases == null) {
-            this.aliases = new ArrayList<>();
+        if (this.aliases == null || !this.aliases.isPresent()) {
+            this.aliases = JsonNullable.of(new ArrayList<>());
         }
-        this.aliases.add(aliasesItem);
+        this.aliases.get().add(aliasesItem);
         return this;
     }
 
@@ -433,11 +433,11 @@ public class TopicSearchResultItem {
     @Valid
     @Schema(name = "aliases", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("aliases")
-    public List<@Valid TopicSearchResultItemRelatedInner> getAliases() {
+    public JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> getAliases() {
         return aliases;
     }
 
-    public void setAliases(List<@Valid TopicSearchResultItemRelatedInner> aliases) {
+    public void setAliases(JsonNullable<List<@Valid TopicSearchResultItemRelatedInner>> aliases) {
         this.aliases = aliases;
     }
 
@@ -461,11 +461,16 @@ public class TopicSearchResultItem {
                 && Objects.equals(this.featured, topicSearchResultItem.featured)
                 && Objects.equals(this.curated, topicSearchResultItem.curated)
                 && Objects.equals(this.score, topicSearchResultItem.score)
-                && Objects.equals(this.repositoryCount, topicSearchResultItem.repositoryCount)
-                && Objects.equals(this.logoUrl, topicSearchResultItem.logoUrl)
+                && equalsNullable(this.repositoryCount, topicSearchResultItem.repositoryCount)
+                && equalsNullable(this.logoUrl, topicSearchResultItem.logoUrl)
                 && Objects.equals(this.textMatches, topicSearchResultItem.textMatches)
-                && Objects.equals(this.related, topicSearchResultItem.related)
-                && Objects.equals(this.aliases, topicSearchResultItem.aliases);
+                && equalsNullable(this.related, topicSearchResultItem.related)
+                && equalsNullable(this.aliases, topicSearchResultItem.aliases);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -482,11 +487,18 @@ public class TopicSearchResultItem {
                 featured,
                 curated,
                 score,
-                repositoryCount,
-                logoUrl,
+                hashCodeNullable(repositoryCount),
+                hashCodeNullable(logoUrl),
                 textMatches,
-                related,
-                aliases);
+                hashCodeNullable(related),
+                hashCodeNullable(aliases));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

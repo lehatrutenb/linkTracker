@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The details of the security advisory, including summary, description, and severity.
@@ -20,11 +21,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_security_advisory_withdrawn_security_advisory")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
 
-    private CvssSeverities cvssSeverities = null;
+    private JsonNullable<CvssSeverities> cvssSeverities = JsonNullable.<CvssSeverities>undefined();
 
     @Valid
     private List<@Valid WebhooksSecurityAdvisoryCwesInner> cwes = new ArrayList<>();
@@ -85,7 +86,7 @@ public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
     }
 
     public WebhookSecurityAdvisoryWithdrawnSecurityAdvisory cvssSeverities(CvssSeverities cvssSeverities) {
-        this.cvssSeverities = cvssSeverities;
+        this.cvssSeverities = JsonNullable.of(cvssSeverities);
         return this;
     }
 
@@ -96,11 +97,11 @@ public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
     @Valid
     @Schema(name = "cvss_severities", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_severities")
-    public CvssSeverities getCvssSeverities() {
+    public JsonNullable<CvssSeverities> getCvssSeverities() {
         return cvssSeverities;
     }
 
-    public void setCvssSeverities(CvssSeverities cvssSeverities) {
+    public void setCvssSeverities(JsonNullable<CvssSeverities> cvssSeverities) {
         this.cvssSeverities = cvssSeverities;
     }
 
@@ -376,7 +377,7 @@ public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
         }
         WebhookSecurityAdvisoryWithdrawnSecurityAdvisory webhookSecurityAdvisoryWithdrawnSecurityAdvisory =
                 (WebhookSecurityAdvisoryWithdrawnSecurityAdvisory) o;
-        return Objects.equals(this.cvssSeverities, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.cvssSeverities)
+        return equalsNullable(this.cvssSeverities, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.cvssSeverities)
                 && Objects.equals(this.cwes, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.cwes)
                 && Objects.equals(this.description, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.description)
                 && Objects.equals(this.ghsaId, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.ghsaId)
@@ -391,10 +392,15 @@ public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
                 && Objects.equals(this.withdrawnAt, webhookSecurityAdvisoryWithdrawnSecurityAdvisory.withdrawnAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                cvssSeverities,
+                hashCodeNullable(cvssSeverities),
                 cwes,
                 description,
                 ghsaId,
@@ -406,6 +412,13 @@ public class WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
                 updatedAt,
                 vulnerabilities,
                 withdrawnAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

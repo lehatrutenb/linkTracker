@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsListAttestationsBulkRequest
@@ -17,14 +18,14 @@ import java.util.Objects;
 @JsonTypeName("orgs_list_attestations_bulk_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsListAttestationsBulkRequest {
 
     @Valid
     private List<String> subjectDigests = new ArrayList<>();
 
-    private String predicateType;
+    private Optional<String> predicateType = Optional.empty();
 
     public OrgsListAttestationsBulkRequest() {
         super();
@@ -70,7 +71,7 @@ public class OrgsListAttestationsBulkRequest {
     }
 
     public OrgsListAttestationsBulkRequest predicateType(String predicateType) {
-        this.predicateType = predicateType;
+        this.predicateType = Optional.ofNullable(predicateType);
         return this;
     }
 
@@ -84,11 +85,11 @@ public class OrgsListAttestationsBulkRequest {
                     "Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("predicate_type")
-    public String getPredicateType() {
+    public Optional<String> getPredicateType() {
         return predicateType;
     }
 
-    public void setPredicateType(String predicateType) {
+    public void setPredicateType(Optional<String> predicateType) {
         this.predicateType = predicateType;
     }
 

@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PackageVersionMetadata
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("Package_Version_Metadata")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PackageVersionMetadata {
 
@@ -66,9 +66,9 @@ public class PackageVersionMetadata {
 
     private PackageTypeEnum packageType;
 
-    private ContainerMetadata container;
+    private Optional<ContainerMetadata> container = Optional.empty();
 
-    private DockerMetadata docker;
+    private Optional<DockerMetadata> docker = Optional.empty();
 
     public PackageVersionMetadata() {
         super();
@@ -102,7 +102,7 @@ public class PackageVersionMetadata {
     }
 
     public PackageVersionMetadata container(ContainerMetadata container) {
-        this.container = container;
+        this.container = Optional.ofNullable(container);
         return this;
     }
 
@@ -113,16 +113,16 @@ public class PackageVersionMetadata {
     @Valid
     @Schema(name = "container", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("container")
-    public ContainerMetadata getContainer() {
+    public Optional<ContainerMetadata> getContainer() {
         return container;
     }
 
-    public void setContainer(ContainerMetadata container) {
+    public void setContainer(Optional<ContainerMetadata> container) {
         this.container = container;
     }
 
     public PackageVersionMetadata docker(DockerMetadata docker) {
-        this.docker = docker;
+        this.docker = Optional.ofNullable(docker);
         return this;
     }
 
@@ -133,11 +133,11 @@ public class PackageVersionMetadata {
     @Valid
     @Schema(name = "docker", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("docker")
-    public DockerMetadata getDocker() {
+    public Optional<DockerMetadata> getDocker() {
         return docker;
     }
 
-    public void setDocker(DockerMetadata docker) {
+    public void setDocker(Optional<DockerMetadata> docker) {
         this.docker = docker;
     }
 

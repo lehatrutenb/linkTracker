@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,23 +25,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-integration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableIntegration {
 
     private Long id;
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
     private String nodeId;
 
-    private String clientId;
+    private Optional<String> clientId = Optional.empty();
 
     private IntegrationOwner owner;
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI externalUrl;
 
@@ -57,7 +58,7 @@ public class NullableIntegration {
     @Valid
     private List<String> events = new ArrayList<>();
 
-    private Long installationsCount;
+    private Optional<Long> installationsCount = Optional.empty();
 
     public NullableIntegration() {
         super();
@@ -82,7 +83,7 @@ public class NullableIntegration {
         this.nodeId = nodeId;
         this.owner = owner;
         this.name = name;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.externalUrl = externalUrl;
         this.htmlUrl = htmlUrl;
         this.createdAt = createdAt;
@@ -116,7 +117,7 @@ public class NullableIntegration {
     }
 
     public NullableIntegration slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -130,11 +131,11 @@ public class NullableIntegration {
             description = "The slug name of the GitHub app",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
@@ -159,7 +160,7 @@ public class NullableIntegration {
     }
 
     public NullableIntegration clientId(String clientId) {
-        this.clientId = clientId;
+        this.clientId = Optional.ofNullable(clientId);
         return this;
     }
 
@@ -169,11 +170,11 @@ public class NullableIntegration {
      */
     @Schema(name = "client_id", example = "\"Iv1.25b5d1e65ffc4022\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("client_id")
-    public String getClientId() {
+    public Optional<String> getClientId() {
         return clientId;
     }
 
-    public void setClientId(String clientId) {
+    public void setClientId(Optional<String> clientId) {
         this.clientId = clientId;
     }
 
@@ -223,7 +224,7 @@ public class NullableIntegration {
     }
 
     public NullableIntegration description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -234,11 +235,11 @@ public class NullableIntegration {
     @NotNull
     @Schema(name = "description", example = "The description of the app.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -384,7 +385,7 @@ public class NullableIntegration {
     }
 
     public NullableIntegration installationsCount(Long installationsCount) {
-        this.installationsCount = installationsCount;
+        this.installationsCount = Optional.ofNullable(installationsCount);
         return this;
     }
 
@@ -399,11 +400,11 @@ public class NullableIntegration {
                     "The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installations_count")
-    public Long getInstallationsCount() {
+    public Optional<Long> getInstallationsCount() {
         return installationsCount;
     }
 
-    public void setInstallationsCount(Long installationsCount) {
+    public void setInstallationsCount(Optional<Long> installationsCount) {
         this.installationsCount = installationsCount;
     }
 

@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRepositoryDispatchSample
@@ -17,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-repository-dispatch-sample")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryDispatchSample {
 
@@ -26,13 +24,13 @@ public class WebhookRepositoryDispatchSample {
     private String branch;
 
     @Valid
-    private Map<String, Object> clientPayload;
+    private JsonNullable<Map<String, Object>> clientPayload = JsonNullable.<Map<String, Object>>undefined();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private SimpleInstallation installation;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -54,7 +52,7 @@ public class WebhookRepositoryDispatchSample {
             SimpleUser sender) {
         this.action = action;
         this.branch = branch;
-        this.clientPayload = clientPayload;
+        this.clientPayload = JsonNullable.of(clientPayload);
         this.installation = installation;
         this.repository = repository;
         this.sender = sender;
@@ -105,15 +103,15 @@ public class WebhookRepositoryDispatchSample {
     }
 
     public WebhookRepositoryDispatchSample clientPayload(Map<String, Object> clientPayload) {
-        this.clientPayload = clientPayload;
+        this.clientPayload = JsonNullable.of(clientPayload);
         return this;
     }
 
     public WebhookRepositoryDispatchSample putClientPayloadItem(String key, Object clientPayloadItem) {
-        if (this.clientPayload == null) {
-            this.clientPayload = new HashMap<>();
+        if (this.clientPayload == null || !this.clientPayload.isPresent()) {
+            this.clientPayload = JsonNullable.of(new HashMap<>());
         }
-        this.clientPayload.put(key, clientPayloadItem);
+        this.clientPayload.get().put(key, clientPayloadItem);
         return this;
     }
 
@@ -128,16 +126,16 @@ public class WebhookRepositoryDispatchSample {
                     "The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("client_payload")
-    public Map<String, Object> getClientPayload() {
+    public JsonNullable<Map<String, Object>> getClientPayload() {
         return clientPayload;
     }
 
-    public void setClientPayload(Map<String, Object> clientPayload) {
+    public void setClientPayload(JsonNullable<Map<String, Object>> clientPayload) {
         this.clientPayload = clientPayload;
     }
 
     public WebhookRepositoryDispatchSample enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -148,11 +146,11 @@ public class WebhookRepositoryDispatchSample {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -178,7 +176,7 @@ public class WebhookRepositoryDispatchSample {
     }
 
     public WebhookRepositoryDispatchSample organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -189,11 +187,11 @@ public class WebhookRepositoryDispatchSample {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 

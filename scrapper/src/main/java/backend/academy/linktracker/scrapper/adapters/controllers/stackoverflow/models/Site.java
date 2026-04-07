@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,15 +20,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Site", description = "Represents a Stack Exchange site.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Site {
 
-    private String apiSiteParameter;
+    private Optional<String> apiSiteParameter = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private URI siteUrl;
+    private Optional<URI> siteUrl = Optional.empty();
 
     /**
      * Gets or Sets siteState
@@ -68,22 +69,22 @@ public class Site {
         }
     }
 
-    private SiteStateEnum siteState;
+    private Optional<SiteStateEnum> siteState = Optional.empty();
 
-    private String audience;
+    private Optional<String> audience = Optional.empty();
 
-    private URI iconUrl;
+    private Optional<URI> iconUrl = Optional.empty();
 
-    private URI logoUrl;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime launchDate;
+    private Optional<URI> logoUrl = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime openBetaDate = null;
+    private Optional<OffsetDateTime> launchDate = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedBetaDate = null;
+    private JsonNullable<OffsetDateTime> openBetaDate = JsonNullable.<OffsetDateTime>undefined();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> closedBetaDate = JsonNullable.<OffsetDateTime>undefined();
 
     /**
      * Gets or Sets siteType
@@ -120,10 +121,10 @@ public class Site {
         }
     }
 
-    private SiteTypeEnum siteType;
+    private Optional<SiteTypeEnum> siteType = Optional.empty();
 
     public Site apiSiteParameter(String apiSiteParameter) {
-        this.apiSiteParameter = apiSiteParameter;
+        this.apiSiteParameter = Optional.ofNullable(apiSiteParameter);
         return this;
     }
 
@@ -136,16 +137,16 @@ public class Site {
             description = "The parameter used to identify this site in API calls.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("api_site_parameter")
-    public String getApiSiteParameter() {
+    public Optional<String> getApiSiteParameter() {
         return apiSiteParameter;
     }
 
-    public void setApiSiteParameter(String apiSiteParameter) {
+    public void setApiSiteParameter(Optional<String> apiSiteParameter) {
         this.apiSiteParameter = apiSiteParameter;
     }
 
     public Site name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -158,16 +159,16 @@ public class Site {
             description = "The display name of the site.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public Site siteUrl(URI siteUrl) {
-        this.siteUrl = siteUrl;
+        this.siteUrl = Optional.ofNullable(siteUrl);
         return this;
     }
 
@@ -178,16 +179,16 @@ public class Site {
     @Valid
     @Schema(name = "site_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("site_url")
-    public URI getSiteUrl() {
+    public Optional<URI> getSiteUrl() {
         return siteUrl;
     }
 
-    public void setSiteUrl(URI siteUrl) {
+    public void setSiteUrl(Optional<URI> siteUrl) {
         this.siteUrl = siteUrl;
     }
 
     public Site siteState(SiteStateEnum siteState) {
-        this.siteState = siteState;
+        this.siteState = Optional.ofNullable(siteState);
         return this;
     }
 
@@ -197,16 +198,16 @@ public class Site {
      */
     @Schema(name = "site_state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("site_state")
-    public SiteStateEnum getSiteState() {
+    public Optional<SiteStateEnum> getSiteState() {
         return siteState;
     }
 
-    public void setSiteState(SiteStateEnum siteState) {
+    public void setSiteState(Optional<SiteStateEnum> siteState) {
         this.siteState = siteState;
     }
 
     public Site audience(String audience) {
-        this.audience = audience;
+        this.audience = Optional.ofNullable(audience);
         return this;
     }
 
@@ -219,16 +220,16 @@ public class Site {
             description = "The target audience for this site.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("audience")
-    public String getAudience() {
+    public Optional<String> getAudience() {
         return audience;
     }
 
-    public void setAudience(String audience) {
+    public void setAudience(Optional<String> audience) {
         this.audience = audience;
     }
 
     public Site iconUrl(URI iconUrl) {
-        this.iconUrl = iconUrl;
+        this.iconUrl = Optional.ofNullable(iconUrl);
         return this;
     }
 
@@ -239,16 +240,16 @@ public class Site {
     @Valid
     @Schema(name = "icon_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("icon_url")
-    public URI getIconUrl() {
+    public Optional<URI> getIconUrl() {
         return iconUrl;
     }
 
-    public void setIconUrl(URI iconUrl) {
+    public void setIconUrl(Optional<URI> iconUrl) {
         this.iconUrl = iconUrl;
     }
 
     public Site logoUrl(URI logoUrl) {
-        this.logoUrl = logoUrl;
+        this.logoUrl = Optional.ofNullable(logoUrl);
         return this;
     }
 
@@ -259,16 +260,16 @@ public class Site {
     @Valid
     @Schema(name = "logo_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("logo_url")
-    public URI getLogoUrl() {
+    public Optional<URI> getLogoUrl() {
         return logoUrl;
     }
 
-    public void setLogoUrl(URI logoUrl) {
+    public void setLogoUrl(Optional<URI> logoUrl) {
         this.logoUrl = logoUrl;
     }
 
     public Site launchDate(OffsetDateTime launchDate) {
-        this.launchDate = launchDate;
+        this.launchDate = Optional.ofNullable(launchDate);
         return this;
     }
 
@@ -279,16 +280,16 @@ public class Site {
     @Valid
     @Schema(name = "launch_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("launch_date")
-    public OffsetDateTime getLaunchDate() {
+    public Optional<OffsetDateTime> getLaunchDate() {
         return launchDate;
     }
 
-    public void setLaunchDate(OffsetDateTime launchDate) {
+    public void setLaunchDate(Optional<OffsetDateTime> launchDate) {
         this.launchDate = launchDate;
     }
 
     public Site openBetaDate(OffsetDateTime openBetaDate) {
-        this.openBetaDate = openBetaDate;
+        this.openBetaDate = JsonNullable.of(openBetaDate);
         return this;
     }
 
@@ -299,16 +300,16 @@ public class Site {
     @Valid
     @Schema(name = "open_beta_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_beta_date")
-    public OffsetDateTime getOpenBetaDate() {
+    public JsonNullable<OffsetDateTime> getOpenBetaDate() {
         return openBetaDate;
     }
 
-    public void setOpenBetaDate(OffsetDateTime openBetaDate) {
+    public void setOpenBetaDate(JsonNullable<OffsetDateTime> openBetaDate) {
         this.openBetaDate = openBetaDate;
     }
 
     public Site closedBetaDate(OffsetDateTime closedBetaDate) {
-        this.closedBetaDate = closedBetaDate;
+        this.closedBetaDate = JsonNullable.of(closedBetaDate);
         return this;
     }
 
@@ -319,16 +320,16 @@ public class Site {
     @Valid
     @Schema(name = "closed_beta_date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("closed_beta_date")
-    public OffsetDateTime getClosedBetaDate() {
+    public JsonNullable<OffsetDateTime> getClosedBetaDate() {
         return closedBetaDate;
     }
 
-    public void setClosedBetaDate(OffsetDateTime closedBetaDate) {
+    public void setClosedBetaDate(JsonNullable<OffsetDateTime> closedBetaDate) {
         this.closedBetaDate = closedBetaDate;
     }
 
     public Site siteType(SiteTypeEnum siteType) {
-        this.siteType = siteType;
+        this.siteType = Optional.ofNullable(siteType);
         return this;
     }
 
@@ -338,11 +339,11 @@ public class Site {
      */
     @Schema(name = "site_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("site_type")
-    public SiteTypeEnum getSiteType() {
+    public Optional<SiteTypeEnum> getSiteType() {
         return siteType;
     }
 
-    public void setSiteType(SiteTypeEnum siteType) {
+    public void setSiteType(Optional<SiteTypeEnum> siteType) {
         this.siteType = siteType;
     }
 
@@ -363,9 +364,14 @@ public class Site {
                 && Objects.equals(this.iconUrl, site.iconUrl)
                 && Objects.equals(this.logoUrl, site.logoUrl)
                 && Objects.equals(this.launchDate, site.launchDate)
-                && Objects.equals(this.openBetaDate, site.openBetaDate)
-                && Objects.equals(this.closedBetaDate, site.closedBetaDate)
+                && equalsNullable(this.openBetaDate, site.openBetaDate)
+                && equalsNullable(this.closedBetaDate, site.closedBetaDate)
                 && Objects.equals(this.siteType, site.siteType);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -379,9 +385,16 @@ public class Site {
                 iconUrl,
                 logoUrl,
                 launchDate,
-                openBetaDate,
-                closedBetaDate,
+                hashCodeNullable(openBetaDate),
+                hashCodeNullable(closedBetaDate),
                 siteType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

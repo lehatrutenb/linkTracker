@@ -7,13 +7,15 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("dependabot-alert-with-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotAlertWithRepository {
 
@@ -87,9 +89,9 @@ public class DependabotAlertWithRepository {
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime dismissedAt = null;
+    private JsonNullable<OffsetDateTime> dismissedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser dismissedBy = null;
+    private JsonNullable<NullableSimpleUser> dismissedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     /**
      * The reason that the alert was dismissed.
@@ -132,17 +134,18 @@ public class DependabotAlertWithRepository {
         }
     }
 
-    private DismissedReasonEnum dismissedReason = null;
+    private JsonNullable<DismissedReasonEnum> dismissedReason = JsonNullable.<DismissedReasonEnum>undefined();
 
-    private String dismissedComment = null;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime fixedAt = null;
+    private JsonNullable<@Size(max = 280) String> dismissedComment = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime autoDismissedAt = null;
+    private JsonNullable<OffsetDateTime> fixedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private DependabotAlertDismissalRequestSimple dismissalRequest = null;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> autoDismissedAt = JsonNullable.<OffsetDateTime>undefined();
+
+    private JsonNullable<DependabotAlertDismissalRequestSimple> dismissalRequest =
+            JsonNullable.<DependabotAlertDismissalRequestSimple>undefined();
 
     @Valid
     private List<@Valid SimpleUser> assignees = new ArrayList<>();
@@ -181,11 +184,11 @@ public class DependabotAlertWithRepository {
         this.htmlUrl = htmlUrl;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.dismissedAt = dismissedAt;
-        this.dismissedBy = dismissedBy;
-        this.dismissedReason = dismissedReason;
-        this.dismissedComment = dismissedComment;
-        this.fixedAt = fixedAt;
+        this.dismissedAt = JsonNullable.of(dismissedAt);
+        this.dismissedBy = JsonNullable.of(dismissedBy);
+        this.dismissedReason = JsonNullable.of(dismissedReason);
+        this.dismissedComment = JsonNullable.of(dismissedComment);
+        this.fixedAt = JsonNullable.of(fixedAt);
         this.repository = repository;
     }
 
@@ -396,7 +399,7 @@ public class DependabotAlertWithRepository {
     }
 
     public DependabotAlertWithRepository dismissedAt(OffsetDateTime dismissedAt) {
-        this.dismissedAt = dismissedAt;
+        this.dismissedAt = JsonNullable.of(dismissedAt);
         return this;
     }
 
@@ -411,16 +414,16 @@ public class DependabotAlertWithRepository {
             description = "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_at")
-    public OffsetDateTime getDismissedAt() {
+    public JsonNullable<OffsetDateTime> getDismissedAt() {
         return dismissedAt;
     }
 
-    public void setDismissedAt(OffsetDateTime dismissedAt) {
+    public void setDismissedAt(JsonNullable<OffsetDateTime> dismissedAt) {
         this.dismissedAt = dismissedAt;
     }
 
     public DependabotAlertWithRepository dismissedBy(NullableSimpleUser dismissedBy) {
-        this.dismissedBy = dismissedBy;
+        this.dismissedBy = JsonNullable.of(dismissedBy);
         return this;
     }
 
@@ -432,16 +435,16 @@ public class DependabotAlertWithRepository {
     @Valid
     @Schema(name = "dismissed_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_by")
-    public NullableSimpleUser getDismissedBy() {
+    public JsonNullable<NullableSimpleUser> getDismissedBy() {
         return dismissedBy;
     }
 
-    public void setDismissedBy(NullableSimpleUser dismissedBy) {
+    public void setDismissedBy(JsonNullable<NullableSimpleUser> dismissedBy) {
         this.dismissedBy = dismissedBy;
     }
 
     public DependabotAlertWithRepository dismissedReason(DismissedReasonEnum dismissedReason) {
-        this.dismissedReason = dismissedReason;
+        this.dismissedReason = JsonNullable.of(dismissedReason);
         return this;
     }
 
@@ -455,16 +458,16 @@ public class DependabotAlertWithRepository {
             description = "The reason that the alert was dismissed.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_reason")
-    public DismissedReasonEnum getDismissedReason() {
+    public JsonNullable<DismissedReasonEnum> getDismissedReason() {
         return dismissedReason;
     }
 
-    public void setDismissedReason(DismissedReasonEnum dismissedReason) {
+    public void setDismissedReason(JsonNullable<DismissedReasonEnum> dismissedReason) {
         this.dismissedReason = dismissedReason;
     }
 
     public DependabotAlertWithRepository dismissedComment(String dismissedComment) {
-        this.dismissedComment = dismissedComment;
+        this.dismissedComment = JsonNullable.of(dismissedComment);
         return this;
     }
 
@@ -479,16 +482,16 @@ public class DependabotAlertWithRepository {
             description = "An optional comment associated with the alert's dismissal.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissed_comment")
-    public String getDismissedComment() {
+    public JsonNullable<@Size(max = 280) String> getDismissedComment() {
         return dismissedComment;
     }
 
-    public void setDismissedComment(String dismissedComment) {
+    public void setDismissedComment(JsonNullable<String> dismissedComment) {
         this.dismissedComment = dismissedComment;
     }
 
     public DependabotAlertWithRepository fixedAt(OffsetDateTime fixedAt) {
-        this.fixedAt = fixedAt;
+        this.fixedAt = JsonNullable.of(fixedAt);
         return this;
     }
 
@@ -504,16 +507,16 @@ public class DependabotAlertWithRepository {
                     "The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("fixed_at")
-    public OffsetDateTime getFixedAt() {
+    public JsonNullable<OffsetDateTime> getFixedAt() {
         return fixedAt;
     }
 
-    public void setFixedAt(OffsetDateTime fixedAt) {
+    public void setFixedAt(JsonNullable<OffsetDateTime> fixedAt) {
         this.fixedAt = fixedAt;
     }
 
     public DependabotAlertWithRepository autoDismissedAt(OffsetDateTime autoDismissedAt) {
-        this.autoDismissedAt = autoDismissedAt;
+        this.autoDismissedAt = JsonNullable.of(autoDismissedAt);
         return this;
     }
 
@@ -528,16 +531,16 @@ public class DependabotAlertWithRepository {
             description = "The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("auto_dismissed_at")
-    public OffsetDateTime getAutoDismissedAt() {
+    public JsonNullable<OffsetDateTime> getAutoDismissedAt() {
         return autoDismissedAt;
     }
 
-    public void setAutoDismissedAt(OffsetDateTime autoDismissedAt) {
+    public void setAutoDismissedAt(JsonNullable<OffsetDateTime> autoDismissedAt) {
         this.autoDismissedAt = autoDismissedAt;
     }
 
     public DependabotAlertWithRepository dismissalRequest(DependabotAlertDismissalRequestSimple dismissalRequest) {
-        this.dismissalRequest = dismissalRequest;
+        this.dismissalRequest = JsonNullable.of(dismissalRequest);
         return this;
     }
 
@@ -548,11 +551,11 @@ public class DependabotAlertWithRepository {
     @Valid
     @Schema(name = "dismissal_request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_request")
-    public DependabotAlertDismissalRequestSimple getDismissalRequest() {
+    public JsonNullable<DependabotAlertDismissalRequestSimple> getDismissalRequest() {
         return dismissalRequest;
     }
 
-    public void setDismissalRequest(DependabotAlertDismissalRequestSimple dismissalRequest) {
+    public void setDismissalRequest(JsonNullable<DependabotAlertDismissalRequestSimple> dismissalRequest) {
         this.dismissalRequest = dismissalRequest;
     }
 
@@ -632,10 +635,15 @@ public class DependabotAlertWithRepository {
                 && Objects.equals(this.dismissedReason, dependabotAlertWithRepository.dismissedReason)
                 && Objects.equals(this.dismissedComment, dependabotAlertWithRepository.dismissedComment)
                 && Objects.equals(this.fixedAt, dependabotAlertWithRepository.fixedAt)
-                && Objects.equals(this.autoDismissedAt, dependabotAlertWithRepository.autoDismissedAt)
-                && Objects.equals(this.dismissalRequest, dependabotAlertWithRepository.dismissalRequest)
+                && equalsNullable(this.autoDismissedAt, dependabotAlertWithRepository.autoDismissedAt)
+                && equalsNullable(this.dismissalRequest, dependabotAlertWithRepository.dismissalRequest)
                 && Objects.equals(this.assignees, dependabotAlertWithRepository.assignees)
                 && Objects.equals(this.repository, dependabotAlertWithRepository.repository);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -655,10 +663,17 @@ public class DependabotAlertWithRepository {
                 dismissedReason,
                 dismissedComment,
                 fixedAt,
-                autoDismissedAt,
-                dismissalRequest,
+                hashCodeNullable(autoDismissedAt),
+                hashCodeNullable(dismissalRequest),
                 assignees,
                 repository);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook-secret-scanning-scan-completed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookSecretScanningScanCompleted {
 
@@ -149,9 +147,9 @@ public class WebhookSecretScanningScanCompleted {
     private OffsetDateTime completedAt;
 
     @Valid
-    private List<String> secretTypes;
+    private JsonNullable<List<String>> secretTypes = JsonNullable.<List<String>>undefined();
 
-    private String customPatternName = null;
+    private JsonNullable<String> customPatternName = JsonNullable.<String>undefined();
 
     /**
      * If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated
@@ -190,17 +188,17 @@ public class WebhookSecretScanningScanCompleted {
         }
     }
 
-    private CustomPatternScopeEnum customPatternScope = null;
+    private JsonNullable<CustomPatternScopeEnum> customPatternScope = JsonNullable.<CustomPatternScopeEnum>undefined();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookSecretScanningScanCompleted() {
         super();
@@ -330,15 +328,15 @@ public class WebhookSecretScanningScanCompleted {
     }
 
     public WebhookSecretScanningScanCompleted secretTypes(List<String> secretTypes) {
-        this.secretTypes = secretTypes;
+        this.secretTypes = JsonNullable.of(secretTypes);
         return this;
     }
 
     public WebhookSecretScanningScanCompleted addSecretTypesItem(String secretTypesItem) {
-        if (this.secretTypes == null) {
-            this.secretTypes = new ArrayList<>();
+        if (this.secretTypes == null || !this.secretTypes.isPresent()) {
+            this.secretTypes = JsonNullable.of(new ArrayList<>());
         }
-        this.secretTypes.add(secretTypesItem);
+        this.secretTypes.get().add(secretTypesItem);
         return this;
     }
 
@@ -352,16 +350,16 @@ public class WebhookSecretScanningScanCompleted {
                     "List of patterns that were updated. This will be empty for normal backfill scans or custom pattern updates",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_types")
-    public List<String> getSecretTypes() {
+    public JsonNullable<List<String>> getSecretTypes() {
         return secretTypes;
     }
 
-    public void setSecretTypes(List<String> secretTypes) {
+    public void setSecretTypes(JsonNullable<List<String>> secretTypes) {
         this.secretTypes = secretTypes;
     }
 
     public WebhookSecretScanningScanCompleted customPatternName(String customPatternName) {
-        this.customPatternName = customPatternName;
+        this.customPatternName = JsonNullable.of(customPatternName);
         return this;
     }
 
@@ -375,16 +373,16 @@ public class WebhookSecretScanningScanCompleted {
                     "If the scan was triggered by a custom pattern update, this will be the name of the pattern that was updated",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_pattern_name")
-    public String getCustomPatternName() {
+    public JsonNullable<String> getCustomPatternName() {
         return customPatternName;
     }
 
-    public void setCustomPatternName(String customPatternName) {
+    public void setCustomPatternName(JsonNullable<String> customPatternName) {
         this.customPatternName = customPatternName;
     }
 
     public WebhookSecretScanningScanCompleted customPatternScope(CustomPatternScopeEnum customPatternScope) {
-        this.customPatternScope = customPatternScope;
+        this.customPatternScope = JsonNullable.of(customPatternScope);
         return this;
     }
 
@@ -398,16 +396,16 @@ public class WebhookSecretScanningScanCompleted {
                     "If the scan was triggered by a custom pattern update, this will be the scope of the pattern that was updated",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("custom_pattern_scope")
-    public CustomPatternScopeEnum getCustomPatternScope() {
+    public JsonNullable<CustomPatternScopeEnum> getCustomPatternScope() {
         return customPatternScope;
     }
 
-    public void setCustomPatternScope(CustomPatternScopeEnum customPatternScope) {
+    public void setCustomPatternScope(JsonNullable<CustomPatternScopeEnum> customPatternScope) {
         this.customPatternScope = customPatternScope;
     }
 
     public WebhookSecretScanningScanCompleted repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -418,16 +416,16 @@ public class WebhookSecretScanningScanCompleted {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
     public WebhookSecretScanningScanCompleted enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -438,16 +436,16 @@ public class WebhookSecretScanningScanCompleted {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookSecretScanningScanCompleted installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -458,16 +456,16 @@ public class WebhookSecretScanningScanCompleted {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookSecretScanningScanCompleted organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -478,16 +476,16 @@ public class WebhookSecretScanningScanCompleted {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
     public WebhookSecretScanningScanCompleted sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -498,11 +496,11 @@ public class WebhookSecretScanningScanCompleted {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 
@@ -520,14 +518,19 @@ public class WebhookSecretScanningScanCompleted {
                 && Objects.equals(this.source, webhookSecretScanningScanCompleted.source)
                 && Objects.equals(this.startedAt, webhookSecretScanningScanCompleted.startedAt)
                 && Objects.equals(this.completedAt, webhookSecretScanningScanCompleted.completedAt)
-                && Objects.equals(this.secretTypes, webhookSecretScanningScanCompleted.secretTypes)
-                && Objects.equals(this.customPatternName, webhookSecretScanningScanCompleted.customPatternName)
-                && Objects.equals(this.customPatternScope, webhookSecretScanningScanCompleted.customPatternScope)
+                && equalsNullable(this.secretTypes, webhookSecretScanningScanCompleted.secretTypes)
+                && equalsNullable(this.customPatternName, webhookSecretScanningScanCompleted.customPatternName)
+                && equalsNullable(this.customPatternScope, webhookSecretScanningScanCompleted.customPatternScope)
                 && Objects.equals(this.repository, webhookSecretScanningScanCompleted.repository)
                 && Objects.equals(this.enterprise, webhookSecretScanningScanCompleted.enterprise)
                 && Objects.equals(this.installation, webhookSecretScanningScanCompleted.installation)
                 && Objects.equals(this.organization, webhookSecretScanningScanCompleted.organization)
                 && Objects.equals(this.sender, webhookSecretScanningScanCompleted.sender);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -538,14 +541,21 @@ public class WebhookSecretScanningScanCompleted {
                 source,
                 startedAt,
                 completedAt,
-                secretTypes,
-                customPatternName,
-                customPatternScope,
+                hashCodeNullable(secretTypes),
+                hashCodeNullable(customPatternName),
+                hashCodeNullable(customPatternScope),
                 repository,
                 enterprise,
                 installation,
                 organization,
                 sender);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

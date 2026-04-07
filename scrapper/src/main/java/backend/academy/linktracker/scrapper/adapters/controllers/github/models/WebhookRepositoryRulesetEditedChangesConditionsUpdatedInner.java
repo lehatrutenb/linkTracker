@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner
@@ -15,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_ruleset_edited_changes_conditions_updated_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner {
 
-    private RepositoryRulesetConditions condition;
+    private Optional<RepositoryRulesetConditions> condition = Optional.empty();
 
-    private WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges changes;
+    private Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges> changes = Optional.empty();
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner condition(
             RepositoryRulesetConditions condition) {
-        this.condition = condition;
+        this.condition = Optional.ofNullable(condition);
         return this;
     }
 
@@ -36,17 +35,17 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner {
     @Valid
     @Schema(name = "condition", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("condition")
-    public RepositoryRulesetConditions getCondition() {
+    public Optional<RepositoryRulesetConditions> getCondition() {
         return condition;
     }
 
-    public void setCondition(RepositoryRulesetConditions condition) {
+    public void setCondition(Optional<RepositoryRulesetConditions> condition) {
         this.condition = condition;
     }
 
     public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner changes(
             WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges changes) {
-        this.changes = changes;
+        this.changes = Optional.ofNullable(changes);
         return this;
     }
 
@@ -57,11 +56,11 @@ public class WebhookRepositoryRulesetEditedChangesConditionsUpdatedInner {
     @Valid
     @Schema(name = "changes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("changes")
-    public WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges getChanges() {
+    public Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges> getChanges() {
         return changes;
     }
 
-    public void setChanges(WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges changes) {
+    public void setChanges(Optional<WebhookRepositoryRulesetEditedChangesConditionsUpdatedInnerChanges> changes) {
         this.changes = changes;
     }
 

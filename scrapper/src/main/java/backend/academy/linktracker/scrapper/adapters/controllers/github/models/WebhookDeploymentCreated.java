@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentCreated
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-deployment-created")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentCreated {
 
@@ -58,19 +59,19 @@ public class WebhookDeploymentCreated {
 
     private Deployment deployment;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
     private SimpleUser sender;
 
-    private WebhooksWorkflow workflow = null;
+    private JsonNullable<WebhooksWorkflow> workflow = JsonNullable.<WebhooksWorkflow>undefined();
 
-    private DeploymentWorkflowRun workflowRun = null;
+    private JsonNullable<DeploymentWorkflowRun> workflowRun = JsonNullable.<DeploymentWorkflowRun>undefined();
 
     public WebhookDeploymentCreated() {
         super();
@@ -90,8 +91,8 @@ public class WebhookDeploymentCreated {
         this.deployment = deployment;
         this.repository = repository;
         this.sender = sender;
-        this.workflow = workflow;
-        this.workflowRun = workflowRun;
+        this.workflow = JsonNullable.of(workflow);
+        this.workflowRun = JsonNullable.of(workflowRun);
     }
 
     public WebhookDeploymentCreated action(ActionEnum action) {
@@ -136,7 +137,7 @@ public class WebhookDeploymentCreated {
     }
 
     public WebhookDeploymentCreated enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -147,16 +148,16 @@ public class WebhookDeploymentCreated {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookDeploymentCreated installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -167,16 +168,16 @@ public class WebhookDeploymentCreated {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookDeploymentCreated organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -187,11 +188,11 @@ public class WebhookDeploymentCreated {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -238,7 +239,7 @@ public class WebhookDeploymentCreated {
     }
 
     public WebhookDeploymentCreated workflow(WebhooksWorkflow workflow) {
-        this.workflow = workflow;
+        this.workflow = JsonNullable.of(workflow);
         return this;
     }
 
@@ -250,16 +251,16 @@ public class WebhookDeploymentCreated {
     @Valid
     @Schema(name = "workflow", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow")
-    public WebhooksWorkflow getWorkflow() {
+    public JsonNullable<WebhooksWorkflow> getWorkflow() {
         return workflow;
     }
 
-    public void setWorkflow(WebhooksWorkflow workflow) {
+    public void setWorkflow(JsonNullable<WebhooksWorkflow> workflow) {
         this.workflow = workflow;
     }
 
     public WebhookDeploymentCreated workflowRun(DeploymentWorkflowRun workflowRun) {
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
         return this;
     }
 
@@ -271,11 +272,11 @@ public class WebhookDeploymentCreated {
     @Valid
     @Schema(name = "workflow_run", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_run")
-    public DeploymentWorkflowRun getWorkflowRun() {
+    public JsonNullable<DeploymentWorkflowRun> getWorkflowRun() {
         return workflowRun;
     }
 
-    public void setWorkflowRun(DeploymentWorkflowRun workflowRun) {
+    public void setWorkflowRun(JsonNullable<DeploymentWorkflowRun> workflowRun) {
         this.workflowRun = workflowRun;
     }
 

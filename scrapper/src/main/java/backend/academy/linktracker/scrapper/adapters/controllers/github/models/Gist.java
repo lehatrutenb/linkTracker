@@ -4,15 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Schema(name = "Gist", description = "Gist")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Gist {
 
@@ -52,19 +48,19 @@ public class Gist {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Long comments;
 
-    private Boolean commentsEnabled;
+    private Optional<Boolean> commentsEnabled = Optional.empty();
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     private URI commentsUrl;
 
-    private NullableSimpleUser owner = null;
+    private JsonNullable<NullableSimpleUser> owner = JsonNullable.<NullableSimpleUser>undefined();
 
-    private Boolean truncated;
+    private Optional<Boolean> truncated = Optional.empty();
 
     @Valid
     private List<Object> forks = new ArrayList<>();
@@ -108,9 +104,9 @@ public class Gist {
         this._public = _public;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.comments = comments;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.commentsUrl = commentsUrl;
     }
 
@@ -372,7 +368,7 @@ public class Gist {
     }
 
     public Gist description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -383,11 +379,11 @@ public class Gist {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -412,7 +408,7 @@ public class Gist {
     }
 
     public Gist commentsEnabled(Boolean commentsEnabled) {
-        this.commentsEnabled = commentsEnabled;
+        this.commentsEnabled = Optional.ofNullable(commentsEnabled);
         return this;
     }
 
@@ -422,16 +418,16 @@ public class Gist {
      */
     @Schema(name = "comments_enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_enabled")
-    public Boolean getCommentsEnabled() {
+    public Optional<Boolean> getCommentsEnabled() {
         return commentsEnabled;
     }
 
-    public void setCommentsEnabled(Boolean commentsEnabled) {
+    public void setCommentsEnabled(Optional<Boolean> commentsEnabled) {
         this.commentsEnabled = commentsEnabled;
     }
 
     public Gist user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -443,11 +439,11 @@ public class Gist {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
@@ -473,7 +469,7 @@ public class Gist {
     }
 
     public Gist owner(NullableSimpleUser owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -484,16 +480,16 @@ public class Gist {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public NullableSimpleUser getOwner() {
+    public JsonNullable<NullableSimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(NullableSimpleUser owner) {
+    public void setOwner(JsonNullable<NullableSimpleUser> owner) {
         this.owner = owner;
     }
 
     public Gist truncated(Boolean truncated) {
-        this.truncated = truncated;
+        this.truncated = Optional.ofNullable(truncated);
         return this;
     }
 
@@ -503,11 +499,11 @@ public class Gist {
      */
     @Schema(name = "truncated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("truncated")
-    public Boolean getTruncated() {
+    public Optional<Boolean> getTruncated() {
         return truncated;
     }
 
-    public void setTruncated(Boolean truncated) {
+    public void setTruncated(Optional<Boolean> truncated) {
         this.truncated = truncated;
     }
 
@@ -591,10 +587,15 @@ public class Gist {
                 && Objects.equals(this.commentsEnabled, gist.commentsEnabled)
                 && Objects.equals(this.user, gist.user)
                 && Objects.equals(this.commentsUrl, gist.commentsUrl)
-                && Objects.equals(this.owner, gist.owner)
+                && equalsNullable(this.owner, gist.owner)
                 && Objects.equals(this.truncated, gist.truncated)
                 && Objects.equals(this.forks, gist.forks)
                 && Objects.equals(this.history, gist.history);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -617,10 +618,17 @@ public class Gist {
                 commentsEnabled,
                 user,
                 commentsUrl,
-                owner,
+                hashCodeNullable(owner),
                 truncated,
                 forks,
                 history);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

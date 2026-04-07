@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("enterprise-team")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
 
@@ -29,19 +31,19 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
 
     private String name;
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     private String slug;
 
     private URI url;
 
-    private String syncToOrganizations;
+    private Optional<String> syncToOrganizations = Optional.empty();
 
-    private String organizationSelectionType;
+    private Optional<String> organizationSelectionType = Optional.empty();
 
-    private String groupId = null;
+    private JsonNullable<String> groupId = JsonNullable.<String>undefined();
 
-    private String groupName = null;
+    private JsonNullable<String> groupName = JsonNullable.<String>undefined();
 
     private URI htmlUrl;
 
@@ -53,9 +55,9 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String notificationSetting;
+    private Optional<String> notificationSetting = Optional.empty();
 
-    private TeamPermissions permissions;
+    private Optional<TeamPermissions> permissions = Optional.empty();
 
     /**
      * The ownership type of the team
@@ -94,9 +96,9 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
 
     private TypeEnum type;
 
-    private Long organizationId;
+    private Optional<Long> organizationId = Optional.empty();
 
-    private Long enterpriseId;
+    private Optional<Long> enterpriseId = Optional.empty();
 
     public EnterpriseTeam() {
         super();
@@ -119,7 +121,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
         this.name = name;
         this.slug = slug;
         this.url = url;
-        this.groupId = groupId;
+        this.groupId = JsonNullable.of(groupId);
         this.htmlUrl = htmlUrl;
         this.membersUrl = membersUrl;
         this.createdAt = createdAt;
@@ -168,7 +170,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     }
 
     public EnterpriseTeam description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -178,11 +180,11 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -228,7 +230,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     }
 
     public EnterpriseTeam syncToOrganizations(String syncToOrganizations) {
-        this.syncToOrganizations = syncToOrganizations;
+        this.syncToOrganizations = Optional.ofNullable(syncToOrganizations);
         return this;
     }
 
@@ -242,16 +244,16 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             description = "Retired: this field will not be returned with GHEC enterprise teams.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sync_to_organizations")
-    public String getSyncToOrganizations() {
+    public Optional<String> getSyncToOrganizations() {
         return syncToOrganizations;
     }
 
-    public void setSyncToOrganizations(String syncToOrganizations) {
+    public void setSyncToOrganizations(Optional<String> syncToOrganizations) {
         this.syncToOrganizations = syncToOrganizations;
     }
 
     public EnterpriseTeam organizationSelectionType(String organizationSelectionType) {
-        this.organizationSelectionType = organizationSelectionType;
+        this.organizationSelectionType = Optional.ofNullable(organizationSelectionType);
         return this;
     }
 
@@ -264,16 +266,16 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             example = "disabled | selected | all",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_selection_type")
-    public String getOrganizationSelectionType() {
+    public Optional<String> getOrganizationSelectionType() {
         return organizationSelectionType;
     }
 
-    public void setOrganizationSelectionType(String organizationSelectionType) {
+    public void setOrganizationSelectionType(Optional<String> organizationSelectionType) {
         this.organizationSelectionType = organizationSelectionType;
     }
 
     public EnterpriseTeam groupId(String groupId) {
-        this.groupId = groupId;
+        this.groupId = JsonNullable.of(groupId);
         return this;
     }
 
@@ -287,16 +289,16 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             example = "62ab9291-fae2-468e-974b-7e45096d5021",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("group_id")
-    public String getGroupId() {
+    public JsonNullable<String> getGroupId() {
         return groupId;
     }
 
-    public void setGroupId(String groupId) {
+    public void setGroupId(JsonNullable<String> groupId) {
         this.groupId = groupId;
     }
 
     public EnterpriseTeam groupName(String groupName) {
-        this.groupName = groupName;
+        this.groupName = JsonNullable.of(groupName);
         return this;
     }
 
@@ -310,11 +312,11 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             description = "Retired: this field will not be returned with GHEC enterprise teams.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("group_name")
-    public String getGroupName() {
+    public JsonNullable<String> getGroupName() {
         return groupName;
     }
 
-    public void setGroupName(String groupName) {
+    public void setGroupName(JsonNullable<String> groupName) {
         this.groupName = groupName;
     }
 
@@ -405,7 +407,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     }
 
     public EnterpriseTeam notificationSetting(String notificationSetting) {
-        this.notificationSetting = notificationSetting;
+        this.notificationSetting = Optional.ofNullable(notificationSetting);
         return this;
     }
 
@@ -415,16 +417,16 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
      */
     @Schema(name = "notification_setting", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("notification_setting")
-    public String getNotificationSetting() {
+    public Optional<String> getNotificationSetting() {
         return notificationSetting;
     }
 
-    public void setNotificationSetting(String notificationSetting) {
+    public void setNotificationSetting(Optional<String> notificationSetting) {
         this.notificationSetting = notificationSetting;
     }
 
     public EnterpriseTeam permissions(TeamPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -435,11 +437,11 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public TeamPermissions getPermissions() {
+    public Optional<TeamPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(TeamPermissions permissions) {
+    public void setPermissions(Optional<TeamPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -464,7 +466,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
     }
 
     public EnterpriseTeam organizationId(Long organizationId) {
-        this.organizationId = organizationId;
+        this.organizationId = Optional.ofNullable(organizationId);
         return this;
     }
 
@@ -478,16 +480,16 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             description = "Unique identifier of the organization to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization_id")
-    public Long getOrganizationId() {
+    public Optional<Long> getOrganizationId() {
         return organizationId;
     }
 
-    public void setOrganizationId(Long organizationId) {
+    public void setOrganizationId(Optional<Long> organizationId) {
         this.organizationId = organizationId;
     }
 
     public EnterpriseTeam enterpriseId(Long enterpriseId) {
-        this.enterpriseId = enterpriseId;
+        this.enterpriseId = Optional.ofNullable(enterpriseId);
         return this;
     }
 
@@ -501,11 +503,11 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
             description = "Unique identifier of the enterprise to which this team belongs",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise_id")
-    public Long getEnterpriseId() {
+    public Optional<Long> getEnterpriseId() {
         return enterpriseId;
     }
 
-    public void setEnterpriseId(Long enterpriseId) {
+    public void setEnterpriseId(Optional<Long> enterpriseId) {
         this.enterpriseId = enterpriseId;
     }
 
@@ -526,7 +528,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
                 && Objects.equals(this.syncToOrganizations, enterpriseTeam.syncToOrganizations)
                 && Objects.equals(this.organizationSelectionType, enterpriseTeam.organizationSelectionType)
                 && Objects.equals(this.groupId, enterpriseTeam.groupId)
-                && Objects.equals(this.groupName, enterpriseTeam.groupName)
+                && equalsNullable(this.groupName, enterpriseTeam.groupName)
                 && Objects.equals(this.htmlUrl, enterpriseTeam.htmlUrl)
                 && Objects.equals(this.membersUrl, enterpriseTeam.membersUrl)
                 && Objects.equals(this.createdAt, enterpriseTeam.createdAt)
@@ -536,6 +538,11 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
                 && Objects.equals(this.type, enterpriseTeam.type)
                 && Objects.equals(this.organizationId, enterpriseTeam.organizationId)
                 && Objects.equals(this.enterpriseId, enterpriseTeam.enterpriseId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -549,7 +556,7 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
                 syncToOrganizations,
                 organizationSelectionType,
                 groupId,
-                groupName,
+                hashCodeNullable(groupName),
                 htmlUrl,
                 membersUrl,
                 createdAt,
@@ -559,6 +566,13 @@ public class EnterpriseTeam implements CopilotSeatDetailsAssigningTeam {
                 type,
                 organizationId,
                 enterpriseId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

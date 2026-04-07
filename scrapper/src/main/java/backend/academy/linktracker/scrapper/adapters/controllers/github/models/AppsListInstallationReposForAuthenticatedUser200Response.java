@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AppsListInstallationReposForAuthenticatedUser200Response
@@ -17,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("apps_list_installation_repos_for_authenticated_user_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AppsListInstallationReposForAuthenticatedUser200Response {
 
     private Long totalCount;
 
-    private String repositorySelection;
+    private Optional<String> repositorySelection = Optional.empty();
 
     @Valid
     private List<Repository> repositories = new ArrayList<>();
@@ -61,7 +61,7 @@ public class AppsListInstallationReposForAuthenticatedUser200Response {
     }
 
     public AppsListInstallationReposForAuthenticatedUser200Response repositorySelection(String repositorySelection) {
-        this.repositorySelection = repositorySelection;
+        this.repositorySelection = Optional.ofNullable(repositorySelection);
         return this;
     }
 
@@ -71,11 +71,11 @@ public class AppsListInstallationReposForAuthenticatedUser200Response {
      */
     @Schema(name = "repository_selection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_selection")
-    public String getRepositorySelection() {
+    public Optional<String> getRepositorySelection() {
         return repositorySelection;
     }
 
-    public void setRepositorySelection(String repositorySelection) {
+    public void setRepositorySelection(Optional<String> repositorySelection) {
         this.repositorySelection = repositorySelection;
     }
 

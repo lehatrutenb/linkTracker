@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposTransferRequest
@@ -17,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("repos_transfer_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposTransferRequest {
 
     private String newOwner;
 
-    private String newName;
+    private Optional<String> newName = Optional.empty();
 
     @Valid
     private List<Long> teamIds = new ArrayList<>();
@@ -63,7 +63,7 @@ public class ReposTransferRequest {
     }
 
     public ReposTransferRequest newName(String newName) {
-        this.newName = newName;
+        this.newName = Optional.ofNullable(newName);
         return this;
     }
 
@@ -76,11 +76,11 @@ public class ReposTransferRequest {
             description = "The new name to be given to the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("new_name")
-    public String getNewName() {
+    public Optional<String> getNewName() {
         return newName;
     }
 
-    public void setNewName(String newName) {
+    public void setNewName(Optional<String> newName) {
         this.newName = newName;
     }
 

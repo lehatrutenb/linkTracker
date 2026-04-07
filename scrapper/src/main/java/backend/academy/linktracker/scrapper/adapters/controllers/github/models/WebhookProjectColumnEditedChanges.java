@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookProjectColumnEditedChanges
@@ -15,14 +14,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_project_column_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectColumnEditedChanges {
 
-    private WebhookDiscussionCommentEditedChangesBody name;
+    private Optional<WebhookDiscussionCommentEditedChangesBody> name = Optional.empty();
 
     public WebhookProjectColumnEditedChanges name(WebhookDiscussionCommentEditedChangesBody name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -33,11 +32,11 @@ public class WebhookProjectColumnEditedChanges {
     @Valid
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public WebhookDiscussionCommentEditedChangesBody getName() {
+    public Optional<WebhookDiscussionCommentEditedChangesBody> getName() {
         return name;
     }
 
-    public void setName(WebhookDiscussionCommentEditedChangesBody name) {
+    public void setName(Optional<WebhookDiscussionCommentEditedChangesBody> name) {
         this.name = name;
     }
 

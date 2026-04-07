@@ -7,11 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * IssuesUpdateRequest
@@ -19,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("issues_update_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesUpdateRequest {
 
-    private IssuesUpdateRequestTitle title = null;
+    private JsonNullable<IssuesUpdateRequestTitle> title = JsonNullable.<IssuesUpdateRequestTitle>undefined();
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     /**
      * The open or closed state of the issue.
@@ -62,7 +59,7 @@ public class IssuesUpdateRequest {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
     /**
      * The reason for the state change. Ignored unless `state` is changed.
@@ -103,9 +100,10 @@ public class IssuesUpdateRequest {
         }
     }
 
-    private StateReasonEnum stateReason = null;
+    private JsonNullable<StateReasonEnum> stateReason = JsonNullable.<StateReasonEnum>undefined();
 
-    private IssuesUpdateRequestMilestone milestone = null;
+    private JsonNullable<IssuesUpdateRequestMilestone> milestone =
+            JsonNullable.<IssuesUpdateRequestMilestone>undefined();
 
     @Valid
     private List<IssuesCreateRequestLabelsInner> labels = new ArrayList<>();
@@ -116,10 +114,10 @@ public class IssuesUpdateRequest {
     @Valid
     private List<@Valid IssuesUpdateRequestIssueFieldValuesInner> issueFieldValues = new ArrayList<>();
 
-    private String type = null;
+    private JsonNullable<String> type = JsonNullable.<String>undefined();
 
     public IssuesUpdateRequest title(IssuesUpdateRequestTitle title) {
-        this.title = title;
+        this.title = JsonNullable.of(title);
         return this;
     }
 
@@ -130,16 +128,16 @@ public class IssuesUpdateRequest {
     @Valid
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public IssuesUpdateRequestTitle getTitle() {
+    public JsonNullable<IssuesUpdateRequestTitle> getTitle() {
         return title;
     }
 
-    public void setTitle(IssuesUpdateRequestTitle title) {
+    public void setTitle(JsonNullable<IssuesUpdateRequestTitle> title) {
         this.title = title;
     }
 
     public IssuesUpdateRequest body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -149,16 +147,16 @@ public class IssuesUpdateRequest {
      */
     @Schema(name = "body", description = "The contents of the issue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public IssuesUpdateRequest state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -171,16 +169,16 @@ public class IssuesUpdateRequest {
             description = "The open or closed state of the issue.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public IssuesUpdateRequest stateReason(StateReasonEnum stateReason) {
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         return this;
     }
 
@@ -194,16 +192,16 @@ public class IssuesUpdateRequest {
             description = "The reason for the state change. Ignored unless `state` is changed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state_reason")
-    public StateReasonEnum getStateReason() {
+    public JsonNullable<StateReasonEnum> getStateReason() {
         return stateReason;
     }
 
-    public void setStateReason(StateReasonEnum stateReason) {
+    public void setStateReason(JsonNullable<StateReasonEnum> stateReason) {
         this.stateReason = stateReason;
     }
 
     public IssuesUpdateRequest milestone(IssuesUpdateRequestMilestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -214,11 +212,11 @@ public class IssuesUpdateRequest {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestone")
-    public IssuesUpdateRequestMilestone getMilestone() {
+    public JsonNullable<IssuesUpdateRequestMilestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(IssuesUpdateRequestMilestone milestone) {
+    public void setMilestone(JsonNullable<IssuesUpdateRequestMilestone> milestone) {
         this.milestone = milestone;
     }
 
@@ -319,7 +317,7 @@ public class IssuesUpdateRequest {
     }
 
     public IssuesUpdateRequest type(String type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -334,11 +332,11 @@ public class IssuesUpdateRequest {
                     "The name of the issue type to associate with this issue or use `null` to remove the current issue type. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public JsonNullable<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(JsonNullable<String> type) {
         this.type = type;
     }
 
@@ -351,20 +349,41 @@ public class IssuesUpdateRequest {
             return false;
         }
         IssuesUpdateRequest issuesUpdateRequest = (IssuesUpdateRequest) o;
-        return Objects.equals(this.title, issuesUpdateRequest.title)
-                && Objects.equals(this.body, issuesUpdateRequest.body)
+        return equalsNullable(this.title, issuesUpdateRequest.title)
+                && equalsNullable(this.body, issuesUpdateRequest.body)
                 && Objects.equals(this.state, issuesUpdateRequest.state)
-                && Objects.equals(this.stateReason, issuesUpdateRequest.stateReason)
-                && Objects.equals(this.milestone, issuesUpdateRequest.milestone)
+                && equalsNullable(this.stateReason, issuesUpdateRequest.stateReason)
+                && equalsNullable(this.milestone, issuesUpdateRequest.milestone)
                 && Objects.equals(this.labels, issuesUpdateRequest.labels)
                 && Objects.equals(this.assignees, issuesUpdateRequest.assignees)
                 && Objects.equals(this.issueFieldValues, issuesUpdateRequest.issueFieldValues)
-                && Objects.equals(this.type, issuesUpdateRequest.type);
+                && equalsNullable(this.type, issuesUpdateRequest.type);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, body, state, stateReason, milestone, labels, assignees, issueFieldValues, type);
+        return Objects.hash(
+                hashCodeNullable(title),
+                hashCodeNullable(body),
+                state,
+                hashCodeNullable(stateReason),
+                hashCodeNullable(milestone),
+                labels,
+                assignees,
+                issueFieldValues,
+                hashCodeNullable(type));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

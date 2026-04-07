@@ -5,14 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSearchResultItem {
 
@@ -42,12 +40,12 @@ public class CodeSearchResultItem {
 
     private BigDecimal score;
 
-    private Long fileSize;
+    private Optional<Long> fileSize = Optional.empty();
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastModifiedAt;
+    private Optional<OffsetDateTime> lastModifiedAt = Optional.empty();
 
     @Valid
     private List<String> lineNumbers = new ArrayList<>();
@@ -247,7 +245,7 @@ public class CodeSearchResultItem {
     }
 
     public CodeSearchResultItem fileSize(Long fileSize) {
-        this.fileSize = fileSize;
+        this.fileSize = Optional.ofNullable(fileSize);
         return this;
     }
 
@@ -257,16 +255,16 @@ public class CodeSearchResultItem {
      */
     @Schema(name = "file_size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("file_size")
-    public Long getFileSize() {
+    public Optional<Long> getFileSize() {
         return fileSize;
     }
 
-    public void setFileSize(Long fileSize) {
+    public void setFileSize(Optional<Long> fileSize) {
         this.fileSize = fileSize;
     }
 
     public CodeSearchResultItem language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -276,16 +274,16 @@ public class CodeSearchResultItem {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
     public CodeSearchResultItem lastModifiedAt(OffsetDateTime lastModifiedAt) {
-        this.lastModifiedAt = lastModifiedAt;
+        this.lastModifiedAt = Optional.ofNullable(lastModifiedAt);
         return this;
     }
 
@@ -296,11 +294,11 @@ public class CodeSearchResultItem {
     @Valid
     @Schema(name = "last_modified_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_modified_at")
-    public OffsetDateTime getLastModifiedAt() {
+    public Optional<OffsetDateTime> getLastModifiedAt() {
         return lastModifiedAt;
     }
 
-    public void setLastModifiedAt(OffsetDateTime lastModifiedAt) {
+    public void setLastModifiedAt(Optional<OffsetDateTime> lastModifiedAt) {
         this.lastModifiedAt = lastModifiedAt;
     }
 
@@ -377,10 +375,15 @@ public class CodeSearchResultItem {
                 && Objects.equals(this.repository, codeSearchResultItem.repository)
                 && Objects.equals(this.score, codeSearchResultItem.score)
                 && Objects.equals(this.fileSize, codeSearchResultItem.fileSize)
-                && Objects.equals(this.language, codeSearchResultItem.language)
+                && equalsNullable(this.language, codeSearchResultItem.language)
                 && Objects.equals(this.lastModifiedAt, codeSearchResultItem.lastModifiedAt)
                 && Objects.equals(this.lineNumbers, codeSearchResultItem.lineNumbers)
                 && Objects.equals(this.textMatches, codeSearchResultItem.textMatches);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -395,10 +398,17 @@ public class CodeSearchResultItem {
                 repository,
                 score,
                 fileSize,
-                language,
+                hashCodeNullable(language),
                 lastModifiedAt,
                 lineNumbers,
                 textMatches);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

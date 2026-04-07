@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The status of the code search index for this repository
@@ -17,16 +16,16 @@ import java.util.Objects;
 @JsonTypeName("repository_code_search_index_status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryCodeSearchIndexStatus {
 
-    private Boolean lexicalSearchOk;
+    private Optional<Boolean> lexicalSearchOk = Optional.empty();
 
-    private String lexicalCommitSha;
+    private Optional<String> lexicalCommitSha = Optional.empty();
 
     public RepositoryCodeSearchIndexStatus lexicalSearchOk(Boolean lexicalSearchOk) {
-        this.lexicalSearchOk = lexicalSearchOk;
+        this.lexicalSearchOk = Optional.ofNullable(lexicalSearchOk);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class RepositoryCodeSearchIndexStatus {
      */
     @Schema(name = "lexical_search_ok", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lexical_search_ok")
-    public Boolean getLexicalSearchOk() {
+    public Optional<Boolean> getLexicalSearchOk() {
         return lexicalSearchOk;
     }
 
-    public void setLexicalSearchOk(Boolean lexicalSearchOk) {
+    public void setLexicalSearchOk(Optional<Boolean> lexicalSearchOk) {
         this.lexicalSearchOk = lexicalSearchOk;
     }
 
     public RepositoryCodeSearchIndexStatus lexicalCommitSha(String lexicalCommitSha) {
-        this.lexicalCommitSha = lexicalCommitSha;
+        this.lexicalCommitSha = Optional.ofNullable(lexicalCommitSha);
         return this;
     }
 
@@ -55,11 +54,11 @@ public class RepositoryCodeSearchIndexStatus {
      */
     @Schema(name = "lexical_commit_sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lexical_commit_sha")
-    public String getLexicalCommitSha() {
+    public Optional<String> getLexicalCommitSha() {
         return lexicalCommitSha;
     }
 
-    public void setLexicalCommitSha(String lexicalCommitSha) {
+    public void setLexicalCommitSha(Optional<String> lexicalCommitSha) {
         this.lexicalCommitSha = lexicalCommitSha;
     }
 

@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("classroom-assignment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ClassroomAssignment {
 
@@ -77,9 +77,9 @@ public class ClassroomAssignment {
 
     private Boolean feedbackPullRequestsEnabled;
 
-    private Long maxTeams = null;
+    private JsonNullable<Long> maxTeams = JsonNullable.<Long>undefined();
 
-    private Long maxMembers = null;
+    private JsonNullable<Long> maxMembers = JsonNullable.<Long>undefined();
 
     private String editor;
 
@@ -92,7 +92,7 @@ public class ClassroomAssignment {
     private String language;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime deadline = null;
+    private JsonNullable<OffsetDateTime> deadline = JsonNullable.<OffsetDateTime>undefined();
 
     private SimpleClassroomRepository starterCodeRepository;
 
@@ -134,14 +134,14 @@ public class ClassroomAssignment {
         this.slug = slug;
         this.studentsAreRepoAdmins = studentsAreRepoAdmins;
         this.feedbackPullRequestsEnabled = feedbackPullRequestsEnabled;
-        this.maxTeams = maxTeams;
-        this.maxMembers = maxMembers;
+        this.maxTeams = JsonNullable.of(maxTeams);
+        this.maxMembers = JsonNullable.of(maxMembers);
         this.editor = editor;
         this.accepted = accepted;
         this.submitted = submitted;
         this.passing = passing;
         this.language = language;
-        this.deadline = deadline;
+        this.deadline = JsonNullable.of(deadline);
         this.starterCodeRepository = starterCodeRepository;
         this.classroom = classroom;
     }
@@ -364,7 +364,7 @@ public class ClassroomAssignment {
     }
 
     public ClassroomAssignment maxTeams(Long maxTeams) {
-        this.maxTeams = maxTeams;
+        this.maxTeams = JsonNullable.of(maxTeams);
         return this;
     }
 
@@ -379,16 +379,16 @@ public class ClassroomAssignment {
             description = "The maximum allowable teams for the assignment.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("max_teams")
-    public Long getMaxTeams() {
+    public JsonNullable<Long> getMaxTeams() {
         return maxTeams;
     }
 
-    public void setMaxTeams(Long maxTeams) {
+    public void setMaxTeams(JsonNullable<Long> maxTeams) {
         this.maxTeams = maxTeams;
     }
 
     public ClassroomAssignment maxMembers(Long maxMembers) {
-        this.maxMembers = maxMembers;
+        this.maxMembers = JsonNullable.of(maxMembers);
         return this;
     }
 
@@ -403,11 +403,11 @@ public class ClassroomAssignment {
             description = "The maximum allowable members per team.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("max_members")
-    public Long getMaxMembers() {
+    public JsonNullable<Long> getMaxMembers() {
         return maxMembers;
     }
 
-    public void setMaxMembers(Long maxMembers) {
+    public void setMaxMembers(JsonNullable<Long> maxMembers) {
         this.maxMembers = maxMembers;
     }
 
@@ -532,7 +532,7 @@ public class ClassroomAssignment {
     }
 
     public ClassroomAssignment deadline(OffsetDateTime deadline) {
-        this.deadline = deadline;
+        this.deadline = JsonNullable.of(deadline);
         return this;
     }
 
@@ -548,11 +548,11 @@ public class ClassroomAssignment {
             description = "The time at which the assignment is due.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("deadline")
-    public OffsetDateTime getDeadline() {
+    public JsonNullable<OffsetDateTime> getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(OffsetDateTime deadline) {
+    public void setDeadline(JsonNullable<OffsetDateTime> deadline) {
         this.deadline = deadline;
     }
 

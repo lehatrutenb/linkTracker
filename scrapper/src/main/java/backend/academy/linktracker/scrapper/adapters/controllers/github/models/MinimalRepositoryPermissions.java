@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MinimalRepositoryPermissions
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("minimal_repository_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MinimalRepositoryPermissions {
 
-    private Boolean admin;
+    private Optional<Boolean> admin = Optional.empty();
 
-    private Boolean maintain;
+    private Optional<Boolean> maintain = Optional.empty();
 
-    private Boolean push;
+    private Optional<Boolean> push = Optional.empty();
 
-    private Boolean triage;
+    private Optional<Boolean> triage = Optional.empty();
 
-    private Boolean pull;
+    private Optional<Boolean> pull = Optional.empty();
 
     public MinimalRepositoryPermissions admin(Boolean admin) {
-        this.admin = admin;
+        this.admin = Optional.ofNullable(admin);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class MinimalRepositoryPermissions {
      */
     @Schema(name = "admin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("admin")
-    public Boolean getAdmin() {
+    public Optional<Boolean> getAdmin() {
         return admin;
     }
 
-    public void setAdmin(Boolean admin) {
+    public void setAdmin(Optional<Boolean> admin) {
         this.admin = admin;
     }
 
     public MinimalRepositoryPermissions maintain(Boolean maintain) {
-        this.maintain = maintain;
+        this.maintain = Optional.ofNullable(maintain);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class MinimalRepositoryPermissions {
      */
     @Schema(name = "maintain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintain")
-    public Boolean getMaintain() {
+    public Optional<Boolean> getMaintain() {
         return maintain;
     }
 
-    public void setMaintain(Boolean maintain) {
+    public void setMaintain(Optional<Boolean> maintain) {
         this.maintain = maintain;
     }
 
     public MinimalRepositoryPermissions push(Boolean push) {
-        this.push = push;
+        this.push = Optional.ofNullable(push);
         return this;
     }
 
@@ -77,16 +76,16 @@ public class MinimalRepositoryPermissions {
      */
     @Schema(name = "push", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("push")
-    public Boolean getPush() {
+    public Optional<Boolean> getPush() {
         return push;
     }
 
-    public void setPush(Boolean push) {
+    public void setPush(Optional<Boolean> push) {
         this.push = push;
     }
 
     public MinimalRepositoryPermissions triage(Boolean triage) {
-        this.triage = triage;
+        this.triage = Optional.ofNullable(triage);
         return this;
     }
 
@@ -96,16 +95,16 @@ public class MinimalRepositoryPermissions {
      */
     @Schema(name = "triage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("triage")
-    public Boolean getTriage() {
+    public Optional<Boolean> getTriage() {
         return triage;
     }
 
-    public void setTriage(Boolean triage) {
+    public void setTriage(Optional<Boolean> triage) {
         this.triage = triage;
     }
 
     public MinimalRepositoryPermissions pull(Boolean pull) {
-        this.pull = pull;
+        this.pull = Optional.ofNullable(pull);
         return this;
     }
 
@@ -115,11 +114,11 @@ public class MinimalRepositoryPermissions {
      */
     @Schema(name = "pull", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull")
-    public Boolean getPull() {
+    public Optional<Boolean> getPull() {
         return pull;
     }
 
-    public void setPull(Boolean pull) {
+    public void setPull(Optional<Boolean> pull) {
         this.pull = pull;
     }
 

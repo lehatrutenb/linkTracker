@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,18 +21,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("checks_update_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ChecksUpdateRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String detailsUrl;
+    private Optional<String> detailsUrl = Optional.empty();
 
-    private String externalId;
+    private Optional<String> externalId = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt;
+    private Optional<OffsetDateTime> startedAt = Optional.empty();
 
     /**
      * The current status of the check run. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
@@ -77,7 +77,7 @@ public class ChecksUpdateRequest {
         }
     }
 
-    private StatusEnum status;
+    private Optional<StatusEnum> status = Optional.empty();
 
     /**
      * **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check.  **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.
@@ -126,18 +126,18 @@ public class ChecksUpdateRequest {
         }
     }
 
-    private ConclusionEnum conclusion;
+    private Optional<ConclusionEnum> conclusion = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt;
+    private Optional<OffsetDateTime> completedAt = Optional.empty();
 
-    private ChecksUpdateRequestOutput output;
+    private Optional<ChecksUpdateRequestOutput> output = Optional.empty();
 
     @Valid
     private List<@Valid ChecksCreateRequestActionsInner> actions = new ArrayList<>();
 
     public ChecksUpdateRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -150,16 +150,16 @@ public class ChecksUpdateRequest {
             description = "The name of the check. For example, \"code-coverage\".",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ChecksUpdateRequest detailsUrl(String detailsUrl) {
-        this.detailsUrl = detailsUrl;
+        this.detailsUrl = Optional.ofNullable(detailsUrl);
         return this;
     }
 
@@ -172,16 +172,16 @@ public class ChecksUpdateRequest {
             description = "The URL of the integrator's site that has the full details of the check.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("details_url")
-    public String getDetailsUrl() {
+    public Optional<String> getDetailsUrl() {
         return detailsUrl;
     }
 
-    public void setDetailsUrl(String detailsUrl) {
+    public void setDetailsUrl(Optional<String> detailsUrl) {
         this.detailsUrl = detailsUrl;
     }
 
     public ChecksUpdateRequest externalId(String externalId) {
-        this.externalId = externalId;
+        this.externalId = Optional.ofNullable(externalId);
         return this;
     }
 
@@ -194,16 +194,16 @@ public class ChecksUpdateRequest {
             description = "A reference for the run on the integrator's system.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("external_id")
-    public String getExternalId() {
+    public Optional<String> getExternalId() {
         return externalId;
     }
 
-    public void setExternalId(String externalId) {
+    public void setExternalId(Optional<String> externalId) {
         this.externalId = externalId;
     }
 
     public ChecksUpdateRequest startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = Optional.ofNullable(startedAt);
         return this;
     }
 
@@ -218,16 +218,16 @@ public class ChecksUpdateRequest {
                     "This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public Optional<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(Optional<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public ChecksUpdateRequest status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -241,16 +241,16 @@ public class ChecksUpdateRequest {
                     "The current status of the check run. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
     public ChecksUpdateRequest conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = Optional.ofNullable(conclusion);
         return this;
     }
 
@@ -264,16 +264,16 @@ public class ChecksUpdateRequest {
                     "**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check.  **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public Optional<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(Optional<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
     public ChecksUpdateRequest completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = Optional.ofNullable(completedAt);
         return this;
     }
 
@@ -288,16 +288,16 @@ public class ChecksUpdateRequest {
                     "The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public Optional<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(Optional<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public ChecksUpdateRequest output(ChecksUpdateRequestOutput output) {
-        this.output = output;
+        this.output = Optional.ofNullable(output);
         return this;
     }
 
@@ -308,11 +308,11 @@ public class ChecksUpdateRequest {
     @Valid
     @Schema(name = "output", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("output")
-    public ChecksUpdateRequestOutput getOutput() {
+    public Optional<ChecksUpdateRequestOutput> getOutput() {
         return output;
     }
 
-    public void setOutput(ChecksUpdateRequestOutput output) {
+    public void setOutput(Optional<ChecksUpdateRequestOutput> output) {
         this.output = output;
     }
 

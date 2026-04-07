@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("environment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Environment {
 
@@ -43,7 +44,8 @@ public class Environment {
     @Valid
     private List<EnvironmentProtectionRulesInner> protectionRules = new ArrayList<>();
 
-    private DeploymentBranchPolicySettings deploymentBranchPolicy = null;
+    private JsonNullable<DeploymentBranchPolicySettings> deploymentBranchPolicy =
+            JsonNullable.<DeploymentBranchPolicySettings>undefined();
 
     public Environment() {
         super();
@@ -265,7 +267,7 @@ public class Environment {
     }
 
     public Environment deploymentBranchPolicy(DeploymentBranchPolicySettings deploymentBranchPolicy) {
-        this.deploymentBranchPolicy = deploymentBranchPolicy;
+        this.deploymentBranchPolicy = JsonNullable.of(deploymentBranchPolicy);
         return this;
     }
 
@@ -276,11 +278,11 @@ public class Environment {
     @Valid
     @Schema(name = "deployment_branch_policy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment_branch_policy")
-    public DeploymentBranchPolicySettings getDeploymentBranchPolicy() {
+    public JsonNullable<DeploymentBranchPolicySettings> getDeploymentBranchPolicy() {
         return deploymentBranchPolicy;
     }
 
-    public void setDeploymentBranchPolicy(DeploymentBranchPolicySettings deploymentBranchPolicy) {
+    public void setDeploymentBranchPolicy(JsonNullable<DeploymentBranchPolicySettings> deploymentBranchPolicy) {
         this.deploymentBranchPolicy = deploymentBranchPolicy;
     }
 
@@ -301,13 +303,33 @@ public class Environment {
                 && Objects.equals(this.createdAt, environment.createdAt)
                 && Objects.equals(this.updatedAt, environment.updatedAt)
                 && Objects.equals(this.protectionRules, environment.protectionRules)
-                && Objects.equals(this.deploymentBranchPolicy, environment.deploymentBranchPolicy);
+                && equalsNullable(this.deploymentBranchPolicy, environment.deploymentBranchPolicy);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, nodeId, name, url, htmlUrl, createdAt, updatedAt, protectionRules, deploymentBranchPolicy);
+                id,
+                nodeId,
+                name,
+                url,
+                htmlUrl,
+                createdAt,
+                updatedAt,
+                protectionRules,
+                hashCodeNullable(deploymentBranchPolicy));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

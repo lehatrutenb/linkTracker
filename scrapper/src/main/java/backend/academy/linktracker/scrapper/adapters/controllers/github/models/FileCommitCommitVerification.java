@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * FileCommitCommitVerification
@@ -14,22 +15,22 @@ import java.util.Objects;
 @JsonTypeName("file_commit_commit_verification")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommitCommitVerification {
 
-    private Boolean verified;
+    private Optional<Boolean> verified = Optional.empty();
 
-    private String reason;
+    private Optional<String> reason = Optional.empty();
 
-    private String signature = null;
+    private JsonNullable<String> signature = JsonNullable.<String>undefined();
 
-    private String payload = null;
+    private JsonNullable<String> payload = JsonNullable.<String>undefined();
 
-    private String verifiedAt = null;
+    private JsonNullable<String> verifiedAt = JsonNullable.<String>undefined();
 
     public FileCommitCommitVerification verified(Boolean verified) {
-        this.verified = verified;
+        this.verified = Optional.ofNullable(verified);
         return this;
     }
 
@@ -39,16 +40,16 @@ public class FileCommitCommitVerification {
      */
     @Schema(name = "verified", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verified")
-    public Boolean getVerified() {
+    public Optional<Boolean> getVerified() {
         return verified;
     }
 
-    public void setVerified(Boolean verified) {
+    public void setVerified(Optional<Boolean> verified) {
         this.verified = verified;
     }
 
     public FileCommitCommitVerification reason(String reason) {
-        this.reason = reason;
+        this.reason = Optional.ofNullable(reason);
         return this;
     }
 
@@ -58,16 +59,16 @@ public class FileCommitCommitVerification {
      */
     @Schema(name = "reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public Optional<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(Optional<String> reason) {
         this.reason = reason;
     }
 
     public FileCommitCommitVerification signature(String signature) {
-        this.signature = signature;
+        this.signature = JsonNullable.of(signature);
         return this;
     }
 
@@ -77,16 +78,16 @@ public class FileCommitCommitVerification {
      */
     @Schema(name = "signature", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("signature")
-    public String getSignature() {
+    public JsonNullable<String> getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(JsonNullable<String> signature) {
         this.signature = signature;
     }
 
     public FileCommitCommitVerification payload(String payload) {
-        this.payload = payload;
+        this.payload = JsonNullable.of(payload);
         return this;
     }
 
@@ -96,16 +97,16 @@ public class FileCommitCommitVerification {
      */
     @Schema(name = "payload", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("payload")
-    public String getPayload() {
+    public JsonNullable<String> getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(JsonNullable<String> payload) {
         this.payload = payload;
     }
 
     public FileCommitCommitVerification verifiedAt(String verifiedAt) {
-        this.verifiedAt = verifiedAt;
+        this.verifiedAt = JsonNullable.of(verifiedAt);
         return this;
     }
 
@@ -115,11 +116,11 @@ public class FileCommitCommitVerification {
      */
     @Schema(name = "verified_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verified_at")
-    public String getVerifiedAt() {
+    public JsonNullable<String> getVerifiedAt() {
         return verifiedAt;
     }
 
-    public void setVerifiedAt(String verifiedAt) {
+    public void setVerifiedAt(JsonNullable<String> verifiedAt) {
         this.verifiedAt = verifiedAt;
     }
 
@@ -134,14 +135,27 @@ public class FileCommitCommitVerification {
         FileCommitCommitVerification fileCommitCommitVerification = (FileCommitCommitVerification) o;
         return Objects.equals(this.verified, fileCommitCommitVerification.verified)
                 && Objects.equals(this.reason, fileCommitCommitVerification.reason)
-                && Objects.equals(this.signature, fileCommitCommitVerification.signature)
-                && Objects.equals(this.payload, fileCommitCommitVerification.payload)
-                && Objects.equals(this.verifiedAt, fileCommitCommitVerification.verifiedAt);
+                && equalsNullable(this.signature, fileCommitCommitVerification.signature)
+                && equalsNullable(this.payload, fileCommitCommitVerification.payload)
+                && equalsNullable(this.verifiedAt, fileCommitCommitVerification.verifiedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(verified, reason, signature, payload, verifiedAt);
+        return Objects.hash(
+                verified, reason, hashCodeNullable(signature), hashCodeNullable(payload), hashCodeNullable(verifiedAt));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

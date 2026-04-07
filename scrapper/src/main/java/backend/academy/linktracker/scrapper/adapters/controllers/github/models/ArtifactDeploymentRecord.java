@@ -8,13 +8,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Artifact Metadata Deployment Record
@@ -23,21 +19,21 @@ import java.util.Set;
 @JsonTypeName("artifact-deployment-record")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ArtifactDeploymentRecord {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String digest;
+    private Optional<String> digest = Optional.empty();
 
-    private String logicalEnvironment;
+    private Optional<String> logicalEnvironment = Optional.empty();
 
-    private String physicalEnvironment;
+    private Optional<String> physicalEnvironment = Optional.empty();
 
-    private String cluster;
+    private Optional<String> cluster = Optional.empty();
 
-    private String deploymentName;
+    private Optional<String> deploymentName = Optional.empty();
 
     @Valid
     private Map<String, String> tags = new HashMap<>();
@@ -84,14 +80,14 @@ public class ArtifactDeploymentRecord {
     @Valid
     private Set<RuntimeRisksEnum> runtimeRisks = new LinkedHashSet<>();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
-    private Long attestationId = null;
+    private JsonNullable<Long> attestationId = JsonNullable.<Long>undefined();
 
     public ArtifactDeploymentRecord id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -101,16 +97,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public ArtifactDeploymentRecord digest(String digest) {
-        this.digest = digest;
+        this.digest = Optional.ofNullable(digest);
         return this;
     }
 
@@ -120,16 +116,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "digest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("digest")
-    public String getDigest() {
+    public Optional<String> getDigest() {
         return digest;
     }
 
-    public void setDigest(String digest) {
+    public void setDigest(Optional<String> digest) {
         this.digest = digest;
     }
 
     public ArtifactDeploymentRecord logicalEnvironment(String logicalEnvironment) {
-        this.logicalEnvironment = logicalEnvironment;
+        this.logicalEnvironment = Optional.ofNullable(logicalEnvironment);
         return this;
     }
 
@@ -139,16 +135,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "logical_environment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("logical_environment")
-    public String getLogicalEnvironment() {
+    public Optional<String> getLogicalEnvironment() {
         return logicalEnvironment;
     }
 
-    public void setLogicalEnvironment(String logicalEnvironment) {
+    public void setLogicalEnvironment(Optional<String> logicalEnvironment) {
         this.logicalEnvironment = logicalEnvironment;
     }
 
     public ArtifactDeploymentRecord physicalEnvironment(String physicalEnvironment) {
-        this.physicalEnvironment = physicalEnvironment;
+        this.physicalEnvironment = Optional.ofNullable(physicalEnvironment);
         return this;
     }
 
@@ -158,16 +154,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "physical_environment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("physical_environment")
-    public String getPhysicalEnvironment() {
+    public Optional<String> getPhysicalEnvironment() {
         return physicalEnvironment;
     }
 
-    public void setPhysicalEnvironment(String physicalEnvironment) {
+    public void setPhysicalEnvironment(Optional<String> physicalEnvironment) {
         this.physicalEnvironment = physicalEnvironment;
     }
 
     public ArtifactDeploymentRecord cluster(String cluster) {
-        this.cluster = cluster;
+        this.cluster = Optional.ofNullable(cluster);
         return this;
     }
 
@@ -177,16 +173,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "cluster", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cluster")
-    public String getCluster() {
+    public Optional<String> getCluster() {
         return cluster;
     }
 
-    public void setCluster(String cluster) {
+    public void setCluster(Optional<String> cluster) {
         this.cluster = cluster;
     }
 
     public ArtifactDeploymentRecord deploymentName(String deploymentName) {
-        this.deploymentName = deploymentName;
+        this.deploymentName = Optional.ofNullable(deploymentName);
         return this;
     }
 
@@ -196,11 +192,11 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "deployment_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment_name")
-    public String getDeploymentName() {
+    public Optional<String> getDeploymentName() {
         return deploymentName;
     }
 
-    public void setDeploymentName(String deploymentName) {
+    public void setDeploymentName(Optional<String> deploymentName) {
         this.deploymentName = deploymentName;
     }
 
@@ -264,7 +260,7 @@ public class ArtifactDeploymentRecord {
     }
 
     public ArtifactDeploymentRecord createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -274,16 +270,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public ArtifactDeploymentRecord updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -293,16 +289,16 @@ public class ArtifactDeploymentRecord {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public ArtifactDeploymentRecord attestationId(Long attestationId) {
-        this.attestationId = attestationId;
+        this.attestationId = JsonNullable.of(attestationId);
         return this;
     }
 
@@ -315,11 +311,11 @@ public class ArtifactDeploymentRecord {
             description = "The ID of the provenance attestation associated with the deployment record.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("attestation_id")
-    public Long getAttestationId() {
+    public JsonNullable<Long> getAttestationId() {
         return attestationId;
     }
 
-    public void setAttestationId(Long attestationId) {
+    public void setAttestationId(JsonNullable<Long> attestationId) {
         this.attestationId = attestationId;
     }
 
@@ -342,7 +338,12 @@ public class ArtifactDeploymentRecord {
                 && Objects.equals(this.runtimeRisks, artifactDeploymentRecord.runtimeRisks)
                 && Objects.equals(this.createdAt, artifactDeploymentRecord.createdAt)
                 && Objects.equals(this.updatedAt, artifactDeploymentRecord.updatedAt)
-                && Objects.equals(this.attestationId, artifactDeploymentRecord.attestationId);
+                && equalsNullable(this.attestationId, artifactDeploymentRecord.attestationId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -358,7 +359,14 @@ public class ArtifactDeploymentRecord {
                 runtimeRisks,
                 createdAt,
                 updatedAt,
-                attestationId);
+                hashCodeNullable(attestationId));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

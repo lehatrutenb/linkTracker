@@ -5,14 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("user-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class UserSearchResultItem {
 
@@ -34,7 +32,7 @@ public class UserSearchResultItem {
 
     private URI avatarUrl;
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -62,43 +60,43 @@ public class UserSearchResultItem {
 
     private String eventsUrl;
 
-    private Long publicRepos;
+    private Optional<Long> publicRepos = Optional.empty();
 
-    private Long publicGists;
+    private Optional<Long> publicGists = Optional.empty();
 
-    private Long followers;
+    private Optional<Long> followers = Optional.empty();
 
-    private Long following;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<Long> following = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
-    private String name = null;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
-    private String bio = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private String email = null;
+    private JsonNullable<String> bio = JsonNullable.<String>undefined();
 
-    private String location = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> email = JsonNullable.<String>undefined();
+
+    private JsonNullable<String> location = JsonNullable.<String>undefined();
 
     private Boolean siteAdmin;
 
-    private Boolean hireable = null;
+    private JsonNullable<Boolean> hireable = JsonNullable.<Boolean>undefined();
 
     @Valid
     private List<@Valid SearchResultTextMatchesInner> textMatches = new ArrayList<>();
 
-    private String blog = null;
+    private JsonNullable<String> blog = JsonNullable.<String>undefined();
 
-    private String company = null;
+    private JsonNullable<String> company = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime suspendedAt = null;
+    private JsonNullable<OffsetDateTime> suspendedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public UserSearchResultItem() {
         super();
@@ -131,7 +129,7 @@ public class UserSearchResultItem {
         this.id = id;
         this.nodeId = nodeId;
         this.avatarUrl = avatarUrl;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.htmlUrl = htmlUrl;
         this.followersUrl = followersUrl;
@@ -230,7 +228,7 @@ public class UserSearchResultItem {
     }
 
     public UserSearchResultItem gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -241,11 +239,11 @@ public class UserSearchResultItem {
     @NotNull
     @Schema(name = "gravatar_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
@@ -518,7 +516,7 @@ public class UserSearchResultItem {
     }
 
     public UserSearchResultItem publicRepos(Long publicRepos) {
-        this.publicRepos = publicRepos;
+        this.publicRepos = Optional.ofNullable(publicRepos);
         return this;
     }
 
@@ -528,16 +526,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "public_repos", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_repos")
-    public Long getPublicRepos() {
+    public Optional<Long> getPublicRepos() {
         return publicRepos;
     }
 
-    public void setPublicRepos(Long publicRepos) {
+    public void setPublicRepos(Optional<Long> publicRepos) {
         this.publicRepos = publicRepos;
     }
 
     public UserSearchResultItem publicGists(Long publicGists) {
-        this.publicGists = publicGists;
+        this.publicGists = Optional.ofNullable(publicGists);
         return this;
     }
 
@@ -547,16 +545,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "public_gists", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_gists")
-    public Long getPublicGists() {
+    public Optional<Long> getPublicGists() {
         return publicGists;
     }
 
-    public void setPublicGists(Long publicGists) {
+    public void setPublicGists(Optional<Long> publicGists) {
         this.publicGists = publicGists;
     }
 
     public UserSearchResultItem followers(Long followers) {
-        this.followers = followers;
+        this.followers = Optional.ofNullable(followers);
         return this;
     }
 
@@ -566,16 +564,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "followers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("followers")
-    public Long getFollowers() {
+    public Optional<Long> getFollowers() {
         return followers;
     }
 
-    public void setFollowers(Long followers) {
+    public void setFollowers(Optional<Long> followers) {
         this.followers = followers;
     }
 
     public UserSearchResultItem following(Long following) {
-        this.following = following;
+        this.following = Optional.ofNullable(following);
         return this;
     }
 
@@ -585,16 +583,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "following", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("following")
-    public Long getFollowing() {
+    public Optional<Long> getFollowing() {
         return following;
     }
 
-    public void setFollowing(Long following) {
+    public void setFollowing(Optional<Long> following) {
         this.following = following;
     }
 
     public UserSearchResultItem createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -605,16 +603,16 @@ public class UserSearchResultItem {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public UserSearchResultItem updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -625,16 +623,16 @@ public class UserSearchResultItem {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public UserSearchResultItem name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -644,16 +642,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public UserSearchResultItem bio(String bio) {
-        this.bio = bio;
+        this.bio = JsonNullable.of(bio);
         return this;
     }
 
@@ -663,16 +661,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "bio", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bio")
-    public String getBio() {
+    public JsonNullable<String> getBio() {
         return bio;
     }
 
-    public void setBio(String bio) {
+    public void setBio(JsonNullable<String> bio) {
         this.bio = bio;
     }
 
     public UserSearchResultItem email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -680,19 +678,18 @@ public class UserSearchResultItem {
      * Get email
      * @return email
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
     public UserSearchResultItem location(String location) {
-        this.location = location;
+        this.location = JsonNullable.of(location);
         return this;
     }
 
@@ -702,11 +699,11 @@ public class UserSearchResultItem {
      */
     @Schema(name = "location", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public JsonNullable<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(JsonNullable<String> location) {
         this.location = location;
     }
 
@@ -731,7 +728,7 @@ public class UserSearchResultItem {
     }
 
     public UserSearchResultItem hireable(Boolean hireable) {
-        this.hireable = hireable;
+        this.hireable = JsonNullable.of(hireable);
         return this;
     }
 
@@ -741,11 +738,11 @@ public class UserSearchResultItem {
      */
     @Schema(name = "hireable", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hireable")
-    public Boolean getHireable() {
+    public JsonNullable<Boolean> getHireable() {
         return hireable;
     }
 
-    public void setHireable(Boolean hireable) {
+    public void setHireable(JsonNullable<Boolean> hireable) {
         this.hireable = hireable;
     }
 
@@ -778,7 +775,7 @@ public class UserSearchResultItem {
     }
 
     public UserSearchResultItem blog(String blog) {
-        this.blog = blog;
+        this.blog = JsonNullable.of(blog);
         return this;
     }
 
@@ -788,16 +785,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "blog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blog")
-    public String getBlog() {
+    public JsonNullable<String> getBlog() {
         return blog;
     }
 
-    public void setBlog(String blog) {
+    public void setBlog(JsonNullable<String> blog) {
         this.blog = blog;
     }
 
     public UserSearchResultItem company(String company) {
-        this.company = company;
+        this.company = JsonNullable.of(company);
         return this;
     }
 
@@ -807,16 +804,16 @@ public class UserSearchResultItem {
      */
     @Schema(name = "company", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public JsonNullable<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(JsonNullable<String> company) {
         this.company = company;
     }
 
     public UserSearchResultItem suspendedAt(OffsetDateTime suspendedAt) {
-        this.suspendedAt = suspendedAt;
+        this.suspendedAt = JsonNullable.of(suspendedAt);
         return this;
     }
 
@@ -827,16 +824,16 @@ public class UserSearchResultItem {
     @Valid
     @Schema(name = "suspended_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("suspended_at")
-    public OffsetDateTime getSuspendedAt() {
+    public JsonNullable<OffsetDateTime> getSuspendedAt() {
         return suspendedAt;
     }
 
-    public void setSuspendedAt(OffsetDateTime suspendedAt) {
+    public void setSuspendedAt(JsonNullable<OffsetDateTime> suspendedAt) {
         this.suspendedAt = suspendedAt;
     }
 
     public UserSearchResultItem userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -846,11 +843,11 @@ public class UserSearchResultItem {
      */
     @Schema(name = "user_view_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -887,17 +884,22 @@ public class UserSearchResultItem {
                 && Objects.equals(this.following, userSearchResultItem.following)
                 && Objects.equals(this.createdAt, userSearchResultItem.createdAt)
                 && Objects.equals(this.updatedAt, userSearchResultItem.updatedAt)
-                && Objects.equals(this.name, userSearchResultItem.name)
-                && Objects.equals(this.bio, userSearchResultItem.bio)
-                && Objects.equals(this.email, userSearchResultItem.email)
-                && Objects.equals(this.location, userSearchResultItem.location)
+                && equalsNullable(this.name, userSearchResultItem.name)
+                && equalsNullable(this.bio, userSearchResultItem.bio)
+                && equalsNullable(this.email, userSearchResultItem.email)
+                && equalsNullable(this.location, userSearchResultItem.location)
                 && Objects.equals(this.siteAdmin, userSearchResultItem.siteAdmin)
-                && Objects.equals(this.hireable, userSearchResultItem.hireable)
+                && equalsNullable(this.hireable, userSearchResultItem.hireable)
                 && Objects.equals(this.textMatches, userSearchResultItem.textMatches)
-                && Objects.equals(this.blog, userSearchResultItem.blog)
-                && Objects.equals(this.company, userSearchResultItem.company)
-                && Objects.equals(this.suspendedAt, userSearchResultItem.suspendedAt)
+                && equalsNullable(this.blog, userSearchResultItem.blog)
+                && equalsNullable(this.company, userSearchResultItem.company)
+                && equalsNullable(this.suspendedAt, userSearchResultItem.suspendedAt)
                 && Objects.equals(this.userViewType, userSearchResultItem.userViewType);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -927,17 +929,24 @@ public class UserSearchResultItem {
                 following,
                 createdAt,
                 updatedAt,
-                name,
-                bio,
-                email,
-                location,
+                hashCodeNullable(name),
+                hashCodeNullable(bio),
+                hashCodeNullable(email),
+                hashCodeNullable(location),
                 siteAdmin,
-                hireable,
+                hashCodeNullable(hireable),
                 textMatches,
-                blog,
-                company,
-                suspendedAt,
+                hashCodeNullable(blog),
+                hashCodeNullable(company),
+                hashCodeNullable(suspendedAt),
                 userViewType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

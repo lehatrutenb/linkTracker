@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateDeployKeyRequest
@@ -14,15 +14,15 @@ import java.util.Objects;
 @JsonTypeName("repos_create_deploy_key_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateDeployKeyRequest {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
     private String key;
 
-    private Boolean readOnly;
+    private Optional<Boolean> readOnly = Optional.empty();
 
     public ReposCreateDeployKeyRequest() {
         super();
@@ -36,7 +36,7 @@ public class ReposCreateDeployKeyRequest {
     }
 
     public ReposCreateDeployKeyRequest title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -46,11 +46,11 @@ public class ReposCreateDeployKeyRequest {
      */
     @Schema(name = "title", description = "A name for the key.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
@@ -75,7 +75,7 @@ public class ReposCreateDeployKeyRequest {
     }
 
     public ReposCreateDeployKeyRequest readOnly(Boolean readOnly) {
-        this.readOnly = readOnly;
+        this.readOnly = Optional.ofNullable(readOnly);
         return this;
     }
 
@@ -89,11 +89,11 @@ public class ReposCreateDeployKeyRequest {
                     "If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.      Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see \"[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)\" and \"[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/).\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("read_only")
-    public Boolean getReadOnly() {
+    public Optional<Boolean> getReadOnly() {
         return readOnly;
     }
 
-    public void setReadOnly(Boolean readOnly) {
+    public void setReadOnly(Optional<Boolean> readOnly) {
         this.readOnly = readOnly;
     }
 

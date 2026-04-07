@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TeamsAddOrUpdateRepoPermissionsInOrgRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("teams_add_or_update_repo_permissions_in_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamsAddOrUpdateRepoPermissionsInOrgRequest {
 
-    private String permission;
+    private Optional<String> permission = Optional.empty();
 
     public TeamsAddOrUpdateRepoPermissionsInOrgRequest permission(String permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -35,11 +34,11 @@ public class TeamsAddOrUpdateRepoPermissionsInOrgRequest {
                     "The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public String getPermission() {
+    public Optional<String> getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) {
+    public void setPermission(Optional<String> permission) {
         this.permission = permission;
     }
 

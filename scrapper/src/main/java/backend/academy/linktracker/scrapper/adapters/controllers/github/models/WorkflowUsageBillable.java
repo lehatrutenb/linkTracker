@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WorkflowUsageBillable
@@ -15,18 +14,18 @@ import java.util.Objects;
 @JsonTypeName("workflow_usage_billable")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WorkflowUsageBillable {
 
-    private WorkflowUsageBillableUBUNTU UBUNTU;
+    private Optional<WorkflowUsageBillableUBUNTU> UBUNTU = Optional.empty();
 
-    private WorkflowUsageBillableUBUNTU MACOS;
+    private Optional<WorkflowUsageBillableUBUNTU> MACOS = Optional.empty();
 
-    private WorkflowUsageBillableUBUNTU WINDOWS;
+    private Optional<WorkflowUsageBillableUBUNTU> WINDOWS = Optional.empty();
 
     public WorkflowUsageBillable UBUNTU(WorkflowUsageBillableUBUNTU UBUNTU) {
-        this.UBUNTU = UBUNTU;
+        this.UBUNTU = Optional.ofNullable(UBUNTU);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class WorkflowUsageBillable {
     @Valid
     @Schema(name = "UBUNTU", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("UBUNTU")
-    public WorkflowUsageBillableUBUNTU getUBUNTU() {
+    public Optional<WorkflowUsageBillableUBUNTU> getUBUNTU() {
         return UBUNTU;
     }
 
-    public void setUBUNTU(WorkflowUsageBillableUBUNTU UBUNTU) {
+    public void setUBUNTU(Optional<WorkflowUsageBillableUBUNTU> UBUNTU) {
         this.UBUNTU = UBUNTU;
     }
 
     public WorkflowUsageBillable MACOS(WorkflowUsageBillableUBUNTU MACOS) {
-        this.MACOS = MACOS;
+        this.MACOS = Optional.ofNullable(MACOS);
         return this;
     }
 
@@ -57,16 +56,16 @@ public class WorkflowUsageBillable {
     @Valid
     @Schema(name = "MACOS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("MACOS")
-    public WorkflowUsageBillableUBUNTU getMACOS() {
+    public Optional<WorkflowUsageBillableUBUNTU> getMACOS() {
         return MACOS;
     }
 
-    public void setMACOS(WorkflowUsageBillableUBUNTU MACOS) {
+    public void setMACOS(Optional<WorkflowUsageBillableUBUNTU> MACOS) {
         this.MACOS = MACOS;
     }
 
     public WorkflowUsageBillable WINDOWS(WorkflowUsageBillableUBUNTU WINDOWS) {
-        this.WINDOWS = WINDOWS;
+        this.WINDOWS = Optional.ofNullable(WINDOWS);
         return this;
     }
 
@@ -77,11 +76,11 @@ public class WorkflowUsageBillable {
     @Valid
     @Schema(name = "WINDOWS", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("WINDOWS")
-    public WorkflowUsageBillableUBUNTU getWINDOWS() {
+    public Optional<WorkflowUsageBillableUBUNTU> getWINDOWS() {
         return WINDOWS;
     }
 
-    public void setWINDOWS(WorkflowUsageBillableUBUNTU WINDOWS) {
+    public void setWINDOWS(Optional<WorkflowUsageBillableUBUNTU> WINDOWS) {
         this.WINDOWS = WINDOWS;
     }
 

@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookMembershipRemoved
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-membership-removed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMembershipRemoved {
 
@@ -56,15 +57,15 @@ public class WebhookMembershipRemoved {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private WebhooksUser member = null;
+    private JsonNullable<WebhooksUser> member = JsonNullable.<WebhooksUser>undefined();
 
     private OrganizationSimpleWebhooks organization;
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
     /**
      * The scope of the membership. Currently, can only be `team`.
@@ -103,7 +104,7 @@ public class WebhookMembershipRemoved {
 
     private ScopeEnum scope;
 
-    private User sender = null;
+    private JsonNullable<User> sender = JsonNullable.<User>undefined();
 
     private WebhooksTeam team;
 
@@ -122,10 +123,10 @@ public class WebhookMembershipRemoved {
             User sender,
             WebhooksTeam team) {
         this.action = action;
-        this.member = member;
+        this.member = JsonNullable.of(member);
         this.organization = organization;
         this.scope = scope;
-        this.sender = sender;
+        this.sender = JsonNullable.of(sender);
         this.team = team;
     }
 
@@ -150,7 +151,7 @@ public class WebhookMembershipRemoved {
     }
 
     public WebhookMembershipRemoved enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -161,16 +162,16 @@ public class WebhookMembershipRemoved {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookMembershipRemoved installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -181,16 +182,16 @@ public class WebhookMembershipRemoved {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookMembershipRemoved member(WebhooksUser member) {
-        this.member = member;
+        this.member = JsonNullable.of(member);
         return this;
     }
 
@@ -202,11 +203,11 @@ public class WebhookMembershipRemoved {
     @Valid
     @Schema(name = "member", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("member")
-    public WebhooksUser getMember() {
+    public JsonNullable<WebhooksUser> getMember() {
         return member;
     }
 
-    public void setMember(WebhooksUser member) {
+    public void setMember(JsonNullable<WebhooksUser> member) {
         this.member = member;
     }
 
@@ -232,7 +233,7 @@ public class WebhookMembershipRemoved {
     }
 
     public WebhookMembershipRemoved repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -243,11 +244,11 @@ public class WebhookMembershipRemoved {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
@@ -275,7 +276,7 @@ public class WebhookMembershipRemoved {
     }
 
     public WebhookMembershipRemoved sender(User sender) {
-        this.sender = sender;
+        this.sender = JsonNullable.of(sender);
         return this;
     }
 
@@ -287,11 +288,11 @@ public class WebhookMembershipRemoved {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("sender")
-    public User getSender() {
+    public JsonNullable<User> getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(JsonNullable<User> sender) {
         this.sender = sender;
     }
 

@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -25,15 +26,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_check_suite_completed_check_suite")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCheckSuiteCompletedCheckSuite {
 
-    private String after = null;
+    private JsonNullable<String> after = JsonNullable.<String>undefined();
 
     private App2 app;
 
-    private String before = null;
+    private JsonNullable<String> before = JsonNullable.<String>undefined();
 
     private URI checkRunsUrl;
 
@@ -86,12 +87,12 @@ public class WebhookCheckSuiteCompletedCheckSuite {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
     private SimpleCommit headCommit;
 
@@ -106,9 +107,9 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     @Valid
     private List<@Valid CheckRunPullRequest> pullRequests = new ArrayList<>();
 
-    private Boolean rerequestable;
+    private Optional<Boolean> rerequestable = Optional.empty();
 
-    private Boolean runsRerequestable;
+    private Optional<Boolean> runsRerequestable = Optional.empty();
 
     /**
      * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
@@ -151,7 +152,7 @@ public class WebhookCheckSuiteCompletedCheckSuite {
         }
     }
 
-    private StatusEnum status = null;
+    private JsonNullable<StatusEnum> status = JsonNullable.<StatusEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
@@ -182,26 +183,26 @@ public class WebhookCheckSuiteCompletedCheckSuite {
             StatusEnum status,
             OffsetDateTime updatedAt,
             URI url) {
-        this.after = after;
+        this.after = JsonNullable.of(after);
         this.app = app;
-        this.before = before;
+        this.before = JsonNullable.of(before);
         this.checkRunsUrl = checkRunsUrl;
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         this.headCommit = headCommit;
         this.headSha = headSha;
         this.id = id;
         this.latestCheckRunsCount = latestCheckRunsCount;
         this.nodeId = nodeId;
         this.pullRequests = pullRequests;
-        this.status = status;
+        this.status = JsonNullable.of(status);
         this.updatedAt = updatedAt;
         this.url = url;
     }
 
     public WebhookCheckSuiteCompletedCheckSuite after(String after) {
-        this.after = after;
+        this.after = JsonNullable.of(after);
         return this;
     }
 
@@ -212,11 +213,11 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     @NotNull
     @Schema(name = "after", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("after")
-    public String getAfter() {
+    public JsonNullable<String> getAfter() {
         return after;
     }
 
-    public void setAfter(String after) {
+    public void setAfter(JsonNullable<String> after) {
         this.after = after;
     }
 
@@ -242,7 +243,7 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     }
 
     public WebhookCheckSuiteCompletedCheckSuite before(String before) {
-        this.before = before;
+        this.before = JsonNullable.of(before);
         return this;
     }
 
@@ -253,11 +254,11 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     @NotNull
     @Schema(name = "before", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("before")
-    public String getBefore() {
+    public JsonNullable<String> getBefore() {
         return before;
     }
 
-    public void setBefore(String before) {
+    public void setBefore(JsonNullable<String> before) {
         this.before = before;
     }
 
@@ -283,7 +284,7 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     }
 
     public WebhookCheckSuiteCompletedCheckSuite conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -298,11 +299,11 @@ public class WebhookCheckSuiteCompletedCheckSuite {
                     "The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -328,7 +329,7 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     }
 
     public WebhookCheckSuiteCompletedCheckSuite headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -342,11 +343,11 @@ public class WebhookCheckSuiteCompletedCheckSuite {
             description = "The head branch name the changes are on.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 
@@ -488,7 +489,7 @@ public class WebhookCheckSuiteCompletedCheckSuite {
     }
 
     public WebhookCheckSuiteCompletedCheckSuite rerequestable(Boolean rerequestable) {
-        this.rerequestable = rerequestable;
+        this.rerequestable = Optional.ofNullable(rerequestable);
         return this;
     }
 
@@ -498,16 +499,16 @@ public class WebhookCheckSuiteCompletedCheckSuite {
      */
     @Schema(name = "rerequestable", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rerequestable")
-    public Boolean getRerequestable() {
+    public Optional<Boolean> getRerequestable() {
         return rerequestable;
     }
 
-    public void setRerequestable(Boolean rerequestable) {
+    public void setRerequestable(Optional<Boolean> rerequestable) {
         this.rerequestable = rerequestable;
     }
 
     public WebhookCheckSuiteCompletedCheckSuite runsRerequestable(Boolean runsRerequestable) {
-        this.runsRerequestable = runsRerequestable;
+        this.runsRerequestable = Optional.ofNullable(runsRerequestable);
         return this;
     }
 
@@ -517,16 +518,16 @@ public class WebhookCheckSuiteCompletedCheckSuite {
      */
     @Schema(name = "runs_rerequestable", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runs_rerequestable")
-    public Boolean getRunsRerequestable() {
+    public Optional<Boolean> getRunsRerequestable() {
         return runsRerequestable;
     }
 
-    public void setRunsRerequestable(Boolean runsRerequestable) {
+    public void setRunsRerequestable(Optional<Boolean> runsRerequestable) {
         this.runsRerequestable = runsRerequestable;
     }
 
     public WebhookCheckSuiteCompletedCheckSuite status(StatusEnum status) {
-        this.status = status;
+        this.status = JsonNullable.of(status);
         return this;
     }
 
@@ -541,11 +542,11 @@ public class WebhookCheckSuiteCompletedCheckSuite {
                     "The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public JsonNullable<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(JsonNullable<StatusEnum> status) {
         this.status = status;
     }
 

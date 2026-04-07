@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_review_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksReviewComment {
 
@@ -92,9 +93,9 @@ public class WebhooksReviewComment {
 
     private Long id;
 
-    private Long inReplyToId;
+    private Optional<Long> inReplyToId = Optional.empty();
 
-    private Long line = null;
+    private JsonNullable<Long> line = JsonNullable.<Long>undefined();
 
     private String nodeId;
 
@@ -104,13 +105,13 @@ public class WebhooksReviewComment {
 
     private Long originalPosition;
 
-    private Long originalStartLine = null;
+    private JsonNullable<Long> originalStartLine = JsonNullable.<Long>undefined();
 
     private String path;
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
-    private Long pullRequestReviewId = null;
+    private JsonNullable<Long> pullRequestReviewId = JsonNullable.<Long>undefined();
 
     private URI pullRequestUrl;
 
@@ -153,7 +154,7 @@ public class WebhooksReviewComment {
 
     private SideEnum side;
 
-    private Long startLine = null;
+    private JsonNullable<Long> startLine = JsonNullable.<Long>undefined();
 
     /**
      * The side of the first line of the range for a multi-line comment.
@@ -190,7 +191,7 @@ public class WebhooksReviewComment {
         }
     }
 
-    private StartSideEnum startSide = null;
+    private JsonNullable<StartSideEnum> startSide = JsonNullable.<StartSideEnum>undefined();
 
     /**
      * The level at which the comment is targeted, can be a diff line or a file.
@@ -227,14 +228,14 @@ public class WebhooksReviewComment {
         }
     }
 
-    private SubjectTypeEnum subjectType;
+    private Optional<SubjectTypeEnum> subjectType = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
     private URI url;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhooksReviewComment() {
         super();
@@ -277,23 +278,23 @@ public class WebhooksReviewComment {
         this.diffHunk = diffHunk;
         this.htmlUrl = htmlUrl;
         this.id = id;
-        this.line = line;
+        this.line = JsonNullable.of(line);
         this.nodeId = nodeId;
         this.originalCommitId = originalCommitId;
         this.originalLine = originalLine;
         this.originalPosition = originalPosition;
-        this.originalStartLine = originalStartLine;
+        this.originalStartLine = JsonNullable.of(originalStartLine);
         this.path = path;
-        this.position = position;
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.position = JsonNullable.of(position);
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         this.pullRequestUrl = pullRequestUrl;
         this.reactions = reactions;
         this.side = side;
-        this.startLine = startLine;
-        this.startSide = startSide;
+        this.startLine = JsonNullable.of(startLine);
+        this.startSide = JsonNullable.of(startSide);
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhooksReviewComment links(WebhooksReviewCommentLinks links) {
@@ -475,7 +476,7 @@ public class WebhooksReviewComment {
     }
 
     public WebhooksReviewComment inReplyToId(Long inReplyToId) {
-        this.inReplyToId = inReplyToId;
+        this.inReplyToId = Optional.ofNullable(inReplyToId);
         return this;
     }
 
@@ -488,16 +489,16 @@ public class WebhooksReviewComment {
             description = "The comment ID to reply to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("in_reply_to_id")
-    public Long getInReplyToId() {
+    public Optional<Long> getInReplyToId() {
         return inReplyToId;
     }
 
-    public void setInReplyToId(Long inReplyToId) {
+    public void setInReplyToId(Optional<Long> inReplyToId) {
         this.inReplyToId = inReplyToId;
     }
 
     public WebhooksReviewComment line(Long line) {
-        this.line = line;
+        this.line = JsonNullable.of(line);
         return this;
     }
 
@@ -512,11 +513,11 @@ public class WebhooksReviewComment {
                     "The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public JsonNullable<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(JsonNullable<Long> line) {
         this.line = line;
     }
 
@@ -614,7 +615,7 @@ public class WebhooksReviewComment {
     }
 
     public WebhooksReviewComment originalStartLine(Long originalStartLine) {
-        this.originalStartLine = originalStartLine;
+        this.originalStartLine = JsonNullable.of(originalStartLine);
         return this;
     }
 
@@ -628,11 +629,11 @@ public class WebhooksReviewComment {
             description = "The first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("original_start_line")
-    public Long getOriginalStartLine() {
+    public JsonNullable<Long> getOriginalStartLine() {
         return originalStartLine;
     }
 
-    public void setOriginalStartLine(Long originalStartLine) {
+    public void setOriginalStartLine(JsonNullable<Long> originalStartLine) {
         this.originalStartLine = originalStartLine;
     }
 
@@ -660,7 +661,7 @@ public class WebhooksReviewComment {
     }
 
     public WebhooksReviewComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -674,16 +675,16 @@ public class WebhooksReviewComment {
             description = "The line index in the diff to which the comment applies.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
     public WebhooksReviewComment pullRequestReviewId(Long pullRequestReviewId) {
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         return this;
     }
 
@@ -697,11 +698,11 @@ public class WebhooksReviewComment {
             description = "The ID of the pull request review to which the comment belongs.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pull_request_review_id")
-    public Long getPullRequestReviewId() {
+    public JsonNullable<Long> getPullRequestReviewId() {
         return pullRequestReviewId;
     }
 
-    public void setPullRequestReviewId(Long pullRequestReviewId) {
+    public void setPullRequestReviewId(JsonNullable<Long> pullRequestReviewId) {
         this.pullRequestReviewId = pullRequestReviewId;
     }
 
@@ -774,7 +775,7 @@ public class WebhooksReviewComment {
     }
 
     public WebhooksReviewComment startLine(Long startLine) {
-        this.startLine = startLine;
+        this.startLine = JsonNullable.of(startLine);
         return this;
     }
 
@@ -788,16 +789,16 @@ public class WebhooksReviewComment {
             description = "The first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("start_line")
-    public Long getStartLine() {
+    public JsonNullable<Long> getStartLine() {
         return startLine;
     }
 
-    public void setStartLine(Long startLine) {
+    public void setStartLine(JsonNullable<Long> startLine) {
         this.startLine = startLine;
     }
 
     public WebhooksReviewComment startSide(StartSideEnum startSide) {
-        this.startSide = startSide;
+        this.startSide = JsonNullable.of(startSide);
         return this;
     }
 
@@ -811,16 +812,16 @@ public class WebhooksReviewComment {
             description = "The side of the first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("start_side")
-    public StartSideEnum getStartSide() {
+    public JsonNullable<StartSideEnum> getStartSide() {
         return startSide;
     }
 
-    public void setStartSide(StartSideEnum startSide) {
+    public void setStartSide(JsonNullable<StartSideEnum> startSide) {
         this.startSide = startSide;
     }
 
     public WebhooksReviewComment subjectType(SubjectTypeEnum subjectType) {
-        this.subjectType = subjectType;
+        this.subjectType = Optional.ofNullable(subjectType);
         return this;
     }
 
@@ -833,11 +834,11 @@ public class WebhooksReviewComment {
             description = "The level at which the comment is targeted, can be a diff line or a file.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subject_type")
-    public SubjectTypeEnum getSubjectType() {
+    public Optional<SubjectTypeEnum> getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(SubjectTypeEnum subjectType) {
+    public void setSubjectType(Optional<SubjectTypeEnum> subjectType) {
         this.subjectType = subjectType;
     }
 
@@ -887,7 +888,7 @@ public class WebhooksReviewComment {
     }
 
     public WebhooksReviewComment user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -899,11 +900,11 @@ public class WebhooksReviewComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

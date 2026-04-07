@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Feature options for code scanning default setup
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("code_security_configuration_code_scanning_default_setup_options")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
 
@@ -60,12 +60,12 @@ public class CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
         }
     }
 
-    private RunnerTypeEnum runnerType = null;
+    private JsonNullable<RunnerTypeEnum> runnerType = JsonNullable.<RunnerTypeEnum>undefined();
 
-    private String runnerLabel = null;
+    private JsonNullable<String> runnerLabel = JsonNullable.<String>undefined();
 
     public CodeSecurityConfigurationCodeScanningDefaultSetupOptions runnerType(RunnerTypeEnum runnerType) {
-        this.runnerType = runnerType;
+        this.runnerType = JsonNullable.of(runnerType);
         return this;
     }
 
@@ -78,16 +78,16 @@ public class CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
             description = "Whether to use labeled runners or standard GitHub runners.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_type")
-    public RunnerTypeEnum getRunnerType() {
+    public JsonNullable<RunnerTypeEnum> getRunnerType() {
         return runnerType;
     }
 
-    public void setRunnerType(RunnerTypeEnum runnerType) {
+    public void setRunnerType(JsonNullable<RunnerTypeEnum> runnerType) {
         this.runnerType = runnerType;
     }
 
     public CodeSecurityConfigurationCodeScanningDefaultSetupOptions runnerLabel(String runnerLabel) {
-        this.runnerLabel = runnerLabel;
+        this.runnerLabel = JsonNullable.of(runnerLabel);
         return this;
     }
 
@@ -100,11 +100,11 @@ public class CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
             description = "The label of the runner to use for code scanning when runner_type is 'labeled'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_label")
-    public String getRunnerLabel() {
+    public JsonNullable<String> getRunnerLabel() {
         return runnerLabel;
     }
 
-    public void setRunnerLabel(String runnerLabel) {
+    public void setRunnerLabel(JsonNullable<String> runnerLabel) {
         this.runnerLabel = runnerLabel;
     }
 
@@ -119,14 +119,26 @@ public class CodeSecurityConfigurationCodeScanningDefaultSetupOptions {
         CodeSecurityConfigurationCodeScanningDefaultSetupOptions
                 codeSecurityConfigurationCodeScanningDefaultSetupOptions =
                         (CodeSecurityConfigurationCodeScanningDefaultSetupOptions) o;
-        return Objects.equals(this.runnerType, codeSecurityConfigurationCodeScanningDefaultSetupOptions.runnerType)
-                && Objects.equals(
+        return equalsNullable(this.runnerType, codeSecurityConfigurationCodeScanningDefaultSetupOptions.runnerType)
+                && equalsNullable(
                         this.runnerLabel, codeSecurityConfigurationCodeScanningDefaultSetupOptions.runnerLabel);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(runnerType, runnerLabel);
+        return Objects.hash(hashCodeNullable(runnerType), hashCodeNullable(runnerLabel));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

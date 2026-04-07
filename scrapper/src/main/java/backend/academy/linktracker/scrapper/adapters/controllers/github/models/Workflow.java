@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("workflow")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Workflow {
 
@@ -88,7 +88,7 @@ public class Workflow {
     private String badgeUrl;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime deletedAt;
+    private Optional<OffsetDateTime> deletedAt = Optional.empty();
 
     public Workflow() {
         super();
@@ -332,7 +332,7 @@ public class Workflow {
     }
 
     public Workflow deletedAt(OffsetDateTime deletedAt) {
-        this.deletedAt = deletedAt;
+        this.deletedAt = Optional.ofNullable(deletedAt);
         return this;
     }
 
@@ -343,11 +343,11 @@ public class Workflow {
     @Valid
     @Schema(name = "deleted_at", example = "2019-12-06T14:20:20Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deleted_at")
-    public OffsetDateTime getDeletedAt() {
+    public Optional<OffsetDateTime> getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(OffsetDateTime deletedAt) {
+    public void setDeletedAt(Optional<OffsetDateTime> deletedAt) {
         this.deletedAt = deletedAt;
     }
 

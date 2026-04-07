@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,27 +23,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhook_organization_member_invited_invitation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookOrganizationMemberInvitedInvitation {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime failedAt = null;
+    private JsonNullable<OffsetDateTime> failedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String failedReason = null;
+    private JsonNullable<String> failedReason = JsonNullable.<String>undefined();
 
     private BigDecimal id;
 
     private URI invitationTeamsUrl;
 
-    private User inviter = null;
+    private JsonNullable<User> inviter = JsonNullable.<User>undefined();
 
-    private String login = null;
+    private JsonNullable<String> login = JsonNullable.<String>undefined();
 
     private String nodeId;
 
@@ -50,7 +51,7 @@ public class WebhookOrganizationMemberInvitedInvitation {
 
     private BigDecimal teamCount;
 
-    private String invitationSource;
+    private Optional<String> invitationSource = Optional.empty();
 
     public WebhookOrganizationMemberInvitedInvitation() {
         super();
@@ -72,13 +73,13 @@ public class WebhookOrganizationMemberInvitedInvitation {
             String role,
             BigDecimal teamCount) {
         this.createdAt = createdAt;
-        this.email = email;
-        this.failedAt = failedAt;
-        this.failedReason = failedReason;
+        this.email = JsonNullable.of(email);
+        this.failedAt = JsonNullable.of(failedAt);
+        this.failedReason = JsonNullable.of(failedReason);
         this.id = id;
         this.invitationTeamsUrl = invitationTeamsUrl;
-        this.inviter = inviter;
-        this.login = login;
+        this.inviter = JsonNullable.of(inviter);
+        this.login = JsonNullable.of(login);
         this.nodeId = nodeId;
         this.role = role;
         this.teamCount = teamCount;
@@ -106,7 +107,7 @@ public class WebhookOrganizationMemberInvitedInvitation {
     }
 
     public WebhookOrganizationMemberInvitedInvitation email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -117,16 +118,16 @@ public class WebhookOrganizationMemberInvitedInvitation {
     @NotNull
     @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
     public WebhookOrganizationMemberInvitedInvitation failedAt(OffsetDateTime failedAt) {
-        this.failedAt = failedAt;
+        this.failedAt = JsonNullable.of(failedAt);
         return this;
     }
 
@@ -138,16 +139,16 @@ public class WebhookOrganizationMemberInvitedInvitation {
     @Valid
     @Schema(name = "failed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("failed_at")
-    public OffsetDateTime getFailedAt() {
+    public JsonNullable<OffsetDateTime> getFailedAt() {
         return failedAt;
     }
 
-    public void setFailedAt(OffsetDateTime failedAt) {
+    public void setFailedAt(JsonNullable<OffsetDateTime> failedAt) {
         this.failedAt = failedAt;
     }
 
     public WebhookOrganizationMemberInvitedInvitation failedReason(String failedReason) {
-        this.failedReason = failedReason;
+        this.failedReason = JsonNullable.of(failedReason);
         return this;
     }
 
@@ -158,11 +159,11 @@ public class WebhookOrganizationMemberInvitedInvitation {
     @NotNull
     @Schema(name = "failed_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("failed_reason")
-    public String getFailedReason() {
+    public JsonNullable<String> getFailedReason() {
         return failedReason;
     }
 
-    public void setFailedReason(String failedReason) {
+    public void setFailedReason(JsonNullable<String> failedReason) {
         this.failedReason = failedReason;
     }
 
@@ -209,7 +210,7 @@ public class WebhookOrganizationMemberInvitedInvitation {
     }
 
     public WebhookOrganizationMemberInvitedInvitation inviter(User inviter) {
-        this.inviter = inviter;
+        this.inviter = JsonNullable.of(inviter);
         return this;
     }
 
@@ -221,16 +222,16 @@ public class WebhookOrganizationMemberInvitedInvitation {
     @Valid
     @Schema(name = "inviter", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("inviter")
-    public User getInviter() {
+    public JsonNullable<User> getInviter() {
         return inviter;
     }
 
-    public void setInviter(User inviter) {
+    public void setInviter(JsonNullable<User> inviter) {
         this.inviter = inviter;
     }
 
     public WebhookOrganizationMemberInvitedInvitation login(String login) {
-        this.login = login;
+        this.login = JsonNullable.of(login);
         return this;
     }
 
@@ -241,11 +242,11 @@ public class WebhookOrganizationMemberInvitedInvitation {
     @NotNull
     @Schema(name = "login", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public JsonNullable<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(JsonNullable<String> login) {
         this.login = login;
     }
 
@@ -311,7 +312,7 @@ public class WebhookOrganizationMemberInvitedInvitation {
     }
 
     public WebhookOrganizationMemberInvitedInvitation invitationSource(String invitationSource) {
-        this.invitationSource = invitationSource;
+        this.invitationSource = Optional.ofNullable(invitationSource);
         return this;
     }
 
@@ -321,11 +322,11 @@ public class WebhookOrganizationMemberInvitedInvitation {
      */
     @Schema(name = "invitation_source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("invitation_source")
-    public String getInvitationSource() {
+    public Optional<String> getInvitationSource() {
         return invitationSource;
     }
 
-    public void setInvitationSource(String invitationSource) {
+    public void setInvitationSource(Optional<String> invitationSource) {
         this.invitationSource = invitationSource;
     }
 

@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("repository-invitation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryInvitation {
 
@@ -28,9 +29,9 @@ public class RepositoryInvitation {
 
     private MinimalRepository repository;
 
-    private NullableSimpleUser invitee = null;
+    private JsonNullable<NullableSimpleUser> invitee = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableSimpleUser inviter = null;
+    private JsonNullable<NullableSimpleUser> inviter = JsonNullable.<NullableSimpleUser>undefined();
 
     /**
      * The permission associated with the invitation.
@@ -78,7 +79,7 @@ public class RepositoryInvitation {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private Boolean expired;
+    private Optional<Boolean> expired = Optional.empty();
 
     private String url;
 
@@ -105,8 +106,8 @@ public class RepositoryInvitation {
             String nodeId) {
         this.id = id;
         this.repository = repository;
-        this.invitee = invitee;
-        this.inviter = inviter;
+        this.invitee = JsonNullable.of(invitee);
+        this.inviter = JsonNullable.of(inviter);
         this.permissions = permissions;
         this.createdAt = createdAt;
         this.url = url;
@@ -160,7 +161,7 @@ public class RepositoryInvitation {
     }
 
     public RepositoryInvitation invitee(NullableSimpleUser invitee) {
-        this.invitee = invitee;
+        this.invitee = JsonNullable.of(invitee);
         return this;
     }
 
@@ -172,16 +173,16 @@ public class RepositoryInvitation {
     @Valid
     @Schema(name = "invitee", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("invitee")
-    public NullableSimpleUser getInvitee() {
+    public JsonNullable<NullableSimpleUser> getInvitee() {
         return invitee;
     }
 
-    public void setInvitee(NullableSimpleUser invitee) {
+    public void setInvitee(JsonNullable<NullableSimpleUser> invitee) {
         this.invitee = invitee;
     }
 
     public RepositoryInvitation inviter(NullableSimpleUser inviter) {
-        this.inviter = inviter;
+        this.inviter = JsonNullable.of(inviter);
         return this;
     }
 
@@ -193,11 +194,11 @@ public class RepositoryInvitation {
     @Valid
     @Schema(name = "inviter", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("inviter")
-    public NullableSimpleUser getInviter() {
+    public JsonNullable<NullableSimpleUser> getInviter() {
         return inviter;
     }
 
-    public void setInviter(NullableSimpleUser inviter) {
+    public void setInviter(JsonNullable<NullableSimpleUser> inviter) {
         this.inviter = inviter;
     }
 
@@ -247,7 +248,7 @@ public class RepositoryInvitation {
     }
 
     public RepositoryInvitation expired(Boolean expired) {
-        this.expired = expired;
+        this.expired = Optional.ofNullable(expired);
         return this;
     }
 
@@ -260,11 +261,11 @@ public class RepositoryInvitation {
             description = "Whether or not the invitation has expired",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("expired")
-    public Boolean getExpired() {
+    public Optional<Boolean> getExpired() {
         return expired;
     }
 
-    public void setExpired(Boolean expired) {
+    public void setExpired(Optional<Boolean> expired) {
         this.expired = expired;
     }
 

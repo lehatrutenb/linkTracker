@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RunnerGroupsOrg
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("runner-groups-org")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RunnerGroupsOrg {
 
@@ -30,23 +30,23 @@ public class RunnerGroupsOrg {
 
     private Boolean _default;
 
-    private String selectedRepositoriesUrl;
+    private Optional<String> selectedRepositoriesUrl = Optional.empty();
 
     private String runnersUrl;
 
-    private String hostedRunnersUrl;
+    private Optional<String> hostedRunnersUrl = Optional.empty();
 
-    private String networkConfigurationId;
+    private Optional<String> networkConfigurationId = Optional.empty();
 
     private Boolean inherited;
 
-    private Boolean inheritedAllowsPublicRepositories;
+    private Optional<Boolean> inheritedAllowsPublicRepositories = Optional.empty();
 
     private Boolean allowsPublicRepositories;
 
-    private Boolean workflowRestrictionsReadOnly = false;
+    private Optional<Boolean> workflowRestrictionsReadOnly = Optional.of(false);
 
-    private Boolean restrictedToWorkflows = false;
+    private Optional<Boolean> restrictedToWorkflows = Optional.of(false);
 
     @Valid
     private List<String> selectedWorkflows = new ArrayList<>();
@@ -157,7 +157,7 @@ public class RunnerGroupsOrg {
     }
 
     public RunnerGroupsOrg selectedRepositoriesUrl(String selectedRepositoriesUrl) {
-        this.selectedRepositoriesUrl = selectedRepositoriesUrl;
+        this.selectedRepositoriesUrl = Optional.ofNullable(selectedRepositoriesUrl);
         return this;
     }
 
@@ -171,11 +171,11 @@ public class RunnerGroupsOrg {
                     "Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("selected_repositories_url")
-    public String getSelectedRepositoriesUrl() {
+    public Optional<String> getSelectedRepositoriesUrl() {
         return selectedRepositoriesUrl;
     }
 
-    public void setSelectedRepositoriesUrl(String selectedRepositoriesUrl) {
+    public void setSelectedRepositoriesUrl(Optional<String> selectedRepositoriesUrl) {
         this.selectedRepositoriesUrl = selectedRepositoriesUrl;
     }
 
@@ -200,7 +200,7 @@ public class RunnerGroupsOrg {
     }
 
     public RunnerGroupsOrg hostedRunnersUrl(String hostedRunnersUrl) {
-        this.hostedRunnersUrl = hostedRunnersUrl;
+        this.hostedRunnersUrl = Optional.ofNullable(hostedRunnersUrl);
         return this;
     }
 
@@ -210,16 +210,16 @@ public class RunnerGroupsOrg {
      */
     @Schema(name = "hosted_runners_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hosted_runners_url")
-    public String getHostedRunnersUrl() {
+    public Optional<String> getHostedRunnersUrl() {
         return hostedRunnersUrl;
     }
 
-    public void setHostedRunnersUrl(String hostedRunnersUrl) {
+    public void setHostedRunnersUrl(Optional<String> hostedRunnersUrl) {
         this.hostedRunnersUrl = hostedRunnersUrl;
     }
 
     public RunnerGroupsOrg networkConfigurationId(String networkConfigurationId) {
-        this.networkConfigurationId = networkConfigurationId;
+        this.networkConfigurationId = Optional.ofNullable(networkConfigurationId);
         return this;
     }
 
@@ -232,11 +232,11 @@ public class RunnerGroupsOrg {
             description = "The identifier of a hosted compute network configuration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_configuration_id")
-    public String getNetworkConfigurationId() {
+    public Optional<String> getNetworkConfigurationId() {
         return networkConfigurationId;
     }
 
-    public void setNetworkConfigurationId(String networkConfigurationId) {
+    public void setNetworkConfigurationId(Optional<String> networkConfigurationId) {
         this.networkConfigurationId = networkConfigurationId;
     }
 
@@ -261,7 +261,7 @@ public class RunnerGroupsOrg {
     }
 
     public RunnerGroupsOrg inheritedAllowsPublicRepositories(Boolean inheritedAllowsPublicRepositories) {
-        this.inheritedAllowsPublicRepositories = inheritedAllowsPublicRepositories;
+        this.inheritedAllowsPublicRepositories = Optional.ofNullable(inheritedAllowsPublicRepositories);
         return this;
     }
 
@@ -271,11 +271,11 @@ public class RunnerGroupsOrg {
      */
     @Schema(name = "inherited_allows_public_repositories", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("inherited_allows_public_repositories")
-    public Boolean getInheritedAllowsPublicRepositories() {
+    public Optional<Boolean> getInheritedAllowsPublicRepositories() {
         return inheritedAllowsPublicRepositories;
     }
 
-    public void setInheritedAllowsPublicRepositories(Boolean inheritedAllowsPublicRepositories) {
+    public void setInheritedAllowsPublicRepositories(Optional<Boolean> inheritedAllowsPublicRepositories) {
         this.inheritedAllowsPublicRepositories = inheritedAllowsPublicRepositories;
     }
 
@@ -300,7 +300,7 @@ public class RunnerGroupsOrg {
     }
 
     public RunnerGroupsOrg workflowRestrictionsReadOnly(Boolean workflowRestrictionsReadOnly) {
-        this.workflowRestrictionsReadOnly = workflowRestrictionsReadOnly;
+        this.workflowRestrictionsReadOnly = Optional.ofNullable(workflowRestrictionsReadOnly);
         return this;
     }
 
@@ -314,16 +314,16 @@ public class RunnerGroupsOrg {
                     "If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("workflow_restrictions_read_only")
-    public Boolean getWorkflowRestrictionsReadOnly() {
+    public Optional<Boolean> getWorkflowRestrictionsReadOnly() {
         return workflowRestrictionsReadOnly;
     }
 
-    public void setWorkflowRestrictionsReadOnly(Boolean workflowRestrictionsReadOnly) {
+    public void setWorkflowRestrictionsReadOnly(Optional<Boolean> workflowRestrictionsReadOnly) {
         this.workflowRestrictionsReadOnly = workflowRestrictionsReadOnly;
     }
 
     public RunnerGroupsOrg restrictedToWorkflows(Boolean restrictedToWorkflows) {
-        this.restrictedToWorkflows = restrictedToWorkflows;
+        this.restrictedToWorkflows = Optional.ofNullable(restrictedToWorkflows);
         return this;
     }
 
@@ -337,11 +337,11 @@ public class RunnerGroupsOrg {
                     "If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("restricted_to_workflows")
-    public Boolean getRestrictedToWorkflows() {
+    public Optional<Boolean> getRestrictedToWorkflows() {
         return restrictedToWorkflows;
     }
 
-    public void setRestrictedToWorkflows(Boolean restrictedToWorkflows) {
+    public void setRestrictedToWorkflows(Optional<Boolean> restrictedToWorkflows) {
         this.restrictedToWorkflows = restrictedToWorkflows;
     }
 

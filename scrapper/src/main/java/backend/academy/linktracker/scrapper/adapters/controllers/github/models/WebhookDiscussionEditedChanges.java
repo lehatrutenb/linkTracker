@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookDiscussionEditedChanges
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_discussion_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDiscussionEditedChanges {
 
-    private WebhookDiscussionCommentEditedChangesBody body;
+    private Optional<WebhookDiscussionCommentEditedChangesBody> body = Optional.empty();
 
-    private WebhookDiscussionCommentEditedChangesBody title;
+    private Optional<WebhookDiscussionCommentEditedChangesBody> title = Optional.empty();
 
     public WebhookDiscussionEditedChanges body(WebhookDiscussionCommentEditedChangesBody body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class WebhookDiscussionEditedChanges {
     @Valid
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public WebhookDiscussionCommentEditedChangesBody getBody() {
+    public Optional<WebhookDiscussionCommentEditedChangesBody> getBody() {
         return body;
     }
 
-    public void setBody(WebhookDiscussionCommentEditedChangesBody body) {
+    public void setBody(Optional<WebhookDiscussionCommentEditedChangesBody> body) {
         this.body = body;
     }
 
     public WebhookDiscussionEditedChanges title(WebhookDiscussionCommentEditedChangesBody title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -55,11 +54,11 @@ public class WebhookDiscussionEditedChanges {
     @Valid
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public WebhookDiscussionCommentEditedChangesBody getTitle() {
+    public Optional<WebhookDiscussionCommentEditedChangesBody> getTitle() {
         return title;
     }
 
-    public void setTitle(WebhookDiscussionCommentEditedChangesBody title) {
+    public void setTitle(Optional<WebhookDiscussionCommentEditedChangesBody> title) {
         this.title = title;
     }
 

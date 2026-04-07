@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * BaseGistFilesValue
@@ -14,24 +13,24 @@ import java.util.Objects;
 @JsonTypeName("base_gist_files_value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BaseGistFilesValue {
 
-    private String filename;
+    private Optional<String> filename = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String language;
+    private Optional<String> language = Optional.empty();
 
-    private String rawUrl;
+    private Optional<String> rawUrl = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String encoding = "utf-8";
+    private Optional<String> encoding = Optional.of("utf-8");
 
     public BaseGistFilesValue filename(String filename) {
-        this.filename = filename;
+        this.filename = Optional.ofNullable(filename);
         return this;
     }
 
@@ -41,16 +40,16 @@ public class BaseGistFilesValue {
      */
     @Schema(name = "filename", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("filename")
-    public String getFilename() {
+    public Optional<String> getFilename() {
         return filename;
     }
 
-    public void setFilename(String filename) {
+    public void setFilename(Optional<String> filename) {
         this.filename = filename;
     }
 
     public BaseGistFilesValue type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -60,16 +59,16 @@ public class BaseGistFilesValue {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public BaseGistFilesValue language(String language) {
-        this.language = language;
+        this.language = Optional.ofNullable(language);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class BaseGistFilesValue {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public Optional<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Optional<String> language) {
         this.language = language;
     }
 
     public BaseGistFilesValue rawUrl(String rawUrl) {
-        this.rawUrl = rawUrl;
+        this.rawUrl = Optional.ofNullable(rawUrl);
         return this;
     }
 
@@ -98,16 +97,16 @@ public class BaseGistFilesValue {
      */
     @Schema(name = "raw_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("raw_url")
-    public String getRawUrl() {
+    public Optional<String> getRawUrl() {
         return rawUrl;
     }
 
-    public void setRawUrl(String rawUrl) {
+    public void setRawUrl(Optional<String> rawUrl) {
         this.rawUrl = rawUrl;
     }
 
     public BaseGistFilesValue size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -117,16 +116,16 @@ public class BaseGistFilesValue {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public BaseGistFilesValue encoding(String encoding) {
-        this.encoding = encoding;
+        this.encoding = Optional.ofNullable(encoding);
         return this;
     }
 
@@ -139,11 +138,11 @@ public class BaseGistFilesValue {
             description = "The encoding used for `content`. Currently, `\"utf-8\"` and `\"base64\"` are supported.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encoding")
-    public String getEncoding() {
+    public Optional<String> getEncoding() {
         return encoding;
     }
 
-    public void setEncoding(String encoding) {
+    public void setEncoding(Optional<String> encoding) {
         this.encoding = encoding;
     }
 

@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("job")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Job {
 
@@ -32,7 +33,7 @@ public class Job {
 
     private String runUrl;
 
-    private Long runAttempt;
+    private Optional<Long> runAttempt = Optional.empty();
 
     private String nodeId;
 
@@ -40,7 +41,7 @@ public class Job {
 
     private String url;
 
-    private String htmlUrl = null;
+    private JsonNullable<String> htmlUrl = JsonNullable.<String>undefined();
 
     /**
      * The phase of the lifecycle that the job is currently in.
@@ -132,7 +133,7 @@ public class Job {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -141,7 +142,7 @@ public class Job {
     private OffsetDateTime startedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private String name;
 
@@ -153,17 +154,17 @@ public class Job {
     @Valid
     private List<String> labels = new ArrayList<>();
 
-    private Long runnerId = null;
+    private JsonNullable<Long> runnerId = JsonNullable.<Long>undefined();
 
-    private String runnerName = null;
+    private JsonNullable<String> runnerName = JsonNullable.<String>undefined();
 
-    private Long runnerGroupId = null;
+    private JsonNullable<Long> runnerGroupId = JsonNullable.<Long>undefined();
 
-    private String runnerGroupName = null;
+    private JsonNullable<String> runnerGroupName = JsonNullable.<String>undefined();
 
-    private String workflowName = null;
+    private JsonNullable<String> workflowName = JsonNullable.<String>undefined();
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
     public Job() {
         super();
@@ -200,21 +201,21 @@ public class Job {
         this.nodeId = nodeId;
         this.headSha = headSha;
         this.url = url;
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         this.status = status;
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
         this.startedAt = startedAt;
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         this.name = name;
         this.checkRunUrl = checkRunUrl;
         this.labels = labels;
-        this.runnerId = runnerId;
-        this.runnerName = runnerName;
-        this.runnerGroupId = runnerGroupId;
-        this.runnerGroupName = runnerGroupName;
-        this.workflowName = workflowName;
-        this.headBranch = headBranch;
+        this.runnerId = JsonNullable.of(runnerId);
+        this.runnerName = JsonNullable.of(runnerName);
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
+        this.workflowName = JsonNullable.of(workflowName);
+        this.headBranch = JsonNullable.of(headBranch);
     }
 
     public Job id(Long id) {
@@ -289,7 +290,7 @@ public class Job {
     }
 
     public Job runAttempt(Long runAttempt) {
-        this.runAttempt = runAttempt;
+        this.runAttempt = Optional.ofNullable(runAttempt);
         return this;
     }
 
@@ -304,11 +305,11 @@ public class Job {
                     "Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("run_attempt")
-    public Long getRunAttempt() {
+    public Optional<Long> getRunAttempt() {
         return runAttempt;
     }
 
-    public void setRunAttempt(Long runAttempt) {
+    public void setRunAttempt(Optional<Long> runAttempt) {
         this.runAttempt = runAttempt;
     }
 
@@ -380,7 +381,7 @@ public class Job {
     }
 
     public Job htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -394,11 +395,11 @@ public class Job {
             example = "https://github.com/github/hello-world/runs/4",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public JsonNullable<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(JsonNullable<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -427,7 +428,7 @@ public class Job {
     }
 
     public Job conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -442,11 +443,11 @@ public class Job {
             description = "The outcome of the job.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -501,7 +502,7 @@ public class Job {
     }
 
     public Job completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -517,11 +518,11 @@ public class Job {
             description = "The time that the job finished, in ISO 8601 format.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -634,7 +635,7 @@ public class Job {
     }
 
     public Job runnerId(Long runnerId) {
-        this.runnerId = runnerId;
+        this.runnerId = JsonNullable.of(runnerId);
         return this;
     }
 
@@ -650,16 +651,16 @@ public class Job {
                     "The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_id")
-    public Long getRunnerId() {
+    public JsonNullable<Long> getRunnerId() {
         return runnerId;
     }
 
-    public void setRunnerId(Long runnerId) {
+    public void setRunnerId(JsonNullable<Long> runnerId) {
         this.runnerId = runnerId;
     }
 
     public Job runnerName(String runnerName) {
-        this.runnerName = runnerName;
+        this.runnerName = JsonNullable.of(runnerName);
         return this;
     }
 
@@ -675,16 +676,16 @@ public class Job {
                     "The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_name")
-    public String getRunnerName() {
+    public JsonNullable<String> getRunnerName() {
         return runnerName;
     }
 
-    public void setRunnerName(String runnerName) {
+    public void setRunnerName(JsonNullable<String> runnerName) {
         this.runnerName = runnerName;
     }
 
     public Job runnerGroupId(Long runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = JsonNullable.of(runnerGroupId);
         return this;
     }
 
@@ -700,16 +701,16 @@ public class Job {
                     "The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_id")
-    public Long getRunnerGroupId() {
+    public JsonNullable<Long> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(Long runnerGroupId) {
+    public void setRunnerGroupId(JsonNullable<Long> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
     public Job runnerGroupName(String runnerGroupName) {
-        this.runnerGroupName = runnerGroupName;
+        this.runnerGroupName = JsonNullable.of(runnerGroupName);
         return this;
     }
 
@@ -725,16 +726,16 @@ public class Job {
                     "The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("runner_group_name")
-    public String getRunnerGroupName() {
+    public JsonNullable<String> getRunnerGroupName() {
         return runnerGroupName;
     }
 
-    public void setRunnerGroupName(String runnerGroupName) {
+    public void setRunnerGroupName(JsonNullable<String> runnerGroupName) {
         this.runnerGroupName = runnerGroupName;
     }
 
     public Job workflowName(String workflowName) {
-        this.workflowName = workflowName;
+        this.workflowName = JsonNullable.of(workflowName);
         return this;
     }
 
@@ -749,16 +750,16 @@ public class Job {
             description = "The name of the workflow.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("workflow_name")
-    public String getWorkflowName() {
+    public JsonNullable<String> getWorkflowName() {
         return workflowName;
     }
 
-    public void setWorkflowName(String workflowName) {
+    public void setWorkflowName(JsonNullable<String> workflowName) {
         this.workflowName = workflowName;
     }
 
     public Job headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -773,11 +774,11 @@ public class Job {
             description = "The name of the current branch.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 

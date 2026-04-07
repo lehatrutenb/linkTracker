@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReposCreateOrUpdateEnvironmentRequest
@@ -17,21 +14,23 @@ import java.util.Objects;
 @JsonTypeName("repos_create_or_update_environment_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateOrUpdateEnvironmentRequest {
 
-    private Long waitTimer;
+    private Optional<Long> waitTimer = Optional.empty();
 
-    private Boolean preventSelfReview;
+    private Optional<Boolean> preventSelfReview = Optional.empty();
 
     @Valid
-    private List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner> reviewers;
+    private JsonNullable<List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner>> reviewers =
+            JsonNullable.<List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner>>undefined();
 
-    private DeploymentBranchPolicySettings deploymentBranchPolicy = null;
+    private JsonNullable<DeploymentBranchPolicySettings> deploymentBranchPolicy =
+            JsonNullable.<DeploymentBranchPolicySettings>undefined();
 
     public ReposCreateOrUpdateEnvironmentRequest waitTimer(Long waitTimer) {
-        this.waitTimer = waitTimer;
+        this.waitTimer = Optional.ofNullable(waitTimer);
         return this;
     }
 
@@ -46,16 +45,16 @@ public class ReposCreateOrUpdateEnvironmentRequest {
                     "The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("wait_timer")
-    public Long getWaitTimer() {
+    public Optional<Long> getWaitTimer() {
         return waitTimer;
     }
 
-    public void setWaitTimer(Long waitTimer) {
+    public void setWaitTimer(Optional<Long> waitTimer) {
         this.waitTimer = waitTimer;
     }
 
     public ReposCreateOrUpdateEnvironmentRequest preventSelfReview(Boolean preventSelfReview) {
-        this.preventSelfReview = preventSelfReview;
+        this.preventSelfReview = Optional.ofNullable(preventSelfReview);
         return this;
     }
 
@@ -69,26 +68,26 @@ public class ReposCreateOrUpdateEnvironmentRequest {
             description = "Whether or not a user who created the job is prevented from approving their own job.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prevent_self_review")
-    public Boolean getPreventSelfReview() {
+    public Optional<Boolean> getPreventSelfReview() {
         return preventSelfReview;
     }
 
-    public void setPreventSelfReview(Boolean preventSelfReview) {
+    public void setPreventSelfReview(Optional<Boolean> preventSelfReview) {
         this.preventSelfReview = preventSelfReview;
     }
 
     public ReposCreateOrUpdateEnvironmentRequest reviewers(
             List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner> reviewers) {
-        this.reviewers = reviewers;
+        this.reviewers = JsonNullable.of(reviewers);
         return this;
     }
 
     public ReposCreateOrUpdateEnvironmentRequest addReviewersItem(
             ReposCreateOrUpdateEnvironmentRequestReviewersInner reviewersItem) {
-        if (this.reviewers == null) {
-            this.reviewers = new ArrayList<>();
+        if (this.reviewers == null || !this.reviewers.isPresent()) {
+            this.reviewers = JsonNullable.of(new ArrayList<>());
         }
-        this.reviewers.add(reviewersItem);
+        this.reviewers.get().add(reviewersItem);
         return this;
     }
 
@@ -103,17 +102,17 @@ public class ReposCreateOrUpdateEnvironmentRequest {
                     "The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reviewers")
-    public List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner> getReviewers() {
+    public JsonNullable<List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner>> getReviewers() {
         return reviewers;
     }
 
-    public void setReviewers(List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner> reviewers) {
+    public void setReviewers(JsonNullable<List<@Valid ReposCreateOrUpdateEnvironmentRequestReviewersInner>> reviewers) {
         this.reviewers = reviewers;
     }
 
     public ReposCreateOrUpdateEnvironmentRequest deploymentBranchPolicy(
             DeploymentBranchPolicySettings deploymentBranchPolicy) {
-        this.deploymentBranchPolicy = deploymentBranchPolicy;
+        this.deploymentBranchPolicy = JsonNullable.of(deploymentBranchPolicy);
         return this;
     }
 
@@ -124,11 +123,11 @@ public class ReposCreateOrUpdateEnvironmentRequest {
     @Valid
     @Schema(name = "deployment_branch_policy", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deployment_branch_policy")
-    public DeploymentBranchPolicySettings getDeploymentBranchPolicy() {
+    public JsonNullable<DeploymentBranchPolicySettings> getDeploymentBranchPolicy() {
         return deploymentBranchPolicy;
     }
 
-    public void setDeploymentBranchPolicy(DeploymentBranchPolicySettings deploymentBranchPolicy) {
+    public void setDeploymentBranchPolicy(JsonNullable<DeploymentBranchPolicySettings> deploymentBranchPolicy) {
         this.deploymentBranchPolicy = deploymentBranchPolicy;
     }
 
@@ -144,14 +143,27 @@ public class ReposCreateOrUpdateEnvironmentRequest {
                 (ReposCreateOrUpdateEnvironmentRequest) o;
         return Objects.equals(this.waitTimer, reposCreateOrUpdateEnvironmentRequest.waitTimer)
                 && Objects.equals(this.preventSelfReview, reposCreateOrUpdateEnvironmentRequest.preventSelfReview)
-                && Objects.equals(this.reviewers, reposCreateOrUpdateEnvironmentRequest.reviewers)
-                && Objects.equals(
+                && equalsNullable(this.reviewers, reposCreateOrUpdateEnvironmentRequest.reviewers)
+                && equalsNullable(
                         this.deploymentBranchPolicy, reposCreateOrUpdateEnvironmentRequest.deploymentBranchPolicy);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(waitTimer, preventSelfReview, reviewers, deploymentBranchPolicy);
+        return Objects.hash(
+                waitTimer, preventSelfReview, hashCodeNullable(reviewers), hashCodeNullable(deploymentBranchPolicy));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,12 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * OrgsListAttestationsBulk200Response
@@ -18,7 +13,7 @@ import java.util.Objects;
 @JsonTypeName("orgs_list_attestations_bulk_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsListAttestationsBulk200Response {
 
@@ -26,7 +21,7 @@ public class OrgsListAttestationsBulk200Response {
     private Map<String, List<@Valid OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner>>
             attestationsSubjectDigests = new HashMap<>();
 
-    private OrgsListAttestationsBulk200ResponsePageInfo pageInfo;
+    private Optional<OrgsListAttestationsBulk200ResponsePageInfo> pageInfo = Optional.empty();
 
     public OrgsListAttestationsBulk200Response attestationsSubjectDigests(
             Map<String, List<@Valid OrgsListAttestationsBulk200ResponseAttestationsSubjectDigestsValueInner>>
@@ -68,7 +63,7 @@ public class OrgsListAttestationsBulk200Response {
     }
 
     public OrgsListAttestationsBulk200Response pageInfo(OrgsListAttestationsBulk200ResponsePageInfo pageInfo) {
-        this.pageInfo = pageInfo;
+        this.pageInfo = Optional.ofNullable(pageInfo);
         return this;
     }
 
@@ -79,11 +74,11 @@ public class OrgsListAttestationsBulk200Response {
     @Valid
     @Schema(name = "page_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page_info")
-    public OrgsListAttestationsBulk200ResponsePageInfo getPageInfo() {
+    public Optional<OrgsListAttestationsBulk200ResponsePageInfo> getPageInfo() {
         return pageInfo;
     }
 
-    public void setPageInfo(OrgsListAttestationsBulk200ResponsePageInfo pageInfo) {
+    public void setPageInfo(Optional<OrgsListAttestationsBulk200ResponsePageInfo> pageInfo) {
         this.pageInfo = pageInfo;
     }
 

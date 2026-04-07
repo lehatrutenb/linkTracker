@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("codespaces_pre_flight_with_repo_for_authenticated_user_200_response_defaults")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults {
 
     private String location;
 
-    private String devcontainerPath = null;
+    private JsonNullable<String> devcontainerPath = JsonNullable.<String>undefined();
 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults() {
         super();
@@ -32,7 +32,7 @@ public class CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults(
             String location, String devcontainerPath) {
         this.location = location;
-        this.devcontainerPath = devcontainerPath;
+        this.devcontainerPath = JsonNullable.of(devcontainerPath);
     }
 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults location(String location) {
@@ -57,7 +57,7 @@ public class CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults 
 
     public CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults devcontainerPath(
             String devcontainerPath) {
-        this.devcontainerPath = devcontainerPath;
+        this.devcontainerPath = JsonNullable.of(devcontainerPath);
         return this;
     }
 
@@ -68,11 +68,11 @@ public class CodespacesPreFlightWithRepoForAuthenticatedUser200ResponseDefaults 
     @NotNull
     @Schema(name = "devcontainer_path", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("devcontainer_path")
-    public String getDevcontainerPath() {
+    public JsonNullable<String> getDevcontainerPath() {
         return devcontainerPath;
     }
 
-    public void setDevcontainerPath(String devcontainerPath) {
+    public void setDevcontainerPath(JsonNullable<String> devcontainerPath) {
         this.devcontainerPath = devcontainerPath;
     }
 

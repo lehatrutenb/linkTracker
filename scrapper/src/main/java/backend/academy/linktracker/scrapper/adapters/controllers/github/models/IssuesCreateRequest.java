@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * IssuesCreateRequest
@@ -17,15 +15,16 @@ import java.util.Objects;
 @JsonTypeName("issues_create_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuesCreateRequest {
 
     private IssuesCreateRequestTitle title;
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private IssuesCreateRequestMilestone milestone = null;
+    private JsonNullable<IssuesCreateRequestMilestone> milestone =
+            JsonNullable.<IssuesCreateRequestMilestone>undefined();
 
     @Valid
     private List<IssuesCreateRequestLabelsInner> labels = new ArrayList<>();
@@ -33,7 +32,7 @@ public class IssuesCreateRequest {
     @Valid
     private List<String> assignees = new ArrayList<>();
 
-    private String type = null;
+    private JsonNullable<String> type = JsonNullable.<String>undefined();
 
     public IssuesCreateRequest() {
         super();
@@ -68,7 +67,7 @@ public class IssuesCreateRequest {
     }
 
     public IssuesCreateRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -78,16 +77,16 @@ public class IssuesCreateRequest {
      */
     @Schema(name = "body", description = "The contents of the issue.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public IssuesCreateRequest milestone(IssuesCreateRequestMilestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -98,11 +97,11 @@ public class IssuesCreateRequest {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestone")
-    public IssuesCreateRequestMilestone getMilestone() {
+    public JsonNullable<IssuesCreateRequestMilestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(IssuesCreateRequestMilestone milestone) {
+    public void setMilestone(JsonNullable<IssuesCreateRequestMilestone> milestone) {
         this.milestone = milestone;
     }
 
@@ -170,7 +169,7 @@ public class IssuesCreateRequest {
     }
 
     public IssuesCreateRequest type(String type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -185,11 +184,11 @@ public class IssuesCreateRequest {
                     "The name of the issue type to associate with this issue. _NOTE: Only users with push access can set the type for new issues. The type is silently dropped otherwise._",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public JsonNullable<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(JsonNullable<String> type) {
         this.type = type;
     }
 
@@ -204,15 +203,27 @@ public class IssuesCreateRequest {
         IssuesCreateRequest issuesCreateRequest = (IssuesCreateRequest) o;
         return Objects.equals(this.title, issuesCreateRequest.title)
                 && Objects.equals(this.body, issuesCreateRequest.body)
-                && Objects.equals(this.milestone, issuesCreateRequest.milestone)
+                && equalsNullable(this.milestone, issuesCreateRequest.milestone)
                 && Objects.equals(this.labels, issuesCreateRequest.labels)
                 && Objects.equals(this.assignees, issuesCreateRequest.assignees)
-                && Objects.equals(this.type, issuesCreateRequest.type);
+                && equalsNullable(this.type, issuesCreateRequest.type);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, body, milestone, labels, assignees, type);
+        return Objects.hash(title, body, hashCodeNullable(milestone), labels, assignees, hashCodeNullable(type));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

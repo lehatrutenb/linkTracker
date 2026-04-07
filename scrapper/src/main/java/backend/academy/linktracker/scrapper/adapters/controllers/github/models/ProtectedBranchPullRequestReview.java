@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Protected Branch Pull Request Review
@@ -17,23 +19,24 @@ import java.util.Objects;
 @JsonTypeName("protected-branch-pull-request-review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProtectedBranchPullRequestReview {
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private ProtectedBranchPullRequestReviewDismissalRestrictions dismissalRestrictions;
+    private Optional<ProtectedBranchPullRequestReviewDismissalRestrictions> dismissalRestrictions = Optional.empty();
 
-    private ProtectedBranchPullRequestReviewBypassPullRequestAllowances bypassPullRequestAllowances;
+    private Optional<ProtectedBranchPullRequestReviewBypassPullRequestAllowances> bypassPullRequestAllowances =
+            Optional.empty();
 
     private Boolean dismissStaleReviews;
 
     private Boolean requireCodeOwnerReviews;
 
-    private Long requiredApprovingReviewCount;
+    private Optional<@Min(value = 0) @Max(value = 6) Long> requiredApprovingReviewCount = Optional.empty();
 
-    private Boolean requireLastPushApproval = false;
+    private Optional<Boolean> requireLastPushApproval = Optional.of(false);
 
     public ProtectedBranchPullRequestReview() {
         super();
@@ -48,7 +51,7 @@ public class ProtectedBranchPullRequestReview {
     }
 
     public ProtectedBranchPullRequestReview url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -63,17 +66,17 @@ public class ProtectedBranchPullRequestReview {
                     "https://api.github.com/repos/octocat/Hello-World/branches/master/protection/dismissal_restrictions",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
     public ProtectedBranchPullRequestReview dismissalRestrictions(
             ProtectedBranchPullRequestReviewDismissalRestrictions dismissalRestrictions) {
-        this.dismissalRestrictions = dismissalRestrictions;
+        this.dismissalRestrictions = Optional.ofNullable(dismissalRestrictions);
         return this;
     }
 
@@ -84,17 +87,18 @@ public class ProtectedBranchPullRequestReview {
     @Valid
     @Schema(name = "dismissal_restrictions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_restrictions")
-    public ProtectedBranchPullRequestReviewDismissalRestrictions getDismissalRestrictions() {
+    public Optional<ProtectedBranchPullRequestReviewDismissalRestrictions> getDismissalRestrictions() {
         return dismissalRestrictions;
     }
 
-    public void setDismissalRestrictions(ProtectedBranchPullRequestReviewDismissalRestrictions dismissalRestrictions) {
+    public void setDismissalRestrictions(
+            Optional<ProtectedBranchPullRequestReviewDismissalRestrictions> dismissalRestrictions) {
         this.dismissalRestrictions = dismissalRestrictions;
     }
 
     public ProtectedBranchPullRequestReview bypassPullRequestAllowances(
             ProtectedBranchPullRequestReviewBypassPullRequestAllowances bypassPullRequestAllowances) {
-        this.bypassPullRequestAllowances = bypassPullRequestAllowances;
+        this.bypassPullRequestAllowances = Optional.ofNullable(bypassPullRequestAllowances);
         return this;
     }
 
@@ -105,12 +109,12 @@ public class ProtectedBranchPullRequestReview {
     @Valid
     @Schema(name = "bypass_pull_request_allowances", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("bypass_pull_request_allowances")
-    public ProtectedBranchPullRequestReviewBypassPullRequestAllowances getBypassPullRequestAllowances() {
+    public Optional<ProtectedBranchPullRequestReviewBypassPullRequestAllowances> getBypassPullRequestAllowances() {
         return bypassPullRequestAllowances;
     }
 
     public void setBypassPullRequestAllowances(
-            ProtectedBranchPullRequestReviewBypassPullRequestAllowances bypassPullRequestAllowances) {
+            Optional<ProtectedBranchPullRequestReviewBypassPullRequestAllowances> bypassPullRequestAllowances) {
         this.bypassPullRequestAllowances = bypassPullRequestAllowances;
     }
 
@@ -155,7 +159,7 @@ public class ProtectedBranchPullRequestReview {
     }
 
     public ProtectedBranchPullRequestReview requiredApprovingReviewCount(Long requiredApprovingReviewCount) {
-        this.requiredApprovingReviewCount = requiredApprovingReviewCount;
+        this.requiredApprovingReviewCount = Optional.ofNullable(requiredApprovingReviewCount);
         return this;
     }
 
@@ -165,20 +169,18 @@ public class ProtectedBranchPullRequestReview {
      * maximum: 6
      * @return requiredApprovingReviewCount
      */
-    @Min(value = 0)
-    @Max(value = 6)
     @Schema(name = "required_approving_review_count", example = "2", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_approving_review_count")
-    public Long getRequiredApprovingReviewCount() {
+    public Optional<@Min(value = 0) @Max(value = 6) Long> getRequiredApprovingReviewCount() {
         return requiredApprovingReviewCount;
     }
 
-    public void setRequiredApprovingReviewCount(Long requiredApprovingReviewCount) {
+    public void setRequiredApprovingReviewCount(Optional<Long> requiredApprovingReviewCount) {
         this.requiredApprovingReviewCount = requiredApprovingReviewCount;
     }
 
     public ProtectedBranchPullRequestReview requireLastPushApproval(Boolean requireLastPushApproval) {
-        this.requireLastPushApproval = requireLastPushApproval;
+        this.requireLastPushApproval = Optional.ofNullable(requireLastPushApproval);
         return this;
     }
 
@@ -193,11 +195,11 @@ public class ProtectedBranchPullRequestReview {
                     "Whether the most recent push must be approved by someone other than the person who pushed it.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_last_push_approval")
-    public Boolean getRequireLastPushApproval() {
+    public Optional<Boolean> getRequireLastPushApproval() {
         return requireLastPushApproval;
     }
 
-    public void setRequireLastPushApproval(Boolean requireLastPushApproval) {
+    public void setRequireLastPushApproval(Optional<Boolean> requireLastPushApproval) {
         this.requireLastPushApproval = requireLastPushApproval;
     }
 

@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_rule")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksRule {
 
@@ -116,7 +116,7 @@ public class WebhooksRule {
 
     private Boolean authorizedDismissalActorsOnly;
 
-    private Boolean createProtected;
+    private Optional<Boolean> createProtected = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -206,7 +206,7 @@ public class WebhooksRule {
 
     private LockBranchEnforcementLevelEnum lockBranchEnforcementLevel;
 
-    private Boolean lockAllowsForkSync;
+    private Optional<Boolean> lockAllowsForkSync = Optional.empty();
 
     /**
      * Gets or Sets mergeQueueEnforcementLevel
@@ -292,7 +292,7 @@ public class WebhooksRule {
 
     private Boolean requireCodeOwnerReview;
 
-    private Boolean requireLastPushApproval;
+    private Optional<Boolean> requireLastPushApproval = Optional.empty();
 
     private Long requiredApprovingReviewCount;
 
@@ -652,7 +652,7 @@ public class WebhooksRule {
     }
 
     public WebhooksRule createProtected(Boolean createProtected) {
-        this.createProtected = createProtected;
+        this.createProtected = Optional.ofNullable(createProtected);
         return this;
     }
 
@@ -662,11 +662,11 @@ public class WebhooksRule {
      */
     @Schema(name = "create_protected", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("create_protected")
-    public Boolean getCreateProtected() {
+    public Optional<Boolean> getCreateProtected() {
         return createProtected;
     }
 
-    public void setCreateProtected(Boolean createProtected) {
+    public void setCreateProtected(Optional<Boolean> createProtected) {
         this.createProtected = createProtected;
     }
 
@@ -798,7 +798,7 @@ public class WebhooksRule {
     }
 
     public WebhooksRule lockAllowsForkSync(Boolean lockAllowsForkSync) {
-        this.lockAllowsForkSync = lockAllowsForkSync;
+        this.lockAllowsForkSync = Optional.ofNullable(lockAllowsForkSync);
         return this;
     }
 
@@ -812,11 +812,11 @@ public class WebhooksRule {
                     "Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow users to pull changes from upstream when the branch is locked. This setting is only applicable for forks.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_allows_fork_sync")
-    public Boolean getLockAllowsForkSync() {
+    public Optional<Boolean> getLockAllowsForkSync() {
         return lockAllowsForkSync;
     }
 
-    public void setLockAllowsForkSync(Boolean lockAllowsForkSync) {
+    public void setLockAllowsForkSync(Optional<Boolean> lockAllowsForkSync) {
         this.lockAllowsForkSync = lockAllowsForkSync;
     }
 
@@ -923,7 +923,7 @@ public class WebhooksRule {
     }
 
     public WebhooksRule requireLastPushApproval(Boolean requireLastPushApproval) {
-        this.requireLastPushApproval = requireLastPushApproval;
+        this.requireLastPushApproval = Optional.ofNullable(requireLastPushApproval);
         return this;
     }
 
@@ -937,11 +937,11 @@ public class WebhooksRule {
                     "Whether the most recent push must be approved by someone other than the person who pushed it",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("require_last_push_approval")
-    public Boolean getRequireLastPushApproval() {
+    public Optional<Boolean> getRequireLastPushApproval() {
         return requireLastPushApproval;
     }
 
-    public void setRequireLastPushApproval(Boolean requireLastPushApproval) {
+    public void setRequireLastPushApproval(Optional<Boolean> requireLastPushApproval) {
         this.requireLastPushApproval = requireLastPushApproval;
     }
 

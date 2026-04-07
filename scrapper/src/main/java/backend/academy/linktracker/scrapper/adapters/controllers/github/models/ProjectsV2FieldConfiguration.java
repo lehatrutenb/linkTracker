@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Configuration for iteration fields.
@@ -18,19 +17,19 @@ import java.util.Objects;
 @JsonTypeName("projects_v2_field_configuration")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2FieldConfiguration {
 
-    private Long startDay;
+    private Optional<Long> startDay = Optional.empty();
 
-    private Long duration;
+    private Optional<Long> duration = Optional.empty();
 
     @Valid
     private List<@Valid ProjectsV2IterationSettings> iterations = new ArrayList<>();
 
     public ProjectsV2FieldConfiguration startDay(Long startDay) {
-        this.startDay = startDay;
+        this.startDay = Optional.ofNullable(startDay);
         return this;
     }
 
@@ -43,16 +42,16 @@ public class ProjectsV2FieldConfiguration {
             description = "The day of the week when the iteration starts.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_day")
-    public Long getStartDay() {
+    public Optional<Long> getStartDay() {
         return startDay;
     }
 
-    public void setStartDay(Long startDay) {
+    public void setStartDay(Optional<Long> startDay) {
         this.startDay = startDay;
     }
 
     public ProjectsV2FieldConfiguration duration(Long duration) {
-        this.duration = duration;
+        this.duration = Optional.ofNullable(duration);
         return this;
     }
 
@@ -65,11 +64,11 @@ public class ProjectsV2FieldConfiguration {
             description = "The duration of the iteration in days.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("duration")
-    public Long getDuration() {
+    public Optional<Long> getDuration() {
         return duration;
     }
 
-    public void setDuration(Long duration) {
+    public void setDuration(Optional<Long> duration) {
         this.duration = duration;
     }
 

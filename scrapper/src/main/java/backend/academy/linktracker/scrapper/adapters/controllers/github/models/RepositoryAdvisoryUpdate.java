@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Size;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * RepositoryAdvisoryUpdate
@@ -19,24 +17,25 @@ import java.util.Objects;
 @JsonTypeName("repository-advisory-update")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryAdvisoryUpdate {
 
-    private String summary;
+    private Optional<@Size(max = 1024) String> summary = Optional.empty();
 
-    private String description;
+    private Optional<@Size(max = 65535) String> description = Optional.empty();
 
-    private String cveId = null;
+    private JsonNullable<String> cveId = JsonNullable.<String>undefined();
 
     @Valid
     private List<@Valid RepositoryAdvisoryCreateVulnerabilitiesInner> vulnerabilities = new ArrayList<>();
 
     @Valid
-    private List<String> cweIds;
+    private JsonNullable<List<String>> cweIds = JsonNullable.<List<String>>undefined();
 
     @Valid
-    private List<@Valid RepositoryAdvisoryCreateCreditsInner> credits;
+    private JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> credits =
+            JsonNullable.<List<@Valid RepositoryAdvisoryCreateCreditsInner>>undefined();
 
     /**
      * The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
@@ -77,9 +76,9 @@ public class RepositoryAdvisoryUpdate {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
-    private String cvssVectorString = null;
+    private JsonNullable<String> cvssVectorString = JsonNullable.<String>undefined();
 
     /**
      * The state of the advisory.
@@ -118,16 +117,16 @@ public class RepositoryAdvisoryUpdate {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
     @Valid
-    private List<String> collaboratingUsers;
+    private JsonNullable<List<String>> collaboratingUsers = JsonNullable.<List<String>>undefined();
 
     @Valid
-    private List<String> collaboratingTeams;
+    private JsonNullable<List<String>> collaboratingTeams = JsonNullable.<List<String>>undefined();
 
     public RepositoryAdvisoryUpdate summary(String summary) {
-        this.summary = summary;
+        this.summary = Optional.ofNullable(summary);
         return this;
     }
 
@@ -135,22 +134,21 @@ public class RepositoryAdvisoryUpdate {
      * A short summary of the advisory.
      * @return summary
      */
-    @Size(max = 1024)
     @Schema(
             name = "summary",
             description = "A short summary of the advisory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("summary")
-    public String getSummary() {
+    public Optional<@Size(max = 1024) String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(Optional<String> summary) {
         this.summary = summary;
     }
 
     public RepositoryAdvisoryUpdate description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -158,22 +156,21 @@ public class RepositoryAdvisoryUpdate {
      * A detailed description of what the advisory impacts.
      * @return description
      */
-    @Size(max = 65535)
     @Schema(
             name = "description",
             description = "A detailed description of what the advisory impacts.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<@Size(max = 65535) String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public RepositoryAdvisoryUpdate cveId(String cveId) {
-        this.cveId = cveId;
+        this.cveId = JsonNullable.of(cveId);
         return this;
     }
 
@@ -186,11 +183,11 @@ public class RepositoryAdvisoryUpdate {
             description = "The Common Vulnerabilities and Exposures (CVE) ID.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cve_id")
-    public String getCveId() {
+    public JsonNullable<String> getCveId() {
         return cveId;
     }
 
-    public void setCveId(String cveId) {
+    public void setCveId(JsonNullable<String> cveId) {
         this.cveId = cveId;
     }
 
@@ -228,15 +225,15 @@ public class RepositoryAdvisoryUpdate {
     }
 
     public RepositoryAdvisoryUpdate cweIds(List<String> cweIds) {
-        this.cweIds = cweIds;
+        this.cweIds = JsonNullable.of(cweIds);
         return this;
     }
 
     public RepositoryAdvisoryUpdate addCweIdsItem(String cweIdsItem) {
-        if (this.cweIds == null) {
-            this.cweIds = new ArrayList<>();
+        if (this.cweIds == null || !this.cweIds.isPresent()) {
+            this.cweIds = JsonNullable.of(new ArrayList<>());
         }
-        this.cweIds.add(cweIdsItem);
+        this.cweIds.get().add(cweIdsItem);
         return this;
     }
 
@@ -249,24 +246,24 @@ public class RepositoryAdvisoryUpdate {
             description = "A list of Common Weakness Enumeration (CWE) IDs.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cwe_ids")
-    public List<String> getCweIds() {
+    public JsonNullable<List<String>> getCweIds() {
         return cweIds;
     }
 
-    public void setCweIds(List<String> cweIds) {
+    public void setCweIds(JsonNullable<List<String>> cweIds) {
         this.cweIds = cweIds;
     }
 
     public RepositoryAdvisoryUpdate credits(List<@Valid RepositoryAdvisoryCreateCreditsInner> credits) {
-        this.credits = credits;
+        this.credits = JsonNullable.of(credits);
         return this;
     }
 
     public RepositoryAdvisoryUpdate addCreditsItem(RepositoryAdvisoryCreateCreditsInner creditsItem) {
-        if (this.credits == null) {
-            this.credits = new ArrayList<>();
+        if (this.credits == null || !this.credits.isPresent()) {
+            this.credits = JsonNullable.of(new ArrayList<>());
         }
-        this.credits.add(creditsItem);
+        this.credits.get().add(creditsItem);
         return this;
     }
 
@@ -280,16 +277,16 @@ public class RepositoryAdvisoryUpdate {
             description = "A list of users receiving credit for their participation in the security advisory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("credits")
-    public List<@Valid RepositoryAdvisoryCreateCreditsInner> getCredits() {
+    public JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> getCredits() {
         return credits;
     }
 
-    public void setCredits(List<@Valid RepositoryAdvisoryCreateCreditsInner> credits) {
+    public void setCredits(JsonNullable<List<@Valid RepositoryAdvisoryCreateCreditsInner>> credits) {
         this.credits = credits;
     }
 
     public RepositoryAdvisoryUpdate severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -303,16 +300,16 @@ public class RepositoryAdvisoryUpdate {
                     "The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 
     public RepositoryAdvisoryUpdate cvssVectorString(String cvssVectorString) {
-        this.cvssVectorString = cvssVectorString;
+        this.cvssVectorString = JsonNullable.of(cvssVectorString);
         return this;
     }
 
@@ -326,16 +323,16 @@ public class RepositoryAdvisoryUpdate {
                     "The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_vector_string")
-    public String getCvssVectorString() {
+    public JsonNullable<String> getCvssVectorString() {
         return cvssVectorString;
     }
 
-    public void setCvssVectorString(String cvssVectorString) {
+    public void setCvssVectorString(JsonNullable<String> cvssVectorString) {
         this.cvssVectorString = cvssVectorString;
     }
 
     public RepositoryAdvisoryUpdate state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -345,24 +342,24 @@ public class RepositoryAdvisoryUpdate {
      */
     @Schema(name = "state", description = "The state of the advisory.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public RepositoryAdvisoryUpdate collaboratingUsers(List<String> collaboratingUsers) {
-        this.collaboratingUsers = collaboratingUsers;
+        this.collaboratingUsers = JsonNullable.of(collaboratingUsers);
         return this;
     }
 
     public RepositoryAdvisoryUpdate addCollaboratingUsersItem(String collaboratingUsersItem) {
-        if (this.collaboratingUsers == null) {
-            this.collaboratingUsers = new ArrayList<>();
+        if (this.collaboratingUsers == null || !this.collaboratingUsers.isPresent()) {
+            this.collaboratingUsers = JsonNullable.of(new ArrayList<>());
         }
-        this.collaboratingUsers.add(collaboratingUsersItem);
+        this.collaboratingUsers.get().add(collaboratingUsersItem);
         return this;
     }
 
@@ -375,24 +372,24 @@ public class RepositoryAdvisoryUpdate {
             description = "A list of usernames who have been granted write access to the advisory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborating_users")
-    public List<String> getCollaboratingUsers() {
+    public JsonNullable<List<String>> getCollaboratingUsers() {
         return collaboratingUsers;
     }
 
-    public void setCollaboratingUsers(List<String> collaboratingUsers) {
+    public void setCollaboratingUsers(JsonNullable<List<String>> collaboratingUsers) {
         this.collaboratingUsers = collaboratingUsers;
     }
 
     public RepositoryAdvisoryUpdate collaboratingTeams(List<String> collaboratingTeams) {
-        this.collaboratingTeams = collaboratingTeams;
+        this.collaboratingTeams = JsonNullable.of(collaboratingTeams);
         return this;
     }
 
     public RepositoryAdvisoryUpdate addCollaboratingTeamsItem(String collaboratingTeamsItem) {
-        if (this.collaboratingTeams == null) {
-            this.collaboratingTeams = new ArrayList<>();
+        if (this.collaboratingTeams == null || !this.collaboratingTeams.isPresent()) {
+            this.collaboratingTeams = JsonNullable.of(new ArrayList<>());
         }
-        this.collaboratingTeams.add(collaboratingTeamsItem);
+        this.collaboratingTeams.get().add(collaboratingTeamsItem);
         return this;
     }
 
@@ -405,11 +402,11 @@ public class RepositoryAdvisoryUpdate {
             description = "A list of team slugs which have been granted write access to the advisory.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborating_teams")
-    public List<String> getCollaboratingTeams() {
+    public JsonNullable<List<String>> getCollaboratingTeams() {
         return collaboratingTeams;
     }
 
-    public void setCollaboratingTeams(List<String> collaboratingTeams) {
+    public void setCollaboratingTeams(JsonNullable<List<String>> collaboratingTeams) {
         this.collaboratingTeams = collaboratingTeams;
     }
 
@@ -424,15 +421,20 @@ public class RepositoryAdvisoryUpdate {
         RepositoryAdvisoryUpdate repositoryAdvisoryUpdate = (RepositoryAdvisoryUpdate) o;
         return Objects.equals(this.summary, repositoryAdvisoryUpdate.summary)
                 && Objects.equals(this.description, repositoryAdvisoryUpdate.description)
-                && Objects.equals(this.cveId, repositoryAdvisoryUpdate.cveId)
+                && equalsNullable(this.cveId, repositoryAdvisoryUpdate.cveId)
                 && Objects.equals(this.vulnerabilities, repositoryAdvisoryUpdate.vulnerabilities)
-                && Objects.equals(this.cweIds, repositoryAdvisoryUpdate.cweIds)
-                && Objects.equals(this.credits, repositoryAdvisoryUpdate.credits)
-                && Objects.equals(this.severity, repositoryAdvisoryUpdate.severity)
-                && Objects.equals(this.cvssVectorString, repositoryAdvisoryUpdate.cvssVectorString)
+                && equalsNullable(this.cweIds, repositoryAdvisoryUpdate.cweIds)
+                && equalsNullable(this.credits, repositoryAdvisoryUpdate.credits)
+                && equalsNullable(this.severity, repositoryAdvisoryUpdate.severity)
+                && equalsNullable(this.cvssVectorString, repositoryAdvisoryUpdate.cvssVectorString)
                 && Objects.equals(this.state, repositoryAdvisoryUpdate.state)
-                && Objects.equals(this.collaboratingUsers, repositoryAdvisoryUpdate.collaboratingUsers)
-                && Objects.equals(this.collaboratingTeams, repositoryAdvisoryUpdate.collaboratingTeams);
+                && equalsNullable(this.collaboratingUsers, repositoryAdvisoryUpdate.collaboratingUsers)
+                && equalsNullable(this.collaboratingTeams, repositoryAdvisoryUpdate.collaboratingTeams);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -440,15 +442,22 @@ public class RepositoryAdvisoryUpdate {
         return Objects.hash(
                 summary,
                 description,
-                cveId,
+                hashCodeNullable(cveId),
                 vulnerabilities,
-                cweIds,
-                credits,
-                severity,
-                cvssVectorString,
+                hashCodeNullable(cweIds),
+                hashCodeNullable(credits),
+                hashCodeNullable(severity),
+                hashCodeNullable(cvssVectorString),
                 state,
-                collaboratingUsers,
-                collaboratingTeams);
+                hashCodeNullable(collaboratingUsers),
+                hashCodeNullable(collaboratingTeams));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

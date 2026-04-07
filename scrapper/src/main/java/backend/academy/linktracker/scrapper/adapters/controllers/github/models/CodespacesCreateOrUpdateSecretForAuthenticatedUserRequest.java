@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest
@@ -17,11 +18,15 @@ import java.util.Objects;
 @JsonTypeName("codespaces_create_or_update_secret_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
 
-    private String encryptedValue;
+    private Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            encryptedValue = Optional.empty();
 
     private String keyId;
 
@@ -41,7 +46,7 @@ public class CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
     }
 
     public CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest encryptedValue(String encryptedValue) {
-        this.encryptedValue = encryptedValue;
+        this.encryptedValue = Optional.ofNullable(encryptedValue);
         return this;
     }
 
@@ -49,18 +54,21 @@ public class CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
      * Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.
      * @return encryptedValue
      */
-    @Pattern(regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
     @Schema(
             name = "encrypted_value",
             description =
                     "Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encrypted_value")
-    public String getEncryptedValue() {
+    public Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            getEncryptedValue() {
         return encryptedValue;
     }
 
-    public void setEncryptedValue(String encryptedValue) {
+    public void setEncryptedValue(Optional<String> encryptedValue) {
         this.encryptedValue = encryptedValue;
     }
 

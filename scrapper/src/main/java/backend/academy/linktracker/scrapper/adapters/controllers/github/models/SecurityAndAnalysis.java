@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SecurityAndAnalysis
@@ -15,32 +14,33 @@ import java.util.Objects;
 @JsonTypeName("security-and-analysis")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecurityAndAnalysis {
 
-    private SecurityAndAnalysisAdvancedSecurity advancedSecurity;
+    private Optional<SecurityAndAnalysisAdvancedSecurity> advancedSecurity = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity codeSecurity;
+    private Optional<SecurityAndAnalysisCodeSecurity> codeSecurity = Optional.empty();
 
-    private SecurityAndAnalysisDependabotSecurityUpdates dependabotSecurityUpdates;
+    private Optional<SecurityAndAnalysisDependabotSecurityUpdates> dependabotSecurityUpdates = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanning;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanning = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanningPushProtection;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanningPushProtection = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanningNonProviderPatterns;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanningNonProviderPatterns = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanningAiDetection;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanningAiDetection = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanningDelegatedAlertDismissal;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanningDelegatedAlertDismissal = Optional.empty();
 
-    private SecurityAndAnalysisCodeSecurity secretScanningDelegatedBypass;
+    private Optional<SecurityAndAnalysisCodeSecurity> secretScanningDelegatedBypass = Optional.empty();
 
-    private SecurityAndAnalysisSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions;
+    private Optional<SecurityAndAnalysisSecretScanningDelegatedBypassOptions> secretScanningDelegatedBypassOptions =
+            Optional.empty();
 
     public SecurityAndAnalysis advancedSecurity(SecurityAndAnalysisAdvancedSecurity advancedSecurity) {
-        this.advancedSecurity = advancedSecurity;
+        this.advancedSecurity = Optional.ofNullable(advancedSecurity);
         return this;
     }
 
@@ -51,16 +51,16 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "advanced_security", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("advanced_security")
-    public SecurityAndAnalysisAdvancedSecurity getAdvancedSecurity() {
+    public Optional<SecurityAndAnalysisAdvancedSecurity> getAdvancedSecurity() {
         return advancedSecurity;
     }
 
-    public void setAdvancedSecurity(SecurityAndAnalysisAdvancedSecurity advancedSecurity) {
+    public void setAdvancedSecurity(Optional<SecurityAndAnalysisAdvancedSecurity> advancedSecurity) {
         this.advancedSecurity = advancedSecurity;
     }
 
     public SecurityAndAnalysis codeSecurity(SecurityAndAnalysisCodeSecurity codeSecurity) {
-        this.codeSecurity = codeSecurity;
+        this.codeSecurity = Optional.ofNullable(codeSecurity);
         return this;
     }
 
@@ -71,17 +71,17 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "code_security", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_security")
-    public SecurityAndAnalysisCodeSecurity getCodeSecurity() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getCodeSecurity() {
         return codeSecurity;
     }
 
-    public void setCodeSecurity(SecurityAndAnalysisCodeSecurity codeSecurity) {
+    public void setCodeSecurity(Optional<SecurityAndAnalysisCodeSecurity> codeSecurity) {
         this.codeSecurity = codeSecurity;
     }
 
     public SecurityAndAnalysis dependabotSecurityUpdates(
             SecurityAndAnalysisDependabotSecurityUpdates dependabotSecurityUpdates) {
-        this.dependabotSecurityUpdates = dependabotSecurityUpdates;
+        this.dependabotSecurityUpdates = Optional.ofNullable(dependabotSecurityUpdates);
         return this;
     }
 
@@ -92,16 +92,17 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "dependabot_security_updates", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_security_updates")
-    public SecurityAndAnalysisDependabotSecurityUpdates getDependabotSecurityUpdates() {
+    public Optional<SecurityAndAnalysisDependabotSecurityUpdates> getDependabotSecurityUpdates() {
         return dependabotSecurityUpdates;
     }
 
-    public void setDependabotSecurityUpdates(SecurityAndAnalysisDependabotSecurityUpdates dependabotSecurityUpdates) {
+    public void setDependabotSecurityUpdates(
+            Optional<SecurityAndAnalysisDependabotSecurityUpdates> dependabotSecurityUpdates) {
         this.dependabotSecurityUpdates = dependabotSecurityUpdates;
     }
 
     public SecurityAndAnalysis secretScanning(SecurityAndAnalysisCodeSecurity secretScanning) {
-        this.secretScanning = secretScanning;
+        this.secretScanning = Optional.ofNullable(secretScanning);
         return this;
     }
 
@@ -112,17 +113,17 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning")
-    public SecurityAndAnalysisCodeSecurity getSecretScanning() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanning() {
         return secretScanning;
     }
 
-    public void setSecretScanning(SecurityAndAnalysisCodeSecurity secretScanning) {
+    public void setSecretScanning(Optional<SecurityAndAnalysisCodeSecurity> secretScanning) {
         this.secretScanning = secretScanning;
     }
 
     public SecurityAndAnalysis secretScanningPushProtection(
             SecurityAndAnalysisCodeSecurity secretScanningPushProtection) {
-        this.secretScanningPushProtection = secretScanningPushProtection;
+        this.secretScanningPushProtection = Optional.ofNullable(secretScanningPushProtection);
         return this;
     }
 
@@ -133,17 +134,18 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_push_protection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection")
-    public SecurityAndAnalysisCodeSecurity getSecretScanningPushProtection() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanningPushProtection() {
         return secretScanningPushProtection;
     }
 
-    public void setSecretScanningPushProtection(SecurityAndAnalysisCodeSecurity secretScanningPushProtection) {
+    public void setSecretScanningPushProtection(
+            Optional<SecurityAndAnalysisCodeSecurity> secretScanningPushProtection) {
         this.secretScanningPushProtection = secretScanningPushProtection;
     }
 
     public SecurityAndAnalysis secretScanningNonProviderPatterns(
             SecurityAndAnalysisCodeSecurity secretScanningNonProviderPatterns) {
-        this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
+        this.secretScanningNonProviderPatterns = Optional.ofNullable(secretScanningNonProviderPatterns);
         return this;
     }
 
@@ -154,17 +156,17 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_non_provider_patterns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_non_provider_patterns")
-    public SecurityAndAnalysisCodeSecurity getSecretScanningNonProviderPatterns() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanningNonProviderPatterns() {
         return secretScanningNonProviderPatterns;
     }
 
     public void setSecretScanningNonProviderPatterns(
-            SecurityAndAnalysisCodeSecurity secretScanningNonProviderPatterns) {
+            Optional<SecurityAndAnalysisCodeSecurity> secretScanningNonProviderPatterns) {
         this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
     }
 
     public SecurityAndAnalysis secretScanningAiDetection(SecurityAndAnalysisCodeSecurity secretScanningAiDetection) {
-        this.secretScanningAiDetection = secretScanningAiDetection;
+        this.secretScanningAiDetection = Optional.ofNullable(secretScanningAiDetection);
         return this;
     }
 
@@ -175,17 +177,17 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_ai_detection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_ai_detection")
-    public SecurityAndAnalysisCodeSecurity getSecretScanningAiDetection() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanningAiDetection() {
         return secretScanningAiDetection;
     }
 
-    public void setSecretScanningAiDetection(SecurityAndAnalysisCodeSecurity secretScanningAiDetection) {
+    public void setSecretScanningAiDetection(Optional<SecurityAndAnalysisCodeSecurity> secretScanningAiDetection) {
         this.secretScanningAiDetection = secretScanningAiDetection;
     }
 
     public SecurityAndAnalysis secretScanningDelegatedAlertDismissal(
             SecurityAndAnalysisCodeSecurity secretScanningDelegatedAlertDismissal) {
-        this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
+        this.secretScanningDelegatedAlertDismissal = Optional.ofNullable(secretScanningDelegatedAlertDismissal);
         return this;
     }
 
@@ -196,18 +198,18 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_alert_dismissal", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_alert_dismissal")
-    public SecurityAndAnalysisCodeSecurity getSecretScanningDelegatedAlertDismissal() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanningDelegatedAlertDismissal() {
         return secretScanningDelegatedAlertDismissal;
     }
 
     public void setSecretScanningDelegatedAlertDismissal(
-            SecurityAndAnalysisCodeSecurity secretScanningDelegatedAlertDismissal) {
+            Optional<SecurityAndAnalysisCodeSecurity> secretScanningDelegatedAlertDismissal) {
         this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
     }
 
     public SecurityAndAnalysis secretScanningDelegatedBypass(
             SecurityAndAnalysisCodeSecurity secretScanningDelegatedBypass) {
-        this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
+        this.secretScanningDelegatedBypass = Optional.ofNullable(secretScanningDelegatedBypass);
         return this;
     }
 
@@ -218,17 +220,18 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_bypass", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass")
-    public SecurityAndAnalysisCodeSecurity getSecretScanningDelegatedBypass() {
+    public Optional<SecurityAndAnalysisCodeSecurity> getSecretScanningDelegatedBypass() {
         return secretScanningDelegatedBypass;
     }
 
-    public void setSecretScanningDelegatedBypass(SecurityAndAnalysisCodeSecurity secretScanningDelegatedBypass) {
+    public void setSecretScanningDelegatedBypass(
+            Optional<SecurityAndAnalysisCodeSecurity> secretScanningDelegatedBypass) {
         this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
     }
 
     public SecurityAndAnalysis secretScanningDelegatedBypassOptions(
             SecurityAndAnalysisSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions) {
-        this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
+        this.secretScanningDelegatedBypassOptions = Optional.ofNullable(secretScanningDelegatedBypassOptions);
         return this;
     }
 
@@ -239,12 +242,12 @@ public class SecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_bypass_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass_options")
-    public SecurityAndAnalysisSecretScanningDelegatedBypassOptions getSecretScanningDelegatedBypassOptions() {
+    public Optional<SecurityAndAnalysisSecretScanningDelegatedBypassOptions> getSecretScanningDelegatedBypassOptions() {
         return secretScanningDelegatedBypassOptions;
     }
 
     public void setSecretScanningDelegatedBypassOptions(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions secretScanningDelegatedBypassOptions) {
+            Optional<SecurityAndAnalysisSecretScanningDelegatedBypassOptions> secretScanningDelegatedBypassOptions) {
         this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
     }
 

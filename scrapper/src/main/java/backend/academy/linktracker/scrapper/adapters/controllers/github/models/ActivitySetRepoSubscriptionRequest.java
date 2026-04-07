@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActivitySetRepoSubscriptionRequest
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("activity_set_repo_subscription_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActivitySetRepoSubscriptionRequest {
 
-    private Boolean subscribed;
+    private Optional<Boolean> subscribed = Optional.empty();
 
-    private Boolean ignored;
+    private Optional<Boolean> ignored = Optional.empty();
 
     public ActivitySetRepoSubscriptionRequest subscribed(Boolean subscribed) {
-        this.subscribed = subscribed;
+        this.subscribed = Optional.ofNullable(subscribed);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class ActivitySetRepoSubscriptionRequest {
             description = "Determines if notifications should be received from this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribed")
-    public Boolean getSubscribed() {
+    public Optional<Boolean> getSubscribed() {
         return subscribed;
     }
 
-    public void setSubscribed(Boolean subscribed) {
+    public void setSubscribed(Optional<Boolean> subscribed) {
         this.subscribed = subscribed;
     }
 
     public ActivitySetRepoSubscriptionRequest ignored(Boolean ignored) {
-        this.ignored = ignored;
+        this.ignored = Optional.ofNullable(ignored);
         return this;
     }
 
@@ -58,11 +57,11 @@ public class ActivitySetRepoSubscriptionRequest {
             description = "Determines if all notifications should be blocked from this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ignored")
-    public Boolean getIgnored() {
+    public Optional<Boolean> getIgnored() {
         return ignored;
     }
 
-    public void setIgnored(Boolean ignored) {
+    public void setIgnored(Optional<Boolean> ignored) {
         this.ignored = ignored;
     }
 

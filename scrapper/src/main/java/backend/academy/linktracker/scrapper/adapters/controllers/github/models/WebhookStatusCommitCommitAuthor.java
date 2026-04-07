@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookStatusCommitCommitAuthor
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_status_commit_commit_author")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookStatusCommitCommitAuthor {
 
@@ -24,7 +24,7 @@ public class WebhookStatusCommitCommitAuthor {
 
     private String name;
 
-    private String username;
+    private Optional<String> username = Optional.empty();
 
     public WebhookStatusCommitCommitAuthor() {
         super();
@@ -100,7 +100,7 @@ public class WebhookStatusCommitCommitAuthor {
     }
 
     public WebhookStatusCommitCommitAuthor username(String username) {
-        this.username = username;
+        this.username = Optional.ofNullable(username);
         return this;
     }
 
@@ -110,11 +110,11 @@ public class WebhookStatusCommitCommitAuthor {
      */
     @Schema(name = "username", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("username")
-    public String getUsername() {
+    public Optional<String> getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(Optional<String> username) {
         this.username = username;
     }
 

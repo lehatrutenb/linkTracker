@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPullRequestReviewRequestRemovedOneOf
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_pull_request_review_request_removed_oneOf")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullRequestReviewRequestRemoved {
 
@@ -56,19 +57,19 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private Long number;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private PullRequest6 pullRequest;
 
     private RepositoryWebhooks repository;
 
-    private User requestedReviewer = null;
+    private JsonNullable<User> requestedReviewer = JsonNullable.<User>undefined();
 
     private SimpleUser sender;
 
@@ -90,7 +91,7 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
         this.number = number;
         this.pullRequest = pullRequest;
         this.repository = repository;
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = JsonNullable.of(requestedReviewer);
         this.sender = sender;
     }
 
@@ -115,7 +116,7 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     }
 
     public WebhookPullRequestReviewRequestRemovedOneOf enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -126,16 +127,16 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookPullRequestReviewRequestRemovedOneOf installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -146,11 +147,11 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -175,7 +176,7 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     }
 
     public WebhookPullRequestReviewRequestRemovedOneOf organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -186,11 +187,11 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -237,7 +238,7 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     }
 
     public WebhookPullRequestReviewRequestRemovedOneOf requestedReviewer(User requestedReviewer) {
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = JsonNullable.of(requestedReviewer);
         return this;
     }
 
@@ -249,11 +250,11 @@ public class WebhookPullRequestReviewRequestRemovedOneOf implements WebhookPullR
     @Valid
     @Schema(name = "requested_reviewer", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("requested_reviewer")
-    public User getRequestedReviewer() {
+    public JsonNullable<User> getRequestedReviewer() {
         return requestedReviewer;
     }
 
-    public void setRequestedReviewer(User requestedReviewer) {
+    public void setRequestedReviewer(JsonNullable<User> requestedReviewer) {
         this.requestedReviewer = requestedReviewer;
     }
 

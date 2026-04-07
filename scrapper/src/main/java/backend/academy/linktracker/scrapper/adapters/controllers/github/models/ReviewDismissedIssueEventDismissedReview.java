@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ReviewDismissedIssueEventDismissedReview
@@ -14,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("review_dismissed_issue_event_dismissed_review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReviewDismissedIssueEventDismissedReview {
 
@@ -22,9 +23,9 @@ public class ReviewDismissedIssueEventDismissedReview {
 
     private Long reviewId;
 
-    private String dismissalMessage = null;
+    private JsonNullable<String> dismissalMessage = JsonNullable.<String>undefined();
 
-    private String dismissalCommitId;
+    private Optional<String> dismissalCommitId = Optional.empty();
 
     public ReviewDismissedIssueEventDismissedReview() {
         super();
@@ -36,7 +37,7 @@ public class ReviewDismissedIssueEventDismissedReview {
     public ReviewDismissedIssueEventDismissedReview(String state, Long reviewId, String dismissalMessage) {
         this.state = state;
         this.reviewId = reviewId;
-        this.dismissalMessage = dismissalMessage;
+        this.dismissalMessage = JsonNullable.of(dismissalMessage);
     }
 
     public ReviewDismissedIssueEventDismissedReview state(String state) {
@@ -80,7 +81,7 @@ public class ReviewDismissedIssueEventDismissedReview {
     }
 
     public ReviewDismissedIssueEventDismissedReview dismissalMessage(String dismissalMessage) {
-        this.dismissalMessage = dismissalMessage;
+        this.dismissalMessage = JsonNullable.of(dismissalMessage);
         return this;
     }
 
@@ -91,16 +92,16 @@ public class ReviewDismissedIssueEventDismissedReview {
     @NotNull
     @Schema(name = "dismissal_message", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissal_message")
-    public String getDismissalMessage() {
+    public JsonNullable<String> getDismissalMessage() {
         return dismissalMessage;
     }
 
-    public void setDismissalMessage(String dismissalMessage) {
+    public void setDismissalMessage(JsonNullable<String> dismissalMessage) {
         this.dismissalMessage = dismissalMessage;
     }
 
     public ReviewDismissedIssueEventDismissedReview dismissalCommitId(String dismissalCommitId) {
-        this.dismissalCommitId = dismissalCommitId;
+        this.dismissalCommitId = Optional.ofNullable(dismissalCommitId);
         return this;
     }
 
@@ -110,11 +111,11 @@ public class ReviewDismissedIssueEventDismissedReview {
      */
     @Schema(name = "dismissal_commit_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_commit_id")
-    public String getDismissalCommitId() {
+    public Optional<String> getDismissalCommitId() {
         return dismissalCommitId;
     }
 
-    public void setDismissalCommitId(String dismissalCommitId) {
+    public void setDismissalCommitId(Optional<String> dismissalCommitId) {
         this.dismissalCommitId = dismissalCommitId;
     }
 

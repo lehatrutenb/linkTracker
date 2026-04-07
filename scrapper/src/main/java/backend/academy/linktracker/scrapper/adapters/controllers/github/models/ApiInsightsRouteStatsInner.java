@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ApiInsightsRouteStatsInner
@@ -14,24 +15,24 @@ import java.util.Objects;
 @JsonTypeName("api_insights_route_stats_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiInsightsRouteStatsInner {
 
-    private String httpMethod;
+    private Optional<String> httpMethod = Optional.empty();
 
-    private String apiRoute;
+    private Optional<String> apiRoute = Optional.empty();
 
-    private Long totalRequestCount;
+    private Optional<Long> totalRequestCount = Optional.empty();
 
-    private Long rateLimitedRequestCount;
+    private Optional<Long> rateLimitedRequestCount = Optional.empty();
 
-    private String lastRateLimitedTimestamp = null;
+    private JsonNullable<String> lastRateLimitedTimestamp = JsonNullable.<String>undefined();
 
-    private String lastRequestTimestamp;
+    private Optional<String> lastRequestTimestamp = Optional.empty();
 
     public ApiInsightsRouteStatsInner httpMethod(String httpMethod) {
-        this.httpMethod = httpMethod;
+        this.httpMethod = Optional.ofNullable(httpMethod);
         return this;
     }
 
@@ -41,16 +42,16 @@ public class ApiInsightsRouteStatsInner {
      */
     @Schema(name = "http_method", description = "The HTTP method", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("http_method")
-    public String getHttpMethod() {
+    public Optional<String> getHttpMethod() {
         return httpMethod;
     }
 
-    public void setHttpMethod(String httpMethod) {
+    public void setHttpMethod(Optional<String> httpMethod) {
         this.httpMethod = httpMethod;
     }
 
     public ApiInsightsRouteStatsInner apiRoute(String apiRoute) {
-        this.apiRoute = apiRoute;
+        this.apiRoute = Optional.ofNullable(apiRoute);
         return this;
     }
 
@@ -63,16 +64,16 @@ public class ApiInsightsRouteStatsInner {
             description = "The API path's route template",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("api_route")
-    public String getApiRoute() {
+    public Optional<String> getApiRoute() {
         return apiRoute;
     }
 
-    public void setApiRoute(String apiRoute) {
+    public void setApiRoute(Optional<String> apiRoute) {
         this.apiRoute = apiRoute;
     }
 
     public ApiInsightsRouteStatsInner totalRequestCount(Long totalRequestCount) {
-        this.totalRequestCount = totalRequestCount;
+        this.totalRequestCount = Optional.ofNullable(totalRequestCount);
         return this;
     }
 
@@ -85,16 +86,16 @@ public class ApiInsightsRouteStatsInner {
             description = "The total number of requests within the queried time period",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_request_count")
-    public Long getTotalRequestCount() {
+    public Optional<Long> getTotalRequestCount() {
         return totalRequestCount;
     }
 
-    public void setTotalRequestCount(Long totalRequestCount) {
+    public void setTotalRequestCount(Optional<Long> totalRequestCount) {
         this.totalRequestCount = totalRequestCount;
     }
 
     public ApiInsightsRouteStatsInner rateLimitedRequestCount(Long rateLimitedRequestCount) {
-        this.rateLimitedRequestCount = rateLimitedRequestCount;
+        this.rateLimitedRequestCount = Optional.ofNullable(rateLimitedRequestCount);
         return this;
     }
 
@@ -107,16 +108,16 @@ public class ApiInsightsRouteStatsInner {
             description = "The total number of requests that were rate limited within the queried time period",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rate_limited_request_count")
-    public Long getRateLimitedRequestCount() {
+    public Optional<Long> getRateLimitedRequestCount() {
         return rateLimitedRequestCount;
     }
 
-    public void setRateLimitedRequestCount(Long rateLimitedRequestCount) {
+    public void setRateLimitedRequestCount(Optional<Long> rateLimitedRequestCount) {
         this.rateLimitedRequestCount = rateLimitedRequestCount;
     }
 
     public ApiInsightsRouteStatsInner lastRateLimitedTimestamp(String lastRateLimitedTimestamp) {
-        this.lastRateLimitedTimestamp = lastRateLimitedTimestamp;
+        this.lastRateLimitedTimestamp = JsonNullable.of(lastRateLimitedTimestamp);
         return this;
     }
 
@@ -126,16 +127,16 @@ public class ApiInsightsRouteStatsInner {
      */
     @Schema(name = "last_rate_limited_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_rate_limited_timestamp")
-    public String getLastRateLimitedTimestamp() {
+    public JsonNullable<String> getLastRateLimitedTimestamp() {
         return lastRateLimitedTimestamp;
     }
 
-    public void setLastRateLimitedTimestamp(String lastRateLimitedTimestamp) {
+    public void setLastRateLimitedTimestamp(JsonNullable<String> lastRateLimitedTimestamp) {
         this.lastRateLimitedTimestamp = lastRateLimitedTimestamp;
     }
 
     public ApiInsightsRouteStatsInner lastRequestTimestamp(String lastRequestTimestamp) {
-        this.lastRequestTimestamp = lastRequestTimestamp;
+        this.lastRequestTimestamp = Optional.ofNullable(lastRequestTimestamp);
         return this;
     }
 
@@ -145,11 +146,11 @@ public class ApiInsightsRouteStatsInner {
      */
     @Schema(name = "last_request_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_request_timestamp")
-    public String getLastRequestTimestamp() {
+    public Optional<String> getLastRequestTimestamp() {
         return lastRequestTimestamp;
     }
 
-    public void setLastRequestTimestamp(String lastRequestTimestamp) {
+    public void setLastRequestTimestamp(Optional<String> lastRequestTimestamp) {
         this.lastRequestTimestamp = lastRequestTimestamp;
     }
 
@@ -166,8 +167,13 @@ public class ApiInsightsRouteStatsInner {
                 && Objects.equals(this.apiRoute, apiInsightsRouteStatsInner.apiRoute)
                 && Objects.equals(this.totalRequestCount, apiInsightsRouteStatsInner.totalRequestCount)
                 && Objects.equals(this.rateLimitedRequestCount, apiInsightsRouteStatsInner.rateLimitedRequestCount)
-                && Objects.equals(this.lastRateLimitedTimestamp, apiInsightsRouteStatsInner.lastRateLimitedTimestamp)
+                && equalsNullable(this.lastRateLimitedTimestamp, apiInsightsRouteStatsInner.lastRateLimitedTimestamp)
                 && Objects.equals(this.lastRequestTimestamp, apiInsightsRouteStatsInner.lastRequestTimestamp);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -177,8 +183,15 @@ public class ApiInsightsRouteStatsInner {
                 apiRoute,
                 totalRequestCount,
                 rateLimitedRequestCount,
-                lastRateLimitedTimestamp,
+                hashCodeNullable(lastRateLimitedTimestamp),
                 lastRequestTimestamp);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

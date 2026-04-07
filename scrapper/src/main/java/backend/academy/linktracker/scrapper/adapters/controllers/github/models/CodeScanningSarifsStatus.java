@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodeScanningSarifsStatus
@@ -20,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-sarifs-status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningSarifsStatus {
 
@@ -61,15 +58,15 @@ public class CodeScanningSarifsStatus {
         }
     }
 
-    private ProcessingStatusEnum processingStatus;
+    private Optional<ProcessingStatusEnum> processingStatus = Optional.empty();
 
-    private URI analysesUrl = null;
+    private JsonNullable<URI> analysesUrl = JsonNullable.<URI>undefined();
 
     @Valid
-    private List<String> errors;
+    private JsonNullable<List<String>> errors = JsonNullable.<List<String>>undefined();
 
     public CodeScanningSarifsStatus processingStatus(ProcessingStatusEnum processingStatus) {
-        this.processingStatus = processingStatus;
+        this.processingStatus = Optional.ofNullable(processingStatus);
         return this;
     }
 
@@ -83,16 +80,16 @@ public class CodeScanningSarifsStatus {
                     "`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("processing_status")
-    public ProcessingStatusEnum getProcessingStatus() {
+    public Optional<ProcessingStatusEnum> getProcessingStatus() {
         return processingStatus;
     }
 
-    public void setProcessingStatus(ProcessingStatusEnum processingStatus) {
+    public void setProcessingStatus(Optional<ProcessingStatusEnum> processingStatus) {
         this.processingStatus = processingStatus;
     }
 
     public CodeScanningSarifsStatus analysesUrl(URI analysesUrl) {
-        this.analysesUrl = analysesUrl;
+        this.analysesUrl = JsonNullable.of(analysesUrl);
         return this;
     }
 
@@ -107,24 +104,24 @@ public class CodeScanningSarifsStatus {
             description = "The REST API URL for getting the analyses associated with the upload.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("analyses_url")
-    public URI getAnalysesUrl() {
+    public JsonNullable<URI> getAnalysesUrl() {
         return analysesUrl;
     }
 
-    public void setAnalysesUrl(URI analysesUrl) {
+    public void setAnalysesUrl(JsonNullable<URI> analysesUrl) {
         this.analysesUrl = analysesUrl;
     }
 
     public CodeScanningSarifsStatus errors(List<String> errors) {
-        this.errors = errors;
+        this.errors = JsonNullable.of(errors);
         return this;
     }
 
     public CodeScanningSarifsStatus addErrorsItem(String errorsItem) {
-        if (this.errors == null) {
-            this.errors = new ArrayList<>();
+        if (this.errors == null || !this.errors.isPresent()) {
+            this.errors = JsonNullable.of(new ArrayList<>());
         }
-        this.errors.add(errorsItem);
+        this.errors.get().add(errorsItem);
         return this;
     }
 
@@ -138,11 +135,11 @@ public class CodeScanningSarifsStatus {
             description = "Any errors that ocurred during processing of the delivery.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("errors")
-    public List<String> getErrors() {
+    public JsonNullable<List<String>> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<String> errors) {
+    public void setErrors(JsonNullable<List<String>> errors) {
         this.errors = errors;
     }
 
@@ -156,13 +153,25 @@ public class CodeScanningSarifsStatus {
         }
         CodeScanningSarifsStatus codeScanningSarifsStatus = (CodeScanningSarifsStatus) o;
         return Objects.equals(this.processingStatus, codeScanningSarifsStatus.processingStatus)
-                && Objects.equals(this.analysesUrl, codeScanningSarifsStatus.analysesUrl)
-                && Objects.equals(this.errors, codeScanningSarifsStatus.errors);
+                && equalsNullable(this.analysesUrl, codeScanningSarifsStatus.analysesUrl)
+                && equalsNullable(this.errors, codeScanningSarifsStatus.errors);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(processingStatus, analysesUrl, errors);
+        return Objects.hash(processingStatus, hashCodeNullable(analysesUrl), hashCodeNullable(errors));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

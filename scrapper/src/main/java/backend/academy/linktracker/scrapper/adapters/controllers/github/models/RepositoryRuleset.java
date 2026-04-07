@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("repository-ruleset")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleset {
 
@@ -69,7 +67,7 @@ public class RepositoryRuleset {
         }
     }
 
-    private TargetEnum target;
+    private Optional<TargetEnum> target = Optional.empty();
 
     /**
      * The type of the source of the ruleset
@@ -108,7 +106,7 @@ public class RepositoryRuleset {
         }
     }
 
-    private SourceTypeEnum sourceType;
+    private Optional<SourceTypeEnum> sourceType = Optional.empty();
 
     private String source;
 
@@ -156,22 +154,23 @@ public class RepositoryRuleset {
         }
     }
 
-    private CurrentUserCanBypassEnum currentUserCanBypass;
+    private Optional<CurrentUserCanBypassEnum> currentUserCanBypass = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private RepositoryRulesetLinks links;
+    private Optional<RepositoryRulesetLinks> links = Optional.empty();
 
-    private RepositoryRulesetConditions conditions = null;
+    private JsonNullable<RepositoryRulesetConditions> conditions =
+            JsonNullable.<RepositoryRulesetConditions>undefined();
 
     @Valid
     private List<@Valid RepositoryRule> rules = new ArrayList<>();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
     public RepositoryRuleset() {
         super();
@@ -228,7 +227,7 @@ public class RepositoryRuleset {
     }
 
     public RepositoryRuleset target(TargetEnum target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -238,16 +237,16 @@ public class RepositoryRuleset {
      */
     @Schema(name = "target", description = "The target of the ruleset", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public TargetEnum getTarget() {
+    public Optional<TargetEnum> getTarget() {
         return target;
     }
 
-    public void setTarget(TargetEnum target) {
+    public void setTarget(Optional<TargetEnum> target) {
         this.target = target;
     }
 
     public RepositoryRuleset sourceType(SourceTypeEnum sourceType) {
-        this.sourceType = sourceType;
+        this.sourceType = Optional.ofNullable(sourceType);
         return this;
     }
 
@@ -260,11 +259,11 @@ public class RepositoryRuleset {
             description = "The type of the source of the ruleset",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source_type")
-    public SourceTypeEnum getSourceType() {
+    public Optional<SourceTypeEnum> getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(SourceTypeEnum sourceType) {
+    public void setSourceType(Optional<SourceTypeEnum> sourceType) {
         this.sourceType = sourceType;
     }
 
@@ -341,7 +340,7 @@ public class RepositoryRuleset {
     }
 
     public RepositoryRuleset currentUserCanBypass(CurrentUserCanBypassEnum currentUserCanBypass) {
-        this.currentUserCanBypass = currentUserCanBypass;
+        this.currentUserCanBypass = Optional.ofNullable(currentUserCanBypass);
         return this;
     }
 
@@ -355,16 +354,16 @@ public class RepositoryRuleset {
                     "The bypass type of the user making the API request for this ruleset. This field is only returned when querying the repository-level endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_can_bypass")
-    public CurrentUserCanBypassEnum getCurrentUserCanBypass() {
+    public Optional<CurrentUserCanBypassEnum> getCurrentUserCanBypass() {
         return currentUserCanBypass;
     }
 
-    public void setCurrentUserCanBypass(CurrentUserCanBypassEnum currentUserCanBypass) {
+    public void setCurrentUserCanBypass(Optional<CurrentUserCanBypassEnum> currentUserCanBypass) {
         this.currentUserCanBypass = currentUserCanBypass;
     }
 
     public RepositoryRuleset nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -374,16 +373,16 @@ public class RepositoryRuleset {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public RepositoryRuleset links(RepositoryRulesetLinks links) {
-        this.links = links;
+        this.links = Optional.ofNullable(links);
         return this;
     }
 
@@ -394,16 +393,16 @@ public class RepositoryRuleset {
     @Valid
     @Schema(name = "_links", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("_links")
-    public RepositoryRulesetLinks getLinks() {
+    public Optional<RepositoryRulesetLinks> getLinks() {
         return links;
     }
 
-    public void setLinks(RepositoryRulesetLinks links) {
+    public void setLinks(Optional<RepositoryRulesetLinks> links) {
         this.links = links;
     }
 
     public RepositoryRuleset conditions(RepositoryRulesetConditions conditions) {
-        this.conditions = conditions;
+        this.conditions = JsonNullable.of(conditions);
         return this;
     }
 
@@ -414,11 +413,11 @@ public class RepositoryRuleset {
     @Valid
     @Schema(name = "conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conditions")
-    public RepositoryRulesetConditions getConditions() {
+    public JsonNullable<RepositoryRulesetConditions> getConditions() {
         return conditions;
     }
 
-    public void setConditions(RepositoryRulesetConditions conditions) {
+    public void setConditions(JsonNullable<RepositoryRulesetConditions> conditions) {
         this.conditions = conditions;
     }
 
@@ -451,7 +450,7 @@ public class RepositoryRuleset {
     }
 
     public RepositoryRuleset createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -462,16 +461,16 @@ public class RepositoryRuleset {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public RepositoryRuleset updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -482,11 +481,11 @@ public class RepositoryRuleset {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -509,10 +508,15 @@ public class RepositoryRuleset {
                 && Objects.equals(this.currentUserCanBypass, repositoryRuleset.currentUserCanBypass)
                 && Objects.equals(this.nodeId, repositoryRuleset.nodeId)
                 && Objects.equals(this.links, repositoryRuleset.links)
-                && Objects.equals(this.conditions, repositoryRuleset.conditions)
+                && equalsNullable(this.conditions, repositoryRuleset.conditions)
                 && Objects.equals(this.rules, repositoryRuleset.rules)
                 && Objects.equals(this.createdAt, repositoryRuleset.createdAt)
                 && Objects.equals(this.updatedAt, repositoryRuleset.updatedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -528,10 +532,17 @@ public class RepositoryRuleset {
                 currentUserCanBypass,
                 nodeId,
                 links,
-                conditions,
+                hashCodeNullable(conditions),
                 rules,
                 createdAt,
                 updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

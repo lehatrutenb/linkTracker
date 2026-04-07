@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The author of the file. Default: The &#x60;committer&#x60; or the authenticated user if you omit &#x60;committer&#x60;.
@@ -18,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_or_update_file_contents_request_author")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateOrUpdateFileContentsRequestAuthor {
 
@@ -26,7 +26,7 @@ public class ReposCreateOrUpdateFileContentsRequestAuthor {
 
     private String email;
 
-    private String date;
+    private Optional<String> date = Optional.empty();
 
     public ReposCreateOrUpdateFileContentsRequestAuthor() {
         super();
@@ -89,7 +89,7 @@ public class ReposCreateOrUpdateFileContentsRequestAuthor {
     }
 
     public ReposCreateOrUpdateFileContentsRequestAuthor date(String date) {
-        this.date = date;
+        this.date = Optional.ofNullable(date);
         return this;
     }
 
@@ -99,11 +99,11 @@ public class ReposCreateOrUpdateFileContentsRequestAuthor {
      */
     @Schema(name = "date", example = "\"2013-01-15T17:13:22+05:00\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("date")
-    public String getDate() {
+    public Optional<String> getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Optional<String> date) {
         this.date = date;
     }
 

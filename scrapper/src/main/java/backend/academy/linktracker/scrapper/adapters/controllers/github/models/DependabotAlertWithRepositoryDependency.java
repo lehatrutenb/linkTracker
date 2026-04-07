@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Details for the vulnerable dependency.
@@ -18,13 +19,13 @@ import java.util.Objects;
 @JsonTypeName("dependabot_alert_with_repository_dependency")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotAlertWithRepositoryDependency {
 
-    private DependabotAlertPackage _package;
+    private Optional<DependabotAlertPackage> _package = Optional.empty();
 
-    private String manifestPath;
+    private Optional<String> manifestPath = Optional.empty();
 
     /**
      * The execution scope of the vulnerable dependency.
@@ -61,7 +62,7 @@ public class DependabotAlertWithRepositoryDependency {
         }
     }
 
-    private ScopeEnum scope = null;
+    private JsonNullable<ScopeEnum> scope = JsonNullable.<ScopeEnum>undefined();
 
     /**
      * The vulnerable dependency's relationship to your project.  > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be \"unknown\" for all dependencies in unsupported ecosystems.
@@ -100,10 +101,10 @@ public class DependabotAlertWithRepositoryDependency {
         }
     }
 
-    private RelationshipEnum relationship = null;
+    private JsonNullable<RelationshipEnum> relationship = JsonNullable.<RelationshipEnum>undefined();
 
     public DependabotAlertWithRepositoryDependency _package(DependabotAlertPackage _package) {
-        this._package = _package;
+        this._package = Optional.ofNullable(_package);
         return this;
     }
 
@@ -114,16 +115,16 @@ public class DependabotAlertWithRepositoryDependency {
     @Valid
     @Schema(name = "package", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("package")
-    public DependabotAlertPackage getPackage() {
+    public Optional<DependabotAlertPackage> getPackage() {
         return _package;
     }
 
-    public void setPackage(DependabotAlertPackage _package) {
+    public void setPackage(Optional<DependabotAlertPackage> _package) {
         this._package = _package;
     }
 
     public DependabotAlertWithRepositoryDependency manifestPath(String manifestPath) {
-        this.manifestPath = manifestPath;
+        this.manifestPath = Optional.ofNullable(manifestPath);
         return this;
     }
 
@@ -137,16 +138,16 @@ public class DependabotAlertWithRepositoryDependency {
             description = "The full path to the dependency manifest file, relative to the root of the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("manifest_path")
-    public String getManifestPath() {
+    public Optional<String> getManifestPath() {
         return manifestPath;
     }
 
-    public void setManifestPath(String manifestPath) {
+    public void setManifestPath(Optional<String> manifestPath) {
         this.manifestPath = manifestPath;
     }
 
     public DependabotAlertWithRepositoryDependency scope(ScopeEnum scope) {
-        this.scope = scope;
+        this.scope = JsonNullable.of(scope);
         return this;
     }
 
@@ -160,16 +161,16 @@ public class DependabotAlertWithRepositoryDependency {
             description = "The execution scope of the vulnerable dependency.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("scope")
-    public ScopeEnum getScope() {
+    public JsonNullable<ScopeEnum> getScope() {
         return scope;
     }
 
-    public void setScope(ScopeEnum scope) {
+    public void setScope(JsonNullable<ScopeEnum> scope) {
         this.scope = scope;
     }
 
     public DependabotAlertWithRepositoryDependency relationship(RelationshipEnum relationship) {
-        this.relationship = relationship;
+        this.relationship = JsonNullable.of(relationship);
         return this;
     }
 
@@ -184,11 +185,11 @@ public class DependabotAlertWithRepositoryDependency {
                     "The vulnerable dependency's relationship to your project.  > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be \"unknown\" for all dependencies in unsupported ecosystems. ",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("relationship")
-    public RelationshipEnum getRelationship() {
+    public JsonNullable<RelationshipEnum> getRelationship() {
         return relationship;
     }
 
-    public void setRelationship(RelationshipEnum relationship) {
+    public void setRelationship(JsonNullable<RelationshipEnum> relationship) {
         this.relationship = relationship;
     }
 
@@ -204,13 +205,25 @@ public class DependabotAlertWithRepositoryDependency {
                 (DependabotAlertWithRepositoryDependency) o;
         return Objects.equals(this._package, dependabotAlertWithRepositoryDependency._package)
                 && Objects.equals(this.manifestPath, dependabotAlertWithRepositoryDependency.manifestPath)
-                && Objects.equals(this.scope, dependabotAlertWithRepositoryDependency.scope)
-                && Objects.equals(this.relationship, dependabotAlertWithRepositoryDependency.relationship);
+                && equalsNullable(this.scope, dependabotAlertWithRepositoryDependency.scope)
+                && equalsNullable(this.relationship, dependabotAlertWithRepositoryDependency.relationship);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(_package, manifestPath, scope, relationship);
+        return Objects.hash(_package, manifestPath, hashCodeNullable(scope), hashCodeNullable(relationship));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

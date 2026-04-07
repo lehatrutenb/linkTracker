@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Provides details of a hosted runner image
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("nullable-actions-hosted-runner-pool-image")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableActionsHostedRunnerPoolImage {
 
@@ -66,7 +66,7 @@ public class NullableActionsHostedRunnerPoolImage {
 
     private SourceEnum source;
 
-    private String version;
+    private Optional<String> version = Optional.empty();
 
     public NullableActionsHostedRunnerPoolImage() {
         super();
@@ -176,7 +176,7 @@ public class NullableActionsHostedRunnerPoolImage {
     }
 
     public NullableActionsHostedRunnerPoolImage version(String version) {
-        this.version = version;
+        this.version = Optional.ofNullable(version);
         return this;
     }
 
@@ -190,11 +190,11 @@ public class NullableActionsHostedRunnerPoolImage {
             description = "The image version of the hosted runner pool.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public Optional<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(Optional<String> version) {
         this.version = version;
     }
 

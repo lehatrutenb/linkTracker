@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GollumEventPagesInner
@@ -14,24 +15,24 @@ import java.util.Objects;
 @JsonTypeName("gollum_event_pages_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GollumEventPagesInner {
 
-    private String pageName = null;
+    private JsonNullable<String> pageName = JsonNullable.<String>undefined();
 
-    private String title = null;
+    private JsonNullable<String> title = JsonNullable.<String>undefined();
 
-    private String summary = null;
+    private JsonNullable<String> summary = JsonNullable.<String>undefined();
 
-    private String action;
+    private Optional<String> action = Optional.empty();
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
     public GollumEventPagesInner pageName(String pageName) {
-        this.pageName = pageName;
+        this.pageName = JsonNullable.of(pageName);
         return this;
     }
 
@@ -41,16 +42,16 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "page_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page_name")
-    public String getPageName() {
+    public JsonNullable<String> getPageName() {
         return pageName;
     }
 
-    public void setPageName(String pageName) {
+    public void setPageName(JsonNullable<String> pageName) {
         this.pageName = pageName;
     }
 
     public GollumEventPagesInner title(String title) {
-        this.title = title;
+        this.title = JsonNullable.of(title);
         return this;
     }
 
@@ -60,16 +61,16 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public JsonNullable<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(JsonNullable<String> title) {
         this.title = title;
     }
 
     public GollumEventPagesInner summary(String summary) {
-        this.summary = summary;
+        this.summary = JsonNullable.of(summary);
         return this;
     }
 
@@ -79,16 +80,16 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("summary")
-    public String getSummary() {
+    public JsonNullable<String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(JsonNullable<String> summary) {
         this.summary = summary;
     }
 
     public GollumEventPagesInner action(String action) {
-        this.action = action;
+        this.action = Optional.ofNullable(action);
         return this;
     }
 
@@ -98,16 +99,16 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "action", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("action")
-    public String getAction() {
+    public Optional<String> getAction() {
         return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(Optional<String> action) {
         this.action = action;
     }
 
     public GollumEventPagesInner sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -117,16 +118,16 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "sha", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 
     public GollumEventPagesInner htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -136,11 +137,11 @@ public class GollumEventPagesInner {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -153,17 +154,30 @@ public class GollumEventPagesInner {
             return false;
         }
         GollumEventPagesInner gollumEventPagesInner = (GollumEventPagesInner) o;
-        return Objects.equals(this.pageName, gollumEventPagesInner.pageName)
-                && Objects.equals(this.title, gollumEventPagesInner.title)
-                && Objects.equals(this.summary, gollumEventPagesInner.summary)
+        return equalsNullable(this.pageName, gollumEventPagesInner.pageName)
+                && equalsNullable(this.title, gollumEventPagesInner.title)
+                && equalsNullable(this.summary, gollumEventPagesInner.summary)
                 && Objects.equals(this.action, gollumEventPagesInner.action)
                 && Objects.equals(this.sha, gollumEventPagesInner.sha)
                 && Objects.equals(this.htmlUrl, gollumEventPagesInner.htmlUrl);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(pageName, title, summary, action, sha, htmlUrl);
+        return Objects.hash(
+                hashCodeNullable(pageName), hashCodeNullable(title), hashCodeNullable(summary), action, sha, htmlUrl);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the collaborator permissions
@@ -16,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_member_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMemberEditedChanges {
 
-    private WebhookMemberEditedChangesOldPermission oldPermission;
+    private Optional<WebhookMemberEditedChangesOldPermission> oldPermission = Optional.empty();
 
-    private WebhookMemberEditedChangesPermission permission;
+    private Optional<WebhookMemberEditedChangesPermission> permission = Optional.empty();
 
     public WebhookMemberEditedChanges oldPermission(WebhookMemberEditedChangesOldPermission oldPermission) {
-        this.oldPermission = oldPermission;
+        this.oldPermission = Optional.ofNullable(oldPermission);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class WebhookMemberEditedChanges {
     @Valid
     @Schema(name = "old_permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("old_permission")
-    public WebhookMemberEditedChangesOldPermission getOldPermission() {
+    public Optional<WebhookMemberEditedChangesOldPermission> getOldPermission() {
         return oldPermission;
     }
 
-    public void setOldPermission(WebhookMemberEditedChangesOldPermission oldPermission) {
+    public void setOldPermission(Optional<WebhookMemberEditedChangesOldPermission> oldPermission) {
         this.oldPermission = oldPermission;
     }
 
     public WebhookMemberEditedChanges permission(WebhookMemberEditedChangesPermission permission) {
-        this.permission = permission;
+        this.permission = Optional.ofNullable(permission);
         return this;
     }
 
@@ -56,11 +55,11 @@ public class WebhookMemberEditedChanges {
     @Valid
     @Schema(name = "permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permission")
-    public WebhookMemberEditedChangesPermission getPermission() {
+    public Optional<WebhookMemberEditedChangesPermission> getPermission() {
         return permission;
     }
 
-    public void setPermission(WebhookMemberEditedChangesPermission permission) {
+    public void setPermission(Optional<WebhookMemberEditedChangesPermission> permission) {
         this.permission = permission;
     }
 

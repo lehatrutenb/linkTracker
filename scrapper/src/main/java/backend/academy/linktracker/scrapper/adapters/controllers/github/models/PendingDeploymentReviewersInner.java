@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PendingDeploymentReviewersInner
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("pending_deployment_reviewers_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PendingDeploymentReviewersInner {
 
-    private DeploymentReviewerType type;
+    private Optional<DeploymentReviewerType> type = Optional.empty();
 
-    private PendingDeploymentReviewersInnerReviewer reviewer;
+    private Optional<PendingDeploymentReviewersInnerReviewer> reviewer = Optional.empty();
 
     public PendingDeploymentReviewersInner type(DeploymentReviewerType type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class PendingDeploymentReviewersInner {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public DeploymentReviewerType getType() {
+    public Optional<DeploymentReviewerType> getType() {
         return type;
     }
 
-    public void setType(DeploymentReviewerType type) {
+    public void setType(Optional<DeploymentReviewerType> type) {
         this.type = type;
     }
 
     public PendingDeploymentReviewersInner reviewer(PendingDeploymentReviewersInnerReviewer reviewer) {
-        this.reviewer = reviewer;
+        this.reviewer = Optional.ofNullable(reviewer);
         return this;
     }
 
@@ -55,11 +54,11 @@ public class PendingDeploymentReviewersInner {
     @Valid
     @Schema(name = "reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reviewer")
-    public PendingDeploymentReviewersInnerReviewer getReviewer() {
+    public Optional<PendingDeploymentReviewersInnerReviewer> getReviewer() {
         return reviewer;
     }
 
-    public void setReviewer(PendingDeploymentReviewersInnerReviewer reviewer) {
+    public void setReviewer(Optional<PendingDeploymentReviewersInnerReviewer> reviewer) {
         this.reviewer = reviewer;
     }
 

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ContributorActivityWeeksInner
@@ -14,20 +13,20 @@ import java.util.Objects;
 @JsonTypeName("contributor_activity_weeks_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ContributorActivityWeeksInner {
 
-    private Long w;
+    private Optional<Long> w = Optional.empty();
 
-    private Long a;
+    private Optional<Long> a = Optional.empty();
 
-    private Long d;
+    private Optional<Long> d = Optional.empty();
 
-    private Long c;
+    private Optional<Long> c = Optional.empty();
 
     public ContributorActivityWeeksInner w(Long w) {
-        this.w = w;
+        this.w = Optional.ofNullable(w);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class ContributorActivityWeeksInner {
      */
     @Schema(name = "w", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("w")
-    public Long getW() {
+    public Optional<Long> getW() {
         return w;
     }
 
-    public void setW(Long w) {
+    public void setW(Optional<Long> w) {
         this.w = w;
     }
 
     public ContributorActivityWeeksInner a(Long a) {
-        this.a = a;
+        this.a = Optional.ofNullable(a);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class ContributorActivityWeeksInner {
      */
     @Schema(name = "a", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("a")
-    public Long getA() {
+    public Optional<Long> getA() {
         return a;
     }
 
-    public void setA(Long a) {
+    public void setA(Optional<Long> a) {
         this.a = a;
     }
 
     public ContributorActivityWeeksInner d(Long d) {
-        this.d = d;
+        this.d = Optional.ofNullable(d);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class ContributorActivityWeeksInner {
      */
     @Schema(name = "d", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("d")
-    public Long getD() {
+    public Optional<Long> getD() {
         return d;
     }
 
-    public void setD(Long d) {
+    public void setD(Optional<Long> d) {
         this.d = d;
     }
 
     public ContributorActivityWeeksInner c(Long c) {
-        this.c = c;
+        this.c = Optional.ofNullable(c);
         return this;
     }
 
@@ -94,11 +93,11 @@ public class ContributorActivityWeeksInner {
      */
     @Schema(name = "c", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("c")
-    public Long getC() {
+    public Optional<Long> getC() {
         return c;
     }
 
-    public void setC(Long c) {
+    public void setC(Optional<Long> c) {
         this.c = c;
     }
 

@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookStarCreated
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-star-created")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookStarCreated {
 
@@ -56,17 +57,17 @@ public class WebhookStarCreated {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
     private SimpleUser sender;
 
-    private String starredAt = null;
+    private JsonNullable<String> starredAt = JsonNullable.<String>undefined();
 
     public WebhookStarCreated() {
         super();
@@ -79,7 +80,7 @@ public class WebhookStarCreated {
         this.action = action;
         this.repository = repository;
         this.sender = sender;
-        this.starredAt = starredAt;
+        this.starredAt = JsonNullable.of(starredAt);
     }
 
     public WebhookStarCreated action(ActionEnum action) {
@@ -103,7 +104,7 @@ public class WebhookStarCreated {
     }
 
     public WebhookStarCreated enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -114,16 +115,16 @@ public class WebhookStarCreated {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookStarCreated installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -134,16 +135,16 @@ public class WebhookStarCreated {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookStarCreated organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -154,11 +155,11 @@ public class WebhookStarCreated {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -205,7 +206,7 @@ public class WebhookStarCreated {
     }
 
     public WebhookStarCreated starredAt(String starredAt) {
-        this.starredAt = starredAt;
+        this.starredAt = JsonNullable.of(starredAt);
         return this;
     }
 
@@ -220,11 +221,11 @@ public class WebhookStarCreated {
                     "The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("starred_at")
-    public String getStarredAt() {
+    public JsonNullable<String> getStarredAt() {
         return starredAt;
     }
 
-    public void setStarredAt(String starredAt) {
+    public void setStarredAt(JsonNullable<String> starredAt) {
         this.starredAt = starredAt;
     }
 

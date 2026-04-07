@@ -7,11 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects-v2")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2 {
 
@@ -35,12 +37,12 @@ public class ProjectsV2 {
 
     private String title;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean _public;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -50,12 +52,12 @@ public class ProjectsV2 {
 
     private Long number;
 
-    private String shortDescription = null;
+    private JsonNullable<String> shortDescription = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime deletedAt = null;
+    private JsonNullable<OffsetDateTime> deletedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private NullableSimpleUser deletedBy = null;
+    private JsonNullable<NullableSimpleUser> deletedBy = JsonNullable.<NullableSimpleUser>undefined();
 
     /**
      * The current state of the project.
@@ -92,11 +94,12 @@ public class ProjectsV2 {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
-    private NullableProjectsV2StatusUpdate latestStatusUpdate = null;
+    private JsonNullable<NullableProjectsV2StatusUpdate> latestStatusUpdate =
+            JsonNullable.<NullableProjectsV2StatusUpdate>undefined();
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
     public ProjectsV2() {
         super();
@@ -125,15 +128,15 @@ public class ProjectsV2 {
         this.owner = owner;
         this.creator = creator;
         this.title = title;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this._public = _public;
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.number = number;
-        this.shortDescription = shortDescription;
-        this.deletedAt = deletedAt;
-        this.deletedBy = deletedBy;
+        this.shortDescription = JsonNullable.of(shortDescription);
+        this.deletedAt = JsonNullable.of(deletedAt);
+        this.deletedBy = JsonNullable.of(deletedBy);
     }
 
     public ProjectsV2 id(BigDecimal id) {
@@ -243,7 +246,7 @@ public class ProjectsV2 {
     }
 
     public ProjectsV2 description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -257,11 +260,11 @@ public class ProjectsV2 {
             description = "A short description of the project.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -289,7 +292,7 @@ public class ProjectsV2 {
     }
 
     public ProjectsV2 closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -305,11 +308,11 @@ public class ProjectsV2 {
             description = "The time when the project was closed.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -384,7 +387,7 @@ public class ProjectsV2 {
     }
 
     public ProjectsV2 shortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+        this.shortDescription = JsonNullable.of(shortDescription);
         return this;
     }
 
@@ -398,16 +401,16 @@ public class ProjectsV2 {
             description = "A concise summary of the project.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("short_description")
-    public String getShortDescription() {
+    public JsonNullable<String> getShortDescription() {
         return shortDescription;
     }
 
-    public void setShortDescription(String shortDescription) {
+    public void setShortDescription(JsonNullable<String> shortDescription) {
         this.shortDescription = shortDescription;
     }
 
     public ProjectsV2 deletedAt(OffsetDateTime deletedAt) {
-        this.deletedAt = deletedAt;
+        this.deletedAt = JsonNullable.of(deletedAt);
         return this;
     }
 
@@ -423,16 +426,16 @@ public class ProjectsV2 {
             description = "The time when the project was deleted.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("deleted_at")
-    public OffsetDateTime getDeletedAt() {
+    public JsonNullable<OffsetDateTime> getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(OffsetDateTime deletedAt) {
+    public void setDeletedAt(JsonNullable<OffsetDateTime> deletedAt) {
         this.deletedAt = deletedAt;
     }
 
     public ProjectsV2 deletedBy(NullableSimpleUser deletedBy) {
-        this.deletedBy = deletedBy;
+        this.deletedBy = JsonNullable.of(deletedBy);
         return this;
     }
 
@@ -444,16 +447,16 @@ public class ProjectsV2 {
     @Valid
     @Schema(name = "deleted_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("deleted_by")
-    public NullableSimpleUser getDeletedBy() {
+    public JsonNullable<NullableSimpleUser> getDeletedBy() {
         return deletedBy;
     }
 
-    public void setDeletedBy(NullableSimpleUser deletedBy) {
+    public void setDeletedBy(JsonNullable<NullableSimpleUser> deletedBy) {
         this.deletedBy = deletedBy;
     }
 
     public ProjectsV2 state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -466,16 +469,16 @@ public class ProjectsV2 {
             description = "The current state of the project.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public ProjectsV2 latestStatusUpdate(NullableProjectsV2StatusUpdate latestStatusUpdate) {
-        this.latestStatusUpdate = latestStatusUpdate;
+        this.latestStatusUpdate = JsonNullable.of(latestStatusUpdate);
         return this;
     }
 
@@ -486,16 +489,16 @@ public class ProjectsV2 {
     @Valid
     @Schema(name = "latest_status_update", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("latest_status_update")
-    public NullableProjectsV2StatusUpdate getLatestStatusUpdate() {
+    public JsonNullable<NullableProjectsV2StatusUpdate> getLatestStatusUpdate() {
         return latestStatusUpdate;
     }
 
-    public void setLatestStatusUpdate(NullableProjectsV2StatusUpdate latestStatusUpdate) {
+    public void setLatestStatusUpdate(JsonNullable<NullableProjectsV2StatusUpdate> latestStatusUpdate) {
         this.latestStatusUpdate = latestStatusUpdate;
     }
 
     public ProjectsV2 isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -508,11 +511,11 @@ public class ProjectsV2 {
             description = "Whether this project is a template",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -540,8 +543,13 @@ public class ProjectsV2 {
                 && Objects.equals(this.deletedAt, projectsV2.deletedAt)
                 && Objects.equals(this.deletedBy, projectsV2.deletedBy)
                 && Objects.equals(this.state, projectsV2.state)
-                && Objects.equals(this.latestStatusUpdate, projectsV2.latestStatusUpdate)
+                && equalsNullable(this.latestStatusUpdate, projectsV2.latestStatusUpdate)
                 && Objects.equals(this.isTemplate, projectsV2.isTemplate);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -562,8 +570,15 @@ public class ProjectsV2 {
                 deletedAt,
                 deletedBy,
                 state,
-                latestStatusUpdate,
+                hashCodeNullable(latestStatusUpdate),
                 isTemplate);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

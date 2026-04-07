@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GistsCreateRequest
@@ -17,16 +17,16 @@ import java.util.Objects;
 @JsonTypeName("gists_create_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistsCreateRequest {
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
     @Valid
     private Map<String, GistsCreateRequestFilesValue> files = new HashMap<>();
 
-    private GistsCreateRequestPublic _public;
+    private Optional<GistsCreateRequestPublic> _public = Optional.empty();
 
     public GistsCreateRequest() {
         super();
@@ -40,7 +40,7 @@ public class GistsCreateRequest {
     }
 
     public GistsCreateRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -54,11 +54,11 @@ public class GistsCreateRequest {
             description = "Description of the gist",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -96,7 +96,7 @@ public class GistsCreateRequest {
     }
 
     public GistsCreateRequest _public(GistsCreateRequestPublic _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -107,11 +107,11 @@ public class GistsCreateRequest {
     @Valid
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public GistsCreateRequestPublic getPublic() {
+    public Optional<GistsCreateRequestPublic> getPublic() {
         return _public;
     }
 
-    public void setPublic(GistsCreateRequestPublic _public) {
+    public void setPublic(Optional<GistsCreateRequestPublic> _public) {
         this._public = _public;
     }
 

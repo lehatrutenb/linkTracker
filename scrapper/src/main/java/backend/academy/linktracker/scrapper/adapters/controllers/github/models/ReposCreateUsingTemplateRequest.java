@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateUsingTemplateRequest
@@ -14,19 +14,19 @@ import java.util.Objects;
 @JsonTypeName("repos_create_using_template_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateUsingTemplateRequest {
 
-    private String owner;
+    private Optional<String> owner = Optional.empty();
 
     private String name;
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private Boolean includeAllBranches = false;
+    private Optional<Boolean> includeAllBranches = Optional.of(false);
 
-    private Boolean _private = false;
+    private Optional<Boolean> _private = Optional.of(false);
 
     public ReposCreateUsingTemplateRequest() {
         super();
@@ -40,7 +40,7 @@ public class ReposCreateUsingTemplateRequest {
     }
 
     public ReposCreateUsingTemplateRequest owner(String owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -54,11 +54,11 @@ public class ReposCreateUsingTemplateRequest {
                     "The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public String getOwner() {
+    public Optional<String> getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Optional<String> owner) {
         this.owner = owner;
     }
 
@@ -83,7 +83,7 @@ public class ReposCreateUsingTemplateRequest {
     }
 
     public ReposCreateUsingTemplateRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -96,16 +96,16 @@ public class ReposCreateUsingTemplateRequest {
             description = "A short description of the new repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public ReposCreateUsingTemplateRequest includeAllBranches(Boolean includeAllBranches) {
-        this.includeAllBranches = includeAllBranches;
+        this.includeAllBranches = Optional.ofNullable(includeAllBranches);
         return this;
     }
 
@@ -119,16 +119,16 @@ public class ReposCreateUsingTemplateRequest {
                     "Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("include_all_branches")
-    public Boolean getIncludeAllBranches() {
+    public Optional<Boolean> getIncludeAllBranches() {
         return includeAllBranches;
     }
 
-    public void setIncludeAllBranches(Boolean includeAllBranches) {
+    public void setIncludeAllBranches(Optional<Boolean> includeAllBranches) {
         this.includeAllBranches = includeAllBranches;
     }
 
     public ReposCreateUsingTemplateRequest _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -141,11 +141,11 @@ public class ReposCreateUsingTemplateRequest {
             description = "Either `true` to create a new private repository or `false` to create a new public one.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CheckRunWithSimpleCheckSuiteOutput
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("check_run_with_simple_check_suite_output")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CheckRunWithSimpleCheckSuiteOutput {
 
@@ -24,11 +24,11 @@ public class CheckRunWithSimpleCheckSuiteOutput {
 
     private URI annotationsUrl;
 
-    private String summary = null;
+    private JsonNullable<String> summary = JsonNullable.<String>undefined();
 
-    private String text = null;
+    private JsonNullable<String> text = JsonNullable.<String>undefined();
 
-    private String title = null;
+    private JsonNullable<String> title = JsonNullable.<String>undefined();
 
     public CheckRunWithSimpleCheckSuiteOutput() {
         super();
@@ -41,9 +41,9 @@ public class CheckRunWithSimpleCheckSuiteOutput {
             Long annotationsCount, URI annotationsUrl, String summary, String text, String title) {
         this.annotationsCount = annotationsCount;
         this.annotationsUrl = annotationsUrl;
-        this.summary = summary;
-        this.text = text;
-        this.title = title;
+        this.summary = JsonNullable.of(summary);
+        this.text = JsonNullable.of(text);
+        this.title = JsonNullable.of(title);
     }
 
     public CheckRunWithSimpleCheckSuiteOutput annotationsCount(Long annotationsCount) {
@@ -88,7 +88,7 @@ public class CheckRunWithSimpleCheckSuiteOutput {
     }
 
     public CheckRunWithSimpleCheckSuiteOutput summary(String summary) {
-        this.summary = summary;
+        this.summary = JsonNullable.of(summary);
         return this;
     }
 
@@ -99,16 +99,16 @@ public class CheckRunWithSimpleCheckSuiteOutput {
     @NotNull
     @Schema(name = "summary", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("summary")
-    public String getSummary() {
+    public JsonNullable<String> getSummary() {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(JsonNullable<String> summary) {
         this.summary = summary;
     }
 
     public CheckRunWithSimpleCheckSuiteOutput text(String text) {
-        this.text = text;
+        this.text = JsonNullable.of(text);
         return this;
     }
 
@@ -119,16 +119,16 @@ public class CheckRunWithSimpleCheckSuiteOutput {
     @NotNull
     @Schema(name = "text", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("text")
-    public String getText() {
+    public JsonNullable<String> getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(JsonNullable<String> text) {
         this.text = text;
     }
 
     public CheckRunWithSimpleCheckSuiteOutput title(String title) {
-        this.title = title;
+        this.title = JsonNullable.of(title);
         return this;
     }
 
@@ -139,11 +139,11 @@ public class CheckRunWithSimpleCheckSuiteOutput {
     @NotNull
     @Schema(name = "title", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public JsonNullable<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(JsonNullable<String> title) {
         this.title = title;
     }
 

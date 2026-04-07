@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodeSecuritySetConfigurationAsDefaultForEnterpriseRequest
@@ -16,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("code_security_set_configuration_as_default_for_enterprise_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeSecuritySetConfigurationAsDefaultForEnterpriseRequest {
 
@@ -59,11 +58,11 @@ public class CodeSecuritySetConfigurationAsDefaultForEnterpriseRequest {
         }
     }
 
-    private DefaultForNewReposEnum defaultForNewRepos;
+    private Optional<DefaultForNewReposEnum> defaultForNewRepos = Optional.empty();
 
     public CodeSecuritySetConfigurationAsDefaultForEnterpriseRequest defaultForNewRepos(
             DefaultForNewReposEnum defaultForNewRepos) {
-        this.defaultForNewRepos = defaultForNewRepos;
+        this.defaultForNewRepos = Optional.ofNullable(defaultForNewRepos);
         return this;
     }
 
@@ -77,11 +76,11 @@ public class CodeSecuritySetConfigurationAsDefaultForEnterpriseRequest {
                     "Specify which types of repository this security configuration should be applied to by default.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_for_new_repos")
-    public DefaultForNewReposEnum getDefaultForNewRepos() {
+    public Optional<DefaultForNewReposEnum> getDefaultForNewRepos() {
         return defaultForNewRepos;
     }
 
-    public void setDefaultForNewRepos(DefaultForNewReposEnum defaultForNewRepos) {
+    public void setDefaultForNewRepos(Optional<DefaultForNewReposEnum> defaultForNewRepos) {
         this.defaultForNewRepos = defaultForNewRepos;
     }
 

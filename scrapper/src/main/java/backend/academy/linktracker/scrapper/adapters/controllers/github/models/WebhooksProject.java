@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,18 +20,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_project")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksProject {
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
     private URI columnsUrl;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private User creator = null;
+    private JsonNullable<User> creator = JsonNullable.<User>undefined();
 
     private URI htmlUrl;
 
@@ -108,10 +108,10 @@ public class WebhooksProject {
             StateEnum state,
             OffsetDateTime updatedAt,
             URI url) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         this.columnsUrl = columnsUrl;
         this.createdAt = createdAt;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.name = name;
@@ -124,7 +124,7 @@ public class WebhooksProject {
     }
 
     public WebhooksProject body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -135,11 +135,11 @@ public class WebhooksProject {
     @NotNull
     @Schema(name = "body", description = "Body of the project", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
@@ -186,7 +186,7 @@ public class WebhooksProject {
     }
 
     public WebhooksProject creator(User creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -198,11 +198,11 @@ public class WebhooksProject {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public User getCreator() {
+    public JsonNullable<User> getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(JsonNullable<User> creator) {
         this.creator = creator;
     }
 

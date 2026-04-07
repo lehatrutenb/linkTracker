@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Branch With Protection
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("branch-with-protection")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BranchWithProtection {
 
@@ -33,9 +33,9 @@ public class BranchWithProtection {
 
     private URI protectionUrl;
 
-    private String pattern;
+    private Optional<String> pattern = Optional.empty();
 
-    private Long requiredApprovingReviewCount;
+    private Optional<Long> requiredApprovingReviewCount = Optional.empty();
 
     public BranchWithProtection() {
         super();
@@ -184,7 +184,7 @@ public class BranchWithProtection {
     }
 
     public BranchWithProtection pattern(String pattern) {
-        this.pattern = pattern;
+        this.pattern = Optional.ofNullable(pattern);
         return this;
     }
 
@@ -194,16 +194,16 @@ public class BranchWithProtection {
      */
     @Schema(name = "pattern", example = "\"mas*\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern")
-    public String getPattern() {
+    public Optional<String> getPattern() {
         return pattern;
     }
 
-    public void setPattern(String pattern) {
+    public void setPattern(Optional<String> pattern) {
         this.pattern = pattern;
     }
 
     public BranchWithProtection requiredApprovingReviewCount(Long requiredApprovingReviewCount) {
-        this.requiredApprovingReviewCount = requiredApprovingReviewCount;
+        this.requiredApprovingReviewCount = Optional.ofNullable(requiredApprovingReviewCount);
         return this;
     }
 
@@ -213,11 +213,11 @@ public class BranchWithProtection {
      */
     @Schema(name = "required_approving_review_count", example = "1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required_approving_review_count")
-    public Long getRequiredApprovingReviewCount() {
+    public Optional<Long> getRequiredApprovingReviewCount() {
         return requiredApprovingReviewCount;
     }
 
-    public void setRequiredApprovingReviewCount(Long requiredApprovingReviewCount) {
+    public void setRequiredApprovingReviewCount(Optional<Long> requiredApprovingReviewCount) {
         this.requiredApprovingReviewCount = requiredApprovingReviewCount;
     }
 

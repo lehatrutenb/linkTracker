@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodeScanningVariantAnalysisRepoTask
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-variant-analysis-repo-task")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningVariantAnalysisRepoTask {
 
@@ -23,17 +23,17 @@ public class CodeScanningVariantAnalysisRepoTask {
 
     private CodeScanningVariantAnalysisStatus analysisStatus;
 
-    private Long artifactSizeInBytes;
+    private Optional<Long> artifactSizeInBytes = Optional.empty();
 
-    private Long resultCount;
+    private Optional<Long> resultCount = Optional.empty();
 
-    private String failureMessage;
+    private Optional<String> failureMessage = Optional.empty();
 
-    private String databaseCommitSha;
+    private Optional<String> databaseCommitSha = Optional.empty();
 
-    private String sourceLocationPrefix;
+    private Optional<String> sourceLocationPrefix = Optional.empty();
 
-    private String artifactUrl;
+    private Optional<String> artifactUrl = Optional.empty();
 
     public CodeScanningVariantAnalysisRepoTask() {
         super();
@@ -91,7 +91,7 @@ public class CodeScanningVariantAnalysisRepoTask {
     }
 
     public CodeScanningVariantAnalysisRepoTask artifactSizeInBytes(Long artifactSizeInBytes) {
-        this.artifactSizeInBytes = artifactSizeInBytes;
+        this.artifactSizeInBytes = Optional.ofNullable(artifactSizeInBytes);
         return this;
     }
 
@@ -104,16 +104,16 @@ public class CodeScanningVariantAnalysisRepoTask {
             description = "The size of the artifact. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_size_in_bytes")
-    public Long getArtifactSizeInBytes() {
+    public Optional<Long> getArtifactSizeInBytes() {
         return artifactSizeInBytes;
     }
 
-    public void setArtifactSizeInBytes(Long artifactSizeInBytes) {
+    public void setArtifactSizeInBytes(Optional<Long> artifactSizeInBytes) {
         this.artifactSizeInBytes = artifactSizeInBytes;
     }
 
     public CodeScanningVariantAnalysisRepoTask resultCount(Long resultCount) {
-        this.resultCount = resultCount;
+        this.resultCount = Optional.ofNullable(resultCount);
         return this;
     }
 
@@ -127,16 +127,16 @@ public class CodeScanningVariantAnalysisRepoTask {
                     "The number of results in the case of a successful analysis. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("result_count")
-    public Long getResultCount() {
+    public Optional<Long> getResultCount() {
         return resultCount;
     }
 
-    public void setResultCount(Long resultCount) {
+    public void setResultCount(Optional<Long> resultCount) {
         this.resultCount = resultCount;
     }
 
     public CodeScanningVariantAnalysisRepoTask failureMessage(String failureMessage) {
-        this.failureMessage = failureMessage;
+        this.failureMessage = Optional.ofNullable(failureMessage);
         return this;
     }
 
@@ -150,16 +150,16 @@ public class CodeScanningVariantAnalysisRepoTask {
                     "The reason of the failure of this repo task. This is only available if the repository task has failed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failure_message")
-    public String getFailureMessage() {
+    public Optional<String> getFailureMessage() {
         return failureMessage;
     }
 
-    public void setFailureMessage(String failureMessage) {
+    public void setFailureMessage(Optional<String> failureMessage) {
         this.failureMessage = failureMessage;
     }
 
     public CodeScanningVariantAnalysisRepoTask databaseCommitSha(String databaseCommitSha) {
-        this.databaseCommitSha = databaseCommitSha;
+        this.databaseCommitSha = Optional.ofNullable(databaseCommitSha);
         return this;
     }
 
@@ -173,16 +173,16 @@ public class CodeScanningVariantAnalysisRepoTask {
                     "The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("database_commit_sha")
-    public String getDatabaseCommitSha() {
+    public Optional<String> getDatabaseCommitSha() {
         return databaseCommitSha;
     }
 
-    public void setDatabaseCommitSha(String databaseCommitSha) {
+    public void setDatabaseCommitSha(Optional<String> databaseCommitSha) {
         this.databaseCommitSha = databaseCommitSha;
     }
 
     public CodeScanningVariantAnalysisRepoTask sourceLocationPrefix(String sourceLocationPrefix) {
-        this.sourceLocationPrefix = sourceLocationPrefix;
+        this.sourceLocationPrefix = Optional.ofNullable(sourceLocationPrefix);
         return this;
     }
 
@@ -195,16 +195,16 @@ public class CodeScanningVariantAnalysisRepoTask {
             description = "The source location prefix to use. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source_location_prefix")
-    public String getSourceLocationPrefix() {
+    public Optional<String> getSourceLocationPrefix() {
         return sourceLocationPrefix;
     }
 
-    public void setSourceLocationPrefix(String sourceLocationPrefix) {
+    public void setSourceLocationPrefix(Optional<String> sourceLocationPrefix) {
         this.sourceLocationPrefix = sourceLocationPrefix;
     }
 
     public CodeScanningVariantAnalysisRepoTask artifactUrl(String artifactUrl) {
-        this.artifactUrl = artifactUrl;
+        this.artifactUrl = Optional.ofNullable(artifactUrl);
         return this;
     }
 
@@ -217,11 +217,11 @@ public class CodeScanningVariantAnalysisRepoTask {
             description = "The URL of the artifact. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_url")
-    public String getArtifactUrl() {
+    public Optional<String> getArtifactUrl() {
         return artifactUrl;
     }
 
-    public void setArtifactUrl(String artifactUrl) {
+    public void setArtifactUrl(Optional<String> artifactUrl) {
         this.artifactUrl = artifactUrl;
     }
 

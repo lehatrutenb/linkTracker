@@ -7,11 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodeScanningAlertRule
@@ -19,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-alert-rule")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAlertRule {
 
-    private String id = null;
+    private JsonNullable<String> id = JsonNullable.<String>undefined();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     /**
      * The severity of the alert.
@@ -66,7 +63,7 @@ public class CodeScanningAlertRule {
         }
     }
 
-    private SeverityEnum severity = null;
+    private JsonNullable<SeverityEnum> severity = JsonNullable.<SeverityEnum>undefined();
 
     /**
      * The security severity of the alert.
@@ -107,21 +104,22 @@ public class CodeScanningAlertRule {
         }
     }
 
-    private SecuritySeverityLevelEnum securitySeverityLevel = null;
+    private JsonNullable<SecuritySeverityLevelEnum> securitySeverityLevel =
+            JsonNullable.<SecuritySeverityLevelEnum>undefined();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private String fullDescription;
+    private Optional<String> fullDescription = Optional.empty();
 
     @Valid
-    private List<String> tags;
+    private JsonNullable<List<String>> tags = JsonNullable.<List<String>>undefined();
 
-    private String help = null;
+    private JsonNullable<String> help = JsonNullable.<String>undefined();
 
-    private String helpUri = null;
+    private JsonNullable<String> helpUri = JsonNullable.<String>undefined();
 
     public CodeScanningAlertRule id(String id) {
-        this.id = id;
+        this.id = JsonNullable.of(id);
         return this;
     }
 
@@ -134,16 +132,16 @@ public class CodeScanningAlertRule {
             description = "A unique identifier for the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public JsonNullable<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(JsonNullable<String> id) {
         this.id = id;
     }
 
     public CodeScanningAlertRule name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -156,16 +154,16 @@ public class CodeScanningAlertRule {
             description = "The name of the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public CodeScanningAlertRule severity(SeverityEnum severity) {
-        this.severity = severity;
+        this.severity = JsonNullable.of(severity);
         return this;
     }
 
@@ -178,16 +176,16 @@ public class CodeScanningAlertRule {
             description = "The severity of the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("severity")
-    public SeverityEnum getSeverity() {
+    public JsonNullable<SeverityEnum> getSeverity() {
         return severity;
     }
 
-    public void setSeverity(SeverityEnum severity) {
+    public void setSeverity(JsonNullable<SeverityEnum> severity) {
         this.severity = severity;
     }
 
     public CodeScanningAlertRule securitySeverityLevel(SecuritySeverityLevelEnum securitySeverityLevel) {
-        this.securitySeverityLevel = securitySeverityLevel;
+        this.securitySeverityLevel = JsonNullable.of(securitySeverityLevel);
         return this;
     }
 
@@ -200,16 +198,16 @@ public class CodeScanningAlertRule {
             description = "The security severity of the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_severity_level")
-    public SecuritySeverityLevelEnum getSecuritySeverityLevel() {
+    public JsonNullable<SecuritySeverityLevelEnum> getSecuritySeverityLevel() {
         return securitySeverityLevel;
     }
 
-    public void setSecuritySeverityLevel(SecuritySeverityLevelEnum securitySeverityLevel) {
+    public void setSecuritySeverityLevel(JsonNullable<SecuritySeverityLevelEnum> securitySeverityLevel) {
         this.securitySeverityLevel = securitySeverityLevel;
     }
 
     public CodeScanningAlertRule description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -222,16 +220,16 @@ public class CodeScanningAlertRule {
             description = "A short description of the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public CodeScanningAlertRule fullDescription(String fullDescription) {
-        this.fullDescription = fullDescription;
+        this.fullDescription = Optional.ofNullable(fullDescription);
         return this;
     }
 
@@ -244,24 +242,24 @@ public class CodeScanningAlertRule {
             description = "A description of the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("full_description")
-    public String getFullDescription() {
+    public Optional<String> getFullDescription() {
         return fullDescription;
     }
 
-    public void setFullDescription(String fullDescription) {
+    public void setFullDescription(Optional<String> fullDescription) {
         this.fullDescription = fullDescription;
     }
 
     public CodeScanningAlertRule tags(List<String> tags) {
-        this.tags = tags;
+        this.tags = JsonNullable.of(tags);
         return this;
     }
 
     public CodeScanningAlertRule addTagsItem(String tagsItem) {
-        if (this.tags == null) {
-            this.tags = new ArrayList<>();
+        if (this.tags == null || !this.tags.isPresent()) {
+            this.tags = JsonNullable.of(new ArrayList<>());
         }
-        this.tags.add(tagsItem);
+        this.tags.get().add(tagsItem);
         return this;
     }
 
@@ -274,16 +272,16 @@ public class CodeScanningAlertRule {
             description = "A set of tags applicable for the rule.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tags")
-    public List<String> getTags() {
+    public JsonNullable<List<String>> getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(JsonNullable<List<String>> tags) {
         this.tags = tags;
     }
 
     public CodeScanningAlertRule help(String help) {
-        this.help = help;
+        this.help = JsonNullable.of(help);
         return this;
     }
 
@@ -296,16 +294,16 @@ public class CodeScanningAlertRule {
             description = "Detailed documentation for the rule as GitHub Flavored Markdown.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("help")
-    public String getHelp() {
+    public JsonNullable<String> getHelp() {
         return help;
     }
 
-    public void setHelp(String help) {
+    public void setHelp(JsonNullable<String> help) {
         this.help = help;
     }
 
     public CodeScanningAlertRule helpUri(String helpUri) {
-        this.helpUri = helpUri;
+        this.helpUri = JsonNullable.of(helpUri);
         return this;
     }
 
@@ -318,11 +316,11 @@ public class CodeScanningAlertRule {
             description = "A link to the documentation for the rule used to detect the alert.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("help_uri")
-    public String getHelpUri() {
+    public JsonNullable<String> getHelpUri() {
         return helpUri;
     }
 
-    public void setHelpUri(String helpUri) {
+    public void setHelpUri(JsonNullable<String> helpUri) {
         this.helpUri = helpUri;
     }
 
@@ -335,21 +333,41 @@ public class CodeScanningAlertRule {
             return false;
         }
         CodeScanningAlertRule codeScanningAlertRule = (CodeScanningAlertRule) o;
-        return Objects.equals(this.id, codeScanningAlertRule.id)
+        return equalsNullable(this.id, codeScanningAlertRule.id)
                 && Objects.equals(this.name, codeScanningAlertRule.name)
-                && Objects.equals(this.severity, codeScanningAlertRule.severity)
-                && Objects.equals(this.securitySeverityLevel, codeScanningAlertRule.securitySeverityLevel)
+                && equalsNullable(this.severity, codeScanningAlertRule.severity)
+                && equalsNullable(this.securitySeverityLevel, codeScanningAlertRule.securitySeverityLevel)
                 && Objects.equals(this.description, codeScanningAlertRule.description)
                 && Objects.equals(this.fullDescription, codeScanningAlertRule.fullDescription)
-                && Objects.equals(this.tags, codeScanningAlertRule.tags)
-                && Objects.equals(this.help, codeScanningAlertRule.help)
-                && Objects.equals(this.helpUri, codeScanningAlertRule.helpUri);
+                && equalsNullable(this.tags, codeScanningAlertRule.tags)
+                && equalsNullable(this.help, codeScanningAlertRule.help)
+                && equalsNullable(this.helpUri, codeScanningAlertRule.helpUri);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, name, severity, securitySeverityLevel, description, fullDescription, tags, help, helpUri);
+                hashCodeNullable(id),
+                name,
+                hashCodeNullable(severity),
+                hashCodeNullable(securitySeverityLevel),
+                description,
+                fullDescription,
+                hashCodeNullable(tags),
+                hashCodeNullable(help),
+                hashCodeNullable(helpUri));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

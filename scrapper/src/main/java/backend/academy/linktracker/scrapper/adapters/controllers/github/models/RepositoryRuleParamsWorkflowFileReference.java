@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A workflow that must run for this rule to pass
@@ -17,17 +17,17 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-params-workflow-file-reference")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleParamsWorkflowFileReference {
 
     private String path;
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
     private Long repositoryId;
 
-    private String sha;
+    private Optional<String> sha = Optional.empty();
 
     public RepositoryRuleParamsWorkflowFileReference() {
         super();
@@ -62,7 +62,7 @@ public class RepositoryRuleParamsWorkflowFileReference {
     }
 
     public RepositoryRuleParamsWorkflowFileReference ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -75,11 +75,11 @@ public class RepositoryRuleParamsWorkflowFileReference {
             description = "The ref (branch or tag) of the workflow file to use",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 
@@ -107,7 +107,7 @@ public class RepositoryRuleParamsWorkflowFileReference {
     }
 
     public RepositoryRuleParamsWorkflowFileReference sha(String sha) {
-        this.sha = sha;
+        this.sha = Optional.ofNullable(sha);
         return this;
     }
 
@@ -120,11 +120,11 @@ public class RepositoryRuleParamsWorkflowFileReference {
             description = "The commit SHA of the workflow file to use",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public Optional<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(Optional<String> sha) {
         this.sha = sha;
     }
 

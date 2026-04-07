@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Custom property name and associated value
@@ -16,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("custom-property-value")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CustomPropertyValue {
 
     private String propertyName;
 
-    private CustomPropertyValueValue value = null;
+    private JsonNullable<CustomPropertyValueValue> value = JsonNullable.<CustomPropertyValueValue>undefined();
 
     public CustomPropertyValue() {
         super();
@@ -33,7 +33,7 @@ public class CustomPropertyValue {
      */
     public CustomPropertyValue(String propertyName, CustomPropertyValueValue value) {
         this.propertyName = propertyName;
-        this.value = value;
+        this.value = JsonNullable.of(value);
     }
 
     public CustomPropertyValue propertyName(String propertyName) {
@@ -60,7 +60,7 @@ public class CustomPropertyValue {
     }
 
     public CustomPropertyValue value(CustomPropertyValueValue value) {
-        this.value = value;
+        this.value = JsonNullable.of(value);
         return this;
     }
 
@@ -72,11 +72,11 @@ public class CustomPropertyValue {
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("value")
-    public CustomPropertyValueValue getValue() {
+    public JsonNullable<CustomPropertyValueValue> getValue() {
         return value;
     }
 
-    public void setValue(CustomPropertyValueValue value) {
+    public void setValue(JsonNullable<CustomPropertyValueValue> value) {
         this.value = value;
     }
 

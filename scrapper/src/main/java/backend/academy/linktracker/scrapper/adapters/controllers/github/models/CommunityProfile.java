@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,22 +19,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("community-profile")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommunityProfile {
 
     private Long healthPercentage;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String documentation = null;
+    private JsonNullable<String> documentation = JsonNullable.<String>undefined();
 
     private CommunityProfileFiles files;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Boolean contentReportsEnabled;
+    private Optional<Boolean> contentReportsEnabled = Optional.empty();
 
     public CommunityProfile() {
         super();
@@ -49,10 +50,10 @@ public class CommunityProfile {
             CommunityProfileFiles files,
             OffsetDateTime updatedAt) {
         this.healthPercentage = healthPercentage;
-        this.description = description;
-        this.documentation = documentation;
+        this.description = JsonNullable.of(description);
+        this.documentation = JsonNullable.of(documentation);
         this.files = files;
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public CommunityProfile healthPercentage(Long healthPercentage) {
@@ -76,7 +77,7 @@ public class CommunityProfile {
     }
 
     public CommunityProfile description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -90,16 +91,16 @@ public class CommunityProfile {
             example = "My first repository on GitHub!",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public CommunityProfile documentation(String documentation) {
-        this.documentation = documentation;
+        this.documentation = JsonNullable.of(documentation);
         return this;
     }
 
@@ -110,11 +111,11 @@ public class CommunityProfile {
     @NotNull
     @Schema(name = "documentation", example = "example.com", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("documentation")
-    public String getDocumentation() {
+    public JsonNullable<String> getDocumentation() {
         return documentation;
     }
 
-    public void setDocumentation(String documentation) {
+    public void setDocumentation(JsonNullable<String> documentation) {
         this.documentation = documentation;
     }
 
@@ -140,7 +141,7 @@ public class CommunityProfile {
     }
 
     public CommunityProfile updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -152,16 +153,16 @@ public class CommunityProfile {
     @Valid
     @Schema(name = "updated_at", example = "2017-02-28T19:09:29Z", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public CommunityProfile contentReportsEnabled(Boolean contentReportsEnabled) {
-        this.contentReportsEnabled = contentReportsEnabled;
+        this.contentReportsEnabled = Optional.ofNullable(contentReportsEnabled);
         return this;
     }
 
@@ -171,11 +172,11 @@ public class CommunityProfile {
      */
     @Schema(name = "content_reports_enabled", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_reports_enabled")
-    public Boolean getContentReportsEnabled() {
+    public Optional<Boolean> getContentReportsEnabled() {
         return contentReportsEnabled;
     }
 
-    public void setContentReportsEnabled(Boolean contentReportsEnabled) {
+    public void setContentReportsEnabled(Optional<Boolean> contentReportsEnabled) {
         this.contentReportsEnabled = contentReportsEnabled;
     }
 

@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookInstallationTargetRenamedAccount
@@ -15,83 +16,83 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("webhook_installation_target_renamed_account")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookInstallationTargetRenamedAccount {
 
-    private String archivedAt = null;
+    private JsonNullable<String> archivedAt = JsonNullable.<String>undefined();
 
     private String avatarUrl;
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private @Nullable Object description = null;
+    private JsonNullable<Object> description = JsonNullable.<Object>undefined();
 
-    private String eventsUrl;
+    private Optional<String> eventsUrl = Optional.empty();
 
-    private Long followers;
+    private Optional<Long> followers = Optional.empty();
 
-    private String followersUrl;
+    private Optional<String> followersUrl = Optional.empty();
 
-    private Long following;
+    private Optional<Long> following = Optional.empty();
 
-    private String followingUrl;
+    private Optional<String> followingUrl = Optional.empty();
 
-    private String gistsUrl;
+    private Optional<String> gistsUrl = Optional.empty();
 
-    private String gravatarId;
+    private Optional<String> gravatarId = Optional.empty();
 
-    private Boolean hasOrganizationProjects;
+    private Optional<Boolean> hasOrganizationProjects = Optional.empty();
 
-    private Boolean hasRepositoryProjects;
+    private Optional<Boolean> hasRepositoryProjects = Optional.empty();
 
-    private String hooksUrl;
+    private Optional<String> hooksUrl = Optional.empty();
 
     private String htmlUrl;
 
     private Long id;
 
-    private Boolean isVerified;
+    private Optional<Boolean> isVerified = Optional.empty();
 
-    private String issuesUrl;
+    private Optional<String> issuesUrl = Optional.empty();
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
-    private String membersUrl;
+    private Optional<String> membersUrl = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     private String nodeId;
 
-    private String organizationsUrl;
+    private Optional<String> organizationsUrl = Optional.empty();
 
-    private Long publicGists;
+    private Optional<Long> publicGists = Optional.empty();
 
-    private String publicMembersUrl;
+    private Optional<String> publicMembersUrl = Optional.empty();
 
-    private Long publicRepos;
+    private Optional<Long> publicRepos = Optional.empty();
 
-    private String receivedEventsUrl;
+    private Optional<String> receivedEventsUrl = Optional.empty();
 
-    private String reposUrl;
+    private Optional<String> reposUrl = Optional.empty();
 
-    private Boolean siteAdmin;
+    private Optional<Boolean> siteAdmin = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
-    private String starredUrl;
+    private Optional<String> starredUrl = Optional.empty();
 
-    private String subscriptionsUrl;
+    private Optional<String> subscriptionsUrl = Optional.empty();
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private @Nullable Object websiteUrl = null;
+    private JsonNullable<Object> websiteUrl = JsonNullable.<Object>undefined();
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public WebhookInstallationTargetRenamedAccount() {
         super();
@@ -108,7 +109,7 @@ public class WebhookInstallationTargetRenamedAccount {
     }
 
     public WebhookInstallationTargetRenamedAccount archivedAt(String archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -118,11 +119,11 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "archived_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archived_at")
-    public String getArchivedAt() {
+    public JsonNullable<String> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(String archivedAt) {
+    public void setArchivedAt(JsonNullable<String> archivedAt) {
         this.archivedAt = archivedAt;
     }
 
@@ -147,7 +148,7 @@ public class WebhookInstallationTargetRenamedAccount {
     }
 
     public WebhookInstallationTargetRenamedAccount createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -157,16 +158,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
-    public WebhookInstallationTargetRenamedAccount description(@Nullable Object description) {
-        this.description = description;
+    public WebhookInstallationTargetRenamedAccount description(Object description) {
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -176,16 +177,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public @Nullable Object getDescription() {
+    public JsonNullable<Object> getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable Object description) {
+    public void setDescription(JsonNullable<Object> description) {
         this.description = description;
     }
 
     public WebhookInstallationTargetRenamedAccount eventsUrl(String eventsUrl) {
-        this.eventsUrl = eventsUrl;
+        this.eventsUrl = Optional.ofNullable(eventsUrl);
         return this;
     }
 
@@ -195,16 +196,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("events_url")
-    public String getEventsUrl() {
+    public Optional<String> getEventsUrl() {
         return eventsUrl;
     }
 
-    public void setEventsUrl(String eventsUrl) {
+    public void setEventsUrl(Optional<String> eventsUrl) {
         this.eventsUrl = eventsUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount followers(Long followers) {
-        this.followers = followers;
+        this.followers = Optional.ofNullable(followers);
         return this;
     }
 
@@ -214,16 +215,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "followers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("followers")
-    public Long getFollowers() {
+    public Optional<Long> getFollowers() {
         return followers;
     }
 
-    public void setFollowers(Long followers) {
+    public void setFollowers(Optional<Long> followers) {
         this.followers = followers;
     }
 
     public WebhookInstallationTargetRenamedAccount followersUrl(String followersUrl) {
-        this.followersUrl = followersUrl;
+        this.followersUrl = Optional.ofNullable(followersUrl);
         return this;
     }
 
@@ -233,16 +234,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "followers_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("followers_url")
-    public String getFollowersUrl() {
+    public Optional<String> getFollowersUrl() {
         return followersUrl;
     }
 
-    public void setFollowersUrl(String followersUrl) {
+    public void setFollowersUrl(Optional<String> followersUrl) {
         this.followersUrl = followersUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount following(Long following) {
-        this.following = following;
+        this.following = Optional.ofNullable(following);
         return this;
     }
 
@@ -252,16 +253,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "following", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("following")
-    public Long getFollowing() {
+    public Optional<Long> getFollowing() {
         return following;
     }
 
-    public void setFollowing(Long following) {
+    public void setFollowing(Optional<Long> following) {
         this.following = following;
     }
 
     public WebhookInstallationTargetRenamedAccount followingUrl(String followingUrl) {
-        this.followingUrl = followingUrl;
+        this.followingUrl = Optional.ofNullable(followingUrl);
         return this;
     }
 
@@ -271,16 +272,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "following_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("following_url")
-    public String getFollowingUrl() {
+    public Optional<String> getFollowingUrl() {
         return followingUrl;
     }
 
-    public void setFollowingUrl(String followingUrl) {
+    public void setFollowingUrl(Optional<String> followingUrl) {
         this.followingUrl = followingUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount gistsUrl(String gistsUrl) {
-        this.gistsUrl = gistsUrl;
+        this.gistsUrl = Optional.ofNullable(gistsUrl);
         return this;
     }
 
@@ -290,16 +291,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "gists_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("gists_url")
-    public String getGistsUrl() {
+    public Optional<String> getGistsUrl() {
         return gistsUrl;
     }
 
-    public void setGistsUrl(String gistsUrl) {
+    public void setGistsUrl(Optional<String> gistsUrl) {
         this.gistsUrl = gistsUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = Optional.ofNullable(gravatarId);
         return this;
     }
 
@@ -309,16 +310,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "gravatar_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public Optional<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(Optional<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 
     public WebhookInstallationTargetRenamedAccount hasOrganizationProjects(Boolean hasOrganizationProjects) {
-        this.hasOrganizationProjects = hasOrganizationProjects;
+        this.hasOrganizationProjects = Optional.ofNullable(hasOrganizationProjects);
         return this;
     }
 
@@ -328,16 +329,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "has_organization_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_organization_projects")
-    public Boolean getHasOrganizationProjects() {
+    public Optional<Boolean> getHasOrganizationProjects() {
         return hasOrganizationProjects;
     }
 
-    public void setHasOrganizationProjects(Boolean hasOrganizationProjects) {
+    public void setHasOrganizationProjects(Optional<Boolean> hasOrganizationProjects) {
         this.hasOrganizationProjects = hasOrganizationProjects;
     }
 
     public WebhookInstallationTargetRenamedAccount hasRepositoryProjects(Boolean hasRepositoryProjects) {
-        this.hasRepositoryProjects = hasRepositoryProjects;
+        this.hasRepositoryProjects = Optional.ofNullable(hasRepositoryProjects);
         return this;
     }
 
@@ -347,16 +348,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "has_repository_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_repository_projects")
-    public Boolean getHasRepositoryProjects() {
+    public Optional<Boolean> getHasRepositoryProjects() {
         return hasRepositoryProjects;
     }
 
-    public void setHasRepositoryProjects(Boolean hasRepositoryProjects) {
+    public void setHasRepositoryProjects(Optional<Boolean> hasRepositoryProjects) {
         this.hasRepositoryProjects = hasRepositoryProjects;
     }
 
     public WebhookInstallationTargetRenamedAccount hooksUrl(String hooksUrl) {
-        this.hooksUrl = hooksUrl;
+        this.hooksUrl = Optional.ofNullable(hooksUrl);
         return this;
     }
 
@@ -366,11 +367,11 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "hooks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("hooks_url")
-    public String getHooksUrl() {
+    public Optional<String> getHooksUrl() {
         return hooksUrl;
     }
 
-    public void setHooksUrl(String hooksUrl) {
+    public void setHooksUrl(Optional<String> hooksUrl) {
         this.hooksUrl = hooksUrl;
     }
 
@@ -415,7 +416,7 @@ public class WebhookInstallationTargetRenamedAccount {
     }
 
     public WebhookInstallationTargetRenamedAccount isVerified(Boolean isVerified) {
-        this.isVerified = isVerified;
+        this.isVerified = Optional.ofNullable(isVerified);
         return this;
     }
 
@@ -425,16 +426,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "is_verified", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_verified")
-    public Boolean getIsVerified() {
+    public Optional<Boolean> getIsVerified() {
         return isVerified;
     }
 
-    public void setIsVerified(Boolean isVerified) {
+    public void setIsVerified(Optional<Boolean> isVerified) {
         this.isVerified = isVerified;
     }
 
     public WebhookInstallationTargetRenamedAccount issuesUrl(String issuesUrl) {
-        this.issuesUrl = issuesUrl;
+        this.issuesUrl = Optional.ofNullable(issuesUrl);
         return this;
     }
 
@@ -444,16 +445,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "issues_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issues_url")
-    public String getIssuesUrl() {
+    public Optional<String> getIssuesUrl() {
         return issuesUrl;
     }
 
-    public void setIssuesUrl(String issuesUrl) {
+    public void setIssuesUrl(Optional<String> issuesUrl) {
         this.issuesUrl = issuesUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -463,16 +464,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "login", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 
     public WebhookInstallationTargetRenamedAccount membersUrl(String membersUrl) {
-        this.membersUrl = membersUrl;
+        this.membersUrl = Optional.ofNullable(membersUrl);
         return this;
     }
 
@@ -482,16 +483,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "members_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_url")
-    public String getMembersUrl() {
+    public Optional<String> getMembersUrl() {
         return membersUrl;
     }
 
-    public void setMembersUrl(String membersUrl) {
+    public void setMembersUrl(Optional<String> membersUrl) {
         this.membersUrl = membersUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -501,11 +502,11 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
@@ -530,7 +531,7 @@ public class WebhookInstallationTargetRenamedAccount {
     }
 
     public WebhookInstallationTargetRenamedAccount organizationsUrl(String organizationsUrl) {
-        this.organizationsUrl = organizationsUrl;
+        this.organizationsUrl = Optional.ofNullable(organizationsUrl);
         return this;
     }
 
@@ -540,16 +541,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "organizations_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organizations_url")
-    public String getOrganizationsUrl() {
+    public Optional<String> getOrganizationsUrl() {
         return organizationsUrl;
     }
 
-    public void setOrganizationsUrl(String organizationsUrl) {
+    public void setOrganizationsUrl(Optional<String> organizationsUrl) {
         this.organizationsUrl = organizationsUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount publicGists(Long publicGists) {
-        this.publicGists = publicGists;
+        this.publicGists = Optional.ofNullable(publicGists);
         return this;
     }
 
@@ -559,16 +560,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "public_gists", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_gists")
-    public Long getPublicGists() {
+    public Optional<Long> getPublicGists() {
         return publicGists;
     }
 
-    public void setPublicGists(Long publicGists) {
+    public void setPublicGists(Optional<Long> publicGists) {
         this.publicGists = publicGists;
     }
 
     public WebhookInstallationTargetRenamedAccount publicMembersUrl(String publicMembersUrl) {
-        this.publicMembersUrl = publicMembersUrl;
+        this.publicMembersUrl = Optional.ofNullable(publicMembersUrl);
         return this;
     }
 
@@ -578,16 +579,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "public_members_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_members_url")
-    public String getPublicMembersUrl() {
+    public Optional<String> getPublicMembersUrl() {
         return publicMembersUrl;
     }
 
-    public void setPublicMembersUrl(String publicMembersUrl) {
+    public void setPublicMembersUrl(Optional<String> publicMembersUrl) {
         this.publicMembersUrl = publicMembersUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount publicRepos(Long publicRepos) {
-        this.publicRepos = publicRepos;
+        this.publicRepos = Optional.ofNullable(publicRepos);
         return this;
     }
 
@@ -597,16 +598,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "public_repos", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_repos")
-    public Long getPublicRepos() {
+    public Optional<Long> getPublicRepos() {
         return publicRepos;
     }
 
-    public void setPublicRepos(Long publicRepos) {
+    public void setPublicRepos(Optional<Long> publicRepos) {
         this.publicRepos = publicRepos;
     }
 
     public WebhookInstallationTargetRenamedAccount receivedEventsUrl(String receivedEventsUrl) {
-        this.receivedEventsUrl = receivedEventsUrl;
+        this.receivedEventsUrl = Optional.ofNullable(receivedEventsUrl);
         return this;
     }
 
@@ -616,16 +617,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "received_events_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("received_events_url")
-    public String getReceivedEventsUrl() {
+    public Optional<String> getReceivedEventsUrl() {
         return receivedEventsUrl;
     }
 
-    public void setReceivedEventsUrl(String receivedEventsUrl) {
+    public void setReceivedEventsUrl(Optional<String> receivedEventsUrl) {
         this.receivedEventsUrl = receivedEventsUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount reposUrl(String reposUrl) {
-        this.reposUrl = reposUrl;
+        this.reposUrl = Optional.ofNullable(reposUrl);
         return this;
     }
 
@@ -635,16 +636,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "repos_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repos_url")
-    public String getReposUrl() {
+    public Optional<String> getReposUrl() {
         return reposUrl;
     }
 
-    public void setReposUrl(String reposUrl) {
+    public void setReposUrl(Optional<String> reposUrl) {
         this.reposUrl = reposUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount siteAdmin(Boolean siteAdmin) {
-        this.siteAdmin = siteAdmin;
+        this.siteAdmin = Optional.ofNullable(siteAdmin);
         return this;
     }
 
@@ -654,16 +655,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "site_admin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("site_admin")
-    public Boolean getSiteAdmin() {
+    public Optional<Boolean> getSiteAdmin() {
         return siteAdmin;
     }
 
-    public void setSiteAdmin(Boolean siteAdmin) {
+    public void setSiteAdmin(Optional<Boolean> siteAdmin) {
         this.siteAdmin = siteAdmin;
     }
 
     public WebhookInstallationTargetRenamedAccount slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -673,16 +674,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "slug", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public WebhookInstallationTargetRenamedAccount starredUrl(String starredUrl) {
-        this.starredUrl = starredUrl;
+        this.starredUrl = Optional.ofNullable(starredUrl);
         return this;
     }
 
@@ -692,16 +693,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "starred_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("starred_url")
-    public String getStarredUrl() {
+    public Optional<String> getStarredUrl() {
         return starredUrl;
     }
 
-    public void setStarredUrl(String starredUrl) {
+    public void setStarredUrl(Optional<String> starredUrl) {
         this.starredUrl = starredUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount subscriptionsUrl(String subscriptionsUrl) {
-        this.subscriptionsUrl = subscriptionsUrl;
+        this.subscriptionsUrl = Optional.ofNullable(subscriptionsUrl);
         return this;
     }
 
@@ -711,16 +712,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "subscriptions_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscriptions_url")
-    public String getSubscriptionsUrl() {
+    public Optional<String> getSubscriptionsUrl() {
         return subscriptionsUrl;
     }
 
-    public void setSubscriptionsUrl(String subscriptionsUrl) {
+    public void setSubscriptionsUrl(Optional<String> subscriptionsUrl) {
         this.subscriptionsUrl = subscriptionsUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -730,16 +731,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public WebhookInstallationTargetRenamedAccount updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -749,16 +750,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public WebhookInstallationTargetRenamedAccount url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -768,16 +769,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
-    public WebhookInstallationTargetRenamedAccount websiteUrl(@Nullable Object websiteUrl) {
-        this.websiteUrl = websiteUrl;
+    public WebhookInstallationTargetRenamedAccount websiteUrl(Object websiteUrl) {
+        this.websiteUrl = JsonNullable.of(websiteUrl);
         return this;
     }
 
@@ -787,16 +788,16 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "website_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("website_url")
-    public @Nullable Object getWebsiteUrl() {
+    public JsonNullable<Object> getWebsiteUrl() {
         return websiteUrl;
     }
 
-    public void setWebsiteUrl(@Nullable Object websiteUrl) {
+    public void setWebsiteUrl(JsonNullable<Object> websiteUrl) {
         this.websiteUrl = websiteUrl;
     }
 
     public WebhookInstallationTargetRenamedAccount userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -806,11 +807,11 @@ public class WebhookInstallationTargetRenamedAccount {
      */
     @Schema(name = "user_view_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 
@@ -824,10 +825,10 @@ public class WebhookInstallationTargetRenamedAccount {
         }
         WebhookInstallationTargetRenamedAccount webhookInstallationTargetRenamedAccount =
                 (WebhookInstallationTargetRenamedAccount) o;
-        return Objects.equals(this.archivedAt, webhookInstallationTargetRenamedAccount.archivedAt)
+        return equalsNullable(this.archivedAt, webhookInstallationTargetRenamedAccount.archivedAt)
                 && Objects.equals(this.avatarUrl, webhookInstallationTargetRenamedAccount.avatarUrl)
                 && Objects.equals(this.createdAt, webhookInstallationTargetRenamedAccount.createdAt)
-                && Objects.equals(this.description, webhookInstallationTargetRenamedAccount.description)
+                && equalsNullable(this.description, webhookInstallationTargetRenamedAccount.description)
                 && Objects.equals(this.eventsUrl, webhookInstallationTargetRenamedAccount.eventsUrl)
                 && Objects.equals(this.followers, webhookInstallationTargetRenamedAccount.followers)
                 && Objects.equals(this.followersUrl, webhookInstallationTargetRenamedAccount.followersUrl)
@@ -861,17 +862,22 @@ public class WebhookInstallationTargetRenamedAccount {
                 && Objects.equals(this.type, webhookInstallationTargetRenamedAccount.type)
                 && Objects.equals(this.updatedAt, webhookInstallationTargetRenamedAccount.updatedAt)
                 && Objects.equals(this.url, webhookInstallationTargetRenamedAccount.url)
-                && Objects.equals(this.websiteUrl, webhookInstallationTargetRenamedAccount.websiteUrl)
+                && equalsNullable(this.websiteUrl, webhookInstallationTargetRenamedAccount.websiteUrl)
                 && Objects.equals(this.userViewType, webhookInstallationTargetRenamedAccount.userViewType);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                archivedAt,
+                hashCodeNullable(archivedAt),
                 avatarUrl,
                 createdAt,
-                description,
+                hashCodeNullable(description),
                 eventsUrl,
                 followers,
                 followersUrl,
@@ -903,8 +909,15 @@ public class WebhookInstallationTargetRenamedAccount {
                 type,
                 updatedAt,
                 url,
-                websiteUrl,
+                hashCodeNullable(websiteUrl),
                 userViewType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRepositoryEditedChanges
@@ -15,20 +14,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryEditedChanges {
 
-    private WebhookDiscussionCommentEditedChangesBody defaultBranch;
+    private Optional<WebhookDiscussionCommentEditedChangesBody> defaultBranch = Optional.empty();
 
-    private WebhookProjectCardEditedChangesNote description;
+    private Optional<WebhookProjectCardEditedChangesNote> description = Optional.empty();
 
-    private WebhookProjectCardEditedChangesNote homepage;
+    private Optional<WebhookProjectCardEditedChangesNote> homepage = Optional.empty();
 
-    private WebhookRepositoryEditedChangesTopics topics;
+    private Optional<WebhookRepositoryEditedChangesTopics> topics = Optional.empty();
 
     public WebhookRepositoryEditedChanges defaultBranch(WebhookDiscussionCommentEditedChangesBody defaultBranch) {
-        this.defaultBranch = defaultBranch;
+        this.defaultBranch = Optional.ofNullable(defaultBranch);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class WebhookRepositoryEditedChanges {
     @Valid
     @Schema(name = "default_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch")
-    public WebhookDiscussionCommentEditedChangesBody getDefaultBranch() {
+    public Optional<WebhookDiscussionCommentEditedChangesBody> getDefaultBranch() {
         return defaultBranch;
     }
 
-    public void setDefaultBranch(WebhookDiscussionCommentEditedChangesBody defaultBranch) {
+    public void setDefaultBranch(Optional<WebhookDiscussionCommentEditedChangesBody> defaultBranch) {
         this.defaultBranch = defaultBranch;
     }
 
     public WebhookRepositoryEditedChanges description(WebhookProjectCardEditedChangesNote description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -59,16 +58,16 @@ public class WebhookRepositoryEditedChanges {
     @Valid
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public WebhookProjectCardEditedChangesNote getDescription() {
+    public Optional<WebhookProjectCardEditedChangesNote> getDescription() {
         return description;
     }
 
-    public void setDescription(WebhookProjectCardEditedChangesNote description) {
+    public void setDescription(Optional<WebhookProjectCardEditedChangesNote> description) {
         this.description = description;
     }
 
     public WebhookRepositoryEditedChanges homepage(WebhookProjectCardEditedChangesNote homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class WebhookRepositoryEditedChanges {
     @Valid
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public WebhookProjectCardEditedChangesNote getHomepage() {
+    public Optional<WebhookProjectCardEditedChangesNote> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(WebhookProjectCardEditedChangesNote homepage) {
+    public void setHomepage(Optional<WebhookProjectCardEditedChangesNote> homepage) {
         this.homepage = homepage;
     }
 
     public WebhookRepositoryEditedChanges topics(WebhookRepositoryEditedChangesTopics topics) {
-        this.topics = topics;
+        this.topics = Optional.ofNullable(topics);
         return this;
     }
 
@@ -99,11 +98,11 @@ public class WebhookRepositoryEditedChanges {
     @Valid
     @Schema(name = "topics", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("topics")
-    public WebhookRepositoryEditedChangesTopics getTopics() {
+    public Optional<WebhookRepositoryEditedChangesTopics> getTopics() {
         return topics;
     }
 
-    public void setTopics(WebhookRepositoryEditedChangesTopics topics) {
+    public void setTopics(Optional<WebhookRepositoryEditedChangesTopics> topics) {
         this.topics = topics;
     }
 

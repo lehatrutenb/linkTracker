@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CvssSeverities
@@ -15,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("cvss-severities")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CvssSeverities {
 
-    private CvssSeveritiesCvssV3 cvssV3 = null;
+    private JsonNullable<CvssSeveritiesCvssV3> cvssV3 = JsonNullable.<CvssSeveritiesCvssV3>undefined();
 
-    private CvssSeveritiesCvssV4 cvssV4 = null;
+    private JsonNullable<CvssSeveritiesCvssV4> cvssV4 = JsonNullable.<CvssSeveritiesCvssV4>undefined();
 
     public CvssSeverities cvssV3(CvssSeveritiesCvssV3 cvssV3) {
-        this.cvssV3 = cvssV3;
+        this.cvssV3 = JsonNullable.of(cvssV3);
         return this;
     }
 
@@ -35,16 +35,16 @@ public class CvssSeverities {
     @Valid
     @Schema(name = "cvss_v3", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_v3")
-    public CvssSeveritiesCvssV3 getCvssV3() {
+    public JsonNullable<CvssSeveritiesCvssV3> getCvssV3() {
         return cvssV3;
     }
 
-    public void setCvssV3(CvssSeveritiesCvssV3 cvssV3) {
+    public void setCvssV3(JsonNullable<CvssSeveritiesCvssV3> cvssV3) {
         this.cvssV3 = cvssV3;
     }
 
     public CvssSeverities cvssV4(CvssSeveritiesCvssV4 cvssV4) {
-        this.cvssV4 = cvssV4;
+        this.cvssV4 = JsonNullable.of(cvssV4);
         return this;
     }
 
@@ -55,11 +55,11 @@ public class CvssSeverities {
     @Valid
     @Schema(name = "cvss_v4", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cvss_v4")
-    public CvssSeveritiesCvssV4 getCvssV4() {
+    public JsonNullable<CvssSeveritiesCvssV4> getCvssV4() {
         return cvssV4;
     }
 
-    public void setCvssV4(CvssSeveritiesCvssV4 cvssV4) {
+    public void setCvssV4(JsonNullable<CvssSeveritiesCvssV4> cvssV4) {
         this.cvssV4 = cvssV4;
     }
 
@@ -72,12 +72,24 @@ public class CvssSeverities {
             return false;
         }
         CvssSeverities cvssSeverities = (CvssSeverities) o;
-        return Objects.equals(this.cvssV3, cvssSeverities.cvssV3) && Objects.equals(this.cvssV4, cvssSeverities.cvssV4);
+        return equalsNullable(this.cvssV3, cvssSeverities.cvssV3) && equalsNullable(this.cvssV4, cvssSeverities.cvssV4);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cvssV3, cvssV4);
+        return Objects.hash(hashCodeNullable(cvssV3), hashCodeNullable(cvssV4));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

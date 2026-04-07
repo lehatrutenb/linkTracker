@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,11 +22,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("dependabot-alert-dismissal-request-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotAlertDismissalRequestSimple {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
     /**
      * The current status of the dismissal request.
@@ -68,17 +67,17 @@ public class DependabotAlertDismissalRequestSimple {
         }
     }
 
-    private StatusEnum status;
+    private Optional<StatusEnum> status = Optional.empty();
 
-    private DependabotAlertDismissalRequestSimpleRequester requester;
+    private Optional<DependabotAlertDismissalRequestSimpleRequester> requester = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
-    private URI url;
+    private Optional<URI> url = Optional.empty();
 
     public DependabotAlertDismissalRequestSimple id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -91,16 +90,16 @@ public class DependabotAlertDismissalRequestSimple {
             description = "The unique identifier of the dismissal request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public DependabotAlertDismissalRequestSimple status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -113,16 +112,16 @@ public class DependabotAlertDismissalRequestSimple {
             description = "The current status of the dismissal request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
     public DependabotAlertDismissalRequestSimple requester(DependabotAlertDismissalRequestSimpleRequester requester) {
-        this.requester = requester;
+        this.requester = Optional.ofNullable(requester);
         return this;
     }
 
@@ -133,16 +132,16 @@ public class DependabotAlertDismissalRequestSimple {
     @Valid
     @Schema(name = "requester", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requester")
-    public DependabotAlertDismissalRequestSimpleRequester getRequester() {
+    public Optional<DependabotAlertDismissalRequestSimpleRequester> getRequester() {
         return requester;
     }
 
-    public void setRequester(DependabotAlertDismissalRequestSimpleRequester requester) {
+    public void setRequester(Optional<DependabotAlertDismissalRequestSimpleRequester> requester) {
         this.requester = requester;
     }
 
     public DependabotAlertDismissalRequestSimple createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -156,16 +155,16 @@ public class DependabotAlertDismissalRequestSimple {
             description = "The date and time when the dismissal request was created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public DependabotAlertDismissalRequestSimple url(URI url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -179,11 +178,11 @@ public class DependabotAlertDismissalRequestSimple {
             description = "The API URL to get more information about this dismissal request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 

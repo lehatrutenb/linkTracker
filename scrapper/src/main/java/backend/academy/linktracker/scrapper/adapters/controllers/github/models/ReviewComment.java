@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.lang.Nullable;
 
 /**
  * Legacy Review Comment
@@ -22,13 +23,13 @@ import org.springframework.lang.Nullable;
 @JsonTypeName("review-comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReviewComment {
 
     private URI url;
 
-    private Long pullRequestReviewId = null;
+    private JsonNullable<Long> pullRequestReviewId = JsonNullable.<Long>undefined();
 
     private Long id;
 
@@ -38,7 +39,7 @@ public class ReviewComment {
 
     private String path;
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
     private Long originalPosition;
 
@@ -46,9 +47,9 @@ public class ReviewComment {
 
     private String originalCommitId;
 
-    private Long inReplyToId;
+    private Optional<Long> inReplyToId = Optional.empty();
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
     private String body;
 
@@ -66,11 +67,11 @@ public class ReviewComment {
 
     private ReviewCommentLinks links;
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
-    private ReactionRollup reactions;
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
     /**
      * The side of the first line of the range for a multi-line comment.
@@ -107,7 +108,7 @@ public class ReviewComment {
         }
     }
 
-    private SideEnum side = SideEnum.RIGHT;
+    private Optional<SideEnum> side = Optional.of(SideEnum.RIGHT);
 
     /**
      * The side of the first line of the range for a multi-line comment.
@@ -144,15 +145,15 @@ public class ReviewComment {
         }
     }
 
-    private @Nullable StartSideEnum startSide = null;
+    private JsonNullable<StartSideEnum> startSide = JsonNullable.<StartSideEnum>undefined();
 
-    private Long line;
+    private Optional<Long> line = Optional.empty();
 
-    private Long originalLine;
+    private Optional<Long> originalLine = Optional.empty();
 
-    private Long startLine = null;
+    private JsonNullable<Long> startLine = JsonNullable.<Long>undefined();
 
-    private Long originalStartLine = null;
+    private JsonNullable<Long> originalStartLine = JsonNullable.<Long>undefined();
 
     /**
      * The level at which the comment is targeted, can be a diff line or a file.
@@ -189,7 +190,7 @@ public class ReviewComment {
         }
     }
 
-    private SubjectTypeEnum subjectType;
+    private Optional<SubjectTypeEnum> subjectType = Optional.empty();
 
     public ReviewComment() {
         super();
@@ -218,16 +219,16 @@ public class ReviewComment {
             AuthorAssociation authorAssociation,
             ReviewCommentLinks links) {
         this.url = url;
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         this.id = id;
         this.nodeId = nodeId;
         this.diffHunk = diffHunk;
         this.path = path;
-        this.position = position;
+        this.position = JsonNullable.of(position);
         this.originalPosition = originalPosition;
         this.commitId = commitId;
         this.originalCommitId = originalCommitId;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.body = body;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -262,7 +263,7 @@ public class ReviewComment {
     }
 
     public ReviewComment pullRequestReviewId(Long pullRequestReviewId) {
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         return this;
     }
 
@@ -273,11 +274,11 @@ public class ReviewComment {
     @NotNull
     @Schema(name = "pull_request_review_id", example = "42", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pull_request_review_id")
-    public Long getPullRequestReviewId() {
+    public JsonNullable<Long> getPullRequestReviewId() {
         return pullRequestReviewId;
     }
 
-    public void setPullRequestReviewId(Long pullRequestReviewId) {
+    public void setPullRequestReviewId(JsonNullable<Long> pullRequestReviewId) {
         this.pullRequestReviewId = pullRequestReviewId;
     }
 
@@ -368,7 +369,7 @@ public class ReviewComment {
     }
 
     public ReviewComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -379,11 +380,11 @@ public class ReviewComment {
     @NotNull
     @Schema(name = "position", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
@@ -454,7 +455,7 @@ public class ReviewComment {
     }
 
     public ReviewComment inReplyToId(Long inReplyToId) {
-        this.inReplyToId = inReplyToId;
+        this.inReplyToId = Optional.ofNullable(inReplyToId);
         return this;
     }
 
@@ -464,16 +465,16 @@ public class ReviewComment {
      */
     @Schema(name = "in_reply_to_id", example = "8", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("in_reply_to_id")
-    public Long getInReplyToId() {
+    public Optional<Long> getInReplyToId() {
         return inReplyToId;
     }
 
-    public void setInReplyToId(Long inReplyToId) {
+    public void setInReplyToId(Optional<Long> inReplyToId) {
         this.inReplyToId = inReplyToId;
     }
 
     public ReviewComment user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -485,11 +486,11 @@ public class ReviewComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
@@ -646,7 +647,7 @@ public class ReviewComment {
     }
 
     public ReviewComment bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -656,16 +657,16 @@ public class ReviewComment {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public ReviewComment bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -675,16 +676,16 @@ public class ReviewComment {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
     public ReviewComment reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -695,16 +696,16 @@ public class ReviewComment {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 
     public ReviewComment side(SideEnum side) {
-        this.side = side;
+        this.side = Optional.ofNullable(side);
         return this;
     }
 
@@ -717,16 +718,16 @@ public class ReviewComment {
             description = "The side of the first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("side")
-    public SideEnum getSide() {
+    public Optional<SideEnum> getSide() {
         return side;
     }
 
-    public void setSide(SideEnum side) {
+    public void setSide(Optional<SideEnum> side) {
         this.side = side;
     }
 
-    public ReviewComment startSide(@Nullable StartSideEnum startSide) {
-        this.startSide = startSide;
+    public ReviewComment startSide(StartSideEnum startSide) {
+        this.startSide = JsonNullable.of(startSide);
         return this;
     }
 
@@ -739,16 +740,16 @@ public class ReviewComment {
             description = "The side of the first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_side")
-    public @Nullable StartSideEnum getStartSide() {
+    public JsonNullable<StartSideEnum> getStartSide() {
         return startSide;
     }
 
-    public void setStartSide(@Nullable StartSideEnum startSide) {
+    public void setStartSide(JsonNullable<StartSideEnum> startSide) {
         this.startSide = startSide;
     }
 
     public ReviewComment line(Long line) {
-        this.line = line;
+        this.line = Optional.ofNullable(line);
         return this;
     }
 
@@ -763,16 +764,16 @@ public class ReviewComment {
                     "The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public Optional<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(Optional<Long> line) {
         this.line = line;
     }
 
     public ReviewComment originalLine(Long originalLine) {
-        this.originalLine = originalLine;
+        this.originalLine = Optional.ofNullable(originalLine);
         return this;
     }
 
@@ -787,16 +788,16 @@ public class ReviewComment {
                     "The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("original_line")
-    public Long getOriginalLine() {
+    public Optional<Long> getOriginalLine() {
         return originalLine;
     }
 
-    public void setOriginalLine(Long originalLine) {
+    public void setOriginalLine(Optional<Long> originalLine) {
         this.originalLine = originalLine;
     }
 
     public ReviewComment startLine(Long startLine) {
-        this.startLine = startLine;
+        this.startLine = JsonNullable.of(startLine);
         return this;
     }
 
@@ -810,16 +811,16 @@ public class ReviewComment {
             description = "The first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_line")
-    public Long getStartLine() {
+    public JsonNullable<Long> getStartLine() {
         return startLine;
     }
 
-    public void setStartLine(Long startLine) {
+    public void setStartLine(JsonNullable<Long> startLine) {
         this.startLine = startLine;
     }
 
     public ReviewComment originalStartLine(Long originalStartLine) {
-        this.originalStartLine = originalStartLine;
+        this.originalStartLine = JsonNullable.of(originalStartLine);
         return this;
     }
 
@@ -833,16 +834,16 @@ public class ReviewComment {
             description = "The original first line of the range for a multi-line comment.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("original_start_line")
-    public Long getOriginalStartLine() {
+    public JsonNullable<Long> getOriginalStartLine() {
         return originalStartLine;
     }
 
-    public void setOriginalStartLine(Long originalStartLine) {
+    public void setOriginalStartLine(JsonNullable<Long> originalStartLine) {
         this.originalStartLine = originalStartLine;
     }
 
     public ReviewComment subjectType(SubjectTypeEnum subjectType) {
-        this.subjectType = subjectType;
+        this.subjectType = Optional.ofNullable(subjectType);
         return this;
     }
 
@@ -855,11 +856,11 @@ public class ReviewComment {
             description = "The level at which the comment is targeted, can be a diff line or a file.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subject_type")
-    public SubjectTypeEnum getSubjectType() {
+    public Optional<SubjectTypeEnum> getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(SubjectTypeEnum subjectType) {
+    public void setSubjectType(Optional<SubjectTypeEnum> subjectType) {
         this.subjectType = subjectType;
     }
 
@@ -895,12 +896,17 @@ public class ReviewComment {
                 && Objects.equals(this.bodyHtml, reviewComment.bodyHtml)
                 && Objects.equals(this.reactions, reviewComment.reactions)
                 && Objects.equals(this.side, reviewComment.side)
-                && Objects.equals(this.startSide, reviewComment.startSide)
+                && equalsNullable(this.startSide, reviewComment.startSide)
                 && Objects.equals(this.line, reviewComment.line)
                 && Objects.equals(this.originalLine, reviewComment.originalLine)
-                && Objects.equals(this.startLine, reviewComment.startLine)
-                && Objects.equals(this.originalStartLine, reviewComment.originalStartLine)
+                && equalsNullable(this.startLine, reviewComment.startLine)
+                && equalsNullable(this.originalStartLine, reviewComment.originalStartLine)
                 && Objects.equals(this.subjectType, reviewComment.subjectType);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -929,12 +935,19 @@ public class ReviewComment {
                 bodyHtml,
                 reactions,
                 side,
-                startSide,
+                hashCodeNullable(startSide),
                 line,
                 originalLine,
-                startLine,
-                originalStartLine,
+                hashCodeNullable(startLine),
+                hashCodeNullable(originalStartLine),
                 subjectType);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

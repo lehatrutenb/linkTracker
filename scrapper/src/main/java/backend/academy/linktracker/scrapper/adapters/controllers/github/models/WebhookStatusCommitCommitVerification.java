@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookStatusCommitCommitVerification
@@ -16,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_status_commit_commit_verification")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookStatusCommitCommitVerification {
 
-    private String payload = null;
+    private JsonNullable<String> payload = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets reason
@@ -85,11 +85,11 @@ public class WebhookStatusCommitCommitVerification {
 
     private ReasonEnum reason;
 
-    private String signature = null;
+    private JsonNullable<String> signature = JsonNullable.<String>undefined();
 
     private Boolean verified;
 
-    private String verifiedAt = null;
+    private JsonNullable<String> verifiedAt = JsonNullable.<String>undefined();
 
     public WebhookStatusCommitCommitVerification() {
         super();
@@ -100,15 +100,15 @@ public class WebhookStatusCommitCommitVerification {
      */
     public WebhookStatusCommitCommitVerification(
             String payload, ReasonEnum reason, String signature, Boolean verified, String verifiedAt) {
-        this.payload = payload;
+        this.payload = JsonNullable.of(payload);
         this.reason = reason;
-        this.signature = signature;
+        this.signature = JsonNullable.of(signature);
         this.verified = verified;
-        this.verifiedAt = verifiedAt;
+        this.verifiedAt = JsonNullable.of(verifiedAt);
     }
 
     public WebhookStatusCommitCommitVerification payload(String payload) {
-        this.payload = payload;
+        this.payload = JsonNullable.of(payload);
         return this;
     }
 
@@ -119,11 +119,11 @@ public class WebhookStatusCommitCommitVerification {
     @NotNull
     @Schema(name = "payload", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("payload")
-    public String getPayload() {
+    public JsonNullable<String> getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(JsonNullable<String> payload) {
         this.payload = payload;
     }
 
@@ -148,7 +148,7 @@ public class WebhookStatusCommitCommitVerification {
     }
 
     public WebhookStatusCommitCommitVerification signature(String signature) {
-        this.signature = signature;
+        this.signature = JsonNullable.of(signature);
         return this;
     }
 
@@ -159,11 +159,11 @@ public class WebhookStatusCommitCommitVerification {
     @NotNull
     @Schema(name = "signature", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("signature")
-    public String getSignature() {
+    public JsonNullable<String> getSignature() {
         return signature;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(JsonNullable<String> signature) {
         this.signature = signature;
     }
 
@@ -188,7 +188,7 @@ public class WebhookStatusCommitCommitVerification {
     }
 
     public WebhookStatusCommitCommitVerification verifiedAt(String verifiedAt) {
-        this.verifiedAt = verifiedAt;
+        this.verifiedAt = JsonNullable.of(verifiedAt);
         return this;
     }
 
@@ -199,11 +199,11 @@ public class WebhookStatusCommitCommitVerification {
     @NotNull
     @Schema(name = "verified_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("verified_at")
-    public String getVerifiedAt() {
+    public JsonNullable<String> getVerifiedAt() {
         return verifiedAt;
     }
 
-    public void setVerifiedAt(String verifiedAt) {
+    public void setVerifiedAt(JsonNullable<String> verifiedAt) {
         this.verifiedAt = verifiedAt;
     }
 

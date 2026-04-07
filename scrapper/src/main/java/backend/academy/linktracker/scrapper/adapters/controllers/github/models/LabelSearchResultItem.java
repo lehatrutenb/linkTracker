@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Label Search Result Item
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("label-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LabelSearchResultItem {
 
@@ -36,7 +36,7 @@ public class LabelSearchResultItem {
 
     private Boolean _default;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private BigDecimal score;
 
@@ -65,7 +65,7 @@ public class LabelSearchResultItem {
         this.name = name;
         this.color = color;
         this._default = _default;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.score = score;
     }
 
@@ -191,7 +191,7 @@ public class LabelSearchResultItem {
     }
 
     public LabelSearchResultItem description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -202,11 +202,11 @@ public class LabelSearchResultItem {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 

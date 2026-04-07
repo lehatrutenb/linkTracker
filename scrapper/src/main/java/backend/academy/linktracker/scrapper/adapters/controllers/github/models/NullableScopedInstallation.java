@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * NullableScopedInstallation
@@ -20,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("nullable-scoped-installation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableScopedInstallation {
 
@@ -63,9 +64,9 @@ public class NullableScopedInstallation {
 
     private RepositorySelectionEnum repositorySelection;
 
-    private String singleFileName = null;
+    private JsonNullable<String> singleFileName = JsonNullable.<String>undefined();
 
-    private Boolean hasMultipleSingleFiles;
+    private Optional<Boolean> hasMultipleSingleFiles = Optional.empty();
 
     @Valid
     private List<String> singleFilePaths = new ArrayList<>();
@@ -89,7 +90,7 @@ public class NullableScopedInstallation {
             SimpleUser account) {
         this.permissions = permissions;
         this.repositorySelection = repositorySelection;
-        this.singleFileName = singleFileName;
+        this.singleFileName = JsonNullable.of(singleFileName);
         this.repositoriesUrl = repositoriesUrl;
         this.account = account;
     }
@@ -139,7 +140,7 @@ public class NullableScopedInstallation {
     }
 
     public NullableScopedInstallation singleFileName(String singleFileName) {
-        this.singleFileName = singleFileName;
+        this.singleFileName = JsonNullable.of(singleFileName);
         return this;
     }
 
@@ -150,16 +151,16 @@ public class NullableScopedInstallation {
     @NotNull
     @Schema(name = "single_file_name", example = "config.yaml", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("single_file_name")
-    public String getSingleFileName() {
+    public JsonNullable<String> getSingleFileName() {
         return singleFileName;
     }
 
-    public void setSingleFileName(String singleFileName) {
+    public void setSingleFileName(JsonNullable<String> singleFileName) {
         this.singleFileName = singleFileName;
     }
 
     public NullableScopedInstallation hasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
-        this.hasMultipleSingleFiles = hasMultipleSingleFiles;
+        this.hasMultipleSingleFiles = Optional.ofNullable(hasMultipleSingleFiles);
         return this;
     }
 
@@ -169,11 +170,11 @@ public class NullableScopedInstallation {
      */
     @Schema(name = "has_multiple_single_files", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_multiple_single_files")
-    public Boolean getHasMultipleSingleFiles() {
+    public Optional<Boolean> getHasMultipleSingleFiles() {
         return hasMultipleSingleFiles;
     }
 
-    public void setHasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
+    public void setHasMultipleSingleFiles(Optional<Boolean> hasMultipleSingleFiles) {
         this.hasMultipleSingleFiles = hasMultipleSingleFiles;
     }
 

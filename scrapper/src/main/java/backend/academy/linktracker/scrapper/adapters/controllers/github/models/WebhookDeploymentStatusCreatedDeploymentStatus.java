@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The [deployment status](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses).
@@ -20,13 +22,13 @@ import java.util.Objects;
 @JsonTypeName("webhook_deployment_status_created_deployment_status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentStatusCreatedDeploymentStatus {
 
     private String createdAt;
 
-    private User creator = null;
+    private JsonNullable<User> creator = JsonNullable.<User>undefined();
 
     private URI deploymentUrl;
 
@@ -34,15 +36,15 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
 
     private String environment;
 
-    private URI environmentUrl;
+    private Optional<URI> environmentUrl = Optional.empty();
 
     private Long id;
 
-    private URI logUrl;
+    private Optional<URI> logUrl = Optional.empty();
 
     private String nodeId;
 
-    private App7 performedViaGithubApp = null;
+    private JsonNullable<App7> performedViaGithubApp = JsonNullable.<App7>undefined();
 
     private URI repositoryUrl;
 
@@ -75,7 +77,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
             String updatedAt,
             URI url) {
         this.createdAt = createdAt;
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         this.deploymentUrl = deploymentUrl;
         this.description = description;
         this.environment = environment;
@@ -109,7 +111,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     }
 
     public WebhookDeploymentStatusCreatedDeploymentStatus creator(User creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -121,11 +123,11 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public User getCreator() {
+    public JsonNullable<User> getCreator() {
         return creator;
     }
 
-    public void setCreator(User creator) {
+    public void setCreator(JsonNullable<User> creator) {
         this.creator = creator;
     }
 
@@ -194,7 +196,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     }
 
     public WebhookDeploymentStatusCreatedDeploymentStatus environmentUrl(URI environmentUrl) {
-        this.environmentUrl = environmentUrl;
+        this.environmentUrl = Optional.ofNullable(environmentUrl);
         return this;
     }
 
@@ -205,11 +207,11 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     @Valid
     @Schema(name = "environment_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment_url")
-    public URI getEnvironmentUrl() {
+    public Optional<URI> getEnvironmentUrl() {
         return environmentUrl;
     }
 
-    public void setEnvironmentUrl(URI environmentUrl) {
+    public void setEnvironmentUrl(Optional<URI> environmentUrl) {
         this.environmentUrl = environmentUrl;
     }
 
@@ -234,7 +236,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     }
 
     public WebhookDeploymentStatusCreatedDeploymentStatus logUrl(URI logUrl) {
-        this.logUrl = logUrl;
+        this.logUrl = Optional.ofNullable(logUrl);
         return this;
     }
 
@@ -245,11 +247,11 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     @Valid
     @Schema(name = "log_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("log_url")
-    public URI getLogUrl() {
+    public Optional<URI> getLogUrl() {
         return logUrl;
     }
 
-    public void setLogUrl(URI logUrl) {
+    public void setLogUrl(Optional<URI> logUrl) {
         this.logUrl = logUrl;
     }
 
@@ -274,7 +276,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     }
 
     public WebhookDeploymentStatusCreatedDeploymentStatus performedViaGithubApp(App7 performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -285,11 +287,11 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public App7 getPerformedViaGithubApp() {
+    public JsonNullable<App7> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(App7 performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<App7> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -420,7 +422,7 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
                 && Objects.equals(this.id, webhookDeploymentStatusCreatedDeploymentStatus.id)
                 && Objects.equals(this.logUrl, webhookDeploymentStatusCreatedDeploymentStatus.logUrl)
                 && Objects.equals(this.nodeId, webhookDeploymentStatusCreatedDeploymentStatus.nodeId)
-                && Objects.equals(
+                && equalsNullable(
                         this.performedViaGithubApp,
                         webhookDeploymentStatusCreatedDeploymentStatus.performedViaGithubApp)
                 && Objects.equals(this.repositoryUrl, webhookDeploymentStatusCreatedDeploymentStatus.repositoryUrl)
@@ -428,6 +430,11 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
                 && Objects.equals(this.targetUrl, webhookDeploymentStatusCreatedDeploymentStatus.targetUrl)
                 && Objects.equals(this.updatedAt, webhookDeploymentStatusCreatedDeploymentStatus.updatedAt)
                 && Objects.equals(this.url, webhookDeploymentStatusCreatedDeploymentStatus.url);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -442,12 +449,19 @@ public class WebhookDeploymentStatusCreatedDeploymentStatus {
                 id,
                 logUrl,
                 nodeId,
-                performedViaGithubApp,
+                hashCodeNullable(performedViaGithubApp),
                 repositoryUrl,
                 state,
                 targetUrl,
                 updatedAt,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

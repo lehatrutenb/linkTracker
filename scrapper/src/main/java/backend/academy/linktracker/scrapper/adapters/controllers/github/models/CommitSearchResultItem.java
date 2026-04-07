@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Commit Search Result Item
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("commit-search-result-item")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitSearchResultItem {
 
@@ -34,9 +34,9 @@ public class CommitSearchResultItem {
 
     private CommitSearchResultItemCommit commit;
 
-    private NullableSimpleUser author = null;
+    private JsonNullable<NullableSimpleUser> author = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableGitUser committer = null;
+    private JsonNullable<NullableGitUser> committer = JsonNullable.<NullableGitUser>undefined();
 
     @Valid
     private List<@Valid FileCommitCommitParentsInner> parents = new ArrayList<>();
@@ -74,8 +74,8 @@ public class CommitSearchResultItem {
         this.htmlUrl = htmlUrl;
         this.commentsUrl = commentsUrl;
         this.commit = commit;
-        this.author = author;
-        this.committer = committer;
+        this.author = JsonNullable.of(author);
+        this.committer = JsonNullable.of(committer);
         this.parents = parents;
         this.repository = repository;
         this.score = score;
@@ -187,7 +187,7 @@ public class CommitSearchResultItem {
     }
 
     public CommitSearchResultItem author(NullableSimpleUser author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -199,16 +199,16 @@ public class CommitSearchResultItem {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public NullableSimpleUser getAuthor() {
+    public JsonNullable<NullableSimpleUser> getAuthor() {
         return author;
     }
 
-    public void setAuthor(NullableSimpleUser author) {
+    public void setAuthor(JsonNullable<NullableSimpleUser> author) {
         this.author = author;
     }
 
     public CommitSearchResultItem committer(NullableGitUser committer) {
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         return this;
     }
 
@@ -220,11 +220,11 @@ public class CommitSearchResultItem {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("committer")
-    public NullableGitUser getCommitter() {
+    public JsonNullable<NullableGitUser> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(NullableGitUser committer) {
+    public void setCommitter(JsonNullable<NullableGitUser> committer) {
         this.committer = committer;
     }
 

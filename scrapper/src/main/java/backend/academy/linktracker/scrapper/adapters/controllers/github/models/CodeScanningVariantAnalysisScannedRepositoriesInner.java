@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodeScanningVariantAnalysisScannedRepositoriesInner
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("code_scanning_variant_analysis_scanned_repositories_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningVariantAnalysisScannedRepositoriesInner {
 
@@ -23,11 +23,11 @@ public class CodeScanningVariantAnalysisScannedRepositoriesInner {
 
     private CodeScanningVariantAnalysisStatus analysisStatus;
 
-    private Long resultCount;
+    private Optional<Long> resultCount = Optional.empty();
 
-    private Long artifactSizeInBytes;
+    private Optional<Long> artifactSizeInBytes = Optional.empty();
 
-    private String failureMessage;
+    private Optional<String> failureMessage = Optional.empty();
 
     public CodeScanningVariantAnalysisScannedRepositoriesInner() {
         super();
@@ -87,7 +87,7 @@ public class CodeScanningVariantAnalysisScannedRepositoriesInner {
     }
 
     public CodeScanningVariantAnalysisScannedRepositoriesInner resultCount(Long resultCount) {
-        this.resultCount = resultCount;
+        this.resultCount = Optional.ofNullable(resultCount);
         return this;
     }
 
@@ -101,16 +101,16 @@ public class CodeScanningVariantAnalysisScannedRepositoriesInner {
                     "The number of results in the case of a successful analysis. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("result_count")
-    public Long getResultCount() {
+    public Optional<Long> getResultCount() {
         return resultCount;
     }
 
-    public void setResultCount(Long resultCount) {
+    public void setResultCount(Optional<Long> resultCount) {
         this.resultCount = resultCount;
     }
 
     public CodeScanningVariantAnalysisScannedRepositoriesInner artifactSizeInBytes(Long artifactSizeInBytes) {
-        this.artifactSizeInBytes = artifactSizeInBytes;
+        this.artifactSizeInBytes = Optional.ofNullable(artifactSizeInBytes);
         return this;
     }
 
@@ -123,16 +123,16 @@ public class CodeScanningVariantAnalysisScannedRepositoriesInner {
             description = "The size of the artifact. This is only available for successful analyses.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_size_in_bytes")
-    public Long getArtifactSizeInBytes() {
+    public Optional<Long> getArtifactSizeInBytes() {
         return artifactSizeInBytes;
     }
 
-    public void setArtifactSizeInBytes(Long artifactSizeInBytes) {
+    public void setArtifactSizeInBytes(Optional<Long> artifactSizeInBytes) {
         this.artifactSizeInBytes = artifactSizeInBytes;
     }
 
     public CodeScanningVariantAnalysisScannedRepositoriesInner failureMessage(String failureMessage) {
-        this.failureMessage = failureMessage;
+        this.failureMessage = Optional.ofNullable(failureMessage);
         return this;
     }
 
@@ -146,11 +146,11 @@ public class CodeScanningVariantAnalysisScannedRepositoriesInner {
                     "The reason of the failure of this repo task. This is only available if the repository task has failed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failure_message")
-    public String getFailureMessage() {
+    public Optional<String> getFailureMessage() {
         return failureMessage;
     }
 
-    public void setFailureMessage(String failureMessage) {
+    public void setFailureMessage(Optional<String> failureMessage) {
         this.failureMessage = failureMessage;
     }
 

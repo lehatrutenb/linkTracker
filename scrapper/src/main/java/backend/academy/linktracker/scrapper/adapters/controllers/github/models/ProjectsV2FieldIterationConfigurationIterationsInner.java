@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,19 +16,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("projects_v2_field_iteration_configuration_iterations_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2FieldIterationConfigurationIterationsInner {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate startDate;
+    private Optional<LocalDate> startDate = Optional.empty();
 
-    private Long duration;
+    private Optional<Long> duration = Optional.empty();
 
     public ProjectsV2FieldIterationConfigurationIterationsInner title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -42,16 +41,16 @@ public class ProjectsV2FieldIterationConfigurationIterationsInner {
             description = "The title of the iteration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
     public ProjectsV2FieldIterationConfigurationIterationsInner startDate(LocalDate startDate) {
-        this.startDate = startDate;
+        this.startDate = Optional.ofNullable(startDate);
         return this;
     }
 
@@ -65,16 +64,16 @@ public class ProjectsV2FieldIterationConfigurationIterationsInner {
             description = "The start date of the iteration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_date")
-    public LocalDate getStartDate() {
+    public Optional<LocalDate> getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Optional<LocalDate> startDate) {
         this.startDate = startDate;
     }
 
     public ProjectsV2FieldIterationConfigurationIterationsInner duration(Long duration) {
-        this.duration = duration;
+        this.duration = Optional.ofNullable(duration);
         return this;
     }
 
@@ -87,11 +86,11 @@ public class ProjectsV2FieldIterationConfigurationIterationsInner {
             description = "The duration of the iteration in days.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("duration")
-    public Long getDuration() {
+    public Optional<Long> getDuration() {
         return duration;
     }
 
-    public void setDuration(Long duration) {
+    public void setDuration(Optional<Long> duration) {
         this.duration = duration;
     }
 

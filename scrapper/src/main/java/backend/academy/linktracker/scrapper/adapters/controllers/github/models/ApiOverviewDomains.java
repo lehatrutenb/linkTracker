@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ApiOverviewDomains
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("api_overview_domains")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiOverviewDomains {
 
@@ -36,9 +35,9 @@ public class ApiOverviewDomains {
     @Valid
     private List<String> actions = new ArrayList<>();
 
-    private ApiOverviewDomainsActionsInbound actionsInbound;
+    private Optional<ApiOverviewDomainsActionsInbound> actionsInbound = Optional.empty();
 
-    private ApiOverviewDomainsArtifactAttestations artifactAttestations;
+    private Optional<ApiOverviewDomainsArtifactAttestations> artifactAttestations = Optional.empty();
 
     public ApiOverviewDomains website(List<String> website) {
         this.website = website;
@@ -176,7 +175,7 @@ public class ApiOverviewDomains {
     }
 
     public ApiOverviewDomains actionsInbound(ApiOverviewDomainsActionsInbound actionsInbound) {
-        this.actionsInbound = actionsInbound;
+        this.actionsInbound = Optional.ofNullable(actionsInbound);
         return this;
     }
 
@@ -187,16 +186,16 @@ public class ApiOverviewDomains {
     @Valid
     @Schema(name = "actions_inbound", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actions_inbound")
-    public ApiOverviewDomainsActionsInbound getActionsInbound() {
+    public Optional<ApiOverviewDomainsActionsInbound> getActionsInbound() {
         return actionsInbound;
     }
 
-    public void setActionsInbound(ApiOverviewDomainsActionsInbound actionsInbound) {
+    public void setActionsInbound(Optional<ApiOverviewDomainsActionsInbound> actionsInbound) {
         this.actionsInbound = actionsInbound;
     }
 
     public ApiOverviewDomains artifactAttestations(ApiOverviewDomainsArtifactAttestations artifactAttestations) {
-        this.artifactAttestations = artifactAttestations;
+        this.artifactAttestations = Optional.ofNullable(artifactAttestations);
         return this;
     }
 
@@ -207,11 +206,11 @@ public class ApiOverviewDomains {
     @Valid
     @Schema(name = "artifact_attestations", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("artifact_attestations")
-    public ApiOverviewDomainsArtifactAttestations getArtifactAttestations() {
+    public Optional<ApiOverviewDomainsArtifactAttestations> getArtifactAttestations() {
         return artifactAttestations;
     }
 
-    public void setArtifactAttestations(ApiOverviewDomainsArtifactAttestations artifactAttestations) {
+    public void setArtifactAttestations(Optional<ApiOverviewDomainsArtifactAttestations> artifactAttestations) {
         this.artifactAttestations = artifactAttestations;
     }
 

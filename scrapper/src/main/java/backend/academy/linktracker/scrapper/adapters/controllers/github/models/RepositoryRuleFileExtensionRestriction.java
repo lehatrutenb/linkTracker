@@ -7,9 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Prevent commits that include files with specified file extensions from being pushed to the commit graph.
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-file-extension-restriction")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleFileExtensionRestriction implements OrgRules, RepositoryRule {
 
@@ -60,7 +60,7 @@ public class RepositoryRuleFileExtensionRestriction implements OrgRules, Reposit
 
     private TypeEnum type;
 
-    private RepositoryRuleFileExtensionRestrictionParameters parameters;
+    private Optional<RepositoryRuleFileExtensionRestrictionParameters> parameters = Optional.empty();
 
     public RepositoryRuleFileExtensionRestriction() {
         super();
@@ -95,7 +95,7 @@ public class RepositoryRuleFileExtensionRestriction implements OrgRules, Reposit
 
     public RepositoryRuleFileExtensionRestriction parameters(
             RepositoryRuleFileExtensionRestrictionParameters parameters) {
-        this.parameters = parameters;
+        this.parameters = Optional.ofNullable(parameters);
         return this;
     }
 
@@ -106,11 +106,11 @@ public class RepositoryRuleFileExtensionRestriction implements OrgRules, Reposit
     @Valid
     @Schema(name = "parameters", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("parameters")
-    public RepositoryRuleFileExtensionRestrictionParameters getParameters() {
+    public Optional<RepositoryRuleFileExtensionRestrictionParameters> getParameters() {
         return parameters;
     }
 
-    public void setParameters(RepositoryRuleFileExtensionRestrictionParameters parameters) {
+    public void setParameters(Optional<RepositoryRuleFileExtensionRestrictionParameters> parameters) {
         this.parameters = parameters;
     }
 

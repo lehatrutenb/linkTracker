@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("artifact")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Artifact {
 
@@ -37,17 +38,17 @@ public class Artifact {
     private Boolean expired;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime expiresAt = null;
+    private JsonNullable<OffsetDateTime> expiresAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String digest = null;
+    private JsonNullable<String> digest = JsonNullable.<String>undefined();
 
-    private ArtifactWorkflowRun workflowRun = null;
+    private JsonNullable<ArtifactWorkflowRun> workflowRun = JsonNullable.<ArtifactWorkflowRun>undefined();
 
     public Artifact() {
         super();
@@ -74,9 +75,9 @@ public class Artifact {
         this.url = url;
         this.archiveDownloadUrl = archiveDownloadUrl;
         this.expired = expired;
-        this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
-        this.updatedAt = updatedAt;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.expiresAt = JsonNullable.of(expiresAt);
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public Artifact id(Long id) {
@@ -237,7 +238,7 @@ public class Artifact {
     }
 
     public Artifact createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -249,16 +250,16 @@ public class Artifact {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public Artifact expiresAt(OffsetDateTime expiresAt) {
-        this.expiresAt = expiresAt;
+        this.expiresAt = JsonNullable.of(expiresAt);
         return this;
     }
 
@@ -270,16 +271,16 @@ public class Artifact {
     @Valid
     @Schema(name = "expires_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("expires_at")
-    public OffsetDateTime getExpiresAt() {
+    public JsonNullable<OffsetDateTime> getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(OffsetDateTime expiresAt) {
+    public void setExpiresAt(JsonNullable<OffsetDateTime> expiresAt) {
         this.expiresAt = expiresAt;
     }
 
     public Artifact updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -291,16 +292,16 @@ public class Artifact {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public Artifact digest(String digest) {
-        this.digest = digest;
+        this.digest = JsonNullable.of(digest);
         return this;
     }
 
@@ -315,16 +316,16 @@ public class Artifact {
                     "The SHA256 digest of the artifact. This field will only be populated on artifacts uploaded with upload-artifact v4 or newer. For older versions, this field will be null.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("digest")
-    public String getDigest() {
+    public JsonNullable<String> getDigest() {
         return digest;
     }
 
-    public void setDigest(String digest) {
+    public void setDigest(JsonNullable<String> digest) {
         this.digest = digest;
     }
 
     public Artifact workflowRun(ArtifactWorkflowRun workflowRun) {
-        this.workflowRun = workflowRun;
+        this.workflowRun = JsonNullable.of(workflowRun);
         return this;
     }
 
@@ -335,11 +336,11 @@ public class Artifact {
     @Valid
     @Schema(name = "workflow_run", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("workflow_run")
-    public ArtifactWorkflowRun getWorkflowRun() {
+    public JsonNullable<ArtifactWorkflowRun> getWorkflowRun() {
         return workflowRun;
     }
 
-    public void setWorkflowRun(ArtifactWorkflowRun workflowRun) {
+    public void setWorkflowRun(JsonNullable<ArtifactWorkflowRun> workflowRun) {
         this.workflowRun = workflowRun;
     }
 
@@ -362,8 +363,13 @@ public class Artifact {
                 && Objects.equals(this.createdAt, artifact.createdAt)
                 && Objects.equals(this.expiresAt, artifact.expiresAt)
                 && Objects.equals(this.updatedAt, artifact.updatedAt)
-                && Objects.equals(this.digest, artifact.digest)
-                && Objects.equals(this.workflowRun, artifact.workflowRun);
+                && equalsNullable(this.digest, artifact.digest)
+                && equalsNullable(this.workflowRun, artifact.workflowRun);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -379,8 +385,15 @@ public class Artifact {
                 createdAt,
                 expiresAt,
                 updatedAt,
-                digest,
-                workflowRun);
+                hashCodeNullable(digest),
+                hashCodeNullable(workflowRun));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

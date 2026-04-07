@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * FileCommitContentLinks
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("file_commit_content__links")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FileCommitContentLinks {
 
-    private String self;
+    private Optional<String> self = Optional.empty();
 
-    private String git;
+    private Optional<String> git = Optional.empty();
 
-    private String html;
+    private Optional<String> html = Optional.empty();
 
     public FileCommitContentLinks self(String self) {
-        this.self = self;
+        this.self = Optional.ofNullable(self);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class FileCommitContentLinks {
      */
     @Schema(name = "self", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("self")
-    public String getSelf() {
+    public Optional<String> getSelf() {
         return self;
     }
 
-    public void setSelf(String self) {
+    public void setSelf(Optional<String> self) {
         this.self = self;
     }
 
     public FileCommitContentLinks git(String git) {
-        this.git = git;
+        this.git = Optional.ofNullable(git);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class FileCommitContentLinks {
      */
     @Schema(name = "git", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git")
-    public String getGit() {
+    public Optional<String> getGit() {
         return git;
     }
 
-    public void setGit(String git) {
+    public void setGit(Optional<String> git) {
         this.git = git;
     }
 
     public FileCommitContentLinks html(String html) {
-        this.html = html;
+        this.html = Optional.ofNullable(html);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class FileCommitContentLinks {
      */
     @Schema(name = "html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html")
-    public String getHtml() {
+    public Optional<String> getHtml() {
         return html;
     }
 
-    public void setHtml(String html) {
+    public void setHtml(Optional<String> html) {
         this.html = html;
     }
 

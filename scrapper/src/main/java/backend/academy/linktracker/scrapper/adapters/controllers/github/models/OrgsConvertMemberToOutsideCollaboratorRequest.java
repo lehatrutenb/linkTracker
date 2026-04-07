@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsConvertMemberToOutsideCollaboratorRequest
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("orgs_convert_member_to_outside_collaborator_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsConvertMemberToOutsideCollaboratorRequest {
 
-    private Boolean async = false;
+    private Optional<Boolean> async = Optional.of(false);
 
     public OrgsConvertMemberToOutsideCollaboratorRequest async(Boolean async) {
-        this.async = async;
+        this.async = Optional.ofNullable(async);
         return this;
     }
 
@@ -35,11 +34,11 @@ public class OrgsConvertMemberToOutsideCollaboratorRequest {
                     "When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("async")
-    public Boolean getAsync() {
+    public Optional<Boolean> getAsync() {
         return async;
     }
 
-    public void setAsync(Boolean async) {
+    public void setAsync(Optional<Boolean> async) {
         this.async = async;
     }
 

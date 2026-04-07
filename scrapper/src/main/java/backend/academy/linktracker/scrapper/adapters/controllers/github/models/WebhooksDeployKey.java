@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The [&#x60;deploy key&#x60;](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource.
@@ -20,11 +22,11 @@ import java.util.Objects;
 @JsonTypeName("webhooks_deploy_key")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksDeployKey {
 
-    private String addedBy = null;
+    private JsonNullable<String> addedBy = JsonNullable.<String>undefined();
 
     private String createdAt;
 
@@ -32,7 +34,7 @@ public class WebhooksDeployKey {
 
     private String key;
 
-    private String lastUsed = null;
+    private JsonNullable<String> lastUsed = JsonNullable.<String>undefined();
 
     private Boolean readOnly;
 
@@ -42,7 +44,7 @@ public class WebhooksDeployKey {
 
     private Boolean verified;
 
-    private Boolean enabled;
+    private Optional<Boolean> enabled = Optional.empty();
 
     public WebhooksDeployKey() {
         super();
@@ -63,7 +65,7 @@ public class WebhooksDeployKey {
     }
 
     public WebhooksDeployKey addedBy(String addedBy) {
-        this.addedBy = addedBy;
+        this.addedBy = JsonNullable.of(addedBy);
         return this;
     }
 
@@ -73,11 +75,11 @@ public class WebhooksDeployKey {
      */
     @Schema(name = "added_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("added_by")
-    public String getAddedBy() {
+    public JsonNullable<String> getAddedBy() {
         return addedBy;
     }
 
-    public void setAddedBy(String addedBy) {
+    public void setAddedBy(JsonNullable<String> addedBy) {
         this.addedBy = addedBy;
     }
 
@@ -142,7 +144,7 @@ public class WebhooksDeployKey {
     }
 
     public WebhooksDeployKey lastUsed(String lastUsed) {
-        this.lastUsed = lastUsed;
+        this.lastUsed = JsonNullable.of(lastUsed);
         return this;
     }
 
@@ -152,11 +154,11 @@ public class WebhooksDeployKey {
      */
     @Schema(name = "last_used", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_used")
-    public String getLastUsed() {
+    public JsonNullable<String> getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(String lastUsed) {
+    public void setLastUsed(JsonNullable<String> lastUsed) {
         this.lastUsed = lastUsed;
     }
 
@@ -242,7 +244,7 @@ public class WebhooksDeployKey {
     }
 
     public WebhooksDeployKey enabled(Boolean enabled) {
-        this.enabled = enabled;
+        this.enabled = Optional.ofNullable(enabled);
         return this;
     }
 
@@ -252,11 +254,11 @@ public class WebhooksDeployKey {
      */
     @Schema(name = "enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enabled")
-    public Boolean getEnabled() {
+    public Optional<Boolean> getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(Optional<Boolean> enabled) {
         this.enabled = enabled;
     }
 
@@ -269,11 +271,11 @@ public class WebhooksDeployKey {
             return false;
         }
         WebhooksDeployKey webhooksDeployKey = (WebhooksDeployKey) o;
-        return Objects.equals(this.addedBy, webhooksDeployKey.addedBy)
+        return equalsNullable(this.addedBy, webhooksDeployKey.addedBy)
                 && Objects.equals(this.createdAt, webhooksDeployKey.createdAt)
                 && Objects.equals(this.id, webhooksDeployKey.id)
                 && Objects.equals(this.key, webhooksDeployKey.key)
-                && Objects.equals(this.lastUsed, webhooksDeployKey.lastUsed)
+                && equalsNullable(this.lastUsed, webhooksDeployKey.lastUsed)
                 && Objects.equals(this.readOnly, webhooksDeployKey.readOnly)
                 && Objects.equals(this.title, webhooksDeployKey.title)
                 && Objects.equals(this.url, webhooksDeployKey.url)
@@ -281,9 +283,31 @@ public class WebhooksDeployKey {
                 && Objects.equals(this.enabled, webhooksDeployKey.enabled);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(addedBy, createdAt, id, key, lastUsed, readOnly, title, url, verified, enabled);
+        return Objects.hash(
+                hashCodeNullable(addedBy),
+                createdAt,
+                id,
+                key,
+                hashCodeNullable(lastUsed),
+                readOnly,
+                title,
+                url,
+                verified,
+                enabled);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

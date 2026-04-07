@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsCreateReviewRequestCommentsInner
@@ -14,23 +14,23 @@ import java.util.Objects;
 @JsonTypeName("pulls_create_review_request_comments_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsCreateReviewRequestCommentsInner {
 
     private String path;
 
-    private Long position;
+    private Optional<Long> position = Optional.empty();
 
     private String body;
 
-    private Long line;
+    private Optional<Long> line = Optional.empty();
 
-    private String side;
+    private Optional<String> side = Optional.empty();
 
-    private Long startLine;
+    private Optional<Long> startLine = Optional.empty();
 
-    private String startSide;
+    private Optional<String> startSide = Optional.empty();
 
     public PullsCreateReviewRequestCommentsInner() {
         super();
@@ -68,7 +68,7 @@ public class PullsCreateReviewRequestCommentsInner {
     }
 
     public PullsCreateReviewRequestCommentsInner position(Long position) {
-        this.position = position;
+        this.position = Optional.ofNullable(position);
         return this;
     }
 
@@ -82,11 +82,11 @@ public class PullsCreateReviewRequestCommentsInner {
                     "The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first \"@@\" hunk header in the file you want to add a comment. The line just below the \"@@\" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public Optional<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(Optional<Long> position) {
         this.position = position;
     }
 
@@ -111,7 +111,7 @@ public class PullsCreateReviewRequestCommentsInner {
     }
 
     public PullsCreateReviewRequestCommentsInner line(Long line) {
-        this.line = line;
+        this.line = Optional.ofNullable(line);
         return this;
     }
 
@@ -121,16 +121,16 @@ public class PullsCreateReviewRequestCommentsInner {
      */
     @Schema(name = "line", example = "28", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public Optional<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(Optional<Long> line) {
         this.line = line;
     }
 
     public PullsCreateReviewRequestCommentsInner side(String side) {
-        this.side = side;
+        this.side = Optional.ofNullable(side);
         return this;
     }
 
@@ -140,16 +140,16 @@ public class PullsCreateReviewRequestCommentsInner {
      */
     @Schema(name = "side", example = "RIGHT", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("side")
-    public String getSide() {
+    public Optional<String> getSide() {
         return side;
     }
 
-    public void setSide(String side) {
+    public void setSide(Optional<String> side) {
         this.side = side;
     }
 
     public PullsCreateReviewRequestCommentsInner startLine(Long startLine) {
-        this.startLine = startLine;
+        this.startLine = Optional.ofNullable(startLine);
         return this;
     }
 
@@ -159,16 +159,16 @@ public class PullsCreateReviewRequestCommentsInner {
      */
     @Schema(name = "start_line", example = "26", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_line")
-    public Long getStartLine() {
+    public Optional<Long> getStartLine() {
         return startLine;
     }
 
-    public void setStartLine(Long startLine) {
+    public void setStartLine(Optional<Long> startLine) {
         this.startLine = startLine;
     }
 
     public PullsCreateReviewRequestCommentsInner startSide(String startSide) {
-        this.startSide = startSide;
+        this.startSide = Optional.ofNullable(startSide);
         return this;
     }
 
@@ -178,11 +178,11 @@ public class PullsCreateReviewRequestCommentsInner {
      */
     @Schema(name = "start_side", example = "LEFT", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_side")
-    public String getStartSide() {
+    public Optional<String> getStartSide() {
         return startSide;
     }
 
-    public void setStartSide(String startSide) {
+    public void setStartSide(Optional<String> startSide) {
         this.startSide = startSide;
     }
 

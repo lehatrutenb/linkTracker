@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,24 +21,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_milestone")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksMilestone {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private Long closedIssues;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private User4 creator = null;
+    private JsonNullable<User4> creator = JsonNullable.<User4>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime dueOn = null;
+    private JsonNullable<OffsetDateTime> dueOn = JsonNullable.<OffsetDateTime>undefined();
 
     private URI htmlUrl;
 
@@ -120,12 +120,12 @@ public class WebhooksMilestone {
             String title,
             OffsetDateTime updatedAt,
             URI url) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         this.closedIssues = closedIssues;
         this.createdAt = createdAt;
-        this.creator = creator;
-        this.description = description;
-        this.dueOn = dueOn;
+        this.creator = JsonNullable.of(creator);
+        this.description = JsonNullable.of(description);
+        this.dueOn = JsonNullable.of(dueOn);
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.labelsUrl = labelsUrl;
@@ -139,7 +139,7 @@ public class WebhooksMilestone {
     }
 
     public WebhooksMilestone closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -151,11 +151,11 @@ public class WebhooksMilestone {
     @Valid
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -201,7 +201,7 @@ public class WebhooksMilestone {
     }
 
     public WebhooksMilestone creator(User4 creator) {
-        this.creator = creator;
+        this.creator = JsonNullable.of(creator);
         return this;
     }
 
@@ -213,16 +213,16 @@ public class WebhooksMilestone {
     @Valid
     @Schema(name = "creator", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("creator")
-    public User4 getCreator() {
+    public JsonNullable<User4> getCreator() {
         return creator;
     }
 
-    public void setCreator(User4 creator) {
+    public void setCreator(JsonNullable<User4> creator) {
         this.creator = creator;
     }
 
     public WebhooksMilestone description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -233,16 +233,16 @@ public class WebhooksMilestone {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public WebhooksMilestone dueOn(OffsetDateTime dueOn) {
-        this.dueOn = dueOn;
+        this.dueOn = JsonNullable.of(dueOn);
         return this;
     }
 
@@ -254,11 +254,11 @@ public class WebhooksMilestone {
     @Valid
     @Schema(name = "due_on", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("due_on")
-    public OffsetDateTime getDueOn() {
+    public JsonNullable<OffsetDateTime> getDueOn() {
         return dueOn;
     }
 
-    public void setDueOn(OffsetDateTime dueOn) {
+    public void setDueOn(JsonNullable<OffsetDateTime> dueOn) {
         this.dueOn = dueOn;
     }
 

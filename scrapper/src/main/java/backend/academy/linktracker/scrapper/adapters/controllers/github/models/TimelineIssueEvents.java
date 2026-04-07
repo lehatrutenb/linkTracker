@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("timeline-issue-events")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TimelineIssueEvents {
 
@@ -35,13 +33,13 @@ public class TimelineIssueEvents {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     private LabeledIssueEventLabel label;
 
@@ -51,36 +49,36 @@ public class TimelineIssueEvents {
 
     private SimpleUser reviewRequester;
 
-    private Team requestedTeam;
+    private Optional<Team> requestedTeam = Optional.empty();
 
-    private SimpleUser requestedReviewer;
+    private Optional<SimpleUser> requestedReviewer = Optional.empty();
 
     private ReviewDismissedIssueEventDismissedReview dismissedReview;
 
-    private String lockReason = null;
+    private JsonNullable<String> lockReason = JsonNullable.<String>undefined();
 
-    private AddedToProjectIssueEventProjectCard projectCard;
+    private Optional<AddedToProjectIssueEventProjectCard> projectCard = Optional.empty();
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private String bodyText;
+    private Optional<String> bodyText = Optional.empty();
 
-    private String bodyHtml;
+    private Optional<String> bodyHtml = Optional.empty();
 
     private URI htmlUrl;
 
     private SimpleUser user;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     private URI issueUrl;
 
     private AuthorAssociation authorAssociation;
 
-    private ReactionRollup reactions;
+    private Optional<ReactionRollup> reactions = Optional.empty();
 
-    private NullablePinnedIssueComment pin = null;
+    private JsonNullable<NullablePinnedIssueComment> pin = JsonNullable.<NullablePinnedIssueComment>undefined();
 
     private TimelineCrossReferencedEventSource source;
 
@@ -106,14 +104,14 @@ public class TimelineIssueEvents {
     private TimelineReviewedEventLinks links;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime submittedAt;
+    private Optional<OffsetDateTime> submittedAt = Optional.empty();
 
     @Valid
     private List<@Valid CommitComment> comments = new ArrayList<>();
 
     private SimpleUser assignee;
 
-    private String stateReason = null;
+    private JsonNullable<String> stateReason = JsonNullable.<String>undefined();
 
     public TimelineIssueEvents() {
         super();
@@ -161,20 +159,20 @@ public class TimelineIssueEvents {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         this.label = label;
         this.milestone = milestone;
         this.rename = rename;
         this.reviewRequester = reviewRequester;
         this.dismissedReview = dismissedReview;
-        this.lockReason = lockReason;
-        this.body = body;
+        this.lockReason = JsonNullable.of(lockReason);
+        this.body = JsonNullable.of(body);
         this.htmlUrl = htmlUrl;
         this.user = user;
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         this.issueUrl = issueUrl;
         this.authorAssociation = authorAssociation;
         this.source = source;
@@ -293,7 +291,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -304,16 +302,16 @@ public class TimelineIssueEvents {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public TimelineIssueEvents commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -324,11 +322,11 @@ public class TimelineIssueEvents {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -353,7 +351,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -365,11 +363,11 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -458,7 +456,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents requestedTeam(Team requestedTeam) {
-        this.requestedTeam = requestedTeam;
+        this.requestedTeam = Optional.ofNullable(requestedTeam);
         return this;
     }
 
@@ -469,16 +467,16 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "requested_team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_team")
-    public Team getRequestedTeam() {
+    public Optional<Team> getRequestedTeam() {
         return requestedTeam;
     }
 
-    public void setRequestedTeam(Team requestedTeam) {
+    public void setRequestedTeam(Optional<Team> requestedTeam) {
         this.requestedTeam = requestedTeam;
     }
 
     public TimelineIssueEvents requestedReviewer(SimpleUser requestedReviewer) {
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = Optional.ofNullable(requestedReviewer);
         return this;
     }
 
@@ -489,11 +487,11 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "requested_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_reviewer")
-    public SimpleUser getRequestedReviewer() {
+    public Optional<SimpleUser> getRequestedReviewer() {
         return requestedReviewer;
     }
 
-    public void setRequestedReviewer(SimpleUser requestedReviewer) {
+    public void setRequestedReviewer(Optional<SimpleUser> requestedReviewer) {
         this.requestedReviewer = requestedReviewer;
     }
 
@@ -519,7 +517,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents lockReason(String lockReason) {
-        this.lockReason = lockReason;
+        this.lockReason = JsonNullable.of(lockReason);
         return this;
     }
 
@@ -530,16 +528,16 @@ public class TimelineIssueEvents {
     @NotNull
     @Schema(name = "lock_reason", example = "\"off-topic\"", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("lock_reason")
-    public String getLockReason() {
+    public JsonNullable<String> getLockReason() {
         return lockReason;
     }
 
-    public void setLockReason(String lockReason) {
+    public void setLockReason(JsonNullable<String> lockReason) {
         this.lockReason = lockReason;
     }
 
     public TimelineIssueEvents projectCard(AddedToProjectIssueEventProjectCard projectCard) {
-        this.projectCard = projectCard;
+        this.projectCard = Optional.ofNullable(projectCard);
         return this;
     }
 
@@ -550,16 +548,16 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "project_card", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_card")
-    public AddedToProjectIssueEventProjectCard getProjectCard() {
+    public Optional<AddedToProjectIssueEventProjectCard> getProjectCard() {
         return projectCard;
     }
 
-    public void setProjectCard(AddedToProjectIssueEventProjectCard projectCard) {
+    public void setProjectCard(Optional<AddedToProjectIssueEventProjectCard> projectCard) {
         this.projectCard = projectCard;
     }
 
     public TimelineIssueEvents body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -574,16 +572,16 @@ public class TimelineIssueEvents {
             description = "The text of the review.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public TimelineIssueEvents bodyText(String bodyText) {
-        this.bodyText = bodyText;
+        this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
 
@@ -593,16 +591,16 @@ public class TimelineIssueEvents {
      */
     @Schema(name = "body_text", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_text")
-    public String getBodyText() {
+    public Optional<String> getBodyText() {
         return bodyText;
     }
 
-    public void setBodyText(String bodyText) {
+    public void setBodyText(Optional<String> bodyText) {
         this.bodyText = bodyText;
     }
 
     public TimelineIssueEvents bodyHtml(String bodyHtml) {
-        this.bodyHtml = bodyHtml;
+        this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
 
@@ -612,11 +610,11 @@ public class TimelineIssueEvents {
      */
     @Schema(name = "body_html", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body_html")
-    public String getBodyHtml() {
+    public Optional<String> getBodyHtml() {
         return bodyHtml;
     }
 
-    public void setBodyHtml(String bodyHtml) {
+    public void setBodyHtml(Optional<String> bodyHtml) {
         this.bodyHtml = bodyHtml;
     }
 
@@ -666,7 +664,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -678,11 +676,11 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -729,7 +727,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents reactions(ReactionRollup reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -740,16 +738,16 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public ReactionRollup getReactions() {
+    public Optional<ReactionRollup> getReactions() {
         return reactions;
     }
 
-    public void setReactions(ReactionRollup reactions) {
+    public void setReactions(Optional<ReactionRollup> reactions) {
         this.reactions = reactions;
     }
 
     public TimelineIssueEvents pin(NullablePinnedIssueComment pin) {
-        this.pin = pin;
+        this.pin = JsonNullable.of(pin);
         return this;
     }
 
@@ -760,11 +758,11 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "pin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pin")
-    public NullablePinnedIssueComment getPin() {
+    public JsonNullable<NullablePinnedIssueComment> getPin() {
         return pin;
     }
 
-    public void setPin(NullablePinnedIssueComment pin) {
+    public void setPin(JsonNullable<NullablePinnedIssueComment> pin) {
         this.pin = pin;
     }
 
@@ -1016,7 +1014,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents submittedAt(OffsetDateTime submittedAt) {
-        this.submittedAt = submittedAt;
+        this.submittedAt = Optional.ofNullable(submittedAt);
         return this;
     }
 
@@ -1027,11 +1025,11 @@ public class TimelineIssueEvents {
     @Valid
     @Schema(name = "submitted_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("submitted_at")
-    public OffsetDateTime getSubmittedAt() {
+    public Optional<OffsetDateTime> getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(OffsetDateTime submittedAt) {
+    public void setSubmittedAt(Optional<OffsetDateTime> submittedAt) {
         this.submittedAt = submittedAt;
     }
 
@@ -1085,7 +1083,7 @@ public class TimelineIssueEvents {
     }
 
     public TimelineIssueEvents stateReason(String stateReason) {
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         return this;
     }
 
@@ -1095,11 +1093,11 @@ public class TimelineIssueEvents {
      */
     @Schema(name = "state_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state_reason")
-    public String getStateReason() {
+    public JsonNullable<String> getStateReason() {
         return stateReason;
     }
 
-    public void setStateReason(String stateReason) {
+    public void setStateReason(JsonNullable<String> stateReason) {
         this.stateReason = stateReason;
     }
 
@@ -1139,7 +1137,7 @@ public class TimelineIssueEvents {
                 && Objects.equals(this.issueUrl, timelineIssueEvents.issueUrl)
                 && Objects.equals(this.authorAssociation, timelineIssueEvents.authorAssociation)
                 && Objects.equals(this.reactions, timelineIssueEvents.reactions)
-                && Objects.equals(this.pin, timelineIssueEvents.pin)
+                && equalsNullable(this.pin, timelineIssueEvents.pin)
                 && Objects.equals(this.source, timelineIssueEvents.source)
                 && Objects.equals(this.sha, timelineIssueEvents.sha)
                 && Objects.equals(this.author, timelineIssueEvents.author)
@@ -1154,7 +1152,12 @@ public class TimelineIssueEvents {
                 && Objects.equals(this.submittedAt, timelineIssueEvents.submittedAt)
                 && Objects.equals(this.comments, timelineIssueEvents.comments)
                 && Objects.equals(this.assignee, timelineIssueEvents.assignee)
-                && Objects.equals(this.stateReason, timelineIssueEvents.stateReason);
+                && equalsNullable(this.stateReason, timelineIssueEvents.stateReason);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1187,7 +1190,7 @@ public class TimelineIssueEvents {
                 issueUrl,
                 authorAssociation,
                 reactions,
-                pin,
+                hashCodeNullable(pin),
                 source,
                 sha,
                 author,
@@ -1202,7 +1205,14 @@ public class TimelineIssueEvents {
                 submittedAt,
                 comments,
                 assignee,
-                stateReason);
+                hashCodeNullable(stateReason));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

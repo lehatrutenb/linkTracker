@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposGenerateReleaseNotesRequest
@@ -14,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("repos_generate_release_notes_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposGenerateReleaseNotesRequest {
 
     private String tagName;
 
-    private String targetCommitish;
+    private Optional<String> targetCommitish = Optional.empty();
 
-    private String previousTagName;
+    private Optional<String> previousTagName = Optional.empty();
 
-    private String configurationFilePath;
+    private Optional<String> configurationFilePath = Optional.empty();
 
     public ReposGenerateReleaseNotesRequest() {
         super();
@@ -61,7 +61,7 @@ public class ReposGenerateReleaseNotesRequest {
     }
 
     public ReposGenerateReleaseNotesRequest targetCommitish(String targetCommitish) {
-        this.targetCommitish = targetCommitish;
+        this.targetCommitish = Optional.ofNullable(targetCommitish);
         return this;
     }
 
@@ -75,16 +75,16 @@ public class ReposGenerateReleaseNotesRequest {
                     "Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_commitish")
-    public String getTargetCommitish() {
+    public Optional<String> getTargetCommitish() {
         return targetCommitish;
     }
 
-    public void setTargetCommitish(String targetCommitish) {
+    public void setTargetCommitish(Optional<String> targetCommitish) {
         this.targetCommitish = targetCommitish;
     }
 
     public ReposGenerateReleaseNotesRequest previousTagName(String previousTagName) {
-        this.previousTagName = previousTagName;
+        this.previousTagName = Optional.ofNullable(previousTagName);
         return this;
     }
 
@@ -98,16 +98,16 @@ public class ReposGenerateReleaseNotesRequest {
                     "The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("previous_tag_name")
-    public String getPreviousTagName() {
+    public Optional<String> getPreviousTagName() {
         return previousTagName;
     }
 
-    public void setPreviousTagName(String previousTagName) {
+    public void setPreviousTagName(Optional<String> previousTagName) {
         this.previousTagName = previousTagName;
     }
 
     public ReposGenerateReleaseNotesRequest configurationFilePath(String configurationFilePath) {
-        this.configurationFilePath = configurationFilePath;
+        this.configurationFilePath = Optional.ofNullable(configurationFilePath);
         return this;
     }
 
@@ -121,11 +121,11 @@ public class ReposGenerateReleaseNotesRequest {
                     "Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("configuration_file_path")
-    public String getConfigurationFilePath() {
+    public Optional<String> getConfigurationFilePath() {
         return configurationFilePath;
     }
 
-    public void setConfigurationFilePath(String configurationFilePath) {
+    public void setConfigurationFilePath(Optional<String> configurationFilePath) {
         this.configurationFilePath = configurationFilePath;
     }
 

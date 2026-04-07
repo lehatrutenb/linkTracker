@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueEvent {
 
@@ -29,44 +31,44 @@ public class IssueEvent {
 
     private URI url;
 
-    private NullableSimpleUser actor = null;
+    private JsonNullable<NullableSimpleUser> actor = JsonNullable.<NullableSimpleUser>undefined();
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private NullableIssue issue = null;
+    private JsonNullable<NullableIssue> issue = JsonNullable.<NullableIssue>undefined();
 
-    private IssueEventLabel label;
+    private Optional<IssueEventLabel> label = Optional.empty();
 
-    private NullableSimpleUser assignee = null;
+    private JsonNullable<NullableSimpleUser> assignee = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableSimpleUser assigner = null;
+    private JsonNullable<NullableSimpleUser> assigner = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableSimpleUser reviewRequester = null;
+    private JsonNullable<NullableSimpleUser> reviewRequester = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableSimpleUser requestedReviewer = null;
+    private JsonNullable<NullableSimpleUser> requestedReviewer = JsonNullable.<NullableSimpleUser>undefined();
 
-    private Team requestedTeam;
+    private Optional<Team> requestedTeam = Optional.empty();
 
-    private IssueEventDismissedReview dismissedReview;
+    private Optional<IssueEventDismissedReview> dismissedReview = Optional.empty();
 
-    private IssueEventMilestone milestone;
+    private Optional<IssueEventMilestone> milestone = Optional.empty();
 
-    private IssueEventProjectCard projectCard;
+    private Optional<IssueEventProjectCard> projectCard = Optional.empty();
 
-    private IssueEventRename rename;
+    private Optional<IssueEventRename> rename = Optional.empty();
 
-    private AuthorAssociation authorAssociation;
+    private Optional<AuthorAssociation> authorAssociation = Optional.empty();
 
-    private String lockReason = null;
+    private JsonNullable<String> lockReason = JsonNullable.<String>undefined();
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
     public IssueEvent() {
         super();
@@ -87,10 +89,10 @@ public class IssueEvent {
         this.id = id;
         this.nodeId = nodeId;
         this.url = url;
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
     }
 
@@ -159,7 +161,7 @@ public class IssueEvent {
     }
 
     public IssueEvent actor(NullableSimpleUser actor) {
-        this.actor = actor;
+        this.actor = JsonNullable.of(actor);
         return this;
     }
 
@@ -171,11 +173,11 @@ public class IssueEvent {
     @Valid
     @Schema(name = "actor", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("actor")
-    public NullableSimpleUser getActor() {
+    public JsonNullable<NullableSimpleUser> getActor() {
         return actor;
     }
 
-    public void setActor(NullableSimpleUser actor) {
+    public void setActor(JsonNullable<NullableSimpleUser> actor) {
         this.actor = actor;
     }
 
@@ -200,7 +202,7 @@ public class IssueEvent {
     }
 
     public IssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -214,16 +216,16 @@ public class IssueEvent {
             example = "6dcb09b5b57875f334f61aebed695e2e4193db5e",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public IssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -238,11 +240,11 @@ public class IssueEvent {
                     "https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -268,7 +270,7 @@ public class IssueEvent {
     }
 
     public IssueEvent issue(NullableIssue issue) {
-        this.issue = issue;
+        this.issue = JsonNullable.of(issue);
         return this;
     }
 
@@ -279,16 +281,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "issue", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue")
-    public NullableIssue getIssue() {
+    public JsonNullable<NullableIssue> getIssue() {
         return issue;
     }
 
-    public void setIssue(NullableIssue issue) {
+    public void setIssue(JsonNullable<NullableIssue> issue) {
         this.issue = issue;
     }
 
     public IssueEvent label(IssueEventLabel label) {
-        this.label = label;
+        this.label = Optional.ofNullable(label);
         return this;
     }
 
@@ -299,16 +301,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "label", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("label")
-    public IssueEventLabel getLabel() {
+    public Optional<IssueEventLabel> getLabel() {
         return label;
     }
 
-    public void setLabel(IssueEventLabel label) {
+    public void setLabel(Optional<IssueEventLabel> label) {
         this.label = label;
     }
 
     public IssueEvent assignee(NullableSimpleUser assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -319,16 +321,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public NullableSimpleUser getAssignee() {
+    public JsonNullable<NullableSimpleUser> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(NullableSimpleUser assignee) {
+    public void setAssignee(JsonNullable<NullableSimpleUser> assignee) {
         this.assignee = assignee;
     }
 
     public IssueEvent assigner(NullableSimpleUser assigner) {
-        this.assigner = assigner;
+        this.assigner = JsonNullable.of(assigner);
         return this;
     }
 
@@ -339,16 +341,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "assigner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assigner")
-    public NullableSimpleUser getAssigner() {
+    public JsonNullable<NullableSimpleUser> getAssigner() {
         return assigner;
     }
 
-    public void setAssigner(NullableSimpleUser assigner) {
+    public void setAssigner(JsonNullable<NullableSimpleUser> assigner) {
         this.assigner = assigner;
     }
 
     public IssueEvent reviewRequester(NullableSimpleUser reviewRequester) {
-        this.reviewRequester = reviewRequester;
+        this.reviewRequester = JsonNullable.of(reviewRequester);
         return this;
     }
 
@@ -359,16 +361,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "review_requester", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("review_requester")
-    public NullableSimpleUser getReviewRequester() {
+    public JsonNullable<NullableSimpleUser> getReviewRequester() {
         return reviewRequester;
     }
 
-    public void setReviewRequester(NullableSimpleUser reviewRequester) {
+    public void setReviewRequester(JsonNullable<NullableSimpleUser> reviewRequester) {
         this.reviewRequester = reviewRequester;
     }
 
     public IssueEvent requestedReviewer(NullableSimpleUser requestedReviewer) {
-        this.requestedReviewer = requestedReviewer;
+        this.requestedReviewer = JsonNullable.of(requestedReviewer);
         return this;
     }
 
@@ -379,16 +381,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "requested_reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_reviewer")
-    public NullableSimpleUser getRequestedReviewer() {
+    public JsonNullable<NullableSimpleUser> getRequestedReviewer() {
         return requestedReviewer;
     }
 
-    public void setRequestedReviewer(NullableSimpleUser requestedReviewer) {
+    public void setRequestedReviewer(JsonNullable<NullableSimpleUser> requestedReviewer) {
         this.requestedReviewer = requestedReviewer;
     }
 
     public IssueEvent requestedTeam(Team requestedTeam) {
-        this.requestedTeam = requestedTeam;
+        this.requestedTeam = Optional.ofNullable(requestedTeam);
         return this;
     }
 
@@ -399,16 +401,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "requested_team", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("requested_team")
-    public Team getRequestedTeam() {
+    public Optional<Team> getRequestedTeam() {
         return requestedTeam;
     }
 
-    public void setRequestedTeam(Team requestedTeam) {
+    public void setRequestedTeam(Optional<Team> requestedTeam) {
         this.requestedTeam = requestedTeam;
     }
 
     public IssueEvent dismissedReview(IssueEventDismissedReview dismissedReview) {
-        this.dismissedReview = dismissedReview;
+        this.dismissedReview = Optional.ofNullable(dismissedReview);
         return this;
     }
 
@@ -419,16 +421,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "dismissed_review", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissed_review")
-    public IssueEventDismissedReview getDismissedReview() {
+    public Optional<IssueEventDismissedReview> getDismissedReview() {
         return dismissedReview;
     }
 
-    public void setDismissedReview(IssueEventDismissedReview dismissedReview) {
+    public void setDismissedReview(Optional<IssueEventDismissedReview> dismissedReview) {
         this.dismissedReview = dismissedReview;
     }
 
     public IssueEvent milestone(IssueEventMilestone milestone) {
-        this.milestone = milestone;
+        this.milestone = Optional.ofNullable(milestone);
         return this;
     }
 
@@ -439,16 +441,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("milestone")
-    public IssueEventMilestone getMilestone() {
+    public Optional<IssueEventMilestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(IssueEventMilestone milestone) {
+    public void setMilestone(Optional<IssueEventMilestone> milestone) {
         this.milestone = milestone;
     }
 
     public IssueEvent projectCard(IssueEventProjectCard projectCard) {
-        this.projectCard = projectCard;
+        this.projectCard = Optional.ofNullable(projectCard);
         return this;
     }
 
@@ -459,16 +461,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "project_card", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_card")
-    public IssueEventProjectCard getProjectCard() {
+    public Optional<IssueEventProjectCard> getProjectCard() {
         return projectCard;
     }
 
-    public void setProjectCard(IssueEventProjectCard projectCard) {
+    public void setProjectCard(Optional<IssueEventProjectCard> projectCard) {
         this.projectCard = projectCard;
     }
 
     public IssueEvent rename(IssueEventRename rename) {
-        this.rename = rename;
+        this.rename = Optional.ofNullable(rename);
         return this;
     }
 
@@ -479,16 +481,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "rename", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rename")
-    public IssueEventRename getRename() {
+    public Optional<IssueEventRename> getRename() {
         return rename;
     }
 
-    public void setRename(IssueEventRename rename) {
+    public void setRename(Optional<IssueEventRename> rename) {
         this.rename = rename;
     }
 
     public IssueEvent authorAssociation(AuthorAssociation authorAssociation) {
-        this.authorAssociation = authorAssociation;
+        this.authorAssociation = Optional.ofNullable(authorAssociation);
         return this;
     }
 
@@ -499,16 +501,16 @@ public class IssueEvent {
     @Valid
     @Schema(name = "author_association", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author_association")
-    public AuthorAssociation getAuthorAssociation() {
+    public Optional<AuthorAssociation> getAuthorAssociation() {
         return authorAssociation;
     }
 
-    public void setAuthorAssociation(AuthorAssociation authorAssociation) {
+    public void setAuthorAssociation(Optional<AuthorAssociation> authorAssociation) {
         this.authorAssociation = authorAssociation;
     }
 
     public IssueEvent lockReason(String lockReason) {
-        this.lockReason = lockReason;
+        this.lockReason = JsonNullable.of(lockReason);
         return this;
     }
 
@@ -518,16 +520,16 @@ public class IssueEvent {
      */
     @Schema(name = "lock_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("lock_reason")
-    public String getLockReason() {
+    public JsonNullable<String> getLockReason() {
         return lockReason;
     }
 
-    public void setLockReason(String lockReason) {
+    public void setLockReason(JsonNullable<String> lockReason) {
         this.lockReason = lockReason;
     }
 
     public IssueEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -538,11 +540,11 @@ public class IssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
@@ -563,20 +565,25 @@ public class IssueEvent {
                 && Objects.equals(this.commitId, issueEvent.commitId)
                 && Objects.equals(this.commitUrl, issueEvent.commitUrl)
                 && Objects.equals(this.createdAt, issueEvent.createdAt)
-                && Objects.equals(this.issue, issueEvent.issue)
+                && equalsNullable(this.issue, issueEvent.issue)
                 && Objects.equals(this.label, issueEvent.label)
-                && Objects.equals(this.assignee, issueEvent.assignee)
-                && Objects.equals(this.assigner, issueEvent.assigner)
-                && Objects.equals(this.reviewRequester, issueEvent.reviewRequester)
-                && Objects.equals(this.requestedReviewer, issueEvent.requestedReviewer)
+                && equalsNullable(this.assignee, issueEvent.assignee)
+                && equalsNullable(this.assigner, issueEvent.assigner)
+                && equalsNullable(this.reviewRequester, issueEvent.reviewRequester)
+                && equalsNullable(this.requestedReviewer, issueEvent.requestedReviewer)
                 && Objects.equals(this.requestedTeam, issueEvent.requestedTeam)
                 && Objects.equals(this.dismissedReview, issueEvent.dismissedReview)
                 && Objects.equals(this.milestone, issueEvent.milestone)
                 && Objects.equals(this.projectCard, issueEvent.projectCard)
                 && Objects.equals(this.rename, issueEvent.rename)
                 && Objects.equals(this.authorAssociation, issueEvent.authorAssociation)
-                && Objects.equals(this.lockReason, issueEvent.lockReason)
-                && Objects.equals(this.performedViaGithubApp, issueEvent.performedViaGithubApp);
+                && equalsNullable(this.lockReason, issueEvent.lockReason)
+                && equalsNullable(this.performedViaGithubApp, issueEvent.performedViaGithubApp);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -590,20 +597,27 @@ public class IssueEvent {
                 commitId,
                 commitUrl,
                 createdAt,
-                issue,
+                hashCodeNullable(issue),
                 label,
-                assignee,
-                assigner,
-                reviewRequester,
-                requestedReviewer,
+                hashCodeNullable(assignee),
+                hashCodeNullable(assigner),
+                hashCodeNullable(reviewRequester),
+                hashCodeNullable(requestedReviewer),
                 requestedTeam,
                 dismissedReview,
                 milestone,
                 projectCard,
                 rename,
                 authorAssociation,
-                lockReason,
-                performedViaGithubApp);
+                hashCodeNullable(lockReason),
+                hashCodeNullable(performedViaGithubApp));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

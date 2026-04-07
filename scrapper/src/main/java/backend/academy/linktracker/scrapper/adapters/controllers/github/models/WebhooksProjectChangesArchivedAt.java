@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,18 +17,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("webhooks_project_changes_archived_at")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksProjectChangesArchivedAt {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime from = null;
+    private JsonNullable<OffsetDateTime> from = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime to = null;
+    private JsonNullable<OffsetDateTime> to = JsonNullable.<OffsetDateTime>undefined();
 
     public WebhooksProjectChangesArchivedAt from(OffsetDateTime from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -39,16 +39,16 @@ public class WebhooksProjectChangesArchivedAt {
     @Valid
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public OffsetDateTime getFrom() {
+    public JsonNullable<OffsetDateTime> getFrom() {
         return from;
     }
 
-    public void setFrom(OffsetDateTime from) {
+    public void setFrom(JsonNullable<OffsetDateTime> from) {
         this.from = from;
     }
 
     public WebhooksProjectChangesArchivedAt to(OffsetDateTime to) {
-        this.to = to;
+        this.to = JsonNullable.of(to);
         return this;
     }
 
@@ -59,11 +59,11 @@ public class WebhooksProjectChangesArchivedAt {
     @Valid
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public OffsetDateTime getTo() {
+    public JsonNullable<OffsetDateTime> getTo() {
         return to;
     }
 
-    public void setTo(OffsetDateTime to) {
+    public void setTo(JsonNullable<OffsetDateTime> to) {
         this.to = to;
     }
 
@@ -76,13 +76,25 @@ public class WebhooksProjectChangesArchivedAt {
             return false;
         }
         WebhooksProjectChangesArchivedAt webhooksProjectChangesArchivedAt = (WebhooksProjectChangesArchivedAt) o;
-        return Objects.equals(this.from, webhooksProjectChangesArchivedAt.from)
-                && Objects.equals(this.to, webhooksProjectChangesArchivedAt.to);
+        return equalsNullable(this.from, webhooksProjectChangesArchivedAt.from)
+                && equalsNullable(this.to, webhooksProjectChangesArchivedAt.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(hashCodeNullable(from), hashCodeNullable(to));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

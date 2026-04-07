@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Organization Invitation
@@ -16,23 +18,23 @@ import java.util.Objects;
 @JsonTypeName("organization-invitation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationInvitation {
 
     private Long id;
 
-    private String login = null;
+    private JsonNullable<String> login = JsonNullable.<String>undefined();
 
-    private String email = null;
+    private JsonNullable<String> email = JsonNullable.<String>undefined();
 
     private String role;
 
     private String createdAt;
 
-    private String failedAt = null;
+    private JsonNullable<String> failedAt = JsonNullable.<String>undefined();
 
-    private String failedReason = null;
+    private JsonNullable<String> failedReason = JsonNullable.<String>undefined();
 
     private SimpleUser inviter;
 
@@ -42,7 +44,7 @@ public class OrganizationInvitation {
 
     private String invitationTeamsUrl;
 
-    private String invitationSource;
+    private Optional<String> invitationSource = Optional.empty();
 
     public OrganizationInvitation() {
         super();
@@ -62,8 +64,8 @@ public class OrganizationInvitation {
             String nodeId,
             String invitationTeamsUrl) {
         this.id = id;
-        this.login = login;
-        this.email = email;
+        this.login = JsonNullable.of(login);
+        this.email = JsonNullable.of(email);
         this.role = role;
         this.createdAt = createdAt;
         this.inviter = inviter;
@@ -93,7 +95,7 @@ public class OrganizationInvitation {
     }
 
     public OrganizationInvitation login(String login) {
-        this.login = login;
+        this.login = JsonNullable.of(login);
         return this;
     }
 
@@ -104,16 +106,16 @@ public class OrganizationInvitation {
     @NotNull
     @Schema(name = "login", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public JsonNullable<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(JsonNullable<String> login) {
         this.login = login;
     }
 
     public OrganizationInvitation email(String email) {
-        this.email = email;
+        this.email = JsonNullable.of(email);
         return this;
     }
 
@@ -124,11 +126,11 @@ public class OrganizationInvitation {
     @NotNull
     @Schema(name = "email", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public JsonNullable<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(JsonNullable<String> email) {
         this.email = email;
     }
 
@@ -173,7 +175,7 @@ public class OrganizationInvitation {
     }
 
     public OrganizationInvitation failedAt(String failedAt) {
-        this.failedAt = failedAt;
+        this.failedAt = JsonNullable.of(failedAt);
         return this;
     }
 
@@ -183,16 +185,16 @@ public class OrganizationInvitation {
      */
     @Schema(name = "failed_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failed_at")
-    public String getFailedAt() {
+    public JsonNullable<String> getFailedAt() {
         return failedAt;
     }
 
-    public void setFailedAt(String failedAt) {
+    public void setFailedAt(JsonNullable<String> failedAt) {
         this.failedAt = failedAt;
     }
 
     public OrganizationInvitation failedReason(String failedReason) {
-        this.failedReason = failedReason;
+        this.failedReason = JsonNullable.of(failedReason);
         return this;
     }
 
@@ -202,11 +204,11 @@ public class OrganizationInvitation {
      */
     @Schema(name = "failed_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("failed_reason")
-    public String getFailedReason() {
+    public JsonNullable<String> getFailedReason() {
         return failedReason;
     }
 
-    public void setFailedReason(String failedReason) {
+    public void setFailedReason(JsonNullable<String> failedReason) {
         this.failedReason = failedReason;
     }
 
@@ -298,7 +300,7 @@ public class OrganizationInvitation {
     }
 
     public OrganizationInvitation invitationSource(String invitationSource) {
-        this.invitationSource = invitationSource;
+        this.invitationSource = Optional.ofNullable(invitationSource);
         return this;
     }
 
@@ -308,11 +310,11 @@ public class OrganizationInvitation {
      */
     @Schema(name = "invitation_source", example = "\"member\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("invitation_source")
-    public String getInvitationSource() {
+    public Optional<String> getInvitationSource() {
         return invitationSource;
     }
 
-    public void setInvitationSource(String invitationSource) {
+    public void setInvitationSource(Optional<String> invitationSource) {
         this.invitationSource = invitationSource;
     }
 
@@ -330,13 +332,18 @@ public class OrganizationInvitation {
                 && Objects.equals(this.email, organizationInvitation.email)
                 && Objects.equals(this.role, organizationInvitation.role)
                 && Objects.equals(this.createdAt, organizationInvitation.createdAt)
-                && Objects.equals(this.failedAt, organizationInvitation.failedAt)
-                && Objects.equals(this.failedReason, organizationInvitation.failedReason)
+                && equalsNullable(this.failedAt, organizationInvitation.failedAt)
+                && equalsNullable(this.failedReason, organizationInvitation.failedReason)
                 && Objects.equals(this.inviter, organizationInvitation.inviter)
                 && Objects.equals(this.teamCount, organizationInvitation.teamCount)
                 && Objects.equals(this.nodeId, organizationInvitation.nodeId)
                 && Objects.equals(this.invitationTeamsUrl, organizationInvitation.invitationTeamsUrl)
                 && Objects.equals(this.invitationSource, organizationInvitation.invitationSource);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -347,13 +354,20 @@ public class OrganizationInvitation {
                 email,
                 role,
                 createdAt,
-                failedAt,
-                failedReason,
+                hashCodeNullable(failedAt),
+                hashCodeNullable(failedReason),
                 inviter,
                 teamCount,
                 nodeId,
                 invitationTeamsUrl,
                 invitationSource);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

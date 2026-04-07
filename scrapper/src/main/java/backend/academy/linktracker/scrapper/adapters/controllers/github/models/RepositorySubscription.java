@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("repository-subscription")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositorySubscription {
 
@@ -29,7 +29,7 @@ public class RepositorySubscription {
 
     private Boolean ignored;
 
-    private String reason = null;
+    private JsonNullable<String> reason = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
@@ -49,7 +49,7 @@ public class RepositorySubscription {
             Boolean subscribed, Boolean ignored, String reason, OffsetDateTime createdAt, URI url, URI repositoryUrl) {
         this.subscribed = subscribed;
         this.ignored = ignored;
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         this.createdAt = createdAt;
         this.url = url;
         this.repositoryUrl = repositoryUrl;
@@ -103,7 +103,7 @@ public class RepositorySubscription {
     }
 
     public RepositorySubscription reason(String reason) {
-        this.reason = reason;
+        this.reason = JsonNullable.of(reason);
         return this;
     }
 
@@ -114,11 +114,11 @@ public class RepositorySubscription {
     @NotNull
     @Schema(name = "reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public JsonNullable<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(JsonNullable<String> reason) {
         this.reason = reason;
     }
 

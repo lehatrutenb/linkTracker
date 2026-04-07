@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Specify which security and analysis features to enable or disable for the repository.  To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see \&quot;[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).\&quot;  For example, to enable GitHub Advanced Security, use this data in the body of the &#x60;PATCH&#x60; request: &#x60;{ \&quot;security_and_analysis\&quot;: {\&quot;advanced_security\&quot;: { \&quot;status\&quot;: \&quot;enabled\&quot; } } }&#x60;.  You can check which security and analysis features are currently enabled by using a &#x60;GET /repos/{owner}/{repo}&#x60; request.
@@ -19,33 +18,37 @@ import java.util.Objects;
 @JsonTypeName("repos_update_request_security_and_analysis")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateRequestSecurityAndAnalysis {
 
-    private ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity advancedSecurity;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity> advancedSecurity = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisCodeSecurity codeSecurity;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisCodeSecurity> codeSecurity = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanning secretScanning;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanning> secretScanning = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection secretScanningPushProtection;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection> secretScanningPushProtection =
+            Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection secretScanningAiDetection;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection> secretScanningAiDetection =
+            Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns secretScanningNonProviderPatterns;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns>
+            secretScanningNonProviderPatterns = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal
-            secretScanningDelegatedAlertDismissal;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal>
+            secretScanningDelegatedAlertDismissal = Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass secretScanningDelegatedBypass;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass> secretScanningDelegatedBypass =
+            Optional.empty();
 
-    private ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions
-            secretScanningDelegatedBypassOptions;
+    private Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions>
+            secretScanningDelegatedBypassOptions = Optional.empty();
 
     public ReposUpdateRequestSecurityAndAnalysis advancedSecurity(
             ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity advancedSecurity) {
-        this.advancedSecurity = advancedSecurity;
+        this.advancedSecurity = Optional.ofNullable(advancedSecurity);
         return this;
     }
 
@@ -56,17 +59,17 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "advanced_security", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("advanced_security")
-    public ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity getAdvancedSecurity() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity> getAdvancedSecurity() {
         return advancedSecurity;
     }
 
-    public void setAdvancedSecurity(ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity advancedSecurity) {
+    public void setAdvancedSecurity(Optional<ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity> advancedSecurity) {
         this.advancedSecurity = advancedSecurity;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis codeSecurity(
             ReposUpdateRequestSecurityAndAnalysisCodeSecurity codeSecurity) {
-        this.codeSecurity = codeSecurity;
+        this.codeSecurity = Optional.ofNullable(codeSecurity);
         return this;
     }
 
@@ -77,17 +80,17 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "code_security", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_security")
-    public ReposUpdateRequestSecurityAndAnalysisCodeSecurity getCodeSecurity() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisCodeSecurity> getCodeSecurity() {
         return codeSecurity;
     }
 
-    public void setCodeSecurity(ReposUpdateRequestSecurityAndAnalysisCodeSecurity codeSecurity) {
+    public void setCodeSecurity(Optional<ReposUpdateRequestSecurityAndAnalysisCodeSecurity> codeSecurity) {
         this.codeSecurity = codeSecurity;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanning(
             ReposUpdateRequestSecurityAndAnalysisSecretScanning secretScanning) {
-        this.secretScanning = secretScanning;
+        this.secretScanning = Optional.ofNullable(secretScanning);
         return this;
     }
 
@@ -98,17 +101,17 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanning getSecretScanning() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanning> getSecretScanning() {
         return secretScanning;
     }
 
-    public void setSecretScanning(ReposUpdateRequestSecurityAndAnalysisSecretScanning secretScanning) {
+    public void setSecretScanning(Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanning> secretScanning) {
         this.secretScanning = secretScanning;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningPushProtection(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection secretScanningPushProtection) {
-        this.secretScanningPushProtection = secretScanningPushProtection;
+        this.secretScanningPushProtection = Optional.ofNullable(secretScanningPushProtection);
         return this;
     }
 
@@ -119,18 +122,19 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_push_protection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection getSecretScanningPushProtection() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection>
+            getSecretScanningPushProtection() {
         return secretScanningPushProtection;
     }
 
     public void setSecretScanningPushProtection(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection secretScanningPushProtection) {
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection> secretScanningPushProtection) {
         this.secretScanningPushProtection = secretScanningPushProtection;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningAiDetection(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection secretScanningAiDetection) {
-        this.secretScanningAiDetection = secretScanningAiDetection;
+        this.secretScanningAiDetection = Optional.ofNullable(secretScanningAiDetection);
         return this;
     }
 
@@ -141,18 +145,18 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_ai_detection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_ai_detection")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection getSecretScanningAiDetection() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection> getSecretScanningAiDetection() {
         return secretScanningAiDetection;
     }
 
     public void setSecretScanningAiDetection(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection secretScanningAiDetection) {
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningAiDetection> secretScanningAiDetection) {
         this.secretScanningAiDetection = secretScanningAiDetection;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningNonProviderPatterns(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns secretScanningNonProviderPatterns) {
-        this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
+        this.secretScanningNonProviderPatterns = Optional.ofNullable(secretScanningNonProviderPatterns);
         return this;
     }
 
@@ -163,20 +167,21 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_non_provider_patterns", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_non_provider_patterns")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns>
             getSecretScanningNonProviderPatterns() {
         return secretScanningNonProviderPatterns;
     }
 
     public void setSecretScanningNonProviderPatterns(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns secretScanningNonProviderPatterns) {
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningNonProviderPatterns>
+                    secretScanningNonProviderPatterns) {
         this.secretScanningNonProviderPatterns = secretScanningNonProviderPatterns;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningDelegatedAlertDismissal(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal
                     secretScanningDelegatedAlertDismissal) {
-        this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
+        this.secretScanningDelegatedAlertDismissal = Optional.ofNullable(secretScanningDelegatedAlertDismissal);
         return this;
     }
 
@@ -187,20 +192,20 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_alert_dismissal", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_alert_dismissal")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal>
             getSecretScanningDelegatedAlertDismissal() {
         return secretScanningDelegatedAlertDismissal;
     }
 
     public void setSecretScanningDelegatedAlertDismissal(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedAlertDismissal>
                     secretScanningDelegatedAlertDismissal) {
         this.secretScanningDelegatedAlertDismissal = secretScanningDelegatedAlertDismissal;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningDelegatedBypass(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass secretScanningDelegatedBypass) {
-        this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
+        this.secretScanningDelegatedBypass = Optional.ofNullable(secretScanningDelegatedBypass);
         return this;
     }
 
@@ -211,19 +216,21 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_bypass", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass getSecretScanningDelegatedBypass() {
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass>
+            getSecretScanningDelegatedBypass() {
         return secretScanningDelegatedBypass;
     }
 
     public void setSecretScanningDelegatedBypass(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass secretScanningDelegatedBypass) {
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypass>
+                    secretScanningDelegatedBypass) {
         this.secretScanningDelegatedBypass = secretScanningDelegatedBypass;
     }
 
     public ReposUpdateRequestSecurityAndAnalysis secretScanningDelegatedBypassOptions(
             ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions
                     secretScanningDelegatedBypassOptions) {
-        this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
+        this.secretScanningDelegatedBypassOptions = Optional.ofNullable(secretScanningDelegatedBypassOptions);
         return this;
     }
 
@@ -234,13 +241,13 @@ public class ReposUpdateRequestSecurityAndAnalysis {
     @Valid
     @Schema(name = "secret_scanning_delegated_bypass_options", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_delegated_bypass_options")
-    public ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions
+    public Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions>
             getSecretScanningDelegatedBypassOptions() {
         return secretScanningDelegatedBypassOptions;
     }
 
     public void setSecretScanningDelegatedBypassOptions(
-            ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions
+            Optional<ReposUpdateRequestSecurityAndAnalysisSecretScanningDelegatedBypassOptions>
                     secretScanningDelegatedBypassOptions) {
         this.secretScanningDelegatedBypassOptions = secretScanningDelegatedBypassOptions;
     }

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Commit an autofix for a code scanning alert
@@ -15,16 +14,16 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-autofix-commits")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAutofixCommits {
 
-    private String targetRef;
+    private Optional<String> targetRef = Optional.empty();
 
-    private String message;
+    private Optional<String> message = Optional.empty();
 
     public CodeScanningAutofixCommits targetRef(String targetRef) {
-        this.targetRef = targetRef;
+        this.targetRef = Optional.ofNullable(targetRef);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class CodeScanningAutofixCommits {
                     "The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see \"[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)\" in the Git documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_ref")
-    public String getTargetRef() {
+    public Optional<String> getTargetRef() {
         return targetRef;
     }
 
-    public void setTargetRef(String targetRef) {
+    public void setTargetRef(Optional<String> targetRef) {
         this.targetRef = targetRef;
     }
 
     public CodeScanningAutofixCommits message(String message) {
-        this.message = message;
+        this.message = Optional.ofNullable(message);
         return this;
     }
 
@@ -60,11 +59,11 @@ public class CodeScanningAutofixCommits {
             description = "Commit message to be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("message")
-    public String getMessage() {
+    public Optional<String> getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Optional<String> message) {
         this.message = message;
     }
 

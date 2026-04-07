@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsUpdateRequest
@@ -16,27 +15,27 @@ import java.util.Objects;
 @JsonTypeName("orgs_update_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsUpdateRequest {
 
-    private String billingEmail;
+    private Optional<String> billingEmail = Optional.empty();
 
-    private String company;
+    private Optional<String> company = Optional.empty();
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
-    private String twitterUsername;
+    private Optional<String> twitterUsername = Optional.empty();
 
-    private String location;
+    private Optional<String> location = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private Boolean hasOrganizationProjects;
+    private Optional<Boolean> hasOrganizationProjects = Optional.empty();
 
-    private Boolean hasRepositoryProjects;
+    private Optional<Boolean> hasRepositoryProjects = Optional.empty();
 
     /**
      * Default permission level members have for organization repositories.
@@ -77,15 +76,16 @@ public class OrgsUpdateRequest {
         }
     }
 
-    private DefaultRepositoryPermissionEnum defaultRepositoryPermission = DefaultRepositoryPermissionEnum.READ;
+    private Optional<DefaultRepositoryPermissionEnum> defaultRepositoryPermission =
+            Optional.of(DefaultRepositoryPermissionEnum.READ);
 
-    private Boolean membersCanCreateRepositories = true;
+    private Optional<Boolean> membersCanCreateRepositories = Optional.of(true);
 
-    private Boolean membersCanCreateInternalRepositories;
+    private Optional<Boolean> membersCanCreateInternalRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePrivateRepositories;
+    private Optional<Boolean> membersCanCreatePrivateRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePublicRepositories;
+    private Optional<Boolean> membersCanCreatePublicRepositories = Optional.empty();
 
     /**
      * Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.  **Note:** This parameter is closing down and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
@@ -124,44 +124,44 @@ public class OrgsUpdateRequest {
         }
     }
 
-    private MembersAllowedRepositoryCreationTypeEnum membersAllowedRepositoryCreationType;
+    private Optional<MembersAllowedRepositoryCreationTypeEnum> membersAllowedRepositoryCreationType = Optional.empty();
 
-    private Boolean membersCanCreatePages = true;
+    private Optional<Boolean> membersCanCreatePages = Optional.of(true);
 
-    private Boolean membersCanCreatePublicPages = true;
+    private Optional<Boolean> membersCanCreatePublicPages = Optional.of(true);
 
-    private Boolean membersCanCreatePrivatePages = true;
+    private Optional<Boolean> membersCanCreatePrivatePages = Optional.of(true);
 
-    private Boolean membersCanForkPrivateRepositories = false;
+    private Optional<Boolean> membersCanForkPrivateRepositories = Optional.of(false);
 
-    private Boolean webCommitSignoffRequired = false;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.of(false);
 
-    private String blog;
-
-    @Deprecated
-    private Boolean advancedSecurityEnabledForNewRepositories;
+    private Optional<String> blog = Optional.empty();
 
     @Deprecated
-    private Boolean dependabotAlertsEnabledForNewRepositories;
+    private Optional<Boolean> advancedSecurityEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean dependabotSecurityUpdatesEnabledForNewRepositories;
+    private Optional<Boolean> dependabotAlertsEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean dependencyGraphEnabledForNewRepositories;
+    private Optional<Boolean> dependabotSecurityUpdatesEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean secretScanningEnabledForNewRepositories;
+    private Optional<Boolean> dependencyGraphEnabledForNewRepositories = Optional.empty();
 
     @Deprecated
-    private Boolean secretScanningPushProtectionEnabledForNewRepositories;
+    private Optional<Boolean> secretScanningEnabledForNewRepositories = Optional.empty();
 
-    private String secretScanningPushProtectionCustomLink;
+    @Deprecated
+    private Optional<Boolean> secretScanningPushProtectionEnabledForNewRepositories = Optional.empty();
 
-    private Boolean deployKeysEnabledForRepositories;
+    private Optional<String> secretScanningPushProtectionCustomLink = Optional.empty();
+
+    private Optional<Boolean> deployKeysEnabledForRepositories = Optional.empty();
 
     public OrgsUpdateRequest billingEmail(String billingEmail) {
-        this.billingEmail = billingEmail;
+        this.billingEmail = Optional.ofNullable(billingEmail);
         return this;
     }
 
@@ -174,16 +174,16 @@ public class OrgsUpdateRequest {
             description = "Billing email address. This address is not publicized.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("billing_email")
-    public String getBillingEmail() {
+    public Optional<String> getBillingEmail() {
         return billingEmail;
     }
 
-    public void setBillingEmail(String billingEmail) {
+    public void setBillingEmail(Optional<String> billingEmail) {
         this.billingEmail = billingEmail;
     }
 
     public OrgsUpdateRequest company(String company) {
-        this.company = company;
+        this.company = Optional.ofNullable(company);
         return this;
     }
 
@@ -193,16 +193,16 @@ public class OrgsUpdateRequest {
      */
     @Schema(name = "company", description = "The company name.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public Optional<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Optional<String> company) {
         this.company = company;
     }
 
     public OrgsUpdateRequest email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -215,16 +215,16 @@ public class OrgsUpdateRequest {
             description = "The publicly visible email address.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public OrgsUpdateRequest twitterUsername(String twitterUsername) {
-        this.twitterUsername = twitterUsername;
+        this.twitterUsername = Optional.ofNullable(twitterUsername);
         return this;
     }
 
@@ -237,16 +237,16 @@ public class OrgsUpdateRequest {
             description = "The Twitter username of the company.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("twitter_username")
-    public String getTwitterUsername() {
+    public Optional<String> getTwitterUsername() {
         return twitterUsername;
     }
 
-    public void setTwitterUsername(String twitterUsername) {
+    public void setTwitterUsername(Optional<String> twitterUsername) {
         this.twitterUsername = twitterUsername;
     }
 
     public OrgsUpdateRequest location(String location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -256,16 +256,16 @@ public class OrgsUpdateRequest {
      */
     @Schema(name = "location", description = "The location.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public Optional<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Optional<String> location) {
         this.location = location;
     }
 
     public OrgsUpdateRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -278,16 +278,16 @@ public class OrgsUpdateRequest {
             description = "The shorthand name of the company.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public OrgsUpdateRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -300,16 +300,16 @@ public class OrgsUpdateRequest {
             description = "The description of the company. The maximum size is 160 characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public OrgsUpdateRequest hasOrganizationProjects(Boolean hasOrganizationProjects) {
-        this.hasOrganizationProjects = hasOrganizationProjects;
+        this.hasOrganizationProjects = Optional.ofNullable(hasOrganizationProjects);
         return this;
     }
 
@@ -322,16 +322,16 @@ public class OrgsUpdateRequest {
             description = "Whether an organization can use organization projects.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_organization_projects")
-    public Boolean getHasOrganizationProjects() {
+    public Optional<Boolean> getHasOrganizationProjects() {
         return hasOrganizationProjects;
     }
 
-    public void setHasOrganizationProjects(Boolean hasOrganizationProjects) {
+    public void setHasOrganizationProjects(Optional<Boolean> hasOrganizationProjects) {
         this.hasOrganizationProjects = hasOrganizationProjects;
     }
 
     public OrgsUpdateRequest hasRepositoryProjects(Boolean hasRepositoryProjects) {
-        this.hasRepositoryProjects = hasRepositoryProjects;
+        this.hasRepositoryProjects = Optional.ofNullable(hasRepositoryProjects);
         return this;
     }
 
@@ -344,16 +344,16 @@ public class OrgsUpdateRequest {
             description = "Whether repositories that belong to the organization can use repository projects.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_repository_projects")
-    public Boolean getHasRepositoryProjects() {
+    public Optional<Boolean> getHasRepositoryProjects() {
         return hasRepositoryProjects;
     }
 
-    public void setHasRepositoryProjects(Boolean hasRepositoryProjects) {
+    public void setHasRepositoryProjects(Optional<Boolean> hasRepositoryProjects) {
         this.hasRepositoryProjects = hasRepositoryProjects;
     }
 
     public OrgsUpdateRequest defaultRepositoryPermission(DefaultRepositoryPermissionEnum defaultRepositoryPermission) {
-        this.defaultRepositoryPermission = defaultRepositoryPermission;
+        this.defaultRepositoryPermission = Optional.ofNullable(defaultRepositoryPermission);
         return this;
     }
 
@@ -366,16 +366,16 @@ public class OrgsUpdateRequest {
             description = "Default permission level members have for organization repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_repository_permission")
-    public DefaultRepositoryPermissionEnum getDefaultRepositoryPermission() {
+    public Optional<DefaultRepositoryPermissionEnum> getDefaultRepositoryPermission() {
         return defaultRepositoryPermission;
     }
 
-    public void setDefaultRepositoryPermission(DefaultRepositoryPermissionEnum defaultRepositoryPermission) {
+    public void setDefaultRepositoryPermission(Optional<DefaultRepositoryPermissionEnum> defaultRepositoryPermission) {
         this.defaultRepositoryPermission = defaultRepositoryPermission;
     }
 
     public OrgsUpdateRequest membersCanCreateRepositories(Boolean membersCanCreateRepositories) {
-        this.membersCanCreateRepositories = membersCanCreateRepositories;
+        this.membersCanCreateRepositories = Optional.ofNullable(membersCanCreateRepositories);
         return this;
     }
 
@@ -389,16 +389,16 @@ public class OrgsUpdateRequest {
                     "Whether of non-admin organization members can create repositories. **Note:** A parameter can override this parameter. See `members_allowed_repository_creation_type` in this table for details.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_repositories")
-    public Boolean getMembersCanCreateRepositories() {
+    public Optional<Boolean> getMembersCanCreateRepositories() {
         return membersCanCreateRepositories;
     }
 
-    public void setMembersCanCreateRepositories(Boolean membersCanCreateRepositories) {
+    public void setMembersCanCreateRepositories(Optional<Boolean> membersCanCreateRepositories) {
         this.membersCanCreateRepositories = membersCanCreateRepositories;
     }
 
     public OrgsUpdateRequest membersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
-        this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
+        this.membersCanCreateInternalRepositories = Optional.ofNullable(membersCanCreateInternalRepositories);
         return this;
     }
 
@@ -412,16 +412,16 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create internal repositories, which are visible to all enterprise members. You can only allow members to create internal repositories if your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see \"[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)\" in the GitHub Help documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_internal_repositories")
-    public Boolean getMembersCanCreateInternalRepositories() {
+    public Optional<Boolean> getMembersCanCreateInternalRepositories() {
         return membersCanCreateInternalRepositories;
     }
 
-    public void setMembersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
+    public void setMembersCanCreateInternalRepositories(Optional<Boolean> membersCanCreateInternalRepositories) {
         this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
     }
 
     public OrgsUpdateRequest membersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
-        this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
+        this.membersCanCreatePrivateRepositories = Optional.ofNullable(membersCanCreatePrivateRepositories);
         return this;
     }
 
@@ -435,16 +435,16 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create private repositories, which are visible to organization members with permission. For more information, see \"[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)\" in the GitHub Help documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_repositories")
-    public Boolean getMembersCanCreatePrivateRepositories() {
+    public Optional<Boolean> getMembersCanCreatePrivateRepositories() {
         return membersCanCreatePrivateRepositories;
     }
 
-    public void setMembersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
+    public void setMembersCanCreatePrivateRepositories(Optional<Boolean> membersCanCreatePrivateRepositories) {
         this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
     }
 
     public OrgsUpdateRequest membersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
-        this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
+        this.membersCanCreatePublicRepositories = Optional.ofNullable(membersCanCreatePublicRepositories);
         return this;
     }
 
@@ -458,17 +458,17 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create public repositories, which are visible to anyone. For more information, see \"[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)\" in the GitHub Help documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_repositories")
-    public Boolean getMembersCanCreatePublicRepositories() {
+    public Optional<Boolean> getMembersCanCreatePublicRepositories() {
         return membersCanCreatePublicRepositories;
     }
 
-    public void setMembersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
+    public void setMembersCanCreatePublicRepositories(Optional<Boolean> membersCanCreatePublicRepositories) {
         this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
     }
 
     public OrgsUpdateRequest membersAllowedRepositoryCreationType(
             MembersAllowedRepositoryCreationTypeEnum membersAllowedRepositoryCreationType) {
-        this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
+        this.membersAllowedRepositoryCreationType = Optional.ofNullable(membersAllowedRepositoryCreationType);
         return this;
     }
 
@@ -482,17 +482,17 @@ public class OrgsUpdateRequest {
                     "Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.  **Note:** This parameter is closing down and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_allowed_repository_creation_type")
-    public MembersAllowedRepositoryCreationTypeEnum getMembersAllowedRepositoryCreationType() {
+    public Optional<MembersAllowedRepositoryCreationTypeEnum> getMembersAllowedRepositoryCreationType() {
         return membersAllowedRepositoryCreationType;
     }
 
     public void setMembersAllowedRepositoryCreationType(
-            MembersAllowedRepositoryCreationTypeEnum membersAllowedRepositoryCreationType) {
+            Optional<MembersAllowedRepositoryCreationTypeEnum> membersAllowedRepositoryCreationType) {
         this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
     }
 
     public OrgsUpdateRequest membersCanCreatePages(Boolean membersCanCreatePages) {
-        this.membersCanCreatePages = membersCanCreatePages;
+        this.membersCanCreatePages = Optional.ofNullable(membersCanCreatePages);
         return this;
     }
 
@@ -506,16 +506,16 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create GitHub Pages sites. Existing published sites will not be impacted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_pages")
-    public Boolean getMembersCanCreatePages() {
+    public Optional<Boolean> getMembersCanCreatePages() {
         return membersCanCreatePages;
     }
 
-    public void setMembersCanCreatePages(Boolean membersCanCreatePages) {
+    public void setMembersCanCreatePages(Optional<Boolean> membersCanCreatePages) {
         this.membersCanCreatePages = membersCanCreatePages;
     }
 
     public OrgsUpdateRequest membersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
-        this.membersCanCreatePublicPages = membersCanCreatePublicPages;
+        this.membersCanCreatePublicPages = Optional.ofNullable(membersCanCreatePublicPages);
         return this;
     }
 
@@ -529,16 +529,16 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create public GitHub Pages sites. Existing published sites will not be impacted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_pages")
-    public Boolean getMembersCanCreatePublicPages() {
+    public Optional<Boolean> getMembersCanCreatePublicPages() {
         return membersCanCreatePublicPages;
     }
 
-    public void setMembersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
+    public void setMembersCanCreatePublicPages(Optional<Boolean> membersCanCreatePublicPages) {
         this.membersCanCreatePublicPages = membersCanCreatePublicPages;
     }
 
     public OrgsUpdateRequest membersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
-        this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
+        this.membersCanCreatePrivatePages = Optional.ofNullable(membersCanCreatePrivatePages);
         return this;
     }
 
@@ -552,16 +552,16 @@ public class OrgsUpdateRequest {
                     "Whether organization members can create private GitHub Pages sites. Existing published sites will not be impacted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_pages")
-    public Boolean getMembersCanCreatePrivatePages() {
+    public Optional<Boolean> getMembersCanCreatePrivatePages() {
         return membersCanCreatePrivatePages;
     }
 
-    public void setMembersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
+    public void setMembersCanCreatePrivatePages(Optional<Boolean> membersCanCreatePrivatePages) {
         this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
     }
 
     public OrgsUpdateRequest membersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
-        this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
+        this.membersCanForkPrivateRepositories = Optional.ofNullable(membersCanForkPrivateRepositories);
         return this;
     }
 
@@ -574,16 +574,16 @@ public class OrgsUpdateRequest {
             description = "Whether organization members can fork private organization repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_fork_private_repositories")
-    public Boolean getMembersCanForkPrivateRepositories() {
+    public Optional<Boolean> getMembersCanForkPrivateRepositories() {
         return membersCanForkPrivateRepositories;
     }
 
-    public void setMembersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
+    public void setMembersCanForkPrivateRepositories(Optional<Boolean> membersCanForkPrivateRepositories) {
         this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
     }
 
     public OrgsUpdateRequest webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -597,16 +597,16 @@ public class OrgsUpdateRequest {
                     "Whether contributors to organization repositories are required to sign off on commits they make through GitHub's web interface.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
     public OrgsUpdateRequest blog(String blog) {
-        this.blog = blog;
+        this.blog = Optional.ofNullable(blog);
         return this;
     }
 
@@ -616,17 +616,17 @@ public class OrgsUpdateRequest {
      */
     @Schema(name = "blog", example = "\"http://github.blog\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blog")
-    public String getBlog() {
+    public Optional<String> getBlog() {
         return blog;
     }
 
-    public void setBlog(String blog) {
+    public void setBlog(Optional<String> blog) {
         this.blog = blog;
     }
 
     public OrgsUpdateRequest advancedSecurityEnabledForNewRepositories(
             Boolean advancedSecurityEnabledForNewRepositories) {
-        this.advancedSecurityEnabledForNewRepositories = advancedSecurityEnabledForNewRepositories;
+        this.advancedSecurityEnabledForNewRepositories = Optional.ofNullable(advancedSecurityEnabledForNewRepositories);
         return this;
     }
 
@@ -643,7 +643,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("advanced_security_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getAdvancedSecurityEnabledForNewRepositories() {
+    public Optional<Boolean> getAdvancedSecurityEnabledForNewRepositories() {
         return advancedSecurityEnabledForNewRepositories;
     }
 
@@ -651,13 +651,14 @@ public class OrgsUpdateRequest {
      * @deprecated
      */
     @Deprecated
-    public void setAdvancedSecurityEnabledForNewRepositories(Boolean advancedSecurityEnabledForNewRepositories) {
+    public void setAdvancedSecurityEnabledForNewRepositories(
+            Optional<Boolean> advancedSecurityEnabledForNewRepositories) {
         this.advancedSecurityEnabledForNewRepositories = advancedSecurityEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest dependabotAlertsEnabledForNewRepositories(
             Boolean dependabotAlertsEnabledForNewRepositories) {
-        this.dependabotAlertsEnabledForNewRepositories = dependabotAlertsEnabledForNewRepositories;
+        this.dependabotAlertsEnabledForNewRepositories = Optional.ofNullable(dependabotAlertsEnabledForNewRepositories);
         return this;
     }
 
@@ -674,7 +675,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_alerts_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependabotAlertsEnabledForNewRepositories() {
+    public Optional<Boolean> getDependabotAlertsEnabledForNewRepositories() {
         return dependabotAlertsEnabledForNewRepositories;
     }
 
@@ -682,13 +683,15 @@ public class OrgsUpdateRequest {
      * @deprecated
      */
     @Deprecated
-    public void setDependabotAlertsEnabledForNewRepositories(Boolean dependabotAlertsEnabledForNewRepositories) {
+    public void setDependabotAlertsEnabledForNewRepositories(
+            Optional<Boolean> dependabotAlertsEnabledForNewRepositories) {
         this.dependabotAlertsEnabledForNewRepositories = dependabotAlertsEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest dependabotSecurityUpdatesEnabledForNewRepositories(
             Boolean dependabotSecurityUpdatesEnabledForNewRepositories) {
-        this.dependabotSecurityUpdatesEnabledForNewRepositories = dependabotSecurityUpdatesEnabledForNewRepositories;
+        this.dependabotSecurityUpdatesEnabledForNewRepositories =
+                Optional.ofNullable(dependabotSecurityUpdatesEnabledForNewRepositories);
         return this;
     }
 
@@ -705,7 +708,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependabot_security_updates_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependabotSecurityUpdatesEnabledForNewRepositories() {
+    public Optional<Boolean> getDependabotSecurityUpdatesEnabledForNewRepositories() {
         return dependabotSecurityUpdatesEnabledForNewRepositories;
     }
 
@@ -714,13 +717,13 @@ public class OrgsUpdateRequest {
      */
     @Deprecated
     public void setDependabotSecurityUpdatesEnabledForNewRepositories(
-            Boolean dependabotSecurityUpdatesEnabledForNewRepositories) {
+            Optional<Boolean> dependabotSecurityUpdatesEnabledForNewRepositories) {
         this.dependabotSecurityUpdatesEnabledForNewRepositories = dependabotSecurityUpdatesEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest dependencyGraphEnabledForNewRepositories(
             Boolean dependencyGraphEnabledForNewRepositories) {
-        this.dependencyGraphEnabledForNewRepositories = dependencyGraphEnabledForNewRepositories;
+        this.dependencyGraphEnabledForNewRepositories = Optional.ofNullable(dependencyGraphEnabledForNewRepositories);
         return this;
     }
 
@@ -737,7 +740,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dependency_graph_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getDependencyGraphEnabledForNewRepositories() {
+    public Optional<Boolean> getDependencyGraphEnabledForNewRepositories() {
         return dependencyGraphEnabledForNewRepositories;
     }
 
@@ -745,12 +748,13 @@ public class OrgsUpdateRequest {
      * @deprecated
      */
     @Deprecated
-    public void setDependencyGraphEnabledForNewRepositories(Boolean dependencyGraphEnabledForNewRepositories) {
+    public void setDependencyGraphEnabledForNewRepositories(
+            Optional<Boolean> dependencyGraphEnabledForNewRepositories) {
         this.dependencyGraphEnabledForNewRepositories = dependencyGraphEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest secretScanningEnabledForNewRepositories(Boolean secretScanningEnabledForNewRepositories) {
-        this.secretScanningEnabledForNewRepositories = secretScanningEnabledForNewRepositories;
+        this.secretScanningEnabledForNewRepositories = Optional.ofNullable(secretScanningEnabledForNewRepositories);
         return this;
     }
 
@@ -767,7 +771,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getSecretScanningEnabledForNewRepositories() {
+    public Optional<Boolean> getSecretScanningEnabledForNewRepositories() {
         return secretScanningEnabledForNewRepositories;
     }
 
@@ -775,14 +779,14 @@ public class OrgsUpdateRequest {
      * @deprecated
      */
     @Deprecated
-    public void setSecretScanningEnabledForNewRepositories(Boolean secretScanningEnabledForNewRepositories) {
+    public void setSecretScanningEnabledForNewRepositories(Optional<Boolean> secretScanningEnabledForNewRepositories) {
         this.secretScanningEnabledForNewRepositories = secretScanningEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest secretScanningPushProtectionEnabledForNewRepositories(
             Boolean secretScanningPushProtectionEnabledForNewRepositories) {
         this.secretScanningPushProtectionEnabledForNewRepositories =
-                secretScanningPushProtectionEnabledForNewRepositories;
+                Optional.ofNullable(secretScanningPushProtectionEnabledForNewRepositories);
         return this;
     }
 
@@ -799,7 +803,7 @@ public class OrgsUpdateRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection_enabled_for_new_repositories")
     @Deprecated
-    public Boolean getSecretScanningPushProtectionEnabledForNewRepositories() {
+    public Optional<Boolean> getSecretScanningPushProtectionEnabledForNewRepositories() {
         return secretScanningPushProtectionEnabledForNewRepositories;
     }
 
@@ -808,13 +812,13 @@ public class OrgsUpdateRequest {
      */
     @Deprecated
     public void setSecretScanningPushProtectionEnabledForNewRepositories(
-            Boolean secretScanningPushProtectionEnabledForNewRepositories) {
+            Optional<Boolean> secretScanningPushProtectionEnabledForNewRepositories) {
         this.secretScanningPushProtectionEnabledForNewRepositories =
                 secretScanningPushProtectionEnabledForNewRepositories;
     }
 
     public OrgsUpdateRequest secretScanningPushProtectionCustomLink(String secretScanningPushProtectionCustomLink) {
-        this.secretScanningPushProtectionCustomLink = secretScanningPushProtectionCustomLink;
+        this.secretScanningPushProtectionCustomLink = Optional.ofNullable(secretScanningPushProtectionCustomLink);
         return this;
     }
 
@@ -828,16 +832,16 @@ public class OrgsUpdateRequest {
                     "If `secret_scanning_push_protection_custom_link_enabled` is true, the URL that will be displayed to contributors who are blocked from pushing a secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("secret_scanning_push_protection_custom_link")
-    public String getSecretScanningPushProtectionCustomLink() {
+    public Optional<String> getSecretScanningPushProtectionCustomLink() {
         return secretScanningPushProtectionCustomLink;
     }
 
-    public void setSecretScanningPushProtectionCustomLink(String secretScanningPushProtectionCustomLink) {
+    public void setSecretScanningPushProtectionCustomLink(Optional<String> secretScanningPushProtectionCustomLink) {
         this.secretScanningPushProtectionCustomLink = secretScanningPushProtectionCustomLink;
     }
 
     public OrgsUpdateRequest deployKeysEnabledForRepositories(Boolean deployKeysEnabledForRepositories) {
-        this.deployKeysEnabledForRepositories = deployKeysEnabledForRepositories;
+        this.deployKeysEnabledForRepositories = Optional.ofNullable(deployKeysEnabledForRepositories);
         return this;
     }
 
@@ -851,11 +855,11 @@ public class OrgsUpdateRequest {
                     "Controls whether or not deploy keys may be added and used for repositories in the organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deploy_keys_enabled_for_repositories")
-    public Boolean getDeployKeysEnabledForRepositories() {
+    public Optional<Boolean> getDeployKeysEnabledForRepositories() {
         return deployKeysEnabledForRepositories;
     }
 
-    public void setDeployKeysEnabledForRepositories(Boolean deployKeysEnabledForRepositories) {
+    public void setDeployKeysEnabledForRepositories(Optional<Boolean> deployKeysEnabledForRepositories) {
         this.deployKeysEnabledForRepositories = deployKeysEnabledForRepositories;
     }
 

@@ -5,13 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * WebhookRubygemsMetadata
@@ -19,34 +13,34 @@ import java.util.Objects;
 @JsonTypeName("webhook-rubygems-metadata")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRubygemsMetadata {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private String readme;
+    private Optional<String> readme = Optional.empty();
 
-    private String homepage;
+    private Optional<String> homepage = Optional.empty();
 
-    private WebhookRubygemsMetadataVersionInfo versionInfo;
+    private Optional<WebhookRubygemsMetadataVersionInfo> versionInfo = Optional.empty();
 
-    private String platform;
+    private Optional<String> platform = Optional.empty();
 
     @Valid
     private Map<String, String> metadata = new HashMap<>();
 
-    private String repo;
+    private Optional<String> repo = Optional.empty();
 
     @Valid
     private List<Map<String, String>> dependencies = new ArrayList<>();
 
-    private String commitOid;
+    private Optional<String> commitOid = Optional.empty();
 
     public WebhookRubygemsMetadata name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -56,16 +50,16 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookRubygemsMetadata description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -75,16 +69,16 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public WebhookRubygemsMetadata readme(String readme) {
-        this.readme = readme;
+        this.readme = Optional.ofNullable(readme);
         return this;
     }
 
@@ -94,16 +88,16 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "readme", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("readme")
-    public String getReadme() {
+    public Optional<String> getReadme() {
         return readme;
     }
 
-    public void setReadme(String readme) {
+    public void setReadme(Optional<String> readme) {
         this.readme = readme;
     }
 
     public WebhookRubygemsMetadata homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -113,16 +107,16 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public Optional<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(Optional<String> homepage) {
         this.homepage = homepage;
     }
 
     public WebhookRubygemsMetadata versionInfo(WebhookRubygemsMetadataVersionInfo versionInfo) {
-        this.versionInfo = versionInfo;
+        this.versionInfo = Optional.ofNullable(versionInfo);
         return this;
     }
 
@@ -133,16 +127,16 @@ public class WebhookRubygemsMetadata {
     @Valid
     @Schema(name = "version_info", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("version_info")
-    public WebhookRubygemsMetadataVersionInfo getVersionInfo() {
+    public Optional<WebhookRubygemsMetadataVersionInfo> getVersionInfo() {
         return versionInfo;
     }
 
-    public void setVersionInfo(WebhookRubygemsMetadataVersionInfo versionInfo) {
+    public void setVersionInfo(Optional<WebhookRubygemsMetadataVersionInfo> versionInfo) {
         this.versionInfo = versionInfo;
     }
 
     public WebhookRubygemsMetadata platform(String platform) {
-        this.platform = platform;
+        this.platform = Optional.ofNullable(platform);
         return this;
     }
 
@@ -152,11 +146,11 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "platform", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("platform")
-    public String getPlatform() {
+    public Optional<String> getPlatform() {
         return platform;
     }
 
-    public void setPlatform(String platform) {
+    public void setPlatform(Optional<String> platform) {
         this.platform = platform;
     }
 
@@ -188,7 +182,7 @@ public class WebhookRubygemsMetadata {
     }
 
     public WebhookRubygemsMetadata repo(String repo) {
-        this.repo = repo;
+        this.repo = Optional.ofNullable(repo);
         return this;
     }
 
@@ -198,11 +192,11 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "repo", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repo")
-    public String getRepo() {
+    public Optional<String> getRepo() {
         return repo;
     }
 
-    public void setRepo(String repo) {
+    public void setRepo(Optional<String> repo) {
         this.repo = repo;
     }
 
@@ -235,7 +229,7 @@ public class WebhookRubygemsMetadata {
     }
 
     public WebhookRubygemsMetadata commitOid(String commitOid) {
-        this.commitOid = commitOid;
+        this.commitOid = Optional.ofNullable(commitOid);
         return this;
     }
 
@@ -245,11 +239,11 @@ public class WebhookRubygemsMetadata {
      */
     @Schema(name = "commit_oid", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_oid")
-    public String getCommitOid() {
+    public Optional<String> getCommitOid() {
         return commitOid;
     }
 
-    public void setCommitOid(String commitOid) {
+    public void setCommitOid(Optional<String> commitOid) {
         this.commitOid = commitOid;
     }
 

@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,28 +19,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("rule-suite")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RuleSuite {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private Long actorId = null;
+    private JsonNullable<Long> actorId = JsonNullable.<Long>undefined();
 
-    private String actorName = null;
+    private JsonNullable<String> actorName = JsonNullable.<String>undefined();
 
-    private String beforeSha;
+    private Optional<String> beforeSha = Optional.empty();
 
-    private String afterSha;
+    private Optional<String> afterSha = Optional.empty();
 
-    private String ref;
+    private Optional<String> ref = Optional.empty();
 
-    private Long repositoryId;
+    private Optional<Long> repositoryId = Optional.empty();
 
-    private String repositoryName;
+    private Optional<String> repositoryName = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt;
+    private Optional<OffsetDateTime> pushedAt = Optional.empty();
 
     /**
      * The result of the rule evaluations for rules with the `active` enforcement status.
@@ -82,7 +79,7 @@ public class RuleSuite {
         }
     }
 
-    private ResultEnum result;
+    private Optional<ResultEnum> result = Optional.empty();
 
     /**
      * The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.
@@ -121,13 +118,13 @@ public class RuleSuite {
         }
     }
 
-    private EvaluationResultEnum evaluationResult = null;
+    private JsonNullable<EvaluationResultEnum> evaluationResult = JsonNullable.<EvaluationResultEnum>undefined();
 
     @Valid
     private List<@Valid RuleSuiteRuleEvaluationsInner> ruleEvaluations = new ArrayList<>();
 
     public RuleSuite id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -140,16 +137,16 @@ public class RuleSuite {
             description = "The unique identifier of the rule insight.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public RuleSuite actorId(Long actorId) {
-        this.actorId = actorId;
+        this.actorId = JsonNullable.of(actorId);
         return this;
     }
 
@@ -162,16 +159,16 @@ public class RuleSuite {
             description = "The number that identifies the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_id")
-    public Long getActorId() {
+    public JsonNullable<Long> getActorId() {
         return actorId;
     }
 
-    public void setActorId(Long actorId) {
+    public void setActorId(JsonNullable<Long> actorId) {
         this.actorId = actorId;
     }
 
     public RuleSuite actorName(String actorName) {
-        this.actorName = actorName;
+        this.actorName = JsonNullable.of(actorName);
         return this;
     }
 
@@ -184,16 +181,16 @@ public class RuleSuite {
             description = "The handle for the GitHub user account.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_name")
-    public String getActorName() {
+    public JsonNullable<String> getActorName() {
         return actorName;
     }
 
-    public void setActorName(String actorName) {
+    public void setActorName(JsonNullable<String> actorName) {
         this.actorName = actorName;
     }
 
     public RuleSuite beforeSha(String beforeSha) {
-        this.beforeSha = beforeSha;
+        this.beforeSha = Optional.ofNullable(beforeSha);
         return this;
     }
 
@@ -206,16 +203,16 @@ public class RuleSuite {
             description = "The previous commit SHA of the ref.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("before_sha")
-    public String getBeforeSha() {
+    public Optional<String> getBeforeSha() {
         return beforeSha;
     }
 
-    public void setBeforeSha(String beforeSha) {
+    public void setBeforeSha(Optional<String> beforeSha) {
         this.beforeSha = beforeSha;
     }
 
     public RuleSuite afterSha(String afterSha) {
-        this.afterSha = afterSha;
+        this.afterSha = Optional.ofNullable(afterSha);
         return this;
     }
 
@@ -228,16 +225,16 @@ public class RuleSuite {
             description = "The new commit SHA of the ref.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after_sha")
-    public String getAfterSha() {
+    public Optional<String> getAfterSha() {
         return afterSha;
     }
 
-    public void setAfterSha(String afterSha) {
+    public void setAfterSha(Optional<String> afterSha) {
         this.afterSha = afterSha;
     }
 
     public RuleSuite ref(String ref) {
-        this.ref = ref;
+        this.ref = Optional.ofNullable(ref);
         return this;
     }
 
@@ -250,16 +247,16 @@ public class RuleSuite {
             description = "The ref name that the evaluation ran on.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ref")
-    public String getRef() {
+    public Optional<String> getRef() {
         return ref;
     }
 
-    public void setRef(String ref) {
+    public void setRef(Optional<String> ref) {
         this.ref = ref;
     }
 
     public RuleSuite repositoryId(Long repositoryId) {
-        this.repositoryId = repositoryId;
+        this.repositoryId = Optional.ofNullable(repositoryId);
         return this;
     }
 
@@ -272,16 +269,16 @@ public class RuleSuite {
             description = "The ID of the repository associated with the rule evaluation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_id")
-    public Long getRepositoryId() {
+    public Optional<Long> getRepositoryId() {
         return repositoryId;
     }
 
-    public void setRepositoryId(Long repositoryId) {
+    public void setRepositoryId(Optional<Long> repositoryId) {
         this.repositoryId = repositoryId;
     }
 
     public RuleSuite repositoryName(String repositoryName) {
-        this.repositoryName = repositoryName;
+        this.repositoryName = Optional.ofNullable(repositoryName);
         return this;
     }
 
@@ -294,16 +291,16 @@ public class RuleSuite {
             description = "The name of the repository without the `.git` extension.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_name")
-    public String getRepositoryName() {
+    public Optional<String> getRepositoryName() {
         return repositoryName;
     }
 
-    public void setRepositoryName(String repositoryName) {
+    public void setRepositoryName(Optional<String> repositoryName) {
         this.repositoryName = repositoryName;
     }
 
     public RuleSuite pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = Optional.ofNullable(pushedAt);
         return this;
     }
 
@@ -314,16 +311,16 @@ public class RuleSuite {
     @Valid
     @Schema(name = "pushed_at", example = "2011-01-26T19:06:43Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public Optional<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(Optional<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public RuleSuite result(ResultEnum result) {
-        this.result = result;
+        this.result = Optional.ofNullable(result);
         return this;
     }
 
@@ -336,16 +333,16 @@ public class RuleSuite {
             description = "The result of the rule evaluations for rules with the `active` enforcement status.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("result")
-    public ResultEnum getResult() {
+    public Optional<ResultEnum> getResult() {
         return result;
     }
 
-    public void setResult(ResultEnum result) {
+    public void setResult(Optional<ResultEnum> result) {
         this.result = result;
     }
 
     public RuleSuite evaluationResult(EvaluationResultEnum evaluationResult) {
-        this.evaluationResult = evaluationResult;
+        this.evaluationResult = JsonNullable.of(evaluationResult);
         return this;
     }
 
@@ -359,11 +356,11 @@ public class RuleSuite {
                     "The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("evaluation_result")
-    public EvaluationResultEnum getEvaluationResult() {
+    public JsonNullable<EvaluationResultEnum> getEvaluationResult() {
         return evaluationResult;
     }
 
-    public void setEvaluationResult(EvaluationResultEnum evaluationResult) {
+    public void setEvaluationResult(JsonNullable<EvaluationResultEnum> evaluationResult) {
         this.evaluationResult = evaluationResult;
     }
 
@@ -408,8 +405,8 @@ public class RuleSuite {
         }
         RuleSuite ruleSuite = (RuleSuite) o;
         return Objects.equals(this.id, ruleSuite.id)
-                && Objects.equals(this.actorId, ruleSuite.actorId)
-                && Objects.equals(this.actorName, ruleSuite.actorName)
+                && equalsNullable(this.actorId, ruleSuite.actorId)
+                && equalsNullable(this.actorName, ruleSuite.actorName)
                 && Objects.equals(this.beforeSha, ruleSuite.beforeSha)
                 && Objects.equals(this.afterSha, ruleSuite.afterSha)
                 && Objects.equals(this.ref, ruleSuite.ref)
@@ -417,16 +414,21 @@ public class RuleSuite {
                 && Objects.equals(this.repositoryName, ruleSuite.repositoryName)
                 && Objects.equals(this.pushedAt, ruleSuite.pushedAt)
                 && Objects.equals(this.result, ruleSuite.result)
-                && Objects.equals(this.evaluationResult, ruleSuite.evaluationResult)
+                && equalsNullable(this.evaluationResult, ruleSuite.evaluationResult)
                 && Objects.equals(this.ruleEvaluations, ruleSuite.ruleEvaluations);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 id,
-                actorId,
-                actorName,
+                hashCodeNullable(actorId),
+                hashCodeNullable(actorName),
                 beforeSha,
                 afterSha,
                 ref,
@@ -434,8 +436,15 @@ public class RuleSuite {
                 repositoryName,
                 pushedAt,
                 result,
-                evaluationResult,
+                hashCodeNullable(evaluationResult),
                 ruleEvaluations);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

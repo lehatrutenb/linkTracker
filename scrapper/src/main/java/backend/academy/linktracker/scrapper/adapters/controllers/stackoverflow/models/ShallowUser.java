@@ -6,10 +6,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Represents a user in a shallow form, typically used within other objects.
@@ -17,23 +16,23 @@ import java.util.Objects;
 @Schema(name = "ShallowUser", description = "Represents a user in a shallow form, typically used within other objects.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ShallowUser {
 
-    private Long acceptRate;
+    private Optional<Long> acceptRate = Optional.empty();
 
-    private Long accountId;
+    private Optional<Long> accountId = Optional.empty();
 
-    private String displayName;
+    private Optional<String> displayName = Optional.empty();
 
-    private URI link;
+    private Optional<URI> link = Optional.empty();
 
-    private URI profileImage;
+    private Optional<URI> profileImage = Optional.empty();
 
-    private Long reputation;
+    private Optional<Long> reputation = Optional.empty();
 
-    private Long userId;
+    private Optional<Long> userId = Optional.empty();
 
     /**
      * The type of user account.
@@ -74,10 +73,10 @@ public class ShallowUser {
         }
     }
 
-    private UserTypeEnum userType;
+    private Optional<UserTypeEnum> userType = Optional.empty();
 
     public ShallowUser acceptRate(Long acceptRate) {
-        this.acceptRate = acceptRate;
+        this.acceptRate = Optional.ofNullable(acceptRate);
         return this;
     }
 
@@ -91,16 +90,16 @@ public class ShallowUser {
             description = "The percentage of questions the user has accepted answers for.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("accept_rate")
-    public Long getAcceptRate() {
+    public Optional<Long> getAcceptRate() {
         return acceptRate;
     }
 
-    public void setAcceptRate(Long acceptRate) {
+    public void setAcceptRate(Optional<Long> acceptRate) {
         this.acceptRate = acceptRate;
     }
 
     public ShallowUser accountId(Long accountId) {
-        this.accountId = accountId;
+        this.accountId = Optional.ofNullable(accountId);
         return this;
     }
 
@@ -114,16 +113,16 @@ public class ShallowUser {
             description = "The user's account ID across the Stack Exchange network.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("account_id")
-    public Long getAccountId() {
+    public Optional<Long> getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Long accountId) {
+    public void setAccountId(Optional<Long> accountId) {
         this.accountId = accountId;
     }
 
     public ShallowUser displayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = Optional.ofNullable(displayName);
         return this;
     }
 
@@ -137,16 +136,16 @@ public class ShallowUser {
             description = "The user's display name.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public Optional<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(Optional<String> displayName) {
         this.displayName = displayName;
     }
 
     public ShallowUser link(URI link) {
-        this.link = link;
+        this.link = Optional.ofNullable(link);
         return this;
     }
 
@@ -161,16 +160,16 @@ public class ShallowUser {
             description = "The URL to the user's profile.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("link")
-    public URI getLink() {
+    public Optional<URI> getLink() {
         return link;
     }
 
-    public void setLink(URI link) {
+    public void setLink(Optional<URI> link) {
         this.link = link;
     }
 
     public ShallowUser profileImage(URI profileImage) {
-        this.profileImage = profileImage;
+        this.profileImage = Optional.ofNullable(profileImage);
         return this;
     }
 
@@ -185,16 +184,16 @@ public class ShallowUser {
             description = "The URL to the user's profile image.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("profile_image")
-    public URI getProfileImage() {
+    public Optional<URI> getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(URI profileImage) {
+    public void setProfileImage(Optional<URI> profileImage) {
         this.profileImage = profileImage;
     }
 
     public ShallowUser reputation(Long reputation) {
-        this.reputation = reputation;
+        this.reputation = Optional.ofNullable(reputation);
         return this;
     }
 
@@ -208,16 +207,16 @@ public class ShallowUser {
             description = "The user's reputation score.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reputation")
-    public Long getReputation() {
+    public Optional<Long> getReputation() {
         return reputation;
     }
 
-    public void setReputation(Long reputation) {
+    public void setReputation(Optional<Long> reputation) {
         this.reputation = reputation;
     }
 
     public ShallowUser userId(Long userId) {
-        this.userId = userId;
+        this.userId = Optional.ofNullable(userId);
         return this;
     }
 
@@ -231,16 +230,16 @@ public class ShallowUser {
             description = "The user's unique identifier.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_id")
-    public Long getUserId() {
+    public Optional<Long> getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Optional<Long> userId) {
         this.userId = userId;
     }
 
     public ShallowUser userType(UserTypeEnum userType) {
-        this.userType = userType;
+        this.userType = Optional.ofNullable(userType);
         return this;
     }
 
@@ -254,11 +253,11 @@ public class ShallowUser {
             description = "The type of user account.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_type")
-    public UserTypeEnum getUserType() {
+    public Optional<UserTypeEnum> getUserType() {
         return userType;
     }
 
-    public void setUserType(UserTypeEnum userType) {
+    public void setUserType(Optional<UserTypeEnum> userType) {
         this.userType = userType;
     }
 

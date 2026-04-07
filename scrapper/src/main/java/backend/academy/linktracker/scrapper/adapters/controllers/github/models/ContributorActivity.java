@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Contributor Activity
@@ -18,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("contributor-activity")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ContributorActivity {
 
-    private NullableSimpleUser author = null;
+    private JsonNullable<NullableSimpleUser> author = JsonNullable.<NullableSimpleUser>undefined();
 
     private Long total;
 
@@ -38,13 +38,13 @@ public class ContributorActivity {
      */
     public ContributorActivity(
             NullableSimpleUser author, Long total, List<@Valid ContributorActivityWeeksInner> weeks) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         this.total = total;
         this.weeks = weeks;
     }
 
     public ContributorActivity author(NullableSimpleUser author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -56,11 +56,11 @@ public class ContributorActivity {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public NullableSimpleUser getAuthor() {
+    public JsonNullable<NullableSimpleUser> getAuthor() {
         return author;
     }
 
-    public void setAuthor(NullableSimpleUser author) {
+    public void setAuthor(JsonNullable<NullableSimpleUser> author) {
         this.author = author;
     }
 

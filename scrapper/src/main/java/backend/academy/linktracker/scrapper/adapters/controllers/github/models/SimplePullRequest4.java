@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * SimplePullRequest4
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("Simple_Pull_Request_4")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SimplePullRequest4 {
 
@@ -65,9 +65,9 @@ public class SimplePullRequest4 {
         }
     }
 
-    private ActiveLockReasonEnum activeLockReason = null;
+    private JsonNullable<ActiveLockReasonEnum> activeLockReason = JsonNullable.<ActiveLockReasonEnum>undefined();
 
-    private User assignee = null;
+    private JsonNullable<User> assignee = JsonNullable.<User>undefined();
 
     @Valid
     private List<@Valid User2> assignees = new ArrayList<>();
@@ -121,13 +121,13 @@ public class SimplePullRequest4 {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private PullRequestAutoMerge1 autoMerge = null;
+    private JsonNullable<PullRequestAutoMerge1> autoMerge = JsonNullable.<PullRequestAutoMerge1>undefined();
 
     private SimplePullRequest3Base base;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private String closedAt = null;
+    private JsonNullable<String> closedAt = JsonNullable.<String>undefined();
 
     private URI commentsUrl;
 
@@ -152,9 +152,9 @@ public class SimplePullRequest4 {
 
     private Boolean locked;
 
-    private String mergedAt = null;
+    private JsonNullable<String> mergedAt = JsonNullable.<String>undefined();
 
-    private Milestone1 milestone = null;
+    private JsonNullable<Milestone1> milestone = JsonNullable.<Milestone1>undefined();
 
     private String nodeId;
 
@@ -217,7 +217,7 @@ public class SimplePullRequest4 {
 
     private URI url;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public SimplePullRequest4() {
         super();
@@ -263,14 +263,14 @@ public class SimplePullRequest4 {
             URI url,
             User1 user) {
         this.links = links;
-        this.activeLockReason = activeLockReason;
-        this.assignee = assignee;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
+        this.assignee = JsonNullable.of(assignee);
         this.assignees = assignees;
         this.authorAssociation = authorAssociation;
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         this.base = base;
-        this.body = body;
-        this.closedAt = closedAt;
+        this.body = JsonNullable.of(body);
+        this.closedAt = JsonNullable.of(closedAt);
         this.commentsUrl = commentsUrl;
         this.commitsUrl = commitsUrl;
         this.createdAt = createdAt;
@@ -282,8 +282,8 @@ public class SimplePullRequest4 {
         this.issueUrl = issueUrl;
         this.labels = labels;
         this.locked = locked;
-        this.mergedAt = mergedAt;
-        this.milestone = milestone;
+        this.mergedAt = JsonNullable.of(mergedAt);
+        this.milestone = JsonNullable.of(milestone);
         this.nodeId = nodeId;
         this.number = number;
         this.patchUrl = patchUrl;
@@ -296,7 +296,7 @@ public class SimplePullRequest4 {
         this.title = title;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public SimplePullRequest4 links(WebhooksPullRequest5Links links) {
@@ -321,7 +321,7 @@ public class SimplePullRequest4 {
     }
 
     public SimplePullRequest4 activeLockReason(ActiveLockReasonEnum activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -332,16 +332,16 @@ public class SimplePullRequest4 {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public ActiveLockReasonEnum getActiveLockReason() {
+    public JsonNullable<ActiveLockReasonEnum> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(ActiveLockReasonEnum activeLockReason) {
+    public void setActiveLockReason(JsonNullable<ActiveLockReasonEnum> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public SimplePullRequest4 assignee(User assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -353,11 +353,11 @@ public class SimplePullRequest4 {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("assignee")
-    public User getAssignee() {
+    public JsonNullable<User> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(User assignee) {
+    public void setAssignee(JsonNullable<User> assignee) {
         this.assignee = assignee;
     }
 
@@ -414,7 +414,7 @@ public class SimplePullRequest4 {
     }
 
     public SimplePullRequest4 autoMerge(PullRequestAutoMerge1 autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         return this;
     }
 
@@ -426,11 +426,11 @@ public class SimplePullRequest4 {
     @Valid
     @Schema(name = "auto_merge", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("auto_merge")
-    public PullRequestAutoMerge1 getAutoMerge() {
+    public JsonNullable<PullRequestAutoMerge1> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(PullRequestAutoMerge1 autoMerge) {
+    public void setAutoMerge(JsonNullable<PullRequestAutoMerge1> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
@@ -456,7 +456,7 @@ public class SimplePullRequest4 {
     }
 
     public SimplePullRequest4 body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -467,16 +467,16 @@ public class SimplePullRequest4 {
     @NotNull
     @Schema(name = "body", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public SimplePullRequest4 closedAt(String closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -487,11 +487,11 @@ public class SimplePullRequest4 {
     @NotNull
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public String getClosedAt() {
+    public JsonNullable<String> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(String closedAt) {
+    public void setClosedAt(JsonNullable<String> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -731,7 +731,7 @@ public class SimplePullRequest4 {
     }
 
     public SimplePullRequest4 mergedAt(String mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -742,16 +742,16 @@ public class SimplePullRequest4 {
     @NotNull
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_at")
-    public String getMergedAt() {
+    public JsonNullable<String> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(String mergedAt) {
+    public void setMergedAt(JsonNullable<String> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
     public SimplePullRequest4 milestone(Milestone1 milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -763,11 +763,11 @@ public class SimplePullRequest4 {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public Milestone1 getMilestone() {
+    public JsonNullable<Milestone1> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Milestone1 milestone) {
+    public void setMilestone(JsonNullable<Milestone1> milestone) {
         this.milestone = milestone;
     }
 
@@ -1034,7 +1034,7 @@ public class SimplePullRequest4 {
     }
 
     public SimplePullRequest4 user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -1046,11 +1046,11 @@ public class SimplePullRequest4 {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

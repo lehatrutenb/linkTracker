@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Marketplace Listing Plan
@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonTypeName("marketplace-listing-plan")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarketplaceListingPlan {
 
@@ -82,7 +82,7 @@ public class MarketplaceListingPlan {
 
     private Boolean hasFreeTrial;
 
-    private String unitName = null;
+    private JsonNullable<String> unitName = JsonNullable.<String>undefined();
 
     private String state;
 
@@ -120,7 +120,7 @@ public class MarketplaceListingPlan {
         this.yearlyPriceInCents = yearlyPriceInCents;
         this.priceModel = priceModel;
         this.hasFreeTrial = hasFreeTrial;
-        this.unitName = unitName;
+        this.unitName = JsonNullable.of(unitName);
         this.state = state;
         this.bullets = bullets;
     }
@@ -337,7 +337,7 @@ public class MarketplaceListingPlan {
     }
 
     public MarketplaceListingPlan unitName(String unitName) {
-        this.unitName = unitName;
+        this.unitName = JsonNullable.of(unitName);
         return this;
     }
 
@@ -348,11 +348,11 @@ public class MarketplaceListingPlan {
     @NotNull
     @Schema(name = "unit_name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("unit_name")
-    public String getUnitName() {
+    public JsonNullable<String> getUnitName() {
         return unitName;
     }
 
-    public void setUnitName(String unitName) {
+    public void setUnitName(JsonNullable<String> unitName) {
         this.unitName = unitName;
     }
 

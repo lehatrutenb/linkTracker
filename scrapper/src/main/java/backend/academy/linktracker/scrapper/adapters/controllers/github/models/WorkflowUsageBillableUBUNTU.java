@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WorkflowUsageBillableUBUNTU
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("workflow_usage_billable_UBUNTU")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WorkflowUsageBillableUBUNTU {
 
-    private Long totalMs;
+    private Optional<Long> totalMs = Optional.empty();
 
     public WorkflowUsageBillableUBUNTU totalMs(Long totalMs) {
-        this.totalMs = totalMs;
+        this.totalMs = Optional.ofNullable(totalMs);
         return this;
     }
 
@@ -31,11 +30,11 @@ public class WorkflowUsageBillableUBUNTU {
      */
     @Schema(name = "total_ms", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_ms")
-    public Long getTotalMs() {
+    public Optional<Long> getTotalMs() {
         return totalMs;
     }
 
-    public void setTotalMs(Long totalMs) {
+    public void setTotalMs(Optional<Long> totalMs) {
         this.totalMs = totalMs;
     }
 

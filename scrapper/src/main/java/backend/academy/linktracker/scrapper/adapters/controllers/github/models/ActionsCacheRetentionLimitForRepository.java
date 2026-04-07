@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitHub Actions cache retention policy for a repository.
@@ -17,14 +16,14 @@ import java.util.Objects;
 @JsonTypeName("actions-cache-retention-limit-for-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsCacheRetentionLimitForRepository {
 
-    private Long maxCacheRetentionDays;
+    private Optional<Long> maxCacheRetentionDays = Optional.empty();
 
     public ActionsCacheRetentionLimitForRepository maxCacheRetentionDays(Long maxCacheRetentionDays) {
-        this.maxCacheRetentionDays = maxCacheRetentionDays;
+        this.maxCacheRetentionDays = Optional.ofNullable(maxCacheRetentionDays);
         return this;
     }
 
@@ -38,11 +37,11 @@ public class ActionsCacheRetentionLimitForRepository {
             description = "The maximum number of days to keep caches in this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("max_cache_retention_days")
-    public Long getMaxCacheRetentionDays() {
+    public Optional<Long> getMaxCacheRetentionDays() {
         return maxCacheRetentionDays;
     }
 
-    public void setMaxCacheRetentionDays(Long maxCacheRetentionDays) {
+    public void setMaxCacheRetentionDays(Optional<Long> maxCacheRetentionDays) {
         this.maxCacheRetentionDays = maxCacheRetentionDays;
     }
 

@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("pull_request_review_comment_event_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestReviewCommentEventComment {
 
@@ -28,21 +30,21 @@ public class PullRequestReviewCommentEventComment {
 
     private URI url;
 
-    private Long pullRequestReviewId = null;
+    private JsonNullable<Long> pullRequestReviewId = JsonNullable.<Long>undefined();
 
     private String diffHunk;
 
     private String path;
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
     private Long originalPosition;
 
-    private String subjectType = null;
+    private JsonNullable<String> subjectType = JsonNullable.<String>undefined();
 
     private String commitId;
 
-    private User9 user = null;
+    private JsonNullable<User9> user = JsonNullable.<User9>undefined();
 
     private String body;
 
@@ -62,7 +64,7 @@ public class PullRequestReviewCommentEventComment {
 
     private Reactions1 reactions;
 
-    private Long inReplyToId;
+    private Optional<Long> inReplyToId = Optional.empty();
 
     public PullRequestReviewCommentEventComment() {
         super();
@@ -93,13 +95,13 @@ public class PullRequestReviewCommentEventComment {
         this.id = id;
         this.nodeId = nodeId;
         this.url = url;
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         this.diffHunk = diffHunk;
         this.path = path;
-        this.position = position;
+        this.position = JsonNullable.of(position);
         this.originalPosition = originalPosition;
         this.commitId = commitId;
-        this.user = user;
+        this.user = JsonNullable.of(user);
         this.body = body;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -172,7 +174,7 @@ public class PullRequestReviewCommentEventComment {
     }
 
     public PullRequestReviewCommentEventComment pullRequestReviewId(Long pullRequestReviewId) {
-        this.pullRequestReviewId = pullRequestReviewId;
+        this.pullRequestReviewId = JsonNullable.of(pullRequestReviewId);
         return this;
     }
 
@@ -183,11 +185,11 @@ public class PullRequestReviewCommentEventComment {
     @NotNull
     @Schema(name = "pull_request_review_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("pull_request_review_id")
-    public Long getPullRequestReviewId() {
+    public JsonNullable<Long> getPullRequestReviewId() {
         return pullRequestReviewId;
     }
 
-    public void setPullRequestReviewId(Long pullRequestReviewId) {
+    public void setPullRequestReviewId(JsonNullable<Long> pullRequestReviewId) {
         this.pullRequestReviewId = pullRequestReviewId;
     }
 
@@ -232,7 +234,7 @@ public class PullRequestReviewCommentEventComment {
     }
 
     public PullRequestReviewCommentEventComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -243,11 +245,11 @@ public class PullRequestReviewCommentEventComment {
     @NotNull
     @Schema(name = "position", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
@@ -272,7 +274,7 @@ public class PullRequestReviewCommentEventComment {
     }
 
     public PullRequestReviewCommentEventComment subjectType(String subjectType) {
-        this.subjectType = subjectType;
+        this.subjectType = JsonNullable.of(subjectType);
         return this;
     }
 
@@ -282,11 +284,11 @@ public class PullRequestReviewCommentEventComment {
      */
     @Schema(name = "subject_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subject_type")
-    public String getSubjectType() {
+    public JsonNullable<String> getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(String subjectType) {
+    public void setSubjectType(JsonNullable<String> subjectType) {
         this.subjectType = subjectType;
     }
 
@@ -311,7 +313,7 @@ public class PullRequestReviewCommentEventComment {
     }
 
     public PullRequestReviewCommentEventComment user(User9 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -323,11 +325,11 @@ public class PullRequestReviewCommentEventComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User9 getUser() {
+    public JsonNullable<User9> getUser() {
         return user;
     }
 
-    public void setUser(User9 user) {
+    public void setUser(JsonNullable<User9> user) {
         this.user = user;
     }
 
@@ -498,7 +500,7 @@ public class PullRequestReviewCommentEventComment {
     }
 
     public PullRequestReviewCommentEventComment inReplyToId(Long inReplyToId) {
-        this.inReplyToId = inReplyToId;
+        this.inReplyToId = Optional.ofNullable(inReplyToId);
         return this;
     }
 
@@ -508,11 +510,11 @@ public class PullRequestReviewCommentEventComment {
      */
     @Schema(name = "in_reply_to_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("in_reply_to_id")
-    public Long getInReplyToId() {
+    public Optional<Long> getInReplyToId() {
         return inReplyToId;
     }
 
-    public void setInReplyToId(Long inReplyToId) {
+    public void setInReplyToId(Optional<Long> inReplyToId) {
         this.inReplyToId = inReplyToId;
     }
 
@@ -534,7 +536,7 @@ public class PullRequestReviewCommentEventComment {
                 && Objects.equals(this.path, pullRequestReviewCommentEventComment.path)
                 && Objects.equals(this.position, pullRequestReviewCommentEventComment.position)
                 && Objects.equals(this.originalPosition, pullRequestReviewCommentEventComment.originalPosition)
-                && Objects.equals(this.subjectType, pullRequestReviewCommentEventComment.subjectType)
+                && equalsNullable(this.subjectType, pullRequestReviewCommentEventComment.subjectType)
                 && Objects.equals(this.commitId, pullRequestReviewCommentEventComment.commitId)
                 && Objects.equals(this.user, pullRequestReviewCommentEventComment.user)
                 && Objects.equals(this.body, pullRequestReviewCommentEventComment.body)
@@ -548,6 +550,11 @@ public class PullRequestReviewCommentEventComment {
                 && Objects.equals(this.inReplyToId, pullRequestReviewCommentEventComment.inReplyToId);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -559,7 +566,7 @@ public class PullRequestReviewCommentEventComment {
                 path,
                 position,
                 originalPosition,
-                subjectType,
+                hashCodeNullable(subjectType),
                 commitId,
                 user,
                 body,
@@ -571,6 +578,13 @@ public class PullRequestReviewCommentEventComment {
                 originalCommitId,
                 reactions,
                 inReplyToId);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

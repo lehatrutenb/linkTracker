@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,17 +23,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("discussion")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Discussion {
 
-    private String activeLockReason = null;
+    private JsonNullable<String> activeLockReason = JsonNullable.<String>undefined();
 
-    private String answerChosenAt = null;
+    private JsonNullable<String> answerChosenAt = JsonNullable.<String>undefined();
 
-    private User answerChosenBy = null;
+    private JsonNullable<User> answerChosenBy = JsonNullable.<User>undefined();
 
-    private String answerHtmlUrl = null;
+    private JsonNullable<String> answerHtmlUrl = JsonNullable.<String>undefined();
 
     /**
      * How the author is associated with the repository.
@@ -81,7 +82,7 @@ public class Discussion {
         }
     }
 
-    private AuthorAssociationEnum authorAssociation;
+    private Optional<AuthorAssociationEnum> authorAssociation = Optional.empty();
 
     private String body;
 
@@ -102,7 +103,7 @@ public class Discussion {
 
     private Long number;
 
-    private Reactions reactions;
+    private Optional<Reactions> reactions = Optional.empty();
 
     private String repositoryUrl;
 
@@ -188,16 +189,16 @@ public class Discussion {
         }
     }
 
-    private StateReasonEnum stateReason = null;
+    private JsonNullable<StateReasonEnum> stateReason = JsonNullable.<StateReasonEnum>undefined();
 
-    private String timelineUrl;
+    private Optional<String> timelineUrl = Optional.empty();
 
     private String title;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     @Valid
     private List<@Valid Label> labels = new ArrayList<>();
@@ -229,10 +230,10 @@ public class Discussion {
             String title,
             OffsetDateTime updatedAt,
             User1 user) {
-        this.activeLockReason = activeLockReason;
-        this.answerChosenAt = answerChosenAt;
-        this.answerChosenBy = answerChosenBy;
-        this.answerHtmlUrl = answerHtmlUrl;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
+        this.answerChosenAt = JsonNullable.of(answerChosenAt);
+        this.answerChosenBy = JsonNullable.of(answerChosenBy);
+        this.answerHtmlUrl = JsonNullable.of(answerHtmlUrl);
         this.body = body;
         this.category = category;
         this.comments = comments;
@@ -244,14 +245,14 @@ public class Discussion {
         this.number = number;
         this.repositoryUrl = repositoryUrl;
         this.state = state;
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         this.title = title;
         this.updatedAt = updatedAt;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public Discussion activeLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -262,16 +263,16 @@ public class Discussion {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
+    public JsonNullable<String> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(String activeLockReason) {
+    public void setActiveLockReason(JsonNullable<String> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public Discussion answerChosenAt(String answerChosenAt) {
-        this.answerChosenAt = answerChosenAt;
+        this.answerChosenAt = JsonNullable.of(answerChosenAt);
         return this;
     }
 
@@ -282,16 +283,16 @@ public class Discussion {
     @NotNull
     @Schema(name = "answer_chosen_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("answer_chosen_at")
-    public String getAnswerChosenAt() {
+    public JsonNullable<String> getAnswerChosenAt() {
         return answerChosenAt;
     }
 
-    public void setAnswerChosenAt(String answerChosenAt) {
+    public void setAnswerChosenAt(JsonNullable<String> answerChosenAt) {
         this.answerChosenAt = answerChosenAt;
     }
 
     public Discussion answerChosenBy(User answerChosenBy) {
-        this.answerChosenBy = answerChosenBy;
+        this.answerChosenBy = JsonNullable.of(answerChosenBy);
         return this;
     }
 
@@ -303,16 +304,16 @@ public class Discussion {
     @Valid
     @Schema(name = "answer_chosen_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("answer_chosen_by")
-    public User getAnswerChosenBy() {
+    public JsonNullable<User> getAnswerChosenBy() {
         return answerChosenBy;
     }
 
-    public void setAnswerChosenBy(User answerChosenBy) {
+    public void setAnswerChosenBy(JsonNullable<User> answerChosenBy) {
         this.answerChosenBy = answerChosenBy;
     }
 
     public Discussion answerHtmlUrl(String answerHtmlUrl) {
-        this.answerHtmlUrl = answerHtmlUrl;
+        this.answerHtmlUrl = JsonNullable.of(answerHtmlUrl);
         return this;
     }
 
@@ -323,16 +324,16 @@ public class Discussion {
     @NotNull
     @Schema(name = "answer_html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("answer_html_url")
-    public String getAnswerHtmlUrl() {
+    public JsonNullable<String> getAnswerHtmlUrl() {
         return answerHtmlUrl;
     }
 
-    public void setAnswerHtmlUrl(String answerHtmlUrl) {
+    public void setAnswerHtmlUrl(JsonNullable<String> answerHtmlUrl) {
         this.answerHtmlUrl = answerHtmlUrl;
     }
 
     public Discussion authorAssociation(AuthorAssociationEnum authorAssociation) {
-        this.authorAssociation = authorAssociation;
+        this.authorAssociation = Optional.ofNullable(authorAssociation);
         return this;
     }
 
@@ -345,11 +346,11 @@ public class Discussion {
             description = "How the author is associated with the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("author_association")
-    public AuthorAssociationEnum getAuthorAssociation() {
+    public Optional<AuthorAssociationEnum> getAuthorAssociation() {
         return authorAssociation;
     }
 
-    public void setAuthorAssociation(AuthorAssociationEnum authorAssociation) {
+    public void setAuthorAssociation(Optional<AuthorAssociationEnum> authorAssociation) {
         this.authorAssociation = authorAssociation;
     }
 
@@ -536,7 +537,7 @@ public class Discussion {
     }
 
     public Discussion reactions(Reactions reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -547,11 +548,11 @@ public class Discussion {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public Reactions getReactions() {
+    public Optional<Reactions> getReactions() {
         return reactions;
     }
 
-    public void setReactions(Reactions reactions) {
+    public void setReactions(Optional<Reactions> reactions) {
         this.reactions = reactions;
     }
 
@@ -600,7 +601,7 @@ public class Discussion {
     }
 
     public Discussion stateReason(StateReasonEnum stateReason) {
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         return this;
     }
 
@@ -615,16 +616,16 @@ public class Discussion {
             description = "The reason for the current state",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("state_reason")
-    public StateReasonEnum getStateReason() {
+    public JsonNullable<StateReasonEnum> getStateReason() {
         return stateReason;
     }
 
-    public void setStateReason(StateReasonEnum stateReason) {
+    public void setStateReason(JsonNullable<StateReasonEnum> stateReason) {
         this.stateReason = stateReason;
     }
 
     public Discussion timelineUrl(String timelineUrl) {
-        this.timelineUrl = timelineUrl;
+        this.timelineUrl = Optional.ofNullable(timelineUrl);
         return this;
     }
 
@@ -634,11 +635,11 @@ public class Discussion {
      */
     @Schema(name = "timeline_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("timeline_url")
-    public String getTimelineUrl() {
+    public Optional<String> getTimelineUrl() {
         return timelineUrl;
     }
 
-    public void setTimelineUrl(String timelineUrl) {
+    public void setTimelineUrl(Optional<String> timelineUrl) {
         this.timelineUrl = timelineUrl;
     }
 
@@ -684,7 +685,7 @@ public class Discussion {
     }
 
     public Discussion user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -696,11 +697,11 @@ public class Discussion {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

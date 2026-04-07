@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Successful deletion of a code scanning analysis
@@ -17,13 +16,13 @@ import java.util.Objects;
 @JsonTypeName("code-scanning-analysis-deletion")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningAnalysisDeletion {
 
-    private URI nextAnalysisUrl = null;
+    private JsonNullable<URI> nextAnalysisUrl = JsonNullable.<URI>undefined();
 
-    private URI confirmDeleteUrl = null;
+    private JsonNullable<URI> confirmDeleteUrl = JsonNullable.<URI>undefined();
 
     public CodeScanningAnalysisDeletion() {
         super();
@@ -33,12 +32,12 @@ public class CodeScanningAnalysisDeletion {
      * Constructor with only required parameters
      */
     public CodeScanningAnalysisDeletion(URI nextAnalysisUrl, URI confirmDeleteUrl) {
-        this.nextAnalysisUrl = nextAnalysisUrl;
-        this.confirmDeleteUrl = confirmDeleteUrl;
+        this.nextAnalysisUrl = JsonNullable.of(nextAnalysisUrl);
+        this.confirmDeleteUrl = JsonNullable.of(confirmDeleteUrl);
     }
 
     public CodeScanningAnalysisDeletion nextAnalysisUrl(URI nextAnalysisUrl) {
-        this.nextAnalysisUrl = nextAnalysisUrl;
+        this.nextAnalysisUrl = JsonNullable.of(nextAnalysisUrl);
         return this;
     }
 
@@ -53,16 +52,16 @@ public class CodeScanningAnalysisDeletion {
             description = "Next deletable analysis in chain, without last analysis deletion confirmation",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("next_analysis_url")
-    public URI getNextAnalysisUrl() {
+    public JsonNullable<URI> getNextAnalysisUrl() {
         return nextAnalysisUrl;
     }
 
-    public void setNextAnalysisUrl(URI nextAnalysisUrl) {
+    public void setNextAnalysisUrl(JsonNullable<URI> nextAnalysisUrl) {
         this.nextAnalysisUrl = nextAnalysisUrl;
     }
 
     public CodeScanningAnalysisDeletion confirmDeleteUrl(URI confirmDeleteUrl) {
-        this.confirmDeleteUrl = confirmDeleteUrl;
+        this.confirmDeleteUrl = JsonNullable.of(confirmDeleteUrl);
         return this;
     }
 
@@ -77,11 +76,11 @@ public class CodeScanningAnalysisDeletion {
             description = "Next deletable analysis in chain, with last analysis deletion confirmation",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("confirm_delete_url")
-    public URI getConfirmDeleteUrl() {
+    public JsonNullable<URI> getConfirmDeleteUrl() {
         return confirmDeleteUrl;
     }
 
-    public void setConfirmDeleteUrl(URI confirmDeleteUrl) {
+    public void setConfirmDeleteUrl(JsonNullable<URI> confirmDeleteUrl) {
         this.confirmDeleteUrl = confirmDeleteUrl;
     }
 

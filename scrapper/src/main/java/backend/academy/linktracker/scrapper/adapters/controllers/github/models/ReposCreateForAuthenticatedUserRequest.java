@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateForAuthenticatedUserRequest
@@ -16,43 +16,43 @@ import java.util.Objects;
 @JsonTypeName("repos_create_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateForAuthenticatedUserRequest {
 
     private String name;
 
-    private String description;
+    private Optional<String> description = Optional.empty();
 
-    private String homepage;
+    private Optional<String> homepage = Optional.empty();
 
-    private Boolean _private = false;
+    private Optional<Boolean> _private = Optional.of(false);
 
-    private Boolean hasIssues = true;
+    private Optional<Boolean> hasIssues = Optional.of(true);
 
-    private Boolean hasProjects = true;
+    private Optional<Boolean> hasProjects = Optional.of(true);
 
-    private Boolean hasWiki = true;
+    private Optional<Boolean> hasWiki = Optional.of(true);
 
-    private Boolean hasDiscussions = false;
+    private Optional<Boolean> hasDiscussions = Optional.of(false);
 
-    private Long teamId;
+    private Optional<Long> teamId = Optional.empty();
 
-    private Boolean autoInit = false;
+    private Optional<Boolean> autoInit = Optional.of(false);
 
-    private String gitignoreTemplate;
+    private Optional<String> gitignoreTemplate = Optional.empty();
 
-    private String licenseTemplate;
+    private Optional<String> licenseTemplate = Optional.empty();
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
     /**
      * Required when using `squash_merge_commit_message`.  The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -89,7 +89,7 @@ public class ReposCreateForAuthenticatedUserRequest {
         }
     }
 
-    private SquashMergeCommitTitleEnum squashMergeCommitTitle;
+    private Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.
@@ -128,7 +128,7 @@ public class ReposCreateForAuthenticatedUserRequest {
         }
     }
 
-    private SquashMergeCommitMessageEnum squashMergeCommitMessage;
+    private Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage = Optional.empty();
 
     /**
      * Required when using `merge_commit_message`.  The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -165,7 +165,7 @@ public class ReposCreateForAuthenticatedUserRequest {
         }
     }
 
-    private MergeCommitTitleEnum mergeCommitTitle;
+    private Optional<MergeCommitTitleEnum> mergeCommitTitle = Optional.empty();
 
     /**
      * The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.
@@ -204,11 +204,11 @@ public class ReposCreateForAuthenticatedUserRequest {
         }
     }
 
-    private MergeCommitMessageEnum mergeCommitMessage;
+    private Optional<MergeCommitMessageEnum> mergeCommitMessage = Optional.empty();
 
-    private Boolean hasDownloads = true;
+    private Optional<Boolean> hasDownloads = Optional.of(true);
 
-    private Boolean isTemplate = false;
+    private Optional<Boolean> isTemplate = Optional.of(false);
 
     public ReposCreateForAuthenticatedUserRequest() {
         super();
@@ -246,7 +246,7 @@ public class ReposCreateForAuthenticatedUserRequest {
     }
 
     public ReposCreateForAuthenticatedUserRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -259,16 +259,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "A short description of the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public ReposCreateForAuthenticatedUserRequest homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = Optional.ofNullable(homepage);
         return this;
     }
 
@@ -281,16 +281,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "A URL with more information about the repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public Optional<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(Optional<String> homepage) {
         this.homepage = homepage;
     }
 
     public ReposCreateForAuthenticatedUserRequest _private(Boolean _private) {
-        this._private = _private;
+        this._private = Optional.ofNullable(_private);
         return this;
     }
 
@@ -303,16 +303,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether the repository is private.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private")
-    public Boolean getPrivate() {
+    public Optional<Boolean> getPrivate() {
         return _private;
     }
 
-    public void setPrivate(Boolean _private) {
+    public void setPrivate(Optional<Boolean> _private) {
         this._private = _private;
     }
 
     public ReposCreateForAuthenticatedUserRequest hasIssues(Boolean hasIssues) {
-        this.hasIssues = hasIssues;
+        this.hasIssues = Optional.ofNullable(hasIssues);
         return this;
     }
 
@@ -326,16 +326,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether issues are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_issues")
-    public Boolean getHasIssues() {
+    public Optional<Boolean> getHasIssues() {
         return hasIssues;
     }
 
-    public void setHasIssues(Boolean hasIssues) {
+    public void setHasIssues(Optional<Boolean> hasIssues) {
         this.hasIssues = hasIssues;
     }
 
     public ReposCreateForAuthenticatedUserRequest hasProjects(Boolean hasProjects) {
-        this.hasProjects = hasProjects;
+        this.hasProjects = Optional.ofNullable(hasProjects);
         return this;
     }
 
@@ -349,16 +349,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether projects are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_projects")
-    public Boolean getHasProjects() {
+    public Optional<Boolean> getHasProjects() {
         return hasProjects;
     }
 
-    public void setHasProjects(Boolean hasProjects) {
+    public void setHasProjects(Optional<Boolean> hasProjects) {
         this.hasProjects = hasProjects;
     }
 
     public ReposCreateForAuthenticatedUserRequest hasWiki(Boolean hasWiki) {
-        this.hasWiki = hasWiki;
+        this.hasWiki = Optional.ofNullable(hasWiki);
         return this;
     }
 
@@ -372,16 +372,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether the wiki is enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_wiki")
-    public Boolean getHasWiki() {
+    public Optional<Boolean> getHasWiki() {
         return hasWiki;
     }
 
-    public void setHasWiki(Boolean hasWiki) {
+    public void setHasWiki(Optional<Boolean> hasWiki) {
         this.hasWiki = hasWiki;
     }
 
     public ReposCreateForAuthenticatedUserRequest hasDiscussions(Boolean hasDiscussions) {
-        this.hasDiscussions = hasDiscussions;
+        this.hasDiscussions = Optional.ofNullable(hasDiscussions);
         return this;
     }
 
@@ -395,16 +395,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether discussions are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_discussions")
-    public Boolean getHasDiscussions() {
+    public Optional<Boolean> getHasDiscussions() {
         return hasDiscussions;
     }
 
-    public void setHasDiscussions(Boolean hasDiscussions) {
+    public void setHasDiscussions(Optional<Boolean> hasDiscussions) {
         this.hasDiscussions = hasDiscussions;
     }
 
     public ReposCreateForAuthenticatedUserRequest teamId(Long teamId) {
-        this.teamId = teamId;
+        this.teamId = Optional.ofNullable(teamId);
         return this;
     }
 
@@ -418,16 +418,16 @@ public class ReposCreateForAuthenticatedUserRequest {
                     "The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("team_id")
-    public Long getTeamId() {
+    public Optional<Long> getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(Long teamId) {
+    public void setTeamId(Optional<Long> teamId) {
         this.teamId = teamId;
     }
 
     public ReposCreateForAuthenticatedUserRequest autoInit(Boolean autoInit) {
-        this.autoInit = autoInit;
+        this.autoInit = Optional.ofNullable(autoInit);
         return this;
     }
 
@@ -440,16 +440,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether the repository is initialized with a minimal README.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("auto_init")
-    public Boolean getAutoInit() {
+    public Optional<Boolean> getAutoInit() {
         return autoInit;
     }
 
-    public void setAutoInit(Boolean autoInit) {
+    public void setAutoInit(Optional<Boolean> autoInit) {
         this.autoInit = autoInit;
     }
 
     public ReposCreateForAuthenticatedUserRequest gitignoreTemplate(String gitignoreTemplate) {
-        this.gitignoreTemplate = gitignoreTemplate;
+        this.gitignoreTemplate = Optional.ofNullable(gitignoreTemplate);
         return this;
     }
 
@@ -463,16 +463,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "The desired language or platform to apply to the .gitignore.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("gitignore_template")
-    public String getGitignoreTemplate() {
+    public Optional<String> getGitignoreTemplate() {
         return gitignoreTemplate;
     }
 
-    public void setGitignoreTemplate(String gitignoreTemplate) {
+    public void setGitignoreTemplate(Optional<String> gitignoreTemplate) {
         this.gitignoreTemplate = gitignoreTemplate;
     }
 
     public ReposCreateForAuthenticatedUserRequest licenseTemplate(String licenseTemplate) {
-        this.licenseTemplate = licenseTemplate;
+        this.licenseTemplate = Optional.ofNullable(licenseTemplate);
         return this;
     }
 
@@ -486,16 +486,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "The license keyword of the open source license for this repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license_template")
-    public String getLicenseTemplate() {
+    public Optional<String> getLicenseTemplate() {
         return licenseTemplate;
     }
 
-    public void setLicenseTemplate(String licenseTemplate) {
+    public void setLicenseTemplate(Optional<String> licenseTemplate) {
         this.licenseTemplate = licenseTemplate;
     }
 
     public ReposCreateForAuthenticatedUserRequest allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -509,16 +509,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether to allow squash merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public ReposCreateForAuthenticatedUserRequest allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -532,16 +532,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether to allow merge commits for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public ReposCreateForAuthenticatedUserRequest allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -555,16 +555,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether to allow rebase merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public ReposCreateForAuthenticatedUserRequest allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -578,16 +578,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether to allow Auto-merge to be used on pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public ReposCreateForAuthenticatedUserRequest deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -601,17 +601,17 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether to delete head branches when pull requests are merged",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public ReposCreateForAuthenticatedUserRequest squashMergeCommitTitle(
             SquashMergeCommitTitleEnum squashMergeCommitTitle) {
-        this.squashMergeCommitTitle = squashMergeCommitTitle;
+        this.squashMergeCommitTitle = Optional.ofNullable(squashMergeCommitTitle);
         return this;
     }
 
@@ -625,17 +625,17 @@ public class ReposCreateForAuthenticatedUserRequest {
                     "Required when using `squash_merge_commit_message`.  The default value for a squash merge commit title:  - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_title")
-    public SquashMergeCommitTitleEnum getSquashMergeCommitTitle() {
+    public Optional<SquashMergeCommitTitleEnum> getSquashMergeCommitTitle() {
         return squashMergeCommitTitle;
     }
 
-    public void setSquashMergeCommitTitle(SquashMergeCommitTitleEnum squashMergeCommitTitle) {
+    public void setSquashMergeCommitTitle(Optional<SquashMergeCommitTitleEnum> squashMergeCommitTitle) {
         this.squashMergeCommitTitle = squashMergeCommitTitle;
     }
 
     public ReposCreateForAuthenticatedUserRequest squashMergeCommitMessage(
             SquashMergeCommitMessageEnum squashMergeCommitMessage) {
-        this.squashMergeCommitMessage = squashMergeCommitMessage;
+        this.squashMergeCommitMessage = Optional.ofNullable(squashMergeCommitMessage);
         return this;
     }
 
@@ -649,16 +649,16 @@ public class ReposCreateForAuthenticatedUserRequest {
                     "The default value for a squash merge commit message:  - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("squash_merge_commit_message")
-    public SquashMergeCommitMessageEnum getSquashMergeCommitMessage() {
+    public Optional<SquashMergeCommitMessageEnum> getSquashMergeCommitMessage() {
         return squashMergeCommitMessage;
     }
 
-    public void setSquashMergeCommitMessage(SquashMergeCommitMessageEnum squashMergeCommitMessage) {
+    public void setSquashMergeCommitMessage(Optional<SquashMergeCommitMessageEnum> squashMergeCommitMessage) {
         this.squashMergeCommitMessage = squashMergeCommitMessage;
     }
 
     public ReposCreateForAuthenticatedUserRequest mergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
-        this.mergeCommitTitle = mergeCommitTitle;
+        this.mergeCommitTitle = Optional.ofNullable(mergeCommitTitle);
         return this;
     }
 
@@ -672,16 +672,16 @@ public class ReposCreateForAuthenticatedUserRequest {
                     "Required when using `merge_commit_message`.  The default value for a merge commit title.  - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_title")
-    public MergeCommitTitleEnum getMergeCommitTitle() {
+    public Optional<MergeCommitTitleEnum> getMergeCommitTitle() {
         return mergeCommitTitle;
     }
 
-    public void setMergeCommitTitle(MergeCommitTitleEnum mergeCommitTitle) {
+    public void setMergeCommitTitle(Optional<MergeCommitTitleEnum> mergeCommitTitle) {
         this.mergeCommitTitle = mergeCommitTitle;
     }
 
     public ReposCreateForAuthenticatedUserRequest mergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
-        this.mergeCommitMessage = mergeCommitMessage;
+        this.mergeCommitMessage = Optional.ofNullable(mergeCommitMessage);
         return this;
     }
 
@@ -695,16 +695,16 @@ public class ReposCreateForAuthenticatedUserRequest {
                     "The default value for a merge commit message.  - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merge_commit_message")
-    public MergeCommitMessageEnum getMergeCommitMessage() {
+    public Optional<MergeCommitMessageEnum> getMergeCommitMessage() {
         return mergeCommitMessage;
     }
 
-    public void setMergeCommitMessage(MergeCommitMessageEnum mergeCommitMessage) {
+    public void setMergeCommitMessage(Optional<MergeCommitMessageEnum> mergeCommitMessage) {
         this.mergeCommitMessage = mergeCommitMessage;
     }
 
     public ReposCreateForAuthenticatedUserRequest hasDownloads(Boolean hasDownloads) {
-        this.hasDownloads = hasDownloads;
+        this.hasDownloads = Optional.ofNullable(hasDownloads);
         return this;
     }
 
@@ -718,16 +718,16 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether downloads are enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_downloads")
-    public Boolean getHasDownloads() {
+    public Optional<Boolean> getHasDownloads() {
         return hasDownloads;
     }
 
-    public void setHasDownloads(Boolean hasDownloads) {
+    public void setHasDownloads(Optional<Boolean> hasDownloads) {
         this.hasDownloads = hasDownloads;
     }
 
     public ReposCreateForAuthenticatedUserRequest isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -741,11 +741,11 @@ public class ReposCreateForAuthenticatedUserRequest {
             description = "Whether this repository acts as a template that can be used to generate new repositories.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 

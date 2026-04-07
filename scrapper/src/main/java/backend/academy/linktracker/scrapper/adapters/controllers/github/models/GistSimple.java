@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Gist Simple
@@ -18,53 +15,53 @@ import java.util.Objects;
 @JsonTypeName("gist-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GistSimple {
 
-    private Gist forkOf = null;
+    private JsonNullable<Gist> forkOf = JsonNullable.<Gist>undefined();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String forksUrl;
+    private Optional<String> forksUrl = Optional.empty();
 
-    private String commitsUrl;
+    private Optional<String> commitsUrl = Optional.empty();
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private String gitPullUrl;
+    private Optional<String> gitPullUrl = Optional.empty();
 
-    private String gitPushUrl;
+    private Optional<String> gitPushUrl = Optional.empty();
 
-    private String htmlUrl;
+    private Optional<String> htmlUrl = Optional.empty();
 
     @Valid
     private Map<String, GistSimpleFilesValue> files = new HashMap<>();
 
-    private Boolean _public;
+    private Optional<Boolean> _public = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private Long comments;
+    private Optional<Long> comments = Optional.empty();
 
-    private Boolean commentsEnabled;
+    private Optional<Boolean> commentsEnabled = Optional.empty();
 
-    private String user = null;
+    private JsonNullable<String> user = JsonNullable.<String>undefined();
 
-    private String commentsUrl;
+    private Optional<String> commentsUrl = Optional.empty();
 
-    private SimpleUser owner;
+    private Optional<SimpleUser> owner = Optional.empty();
 
-    private Boolean truncated;
+    private Optional<Boolean> truncated = Optional.empty();
 
     public GistSimple forkOf(Gist forkOf) {
-        this.forkOf = forkOf;
+        this.forkOf = JsonNullable.of(forkOf);
         return this;
     }
 
@@ -75,16 +72,16 @@ public class GistSimple {
     @Valid
     @Schema(name = "fork_of", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("fork_of")
-    public Gist getForkOf() {
+    public JsonNullable<Gist> getForkOf() {
         return forkOf;
     }
 
-    public void setForkOf(Gist forkOf) {
+    public void setForkOf(JsonNullable<Gist> forkOf) {
         this.forkOf = forkOf;
     }
 
     public GistSimple url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -94,16 +91,16 @@ public class GistSimple {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public GistSimple forksUrl(String forksUrl) {
-        this.forksUrl = forksUrl;
+        this.forksUrl = Optional.ofNullable(forksUrl);
         return this;
     }
 
@@ -113,16 +110,16 @@ public class GistSimple {
      */
     @Schema(name = "forks_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_url")
-    public String getForksUrl() {
+    public Optional<String> getForksUrl() {
         return forksUrl;
     }
 
-    public void setForksUrl(String forksUrl) {
+    public void setForksUrl(Optional<String> forksUrl) {
         this.forksUrl = forksUrl;
     }
 
     public GistSimple commitsUrl(String commitsUrl) {
-        this.commitsUrl = commitsUrl;
+        this.commitsUrl = Optional.ofNullable(commitsUrl);
         return this;
     }
 
@@ -132,16 +129,16 @@ public class GistSimple {
      */
     @Schema(name = "commits_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commits_url")
-    public String getCommitsUrl() {
+    public Optional<String> getCommitsUrl() {
         return commitsUrl;
     }
 
-    public void setCommitsUrl(String commitsUrl) {
+    public void setCommitsUrl(Optional<String> commitsUrl) {
         this.commitsUrl = commitsUrl;
     }
 
     public GistSimple id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -151,16 +148,16 @@ public class GistSimple {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public GistSimple nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -170,16 +167,16 @@ public class GistSimple {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public GistSimple gitPullUrl(String gitPullUrl) {
-        this.gitPullUrl = gitPullUrl;
+        this.gitPullUrl = Optional.ofNullable(gitPullUrl);
         return this;
     }
 
@@ -189,16 +186,16 @@ public class GistSimple {
      */
     @Schema(name = "git_pull_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_pull_url")
-    public String getGitPullUrl() {
+    public Optional<String> getGitPullUrl() {
         return gitPullUrl;
     }
 
-    public void setGitPullUrl(String gitPullUrl) {
+    public void setGitPullUrl(Optional<String> gitPullUrl) {
         this.gitPullUrl = gitPullUrl;
     }
 
     public GistSimple gitPushUrl(String gitPushUrl) {
-        this.gitPushUrl = gitPushUrl;
+        this.gitPushUrl = Optional.ofNullable(gitPushUrl);
         return this;
     }
 
@@ -208,16 +205,16 @@ public class GistSimple {
      */
     @Schema(name = "git_push_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_push_url")
-    public String getGitPushUrl() {
+    public Optional<String> getGitPushUrl() {
         return gitPushUrl;
     }
 
-    public void setGitPushUrl(String gitPushUrl) {
+    public void setGitPushUrl(Optional<String> gitPushUrl) {
         this.gitPushUrl = gitPushUrl;
     }
 
     public GistSimple htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -227,11 +224,11 @@ public class GistSimple {
      */
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public Optional<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(Optional<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -264,7 +261,7 @@ public class GistSimple {
     }
 
     public GistSimple _public(Boolean _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -274,16 +271,16 @@ public class GistSimple {
      */
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public Boolean getPublic() {
+    public Optional<Boolean> getPublic() {
         return _public;
     }
 
-    public void setPublic(Boolean _public) {
+    public void setPublic(Optional<Boolean> _public) {
         this._public = _public;
     }
 
     public GistSimple createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -293,16 +290,16 @@ public class GistSimple {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public GistSimple updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -312,16 +309,16 @@ public class GistSimple {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public GistSimple description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -331,16 +328,16 @@ public class GistSimple {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public GistSimple comments(Long comments) {
-        this.comments = comments;
+        this.comments = Optional.ofNullable(comments);
         return this;
     }
 
@@ -350,16 +347,16 @@ public class GistSimple {
      */
     @Schema(name = "comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments")
-    public Long getComments() {
+    public Optional<Long> getComments() {
         return comments;
     }
 
-    public void setComments(Long comments) {
+    public void setComments(Optional<Long> comments) {
         this.comments = comments;
     }
 
     public GistSimple commentsEnabled(Boolean commentsEnabled) {
-        this.commentsEnabled = commentsEnabled;
+        this.commentsEnabled = Optional.ofNullable(commentsEnabled);
         return this;
     }
 
@@ -369,16 +366,16 @@ public class GistSimple {
      */
     @Schema(name = "comments_enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_enabled")
-    public Boolean getCommentsEnabled() {
+    public Optional<Boolean> getCommentsEnabled() {
         return commentsEnabled;
     }
 
-    public void setCommentsEnabled(Boolean commentsEnabled) {
+    public void setCommentsEnabled(Optional<Boolean> commentsEnabled) {
         this.commentsEnabled = commentsEnabled;
     }
 
     public GistSimple user(String user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -388,16 +385,16 @@ public class GistSimple {
      */
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public String getUser() {
+    public JsonNullable<String> getUser() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUser(JsonNullable<String> user) {
         this.user = user;
     }
 
     public GistSimple commentsUrl(String commentsUrl) {
-        this.commentsUrl = commentsUrl;
+        this.commentsUrl = Optional.ofNullable(commentsUrl);
         return this;
     }
 
@@ -407,16 +404,16 @@ public class GistSimple {
      */
     @Schema(name = "comments_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_url")
-    public String getCommentsUrl() {
+    public Optional<String> getCommentsUrl() {
         return commentsUrl;
     }
 
-    public void setCommentsUrl(String commentsUrl) {
+    public void setCommentsUrl(Optional<String> commentsUrl) {
         this.commentsUrl = commentsUrl;
     }
 
     public GistSimple owner(SimpleUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -427,16 +424,16 @@ public class GistSimple {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public SimpleUser getOwner() {
+    public Optional<SimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(SimpleUser owner) {
+    public void setOwner(Optional<SimpleUser> owner) {
         this.owner = owner;
     }
 
     public GistSimple truncated(Boolean truncated) {
-        this.truncated = truncated;
+        this.truncated = Optional.ofNullable(truncated);
         return this;
     }
 
@@ -446,11 +443,11 @@ public class GistSimple {
      */
     @Schema(name = "truncated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("truncated")
-    public Boolean getTruncated() {
+    public Optional<Boolean> getTruncated() {
         return truncated;
     }
 
-    public void setTruncated(Boolean truncated) {
+    public void setTruncated(Optional<Boolean> truncated) {
         this.truncated = truncated;
     }
 
@@ -463,7 +460,7 @@ public class GistSimple {
             return false;
         }
         GistSimple gistSimple = (GistSimple) o;
-        return Objects.equals(this.forkOf, gistSimple.forkOf)
+        return equalsNullable(this.forkOf, gistSimple.forkOf)
                 && Objects.equals(this.url, gistSimple.url)
                 && Objects.equals(this.forksUrl, gistSimple.forksUrl)
                 && Objects.equals(this.commitsUrl, gistSimple.commitsUrl)
@@ -476,19 +473,24 @@ public class GistSimple {
                 && Objects.equals(this._public, gistSimple._public)
                 && Objects.equals(this.createdAt, gistSimple.createdAt)
                 && Objects.equals(this.updatedAt, gistSimple.updatedAt)
-                && Objects.equals(this.description, gistSimple.description)
+                && equalsNullable(this.description, gistSimple.description)
                 && Objects.equals(this.comments, gistSimple.comments)
                 && Objects.equals(this.commentsEnabled, gistSimple.commentsEnabled)
-                && Objects.equals(this.user, gistSimple.user)
+                && equalsNullable(this.user, gistSimple.user)
                 && Objects.equals(this.commentsUrl, gistSimple.commentsUrl)
                 && Objects.equals(this.owner, gistSimple.owner)
                 && Objects.equals(this.truncated, gistSimple.truncated);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                forkOf,
+                hashCodeNullable(forkOf),
                 url,
                 forksUrl,
                 commitsUrl,
@@ -501,13 +503,20 @@ public class GistSimple {
                 _public,
                 createdAt,
                 updatedAt,
-                description,
+                hashCodeNullable(description),
                 comments,
                 commentsEnabled,
-                user,
+                hashCodeNullable(user),
                 commentsUrl,
                 owner,
                 truncated);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

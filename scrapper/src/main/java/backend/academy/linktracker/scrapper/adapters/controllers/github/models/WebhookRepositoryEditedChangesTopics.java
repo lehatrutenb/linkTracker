@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRepositoryEditedChangesTopics
@@ -17,23 +14,23 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_edited_changes_topics")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryEditedChangesTopics {
 
     @Valid
-    private List<String> from;
+    private JsonNullable<List<String>> from = JsonNullable.<List<String>>undefined();
 
     public WebhookRepositoryEditedChangesTopics from(List<String> from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
     public WebhookRepositoryEditedChangesTopics addFromItem(String fromItem) {
-        if (this.from == null) {
-            this.from = new ArrayList<>();
+        if (this.from == null || !this.from.isPresent()) {
+            this.from = JsonNullable.of(new ArrayList<>());
         }
-        this.from.add(fromItem);
+        this.from.get().add(fromItem);
         return this;
     }
 
@@ -43,11 +40,11 @@ public class WebhookRepositoryEditedChangesTopics {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public List<String> getFrom() {
+    public JsonNullable<List<String>> getFrom() {
         return from;
     }
 
-    public void setFrom(List<String> from) {
+    public void setFrom(JsonNullable<List<String>> from) {
         this.from = from;
     }
 
@@ -61,12 +58,24 @@ public class WebhookRepositoryEditedChangesTopics {
         }
         WebhookRepositoryEditedChangesTopics webhookRepositoryEditedChangesTopics =
                 (WebhookRepositoryEditedChangesTopics) o;
-        return Objects.equals(this.from, webhookRepositoryEditedChangesTopics.from);
+        return equalsNullable(this.from, webhookRepositoryEditedChangesTopics.from);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from);
+        return Objects.hash(hashCodeNullable(from));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

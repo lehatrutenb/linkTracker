@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The action requested by the user.
@@ -15,14 +14,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_check_run_requested_action_requested_action")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCheckRunRequestedActionRequestedAction {
 
-    private String identifier;
+    private Optional<String> identifier = Optional.empty();
 
     public WebhookCheckRunRequestedActionRequestedAction identifier(String identifier) {
-        this.identifier = identifier;
+        this.identifier = Optional.ofNullable(identifier);
         return this;
     }
 
@@ -35,11 +34,11 @@ public class WebhookCheckRunRequestedActionRequestedAction {
             description = "The integrator reference of the action requested by the user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("identifier")
-    public String getIdentifier() {
+    public Optional<String> getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(String identifier) {
+    public void setIdentifier(Optional<String> identifier) {
         this.identifier = identifier;
     }
 

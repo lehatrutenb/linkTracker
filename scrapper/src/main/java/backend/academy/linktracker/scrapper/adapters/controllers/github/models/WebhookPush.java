@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPush
@@ -17,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("webhook-push")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPush {
 
     private String after;
 
-    private String baseRef = null;
+    private JsonNullable<String> baseRef = JsonNullable.<String>undefined();
 
     private String before;
 
@@ -36,15 +37,15 @@ public class WebhookPush {
 
     private Boolean deleted;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private Boolean forced;
 
-    private Commit1 headCommit = null;
+    private JsonNullable<Commit1> headCommit = JsonNullable.<Commit1>undefined();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private Committer1 pusher;
 
@@ -52,7 +53,7 @@ public class WebhookPush {
 
     private Repository2 repository;
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookPush() {
         super();
@@ -75,14 +76,14 @@ public class WebhookPush {
             String ref,
             Repository2 repository) {
         this.after = after;
-        this.baseRef = baseRef;
+        this.baseRef = JsonNullable.of(baseRef);
         this.before = before;
         this.commits = commits;
         this.compare = compare;
         this.created = created;
         this.deleted = deleted;
         this.forced = forced;
-        this.headCommit = headCommit;
+        this.headCommit = JsonNullable.of(headCommit);
         this.pusher = pusher;
         this.ref = ref;
         this.repository = repository;
@@ -112,7 +113,7 @@ public class WebhookPush {
     }
 
     public WebhookPush baseRef(String baseRef) {
-        this.baseRef = baseRef;
+        this.baseRef = JsonNullable.of(baseRef);
         return this;
     }
 
@@ -123,11 +124,11 @@ public class WebhookPush {
     @NotNull
     @Schema(name = "base_ref", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("base_ref")
-    public String getBaseRef() {
+    public JsonNullable<String> getBaseRef() {
         return baseRef;
     }
 
-    public void setBaseRef(String baseRef) {
+    public void setBaseRef(JsonNullable<String> baseRef) {
         this.baseRef = baseRef;
     }
 
@@ -258,7 +259,7 @@ public class WebhookPush {
     }
 
     public WebhookPush enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -269,11 +270,11 @@ public class WebhookPush {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -301,7 +302,7 @@ public class WebhookPush {
     }
 
     public WebhookPush headCommit(Commit1 headCommit) {
-        this.headCommit = headCommit;
+        this.headCommit = JsonNullable.of(headCommit);
         return this;
     }
 
@@ -313,16 +314,16 @@ public class WebhookPush {
     @Valid
     @Schema(name = "head_commit", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("head_commit")
-    public Commit1 getHeadCommit() {
+    public JsonNullable<Commit1> getHeadCommit() {
         return headCommit;
     }
 
-    public void setHeadCommit(Commit1 headCommit) {
+    public void setHeadCommit(JsonNullable<Commit1> headCommit) {
         this.headCommit = headCommit;
     }
 
     public WebhookPush installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -333,16 +334,16 @@ public class WebhookPush {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookPush organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -353,11 +354,11 @@ public class WebhookPush {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -427,7 +428,7 @@ public class WebhookPush {
     }
 
     public WebhookPush sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -438,11 +439,11 @@ public class WebhookPush {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 

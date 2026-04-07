@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
@@ -22,22 +20,22 @@ import java.util.Objects;
 @JsonTypeName("webhook_issues_closed_issue")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookIssuesClosedIssue {
 
-    private String activeLockReason = null;
+    private JsonNullable<String> activeLockReason = JsonNullable.<String>undefined();
 
-    private Object assignee = null;
+    private JsonNullable<Object> assignee = JsonNullable.<Object>undefined();
 
     @Valid
     private List<Object> assignees = new ArrayList<>();
 
     private String authorAssociation;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private String closedAt = null;
+    private JsonNullable<String> closedAt = JsonNullable.<String>undefined();
 
     private Long comments;
 
@@ -45,7 +43,7 @@ public class WebhookIssuesClosedIssue {
 
     private String createdAt;
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private String eventsUrl;
 
@@ -58,27 +56,27 @@ public class WebhookIssuesClosedIssue {
 
     private String labelsUrl;
 
-    private Boolean locked;
+    private Optional<Boolean> locked = Optional.empty();
 
-    private Object milestone = null;
+    private JsonNullable<Object> milestone = JsonNullable.<Object>undefined();
 
     private String nodeId;
 
     private Long number;
 
-    private Object performedViaGithubApp = null;
+    private JsonNullable<Object> performedViaGithubApp = JsonNullable.<Object>undefined();
 
-    private WebhooksIssuePullRequest pullRequest;
+    private Optional<WebhooksIssuePullRequest> pullRequest = Optional.empty();
 
     private WebhookIssueCommentCreatedIssueAllOfReactions reactions;
 
     private String repositoryUrl;
 
-    private NullableIssueComment pinnedComment = null;
+    private JsonNullable<NullableIssueComment> pinnedComment = JsonNullable.<NullableIssueComment>undefined();
 
-    private SubIssuesSummary subIssuesSummary;
+    private Optional<SubIssuesSummary> subIssuesSummary = Optional.empty();
 
-    private IssueDependenciesSummary issueDependenciesSummary;
+    private Optional<IssueDependenciesSummary> issueDependenciesSummary = Optional.empty();
 
     @Valid
     private List<@Valid IssueFieldValue> issueFieldValues = new ArrayList<>();
@@ -120,13 +118,13 @@ public class WebhookIssuesClosedIssue {
 
     private StateEnum state;
 
-    private String stateReason = null;
+    private JsonNullable<String> stateReason = JsonNullable.<String>undefined();
 
-    private String timelineUrl;
+    private Optional<String> timelineUrl = Optional.empty();
 
     private String title;
 
-    private IssueType type = null;
+    private JsonNullable<IssueType> type = JsonNullable.<IssueType>undefined();
 
     private String updatedAt;
 
@@ -164,11 +162,11 @@ public class WebhookIssuesClosedIssue {
             String updatedAt,
             String url,
             WebhookIssueCommentDeletedIssueAllOfUser user) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         this.assignees = assignees;
         this.authorAssociation = authorAssociation;
-        this.body = body;
-        this.closedAt = closedAt;
+        this.body = JsonNullable.of(body);
+        this.closedAt = JsonNullable.of(closedAt);
         this.comments = comments;
         this.commentsUrl = commentsUrl;
         this.createdAt = createdAt;
@@ -176,7 +174,7 @@ public class WebhookIssuesClosedIssue {
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.labelsUrl = labelsUrl;
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         this.nodeId = nodeId;
         this.number = number;
         this.reactions = reactions;
@@ -189,7 +187,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue activeLockReason(String activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -200,16 +198,16 @@ public class WebhookIssuesClosedIssue {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public String getActiveLockReason() {
+    public JsonNullable<String> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(String activeLockReason) {
+    public void setActiveLockReason(JsonNullable<String> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public WebhookIssuesClosedIssue assignee(Object assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -219,11 +217,11 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public Object getAssignee() {
+    public JsonNullable<Object> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Object assignee) {
+    public void setAssignee(JsonNullable<Object> assignee) {
         this.assignee = assignee;
     }
 
@@ -276,7 +274,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -287,16 +285,16 @@ public class WebhookIssuesClosedIssue {
     @NotNull
     @Schema(name = "body", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public WebhookIssuesClosedIssue closedAt(String closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -307,11 +305,11 @@ public class WebhookIssuesClosedIssue {
     @NotNull
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public String getClosedAt() {
+    public JsonNullable<String> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(String closedAt) {
+    public void setClosedAt(JsonNullable<String> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -376,7 +374,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -386,11 +384,11 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -502,7 +500,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue locked(Boolean locked) {
-        this.locked = locked;
+        this.locked = Optional.ofNullable(locked);
         return this;
     }
 
@@ -512,16 +510,16 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "locked", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("locked")
-    public Boolean getLocked() {
+    public Optional<Boolean> getLocked() {
         return locked;
     }
 
-    public void setLocked(Boolean locked) {
+    public void setLocked(Optional<Boolean> locked) {
         this.locked = locked;
     }
 
     public WebhookIssuesClosedIssue milestone(Object milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -532,11 +530,11 @@ public class WebhookIssuesClosedIssue {
     @NotNull
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public Object getMilestone() {
+    public JsonNullable<Object> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Object milestone) {
+    public void setMilestone(JsonNullable<Object> milestone) {
         this.milestone = milestone;
     }
 
@@ -581,7 +579,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue performedViaGithubApp(Object performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -591,16 +589,16 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public Object getPerformedViaGithubApp() {
+    public JsonNullable<Object> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(Object performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<Object> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
     public WebhookIssuesClosedIssue pullRequest(WebhooksIssuePullRequest pullRequest) {
-        this.pullRequest = pullRequest;
+        this.pullRequest = Optional.ofNullable(pullRequest);
         return this;
     }
 
@@ -611,11 +609,11 @@ public class WebhookIssuesClosedIssue {
     @Valid
     @Schema(name = "pull_request", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request")
-    public WebhooksIssuePullRequest getPullRequest() {
+    public Optional<WebhooksIssuePullRequest> getPullRequest() {
         return pullRequest;
     }
 
-    public void setPullRequest(WebhooksIssuePullRequest pullRequest) {
+    public void setPullRequest(Optional<WebhooksIssuePullRequest> pullRequest) {
         this.pullRequest = pullRequest;
     }
 
@@ -661,7 +659,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue pinnedComment(NullableIssueComment pinnedComment) {
-        this.pinnedComment = pinnedComment;
+        this.pinnedComment = JsonNullable.of(pinnedComment);
         return this;
     }
 
@@ -672,16 +670,16 @@ public class WebhookIssuesClosedIssue {
     @Valid
     @Schema(name = "pinned_comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pinned_comment")
-    public NullableIssueComment getPinnedComment() {
+    public JsonNullable<NullableIssueComment> getPinnedComment() {
         return pinnedComment;
     }
 
-    public void setPinnedComment(NullableIssueComment pinnedComment) {
+    public void setPinnedComment(JsonNullable<NullableIssueComment> pinnedComment) {
         this.pinnedComment = pinnedComment;
     }
 
     public WebhookIssuesClosedIssue subIssuesSummary(SubIssuesSummary subIssuesSummary) {
-        this.subIssuesSummary = subIssuesSummary;
+        this.subIssuesSummary = Optional.ofNullable(subIssuesSummary);
         return this;
     }
 
@@ -692,16 +690,16 @@ public class WebhookIssuesClosedIssue {
     @Valid
     @Schema(name = "sub_issues_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sub_issues_summary")
-    public SubIssuesSummary getSubIssuesSummary() {
+    public Optional<SubIssuesSummary> getSubIssuesSummary() {
         return subIssuesSummary;
     }
 
-    public void setSubIssuesSummary(SubIssuesSummary subIssuesSummary) {
+    public void setSubIssuesSummary(Optional<SubIssuesSummary> subIssuesSummary) {
         this.subIssuesSummary = subIssuesSummary;
     }
 
     public WebhookIssuesClosedIssue issueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
-        this.issueDependenciesSummary = issueDependenciesSummary;
+        this.issueDependenciesSummary = Optional.ofNullable(issueDependenciesSummary);
         return this;
     }
 
@@ -712,11 +710,11 @@ public class WebhookIssuesClosedIssue {
     @Valid
     @Schema(name = "issue_dependencies_summary", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("issue_dependencies_summary")
-    public IssueDependenciesSummary getIssueDependenciesSummary() {
+    public Optional<IssueDependenciesSummary> getIssueDependenciesSummary() {
         return issueDependenciesSummary;
     }
 
-    public void setIssueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
+    public void setIssueDependenciesSummary(Optional<IssueDependenciesSummary> issueDependenciesSummary) {
         this.issueDependenciesSummary = issueDependenciesSummary;
     }
 
@@ -769,7 +767,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue stateReason(String stateReason) {
-        this.stateReason = stateReason;
+        this.stateReason = JsonNullable.of(stateReason);
         return this;
     }
 
@@ -779,16 +777,16 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "state_reason", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state_reason")
-    public String getStateReason() {
+    public JsonNullable<String> getStateReason() {
         return stateReason;
     }
 
-    public void setStateReason(String stateReason) {
+    public void setStateReason(JsonNullable<String> stateReason) {
         this.stateReason = stateReason;
     }
 
     public WebhookIssuesClosedIssue timelineUrl(String timelineUrl) {
-        this.timelineUrl = timelineUrl;
+        this.timelineUrl = Optional.ofNullable(timelineUrl);
         return this;
     }
 
@@ -798,11 +796,11 @@ public class WebhookIssuesClosedIssue {
      */
     @Schema(name = "timeline_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("timeline_url")
-    public String getTimelineUrl() {
+    public Optional<String> getTimelineUrl() {
         return timelineUrl;
     }
 
-    public void setTimelineUrl(String timelineUrl) {
+    public void setTimelineUrl(Optional<String> timelineUrl) {
         this.timelineUrl = timelineUrl;
     }
 
@@ -827,7 +825,7 @@ public class WebhookIssuesClosedIssue {
     }
 
     public WebhookIssuesClosedIssue type(IssueType type) {
-        this.type = type;
+        this.type = JsonNullable.of(type);
         return this;
     }
 
@@ -838,11 +836,11 @@ public class WebhookIssuesClosedIssue {
     @Valid
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public IssueType getType() {
+    public JsonNullable<IssueType> getType() {
         return type;
     }
 
-    public void setType(IssueType type) {
+    public void setType(JsonNullable<IssueType> type) {
         this.type = type;
     }
 
@@ -917,7 +915,7 @@ public class WebhookIssuesClosedIssue {
         }
         WebhookIssuesClosedIssue webhookIssuesClosedIssue = (WebhookIssuesClosedIssue) o;
         return Objects.equals(this.activeLockReason, webhookIssuesClosedIssue.activeLockReason)
-                && Objects.equals(this.assignee, webhookIssuesClosedIssue.assignee)
+                && equalsNullable(this.assignee, webhookIssuesClosedIssue.assignee)
                 && Objects.equals(this.assignees, webhookIssuesClosedIssue.assignees)
                 && Objects.equals(this.authorAssociation, webhookIssuesClosedIssue.authorAssociation)
                 && Objects.equals(this.body, webhookIssuesClosedIssue.body)
@@ -935,29 +933,34 @@ public class WebhookIssuesClosedIssue {
                 && Objects.equals(this.milestone, webhookIssuesClosedIssue.milestone)
                 && Objects.equals(this.nodeId, webhookIssuesClosedIssue.nodeId)
                 && Objects.equals(this.number, webhookIssuesClosedIssue.number)
-                && Objects.equals(this.performedViaGithubApp, webhookIssuesClosedIssue.performedViaGithubApp)
+                && equalsNullable(this.performedViaGithubApp, webhookIssuesClosedIssue.performedViaGithubApp)
                 && Objects.equals(this.pullRequest, webhookIssuesClosedIssue.pullRequest)
                 && Objects.equals(this.reactions, webhookIssuesClosedIssue.reactions)
                 && Objects.equals(this.repositoryUrl, webhookIssuesClosedIssue.repositoryUrl)
-                && Objects.equals(this.pinnedComment, webhookIssuesClosedIssue.pinnedComment)
+                && equalsNullable(this.pinnedComment, webhookIssuesClosedIssue.pinnedComment)
                 && Objects.equals(this.subIssuesSummary, webhookIssuesClosedIssue.subIssuesSummary)
                 && Objects.equals(this.issueDependenciesSummary, webhookIssuesClosedIssue.issueDependenciesSummary)
                 && Objects.equals(this.issueFieldValues, webhookIssuesClosedIssue.issueFieldValues)
                 && Objects.equals(this.state, webhookIssuesClosedIssue.state)
-                && Objects.equals(this.stateReason, webhookIssuesClosedIssue.stateReason)
+                && equalsNullable(this.stateReason, webhookIssuesClosedIssue.stateReason)
                 && Objects.equals(this.timelineUrl, webhookIssuesClosedIssue.timelineUrl)
                 && Objects.equals(this.title, webhookIssuesClosedIssue.title)
-                && Objects.equals(this.type, webhookIssuesClosedIssue.type)
+                && equalsNullable(this.type, webhookIssuesClosedIssue.type)
                 && Objects.equals(this.updatedAt, webhookIssuesClosedIssue.updatedAt)
                 && Objects.equals(this.url, webhookIssuesClosedIssue.url)
                 && Objects.equals(this.user, webhookIssuesClosedIssue.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
                 activeLockReason,
-                assignee,
+                hashCodeNullable(assignee),
                 assignees,
                 authorAssociation,
                 body,
@@ -975,22 +978,29 @@ public class WebhookIssuesClosedIssue {
                 milestone,
                 nodeId,
                 number,
-                performedViaGithubApp,
+                hashCodeNullable(performedViaGithubApp),
                 pullRequest,
                 reactions,
                 repositoryUrl,
-                pinnedComment,
+                hashCodeNullable(pinnedComment),
                 subIssuesSummary,
                 issueDependenciesSummary,
                 issueFieldValues,
                 state,
-                stateReason,
+                hashCodeNullable(stateReason),
                 timelineUrl,
                 title,
-                type,
+                hashCodeNullable(type),
                 updatedAt,
                 url,
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

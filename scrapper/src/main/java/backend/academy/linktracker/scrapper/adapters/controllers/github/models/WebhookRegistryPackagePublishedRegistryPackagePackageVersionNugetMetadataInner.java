@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner
@@ -15,19 +16,20 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version_nuget_metadata_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner {
 
-    private WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId id = null;
+    private JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId> id =
+            JsonNullable.<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId>undefined();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value;
+    private Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> value = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner id(
             WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId id) {
-        this.id = id;
+        this.id = JsonNullable.of(id);
         return this;
     }
 
@@ -38,16 +40,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMe
     @Valid
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId getId() {
+    public JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId> getId() {
         return id;
     }
 
-    public void setId(WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId id) {
+    public void setId(
+            JsonNullable<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInnerId> id) {
         this.id = id;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -57,17 +60,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMe
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner value(
             WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value) {
-        this.value = value;
+        this.value = Optional.ofNullable(value);
         return this;
     }
 
@@ -78,11 +81,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMe
     @Valid
     @Schema(name = "value", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("value")
-    public WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue getValue() {
+    public Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> getValue() {
         return value;
     }
 
-    public void setValue(WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue value) {
+    public void setValue(Optional<WebhookPackagePublishedPackagePackageVersionNugetMetadataInnerValue> value) {
         this.value = value;
     }
 
@@ -97,7 +100,7 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMe
         WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner
                 webhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner =
                         (WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner) o;
-        return Objects.equals(
+        return equalsNullable(
                         this.id, webhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner.id)
                 && Objects.equals(
                         this.name, webhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner.name)
@@ -106,9 +109,21 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMe
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataInner.value);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, value);
+        return Objects.hash(hashCodeNullable(id), name, value);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * HookDeliveryRequest
@@ -17,15 +17,15 @@ import java.util.Objects;
 @JsonTypeName("hook_delivery_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class HookDeliveryRequest {
 
     @Valid
-    private Map<String, Object> headers;
+    private JsonNullable<Map<String, Object>> headers = JsonNullable.<Map<String, Object>>undefined();
 
     @Valid
-    private Map<String, Object> payload;
+    private JsonNullable<Map<String, Object>> payload = JsonNullable.<Map<String, Object>>undefined();
 
     public HookDeliveryRequest() {
         super();
@@ -35,20 +35,20 @@ public class HookDeliveryRequest {
      * Constructor with only required parameters
      */
     public HookDeliveryRequest(Map<String, Object> headers, Map<String, Object> payload) {
-        this.headers = headers;
-        this.payload = payload;
+        this.headers = JsonNullable.of(headers);
+        this.payload = JsonNullable.of(payload);
     }
 
     public HookDeliveryRequest headers(Map<String, Object> headers) {
-        this.headers = headers;
+        this.headers = JsonNullable.of(headers);
         return this;
     }
 
     public HookDeliveryRequest putHeadersItem(String key, Object headersItem) {
-        if (this.headers == null) {
-            this.headers = new HashMap<>();
+        if (this.headers == null || !this.headers.isPresent()) {
+            this.headers = JsonNullable.of(new HashMap<>());
         }
-        this.headers.put(key, headersItem);
+        this.headers.get().put(key, headersItem);
         return this;
     }
 
@@ -62,24 +62,24 @@ public class HookDeliveryRequest {
             description = "The request headers sent with the webhook delivery.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("headers")
-    public Map<String, Object> getHeaders() {
+    public JsonNullable<Map<String, Object>> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(Map<String, Object> headers) {
+    public void setHeaders(JsonNullable<Map<String, Object>> headers) {
         this.headers = headers;
     }
 
     public HookDeliveryRequest payload(Map<String, Object> payload) {
-        this.payload = payload;
+        this.payload = JsonNullable.of(payload);
         return this;
     }
 
     public HookDeliveryRequest putPayloadItem(String key, Object payloadItem) {
-        if (this.payload == null) {
-            this.payload = new HashMap<>();
+        if (this.payload == null || !this.payload.isPresent()) {
+            this.payload = JsonNullable.of(new HashMap<>());
         }
-        this.payload.put(key, payloadItem);
+        this.payload.get().put(key, payloadItem);
         return this;
     }
 
@@ -90,11 +90,11 @@ public class HookDeliveryRequest {
     @NotNull
     @Schema(name = "payload", description = "The webhook payload.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("payload")
-    public Map<String, Object> getPayload() {
+    public JsonNullable<Map<String, Object>> getPayload() {
         return payload;
     }
 
-    public void setPayload(Map<String, Object> payload) {
+    public void setPayload(JsonNullable<Map<String, Object>> payload) {
         this.payload = payload;
     }
 

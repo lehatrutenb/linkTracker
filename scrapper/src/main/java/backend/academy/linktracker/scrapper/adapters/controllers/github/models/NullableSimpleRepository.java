@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A GitHub repository.
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("nullable-simple-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableSimpleRepository {
 
@@ -35,7 +35,7 @@ public class NullableSimpleRepository {
 
     private URI htmlUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean fork;
 
@@ -174,7 +174,7 @@ public class NullableSimpleRepository {
         this.owner = owner;
         this._private = _private;
         this.htmlUrl = htmlUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.fork = fork;
         this.url = url;
         this.archiveUrl = archiveUrl;
@@ -381,7 +381,7 @@ public class NullableSimpleRepository {
     }
 
     public NullableSimpleRepository description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -396,11 +396,11 @@ public class NullableSimpleRepository {
             description = "The repository description.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 

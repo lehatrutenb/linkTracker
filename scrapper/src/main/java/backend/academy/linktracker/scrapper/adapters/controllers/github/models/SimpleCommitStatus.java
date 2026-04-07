@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,11 +19,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("simple-commit-status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SimpleCommitStatus {
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Long id;
 
@@ -32,11 +33,11 @@ public class SimpleCommitStatus {
 
     private String context;
 
-    private URI targetUrl = null;
+    private JsonNullable<URI> targetUrl = JsonNullable.<URI>undefined();
 
-    private Boolean required = null;
+    private JsonNullable<Boolean> required = JsonNullable.<Boolean>undefined();
 
-    private URI avatarUrl = null;
+    private JsonNullable<URI> avatarUrl = JsonNullable.<URI>undefined();
 
     private URI url;
 
@@ -64,20 +65,20 @@ public class SimpleCommitStatus {
             URI url,
             OffsetDateTime createdAt,
             OffsetDateTime updatedAt) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.id = id;
         this.nodeId = nodeId;
         this.state = state;
         this.context = context;
-        this.targetUrl = targetUrl;
-        this.avatarUrl = avatarUrl;
+        this.targetUrl = JsonNullable.of(targetUrl);
+        this.avatarUrl = JsonNullable.of(avatarUrl);
         this.url = url;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
     public SimpleCommitStatus description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -88,11 +89,11 @@ public class SimpleCommitStatus {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -177,7 +178,7 @@ public class SimpleCommitStatus {
     }
 
     public SimpleCommitStatus targetUrl(URI targetUrl) {
-        this.targetUrl = targetUrl;
+        this.targetUrl = JsonNullable.of(targetUrl);
         return this;
     }
 
@@ -189,16 +190,16 @@ public class SimpleCommitStatus {
     @Valid
     @Schema(name = "target_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("target_url")
-    public URI getTargetUrl() {
+    public JsonNullable<URI> getTargetUrl() {
         return targetUrl;
     }
 
-    public void setTargetUrl(URI targetUrl) {
+    public void setTargetUrl(JsonNullable<URI> targetUrl) {
         this.targetUrl = targetUrl;
     }
 
     public SimpleCommitStatus required(Boolean required) {
-        this.required = required;
+        this.required = JsonNullable.of(required);
         return this;
     }
 
@@ -208,16 +209,16 @@ public class SimpleCommitStatus {
      */
     @Schema(name = "required", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("required")
-    public Boolean getRequired() {
+    public JsonNullable<Boolean> getRequired() {
         return required;
     }
 
-    public void setRequired(Boolean required) {
+    public void setRequired(JsonNullable<Boolean> required) {
         this.required = required;
     }
 
     public SimpleCommitStatus avatarUrl(URI avatarUrl) {
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = JsonNullable.of(avatarUrl);
         return this;
     }
 
@@ -229,11 +230,11 @@ public class SimpleCommitStatus {
     @Valid
     @Schema(name = "avatar_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("avatar_url")
-    public URI getAvatarUrl() {
+    public JsonNullable<URI> getAvatarUrl() {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(URI avatarUrl) {
+    public void setAvatarUrl(JsonNullable<URI> avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
@@ -315,17 +316,39 @@ public class SimpleCommitStatus {
                 && Objects.equals(this.state, simpleCommitStatus.state)
                 && Objects.equals(this.context, simpleCommitStatus.context)
                 && Objects.equals(this.targetUrl, simpleCommitStatus.targetUrl)
-                && Objects.equals(this.required, simpleCommitStatus.required)
+                && equalsNullable(this.required, simpleCommitStatus.required)
                 && Objects.equals(this.avatarUrl, simpleCommitStatus.avatarUrl)
                 && Objects.equals(this.url, simpleCommitStatus.url)
                 && Objects.equals(this.createdAt, simpleCommitStatus.createdAt)
                 && Objects.equals(this.updatedAt, simpleCommitStatus.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                description, id, nodeId, state, context, targetUrl, required, avatarUrl, url, createdAt, updatedAt);
+                description,
+                id,
+                nodeId,
+                state,
+                context,
+                targetUrl,
+                hashCodeNullable(required),
+                avatarUrl,
+                url,
+                createdAt,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

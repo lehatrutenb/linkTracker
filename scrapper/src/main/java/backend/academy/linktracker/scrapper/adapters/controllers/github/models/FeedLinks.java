@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * FeedLinks
@@ -17,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("feed__links")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class FeedLinks {
 
@@ -25,22 +25,22 @@ public class FeedLinks {
 
     private LinkWithType user;
 
-    private LinkWithType securityAdvisories;
+    private Optional<LinkWithType> securityAdvisories = Optional.empty();
 
-    private LinkWithType currentUser;
+    private Optional<LinkWithType> currentUser = Optional.empty();
 
-    private LinkWithType currentUserPublic;
+    private Optional<LinkWithType> currentUserPublic = Optional.empty();
 
-    private LinkWithType currentUserActor;
+    private Optional<LinkWithType> currentUserActor = Optional.empty();
 
-    private LinkWithType currentUserOrganization;
+    private Optional<LinkWithType> currentUserOrganization = Optional.empty();
 
     @Valid
     private List<@Valid LinkWithType> currentUserOrganizations = new ArrayList<>();
 
-    private LinkWithType repositoryDiscussions;
+    private Optional<LinkWithType> repositoryDiscussions = Optional.empty();
 
-    private LinkWithType repositoryDiscussionsCategory;
+    private Optional<LinkWithType> repositoryDiscussionsCategory = Optional.empty();
 
     public FeedLinks() {
         super();
@@ -97,7 +97,7 @@ public class FeedLinks {
     }
 
     public FeedLinks securityAdvisories(LinkWithType securityAdvisories) {
-        this.securityAdvisories = securityAdvisories;
+        this.securityAdvisories = Optional.ofNullable(securityAdvisories);
         return this;
     }
 
@@ -108,16 +108,16 @@ public class FeedLinks {
     @Valid
     @Schema(name = "security_advisories", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_advisories")
-    public LinkWithType getSecurityAdvisories() {
+    public Optional<LinkWithType> getSecurityAdvisories() {
         return securityAdvisories;
     }
 
-    public void setSecurityAdvisories(LinkWithType securityAdvisories) {
+    public void setSecurityAdvisories(Optional<LinkWithType> securityAdvisories) {
         this.securityAdvisories = securityAdvisories;
     }
 
     public FeedLinks currentUser(LinkWithType currentUser) {
-        this.currentUser = currentUser;
+        this.currentUser = Optional.ofNullable(currentUser);
         return this;
     }
 
@@ -128,16 +128,16 @@ public class FeedLinks {
     @Valid
     @Schema(name = "current_user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user")
-    public LinkWithType getCurrentUser() {
+    public Optional<LinkWithType> getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(LinkWithType currentUser) {
+    public void setCurrentUser(Optional<LinkWithType> currentUser) {
         this.currentUser = currentUser;
     }
 
     public FeedLinks currentUserPublic(LinkWithType currentUserPublic) {
-        this.currentUserPublic = currentUserPublic;
+        this.currentUserPublic = Optional.ofNullable(currentUserPublic);
         return this;
     }
 
@@ -148,16 +148,16 @@ public class FeedLinks {
     @Valid
     @Schema(name = "current_user_public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_public")
-    public LinkWithType getCurrentUserPublic() {
+    public Optional<LinkWithType> getCurrentUserPublic() {
         return currentUserPublic;
     }
 
-    public void setCurrentUserPublic(LinkWithType currentUserPublic) {
+    public void setCurrentUserPublic(Optional<LinkWithType> currentUserPublic) {
         this.currentUserPublic = currentUserPublic;
     }
 
     public FeedLinks currentUserActor(LinkWithType currentUserActor) {
-        this.currentUserActor = currentUserActor;
+        this.currentUserActor = Optional.ofNullable(currentUserActor);
         return this;
     }
 
@@ -168,16 +168,16 @@ public class FeedLinks {
     @Valid
     @Schema(name = "current_user_actor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_actor")
-    public LinkWithType getCurrentUserActor() {
+    public Optional<LinkWithType> getCurrentUserActor() {
         return currentUserActor;
     }
 
-    public void setCurrentUserActor(LinkWithType currentUserActor) {
+    public void setCurrentUserActor(Optional<LinkWithType> currentUserActor) {
         this.currentUserActor = currentUserActor;
     }
 
     public FeedLinks currentUserOrganization(LinkWithType currentUserOrganization) {
-        this.currentUserOrganization = currentUserOrganization;
+        this.currentUserOrganization = Optional.ofNullable(currentUserOrganization);
         return this;
     }
 
@@ -188,11 +188,11 @@ public class FeedLinks {
     @Valid
     @Schema(name = "current_user_organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("current_user_organization")
-    public LinkWithType getCurrentUserOrganization() {
+    public Optional<LinkWithType> getCurrentUserOrganization() {
         return currentUserOrganization;
     }
 
-    public void setCurrentUserOrganization(LinkWithType currentUserOrganization) {
+    public void setCurrentUserOrganization(Optional<LinkWithType> currentUserOrganization) {
         this.currentUserOrganization = currentUserOrganization;
     }
 
@@ -225,7 +225,7 @@ public class FeedLinks {
     }
 
     public FeedLinks repositoryDiscussions(LinkWithType repositoryDiscussions) {
-        this.repositoryDiscussions = repositoryDiscussions;
+        this.repositoryDiscussions = Optional.ofNullable(repositoryDiscussions);
         return this;
     }
 
@@ -236,16 +236,16 @@ public class FeedLinks {
     @Valid
     @Schema(name = "repository_discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_discussions")
-    public LinkWithType getRepositoryDiscussions() {
+    public Optional<LinkWithType> getRepositoryDiscussions() {
         return repositoryDiscussions;
     }
 
-    public void setRepositoryDiscussions(LinkWithType repositoryDiscussions) {
+    public void setRepositoryDiscussions(Optional<LinkWithType> repositoryDiscussions) {
         this.repositoryDiscussions = repositoryDiscussions;
     }
 
     public FeedLinks repositoryDiscussionsCategory(LinkWithType repositoryDiscussionsCategory) {
-        this.repositoryDiscussionsCategory = repositoryDiscussionsCategory;
+        this.repositoryDiscussionsCategory = Optional.ofNullable(repositoryDiscussionsCategory);
         return this;
     }
 
@@ -256,11 +256,11 @@ public class FeedLinks {
     @Valid
     @Schema(name = "repository_discussions_category", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_discussions_category")
-    public LinkWithType getRepositoryDiscussionsCategory() {
+    public Optional<LinkWithType> getRepositoryDiscussionsCategory() {
         return repositoryDiscussionsCategory;
     }
 
-    public void setRepositoryDiscussionsCategory(LinkWithType repositoryDiscussionsCategory) {
+    public void setRepositoryDiscussionsCategory(Optional<LinkWithType> repositoryDiscussionsCategory) {
         this.repositoryDiscussionsCategory = repositoryDiscussionsCategory;
     }
 

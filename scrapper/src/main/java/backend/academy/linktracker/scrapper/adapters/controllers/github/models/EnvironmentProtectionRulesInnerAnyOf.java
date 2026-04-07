@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * EnvironmentProtectionRulesInnerAnyOf
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("environment_protection_rules_inner_anyOf")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class EnvironmentProtectionRulesInnerAnyOf {
 
@@ -24,7 +24,7 @@ public class EnvironmentProtectionRulesInnerAnyOf {
 
     private String type;
 
-    private Long waitTimer;
+    private Optional<Long> waitTimer = Optional.empty();
 
     public EnvironmentProtectionRulesInnerAnyOf() {
         super();
@@ -100,7 +100,7 @@ public class EnvironmentProtectionRulesInnerAnyOf {
     }
 
     public EnvironmentProtectionRulesInnerAnyOf waitTimer(Long waitTimer) {
-        this.waitTimer = waitTimer;
+        this.waitTimer = Optional.ofNullable(waitTimer);
         return this;
     }
 
@@ -115,11 +115,11 @@ public class EnvironmentProtectionRulesInnerAnyOf {
                     "The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("wait_timer")
-    public Long getWaitTimer() {
+    public Optional<Long> getWaitTimer() {
         return waitTimer;
     }
 
-    public void setWaitTimer(Long waitTimer) {
+    public void setWaitTimer(Optional<Long> waitTimer) {
         this.waitTimer = waitTimer;
     }
 

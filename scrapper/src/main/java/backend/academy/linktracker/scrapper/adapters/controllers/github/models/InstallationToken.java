@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Authentication token for a GitHub App installed on a user or org.
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("installation-token")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class InstallationToken {
 
@@ -28,7 +28,7 @@ public class InstallationToken {
 
     private String expiresAt;
 
-    private AppPermissions permissions;
+    private Optional<AppPermissions> permissions = Optional.empty();
 
     /**
      * Gets or Sets repositorySelection
@@ -65,14 +65,14 @@ public class InstallationToken {
         }
     }
 
-    private RepositorySelectionEnum repositorySelection;
+    private Optional<RepositorySelectionEnum> repositorySelection = Optional.empty();
 
     @Valid
     private List<@Valid Repository> repositories = new ArrayList<>();
 
-    private String singleFile;
+    private Optional<String> singleFile = Optional.empty();
 
-    private Boolean hasMultipleSingleFiles;
+    private Optional<Boolean> hasMultipleSingleFiles = Optional.empty();
 
     @Valid
     private List<String> singleFilePaths = new ArrayList<>();
@@ -130,7 +130,7 @@ public class InstallationToken {
     }
 
     public InstallationToken permissions(AppPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -141,16 +141,16 @@ public class InstallationToken {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public AppPermissions getPermissions() {
+    public Optional<AppPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(AppPermissions permissions) {
+    public void setPermissions(Optional<AppPermissions> permissions) {
         this.permissions = permissions;
     }
 
     public InstallationToken repositorySelection(RepositorySelectionEnum repositorySelection) {
-        this.repositorySelection = repositorySelection;
+        this.repositorySelection = Optional.ofNullable(repositorySelection);
         return this;
     }
 
@@ -160,11 +160,11 @@ public class InstallationToken {
      */
     @Schema(name = "repository_selection", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_selection")
-    public RepositorySelectionEnum getRepositorySelection() {
+    public Optional<RepositorySelectionEnum> getRepositorySelection() {
         return repositorySelection;
     }
 
-    public void setRepositorySelection(RepositorySelectionEnum repositorySelection) {
+    public void setRepositorySelection(Optional<RepositorySelectionEnum> repositorySelection) {
         this.repositorySelection = repositorySelection;
     }
 
@@ -197,7 +197,7 @@ public class InstallationToken {
     }
 
     public InstallationToken singleFile(String singleFile) {
-        this.singleFile = singleFile;
+        this.singleFile = Optional.ofNullable(singleFile);
         return this;
     }
 
@@ -207,16 +207,16 @@ public class InstallationToken {
      */
     @Schema(name = "single_file", example = "README.md", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("single_file")
-    public String getSingleFile() {
+    public Optional<String> getSingleFile() {
         return singleFile;
     }
 
-    public void setSingleFile(String singleFile) {
+    public void setSingleFile(Optional<String> singleFile) {
         this.singleFile = singleFile;
     }
 
     public InstallationToken hasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
-        this.hasMultipleSingleFiles = hasMultipleSingleFiles;
+        this.hasMultipleSingleFiles = Optional.ofNullable(hasMultipleSingleFiles);
         return this;
     }
 
@@ -226,11 +226,11 @@ public class InstallationToken {
      */
     @Schema(name = "has_multiple_single_files", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_multiple_single_files")
-    public Boolean getHasMultipleSingleFiles() {
+    public Optional<Boolean> getHasMultipleSingleFiles() {
         return hasMultipleSingleFiles;
     }
 
-    public void setHasMultipleSingleFiles(Boolean hasMultipleSingleFiles) {
+    public void setHasMultipleSingleFiles(Optional<Boolean> hasMultipleSingleFiles) {
         this.hasMultipleSingleFiles = hasMultipleSingleFiles;
     }
 

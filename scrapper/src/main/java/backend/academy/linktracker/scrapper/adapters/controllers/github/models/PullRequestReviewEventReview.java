@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.net.URI;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PullRequestReviewEventReview
@@ -16,34 +17,34 @@ import java.util.Objects;
 @JsonTypeName("pull_request_review_event_review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestReviewEventReview {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
-    private String commitId;
+    private Optional<String> commitId = Optional.empty();
 
-    private String submittedAt = null;
+    private JsonNullable<String> submittedAt = JsonNullable.<String>undefined();
 
-    private String state;
+    private Optional<String> state = Optional.empty();
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
-    private URI pullRequestUrl;
+    private Optional<URI> pullRequestUrl = Optional.empty();
 
-    private TimelineReviewedEventLinks links;
+    private Optional<TimelineReviewedEventLinks> links = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
     public PullRequestReviewEventReview id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -53,16 +54,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public PullRequestReviewEventReview nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -72,16 +73,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "node_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
     public PullRequestReviewEventReview user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -92,16 +93,16 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
     public PullRequestReviewEventReview body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -111,16 +112,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "body", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public PullRequestReviewEventReview commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = Optional.ofNullable(commitId);
         return this;
     }
 
@@ -130,16 +131,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public Optional<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(Optional<String> commitId) {
         this.commitId = commitId;
     }
 
     public PullRequestReviewEventReview submittedAt(String submittedAt) {
-        this.submittedAt = submittedAt;
+        this.submittedAt = JsonNullable.of(submittedAt);
         return this;
     }
 
@@ -149,16 +150,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "submitted_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("submitted_at")
-    public String getSubmittedAt() {
+    public JsonNullable<String> getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(String submittedAt) {
+    public void setSubmittedAt(JsonNullable<String> submittedAt) {
         this.submittedAt = submittedAt;
     }
 
     public PullRequestReviewEventReview state(String state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -168,16 +169,16 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public Optional<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Optional<String> state) {
         this.state = state;
     }
 
     public PullRequestReviewEventReview htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -188,16 +189,16 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public PullRequestReviewEventReview pullRequestUrl(URI pullRequestUrl) {
-        this.pullRequestUrl = pullRequestUrl;
+        this.pullRequestUrl = Optional.ofNullable(pullRequestUrl);
         return this;
     }
 
@@ -208,16 +209,16 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "pull_request_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_url")
-    public URI getPullRequestUrl() {
+    public Optional<URI> getPullRequestUrl() {
         return pullRequestUrl;
     }
 
-    public void setPullRequestUrl(URI pullRequestUrl) {
+    public void setPullRequestUrl(Optional<URI> pullRequestUrl) {
         this.pullRequestUrl = pullRequestUrl;
     }
 
     public PullRequestReviewEventReview links(TimelineReviewedEventLinks links) {
-        this.links = links;
+        this.links = Optional.ofNullable(links);
         return this;
     }
 
@@ -228,16 +229,16 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "_links", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("_links")
-    public TimelineReviewedEventLinks getLinks() {
+    public Optional<TimelineReviewedEventLinks> getLinks() {
         return links;
     }
 
-    public void setLinks(TimelineReviewedEventLinks links) {
+    public void setLinks(Optional<TimelineReviewedEventLinks> links) {
         this.links = links;
     }
 
     public PullRequestReviewEventReview updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -247,11 +248,11 @@ public class PullRequestReviewEventReview {
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -266,10 +267,10 @@ public class PullRequestReviewEventReview {
         PullRequestReviewEventReview pullRequestReviewEventReview = (PullRequestReviewEventReview) o;
         return Objects.equals(this.id, pullRequestReviewEventReview.id)
                 && Objects.equals(this.nodeId, pullRequestReviewEventReview.nodeId)
-                && Objects.equals(this.user, pullRequestReviewEventReview.user)
+                && equalsNullable(this.user, pullRequestReviewEventReview.user)
                 && Objects.equals(this.body, pullRequestReviewEventReview.body)
                 && Objects.equals(this.commitId, pullRequestReviewEventReview.commitId)
-                && Objects.equals(this.submittedAt, pullRequestReviewEventReview.submittedAt)
+                && equalsNullable(this.submittedAt, pullRequestReviewEventReview.submittedAt)
                 && Objects.equals(this.state, pullRequestReviewEventReview.state)
                 && Objects.equals(this.htmlUrl, pullRequestReviewEventReview.htmlUrl)
                 && Objects.equals(this.pullRequestUrl, pullRequestReviewEventReview.pullRequestUrl)
@@ -277,10 +278,32 @@ public class PullRequestReviewEventReview {
                 && Objects.equals(this.updatedAt, pullRequestReviewEventReview.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                id, nodeId, user, body, commitId, submittedAt, state, htmlUrl, pullRequestUrl, links, updatedAt);
+                id,
+                nodeId,
+                hashCodeNullable(user),
+                body,
+                commitId,
+                hashCodeNullable(submittedAt),
+                state,
+                htmlUrl,
+                pullRequestUrl,
+                links,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

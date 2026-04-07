@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Actor
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("actor")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Actor {
 
@@ -25,9 +26,9 @@ public class Actor {
 
     private String login;
 
-    private String displayLogin;
+    private Optional<String> displayLogin = Optional.empty();
 
-    private String gravatarId = null;
+    private JsonNullable<String> gravatarId = JsonNullable.<String>undefined();
 
     private URI url;
 
@@ -43,7 +44,7 @@ public class Actor {
     public Actor(Long id, String login, String gravatarId, URI url, URI avatarUrl) {
         this.id = id;
         this.login = login;
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         this.url = url;
         this.avatarUrl = avatarUrl;
     }
@@ -89,7 +90,7 @@ public class Actor {
     }
 
     public Actor displayLogin(String displayLogin) {
-        this.displayLogin = displayLogin;
+        this.displayLogin = Optional.ofNullable(displayLogin);
         return this;
     }
 
@@ -99,16 +100,16 @@ public class Actor {
      */
     @Schema(name = "display_login", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_login")
-    public String getDisplayLogin() {
+    public Optional<String> getDisplayLogin() {
         return displayLogin;
     }
 
-    public void setDisplayLogin(String displayLogin) {
+    public void setDisplayLogin(Optional<String> displayLogin) {
         this.displayLogin = displayLogin;
     }
 
     public Actor gravatarId(String gravatarId) {
-        this.gravatarId = gravatarId;
+        this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
 
@@ -119,11 +120,11 @@ public class Actor {
     @NotNull
     @Schema(name = "gravatar_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("gravatar_id")
-    public String getGravatarId() {
+    public JsonNullable<String> getGravatarId() {
         return gravatarId;
     }
 
-    public void setGravatarId(String gravatarId) {
+    public void setGravatarId(JsonNullable<String> gravatarId) {
         this.gravatarId = gravatarId;
     }
 

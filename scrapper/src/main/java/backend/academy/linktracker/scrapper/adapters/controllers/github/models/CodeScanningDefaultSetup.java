@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-default-setup")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningDefaultSetup {
 
@@ -61,7 +58,7 @@ public class CodeScanningDefaultSetup {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
     /**
      * Gets or Sets languages
@@ -150,9 +147,9 @@ public class CodeScanningDefaultSetup {
         }
     }
 
-    private RunnerTypeEnum runnerType = null;
+    private JsonNullable<RunnerTypeEnum> runnerType = JsonNullable.<RunnerTypeEnum>undefined();
 
-    private String runnerLabel = null;
+    private JsonNullable<String> runnerLabel = JsonNullable.<String>undefined();
 
     /**
      * CodeQL query suite to be used.
@@ -189,7 +186,7 @@ public class CodeScanningDefaultSetup {
         }
     }
 
-    private QuerySuiteEnum querySuite;
+    private Optional<QuerySuiteEnum> querySuite = Optional.empty();
 
     /**
      * Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.
@@ -226,10 +223,10 @@ public class CodeScanningDefaultSetup {
         }
     }
 
-    private ThreatModelEnum threatModel;
+    private Optional<ThreatModelEnum> threatModel = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     /**
      * The frequency of the periodic analysis.
@@ -264,10 +261,10 @@ public class CodeScanningDefaultSetup {
         }
     }
 
-    private ScheduleEnum schedule = null;
+    private JsonNullable<ScheduleEnum> schedule = JsonNullable.<ScheduleEnum>undefined();
 
     public CodeScanningDefaultSetup state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -280,11 +277,11 @@ public class CodeScanningDefaultSetup {
             description = "Code scanning default setup has been configured or not.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
@@ -319,7 +316,7 @@ public class CodeScanningDefaultSetup {
     }
 
     public CodeScanningDefaultSetup runnerType(RunnerTypeEnum runnerType) {
-        this.runnerType = runnerType;
+        this.runnerType = JsonNullable.of(runnerType);
         return this;
     }
 
@@ -332,16 +329,16 @@ public class CodeScanningDefaultSetup {
             description = "Runner type to be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_type")
-    public RunnerTypeEnum getRunnerType() {
+    public JsonNullable<RunnerTypeEnum> getRunnerType() {
         return runnerType;
     }
 
-    public void setRunnerType(RunnerTypeEnum runnerType) {
+    public void setRunnerType(JsonNullable<RunnerTypeEnum> runnerType) {
         this.runnerType = runnerType;
     }
 
     public CodeScanningDefaultSetup runnerLabel(String runnerLabel) {
-        this.runnerLabel = runnerLabel;
+        this.runnerLabel = JsonNullable.of(runnerLabel);
         return this;
     }
 
@@ -355,16 +352,16 @@ public class CodeScanningDefaultSetup {
             description = "Runner label to be used if the runner type is labeled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_label")
-    public String getRunnerLabel() {
+    public JsonNullable<String> getRunnerLabel() {
         return runnerLabel;
     }
 
-    public void setRunnerLabel(String runnerLabel) {
+    public void setRunnerLabel(JsonNullable<String> runnerLabel) {
         this.runnerLabel = runnerLabel;
     }
 
     public CodeScanningDefaultSetup querySuite(QuerySuiteEnum querySuite) {
-        this.querySuite = querySuite;
+        this.querySuite = Optional.ofNullable(querySuite);
         return this;
     }
 
@@ -377,16 +374,16 @@ public class CodeScanningDefaultSetup {
             description = "CodeQL query suite to be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("query_suite")
-    public QuerySuiteEnum getQuerySuite() {
+    public Optional<QuerySuiteEnum> getQuerySuite() {
         return querySuite;
     }
 
-    public void setQuerySuite(QuerySuiteEnum querySuite) {
+    public void setQuerySuite(Optional<QuerySuiteEnum> querySuite) {
         this.querySuite = querySuite;
     }
 
     public CodeScanningDefaultSetup threatModel(ThreatModelEnum threatModel) {
-        this.threatModel = threatModel;
+        this.threatModel = Optional.ofNullable(threatModel);
         return this;
     }
 
@@ -400,16 +397,16 @@ public class CodeScanningDefaultSetup {
                     "Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("threat_model")
-    public ThreatModelEnum getThreatModel() {
+    public Optional<ThreatModelEnum> getThreatModel() {
         return threatModel;
     }
 
-    public void setThreatModel(ThreatModelEnum threatModel) {
+    public void setThreatModel(Optional<ThreatModelEnum> threatModel) {
         this.threatModel = threatModel;
     }
 
     public CodeScanningDefaultSetup updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -424,16 +421,16 @@ public class CodeScanningDefaultSetup {
             description = "Timestamp of latest configuration update.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public CodeScanningDefaultSetup schedule(ScheduleEnum schedule) {
-        this.schedule = schedule;
+        this.schedule = JsonNullable.of(schedule);
         return this;
     }
 
@@ -446,11 +443,11 @@ public class CodeScanningDefaultSetup {
             description = "The frequency of the periodic analysis.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("schedule")
-    public ScheduleEnum getSchedule() {
+    public JsonNullable<ScheduleEnum> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(ScheduleEnum schedule) {
+    public void setSchedule(JsonNullable<ScheduleEnum> schedule) {
         this.schedule = schedule;
     }
 
@@ -465,17 +462,37 @@ public class CodeScanningDefaultSetup {
         CodeScanningDefaultSetup codeScanningDefaultSetup = (CodeScanningDefaultSetup) o;
         return Objects.equals(this.state, codeScanningDefaultSetup.state)
                 && Objects.equals(this.languages, codeScanningDefaultSetup.languages)
-                && Objects.equals(this.runnerType, codeScanningDefaultSetup.runnerType)
-                && Objects.equals(this.runnerLabel, codeScanningDefaultSetup.runnerLabel)
+                && equalsNullable(this.runnerType, codeScanningDefaultSetup.runnerType)
+                && equalsNullable(this.runnerLabel, codeScanningDefaultSetup.runnerLabel)
                 && Objects.equals(this.querySuite, codeScanningDefaultSetup.querySuite)
                 && Objects.equals(this.threatModel, codeScanningDefaultSetup.threatModel)
-                && Objects.equals(this.updatedAt, codeScanningDefaultSetup.updatedAt)
-                && Objects.equals(this.schedule, codeScanningDefaultSetup.schedule);
+                && equalsNullable(this.updatedAt, codeScanningDefaultSetup.updatedAt)
+                && equalsNullable(this.schedule, codeScanningDefaultSetup.schedule);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, languages, runnerType, runnerLabel, querySuite, threatModel, updatedAt, schedule);
+        return Objects.hash(
+                state,
+                languages,
+                hashCodeNullable(runnerType),
+                hashCodeNullable(runnerLabel),
+                querySuite,
+                threatModel,
+                hashCodeNullable(updatedAt),
+                hashCodeNullable(schedule));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

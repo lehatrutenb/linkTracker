@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRepositoryTransferredChangesOwnerFrom
@@ -15,16 +16,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_repository_transferred_changes_owner_from")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRepositoryTransferredChangesOwnerFrom {
 
-    private Organization organization;
+    private Optional<Organization> organization = Optional.empty();
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhookRepositoryTransferredChangesOwnerFrom organization(Organization organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -35,16 +36,16 @@ public class WebhookRepositoryTransferredChangesOwnerFrom {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public Organization getOrganization() {
+    public Optional<Organization> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(Organization organization) {
+    public void setOrganization(Optional<Organization> organization) {
         this.organization = organization;
     }
 
     public WebhookRepositoryTransferredChangesOwnerFrom user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -55,11 +56,11 @@ public class WebhookRepositoryTransferredChangesOwnerFrom {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 
@@ -74,12 +75,24 @@ public class WebhookRepositoryTransferredChangesOwnerFrom {
         WebhookRepositoryTransferredChangesOwnerFrom webhookRepositoryTransferredChangesOwnerFrom =
                 (WebhookRepositoryTransferredChangesOwnerFrom) o;
         return Objects.equals(this.organization, webhookRepositoryTransferredChangesOwnerFrom.organization)
-                && Objects.equals(this.user, webhookRepositoryTransferredChangesOwnerFrom.user);
+                && equalsNullable(this.user, webhookRepositoryTransferredChangesOwnerFrom.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(organization, user);
+        return Objects.hash(organization, hashCodeNullable(user));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

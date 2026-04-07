@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Email
@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("email")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Email {
 
@@ -25,7 +25,7 @@ public class Email {
 
     private Boolean verified;
 
-    private String visibility = null;
+    private JsonNullable<String> visibility = JsonNullable.<String>undefined();
 
     public Email() {
         super();
@@ -38,7 +38,7 @@ public class Email {
         this.email = email;
         this.primary = primary;
         this.verified = verified;
-        this.visibility = visibility;
+        this.visibility = JsonNullable.of(visibility);
     }
 
     public Email email(String email) {
@@ -103,7 +103,7 @@ public class Email {
     }
 
     public Email visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = JsonNullable.of(visibility);
         return this;
     }
 
@@ -114,11 +114,11 @@ public class Email {
     @NotNull
     @Schema(name = "visibility", example = "public", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public JsonNullable<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(JsonNullable<String> visibility) {
         this.visibility = visibility;
     }
 

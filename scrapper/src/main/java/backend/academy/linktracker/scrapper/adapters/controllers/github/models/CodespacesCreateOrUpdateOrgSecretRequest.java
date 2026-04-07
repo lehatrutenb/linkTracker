@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesCreateOrUpdateOrgSecretRequest
@@ -19,13 +20,17 @@ import java.util.Objects;
 @JsonTypeName("codespaces_create_or_update_org_secret_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesCreateOrUpdateOrgSecretRequest {
 
-    private String encryptedValue;
+    private Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            encryptedValue = Optional.empty();
 
-    private String keyId;
+    private Optional<String> keyId = Optional.empty();
 
     /**
      * Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
@@ -81,7 +86,7 @@ public class CodespacesCreateOrUpdateOrgSecretRequest {
     }
 
     public CodespacesCreateOrUpdateOrgSecretRequest encryptedValue(String encryptedValue) {
-        this.encryptedValue = encryptedValue;
+        this.encryptedValue = Optional.ofNullable(encryptedValue);
         return this;
     }
 
@@ -89,23 +94,26 @@ public class CodespacesCreateOrUpdateOrgSecretRequest {
      * The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.
      * @return encryptedValue
      */
-    @Pattern(regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
     @Schema(
             name = "encrypted_value",
             description =
                     "The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encrypted_value")
-    public String getEncryptedValue() {
+    public Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            getEncryptedValue() {
         return encryptedValue;
     }
 
-    public void setEncryptedValue(String encryptedValue) {
+    public void setEncryptedValue(Optional<String> encryptedValue) {
         this.encryptedValue = encryptedValue;
     }
 
     public CodespacesCreateOrUpdateOrgSecretRequest keyId(String keyId) {
-        this.keyId = keyId;
+        this.keyId = Optional.ofNullable(keyId);
         return this;
     }
 
@@ -118,11 +126,11 @@ public class CodespacesCreateOrUpdateOrgSecretRequest {
             description = "The ID of the key you used to encrypt the secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("key_id")
-    public String getKeyId() {
+    public Optional<String> getKeyId() {
         return keyId;
     }
 
-    public void setKeyId(String keyId) {
+    public void setKeyId(Optional<String> keyId) {
         this.keyId = keyId;
     }
 

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookOrganizationRenamedChanges
@@ -15,14 +14,14 @@ import java.util.Objects;
 @JsonTypeName("webhook_organization_renamed_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookOrganizationRenamedChanges {
 
-    private WebhookOrganizationRenamedChangesLogin login;
+    private Optional<WebhookOrganizationRenamedChangesLogin> login = Optional.empty();
 
     public WebhookOrganizationRenamedChanges login(WebhookOrganizationRenamedChangesLogin login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -33,11 +32,11 @@ public class WebhookOrganizationRenamedChanges {
     @Valid
     @Schema(name = "login", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public WebhookOrganizationRenamedChangesLogin getLogin() {
+    public Optional<WebhookOrganizationRenamedChangesLogin> getLogin() {
         return login;
     }
 
-    public void setLogin(WebhookOrganizationRenamedChangesLogin login) {
+    public void setLogin(Optional<WebhookOrganizationRenamedChangesLogin> login) {
         this.login = login;
     }
 

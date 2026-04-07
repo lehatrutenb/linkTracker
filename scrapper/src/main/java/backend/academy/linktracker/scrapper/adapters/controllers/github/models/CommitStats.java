@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CommitStats
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("commit_stats")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitStats {
 
-    private Long additions;
+    private Optional<Long> additions = Optional.empty();
 
-    private Long deletions;
+    private Optional<Long> deletions = Optional.empty();
 
-    private Long total;
+    private Optional<Long> total = Optional.empty();
 
     public CommitStats additions(Long additions) {
-        this.additions = additions;
+        this.additions = Optional.ofNullable(additions);
         return this;
     }
 
@@ -35,16 +34,16 @@ public class CommitStats {
      */
     @Schema(name = "additions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("additions")
-    public Long getAdditions() {
+    public Optional<Long> getAdditions() {
         return additions;
     }
 
-    public void setAdditions(Long additions) {
+    public void setAdditions(Optional<Long> additions) {
         this.additions = additions;
     }
 
     public CommitStats deletions(Long deletions) {
-        this.deletions = deletions;
+        this.deletions = Optional.ofNullable(deletions);
         return this;
     }
 
@@ -54,16 +53,16 @@ public class CommitStats {
      */
     @Schema(name = "deletions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deletions")
-    public Long getDeletions() {
+    public Optional<Long> getDeletions() {
         return deletions;
     }
 
-    public void setDeletions(Long deletions) {
+    public void setDeletions(Optional<Long> deletions) {
         this.deletions = deletions;
     }
 
     public CommitStats total(Long total) {
-        this.total = total;
+        this.total = Optional.ofNullable(total);
         return this;
     }
 
@@ -73,11 +72,11 @@ public class CommitStats {
      */
     @Schema(name = "total", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total")
-    public Long getTotal() {
+    public Optional<Long> getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Optional<Long> total) {
         this.total = total;
     }
 

@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AppsCreateInstallationAccessTokenRequest
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("apps_create_installation_access_token_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AppsCreateInstallationAccessTokenRequest {
 
@@ -27,7 +26,7 @@ public class AppsCreateInstallationAccessTokenRequest {
     @Valid
     private List<Long> repositoryIds = new ArrayList<>();
 
-    private AppPermissions permissions;
+    private Optional<AppPermissions> permissions = Optional.empty();
 
     public AppsCreateInstallationAccessTokenRequest repositories(List<String> repositories) {
         this.repositories = repositories;
@@ -91,7 +90,7 @@ public class AppsCreateInstallationAccessTokenRequest {
     }
 
     public AppsCreateInstallationAccessTokenRequest permissions(AppPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -102,11 +101,11 @@ public class AppsCreateInstallationAccessTokenRequest {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public AppPermissions getPermissions() {
+    public Optional<AppPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(AppPermissions permissions) {
+    public void setPermissions(Optional<AppPermissions> permissions) {
         this.permissions = permissions;
     }
 

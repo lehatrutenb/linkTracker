@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookProjectsV2ItemConvertedChangesContentType
@@ -14,16 +15,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_projects_v2_item_converted_changes_content_type")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectsV2ItemConvertedChangesContentType {
 
-    private String from = null;
+    private JsonNullable<String> from = JsonNullable.<String>undefined();
 
-    private String to;
+    private Optional<String> to = Optional.empty();
 
     public WebhookProjectsV2ItemConvertedChangesContentType from(String from) {
-        this.from = from;
+        this.from = JsonNullable.of(from);
         return this;
     }
 
@@ -33,16 +34,16 @@ public class WebhookProjectsV2ItemConvertedChangesContentType {
      */
     @Schema(name = "from", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("from")
-    public String getFrom() {
+    public JsonNullable<String> getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(JsonNullable<String> from) {
         this.from = from;
     }
 
     public WebhookProjectsV2ItemConvertedChangesContentType to(String to) {
-        this.to = to;
+        this.to = Optional.ofNullable(to);
         return this;
     }
 
@@ -52,11 +53,11 @@ public class WebhookProjectsV2ItemConvertedChangesContentType {
      */
     @Schema(name = "to", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("to")
-    public String getTo() {
+    public Optional<String> getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(Optional<String> to) {
         this.to = to;
     }
 
@@ -70,13 +71,25 @@ public class WebhookProjectsV2ItemConvertedChangesContentType {
         }
         WebhookProjectsV2ItemConvertedChangesContentType webhookProjectsV2ItemConvertedChangesContentType =
                 (WebhookProjectsV2ItemConvertedChangesContentType) o;
-        return Objects.equals(this.from, webhookProjectsV2ItemConvertedChangesContentType.from)
+        return equalsNullable(this.from, webhookProjectsV2ItemConvertedChangesContentType.from)
                 && Objects.equals(this.to, webhookProjectsV2ItemConvertedChangesContentType.to);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, to);
+        return Objects.hash(hashCodeNullable(from), to);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

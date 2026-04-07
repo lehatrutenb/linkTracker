@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -17,17 +16,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("activity_mark_notifications_as_read_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActivityMarkNotificationsAsReadRequest {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime lastReadAt;
+    private Optional<OffsetDateTime> lastReadAt = Optional.empty();
 
-    private Boolean read;
+    private Optional<Boolean> read = Optional.empty();
 
     public ActivityMarkNotificationsAsReadRequest lastReadAt(OffsetDateTime lastReadAt) {
-        this.lastReadAt = lastReadAt;
+        this.lastReadAt = Optional.ofNullable(lastReadAt);
         return this;
     }
 
@@ -42,16 +41,16 @@ public class ActivityMarkNotificationsAsReadRequest {
                     "Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_read_at")
-    public OffsetDateTime getLastReadAt() {
+    public Optional<OffsetDateTime> getLastReadAt() {
         return lastReadAt;
     }
 
-    public void setLastReadAt(OffsetDateTime lastReadAt) {
+    public void setLastReadAt(Optional<OffsetDateTime> lastReadAt) {
         this.lastReadAt = lastReadAt;
     }
 
     public ActivityMarkNotificationsAsReadRequest read(Boolean read) {
-        this.read = read;
+        this.read = Optional.ofNullable(read);
         return this;
     }
 
@@ -64,11 +63,11 @@ public class ActivityMarkNotificationsAsReadRequest {
             description = "Whether the notification has been read.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("read")
-    public Boolean getRead() {
+    public Optional<Boolean> getRead() {
         return read;
     }
 
-    public void setRead(Boolean read) {
+    public void setRead(Optional<Boolean> read) {
         this.read = read;
     }
 

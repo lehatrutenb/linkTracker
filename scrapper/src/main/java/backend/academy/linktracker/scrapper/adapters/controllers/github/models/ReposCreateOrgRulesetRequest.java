@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateOrgRulesetRequest
@@ -19,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_org_ruleset_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateOrgRulesetRequest {
 
@@ -64,14 +64,14 @@ public class ReposCreateOrgRulesetRequest {
         }
     }
 
-    private TargetEnum target = TargetEnum.BRANCH;
+    private Optional<TargetEnum> target = Optional.of(TargetEnum.BRANCH);
 
     private RepositoryRuleEnforcement enforcement;
 
     @Valid
     private List<@Valid RepositoryRulesetBypassActor> bypassActors = new ArrayList<>();
 
-    private OrgRulesetConditions conditions;
+    private Optional<OrgRulesetConditions> conditions = Optional.empty();
 
     @Valid
     private List<@Valid OrgRules> rules = new ArrayList<>();
@@ -109,7 +109,7 @@ public class ReposCreateOrgRulesetRequest {
     }
 
     public ReposCreateOrgRulesetRequest target(TargetEnum target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -119,11 +119,11 @@ public class ReposCreateOrgRulesetRequest {
      */
     @Schema(name = "target", description = "The target of the ruleset", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public TargetEnum getTarget() {
+    public Optional<TargetEnum> getTarget() {
         return target;
     }
 
-    public void setTarget(TargetEnum target) {
+    public void setTarget(Optional<TargetEnum> target) {
         this.target = target;
     }
 
@@ -180,7 +180,7 @@ public class ReposCreateOrgRulesetRequest {
     }
 
     public ReposCreateOrgRulesetRequest conditions(OrgRulesetConditions conditions) {
-        this.conditions = conditions;
+        this.conditions = Optional.ofNullable(conditions);
         return this;
     }
 
@@ -191,11 +191,11 @@ public class ReposCreateOrgRulesetRequest {
     @Valid
     @Schema(name = "conditions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conditions")
-    public OrgRulesetConditions getConditions() {
+    public Optional<OrgRulesetConditions> getConditions() {
         return conditions;
     }
 
-    public void setConditions(OrgRulesetConditions conditions) {
+    public void setConditions(Optional<OrgRulesetConditions> conditions) {
         this.conditions = conditions;
     }
 

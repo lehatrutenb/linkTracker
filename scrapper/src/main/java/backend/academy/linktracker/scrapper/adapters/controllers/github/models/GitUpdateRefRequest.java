@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GitUpdateRefRequest
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("git_update_ref_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GitUpdateRefRequest {
 
     private String sha;
 
-    private Boolean force = false;
+    private Optional<Boolean> force = Optional.of(false);
 
     public GitUpdateRefRequest() {
         super();
@@ -57,7 +57,7 @@ public class GitUpdateRefRequest {
     }
 
     public GitUpdateRefRequest force(Boolean force) {
-        this.force = force;
+        this.force = Optional.ofNullable(force);
         return this;
     }
 
@@ -71,11 +71,11 @@ public class GitUpdateRefRequest {
                     "Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("force")
-    public Boolean getForce() {
+    public Optional<Boolean> getForce() {
         return force;
     }
 
-    public void setForce(Boolean force) {
+    public void setForce(Optional<Boolean> force) {
         this.force = force;
     }
 

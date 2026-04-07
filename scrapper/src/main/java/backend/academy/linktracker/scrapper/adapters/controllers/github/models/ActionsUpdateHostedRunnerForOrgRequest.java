@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ActionsUpdateHostedRunnerForOrgRequest
@@ -14,26 +15,26 @@ import java.util.Objects;
 @JsonTypeName("actions_update_hosted_runner_for_org_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsUpdateHostedRunnerForOrgRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Long runnerGroupId;
+    private Optional<Long> runnerGroupId = Optional.empty();
 
-    private Long maximumRunners;
+    private Optional<Long> maximumRunners = Optional.empty();
 
-    private Boolean enableStaticIp;
+    private Optional<Boolean> enableStaticIp = Optional.empty();
 
-    private String size;
+    private Optional<String> size = Optional.empty();
 
-    private String imageId;
+    private Optional<String> imageId = Optional.empty();
 
-    private String imageVersion = null;
+    private JsonNullable<String> imageVersion = JsonNullable.<String>undefined();
 
     public ActionsUpdateHostedRunnerForOrgRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -47,16 +48,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "Name of the runner. Must be between 1 and 64 characters and may only contain upper and lowercase letters a-z, numbers 0-9, '.', '-', and '_'.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest runnerGroupId(Long runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = Optional.ofNullable(runnerGroupId);
         return this;
     }
 
@@ -69,16 +70,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
             description = "The existing runner group to add this runner to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_group_id")
-    public Long getRunnerGroupId() {
+    public Optional<Long> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(Long runnerGroupId) {
+    public void setRunnerGroupId(Optional<Long> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest maximumRunners(Long maximumRunners) {
-        this.maximumRunners = maximumRunners;
+        this.maximumRunners = Optional.ofNullable(maximumRunners);
         return this;
     }
 
@@ -92,16 +93,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "The maximum amount of runners to scale up to. Runners will not auto-scale above this number. Use this setting to limit your cost.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maximum_runners")
-    public Long getMaximumRunners() {
+    public Optional<Long> getMaximumRunners() {
         return maximumRunners;
     }
 
-    public void setMaximumRunners(Long maximumRunners) {
+    public void setMaximumRunners(Optional<Long> maximumRunners) {
         this.maximumRunners = maximumRunners;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest enableStaticIp(Boolean enableStaticIp) {
-        this.enableStaticIp = enableStaticIp;
+        this.enableStaticIp = Optional.ofNullable(enableStaticIp);
         return this;
     }
 
@@ -115,16 +116,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "Whether this runner should be updated with a static public IP. Note limit on account. To list limits on account, use `GET actions/hosted-runners/limits`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enable_static_ip")
-    public Boolean getEnableStaticIp() {
+    public Optional<Boolean> getEnableStaticIp() {
         return enableStaticIp;
     }
 
-    public void setEnableStaticIp(Boolean enableStaticIp) {
+    public void setEnableStaticIp(Optional<Boolean> enableStaticIp) {
         this.enableStaticIp = enableStaticIp;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest size(String size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -138,16 +139,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "The machine size of the runner. To list available sizes, use `GET actions/hosted-runners/machine-sizes`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public String getSize() {
+    public Optional<String> getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(Optional<String> size) {
         this.size = size;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest imageId(String imageId) {
-        this.imageId = imageId;
+        this.imageId = Optional.ofNullable(imageId);
         return this;
     }
 
@@ -161,16 +162,16 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "The unique identifier of the runner image. To list available images, use `GET /actions/hosted-runners/images/github-owned`, `GET /actions/hosted-runners/images/partner`, or `GET /actions/hosted-runners/images/custom`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("image_id")
-    public String getImageId() {
+    public Optional<String> getImageId() {
         return imageId;
     }
 
-    public void setImageId(String imageId) {
+    public void setImageId(Optional<String> imageId) {
         this.imageId = imageId;
     }
 
     public ActionsUpdateHostedRunnerForOrgRequest imageVersion(String imageVersion) {
-        this.imageVersion = imageVersion;
+        this.imageVersion = JsonNullable.of(imageVersion);
         return this;
     }
 
@@ -184,11 +185,11 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                     "The version of the runner image to deploy. This is relevant only for runners using custom images.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("image_version")
-    public String getImageVersion() {
+    public JsonNullable<String> getImageVersion() {
         return imageVersion;
     }
 
-    public void setImageVersion(String imageVersion) {
+    public void setImageVersion(JsonNullable<String> imageVersion) {
         this.imageVersion = imageVersion;
     }
 
@@ -208,12 +209,25 @@ public class ActionsUpdateHostedRunnerForOrgRequest {
                 && Objects.equals(this.enableStaticIp, actionsUpdateHostedRunnerForOrgRequest.enableStaticIp)
                 && Objects.equals(this.size, actionsUpdateHostedRunnerForOrgRequest.size)
                 && Objects.equals(this.imageId, actionsUpdateHostedRunnerForOrgRequest.imageId)
-                && Objects.equals(this.imageVersion, actionsUpdateHostedRunnerForOrgRequest.imageVersion);
+                && equalsNullable(this.imageVersion, actionsUpdateHostedRunnerForOrgRequest.imageVersion);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, runnerGroupId, maximumRunners, enableStaticIp, size, imageId, imageVersion);
+        return Objects.hash(
+                name, runnerGroupId, maximumRunners, enableStaticIp, size, imageId, hashCodeNullable(imageVersion));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

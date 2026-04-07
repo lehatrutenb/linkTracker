@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("code-scanning-codeql-database")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodeScanningCodeqlDatabase {
 
@@ -43,7 +44,7 @@ public class CodeScanningCodeqlDatabase {
 
     private URI url;
 
-    private String commitOid = null;
+    private JsonNullable<String> commitOid = JsonNullable.<String>undefined();
 
     public CodeScanningCodeqlDatabase() {
         super();
@@ -282,7 +283,7 @@ public class CodeScanningCodeqlDatabase {
     }
 
     public CodeScanningCodeqlDatabase commitOid(String commitOid) {
-        this.commitOid = commitOid;
+        this.commitOid = JsonNullable.of(commitOid);
         return this;
     }
 
@@ -295,11 +296,11 @@ public class CodeScanningCodeqlDatabase {
             description = "The commit SHA of the repository at the time the CodeQL database was created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commit_oid")
-    public String getCommitOid() {
+    public JsonNullable<String> getCommitOid() {
         return commitOid;
     }
 
-    public void setCommitOid(String commitOid) {
+    public void setCommitOid(JsonNullable<String> commitOid) {
         this.commitOid = commitOid;
     }
 
@@ -321,12 +322,34 @@ public class CodeScanningCodeqlDatabase {
                 && Objects.equals(this.createdAt, codeScanningCodeqlDatabase.createdAt)
                 && Objects.equals(this.updatedAt, codeScanningCodeqlDatabase.updatedAt)
                 && Objects.equals(this.url, codeScanningCodeqlDatabase.url)
-                && Objects.equals(this.commitOid, codeScanningCodeqlDatabase.commitOid);
+                && equalsNullable(this.commitOid, codeScanningCodeqlDatabase.commitOid);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, language, uploader, contentType, size, createdAt, updatedAt, url, commitOid);
+        return Objects.hash(
+                id,
+                name,
+                language,
+                uploader,
+                contentType,
+                size,
+                createdAt,
+                updatedAt,
+                url,
+                hashCodeNullable(commitOid));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Use the &#x60;status&#x60; property to enable or disable secret scanning for this repository. For more information, see \&quot;[About secret scanning](/code-security/secret-security/about-secret-scanning).\&quot;
@@ -18,14 +17,14 @@ import java.util.Objects;
 @JsonTypeName("repos_update_request_security_and_analysis_secret_scanning")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateRequestSecurityAndAnalysisSecretScanning {
 
-    private String status;
+    private Optional<String> status = Optional.empty();
 
     public ReposUpdateRequestSecurityAndAnalysisSecretScanning status(String status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -38,11 +37,11 @@ public class ReposUpdateRequestSecurityAndAnalysisSecretScanning {
             description = "Can be `enabled` or `disabled`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public Optional<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Optional<String> status) {
         this.status = status;
     }
 

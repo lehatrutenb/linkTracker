@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ApiOverviewSshKeyFingerprints
@@ -14,20 +13,20 @@ import java.util.Objects;
 @JsonTypeName("api_overview_ssh_key_fingerprints")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiOverviewSshKeyFingerprints {
 
-    private String SHA256_RSA;
+    private Optional<String> SHA256_RSA = Optional.empty();
 
-    private String SHA256_DSA;
+    private Optional<String> SHA256_DSA = Optional.empty();
 
-    private String SHA256_ECDSA;
+    private Optional<String> SHA256_ECDSA = Optional.empty();
 
-    private String SHA256_ED25519;
+    private Optional<String> SHA256_ED25519 = Optional.empty();
 
     public ApiOverviewSshKeyFingerprints SHA256_RSA(String SHA256_RSA) {
-        this.SHA256_RSA = SHA256_RSA;
+        this.SHA256_RSA = Optional.ofNullable(SHA256_RSA);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class ApiOverviewSshKeyFingerprints {
      */
     @Schema(name = "SHA256_RSA", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("SHA256_RSA")
-    public String getSHA256RSA() {
+    public Optional<String> getSHA256RSA() {
         return SHA256_RSA;
     }
 
-    public void setSHA256RSA(String SHA256_RSA) {
+    public void setSHA256RSA(Optional<String> SHA256_RSA) {
         this.SHA256_RSA = SHA256_RSA;
     }
 
     public ApiOverviewSshKeyFingerprints SHA256_DSA(String SHA256_DSA) {
-        this.SHA256_DSA = SHA256_DSA;
+        this.SHA256_DSA = Optional.ofNullable(SHA256_DSA);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class ApiOverviewSshKeyFingerprints {
      */
     @Schema(name = "SHA256_DSA", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("SHA256_DSA")
-    public String getSHA256DSA() {
+    public Optional<String> getSHA256DSA() {
         return SHA256_DSA;
     }
 
-    public void setSHA256DSA(String SHA256_DSA) {
+    public void setSHA256DSA(Optional<String> SHA256_DSA) {
         this.SHA256_DSA = SHA256_DSA;
     }
 
     public ApiOverviewSshKeyFingerprints SHA256_ECDSA(String SHA256_ECDSA) {
-        this.SHA256_ECDSA = SHA256_ECDSA;
+        this.SHA256_ECDSA = Optional.ofNullable(SHA256_ECDSA);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class ApiOverviewSshKeyFingerprints {
      */
     @Schema(name = "SHA256_ECDSA", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("SHA256_ECDSA")
-    public String getSHA256ECDSA() {
+    public Optional<String> getSHA256ECDSA() {
         return SHA256_ECDSA;
     }
 
-    public void setSHA256ECDSA(String SHA256_ECDSA) {
+    public void setSHA256ECDSA(Optional<String> SHA256_ECDSA) {
         this.SHA256_ECDSA = SHA256_ECDSA;
     }
 
     public ApiOverviewSshKeyFingerprints SHA256_ED25519(String SHA256_ED25519) {
-        this.SHA256_ED25519 = SHA256_ED25519;
+        this.SHA256_ED25519 = Optional.ofNullable(SHA256_ED25519);
         return this;
     }
 
@@ -94,11 +93,11 @@ public class ApiOverviewSshKeyFingerprints {
      */
     @Schema(name = "SHA256_ED25519", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("SHA256_ED25519")
-    public String getSHA256ED25519() {
+    public Optional<String> getSHA256ED25519() {
         return SHA256_ED25519;
     }
 
-    public void setSHA256ED25519(String SHA256_ED25519) {
+    public void setSHA256ED25519(Optional<String> SHA256_ED25519) {
         this.SHA256_ED25519 = SHA256_ED25519;
     }
 

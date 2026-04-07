@@ -5,13 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -23,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("authorization")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Authorization {
 
@@ -32,19 +30,19 @@ public class Authorization {
     private URI url;
 
     @Valid
-    private List<String> scopes;
+    private JsonNullable<List<String>> scopes = JsonNullable.<List<String>>undefined();
 
     private String token;
 
-    private String tokenLastEight = null;
+    private JsonNullable<String> tokenLastEight = JsonNullable.<String>undefined();
 
-    private String hashedToken = null;
+    private JsonNullable<String> hashedToken = JsonNullable.<String>undefined();
 
     private AuthorizationApp app;
 
-    private String note = null;
+    private JsonNullable<String> note = JsonNullable.<String>undefined();
 
-    private URI noteUrl = null;
+    private JsonNullable<URI> noteUrl = JsonNullable.<URI>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
@@ -52,14 +50,15 @@ public class Authorization {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private String fingerprint = null;
+    private JsonNullable<String> fingerprint = JsonNullable.<String>undefined();
 
-    private NullableSimpleUser user = null;
+    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
 
-    private NullableScopedInstallation installation = null;
+    private JsonNullable<NullableScopedInstallation> installation =
+            JsonNullable.<NullableScopedInstallation>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime expiresAt = null;
+    private JsonNullable<OffsetDateTime> expiresAt = JsonNullable.<OffsetDateTime>undefined();
 
     public Authorization() {
         super();
@@ -84,17 +83,17 @@ public class Authorization {
             OffsetDateTime expiresAt) {
         this.id = id;
         this.url = url;
-        this.scopes = scopes;
+        this.scopes = JsonNullable.of(scopes);
         this.token = token;
-        this.tokenLastEight = tokenLastEight;
-        this.hashedToken = hashedToken;
+        this.tokenLastEight = JsonNullable.of(tokenLastEight);
+        this.hashedToken = JsonNullable.of(hashedToken);
         this.app = app;
-        this.note = note;
-        this.noteUrl = noteUrl;
+        this.note = JsonNullable.of(note);
+        this.noteUrl = JsonNullable.of(noteUrl);
         this.updatedAt = updatedAt;
         this.createdAt = createdAt;
-        this.fingerprint = fingerprint;
-        this.expiresAt = expiresAt;
+        this.fingerprint = JsonNullable.of(fingerprint);
+        this.expiresAt = JsonNullable.of(expiresAt);
     }
 
     public Authorization id(Long id) {
@@ -139,15 +138,15 @@ public class Authorization {
     }
 
     public Authorization scopes(List<String> scopes) {
-        this.scopes = scopes;
+        this.scopes = JsonNullable.of(scopes);
         return this;
     }
 
     public Authorization addScopesItem(String scopesItem) {
-        if (this.scopes == null) {
-            this.scopes = new ArrayList<>();
+        if (this.scopes == null || !this.scopes.isPresent()) {
+            this.scopes = JsonNullable.of(new ArrayList<>());
         }
-        this.scopes.add(scopesItem);
+        this.scopes.get().add(scopesItem);
         return this;
     }
 
@@ -161,11 +160,11 @@ public class Authorization {
             description = "A list of scopes that this authorization is in.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("scopes")
-    public List<String> getScopes() {
+    public JsonNullable<List<String>> getScopes() {
         return scopes;
     }
 
-    public void setScopes(List<String> scopes) {
+    public void setScopes(JsonNullable<List<String>> scopes) {
         this.scopes = scopes;
     }
 
@@ -190,7 +189,7 @@ public class Authorization {
     }
 
     public Authorization tokenLastEight(String tokenLastEight) {
-        this.tokenLastEight = tokenLastEight;
+        this.tokenLastEight = JsonNullable.of(tokenLastEight);
         return this;
     }
 
@@ -201,16 +200,16 @@ public class Authorization {
     @NotNull
     @Schema(name = "token_last_eight", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("token_last_eight")
-    public String getTokenLastEight() {
+    public JsonNullable<String> getTokenLastEight() {
         return tokenLastEight;
     }
 
-    public void setTokenLastEight(String tokenLastEight) {
+    public void setTokenLastEight(JsonNullable<String> tokenLastEight) {
         this.tokenLastEight = tokenLastEight;
     }
 
     public Authorization hashedToken(String hashedToken) {
-        this.hashedToken = hashedToken;
+        this.hashedToken = JsonNullable.of(hashedToken);
         return this;
     }
 
@@ -221,11 +220,11 @@ public class Authorization {
     @NotNull
     @Schema(name = "hashed_token", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("hashed_token")
-    public String getHashedToken() {
+    public JsonNullable<String> getHashedToken() {
         return hashedToken;
     }
 
-    public void setHashedToken(String hashedToken) {
+    public void setHashedToken(JsonNullable<String> hashedToken) {
         this.hashedToken = hashedToken;
     }
 
@@ -251,7 +250,7 @@ public class Authorization {
     }
 
     public Authorization note(String note) {
-        this.note = note;
+        this.note = JsonNullable.of(note);
         return this;
     }
 
@@ -262,16 +261,16 @@ public class Authorization {
     @NotNull
     @Schema(name = "note", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("note")
-    public String getNote() {
+    public JsonNullable<String> getNote() {
         return note;
     }
 
-    public void setNote(String note) {
+    public void setNote(JsonNullable<String> note) {
         this.note = note;
     }
 
     public Authorization noteUrl(URI noteUrl) {
-        this.noteUrl = noteUrl;
+        this.noteUrl = JsonNullable.of(noteUrl);
         return this;
     }
 
@@ -283,11 +282,11 @@ public class Authorization {
     @Valid
     @Schema(name = "note_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("note_url")
-    public URI getNoteUrl() {
+    public JsonNullable<URI> getNoteUrl() {
         return noteUrl;
     }
 
-    public void setNoteUrl(URI noteUrl) {
+    public void setNoteUrl(JsonNullable<URI> noteUrl) {
         this.noteUrl = noteUrl;
     }
 
@@ -334,7 +333,7 @@ public class Authorization {
     }
 
     public Authorization fingerprint(String fingerprint) {
-        this.fingerprint = fingerprint;
+        this.fingerprint = JsonNullable.of(fingerprint);
         return this;
     }
 
@@ -345,16 +344,16 @@ public class Authorization {
     @NotNull
     @Schema(name = "fingerprint", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("fingerprint")
-    public String getFingerprint() {
+    public JsonNullable<String> getFingerprint() {
         return fingerprint;
     }
 
-    public void setFingerprint(String fingerprint) {
+    public void setFingerprint(JsonNullable<String> fingerprint) {
         this.fingerprint = fingerprint;
     }
 
     public Authorization user(NullableSimpleUser user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -365,16 +364,16 @@ public class Authorization {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public NullableSimpleUser getUser() {
+    public JsonNullable<NullableSimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(NullableSimpleUser user) {
+    public void setUser(JsonNullable<NullableSimpleUser> user) {
         this.user = user;
     }
 
     public Authorization installation(NullableScopedInstallation installation) {
-        this.installation = installation;
+        this.installation = JsonNullable.of(installation);
         return this;
     }
 
@@ -385,16 +384,16 @@ public class Authorization {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public NullableScopedInstallation getInstallation() {
+    public JsonNullable<NullableScopedInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(NullableScopedInstallation installation) {
+    public void setInstallation(JsonNullable<NullableScopedInstallation> installation) {
         this.installation = installation;
     }
 
     public Authorization expiresAt(OffsetDateTime expiresAt) {
-        this.expiresAt = expiresAt;
+        this.expiresAt = JsonNullable.of(expiresAt);
         return this;
     }
 
@@ -406,11 +405,11 @@ public class Authorization {
     @Valid
     @Schema(name = "expires_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("expires_at")
-    public OffsetDateTime getExpiresAt() {
+    public JsonNullable<OffsetDateTime> getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(OffsetDateTime expiresAt) {
+    public void setExpiresAt(JsonNullable<OffsetDateTime> expiresAt) {
         this.expiresAt = expiresAt;
     }
 
@@ -435,9 +434,14 @@ public class Authorization {
                 && Objects.equals(this.updatedAt, authorization.updatedAt)
                 && Objects.equals(this.createdAt, authorization.createdAt)
                 && Objects.equals(this.fingerprint, authorization.fingerprint)
-                && Objects.equals(this.user, authorization.user)
-                && Objects.equals(this.installation, authorization.installation)
+                && equalsNullable(this.user, authorization.user)
+                && equalsNullable(this.installation, authorization.installation)
                 && Objects.equals(this.expiresAt, authorization.expiresAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -455,9 +459,16 @@ public class Authorization {
                 updatedAt,
                 createdAt,
                 fingerprint,
-                user,
-                installation,
+                hashCodeNullable(user),
+                hashCodeNullable(installation),
                 expiresAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

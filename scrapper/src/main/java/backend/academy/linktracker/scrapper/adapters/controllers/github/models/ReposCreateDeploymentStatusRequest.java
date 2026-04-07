@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateDeploymentStatusRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_deployment_status_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateDeploymentStatusRequest {
 
@@ -67,17 +67,17 @@ public class ReposCreateDeploymentStatusRequest {
 
     private StateEnum state;
 
-    private String targetUrl = "";
+    private Optional<String> targetUrl = Optional.of("");
 
-    private String logUrl = "";
+    private Optional<String> logUrl = Optional.of("");
 
-    private String description = "";
+    private Optional<String> description = Optional.of("");
 
-    private String environment;
+    private Optional<String> environment = Optional.empty();
 
-    private String environmentUrl = "";
+    private Optional<String> environmentUrl = Optional.of("");
 
-    private Boolean autoInactive;
+    private Optional<Boolean> autoInactive = Optional.empty();
 
     public ReposCreateDeploymentStatusRequest() {
         super();
@@ -115,7 +115,7 @@ public class ReposCreateDeploymentStatusRequest {
     }
 
     public ReposCreateDeploymentStatusRequest targetUrl(String targetUrl) {
-        this.targetUrl = targetUrl;
+        this.targetUrl = Optional.ofNullable(targetUrl);
         return this;
     }
 
@@ -129,16 +129,16 @@ public class ReposCreateDeploymentStatusRequest {
                     "The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.  > [!NOTE] > It's recommended to use the `log_url` parameter, which replaces `target_url`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target_url")
-    public String getTargetUrl() {
+    public Optional<String> getTargetUrl() {
         return targetUrl;
     }
 
-    public void setTargetUrl(String targetUrl) {
+    public void setTargetUrl(Optional<String> targetUrl) {
         this.targetUrl = targetUrl;
     }
 
     public ReposCreateDeploymentStatusRequest logUrl(String logUrl) {
-        this.logUrl = logUrl;
+        this.logUrl = Optional.ofNullable(logUrl);
         return this;
     }
 
@@ -152,16 +152,16 @@ public class ReposCreateDeploymentStatusRequest {
                     "The full URL of the deployment's output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `\"\"`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("log_url")
-    public String getLogUrl() {
+    public Optional<String> getLogUrl() {
         return logUrl;
     }
 
-    public void setLogUrl(String logUrl) {
+    public void setLogUrl(Optional<String> logUrl) {
         this.logUrl = logUrl;
     }
 
     public ReposCreateDeploymentStatusRequest description(String description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -174,16 +174,16 @@ public class ReposCreateDeploymentStatusRequest {
             description = "A short description of the status. The maximum description length is 140 characters.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
     public ReposCreateDeploymentStatusRequest environment(String environment) {
-        this.environment = environment;
+        this.environment = Optional.ofNullable(environment);
         return this;
     }
 
@@ -197,16 +197,16 @@ public class ReposCreateDeploymentStatusRequest {
                     "Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment")
-    public String getEnvironment() {
+    public Optional<String> getEnvironment() {
         return environment;
     }
 
-    public void setEnvironment(String environment) {
+    public void setEnvironment(Optional<String> environment) {
         this.environment = environment;
     }
 
     public ReposCreateDeploymentStatusRequest environmentUrl(String environmentUrl) {
-        this.environmentUrl = environmentUrl;
+        this.environmentUrl = Optional.ofNullable(environmentUrl);
         return this;
     }
 
@@ -219,16 +219,16 @@ public class ReposCreateDeploymentStatusRequest {
             description = "Sets the URL for accessing your environment. Default: `\"\"`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("environment_url")
-    public String getEnvironmentUrl() {
+    public Optional<String> getEnvironmentUrl() {
         return environmentUrl;
     }
 
-    public void setEnvironmentUrl(String environmentUrl) {
+    public void setEnvironmentUrl(Optional<String> environmentUrl) {
         this.environmentUrl = environmentUrl;
     }
 
     public ReposCreateDeploymentStatusRequest autoInactive(Boolean autoInactive) {
-        this.autoInactive = autoInactive;
+        this.autoInactive = Optional.ofNullable(autoInactive);
         return this;
     }
 
@@ -242,11 +242,11 @@ public class ReposCreateDeploymentStatusRequest {
                     "Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("auto_inactive")
-    public Boolean getAutoInactive() {
+    public Optional<Boolean> getAutoInactive() {
         return autoInactive;
     }
 
-    public void setAutoInactive(Boolean autoInactive) {
+    public void setAutoInactive(Optional<Boolean> autoInactive) {
         this.autoInactive = autoInactive;
     }
 

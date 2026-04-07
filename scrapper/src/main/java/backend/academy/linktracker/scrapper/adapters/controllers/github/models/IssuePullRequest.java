@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,12 +18,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue_pull_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssuePullRequest {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt;
+    private Optional<OffsetDateTime> mergedAt = Optional.empty();
 
     private URI diffUrl;
 
@@ -48,7 +48,7 @@ public class IssuePullRequest {
     }
 
     public IssuePullRequest mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = Optional.ofNullable(mergedAt);
         return this;
     }
 
@@ -59,11 +59,11 @@ public class IssuePullRequest {
     @Valid
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public Optional<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(Optional<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 

@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPullRequestUnassigned
@@ -17,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-pull-request-unassigned")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestUnassigned {
 
@@ -56,21 +58,21 @@ public class WebhookPullRequestUnassigned {
 
     private ActionEnum action;
 
-    private WebhooksUserMannequin assignee = null;
+    private JsonNullable<WebhooksUserMannequin> assignee = JsonNullable.<WebhooksUserMannequin>undefined();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private Long number;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private PullRequest11 pullRequest;
 
     private RepositoryWebhooks repository;
 
-    private SimpleUser sender;
+    private Optional<SimpleUser> sender = Optional.empty();
 
     public WebhookPullRequestUnassigned() {
         super();
@@ -108,7 +110,7 @@ public class WebhookPullRequestUnassigned {
     }
 
     public WebhookPullRequestUnassigned assignee(WebhooksUserMannequin assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -119,16 +121,16 @@ public class WebhookPullRequestUnassigned {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public WebhooksUserMannequin getAssignee() {
+    public JsonNullable<WebhooksUserMannequin> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(WebhooksUserMannequin assignee) {
+    public void setAssignee(JsonNullable<WebhooksUserMannequin> assignee) {
         this.assignee = assignee;
     }
 
     public WebhookPullRequestUnassigned enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -139,16 +141,16 @@ public class WebhookPullRequestUnassigned {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookPullRequestUnassigned installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -159,11 +161,11 @@ public class WebhookPullRequestUnassigned {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -188,7 +190,7 @@ public class WebhookPullRequestUnassigned {
     }
 
     public WebhookPullRequestUnassigned organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -199,11 +201,11 @@ public class WebhookPullRequestUnassigned {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -250,7 +252,7 @@ public class WebhookPullRequestUnassigned {
     }
 
     public WebhookPullRequestUnassigned sender(SimpleUser sender) {
-        this.sender = sender;
+        this.sender = Optional.ofNullable(sender);
         return this;
     }
 
@@ -261,11 +263,11 @@ public class WebhookPullRequestUnassigned {
     @Valid
     @Schema(name = "sender", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sender")
-    public SimpleUser getSender() {
+    public Optional<SimpleUser> getSender() {
         return sender;
     }
 
-    public void setSender(SimpleUser sender) {
+    public void setSender(Optional<SimpleUser> sender) {
         this.sender = sender;
     }
 
@@ -279,7 +281,7 @@ public class WebhookPullRequestUnassigned {
         }
         WebhookPullRequestUnassigned webhookPullRequestUnassigned = (WebhookPullRequestUnassigned) o;
         return Objects.equals(this.action, webhookPullRequestUnassigned.action)
-                && Objects.equals(this.assignee, webhookPullRequestUnassigned.assignee)
+                && equalsNullable(this.assignee, webhookPullRequestUnassigned.assignee)
                 && Objects.equals(this.enterprise, webhookPullRequestUnassigned.enterprise)
                 && Objects.equals(this.installation, webhookPullRequestUnassigned.installation)
                 && Objects.equals(this.number, webhookPullRequestUnassigned.number)
@@ -289,10 +291,30 @@ public class WebhookPullRequestUnassigned {
                 && Objects.equals(this.sender, webhookPullRequestUnassigned.sender);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                action, assignee, enterprise, installation, number, organization, pullRequest, repository, sender);
+                action,
+                hashCodeNullable(assignee),
+                enterprise,
+                installation,
+                number,
+                organization,
+                pullRequest,
+                repository,
+                sender);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -7,12 +7,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,15 +19,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("simple-check-suite")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SimpleCheckSuite {
 
-    private String after = null;
+    private JsonNullable<String> after = JsonNullable.<String>undefined();
 
-    private Integration app = null;
+    private JsonNullable<Integration> app = JsonNullable.<Integration>undefined();
 
-    private String before = null;
+    private JsonNullable<String> before = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets conclusion
@@ -81,23 +78,23 @@ public class SimpleCheckSuite {
         }
     }
 
-    private ConclusionEnum conclusion = null;
+    private JsonNullable<ConclusionEnum> conclusion = JsonNullable.<ConclusionEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
-    private String headBranch = null;
+    private JsonNullable<String> headBranch = JsonNullable.<String>undefined();
 
-    private String headSha;
+    private Optional<String> headSha = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String nodeId;
+    private Optional<String> nodeId = Optional.empty();
 
     @Valid
     private List<@Valid PullRequestMinimal> pullRequests = new ArrayList<>();
 
-    private MinimalRepository repository;
+    private Optional<MinimalRepository> repository = Optional.empty();
 
     /**
      * Gets or Sets status
@@ -140,15 +137,15 @@ public class SimpleCheckSuite {
         }
     }
 
-    private StatusEnum status;
+    private Optional<StatusEnum> status = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
     public SimpleCheckSuite after(String after) {
-        this.after = after;
+        this.after = JsonNullable.of(after);
         return this;
     }
 
@@ -161,16 +158,16 @@ public class SimpleCheckSuite {
             example = "d6fde92930d4715a2b49857d24b940956b26d2d3",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("after")
-    public String getAfter() {
+    public JsonNullable<String> getAfter() {
         return after;
     }
 
-    public void setAfter(String after) {
+    public void setAfter(JsonNullable<String> after) {
         this.after = after;
     }
 
     public SimpleCheckSuite app(Integration app) {
-        this.app = app;
+        this.app = JsonNullable.of(app);
         return this;
     }
 
@@ -181,16 +178,16 @@ public class SimpleCheckSuite {
     @Valid
     @Schema(name = "app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("app")
-    public Integration getApp() {
+    public JsonNullable<Integration> getApp() {
         return app;
     }
 
-    public void setApp(Integration app) {
+    public void setApp(JsonNullable<Integration> app) {
         this.app = app;
     }
 
     public SimpleCheckSuite before(String before) {
-        this.before = before;
+        this.before = JsonNullable.of(before);
         return this;
     }
 
@@ -203,16 +200,16 @@ public class SimpleCheckSuite {
             example = "146e867f55c26428e5f9fade55a9bbf5e95a7912",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("before")
-    public String getBefore() {
+    public JsonNullable<String> getBefore() {
         return before;
     }
 
-    public void setBefore(String before) {
+    public void setBefore(JsonNullable<String> before) {
         this.before = before;
     }
 
     public SimpleCheckSuite conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -222,16 +219,16 @@ public class SimpleCheckSuite {
      */
     @Schema(name = "conclusion", example = "neutral", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public JsonNullable<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(JsonNullable<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
     public SimpleCheckSuite createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -242,16 +239,16 @@ public class SimpleCheckSuite {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public SimpleCheckSuite headBranch(String headBranch) {
-        this.headBranch = headBranch;
+        this.headBranch = JsonNullable.of(headBranch);
         return this;
     }
 
@@ -261,16 +258,16 @@ public class SimpleCheckSuite {
      */
     @Schema(name = "head_branch", example = "master", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_branch")
-    public String getHeadBranch() {
+    public JsonNullable<String> getHeadBranch() {
         return headBranch;
     }
 
-    public void setHeadBranch(String headBranch) {
+    public void setHeadBranch(JsonNullable<String> headBranch) {
         this.headBranch = headBranch;
     }
 
     public SimpleCheckSuite headSha(String headSha) {
-        this.headSha = headSha;
+        this.headSha = Optional.ofNullable(headSha);
         return this;
     }
 
@@ -284,16 +281,16 @@ public class SimpleCheckSuite {
             description = "The SHA of the head commit that is being checked.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("head_sha")
-    public String getHeadSha() {
+    public Optional<String> getHeadSha() {
         return headSha;
     }
 
-    public void setHeadSha(String headSha) {
+    public void setHeadSha(Optional<String> headSha) {
         this.headSha = headSha;
     }
 
     public SimpleCheckSuite id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -303,16 +300,16 @@ public class SimpleCheckSuite {
      */
     @Schema(name = "id", example = "5", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public SimpleCheckSuite nodeId(String nodeId) {
-        this.nodeId = nodeId;
+        this.nodeId = Optional.ofNullable(nodeId);
         return this;
     }
 
@@ -322,11 +319,11 @@ public class SimpleCheckSuite {
      */
     @Schema(name = "node_id", example = "MDEwOkNoZWNrU3VpdGU1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("node_id")
-    public String getNodeId() {
+    public Optional<String> getNodeId() {
         return nodeId;
     }
 
-    public void setNodeId(String nodeId) {
+    public void setNodeId(Optional<String> nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -359,7 +356,7 @@ public class SimpleCheckSuite {
     }
 
     public SimpleCheckSuite repository(MinimalRepository repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -370,16 +367,16 @@ public class SimpleCheckSuite {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public MinimalRepository getRepository() {
+    public Optional<MinimalRepository> getRepository() {
         return repository;
     }
 
-    public void setRepository(MinimalRepository repository) {
+    public void setRepository(Optional<MinimalRepository> repository) {
         this.repository = repository;
     }
 
     public SimpleCheckSuite status(StatusEnum status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -389,16 +386,16 @@ public class SimpleCheckSuite {
      */
     @Schema(name = "status", example = "completed", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public StatusEnum getStatus() {
+    public Optional<StatusEnum> getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEnum status) {
+    public void setStatus(Optional<StatusEnum> status) {
         this.status = status;
     }
 
     public SimpleCheckSuite updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -409,16 +406,16 @@ public class SimpleCheckSuite {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public SimpleCheckSuite url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -431,11 +428,11 @@ public class SimpleCheckSuite {
             example = "https://api.github.com/repos/github/hello-world/check-suites/5",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
@@ -448,12 +445,12 @@ public class SimpleCheckSuite {
             return false;
         }
         SimpleCheckSuite simpleCheckSuite = (SimpleCheckSuite) o;
-        return Objects.equals(this.after, simpleCheckSuite.after)
-                && Objects.equals(this.app, simpleCheckSuite.app)
-                && Objects.equals(this.before, simpleCheckSuite.before)
-                && Objects.equals(this.conclusion, simpleCheckSuite.conclusion)
+        return equalsNullable(this.after, simpleCheckSuite.after)
+                && equalsNullable(this.app, simpleCheckSuite.app)
+                && equalsNullable(this.before, simpleCheckSuite.before)
+                && equalsNullable(this.conclusion, simpleCheckSuite.conclusion)
                 && Objects.equals(this.createdAt, simpleCheckSuite.createdAt)
-                && Objects.equals(this.headBranch, simpleCheckSuite.headBranch)
+                && equalsNullable(this.headBranch, simpleCheckSuite.headBranch)
                 && Objects.equals(this.headSha, simpleCheckSuite.headSha)
                 && Objects.equals(this.id, simpleCheckSuite.id)
                 && Objects.equals(this.nodeId, simpleCheckSuite.nodeId)
@@ -464,15 +461,20 @@ public class SimpleCheckSuite {
                 && Objects.equals(this.url, simpleCheckSuite.url);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                after,
-                app,
-                before,
-                conclusion,
+                hashCodeNullable(after),
+                hashCodeNullable(app),
+                hashCodeNullable(before),
+                hashCodeNullable(conclusion),
                 createdAt,
-                headBranch,
+                hashCodeNullable(headBranch),
                 headSha,
                 id,
                 nodeId,
@@ -481,6 +483,13 @@ public class SimpleCheckSuite {
                 status,
                 updatedAt,
                 url);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

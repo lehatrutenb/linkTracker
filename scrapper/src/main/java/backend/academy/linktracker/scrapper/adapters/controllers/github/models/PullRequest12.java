@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Pull_Request_12")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequest12 {
 
@@ -67,11 +65,11 @@ public class PullRequest12 {
         }
     }
 
-    private ActiveLockReasonEnum activeLockReason = null;
+    private JsonNullable<ActiveLockReasonEnum> activeLockReason = JsonNullable.<ActiveLockReasonEnum>undefined();
 
-    private Long additions;
+    private Optional<Long> additions = Optional.empty();
 
-    private User4 assignee = null;
+    private JsonNullable<User4> assignee = JsonNullable.<User4>undefined();
 
     @Valid
     private List<@Valid User5> assignees = new ArrayList<>();
@@ -125,29 +123,29 @@ public class PullRequest12 {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private PullRequestAutoMerge autoMerge = null;
+    private JsonNullable<PullRequestAutoMerge> autoMerge = JsonNullable.<PullRequestAutoMerge>undefined();
 
     private PullRequestBase base;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private Long changedFiles;
+    private Optional<Long> changedFiles = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime closedAt = null;
+    private JsonNullable<OffsetDateTime> closedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private Long comments;
+    private Optional<Long> comments = Optional.empty();
 
     private URI commentsUrl;
 
-    private Long commits;
+    private Optional<Long> commits = Optional.empty();
 
     private URI commitsUrl;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime createdAt;
 
-    private Long deletions;
+    private Optional<Long> deletions = Optional.empty();
 
     private URI diffUrl;
 
@@ -166,20 +164,20 @@ public class PullRequest12 {
 
     private Boolean locked;
 
-    private Boolean maintainerCanModify;
+    private Optional<Boolean> maintainerCanModify = Optional.empty();
 
-    private Boolean mergeable = null;
+    private JsonNullable<Boolean> mergeable = JsonNullable.<Boolean>undefined();
 
-    private String mergeableState;
+    private Optional<String> mergeableState = Optional.empty();
 
-    private Boolean merged = null;
+    private JsonNullable<Boolean> merged = JsonNullable.<Boolean>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime mergedAt = null;
+    private JsonNullable<OffsetDateTime> mergedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private User mergedBy = null;
+    private JsonNullable<User> mergedBy = JsonNullable.<User>undefined();
 
-    private Milestone milestone = null;
+    private JsonNullable<Milestone> milestone = JsonNullable.<Milestone>undefined();
 
     private String nodeId;
 
@@ -187,7 +185,7 @@ public class PullRequest12 {
 
     private URI patchUrl;
 
-    private Boolean rebaseable = null;
+    private JsonNullable<Boolean> rebaseable = JsonNullable.<Boolean>undefined();
 
     @Valid
     private List<PullRequestRequestedReviewersInner> requestedReviewers = new ArrayList<>();
@@ -197,7 +195,7 @@ public class PullRequest12 {
 
     private String reviewCommentUrl;
 
-    private Long reviewComments;
+    private Optional<Long> reviewComments = Optional.empty();
 
     private URI reviewCommentsUrl;
 
@@ -247,7 +245,7 @@ public class PullRequest12 {
 
     private URI url;
 
-    private User3 user = null;
+    private JsonNullable<User3> user = JsonNullable.<User3>undefined();
 
     public PullRequest12() {
         super();
@@ -293,14 +291,14 @@ public class PullRequest12 {
             URI url,
             User3 user) {
         this.links = links;
-        this.activeLockReason = activeLockReason;
-        this.assignee = assignee;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
+        this.assignee = JsonNullable.of(assignee);
         this.assignees = assignees;
         this.authorAssociation = authorAssociation;
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         this.base = base;
-        this.body = body;
-        this.closedAt = closedAt;
+        this.body = JsonNullable.of(body);
+        this.closedAt = JsonNullable.of(closedAt);
         this.commentsUrl = commentsUrl;
         this.commitsUrl = commitsUrl;
         this.createdAt = createdAt;
@@ -312,8 +310,8 @@ public class PullRequest12 {
         this.issueUrl = issueUrl;
         this.labels = labels;
         this.locked = locked;
-        this.mergedAt = mergedAt;
-        this.milestone = milestone;
+        this.mergedAt = JsonNullable.of(mergedAt);
+        this.milestone = JsonNullable.of(milestone);
         this.nodeId = nodeId;
         this.number = number;
         this.patchUrl = patchUrl;
@@ -326,7 +324,7 @@ public class PullRequest12 {
         this.title = title;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public PullRequest12 links(WebhooksPullRequest5Links links) {
@@ -351,7 +349,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 activeLockReason(ActiveLockReasonEnum activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -362,16 +360,16 @@ public class PullRequest12 {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public ActiveLockReasonEnum getActiveLockReason() {
+    public JsonNullable<ActiveLockReasonEnum> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(ActiveLockReasonEnum activeLockReason) {
+    public void setActiveLockReason(JsonNullable<ActiveLockReasonEnum> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public PullRequest12 additions(Long additions) {
-        this.additions = additions;
+        this.additions = Optional.ofNullable(additions);
         return this;
     }
 
@@ -381,16 +379,16 @@ public class PullRequest12 {
      */
     @Schema(name = "additions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("additions")
-    public Long getAdditions() {
+    public Optional<Long> getAdditions() {
         return additions;
     }
 
-    public void setAdditions(Long additions) {
+    public void setAdditions(Optional<Long> additions) {
         this.additions = additions;
     }
 
     public PullRequest12 assignee(User4 assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -402,11 +400,11 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("assignee")
-    public User4 getAssignee() {
+    public JsonNullable<User4> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(User4 assignee) {
+    public void setAssignee(JsonNullable<User4> assignee) {
         this.assignee = assignee;
     }
 
@@ -463,7 +461,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 autoMerge(PullRequestAutoMerge autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         return this;
     }
 
@@ -475,11 +473,11 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "auto_merge", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("auto_merge")
-    public PullRequestAutoMerge getAutoMerge() {
+    public JsonNullable<PullRequestAutoMerge> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(PullRequestAutoMerge autoMerge) {
+    public void setAutoMerge(JsonNullable<PullRequestAutoMerge> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
@@ -505,7 +503,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -516,16 +514,16 @@ public class PullRequest12 {
     @NotNull
     @Schema(name = "body", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public PullRequest12 changedFiles(Long changedFiles) {
-        this.changedFiles = changedFiles;
+        this.changedFiles = Optional.ofNullable(changedFiles);
         return this;
     }
 
@@ -535,16 +533,16 @@ public class PullRequest12 {
      */
     @Schema(name = "changed_files", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("changed_files")
-    public Long getChangedFiles() {
+    public Optional<Long> getChangedFiles() {
         return changedFiles;
     }
 
-    public void setChangedFiles(Long changedFiles) {
+    public void setChangedFiles(Optional<Long> changedFiles) {
         this.changedFiles = changedFiles;
     }
 
     public PullRequest12 closedAt(OffsetDateTime closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -556,16 +554,16 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public OffsetDateTime getClosedAt() {
+    public JsonNullable<OffsetDateTime> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(OffsetDateTime closedAt) {
+    public void setClosedAt(JsonNullable<OffsetDateTime> closedAt) {
         this.closedAt = closedAt;
     }
 
     public PullRequest12 comments(Long comments) {
-        this.comments = comments;
+        this.comments = Optional.ofNullable(comments);
         return this;
     }
 
@@ -575,11 +573,11 @@ public class PullRequest12 {
      */
     @Schema(name = "comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments")
-    public Long getComments() {
+    public Optional<Long> getComments() {
         return comments;
     }
 
-    public void setComments(Long comments) {
+    public void setComments(Optional<Long> comments) {
         this.comments = comments;
     }
 
@@ -605,7 +603,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 commits(Long commits) {
-        this.commits = commits;
+        this.commits = Optional.ofNullable(commits);
         return this;
     }
 
@@ -615,11 +613,11 @@ public class PullRequest12 {
      */
     @Schema(name = "commits", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("commits")
-    public Long getCommits() {
+    public Optional<Long> getCommits() {
         return commits;
     }
 
-    public void setCommits(Long commits) {
+    public void setCommits(Optional<Long> commits) {
         this.commits = commits;
     }
 
@@ -666,7 +664,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 deletions(Long deletions) {
-        this.deletions = deletions;
+        this.deletions = Optional.ofNullable(deletions);
         return this;
     }
 
@@ -676,11 +674,11 @@ public class PullRequest12 {
      */
     @Schema(name = "deletions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("deletions")
-    public Long getDeletions() {
+    public Optional<Long> getDeletions() {
         return deletions;
     }
 
-    public void setDeletions(Long deletions) {
+    public void setDeletions(Optional<Long> deletions) {
         this.deletions = deletions;
     }
 
@@ -861,7 +859,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 maintainerCanModify(Boolean maintainerCanModify) {
-        this.maintainerCanModify = maintainerCanModify;
+        this.maintainerCanModify = Optional.ofNullable(maintainerCanModify);
         return this;
     }
 
@@ -874,16 +872,16 @@ public class PullRequest12 {
             description = "Indicates whether maintainers can modify the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintainer_can_modify")
-    public Boolean getMaintainerCanModify() {
+    public Optional<Boolean> getMaintainerCanModify() {
         return maintainerCanModify;
     }
 
-    public void setMaintainerCanModify(Boolean maintainerCanModify) {
+    public void setMaintainerCanModify(Optional<Boolean> maintainerCanModify) {
         this.maintainerCanModify = maintainerCanModify;
     }
 
     public PullRequest12 mergeable(Boolean mergeable) {
-        this.mergeable = mergeable;
+        this.mergeable = JsonNullable.of(mergeable);
         return this;
     }
 
@@ -893,16 +891,16 @@ public class PullRequest12 {
      */
     @Schema(name = "mergeable", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mergeable")
-    public Boolean getMergeable() {
+    public JsonNullable<Boolean> getMergeable() {
         return mergeable;
     }
 
-    public void setMergeable(Boolean mergeable) {
+    public void setMergeable(JsonNullable<Boolean> mergeable) {
         this.mergeable = mergeable;
     }
 
     public PullRequest12 mergeableState(String mergeableState) {
-        this.mergeableState = mergeableState;
+        this.mergeableState = Optional.ofNullable(mergeableState);
         return this;
     }
 
@@ -912,16 +910,16 @@ public class PullRequest12 {
      */
     @Schema(name = "mergeable_state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mergeable_state")
-    public String getMergeableState() {
+    public Optional<String> getMergeableState() {
         return mergeableState;
     }
 
-    public void setMergeableState(String mergeableState) {
+    public void setMergeableState(Optional<String> mergeableState) {
         this.mergeableState = mergeableState;
     }
 
     public PullRequest12 merged(Boolean merged) {
-        this.merged = merged;
+        this.merged = JsonNullable.of(merged);
         return this;
     }
 
@@ -931,16 +929,16 @@ public class PullRequest12 {
      */
     @Schema(name = "merged", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merged")
-    public Boolean getMerged() {
+    public JsonNullable<Boolean> getMerged() {
         return merged;
     }
 
-    public void setMerged(Boolean merged) {
+    public void setMerged(JsonNullable<Boolean> merged) {
         this.merged = merged;
     }
 
     public PullRequest12 mergedAt(OffsetDateTime mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -952,16 +950,16 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_at")
-    public OffsetDateTime getMergedAt() {
+    public JsonNullable<OffsetDateTime> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(OffsetDateTime mergedAt) {
+    public void setMergedAt(JsonNullable<OffsetDateTime> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
     public PullRequest12 mergedBy(User mergedBy) {
-        this.mergedBy = mergedBy;
+        this.mergedBy = JsonNullable.of(mergedBy);
         return this;
     }
 
@@ -972,16 +970,16 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "merged_by", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("merged_by")
-    public User getMergedBy() {
+    public JsonNullable<User> getMergedBy() {
         return mergedBy;
     }
 
-    public void setMergedBy(User mergedBy) {
+    public void setMergedBy(JsonNullable<User> mergedBy) {
         this.mergedBy = mergedBy;
     }
 
     public PullRequest12 milestone(Milestone milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -993,11 +991,11 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public Milestone getMilestone() {
+    public JsonNullable<Milestone> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Milestone milestone) {
+    public void setMilestone(JsonNullable<Milestone> milestone) {
         this.milestone = milestone;
     }
 
@@ -1066,7 +1064,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 rebaseable(Boolean rebaseable) {
-        this.rebaseable = rebaseable;
+        this.rebaseable = JsonNullable.of(rebaseable);
         return this;
     }
 
@@ -1076,11 +1074,11 @@ public class PullRequest12 {
      */
     @Schema(name = "rebaseable", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rebaseable")
-    public Boolean getRebaseable() {
+    public JsonNullable<Boolean> getRebaseable() {
         return rebaseable;
     }
 
-    public void setRebaseable(Boolean rebaseable) {
+    public void setRebaseable(JsonNullable<Boolean> rebaseable) {
         this.rebaseable = rebaseable;
     }
 
@@ -1163,7 +1161,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 reviewComments(Long reviewComments) {
-        this.reviewComments = reviewComments;
+        this.reviewComments = Optional.ofNullable(reviewComments);
         return this;
     }
 
@@ -1173,11 +1171,11 @@ public class PullRequest12 {
      */
     @Schema(name = "review_comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("review_comments")
-    public Long getReviewComments() {
+    public Optional<Long> getReviewComments() {
         return reviewComments;
     }
 
-    public void setReviewComments(Long reviewComments) {
+    public void setReviewComments(Optional<Long> reviewComments) {
         this.reviewComments = reviewComments;
     }
 
@@ -1309,7 +1307,7 @@ public class PullRequest12 {
     }
 
     public PullRequest12 user(User3 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -1321,11 +1319,11 @@ public class PullRequest12 {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User3 getUser() {
+    public JsonNullable<User3> getUser() {
         return user;
     }
 
-    public void setUser(User3 user) {
+    public void setUser(JsonNullable<User3> user) {
         this.user = user;
     }
 
@@ -1364,16 +1362,16 @@ public class PullRequest12 {
                 && Objects.equals(this.labels, pullRequest12.labels)
                 && Objects.equals(this.locked, pullRequest12.locked)
                 && Objects.equals(this.maintainerCanModify, pullRequest12.maintainerCanModify)
-                && Objects.equals(this.mergeable, pullRequest12.mergeable)
+                && equalsNullable(this.mergeable, pullRequest12.mergeable)
                 && Objects.equals(this.mergeableState, pullRequest12.mergeableState)
-                && Objects.equals(this.merged, pullRequest12.merged)
+                && equalsNullable(this.merged, pullRequest12.merged)
                 && Objects.equals(this.mergedAt, pullRequest12.mergedAt)
-                && Objects.equals(this.mergedBy, pullRequest12.mergedBy)
+                && equalsNullable(this.mergedBy, pullRequest12.mergedBy)
                 && Objects.equals(this.milestone, pullRequest12.milestone)
                 && Objects.equals(this.nodeId, pullRequest12.nodeId)
                 && Objects.equals(this.number, pullRequest12.number)
                 && Objects.equals(this.patchUrl, pullRequest12.patchUrl)
-                && Objects.equals(this.rebaseable, pullRequest12.rebaseable)
+                && equalsNullable(this.rebaseable, pullRequest12.rebaseable)
                 && Objects.equals(this.requestedReviewers, pullRequest12.requestedReviewers)
                 && Objects.equals(this.requestedTeams, pullRequest12.requestedTeams)
                 && Objects.equals(this.reviewCommentUrl, pullRequest12.reviewCommentUrl)
@@ -1385,6 +1383,11 @@ public class PullRequest12 {
                 && Objects.equals(this.updatedAt, pullRequest12.updatedAt)
                 && Objects.equals(this.url, pullRequest12.url)
                 && Objects.equals(this.user, pullRequest12.user);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1416,16 +1419,16 @@ public class PullRequest12 {
                 labels,
                 locked,
                 maintainerCanModify,
-                mergeable,
+                hashCodeNullable(mergeable),
                 mergeableState,
-                merged,
+                hashCodeNullable(merged),
                 mergedAt,
-                mergedBy,
+                hashCodeNullable(mergedBy),
                 milestone,
                 nodeId,
                 number,
                 patchUrl,
-                rebaseable,
+                hashCodeNullable(rebaseable),
                 requestedReviewers,
                 requestedTeams,
                 reviewCommentUrl,
@@ -1437,6 +1440,13 @@ public class PullRequest12 {
                 updatedAt,
                 url,
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

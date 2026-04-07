@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackageOwner
@@ -14,7 +14,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_owner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackageOwner {
 
@@ -54,7 +54,7 @@ public class WebhookRegistryPackagePublishedRegistryPackageOwner {
 
     private String url;
 
-    private String userViewType;
+    private Optional<String> userViewType = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackageOwner() {
         super();
@@ -463,7 +463,7 @@ public class WebhookRegistryPackagePublishedRegistryPackageOwner {
     }
 
     public WebhookRegistryPackagePublishedRegistryPackageOwner userViewType(String userViewType) {
-        this.userViewType = userViewType;
+        this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
 
@@ -473,11 +473,11 @@ public class WebhookRegistryPackagePublishedRegistryPackageOwner {
      */
     @Schema(name = "user_view_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user_view_type")
-    public String getUserViewType() {
+    public Optional<String> getUserViewType() {
         return userViewType;
     }
 
-    public void setUserViewType(String userViewType) {
+    public void setUserViewType(Optional<String> userViewType) {
         this.userViewType = userViewType;
     }
 

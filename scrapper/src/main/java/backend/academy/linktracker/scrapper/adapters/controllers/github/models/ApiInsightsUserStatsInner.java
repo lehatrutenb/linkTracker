@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * ApiInsightsUserStatsInner
@@ -14,30 +15,30 @@ import java.util.Objects;
 @JsonTypeName("api_insights_user_stats_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiInsightsUserStatsInner {
 
-    private String actorType;
+    private Optional<String> actorType = Optional.empty();
 
-    private String actorName;
+    private Optional<String> actorName = Optional.empty();
 
-    private Long actorId;
+    private Optional<Long> actorId = Optional.empty();
 
-    private Long integrationId = null;
+    private JsonNullable<Long> integrationId = JsonNullable.<Long>undefined();
 
-    private Long oauthApplicationId = null;
+    private JsonNullable<Long> oauthApplicationId = JsonNullable.<Long>undefined();
 
-    private Long totalRequestCount;
+    private Optional<Long> totalRequestCount = Optional.empty();
 
-    private Long rateLimitedRequestCount;
+    private Optional<Long> rateLimitedRequestCount = Optional.empty();
 
-    private String lastRateLimitedTimestamp = null;
+    private JsonNullable<String> lastRateLimitedTimestamp = JsonNullable.<String>undefined();
 
-    private String lastRequestTimestamp;
+    private Optional<String> lastRequestTimestamp = Optional.empty();
 
     public ApiInsightsUserStatsInner actorType(String actorType) {
-        this.actorType = actorType;
+        this.actorType = Optional.ofNullable(actorType);
         return this;
     }
 
@@ -47,16 +48,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "actor_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_type")
-    public String getActorType() {
+    public Optional<String> getActorType() {
         return actorType;
     }
 
-    public void setActorType(String actorType) {
+    public void setActorType(Optional<String> actorType) {
         this.actorType = actorType;
     }
 
     public ApiInsightsUserStatsInner actorName(String actorName) {
-        this.actorName = actorName;
+        this.actorName = Optional.ofNullable(actorName);
         return this;
     }
 
@@ -66,16 +67,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "actor_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_name")
-    public String getActorName() {
+    public Optional<String> getActorName() {
         return actorName;
     }
 
-    public void setActorName(String actorName) {
+    public void setActorName(Optional<String> actorName) {
         this.actorName = actorName;
     }
 
     public ApiInsightsUserStatsInner actorId(Long actorId) {
-        this.actorId = actorId;
+        this.actorId = Optional.ofNullable(actorId);
         return this;
     }
 
@@ -85,16 +86,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "actor_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("actor_id")
-    public Long getActorId() {
+    public Optional<Long> getActorId() {
         return actorId;
     }
 
-    public void setActorId(Long actorId) {
+    public void setActorId(Optional<Long> actorId) {
         this.actorId = actorId;
     }
 
     public ApiInsightsUserStatsInner integrationId(Long integrationId) {
-        this.integrationId = integrationId;
+        this.integrationId = JsonNullable.of(integrationId);
         return this;
     }
 
@@ -104,16 +105,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "integration_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("integration_id")
-    public Long getIntegrationId() {
+    public JsonNullable<Long> getIntegrationId() {
         return integrationId;
     }
 
-    public void setIntegrationId(Long integrationId) {
+    public void setIntegrationId(JsonNullable<Long> integrationId) {
         this.integrationId = integrationId;
     }
 
     public ApiInsightsUserStatsInner oauthApplicationId(Long oauthApplicationId) {
-        this.oauthApplicationId = oauthApplicationId;
+        this.oauthApplicationId = JsonNullable.of(oauthApplicationId);
         return this;
     }
 
@@ -123,16 +124,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "oauth_application_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("oauth_application_id")
-    public Long getOauthApplicationId() {
+    public JsonNullable<Long> getOauthApplicationId() {
         return oauthApplicationId;
     }
 
-    public void setOauthApplicationId(Long oauthApplicationId) {
+    public void setOauthApplicationId(JsonNullable<Long> oauthApplicationId) {
         this.oauthApplicationId = oauthApplicationId;
     }
 
     public ApiInsightsUserStatsInner totalRequestCount(Long totalRequestCount) {
-        this.totalRequestCount = totalRequestCount;
+        this.totalRequestCount = Optional.ofNullable(totalRequestCount);
         return this;
     }
 
@@ -142,16 +143,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "total_request_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_request_count")
-    public Long getTotalRequestCount() {
+    public Optional<Long> getTotalRequestCount() {
         return totalRequestCount;
     }
 
-    public void setTotalRequestCount(Long totalRequestCount) {
+    public void setTotalRequestCount(Optional<Long> totalRequestCount) {
         this.totalRequestCount = totalRequestCount;
     }
 
     public ApiInsightsUserStatsInner rateLimitedRequestCount(Long rateLimitedRequestCount) {
-        this.rateLimitedRequestCount = rateLimitedRequestCount;
+        this.rateLimitedRequestCount = Optional.ofNullable(rateLimitedRequestCount);
         return this;
     }
 
@@ -161,16 +162,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "rate_limited_request_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("rate_limited_request_count")
-    public Long getRateLimitedRequestCount() {
+    public Optional<Long> getRateLimitedRequestCount() {
         return rateLimitedRequestCount;
     }
 
-    public void setRateLimitedRequestCount(Long rateLimitedRequestCount) {
+    public void setRateLimitedRequestCount(Optional<Long> rateLimitedRequestCount) {
         this.rateLimitedRequestCount = rateLimitedRequestCount;
     }
 
     public ApiInsightsUserStatsInner lastRateLimitedTimestamp(String lastRateLimitedTimestamp) {
-        this.lastRateLimitedTimestamp = lastRateLimitedTimestamp;
+        this.lastRateLimitedTimestamp = JsonNullable.of(lastRateLimitedTimestamp);
         return this;
     }
 
@@ -180,16 +181,16 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "last_rate_limited_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_rate_limited_timestamp")
-    public String getLastRateLimitedTimestamp() {
+    public JsonNullable<String> getLastRateLimitedTimestamp() {
         return lastRateLimitedTimestamp;
     }
 
-    public void setLastRateLimitedTimestamp(String lastRateLimitedTimestamp) {
+    public void setLastRateLimitedTimestamp(JsonNullable<String> lastRateLimitedTimestamp) {
         this.lastRateLimitedTimestamp = lastRateLimitedTimestamp;
     }
 
     public ApiInsightsUserStatsInner lastRequestTimestamp(String lastRequestTimestamp) {
-        this.lastRequestTimestamp = lastRequestTimestamp;
+        this.lastRequestTimestamp = Optional.ofNullable(lastRequestTimestamp);
         return this;
     }
 
@@ -199,11 +200,11 @@ public class ApiInsightsUserStatsInner {
      */
     @Schema(name = "last_request_timestamp", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("last_request_timestamp")
-    public String getLastRequestTimestamp() {
+    public Optional<String> getLastRequestTimestamp() {
         return lastRequestTimestamp;
     }
 
-    public void setLastRequestTimestamp(String lastRequestTimestamp) {
+    public void setLastRequestTimestamp(Optional<String> lastRequestTimestamp) {
         this.lastRequestTimestamp = lastRequestTimestamp;
     }
 
@@ -219,12 +220,17 @@ public class ApiInsightsUserStatsInner {
         return Objects.equals(this.actorType, apiInsightsUserStatsInner.actorType)
                 && Objects.equals(this.actorName, apiInsightsUserStatsInner.actorName)
                 && Objects.equals(this.actorId, apiInsightsUserStatsInner.actorId)
-                && Objects.equals(this.integrationId, apiInsightsUserStatsInner.integrationId)
-                && Objects.equals(this.oauthApplicationId, apiInsightsUserStatsInner.oauthApplicationId)
+                && equalsNullable(this.integrationId, apiInsightsUserStatsInner.integrationId)
+                && equalsNullable(this.oauthApplicationId, apiInsightsUserStatsInner.oauthApplicationId)
                 && Objects.equals(this.totalRequestCount, apiInsightsUserStatsInner.totalRequestCount)
                 && Objects.equals(this.rateLimitedRequestCount, apiInsightsUserStatsInner.rateLimitedRequestCount)
-                && Objects.equals(this.lastRateLimitedTimestamp, apiInsightsUserStatsInner.lastRateLimitedTimestamp)
+                && equalsNullable(this.lastRateLimitedTimestamp, apiInsightsUserStatsInner.lastRateLimitedTimestamp)
                 && Objects.equals(this.lastRequestTimestamp, apiInsightsUserStatsInner.lastRequestTimestamp);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -233,12 +239,19 @@ public class ApiInsightsUserStatsInner {
                 actorType,
                 actorName,
                 actorId,
-                integrationId,
-                oauthApplicationId,
+                hashCodeNullable(integrationId),
+                hashCodeNullable(oauthApplicationId),
                 totalRequestCount,
                 rateLimitedRequestCount,
-                lastRateLimitedTimestamp,
+                hashCodeNullable(lastRateLimitedTimestamp),
                 lastRequestTimestamp);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

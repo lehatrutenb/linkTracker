@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * GpgKeyEmailsInner
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("gpg_key_emails_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GpgKeyEmailsInner {
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
-    private Boolean verified;
+    private Optional<Boolean> verified = Optional.empty();
 
     public GpgKeyEmailsInner email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class GpgKeyEmailsInner {
      */
     @Schema(name = "email", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public GpgKeyEmailsInner verified(Boolean verified) {
-        this.verified = verified;
+        this.verified = Optional.ofNullable(verified);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class GpgKeyEmailsInner {
      */
     @Schema(name = "verified", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("verified")
-    public Boolean getVerified() {
+    public Optional<Boolean> getVerified() {
         return verified;
     }
 
-    public void setVerified(Boolean verified) {
+    public void setVerified(Optional<Boolean> verified) {
         this.verified = verified;
     }
 

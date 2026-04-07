@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackageUpdatedRegistryPackage
@@ -15,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_updated_registry_package")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackageUpdatedRegistryPackage {
 
     private String createdAt;
 
-    private Object description = null;
+    private JsonNullable<Object> description = JsonNullable.<Object>undefined();
 
     private String ecosystem;
 
@@ -39,7 +39,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
 
     private WebhookRegistryPackageUpdatedRegistryPackagePackageVersion packageVersion;
 
-    private Object registry = null;
+    private JsonNullable<Object> registry = JsonNullable.<Object>undefined();
 
     private String updatedAt;
 
@@ -64,7 +64,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
             Object registry,
             String updatedAt) {
         this.createdAt = createdAt;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.ecosystem = ecosystem;
         this.htmlUrl = htmlUrl;
         this.id = id;
@@ -73,7 +73,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
         this.owner = owner;
         this.packageType = packageType;
         this.packageVersion = packageVersion;
-        this.registry = registry;
+        this.registry = JsonNullable.of(registry);
         this.updatedAt = updatedAt;
     }
 
@@ -98,7 +98,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackage description(Object description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -109,11 +109,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public Object getDescription() {
+    public JsonNullable<Object> getDescription() {
         return description;
     }
 
-    public void setDescription(Object description) {
+    public void setDescription(JsonNullable<Object> description) {
         this.description = description;
     }
 
@@ -282,7 +282,7 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackage registry(Object registry) {
-        this.registry = registry;
+        this.registry = JsonNullable.of(registry);
         return this;
     }
 
@@ -293,11 +293,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackage {
     @NotNull
     @Schema(name = "registry", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("registry")
-    public Object getRegistry() {
+    public JsonNullable<Object> getRegistry() {
         return registry;
     }
 
-    public void setRegistry(Object registry) {
+    public void setRegistry(JsonNullable<Object> registry) {
         this.registry = registry;
     }
 

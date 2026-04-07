@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Content File
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("content-file")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ContentFile implements ReposGetContent200Response {
 
@@ -72,17 +73,17 @@ public class ContentFile implements ReposGetContent200Response {
 
     private URI url;
 
-    private URI gitUrl = null;
+    private JsonNullable<URI> gitUrl = JsonNullable.<URI>undefined();
 
-    private URI htmlUrl = null;
+    private JsonNullable<URI> htmlUrl = JsonNullable.<URI>undefined();
 
-    private URI downloadUrl = null;
+    private JsonNullable<URI> downloadUrl = JsonNullable.<URI>undefined();
 
     private ContentTreeEntriesInnerLinks links;
 
-    private String target;
+    private Optional<String> target = Optional.empty();
 
-    private String submoduleGitUrl;
+    private Optional<String> submoduleGitUrl = Optional.empty();
 
     public ContentFile() {
         super();
@@ -112,9 +113,9 @@ public class ContentFile implements ReposGetContent200Response {
         this.content = content;
         this.sha = sha;
         this.url = url;
-        this.gitUrl = gitUrl;
-        this.htmlUrl = htmlUrl;
-        this.downloadUrl = downloadUrl;
+        this.gitUrl = JsonNullable.of(gitUrl);
+        this.htmlUrl = JsonNullable.of(htmlUrl);
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         this.links = links;
     }
 
@@ -131,7 +132,7 @@ public class ContentFile implements ReposGetContent200Response {
     @Schema(name = "type", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("type")
     public String getType() {
-        return String.valueOf(type);
+        return type.toString();
     }
 
     public void setType(TypeEnum type) {
@@ -280,7 +281,7 @@ public class ContentFile implements ReposGetContent200Response {
     }
 
     public ContentFile gitUrl(URI gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = JsonNullable.of(gitUrl);
         return this;
     }
 
@@ -292,16 +293,16 @@ public class ContentFile implements ReposGetContent200Response {
     @Valid
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("git_url")
-    public URI getGitUrl() {
+    public JsonNullable<URI> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(URI gitUrl) {
+    public void setGitUrl(JsonNullable<URI> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
     public ContentFile htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -313,16 +314,16 @@ public class ContentFile implements ReposGetContent200Response {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public JsonNullable<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(JsonNullable<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
     public ContentFile downloadUrl(URI downloadUrl) {
-        this.downloadUrl = downloadUrl;
+        this.downloadUrl = JsonNullable.of(downloadUrl);
         return this;
     }
 
@@ -334,11 +335,11 @@ public class ContentFile implements ReposGetContent200Response {
     @Valid
     @Schema(name = "download_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("download_url")
-    public URI getDownloadUrl() {
+    public JsonNullable<URI> getDownloadUrl() {
         return downloadUrl;
     }
 
-    public void setDownloadUrl(URI downloadUrl) {
+    public void setDownloadUrl(JsonNullable<URI> downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 
@@ -364,7 +365,7 @@ public class ContentFile implements ReposGetContent200Response {
     }
 
     public ContentFile target(String target) {
-        this.target = target;
+        this.target = Optional.ofNullable(target);
         return this;
     }
 
@@ -374,16 +375,16 @@ public class ContentFile implements ReposGetContent200Response {
      */
     @Schema(name = "target", example = "\"actual/actual.md\"", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("target")
-    public String getTarget() {
+    public Optional<String> getTarget() {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(Optional<String> target) {
         this.target = target;
     }
 
     public ContentFile submoduleGitUrl(String submoduleGitUrl) {
-        this.submoduleGitUrl = submoduleGitUrl;
+        this.submoduleGitUrl = Optional.ofNullable(submoduleGitUrl);
         return this;
     }
 
@@ -396,11 +397,11 @@ public class ContentFile implements ReposGetContent200Response {
             example = "\"git://example.com/defunkt/dotjs.git\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("submodule_git_url")
-    public String getSubmoduleGitUrl() {
+    public Optional<String> getSubmoduleGitUrl() {
         return submoduleGitUrl;
     }
 
-    public void setSubmoduleGitUrl(String submoduleGitUrl) {
+    public void setSubmoduleGitUrl(Optional<String> submoduleGitUrl) {
         this.submoduleGitUrl = submoduleGitUrl;
     }
 

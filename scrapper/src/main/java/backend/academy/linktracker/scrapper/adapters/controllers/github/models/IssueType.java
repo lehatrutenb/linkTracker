@@ -7,10 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("issue-type")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueType {
 
@@ -30,7 +32,7 @@ public class IssueType {
 
     private String name;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * The color of the issue type.
@@ -79,15 +81,15 @@ public class IssueType {
         }
     }
 
-    private ColorEnum color = null;
+    private JsonNullable<ColorEnum> color = JsonNullable.<ColorEnum>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
+    private Optional<OffsetDateTime> createdAt = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt;
+    private Optional<OffsetDateTime> updatedAt = Optional.empty();
 
-    private Boolean isEnabled;
+    private Optional<Boolean> isEnabled = Optional.empty();
 
     public IssueType() {
         super();
@@ -100,7 +102,7 @@ public class IssueType {
         this.id = id;
         this.nodeId = nodeId;
         this.name = name;
-        this.description = description;
+        this.description = JsonNullable.of(description);
     }
 
     public IssueType id(Long id) {
@@ -170,7 +172,7 @@ public class IssueType {
     }
 
     public IssueType description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -184,16 +186,16 @@ public class IssueType {
             description = "The description of the issue type.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public IssueType color(ColorEnum color) {
-        this.color = color;
+        this.color = JsonNullable.of(color);
         return this;
     }
 
@@ -206,16 +208,16 @@ public class IssueType {
             description = "The color of the issue type.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("color")
-    public ColorEnum getColor() {
+    public JsonNullable<ColorEnum> getColor() {
         return color;
     }
 
-    public void setColor(ColorEnum color) {
+    public void setColor(JsonNullable<ColorEnum> color) {
         this.color = color;
     }
 
     public IssueType createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -229,16 +231,16 @@ public class IssueType {
             description = "The time the issue type created.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public Optional<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Optional<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public IssueType updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -252,16 +254,16 @@ public class IssueType {
             description = "The time the issue type last updated.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public Optional<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Optional<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public IssueType isEnabled(Boolean isEnabled) {
-        this.isEnabled = isEnabled;
+        this.isEnabled = Optional.ofNullable(isEnabled);
         return this;
     }
 
@@ -274,11 +276,11 @@ public class IssueType {
             description = "The enabled state of the issue type.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_enabled")
-    public Boolean getIsEnabled() {
+    public Optional<Boolean> getIsEnabled() {
         return isEnabled;
     }
 
-    public void setIsEnabled(Boolean isEnabled) {
+    public void setIsEnabled(Optional<Boolean> isEnabled) {
         this.isEnabled = isEnabled;
     }
 
@@ -295,15 +297,27 @@ public class IssueType {
                 && Objects.equals(this.nodeId, issueType.nodeId)
                 && Objects.equals(this.name, issueType.name)
                 && Objects.equals(this.description, issueType.description)
-                && Objects.equals(this.color, issueType.color)
+                && equalsNullable(this.color, issueType.color)
                 && Objects.equals(this.createdAt, issueType.createdAt)
                 && Objects.equals(this.updatedAt, issueType.updatedAt)
                 && Objects.equals(this.isEnabled, issueType.isEnabled);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, nodeId, name, description, color, createdAt, updatedAt, isEnabled);
+        return Objects.hash(id, nodeId, name, description, hashCodeNullable(color), createdAt, updatedAt, isEnabled);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

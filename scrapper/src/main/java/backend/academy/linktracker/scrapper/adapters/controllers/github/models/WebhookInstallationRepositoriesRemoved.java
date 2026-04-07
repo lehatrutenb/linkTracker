@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookInstallationRepositoriesRemoved
@@ -19,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-installation-repositories-removed")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookInstallationRepositoriesRemoved {
 
@@ -58,11 +59,11 @@ public class WebhookInstallationRepositoriesRemoved {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private Installation installation;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     @Valid
     private List<@Valid WebhooksRepositoriesInner> repositoriesAdded = new ArrayList<>();
@@ -70,11 +71,11 @@ public class WebhookInstallationRepositoriesRemoved {
     @Valid
     private List<@Valid WebhooksRepositoriesInner> repositoriesRemoved = new ArrayList<>();
 
-    private RepositoryWebhooks repository;
+    private Optional<RepositoryWebhooks> repository = Optional.empty();
 
     private WebhooksRepositorySelection repositorySelection;
 
-    private WebhooksUser requester = null;
+    private JsonNullable<WebhooksUser> requester = JsonNullable.<WebhooksUser>undefined();
 
     private SimpleUser sender;
 
@@ -98,7 +99,7 @@ public class WebhookInstallationRepositoriesRemoved {
         this.repositoriesAdded = repositoriesAdded;
         this.repositoriesRemoved = repositoriesRemoved;
         this.repositorySelection = repositorySelection;
-        this.requester = requester;
+        this.requester = JsonNullable.of(requester);
         this.sender = sender;
     }
 
@@ -123,7 +124,7 @@ public class WebhookInstallationRepositoriesRemoved {
     }
 
     public WebhookInstallationRepositoriesRemoved enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -134,11 +135,11 @@ public class WebhookInstallationRepositoriesRemoved {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -164,7 +165,7 @@ public class WebhookInstallationRepositoriesRemoved {
     }
 
     public WebhookInstallationRepositoriesRemoved organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -175,11 +176,11 @@ public class WebhookInstallationRepositoriesRemoved {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -252,7 +253,7 @@ public class WebhookInstallationRepositoriesRemoved {
     }
 
     public WebhookInstallationRepositoriesRemoved repository(RepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = Optional.ofNullable(repository);
         return this;
     }
 
@@ -263,11 +264,11 @@ public class WebhookInstallationRepositoriesRemoved {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public RepositoryWebhooks getRepository() {
+    public Optional<RepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(RepositoryWebhooks repository) {
+    public void setRepository(Optional<RepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
@@ -293,7 +294,7 @@ public class WebhookInstallationRepositoriesRemoved {
     }
 
     public WebhookInstallationRepositoriesRemoved requester(WebhooksUser requester) {
-        this.requester = requester;
+        this.requester = JsonNullable.of(requester);
         return this;
     }
 
@@ -305,11 +306,11 @@ public class WebhookInstallationRepositoriesRemoved {
     @Valid
     @Schema(name = "requester", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("requester")
-    public WebhooksUser getRequester() {
+    public JsonNullable<WebhooksUser> getRequester() {
         return requester;
     }
 
-    public void setRequester(WebhooksUser requester) {
+    public void setRequester(JsonNullable<WebhooksUser> requester) {
         this.requester = requester;
     }
 

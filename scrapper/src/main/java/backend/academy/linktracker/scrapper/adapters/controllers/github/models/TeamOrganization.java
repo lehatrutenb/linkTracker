@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -19,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("team-organization")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamOrganization {
 
@@ -45,21 +47,21 @@ public class TeamOrganization {
 
     private String avatarUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String company;
+    private Optional<String> company = Optional.empty();
 
-    private URI blog;
+    private Optional<URI> blog = Optional.empty();
 
-    private String location;
+    private Optional<String> location = Optional.empty();
 
-    private String email;
+    private Optional<@jakarta.validation.constraints.Email String> email = Optional.empty();
 
-    private String twitterUsername = null;
+    private JsonNullable<String> twitterUsername = JsonNullable.<String>undefined();
 
-    private Boolean isVerified;
+    private Optional<Boolean> isVerified = Optional.empty();
 
     private Boolean hasOrganizationProjects;
 
@@ -80,49 +82,49 @@ public class TeamOrganization {
 
     private String type;
 
-    private Long totalPrivateRepos;
+    private Optional<Long> totalPrivateRepos = Optional.empty();
 
-    private Long ownedPrivateRepos;
+    private Optional<Long> ownedPrivateRepos = Optional.empty();
 
-    private Long privateGists = null;
+    private JsonNullable<Long> privateGists = JsonNullable.<Long>undefined();
 
-    private Long diskUsage = null;
+    private JsonNullable<Long> diskUsage = JsonNullable.<Long>undefined();
 
-    private Long collaborators = null;
+    private JsonNullable<Long> collaborators = JsonNullable.<Long>undefined();
 
-    private String billingEmail = null;
+    private JsonNullable<@jakarta.validation.constraints.Email String> billingEmail = JsonNullable.<String>undefined();
 
-    private OrganizationFullPlan plan;
+    private Optional<OrganizationFullPlan> plan = Optional.empty();
 
-    private String defaultRepositoryPermission = null;
+    private JsonNullable<String> defaultRepositoryPermission = JsonNullable.<String>undefined();
 
-    private Boolean membersCanCreateRepositories = null;
+    private JsonNullable<Boolean> membersCanCreateRepositories = JsonNullable.<Boolean>undefined();
 
-    private Boolean twoFactorRequirementEnabled = null;
+    private JsonNullable<Boolean> twoFactorRequirementEnabled = JsonNullable.<Boolean>undefined();
 
-    private String membersAllowedRepositoryCreationType;
+    private Optional<String> membersAllowedRepositoryCreationType = Optional.empty();
 
-    private Boolean membersCanCreatePublicRepositories;
+    private Optional<Boolean> membersCanCreatePublicRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePrivateRepositories;
+    private Optional<Boolean> membersCanCreatePrivateRepositories = Optional.empty();
 
-    private Boolean membersCanCreateInternalRepositories;
+    private Optional<Boolean> membersCanCreateInternalRepositories = Optional.empty();
 
-    private Boolean membersCanCreatePages;
+    private Optional<Boolean> membersCanCreatePages = Optional.empty();
 
-    private Boolean membersCanCreatePublicPages;
+    private Optional<Boolean> membersCanCreatePublicPages = Optional.empty();
 
-    private Boolean membersCanCreatePrivatePages;
+    private Optional<Boolean> membersCanCreatePrivatePages = Optional.empty();
 
-    private Boolean membersCanForkPrivateRepositories = null;
+    private JsonNullable<Boolean> membersCanForkPrivateRepositories = JsonNullable.<Boolean>undefined();
 
-    private Boolean webCommitSignoffRequired;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime archivedAt = null;
+    private JsonNullable<OffsetDateTime> archivedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public TeamOrganization() {
         super();
@@ -166,7 +168,7 @@ public class TeamOrganization {
         this.membersUrl = membersUrl;
         this.publicMembersUrl = publicMembersUrl;
         this.avatarUrl = avatarUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.hasOrganizationProjects = hasOrganizationProjects;
         this.hasRepositoryProjects = hasRepositoryProjects;
         this.publicRepos = publicRepos;
@@ -177,7 +179,7 @@ public class TeamOrganization {
         this.createdAt = createdAt;
         this.type = type;
         this.updatedAt = updatedAt;
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
     }
 
     public TeamOrganization login(String login) {
@@ -425,7 +427,7 @@ public class TeamOrganization {
     }
 
     public TeamOrganization description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -436,16 +438,16 @@ public class TeamOrganization {
     @NotNull
     @Schema(name = "description", example = "A great organization", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public TeamOrganization name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -455,16 +457,16 @@ public class TeamOrganization {
      */
     @Schema(name = "name", example = "github", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public TeamOrganization company(String company) {
-        this.company = company;
+        this.company = Optional.ofNullable(company);
         return this;
     }
 
@@ -474,16 +476,16 @@ public class TeamOrganization {
      */
     @Schema(name = "company", example = "GitHub", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("company")
-    public String getCompany() {
+    public Optional<String> getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(Optional<String> company) {
         this.company = company;
     }
 
     public TeamOrganization blog(URI blog) {
-        this.blog = blog;
+        this.blog = Optional.ofNullable(blog);
         return this;
     }
 
@@ -494,16 +496,16 @@ public class TeamOrganization {
     @Valid
     @Schema(name = "blog", example = "https://github.com/blog", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("blog")
-    public URI getBlog() {
+    public Optional<URI> getBlog() {
         return blog;
     }
 
-    public void setBlog(URI blog) {
+    public void setBlog(Optional<URI> blog) {
         this.blog = blog;
     }
 
     public TeamOrganization location(String location) {
-        this.location = location;
+        this.location = Optional.ofNullable(location);
         return this;
     }
 
@@ -513,16 +515,16 @@ public class TeamOrganization {
      */
     @Schema(name = "location", example = "San Francisco", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("location")
-    public String getLocation() {
+    public Optional<String> getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Optional<String> location) {
         this.location = location;
     }
 
     public TeamOrganization email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -530,19 +532,18 @@ public class TeamOrganization {
      * Get email
      * @return email
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "email", example = "octocat@github.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<@jakarta.validation.constraints.Email String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public TeamOrganization twitterUsername(String twitterUsername) {
-        this.twitterUsername = twitterUsername;
+        this.twitterUsername = JsonNullable.of(twitterUsername);
         return this;
     }
 
@@ -552,16 +553,16 @@ public class TeamOrganization {
      */
     @Schema(name = "twitter_username", example = "github", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("twitter_username")
-    public String getTwitterUsername() {
+    public JsonNullable<String> getTwitterUsername() {
         return twitterUsername;
     }
 
-    public void setTwitterUsername(String twitterUsername) {
+    public void setTwitterUsername(JsonNullable<String> twitterUsername) {
         this.twitterUsername = twitterUsername;
     }
 
     public TeamOrganization isVerified(Boolean isVerified) {
-        this.isVerified = isVerified;
+        this.isVerified = Optional.ofNullable(isVerified);
         return this;
     }
 
@@ -571,11 +572,11 @@ public class TeamOrganization {
      */
     @Schema(name = "is_verified", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_verified")
-    public Boolean getIsVerified() {
+    public Optional<Boolean> getIsVerified() {
         return isVerified;
     }
 
-    public void setIsVerified(Boolean isVerified) {
+    public void setIsVerified(Optional<Boolean> isVerified) {
         this.isVerified = isVerified;
     }
 
@@ -762,7 +763,7 @@ public class TeamOrganization {
     }
 
     public TeamOrganization totalPrivateRepos(Long totalPrivateRepos) {
-        this.totalPrivateRepos = totalPrivateRepos;
+        this.totalPrivateRepos = Optional.ofNullable(totalPrivateRepos);
         return this;
     }
 
@@ -772,16 +773,16 @@ public class TeamOrganization {
      */
     @Schema(name = "total_private_repos", example = "100", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total_private_repos")
-    public Long getTotalPrivateRepos() {
+    public Optional<Long> getTotalPrivateRepos() {
         return totalPrivateRepos;
     }
 
-    public void setTotalPrivateRepos(Long totalPrivateRepos) {
+    public void setTotalPrivateRepos(Optional<Long> totalPrivateRepos) {
         this.totalPrivateRepos = totalPrivateRepos;
     }
 
     public TeamOrganization ownedPrivateRepos(Long ownedPrivateRepos) {
-        this.ownedPrivateRepos = ownedPrivateRepos;
+        this.ownedPrivateRepos = Optional.ofNullable(ownedPrivateRepos);
         return this;
     }
 
@@ -791,16 +792,16 @@ public class TeamOrganization {
      */
     @Schema(name = "owned_private_repos", example = "100", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owned_private_repos")
-    public Long getOwnedPrivateRepos() {
+    public Optional<Long> getOwnedPrivateRepos() {
         return ownedPrivateRepos;
     }
 
-    public void setOwnedPrivateRepos(Long ownedPrivateRepos) {
+    public void setOwnedPrivateRepos(Optional<Long> ownedPrivateRepos) {
         this.ownedPrivateRepos = ownedPrivateRepos;
     }
 
     public TeamOrganization privateGists(Long privateGists) {
-        this.privateGists = privateGists;
+        this.privateGists = JsonNullable.of(privateGists);
         return this;
     }
 
@@ -810,16 +811,16 @@ public class TeamOrganization {
      */
     @Schema(name = "private_gists", example = "81", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("private_gists")
-    public Long getPrivateGists() {
+    public JsonNullable<Long> getPrivateGists() {
         return privateGists;
     }
 
-    public void setPrivateGists(Long privateGists) {
+    public void setPrivateGists(JsonNullable<Long> privateGists) {
         this.privateGists = privateGists;
     }
 
     public TeamOrganization diskUsage(Long diskUsage) {
-        this.diskUsage = diskUsage;
+        this.diskUsage = JsonNullable.of(diskUsage);
         return this;
     }
 
@@ -829,16 +830,16 @@ public class TeamOrganization {
      */
     @Schema(name = "disk_usage", example = "10000", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disk_usage")
-    public Long getDiskUsage() {
+    public JsonNullable<Long> getDiskUsage() {
         return diskUsage;
     }
 
-    public void setDiskUsage(Long diskUsage) {
+    public void setDiskUsage(JsonNullable<Long> diskUsage) {
         this.diskUsage = diskUsage;
     }
 
     public TeamOrganization collaborators(Long collaborators) {
-        this.collaborators = collaborators;
+        this.collaborators = JsonNullable.of(collaborators);
         return this;
     }
 
@@ -848,16 +849,16 @@ public class TeamOrganization {
      */
     @Schema(name = "collaborators", example = "8", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("collaborators")
-    public Long getCollaborators() {
+    public JsonNullable<Long> getCollaborators() {
         return collaborators;
     }
 
-    public void setCollaborators(Long collaborators) {
+    public void setCollaborators(JsonNullable<Long> collaborators) {
         this.collaborators = collaborators;
     }
 
     public TeamOrganization billingEmail(String billingEmail) {
-        this.billingEmail = billingEmail;
+        this.billingEmail = JsonNullable.of(billingEmail);
         return this;
     }
 
@@ -865,19 +866,18 @@ public class TeamOrganization {
      * Get billingEmail
      * @return billingEmail
      */
-    @jakarta.validation.constraints.Email
     @Schema(name = "billing_email", example = "org@example.com", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("billing_email")
-    public String getBillingEmail() {
+    public JsonNullable<@jakarta.validation.constraints.Email String> getBillingEmail() {
         return billingEmail;
     }
 
-    public void setBillingEmail(String billingEmail) {
+    public void setBillingEmail(JsonNullable<String> billingEmail) {
         this.billingEmail = billingEmail;
     }
 
     public TeamOrganization plan(OrganizationFullPlan plan) {
-        this.plan = plan;
+        this.plan = Optional.ofNullable(plan);
         return this;
     }
 
@@ -888,16 +888,16 @@ public class TeamOrganization {
     @Valid
     @Schema(name = "plan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan")
-    public OrganizationFullPlan getPlan() {
+    public Optional<OrganizationFullPlan> getPlan() {
         return plan;
     }
 
-    public void setPlan(OrganizationFullPlan plan) {
+    public void setPlan(Optional<OrganizationFullPlan> plan) {
         this.plan = plan;
     }
 
     public TeamOrganization defaultRepositoryPermission(String defaultRepositoryPermission) {
-        this.defaultRepositoryPermission = defaultRepositoryPermission;
+        this.defaultRepositoryPermission = JsonNullable.of(defaultRepositoryPermission);
         return this;
     }
 
@@ -907,16 +907,16 @@ public class TeamOrganization {
      */
     @Schema(name = "default_repository_permission", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_repository_permission")
-    public String getDefaultRepositoryPermission() {
+    public JsonNullable<String> getDefaultRepositoryPermission() {
         return defaultRepositoryPermission;
     }
 
-    public void setDefaultRepositoryPermission(String defaultRepositoryPermission) {
+    public void setDefaultRepositoryPermission(JsonNullable<String> defaultRepositoryPermission) {
         this.defaultRepositoryPermission = defaultRepositoryPermission;
     }
 
     public TeamOrganization membersCanCreateRepositories(Boolean membersCanCreateRepositories) {
-        this.membersCanCreateRepositories = membersCanCreateRepositories;
+        this.membersCanCreateRepositories = JsonNullable.of(membersCanCreateRepositories);
         return this;
     }
 
@@ -926,16 +926,16 @@ public class TeamOrganization {
      */
     @Schema(name = "members_can_create_repositories", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_repositories")
-    public Boolean getMembersCanCreateRepositories() {
+    public JsonNullable<Boolean> getMembersCanCreateRepositories() {
         return membersCanCreateRepositories;
     }
 
-    public void setMembersCanCreateRepositories(Boolean membersCanCreateRepositories) {
+    public void setMembersCanCreateRepositories(JsonNullable<Boolean> membersCanCreateRepositories) {
         this.membersCanCreateRepositories = membersCanCreateRepositories;
     }
 
     public TeamOrganization twoFactorRequirementEnabled(Boolean twoFactorRequirementEnabled) {
-        this.twoFactorRequirementEnabled = twoFactorRequirementEnabled;
+        this.twoFactorRequirementEnabled = JsonNullable.of(twoFactorRequirementEnabled);
         return this;
     }
 
@@ -945,16 +945,16 @@ public class TeamOrganization {
      */
     @Schema(name = "two_factor_requirement_enabled", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("two_factor_requirement_enabled")
-    public Boolean getTwoFactorRequirementEnabled() {
+    public JsonNullable<Boolean> getTwoFactorRequirementEnabled() {
         return twoFactorRequirementEnabled;
     }
 
-    public void setTwoFactorRequirementEnabled(Boolean twoFactorRequirementEnabled) {
+    public void setTwoFactorRequirementEnabled(JsonNullable<Boolean> twoFactorRequirementEnabled) {
         this.twoFactorRequirementEnabled = twoFactorRequirementEnabled;
     }
 
     public TeamOrganization membersAllowedRepositoryCreationType(String membersAllowedRepositoryCreationType) {
-        this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
+        this.membersAllowedRepositoryCreationType = Optional.ofNullable(membersAllowedRepositoryCreationType);
         return this;
     }
 
@@ -967,16 +967,16 @@ public class TeamOrganization {
             example = "all",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_allowed_repository_creation_type")
-    public String getMembersAllowedRepositoryCreationType() {
+    public Optional<String> getMembersAllowedRepositoryCreationType() {
         return membersAllowedRepositoryCreationType;
     }
 
-    public void setMembersAllowedRepositoryCreationType(String membersAllowedRepositoryCreationType) {
+    public void setMembersAllowedRepositoryCreationType(Optional<String> membersAllowedRepositoryCreationType) {
         this.membersAllowedRepositoryCreationType = membersAllowedRepositoryCreationType;
     }
 
     public TeamOrganization membersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
-        this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
+        this.membersCanCreatePublicRepositories = Optional.ofNullable(membersCanCreatePublicRepositories);
         return this;
     }
 
@@ -989,16 +989,16 @@ public class TeamOrganization {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_repositories")
-    public Boolean getMembersCanCreatePublicRepositories() {
+    public Optional<Boolean> getMembersCanCreatePublicRepositories() {
         return membersCanCreatePublicRepositories;
     }
 
-    public void setMembersCanCreatePublicRepositories(Boolean membersCanCreatePublicRepositories) {
+    public void setMembersCanCreatePublicRepositories(Optional<Boolean> membersCanCreatePublicRepositories) {
         this.membersCanCreatePublicRepositories = membersCanCreatePublicRepositories;
     }
 
     public TeamOrganization membersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
-        this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
+        this.membersCanCreatePrivateRepositories = Optional.ofNullable(membersCanCreatePrivateRepositories);
         return this;
     }
 
@@ -1011,16 +1011,16 @@ public class TeamOrganization {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_repositories")
-    public Boolean getMembersCanCreatePrivateRepositories() {
+    public Optional<Boolean> getMembersCanCreatePrivateRepositories() {
         return membersCanCreatePrivateRepositories;
     }
 
-    public void setMembersCanCreatePrivateRepositories(Boolean membersCanCreatePrivateRepositories) {
+    public void setMembersCanCreatePrivateRepositories(Optional<Boolean> membersCanCreatePrivateRepositories) {
         this.membersCanCreatePrivateRepositories = membersCanCreatePrivateRepositories;
     }
 
     public TeamOrganization membersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
-        this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
+        this.membersCanCreateInternalRepositories = Optional.ofNullable(membersCanCreateInternalRepositories);
         return this;
     }
 
@@ -1033,16 +1033,16 @@ public class TeamOrganization {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_internal_repositories")
-    public Boolean getMembersCanCreateInternalRepositories() {
+    public Optional<Boolean> getMembersCanCreateInternalRepositories() {
         return membersCanCreateInternalRepositories;
     }
 
-    public void setMembersCanCreateInternalRepositories(Boolean membersCanCreateInternalRepositories) {
+    public void setMembersCanCreateInternalRepositories(Optional<Boolean> membersCanCreateInternalRepositories) {
         this.membersCanCreateInternalRepositories = membersCanCreateInternalRepositories;
     }
 
     public TeamOrganization membersCanCreatePages(Boolean membersCanCreatePages) {
-        this.membersCanCreatePages = membersCanCreatePages;
+        this.membersCanCreatePages = Optional.ofNullable(membersCanCreatePages);
         return this;
     }
 
@@ -1052,16 +1052,16 @@ public class TeamOrganization {
      */
     @Schema(name = "members_can_create_pages", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_pages")
-    public Boolean getMembersCanCreatePages() {
+    public Optional<Boolean> getMembersCanCreatePages() {
         return membersCanCreatePages;
     }
 
-    public void setMembersCanCreatePages(Boolean membersCanCreatePages) {
+    public void setMembersCanCreatePages(Optional<Boolean> membersCanCreatePages) {
         this.membersCanCreatePages = membersCanCreatePages;
     }
 
     public TeamOrganization membersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
-        this.membersCanCreatePublicPages = membersCanCreatePublicPages;
+        this.membersCanCreatePublicPages = Optional.ofNullable(membersCanCreatePublicPages);
         return this;
     }
 
@@ -1071,16 +1071,16 @@ public class TeamOrganization {
      */
     @Schema(name = "members_can_create_public_pages", example = "true", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_public_pages")
-    public Boolean getMembersCanCreatePublicPages() {
+    public Optional<Boolean> getMembersCanCreatePublicPages() {
         return membersCanCreatePublicPages;
     }
 
-    public void setMembersCanCreatePublicPages(Boolean membersCanCreatePublicPages) {
+    public void setMembersCanCreatePublicPages(Optional<Boolean> membersCanCreatePublicPages) {
         this.membersCanCreatePublicPages = membersCanCreatePublicPages;
     }
 
     public TeamOrganization membersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
-        this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
+        this.membersCanCreatePrivatePages = Optional.ofNullable(membersCanCreatePrivatePages);
         return this;
     }
 
@@ -1093,16 +1093,16 @@ public class TeamOrganization {
             example = "true",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_create_private_pages")
-    public Boolean getMembersCanCreatePrivatePages() {
+    public Optional<Boolean> getMembersCanCreatePrivatePages() {
         return membersCanCreatePrivatePages;
     }
 
-    public void setMembersCanCreatePrivatePages(Boolean membersCanCreatePrivatePages) {
+    public void setMembersCanCreatePrivatePages(Optional<Boolean> membersCanCreatePrivatePages) {
         this.membersCanCreatePrivatePages = membersCanCreatePrivatePages;
     }
 
     public TeamOrganization membersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
-        this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
+        this.membersCanForkPrivateRepositories = JsonNullable.of(membersCanForkPrivateRepositories);
         return this;
     }
 
@@ -1115,16 +1115,16 @@ public class TeamOrganization {
             example = "false",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("members_can_fork_private_repositories")
-    public Boolean getMembersCanForkPrivateRepositories() {
+    public JsonNullable<Boolean> getMembersCanForkPrivateRepositories() {
         return membersCanForkPrivateRepositories;
     }
 
-    public void setMembersCanForkPrivateRepositories(Boolean membersCanForkPrivateRepositories) {
+    public void setMembersCanForkPrivateRepositories(JsonNullable<Boolean> membersCanForkPrivateRepositories) {
         this.membersCanForkPrivateRepositories = membersCanForkPrivateRepositories;
     }
 
     public TeamOrganization webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -1134,11 +1134,11 @@ public class TeamOrganization {
      */
     @Schema(name = "web_commit_signoff_required", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
@@ -1164,7 +1164,7 @@ public class TeamOrganization {
     }
 
     public TeamOrganization archivedAt(OffsetDateTime archivedAt) {
-        this.archivedAt = archivedAt;
+        this.archivedAt = JsonNullable.of(archivedAt);
         return this;
     }
 
@@ -1176,11 +1176,11 @@ public class TeamOrganization {
     @Valid
     @Schema(name = "archived_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("archived_at")
-    public OffsetDateTime getArchivedAt() {
+    public JsonNullable<OffsetDateTime> getArchivedAt() {
         return archivedAt;
     }
 
-    public void setArchivedAt(OffsetDateTime archivedAt) {
+    public void setArchivedAt(JsonNullable<OffsetDateTime> archivedAt) {
         this.archivedAt = archivedAt;
     }
 
@@ -1210,7 +1210,7 @@ public class TeamOrganization {
                 && Objects.equals(this.blog, teamOrganization.blog)
                 && Objects.equals(this.location, teamOrganization.location)
                 && Objects.equals(this.email, teamOrganization.email)
-                && Objects.equals(this.twitterUsername, teamOrganization.twitterUsername)
+                && equalsNullable(this.twitterUsername, teamOrganization.twitterUsername)
                 && Objects.equals(this.isVerified, teamOrganization.isVerified)
                 && Objects.equals(this.hasOrganizationProjects, teamOrganization.hasOrganizationProjects)
                 && Objects.equals(this.hasRepositoryProjects, teamOrganization.hasRepositoryProjects)
@@ -1223,14 +1223,14 @@ public class TeamOrganization {
                 && Objects.equals(this.type, teamOrganization.type)
                 && Objects.equals(this.totalPrivateRepos, teamOrganization.totalPrivateRepos)
                 && Objects.equals(this.ownedPrivateRepos, teamOrganization.ownedPrivateRepos)
-                && Objects.equals(this.privateGists, teamOrganization.privateGists)
-                && Objects.equals(this.diskUsage, teamOrganization.diskUsage)
-                && Objects.equals(this.collaborators, teamOrganization.collaborators)
-                && Objects.equals(this.billingEmail, teamOrganization.billingEmail)
+                && equalsNullable(this.privateGists, teamOrganization.privateGists)
+                && equalsNullable(this.diskUsage, teamOrganization.diskUsage)
+                && equalsNullable(this.collaborators, teamOrganization.collaborators)
+                && equalsNullable(this.billingEmail, teamOrganization.billingEmail)
                 && Objects.equals(this.plan, teamOrganization.plan)
-                && Objects.equals(this.defaultRepositoryPermission, teamOrganization.defaultRepositoryPermission)
-                && Objects.equals(this.membersCanCreateRepositories, teamOrganization.membersCanCreateRepositories)
-                && Objects.equals(this.twoFactorRequirementEnabled, teamOrganization.twoFactorRequirementEnabled)
+                && equalsNullable(this.defaultRepositoryPermission, teamOrganization.defaultRepositoryPermission)
+                && equalsNullable(this.membersCanCreateRepositories, teamOrganization.membersCanCreateRepositories)
+                && equalsNullable(this.twoFactorRequirementEnabled, teamOrganization.twoFactorRequirementEnabled)
                 && Objects.equals(
                         this.membersAllowedRepositoryCreationType,
                         teamOrganization.membersAllowedRepositoryCreationType)
@@ -1244,11 +1244,16 @@ public class TeamOrganization {
                 && Objects.equals(this.membersCanCreatePages, teamOrganization.membersCanCreatePages)
                 && Objects.equals(this.membersCanCreatePublicPages, teamOrganization.membersCanCreatePublicPages)
                 && Objects.equals(this.membersCanCreatePrivatePages, teamOrganization.membersCanCreatePrivatePages)
-                && Objects.equals(
+                && equalsNullable(
                         this.membersCanForkPrivateRepositories, teamOrganization.membersCanForkPrivateRepositories)
                 && Objects.equals(this.webCommitSignoffRequired, teamOrganization.webCommitSignoffRequired)
                 && Objects.equals(this.updatedAt, teamOrganization.updatedAt)
                 && Objects.equals(this.archivedAt, teamOrganization.archivedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -1271,7 +1276,7 @@ public class TeamOrganization {
                 blog,
                 location,
                 email,
-                twitterUsername,
+                hashCodeNullable(twitterUsername),
                 isVerified,
                 hasOrganizationProjects,
                 hasRepositoryProjects,
@@ -1284,14 +1289,14 @@ public class TeamOrganization {
                 type,
                 totalPrivateRepos,
                 ownedPrivateRepos,
-                privateGists,
-                diskUsage,
-                collaborators,
-                billingEmail,
+                hashCodeNullable(privateGists),
+                hashCodeNullable(diskUsage),
+                hashCodeNullable(collaborators),
+                hashCodeNullable(billingEmail),
                 plan,
-                defaultRepositoryPermission,
-                membersCanCreateRepositories,
-                twoFactorRequirementEnabled,
+                hashCodeNullable(defaultRepositoryPermission),
+                hashCodeNullable(membersCanCreateRepositories),
+                hashCodeNullable(twoFactorRequirementEnabled),
                 membersAllowedRepositoryCreationType,
                 membersCanCreatePublicRepositories,
                 membersCanCreatePrivateRepositories,
@@ -1299,10 +1304,17 @@ public class TeamOrganization {
                 membersCanCreatePages,
                 membersCanCreatePublicPages,
                 membersCanCreatePrivatePages,
-                membersCanForkPrivateRepositories,
+                hashCodeNullable(membersCanForkPrivateRepositories),
                 webCommitSignoffRequired,
                 updatedAt,
                 archivedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

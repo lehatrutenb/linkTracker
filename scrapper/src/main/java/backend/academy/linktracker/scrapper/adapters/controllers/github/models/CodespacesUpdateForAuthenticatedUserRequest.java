@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CodespacesUpdateForAuthenticatedUserRequest
@@ -17,19 +16,19 @@ import java.util.Objects;
 @JsonTypeName("codespaces_update_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespacesUpdateForAuthenticatedUserRequest {
 
-    private String machine;
+    private Optional<String> machine = Optional.empty();
 
-    private String displayName;
+    private Optional<String> displayName = Optional.empty();
 
     @Valid
     private List<String> recentFolders = new ArrayList<>();
 
     public CodespacesUpdateForAuthenticatedUserRequest machine(String machine) {
-        this.machine = machine;
+        this.machine = Optional.ofNullable(machine);
         return this;
     }
 
@@ -42,16 +41,16 @@ public class CodespacesUpdateForAuthenticatedUserRequest {
             description = "A valid machine to transition this codespace to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("machine")
-    public String getMachine() {
+    public Optional<String> getMachine() {
         return machine;
     }
 
-    public void setMachine(String machine) {
+    public void setMachine(Optional<String> machine) {
         this.machine = machine;
     }
 
     public CodespacesUpdateForAuthenticatedUserRequest displayName(String displayName) {
-        this.displayName = displayName;
+        this.displayName = Optional.ofNullable(displayName);
         return this;
     }
 
@@ -64,11 +63,11 @@ public class CodespacesUpdateForAuthenticatedUserRequest {
             description = "Display name for this codespace",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("display_name")
-    public String getDisplayName() {
+    public Optional<String> getDisplayName() {
         return displayName;
     }
 
-    public void setDisplayName(String displayName) {
+    public void setDisplayName(Optional<String> displayName) {
         this.displayName = displayName;
     }
 

@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The created [&#x60;repository&#x60;](https://docs.github.com/rest/repos/repos#get-a-repository) resource.
@@ -20,21 +18,21 @@ import java.util.Objects;
 @JsonTypeName("webhook_fork_forkee")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookForkForkee {
 
-    private Boolean allowAutoMerge = false;
+    private Optional<Boolean> allowAutoMerge = Optional.of(false);
 
-    private Boolean allowForking;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private Boolean allowMergeCommit = true;
+    private Optional<Boolean> allowMergeCommit = Optional.of(true);
 
-    private Boolean allowRebaseMerge = true;
+    private Optional<Boolean> allowRebaseMerge = Optional.of(true);
 
-    private Boolean allowSquashMerge = true;
+    private Optional<Boolean> allowSquashMerge = Optional.of(true);
 
-    private Boolean allowUpdateBranch;
+    private Optional<Boolean> allowUpdateBranch = Optional.empty();
 
     private String archiveUrl;
 
@@ -64,13 +62,13 @@ public class WebhookForkForkee {
 
     private String defaultBranch;
 
-    private Boolean deleteBranchOnMerge = false;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.of(false);
 
     private String deploymentsUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private Boolean disabled;
+    private Optional<Boolean> disabled = Optional.empty();
 
     private String downloadsUrl;
 
@@ -104,7 +102,7 @@ public class WebhookForkForkee {
 
     private Boolean hasWiki;
 
-    private String homepage = null;
+    private JsonNullable<String> homepage = JsonNullable.<String>undefined();
 
     private String hooksUrl;
 
@@ -112,7 +110,7 @@ public class WebhookForkForkee {
 
     private Long id;
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
     private String issueCommentUrl;
 
@@ -124,19 +122,19 @@ public class WebhookForkForkee {
 
     private String labelsUrl;
 
-    private Object language = null;
+    private JsonNullable<Object> language = JsonNullable.<Object>undefined();
 
     private String languagesUrl;
 
-    private Object license = null;
+    private JsonNullable<Object> license = JsonNullable.<Object>undefined();
 
-    private String masterBranch;
+    private Optional<String> masterBranch = Optional.empty();
 
     private String mergesUrl;
 
     private String milestonesUrl;
 
-    private Object mirrorUrl = null;
+    private JsonNullable<Object> mirrorUrl = JsonNullable.<Object>undefined();
 
     private String name;
 
@@ -148,15 +146,15 @@ public class WebhookForkForkee {
 
     private Long openIssuesCount;
 
-    private String organization;
+    private Optional<String> organization = Optional.empty();
 
     private DeploymentWorkflowRunHeadRepositoryOwner owner;
 
-    private RepositoryPermissions permissions;
+    private Optional<RepositoryPermissions> permissions = Optional.empty();
 
     private Boolean _private;
 
-    private Boolean _public;
+    private Optional<Boolean> _public = Optional.empty();
 
     private String pullsUrl;
 
@@ -164,13 +162,13 @@ public class WebhookForkForkee {
 
     private String releasesUrl;
 
-    private String roleName = null;
+    private JsonNullable<String> roleName = JsonNullable.<String>undefined();
 
     private Long size;
 
     private String sshUrl;
 
-    private Long stargazers;
+    private Optional<Long> stargazers = Optional.empty();
 
     private Long stargazersCount;
 
@@ -203,7 +201,7 @@ public class WebhookForkForkee {
 
     private Long watchersCount;
 
-    private Boolean webCommitSignoffRequired;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
 
     public WebhookForkForkee() {
         super();
@@ -302,7 +300,7 @@ public class WebhookForkForkee {
         this.createdAt = createdAt;
         this.defaultBranch = defaultBranch;
         this.deploymentsUrl = deploymentsUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.downloadsUrl = downloadsUrl;
         this.eventsUrl = eventsUrl;
         this.fork = fork;
@@ -319,7 +317,7 @@ public class WebhookForkForkee {
         this.hasPages = hasPages;
         this.hasProjects = hasProjects;
         this.hasWiki = hasWiki;
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         this.hooksUrl = hooksUrl;
         this.htmlUrl = htmlUrl;
         this.id = id;
@@ -328,12 +326,12 @@ public class WebhookForkForkee {
         this.issuesUrl = issuesUrl;
         this.keysUrl = keysUrl;
         this.labelsUrl = labelsUrl;
-        this.language = language;
+        this.language = JsonNullable.of(language);
         this.languagesUrl = languagesUrl;
-        this.license = license;
+        this.license = JsonNullable.of(license);
         this.mergesUrl = mergesUrl;
         this.milestonesUrl = milestonesUrl;
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         this.name = name;
         this.nodeId = nodeId;
         this.notificationsUrl = notificationsUrl;
@@ -364,7 +362,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee allowAutoMerge(Boolean allowAutoMerge) {
-        this.allowAutoMerge = allowAutoMerge;
+        this.allowAutoMerge = Optional.ofNullable(allowAutoMerge);
         return this;
     }
 
@@ -377,16 +375,16 @@ public class WebhookForkForkee {
             description = "Whether to allow auto-merge for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_auto_merge")
-    public Boolean getAllowAutoMerge() {
+    public Optional<Boolean> getAllowAutoMerge() {
         return allowAutoMerge;
     }
 
-    public void setAllowAutoMerge(Boolean allowAutoMerge) {
+    public void setAllowAutoMerge(Optional<Boolean> allowAutoMerge) {
         this.allowAutoMerge = allowAutoMerge;
     }
 
     public WebhookForkForkee allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -396,16 +394,16 @@ public class WebhookForkForkee {
      */
     @Schema(name = "allow_forking", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public WebhookForkForkee allowMergeCommit(Boolean allowMergeCommit) {
-        this.allowMergeCommit = allowMergeCommit;
+        this.allowMergeCommit = Optional.ofNullable(allowMergeCommit);
         return this;
     }
 
@@ -418,16 +416,16 @@ public class WebhookForkForkee {
             description = "Whether to allow merge commits for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_merge_commit")
-    public Boolean getAllowMergeCommit() {
+    public Optional<Boolean> getAllowMergeCommit() {
         return allowMergeCommit;
     }
 
-    public void setAllowMergeCommit(Boolean allowMergeCommit) {
+    public void setAllowMergeCommit(Optional<Boolean> allowMergeCommit) {
         this.allowMergeCommit = allowMergeCommit;
     }
 
     public WebhookForkForkee allowRebaseMerge(Boolean allowRebaseMerge) {
-        this.allowRebaseMerge = allowRebaseMerge;
+        this.allowRebaseMerge = Optional.ofNullable(allowRebaseMerge);
         return this;
     }
 
@@ -440,16 +438,16 @@ public class WebhookForkForkee {
             description = "Whether to allow rebase merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_rebase_merge")
-    public Boolean getAllowRebaseMerge() {
+    public Optional<Boolean> getAllowRebaseMerge() {
         return allowRebaseMerge;
     }
 
-    public void setAllowRebaseMerge(Boolean allowRebaseMerge) {
+    public void setAllowRebaseMerge(Optional<Boolean> allowRebaseMerge) {
         this.allowRebaseMerge = allowRebaseMerge;
     }
 
     public WebhookForkForkee allowSquashMerge(Boolean allowSquashMerge) {
-        this.allowSquashMerge = allowSquashMerge;
+        this.allowSquashMerge = Optional.ofNullable(allowSquashMerge);
         return this;
     }
 
@@ -462,16 +460,16 @@ public class WebhookForkForkee {
             description = "Whether to allow squash merges for pull requests.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_squash_merge")
-    public Boolean getAllowSquashMerge() {
+    public Optional<Boolean> getAllowSquashMerge() {
         return allowSquashMerge;
     }
 
-    public void setAllowSquashMerge(Boolean allowSquashMerge) {
+    public void setAllowSquashMerge(Optional<Boolean> allowSquashMerge) {
         this.allowSquashMerge = allowSquashMerge;
     }
 
     public WebhookForkForkee allowUpdateBranch(Boolean allowUpdateBranch) {
-        this.allowUpdateBranch = allowUpdateBranch;
+        this.allowUpdateBranch = Optional.ofNullable(allowUpdateBranch);
         return this;
     }
 
@@ -481,11 +479,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "allow_update_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_update_branch")
-    public Boolean getAllowUpdateBranch() {
+    public Optional<Boolean> getAllowUpdateBranch() {
         return allowUpdateBranch;
     }
 
-    public void setAllowUpdateBranch(Boolean allowUpdateBranch) {
+    public void setAllowUpdateBranch(Optional<Boolean> allowUpdateBranch) {
         this.allowUpdateBranch = allowUpdateBranch;
     }
 
@@ -770,7 +768,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -783,11 +781,11 @@ public class WebhookForkForkee {
             description = "Whether to delete head branches when pull requests are merged",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
@@ -812,7 +810,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -823,16 +821,16 @@ public class WebhookForkForkee {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public WebhookForkForkee disabled(Boolean disabled) {
-        this.disabled = disabled;
+        this.disabled = Optional.ofNullable(disabled);
         return this;
     }
 
@@ -842,11 +840,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "disabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disabled")
-    public Boolean getDisabled() {
+    public Optional<Boolean> getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Optional<Boolean> disabled) {
         this.disabled = disabled;
     }
 
@@ -1171,7 +1169,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1182,11 +1180,11 @@ public class WebhookForkForkee {
     @NotNull
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public JsonNullable<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(JsonNullable<String> homepage) {
         this.homepage = homepage;
     }
 
@@ -1251,7 +1249,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1261,11 +1259,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -1370,7 +1368,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee language(Object language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1381,11 +1379,11 @@ public class WebhookForkForkee {
     @NotNull
     @Schema(name = "language", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("language")
-    public Object getLanguage() {
+    public JsonNullable<Object> getLanguage() {
         return language;
     }
 
-    public void setLanguage(Object language) {
+    public void setLanguage(JsonNullable<Object> language) {
         this.language = language;
     }
 
@@ -1410,7 +1408,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee license(Object license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -1421,16 +1419,16 @@ public class WebhookForkForkee {
     @NotNull
     @Schema(name = "license", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("license")
-    public Object getLicense() {
+    public JsonNullable<Object> getLicense() {
         return license;
     }
 
-    public void setLicense(Object license) {
+    public void setLicense(JsonNullable<Object> license) {
         this.license = license;
     }
 
     public WebhookForkForkee masterBranch(String masterBranch) {
-        this.masterBranch = masterBranch;
+        this.masterBranch = Optional.ofNullable(masterBranch);
         return this;
     }
 
@@ -1440,11 +1438,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "master_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("master_branch")
-    public String getMasterBranch() {
+    public Optional<String> getMasterBranch() {
         return masterBranch;
     }
 
-    public void setMasterBranch(String masterBranch) {
+    public void setMasterBranch(Optional<String> masterBranch) {
         this.masterBranch = masterBranch;
     }
 
@@ -1489,7 +1487,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee mirrorUrl(Object mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1500,11 +1498,11 @@ public class WebhookForkForkee {
     @NotNull
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("mirror_url")
-    public Object getMirrorUrl() {
+    public JsonNullable<Object> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(Object mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<Object> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1609,7 +1607,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee organization(String organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -1619,11 +1617,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public String getOrganization() {
+    public Optional<String> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(String organization) {
+    public void setOrganization(Optional<String> organization) {
         this.organization = organization;
     }
 
@@ -1649,7 +1647,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee permissions(RepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -1660,11 +1658,11 @@ public class WebhookForkForkee {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public RepositoryPermissions getPermissions() {
+    public Optional<RepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(RepositoryPermissions permissions) {
+    public void setPermissions(Optional<RepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
@@ -1689,7 +1687,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee _public(Boolean _public) {
-        this._public = _public;
+        this._public = Optional.ofNullable(_public);
         return this;
     }
 
@@ -1699,11 +1697,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "public", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public")
-    public Boolean getPublic() {
+    public Optional<Boolean> getPublic() {
         return _public;
     }
 
-    public void setPublic(Boolean _public) {
+    public void setPublic(Optional<Boolean> _public) {
         this._public = _public;
     }
 
@@ -1768,7 +1766,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee roleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = JsonNullable.of(roleName);
         return this;
     }
 
@@ -1778,11 +1776,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "role_name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role_name")
-    public String getRoleName() {
+    public JsonNullable<String> getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(JsonNullable<String> roleName) {
         this.roleName = roleName;
     }
 
@@ -1827,7 +1825,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee stargazers(Long stargazers) {
-        this.stargazers = stargazers;
+        this.stargazers = Optional.ofNullable(stargazers);
         return this;
     }
 
@@ -1837,11 +1835,11 @@ public class WebhookForkForkee {
      */
     @Schema(name = "stargazers", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers")
-    public Long getStargazers() {
+    public Optional<Long> getStargazers() {
         return stargazers;
     }
 
-    public void setStargazers(Long stargazers) {
+    public void setStargazers(Optional<Long> stargazers) {
         this.stargazers = stargazers;
     }
 
@@ -2154,7 +2152,7 @@ public class WebhookForkForkee {
     }
 
     public WebhookForkForkee webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -2167,11 +2165,11 @@ public class WebhookForkForkee {
             description = "Whether to require contributors to sign off on web-based commits",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
@@ -2254,7 +2252,7 @@ public class WebhookForkForkee {
                 && Objects.equals(this.pullsUrl, webhookForkForkee.pullsUrl)
                 && Objects.equals(this.pushedAt, webhookForkForkee.pushedAt)
                 && Objects.equals(this.releasesUrl, webhookForkForkee.releasesUrl)
-                && Objects.equals(this.roleName, webhookForkForkee.roleName)
+                && equalsNullable(this.roleName, webhookForkForkee.roleName)
                 && Objects.equals(this.size, webhookForkForkee.size)
                 && Objects.equals(this.sshUrl, webhookForkForkee.sshUrl)
                 && Objects.equals(this.stargazers, webhookForkForkee.stargazers)
@@ -2274,6 +2272,11 @@ public class WebhookForkForkee {
                 && Objects.equals(this.watchers, webhookForkForkee.watchers)
                 && Objects.equals(this.watchersCount, webhookForkForkee.watchersCount)
                 && Objects.equals(this.webCommitSignoffRequired, webhookForkForkee.webCommitSignoffRequired);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -2349,7 +2352,7 @@ public class WebhookForkForkee {
                 pullsUrl,
                 pushedAt,
                 releasesUrl,
-                roleName,
+                hashCodeNullable(roleName),
                 size,
                 sshUrl,
                 stargazers,
@@ -2369,6 +2372,13 @@ public class WebhookForkForkee {
                 watchers,
                 watchersCount,
                 webCommitSignoffRequired);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

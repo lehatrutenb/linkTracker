@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Provides details of Public IP for a GitHub-hosted larger runners
@@ -15,18 +14,18 @@ import java.util.Objects;
 @JsonTypeName("public-ip")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PublicIp {
 
-    private Boolean enabled;
+    private Optional<Boolean> enabled = Optional.empty();
 
-    private String prefix;
+    private Optional<String> prefix = Optional.empty();
 
-    private Long length;
+    private Optional<Long> length = Optional.empty();
 
     public PublicIp enabled(Boolean enabled) {
-        this.enabled = enabled;
+        this.enabled = Optional.ofNullable(enabled);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class PublicIp {
             description = "Whether public IP is enabled.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enabled")
-    public Boolean getEnabled() {
+    public Optional<Boolean> getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Boolean enabled) {
+    public void setEnabled(Optional<Boolean> enabled) {
         this.enabled = enabled;
     }
 
     public PublicIp prefix(String prefix) {
-        this.prefix = prefix;
+        this.prefix = Optional.ofNullable(prefix);
         return this;
     }
 
@@ -63,16 +62,16 @@ public class PublicIp {
             description = "The prefix for the public IP.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("prefix")
-    public String getPrefix() {
+    public Optional<String> getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public void setPrefix(Optional<String> prefix) {
         this.prefix = prefix;
     }
 
     public PublicIp length(Long length) {
-        this.length = length;
+        this.length = Optional.ofNullable(length);
         return this;
     }
 
@@ -86,11 +85,11 @@ public class PublicIp {
             description = "The length of the IP prefix.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("length")
-    public Long getLength() {
+    public Optional<Long> getLength() {
         return length;
     }
 
-    public void setLength(Long length) {
+    public void setLength(Optional<Long> length) {
         this.length = length;
     }
 

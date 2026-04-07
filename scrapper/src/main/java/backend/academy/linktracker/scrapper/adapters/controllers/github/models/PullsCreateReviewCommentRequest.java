@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsCreateReviewCommentRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("pulls_create_review_comment_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsCreateReviewCommentRequest {
 
@@ -27,7 +27,7 @@ public class PullsCreateReviewCommentRequest {
     private String path;
 
     @Deprecated
-    private Long position;
+    private Optional<Long> position = Optional.empty();
 
     /**
      * In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see \"[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)\" in the GitHub Help documentation.
@@ -64,11 +64,11 @@ public class PullsCreateReviewCommentRequest {
         }
     }
 
-    private SideEnum side;
+    private Optional<SideEnum> side = Optional.empty();
 
-    private Long line;
+    private Optional<Long> line = Optional.empty();
 
-    private Long startLine;
+    private Optional<Long> startLine = Optional.empty();
 
     /**
      * **Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see \"[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)\" in the GitHub Help documentation. See `side` in this table for additional context.
@@ -107,9 +107,9 @@ public class PullsCreateReviewCommentRequest {
         }
     }
 
-    private StartSideEnum startSide;
+    private Optional<StartSideEnum> startSide = Optional.empty();
 
-    private Long inReplyTo;
+    private Optional<Long> inReplyTo = Optional.empty();
 
     /**
      * The level at which the comment is targeted.
@@ -146,7 +146,7 @@ public class PullsCreateReviewCommentRequest {
         }
     }
 
-    private SubjectTypeEnum subjectType;
+    private Optional<SubjectTypeEnum> subjectType = Optional.empty();
 
     public PullsCreateReviewCommentRequest() {
         super();
@@ -229,7 +229,7 @@ public class PullsCreateReviewCommentRequest {
     }
 
     public PullsCreateReviewCommentRequest position(Long position) {
-        this.position = position;
+        this.position = Optional.ofNullable(position);
         return this;
     }
 
@@ -246,7 +246,7 @@ public class PullsCreateReviewCommentRequest {
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("position")
     @Deprecated
-    public Long getPosition() {
+    public Optional<Long> getPosition() {
         return position;
     }
 
@@ -254,12 +254,12 @@ public class PullsCreateReviewCommentRequest {
      * @deprecated
      */
     @Deprecated
-    public void setPosition(Long position) {
+    public void setPosition(Optional<Long> position) {
         this.position = position;
     }
 
     public PullsCreateReviewCommentRequest side(SideEnum side) {
-        this.side = side;
+        this.side = Optional.ofNullable(side);
         return this;
     }
 
@@ -273,16 +273,16 @@ public class PullsCreateReviewCommentRequest {
                     "In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see \"[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)\" in the GitHub Help documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("side")
-    public SideEnum getSide() {
+    public Optional<SideEnum> getSide() {
         return side;
     }
 
-    public void setSide(SideEnum side) {
+    public void setSide(Optional<SideEnum> side) {
         this.side = side;
     }
 
     public PullsCreateReviewCommentRequest line(Long line) {
-        this.line = line;
+        this.line = Optional.ofNullable(line);
         return this;
     }
 
@@ -296,16 +296,16 @@ public class PullsCreateReviewCommentRequest {
                     "**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public Optional<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(Optional<Long> line) {
         this.line = line;
     }
 
     public PullsCreateReviewCommentRequest startLine(Long startLine) {
-        this.startLine = startLine;
+        this.startLine = Optional.ofNullable(startLine);
         return this;
     }
 
@@ -319,16 +319,16 @@ public class PullsCreateReviewCommentRequest {
                     "**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see \"[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)\" in the GitHub Help documentation.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_line")
-    public Long getStartLine() {
+    public Optional<Long> getStartLine() {
         return startLine;
     }
 
-    public void setStartLine(Long startLine) {
+    public void setStartLine(Optional<Long> startLine) {
         this.startLine = startLine;
     }
 
     public PullsCreateReviewCommentRequest startSide(StartSideEnum startSide) {
-        this.startSide = startSide;
+        this.startSide = Optional.ofNullable(startSide);
         return this;
     }
 
@@ -342,16 +342,16 @@ public class PullsCreateReviewCommentRequest {
                     "**Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see \"[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)\" in the GitHub Help documentation. See `side` in this table for additional context.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_side")
-    public StartSideEnum getStartSide() {
+    public Optional<StartSideEnum> getStartSide() {
         return startSide;
     }
 
-    public void setStartSide(StartSideEnum startSide) {
+    public void setStartSide(Optional<StartSideEnum> startSide) {
         this.startSide = startSide;
     }
 
     public PullsCreateReviewCommentRequest inReplyTo(Long inReplyTo) {
-        this.inReplyTo = inReplyTo;
+        this.inReplyTo = Optional.ofNullable(inReplyTo);
         return this;
     }
 
@@ -366,16 +366,16 @@ public class PullsCreateReviewCommentRequest {
                     "The ID of the review comment to reply to. To find the ID of a review comment with [\"List review comments on a pull request\"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("in_reply_to")
-    public Long getInReplyTo() {
+    public Optional<Long> getInReplyTo() {
         return inReplyTo;
     }
 
-    public void setInReplyTo(Long inReplyTo) {
+    public void setInReplyTo(Optional<Long> inReplyTo) {
         this.inReplyTo = inReplyTo;
     }
 
     public PullsCreateReviewCommentRequest subjectType(SubjectTypeEnum subjectType) {
-        this.subjectType = subjectType;
+        this.subjectType = Optional.ofNullable(subjectType);
         return this;
     }
 
@@ -388,11 +388,11 @@ public class PullsCreateReviewCommentRequest {
             description = "The level at which the comment is targeted.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subject_type")
-    public SubjectTypeEnum getSubjectType() {
+    public Optional<SubjectTypeEnum> getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(SubjectTypeEnum subjectType) {
+    public void setSubjectType(Optional<SubjectTypeEnum> subjectType) {
         this.subjectType = subjectType;
     }
 

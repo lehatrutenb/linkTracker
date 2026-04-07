@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Standard Stack Exchange API response wrapper for question collections.
@@ -20,7 +20,7 @@ import java.util.Objects;
         description = "Standard Stack Exchange API response wrapper for question collections.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-24T12:15:15.683209678Z[Etc/UTC]",
+        date = "2026-04-05T13:10:37.029105836Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiQuestionsResponse {
 
@@ -33,11 +33,11 @@ public class ApiQuestionsResponse {
 
     private Long quotaRemaining;
 
-    private Long page;
+    private Optional<Long> page = Optional.empty();
 
-    private Long pageSize;
+    private Optional<Long> pageSize = Optional.empty();
 
-    private Long total;
+    private Optional<Long> total = Optional.empty();
 
     /**
      * Type of items returned.
@@ -84,15 +84,15 @@ public class ApiQuestionsResponse {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
-    private Long backoff;
+    private Optional<Long> backoff = Optional.empty();
 
-    private Long errorId;
+    private Optional<Long> errorId = Optional.empty();
 
-    private String errorMessage;
+    private Optional<String> errorMessage = Optional.empty();
 
-    private String errorName;
+    private Optional<String> errorName = Optional.empty();
 
     public ApiQuestionsResponse() {
         super();
@@ -213,7 +213,7 @@ public class ApiQuestionsResponse {
     }
 
     public ApiQuestionsResponse page(Long page) {
-        this.page = page;
+        this.page = Optional.ofNullable(page);
         return this;
     }
 
@@ -227,16 +227,16 @@ public class ApiQuestionsResponse {
             description = "Current page number.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page")
-    public Long getPage() {
+    public Optional<Long> getPage() {
         return page;
     }
 
-    public void setPage(Long page) {
+    public void setPage(Optional<Long> page) {
         this.page = page;
     }
 
     public ApiQuestionsResponse pageSize(Long pageSize) {
-        this.pageSize = pageSize;
+        this.pageSize = Optional.ofNullable(pageSize);
         return this;
     }
 
@@ -250,16 +250,16 @@ public class ApiQuestionsResponse {
             description = "Number of items per page.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("page_size")
-    public Long getPageSize() {
+    public Optional<Long> getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(Long pageSize) {
+    public void setPageSize(Optional<Long> pageSize) {
         this.pageSize = pageSize;
     }
 
     public ApiQuestionsResponse total(Long total) {
-        this.total = total;
+        this.total = Optional.ofNullable(total);
         return this;
     }
 
@@ -273,16 +273,16 @@ public class ApiQuestionsResponse {
             description = "Total number of items available.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("total")
-    public Long getTotal() {
+    public Optional<Long> getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Optional<Long> total) {
         this.total = total;
     }
 
     public ApiQuestionsResponse type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -296,16 +296,16 @@ public class ApiQuestionsResponse {
             description = "Type of items returned.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
     public ApiQuestionsResponse backoff(Long backoff) {
-        this.backoff = backoff;
+        this.backoff = Optional.ofNullable(backoff);
         return this;
     }
 
@@ -319,16 +319,16 @@ public class ApiQuestionsResponse {
             description = "Number of seconds to wait before making another request to avoid throttling.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("backoff")
-    public Long getBackoff() {
+    public Optional<Long> getBackoff() {
         return backoff;
     }
 
-    public void setBackoff(Long backoff) {
+    public void setBackoff(Optional<Long> backoff) {
         this.backoff = backoff;
     }
 
     public ApiQuestionsResponse errorId(Long errorId) {
-        this.errorId = errorId;
+        this.errorId = Optional.ofNullable(errorId);
         return this;
     }
 
@@ -342,16 +342,16 @@ public class ApiQuestionsResponse {
             description = "Error ID if an error occurred.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_id")
-    public Long getErrorId() {
+    public Optional<Long> getErrorId() {
         return errorId;
     }
 
-    public void setErrorId(Long errorId) {
+    public void setErrorId(Optional<Long> errorId) {
         this.errorId = errorId;
     }
 
     public ApiQuestionsResponse errorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+        this.errorMessage = Optional.ofNullable(errorMessage);
         return this;
     }
 
@@ -365,16 +365,16 @@ public class ApiQuestionsResponse {
             description = "Error message if an error occurred.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_message")
-    public String getErrorMessage() {
+    public Optional<String> getErrorMessage() {
         return errorMessage;
     }
 
-    public void setErrorMessage(String errorMessage) {
+    public void setErrorMessage(Optional<String> errorMessage) {
         this.errorMessage = errorMessage;
     }
 
     public ApiQuestionsResponse errorName(String errorName) {
-        this.errorName = errorName;
+        this.errorName = Optional.ofNullable(errorName);
         return this;
     }
 
@@ -388,11 +388,11 @@ public class ApiQuestionsResponse {
             description = "Error name if an error occurred.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("error_name")
-    public String getErrorName() {
+    public Optional<String> getErrorName() {
         return errorName;
     }
 
-    public void setErrorName(String errorName) {
+    public void setErrorName(Optional<String> errorName) {
         this.errorName = errorName;
     }
 

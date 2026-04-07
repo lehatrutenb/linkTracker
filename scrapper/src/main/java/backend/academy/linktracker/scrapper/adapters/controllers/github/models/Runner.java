@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * A self hosted runner
@@ -18,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("runner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Runner {
 
     private Long id;
 
-    private Long runnerGroupId;
+    private Optional<Long> runnerGroupId = Optional.empty();
 
     private String name;
 
@@ -37,7 +37,7 @@ public class Runner {
     @Valid
     private List<@Valid RunnerLabel> labels = new ArrayList<>();
 
-    private Boolean ephemeral;
+    private Optional<Boolean> ephemeral = Optional.empty();
 
     public Runner() {
         super();
@@ -80,7 +80,7 @@ public class Runner {
     }
 
     public Runner runnerGroupId(Long runnerGroupId) {
-        this.runnerGroupId = runnerGroupId;
+        this.runnerGroupId = Optional.ofNullable(runnerGroupId);
         return this;
     }
 
@@ -94,11 +94,11 @@ public class Runner {
             description = "The ID of the runner group.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("runner_group_id")
-    public Long getRunnerGroupId() {
+    public Optional<Long> getRunnerGroupId() {
         return runnerGroupId;
     }
 
-    public void setRunnerGroupId(Long runnerGroupId) {
+    public void setRunnerGroupId(Optional<Long> runnerGroupId) {
         this.runnerGroupId = runnerGroupId;
     }
 
@@ -224,7 +224,7 @@ public class Runner {
     }
 
     public Runner ephemeral(Boolean ephemeral) {
-        this.ephemeral = ephemeral;
+        this.ephemeral = Optional.ofNullable(ephemeral);
         return this;
     }
 
@@ -234,11 +234,11 @@ public class Runner {
      */
     @Schema(name = "ephemeral", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ephemeral")
-    public Boolean getEphemeral() {
+    public Optional<Boolean> getEphemeral() {
         return ephemeral;
     }
 
-    public void setEphemeral(Boolean ephemeral) {
+    public void setEphemeral(Optional<Boolean> ephemeral) {
         this.ephemeral = ephemeral;
     }
 

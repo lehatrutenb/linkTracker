@@ -9,11 +9,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Information about the seat breakdown and policies set for an organization with a Copilot Business or Copilot Enterprise subscription.
@@ -25,7 +25,7 @@ import java.util.Objects;
 @JsonTypeName("copilot-organization-details")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CopilotOrganizationDetails {
 
@@ -107,7 +107,7 @@ public class CopilotOrganizationDetails {
         }
     }
 
-    private IdeChatEnum ideChat;
+    private Optional<IdeChatEnum> ideChat = Optional.empty();
 
     /**
      * The organization policy for allowing or disallowing Copilot features on GitHub.com.
@@ -146,7 +146,7 @@ public class CopilotOrganizationDetails {
         }
     }
 
-    private PlatformChatEnum platformChat;
+    private Optional<PlatformChatEnum> platformChat = Optional.empty();
 
     /**
      * The organization policy for allowing or disallowing Copilot CLI.
@@ -185,7 +185,7 @@ public class CopilotOrganizationDetails {
         }
     }
 
-    private CliEnum cli;
+    private Optional<CliEnum> cli = Optional.empty();
 
     /**
      * The mode of assigning new seats.
@@ -263,7 +263,7 @@ public class CopilotOrganizationDetails {
         }
     }
 
-    private PlanTypeEnum planType;
+    private Optional<PlanTypeEnum> planType = Optional.empty();
 
     public CopilotOrganizationDetails() {
         super();
@@ -327,7 +327,7 @@ public class CopilotOrganizationDetails {
     }
 
     public CopilotOrganizationDetails ideChat(IdeChatEnum ideChat) {
-        this.ideChat = ideChat;
+        this.ideChat = Optional.ofNullable(ideChat);
         return this;
     }
 
@@ -340,16 +340,16 @@ public class CopilotOrganizationDetails {
             description = "The organization policy for allowing or disallowing Copilot Chat in the IDE.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ide_chat")
-    public IdeChatEnum getIdeChat() {
+    public Optional<IdeChatEnum> getIdeChat() {
         return ideChat;
     }
 
-    public void setIdeChat(IdeChatEnum ideChat) {
+    public void setIdeChat(Optional<IdeChatEnum> ideChat) {
         this.ideChat = ideChat;
     }
 
     public CopilotOrganizationDetails platformChat(PlatformChatEnum platformChat) {
-        this.platformChat = platformChat;
+        this.platformChat = Optional.ofNullable(platformChat);
         return this;
     }
 
@@ -362,16 +362,16 @@ public class CopilotOrganizationDetails {
             description = "The organization policy for allowing or disallowing Copilot features on GitHub.com.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("platform_chat")
-    public PlatformChatEnum getPlatformChat() {
+    public Optional<PlatformChatEnum> getPlatformChat() {
         return platformChat;
     }
 
-    public void setPlatformChat(PlatformChatEnum platformChat) {
+    public void setPlatformChat(Optional<PlatformChatEnum> platformChat) {
         this.platformChat = platformChat;
     }
 
     public CopilotOrganizationDetails cli(CliEnum cli) {
-        this.cli = cli;
+        this.cli = Optional.ofNullable(cli);
         return this;
     }
 
@@ -384,11 +384,11 @@ public class CopilotOrganizationDetails {
             description = "The organization policy for allowing or disallowing Copilot CLI.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("cli")
-    public CliEnum getCli() {
+    public Optional<CliEnum> getCli() {
         return cli;
     }
 
-    public void setCli(CliEnum cli) {
+    public void setCli(Optional<CliEnum> cli) {
         this.cli = cli;
     }
 
@@ -416,7 +416,7 @@ public class CopilotOrganizationDetails {
     }
 
     public CopilotOrganizationDetails planType(PlanTypeEnum planType) {
-        this.planType = planType;
+        this.planType = Optional.ofNullable(planType);
         return this;
     }
 
@@ -429,11 +429,11 @@ public class CopilotOrganizationDetails {
             description = "The Copilot plan of the organization, or the parent enterprise, when applicable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("plan_type")
-    public PlanTypeEnum getPlanType() {
+    public Optional<PlanTypeEnum> getPlanType() {
         return planType;
     }
 
-    public void setPlanType(PlanTypeEnum planType) {
+    public void setPlanType(Optional<PlanTypeEnum> planType) {
         this.planType = planType;
     }
     /**

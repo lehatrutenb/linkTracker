@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookDeploymentReviewRequestedReviewersInner
@@ -17,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_deployment_review_requested_reviewers_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookDeploymentReviewRequestedReviewersInner {
 
-    private User6 reviewer = null;
+    private JsonNullable<User6> reviewer = JsonNullable.<User6>undefined();
 
     /**
      * Gets or Sets type
@@ -58,10 +59,10 @@ public class WebhookDeploymentReviewRequestedReviewersInner {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
     public WebhookDeploymentReviewRequestedReviewersInner reviewer(User6 reviewer) {
-        this.reviewer = reviewer;
+        this.reviewer = JsonNullable.of(reviewer);
         return this;
     }
 
@@ -72,16 +73,16 @@ public class WebhookDeploymentReviewRequestedReviewersInner {
     @Valid
     @Schema(name = "reviewer", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reviewer")
-    public User6 getReviewer() {
+    public JsonNullable<User6> getReviewer() {
         return reviewer;
     }
 
-    public void setReviewer(User6 reviewer) {
+    public void setReviewer(JsonNullable<User6> reviewer) {
         this.reviewer = reviewer;
     }
 
     public WebhookDeploymentReviewRequestedReviewersInner type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -91,11 +92,11 @@ public class WebhookDeploymentReviewRequestedReviewersInner {
      */
     @Schema(name = "type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
@@ -109,13 +110,25 @@ public class WebhookDeploymentReviewRequestedReviewersInner {
         }
         WebhookDeploymentReviewRequestedReviewersInner webhookDeploymentReviewRequestedReviewersInner =
                 (WebhookDeploymentReviewRequestedReviewersInner) o;
-        return Objects.equals(this.reviewer, webhookDeploymentReviewRequestedReviewersInner.reviewer)
+        return equalsNullable(this.reviewer, webhookDeploymentReviewRequestedReviewersInner.reviewer)
                 && Objects.equals(this.type, webhookDeploymentReviewRequestedReviewersInner.type);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reviewer, type);
+        return Objects.hash(hashCodeNullable(reviewer), type);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

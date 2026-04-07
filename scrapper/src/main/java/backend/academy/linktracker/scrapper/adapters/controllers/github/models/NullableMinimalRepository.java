@@ -7,15 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -25,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-minimal-repository")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableMinimalRepository {
 
@@ -43,7 +39,7 @@ public class NullableMinimalRepository {
 
     private URI htmlUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Boolean fork;
 
@@ -83,7 +79,7 @@ public class NullableMinimalRepository {
 
     private String gitTagsUrl;
 
-    private String gitUrl;
+    private Optional<String> gitUrl = Optional.empty();
 
     private String issueCommentUrl;
 
@@ -107,7 +103,7 @@ public class NullableMinimalRepository {
 
     private String releasesUrl;
 
-    private String sshUrl;
+    private Optional<String> sshUrl = Optional.empty();
 
     private URI stargazersUrl;
 
@@ -123,46 +119,46 @@ public class NullableMinimalRepository {
 
     private String treesUrl;
 
-    private String cloneUrl;
+    private Optional<String> cloneUrl = Optional.empty();
 
-    private String mirrorUrl = null;
+    private JsonNullable<String> mirrorUrl = JsonNullable.<String>undefined();
 
     private URI hooksUrl;
 
-    private String svnUrl;
+    private Optional<String> svnUrl = Optional.empty();
 
-    private String homepage = null;
+    private JsonNullable<String> homepage = JsonNullable.<String>undefined();
 
-    private String language = null;
+    private JsonNullable<String> language = JsonNullable.<String>undefined();
 
-    private Long forksCount;
+    private Optional<Long> forksCount = Optional.empty();
 
-    private Long stargazersCount;
+    private Optional<Long> stargazersCount = Optional.empty();
 
-    private Long watchersCount;
+    private Optional<Long> watchersCount = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String defaultBranch;
+    private Optional<String> defaultBranch = Optional.empty();
 
-    private Long openIssuesCount;
+    private Optional<Long> openIssuesCount = Optional.empty();
 
-    private Boolean isTemplate;
+    private Optional<Boolean> isTemplate = Optional.empty();
 
     @Valid
     private List<String> topics = new ArrayList<>();
 
-    private Boolean hasIssues;
+    private Optional<Boolean> hasIssues = Optional.empty();
 
-    private Boolean hasProjects;
+    private Optional<Boolean> hasProjects = Optional.empty();
 
-    private Boolean hasWiki;
+    private Optional<Boolean> hasWiki = Optional.empty();
 
-    private Boolean hasPages;
+    private Optional<Boolean> hasPages = Optional.empty();
 
-    private Boolean hasDiscussions;
+    private Optional<Boolean> hasDiscussions = Optional.empty();
 
-    private Boolean hasPullRequests;
+    private Optional<Boolean> hasPullRequests = Optional.empty();
 
     /**
      * The policy controlling who can create pull requests: all or collaborators_only.
@@ -199,52 +195,52 @@ public class NullableMinimalRepository {
         }
     }
 
-    private PullRequestCreationPolicyEnum pullRequestCreationPolicy;
+    private Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy = Optional.empty();
 
-    private Boolean hasCommitComments;
+    private Optional<Boolean> hasCommitComments = Optional.empty();
 
-    private Boolean archived;
+    private Optional<Boolean> archived = Optional.empty();
 
-    private Boolean disabled;
+    private Optional<Boolean> disabled = Optional.empty();
 
-    private String visibility;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime pushedAt = null;
+    private Optional<String> visibility = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> pushedAt = JsonNullable.<OffsetDateTime>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private MinimalRepositoryPermissions permissions;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String roleName;
+    private Optional<MinimalRepositoryPermissions> permissions = Optional.empty();
 
-    private String tempCloneToken;
+    private Optional<String> roleName = Optional.empty();
 
-    private Boolean deleteBranchOnMerge;
+    private Optional<String> tempCloneToken = Optional.empty();
 
-    private Long subscribersCount;
+    private Optional<Boolean> deleteBranchOnMerge = Optional.empty();
 
-    private Long networkCount;
+    private Optional<Long> subscribersCount = Optional.empty();
 
-    private CodeOfConduct codeOfConduct;
+    private Optional<Long> networkCount = Optional.empty();
 
-    private MinimalRepositoryLicense license = null;
+    private Optional<CodeOfConduct> codeOfConduct = Optional.empty();
 
-    private Long forks;
+    private JsonNullable<MinimalRepositoryLicense> license = JsonNullable.<MinimalRepositoryLicense>undefined();
 
-    private Long openIssues;
+    private Optional<Long> forks = Optional.empty();
 
-    private Long watchers;
+    private Optional<Long> openIssues = Optional.empty();
 
-    private Boolean allowForking;
+    private Optional<Long> watchers = Optional.empty();
 
-    private Boolean webCommitSignoffRequired;
+    private Optional<Boolean> allowForking = Optional.empty();
 
-    private SecurityAndAnalysis securityAndAnalysis = null;
+    private Optional<Boolean> webCommitSignoffRequired = Optional.empty();
+
+    private JsonNullable<SecurityAndAnalysis> securityAndAnalysis = JsonNullable.<SecurityAndAnalysis>undefined();
 
     @Valid
     private Map<String, Object> customProperties = new HashMap<>();
@@ -310,7 +306,7 @@ public class NullableMinimalRepository {
         this.owner = owner;
         this._private = _private;
         this.htmlUrl = htmlUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.fork = fork;
         this.url = url;
         this.archiveUrl = archiveUrl;
@@ -497,7 +493,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -508,11 +504,11 @@ public class NullableMinimalRepository {
     @NotNull
     @Schema(name = "description", example = "This your first repo!", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -957,7 +953,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository gitUrl(String gitUrl) {
-        this.gitUrl = gitUrl;
+        this.gitUrl = Optional.ofNullable(gitUrl);
         return this;
     }
 
@@ -967,11 +963,11 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "git_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("git_url")
-    public String getGitUrl() {
+    public Optional<String> getGitUrl() {
         return gitUrl;
     }
 
-    public void setGitUrl(String gitUrl) {
+    public void setGitUrl(Optional<String> gitUrl) {
         this.gitUrl = gitUrl;
     }
 
@@ -1231,7 +1227,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository sshUrl(String sshUrl) {
-        this.sshUrl = sshUrl;
+        this.sshUrl = Optional.ofNullable(sshUrl);
         return this;
     }
 
@@ -1241,11 +1237,11 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "ssh_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("ssh_url")
-    public String getSshUrl() {
+    public Optional<String> getSshUrl() {
         return sshUrl;
     }
 
-    public void setSshUrl(String sshUrl) {
+    public void setSshUrl(Optional<String> sshUrl) {
         this.sshUrl = sshUrl;
     }
 
@@ -1416,7 +1412,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository cloneUrl(String cloneUrl) {
-        this.cloneUrl = cloneUrl;
+        this.cloneUrl = Optional.ofNullable(cloneUrl);
         return this;
     }
 
@@ -1426,16 +1422,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "clone_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("clone_url")
-    public String getCloneUrl() {
+    public Optional<String> getCloneUrl() {
         return cloneUrl;
     }
 
-    public void setCloneUrl(String cloneUrl) {
+    public void setCloneUrl(Optional<String> cloneUrl) {
         this.cloneUrl = cloneUrl;
     }
 
     public NullableMinimalRepository mirrorUrl(String mirrorUrl) {
-        this.mirrorUrl = mirrorUrl;
+        this.mirrorUrl = JsonNullable.of(mirrorUrl);
         return this;
     }
 
@@ -1445,11 +1441,11 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "mirror_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mirror_url")
-    public String getMirrorUrl() {
+    public JsonNullable<String> getMirrorUrl() {
         return mirrorUrl;
     }
 
-    public void setMirrorUrl(String mirrorUrl) {
+    public void setMirrorUrl(JsonNullable<String> mirrorUrl) {
         this.mirrorUrl = mirrorUrl;
     }
 
@@ -1478,7 +1474,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository svnUrl(String svnUrl) {
-        this.svnUrl = svnUrl;
+        this.svnUrl = Optional.ofNullable(svnUrl);
         return this;
     }
 
@@ -1488,16 +1484,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "svn_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("svn_url")
-    public String getSvnUrl() {
+    public Optional<String> getSvnUrl() {
         return svnUrl;
     }
 
-    public void setSvnUrl(String svnUrl) {
+    public void setSvnUrl(Optional<String> svnUrl) {
         this.svnUrl = svnUrl;
     }
 
     public NullableMinimalRepository homepage(String homepage) {
-        this.homepage = homepage;
+        this.homepage = JsonNullable.of(homepage);
         return this;
     }
 
@@ -1507,16 +1503,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "homepage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("homepage")
-    public String getHomepage() {
+    public JsonNullable<String> getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(String homepage) {
+    public void setHomepage(JsonNullable<String> homepage) {
         this.homepage = homepage;
     }
 
     public NullableMinimalRepository language(String language) {
-        this.language = language;
+        this.language = JsonNullable.of(language);
         return this;
     }
 
@@ -1526,16 +1522,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "language", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("language")
-    public String getLanguage() {
+    public JsonNullable<String> getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(JsonNullable<String> language) {
         this.language = language;
     }
 
     public NullableMinimalRepository forksCount(Long forksCount) {
-        this.forksCount = forksCount;
+        this.forksCount = Optional.ofNullable(forksCount);
         return this;
     }
 
@@ -1545,16 +1541,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "forks_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks_count")
-    public Long getForksCount() {
+    public Optional<Long> getForksCount() {
         return forksCount;
     }
 
-    public void setForksCount(Long forksCount) {
+    public void setForksCount(Optional<Long> forksCount) {
         this.forksCount = forksCount;
     }
 
     public NullableMinimalRepository stargazersCount(Long stargazersCount) {
-        this.stargazersCount = stargazersCount;
+        this.stargazersCount = Optional.ofNullable(stargazersCount);
         return this;
     }
 
@@ -1564,16 +1560,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "stargazers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("stargazers_count")
-    public Long getStargazersCount() {
+    public Optional<Long> getStargazersCount() {
         return stargazersCount;
     }
 
-    public void setStargazersCount(Long stargazersCount) {
+    public void setStargazersCount(Optional<Long> stargazersCount) {
         this.stargazersCount = stargazersCount;
     }
 
     public NullableMinimalRepository watchersCount(Long watchersCount) {
-        this.watchersCount = watchersCount;
+        this.watchersCount = Optional.ofNullable(watchersCount);
         return this;
     }
 
@@ -1583,16 +1579,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "watchers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("watchers_count")
-    public Long getWatchersCount() {
+    public Optional<Long> getWatchersCount() {
         return watchersCount;
     }
 
-    public void setWatchersCount(Long watchersCount) {
+    public void setWatchersCount(Optional<Long> watchersCount) {
         this.watchersCount = watchersCount;
     }
 
     public NullableMinimalRepository size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -1606,16 +1602,16 @@ public class NullableMinimalRepository {
                     "The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public NullableMinimalRepository defaultBranch(String defaultBranch) {
-        this.defaultBranch = defaultBranch;
+        this.defaultBranch = Optional.ofNullable(defaultBranch);
         return this;
     }
 
@@ -1625,16 +1621,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "default_branch", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch")
-    public String getDefaultBranch() {
+    public Optional<String> getDefaultBranch() {
         return defaultBranch;
     }
 
-    public void setDefaultBranch(String defaultBranch) {
+    public void setDefaultBranch(Optional<String> defaultBranch) {
         this.defaultBranch = defaultBranch;
     }
 
     public NullableMinimalRepository openIssuesCount(Long openIssuesCount) {
-        this.openIssuesCount = openIssuesCount;
+        this.openIssuesCount = Optional.ofNullable(openIssuesCount);
         return this;
     }
 
@@ -1644,16 +1640,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "open_issues_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_issues_count")
-    public Long getOpenIssuesCount() {
+    public Optional<Long> getOpenIssuesCount() {
         return openIssuesCount;
     }
 
-    public void setOpenIssuesCount(Long openIssuesCount) {
+    public void setOpenIssuesCount(Optional<Long> openIssuesCount) {
         this.openIssuesCount = openIssuesCount;
     }
 
     public NullableMinimalRepository isTemplate(Boolean isTemplate) {
-        this.isTemplate = isTemplate;
+        this.isTemplate = Optional.ofNullable(isTemplate);
         return this;
     }
 
@@ -1663,11 +1659,11 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "is_template", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("is_template")
-    public Boolean getIsTemplate() {
+    public Optional<Boolean> getIsTemplate() {
         return isTemplate;
     }
 
-    public void setIsTemplate(Boolean isTemplate) {
+    public void setIsTemplate(Optional<Boolean> isTemplate) {
         this.isTemplate = isTemplate;
     }
 
@@ -1699,7 +1695,7 @@ public class NullableMinimalRepository {
     }
 
     public NullableMinimalRepository hasIssues(Boolean hasIssues) {
-        this.hasIssues = hasIssues;
+        this.hasIssues = Optional.ofNullable(hasIssues);
         return this;
     }
 
@@ -1709,16 +1705,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_issues", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_issues")
-    public Boolean getHasIssues() {
+    public Optional<Boolean> getHasIssues() {
         return hasIssues;
     }
 
-    public void setHasIssues(Boolean hasIssues) {
+    public void setHasIssues(Optional<Boolean> hasIssues) {
         this.hasIssues = hasIssues;
     }
 
     public NullableMinimalRepository hasProjects(Boolean hasProjects) {
-        this.hasProjects = hasProjects;
+        this.hasProjects = Optional.ofNullable(hasProjects);
         return this;
     }
 
@@ -1728,16 +1724,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_projects", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_projects")
-    public Boolean getHasProjects() {
+    public Optional<Boolean> getHasProjects() {
         return hasProjects;
     }
 
-    public void setHasProjects(Boolean hasProjects) {
+    public void setHasProjects(Optional<Boolean> hasProjects) {
         this.hasProjects = hasProjects;
     }
 
     public NullableMinimalRepository hasWiki(Boolean hasWiki) {
-        this.hasWiki = hasWiki;
+        this.hasWiki = Optional.ofNullable(hasWiki);
         return this;
     }
 
@@ -1747,16 +1743,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_wiki", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_wiki")
-    public Boolean getHasWiki() {
+    public Optional<Boolean> getHasWiki() {
         return hasWiki;
     }
 
-    public void setHasWiki(Boolean hasWiki) {
+    public void setHasWiki(Optional<Boolean> hasWiki) {
         this.hasWiki = hasWiki;
     }
 
     public NullableMinimalRepository hasPages(Boolean hasPages) {
-        this.hasPages = hasPages;
+        this.hasPages = Optional.ofNullable(hasPages);
         return this;
     }
 
@@ -1766,16 +1762,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_pages", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pages")
-    public Boolean getHasPages() {
+    public Optional<Boolean> getHasPages() {
         return hasPages;
     }
 
-    public void setHasPages(Boolean hasPages) {
+    public void setHasPages(Optional<Boolean> hasPages) {
         this.hasPages = hasPages;
     }
 
     public NullableMinimalRepository hasDiscussions(Boolean hasDiscussions) {
-        this.hasDiscussions = hasDiscussions;
+        this.hasDiscussions = Optional.ofNullable(hasDiscussions);
         return this;
     }
 
@@ -1785,16 +1781,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_discussions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_discussions")
-    public Boolean getHasDiscussions() {
+    public Optional<Boolean> getHasDiscussions() {
         return hasDiscussions;
     }
 
-    public void setHasDiscussions(Boolean hasDiscussions) {
+    public void setHasDiscussions(Optional<Boolean> hasDiscussions) {
         this.hasDiscussions = hasDiscussions;
     }
 
     public NullableMinimalRepository hasPullRequests(Boolean hasPullRequests) {
-        this.hasPullRequests = hasPullRequests;
+        this.hasPullRequests = Optional.ofNullable(hasPullRequests);
         return this;
     }
 
@@ -1804,17 +1800,17 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_pull_requests", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_pull_requests")
-    public Boolean getHasPullRequests() {
+    public Optional<Boolean> getHasPullRequests() {
         return hasPullRequests;
     }
 
-    public void setHasPullRequests(Boolean hasPullRequests) {
+    public void setHasPullRequests(Optional<Boolean> hasPullRequests) {
         this.hasPullRequests = hasPullRequests;
     }
 
     public NullableMinimalRepository pullRequestCreationPolicy(
             PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
-        this.pullRequestCreationPolicy = pullRequestCreationPolicy;
+        this.pullRequestCreationPolicy = Optional.ofNullable(pullRequestCreationPolicy);
         return this;
     }
 
@@ -1827,16 +1823,16 @@ public class NullableMinimalRepository {
             description = "The policy controlling who can create pull requests: all or collaborators_only.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pull_request_creation_policy")
-    public PullRequestCreationPolicyEnum getPullRequestCreationPolicy() {
+    public Optional<PullRequestCreationPolicyEnum> getPullRequestCreationPolicy() {
         return pullRequestCreationPolicy;
     }
 
-    public void setPullRequestCreationPolicy(PullRequestCreationPolicyEnum pullRequestCreationPolicy) {
+    public void setPullRequestCreationPolicy(Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy) {
         this.pullRequestCreationPolicy = pullRequestCreationPolicy;
     }
 
     public NullableMinimalRepository hasCommitComments(Boolean hasCommitComments) {
-        this.hasCommitComments = hasCommitComments;
+        this.hasCommitComments = Optional.ofNullable(hasCommitComments);
         return this;
     }
 
@@ -1846,16 +1842,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "has_commit_comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("has_commit_comments")
-    public Boolean getHasCommitComments() {
+    public Optional<Boolean> getHasCommitComments() {
         return hasCommitComments;
     }
 
-    public void setHasCommitComments(Boolean hasCommitComments) {
+    public void setHasCommitComments(Optional<Boolean> hasCommitComments) {
         this.hasCommitComments = hasCommitComments;
     }
 
     public NullableMinimalRepository archived(Boolean archived) {
-        this.archived = archived;
+        this.archived = Optional.ofNullable(archived);
         return this;
     }
 
@@ -1865,16 +1861,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "archived", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("archived")
-    public Boolean getArchived() {
+    public Optional<Boolean> getArchived() {
         return archived;
     }
 
-    public void setArchived(Boolean archived) {
+    public void setArchived(Optional<Boolean> archived) {
         this.archived = archived;
     }
 
     public NullableMinimalRepository disabled(Boolean disabled) {
-        this.disabled = disabled;
+        this.disabled = Optional.ofNullable(disabled);
         return this;
     }
 
@@ -1884,16 +1880,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "disabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("disabled")
-    public Boolean getDisabled() {
+    public Optional<Boolean> getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Optional<Boolean> disabled) {
         this.disabled = disabled;
     }
 
     public NullableMinimalRepository visibility(String visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -1903,16 +1899,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "visibility", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public String getVisibility() {
+    public Optional<String> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(String visibility) {
+    public void setVisibility(Optional<String> visibility) {
         this.visibility = visibility;
     }
 
     public NullableMinimalRepository pushedAt(OffsetDateTime pushedAt) {
-        this.pushedAt = pushedAt;
+        this.pushedAt = JsonNullable.of(pushedAt);
         return this;
     }
 
@@ -1923,16 +1919,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "pushed_at", example = "2011-01-26T19:06:43Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pushed_at")
-    public OffsetDateTime getPushedAt() {
+    public JsonNullable<OffsetDateTime> getPushedAt() {
         return pushedAt;
     }
 
-    public void setPushedAt(OffsetDateTime pushedAt) {
+    public void setPushedAt(JsonNullable<OffsetDateTime> pushedAt) {
         this.pushedAt = pushedAt;
     }
 
     public NullableMinimalRepository createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -1943,16 +1939,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "created_at", example = "2011-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public NullableMinimalRepository updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -1963,16 +1959,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "updated_at", example = "2011-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
     public NullableMinimalRepository permissions(MinimalRepositoryPermissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -1983,16 +1979,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public MinimalRepositoryPermissions getPermissions() {
+    public Optional<MinimalRepositoryPermissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(MinimalRepositoryPermissions permissions) {
+    public void setPermissions(Optional<MinimalRepositoryPermissions> permissions) {
         this.permissions = permissions;
     }
 
     public NullableMinimalRepository roleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = Optional.ofNullable(roleName);
         return this;
     }
 
@@ -2002,16 +1998,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "role_name", example = "admin", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role_name")
-    public String getRoleName() {
+    public Optional<String> getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(String roleName) {
+    public void setRoleName(Optional<String> roleName) {
         this.roleName = roleName;
     }
 
     public NullableMinimalRepository tempCloneToken(String tempCloneToken) {
-        this.tempCloneToken = tempCloneToken;
+        this.tempCloneToken = Optional.ofNullable(tempCloneToken);
         return this;
     }
 
@@ -2021,16 +2017,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "temp_clone_token", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("temp_clone_token")
-    public String getTempCloneToken() {
+    public Optional<String> getTempCloneToken() {
         return tempCloneToken;
     }
 
-    public void setTempCloneToken(String tempCloneToken) {
+    public void setTempCloneToken(Optional<String> tempCloneToken) {
         this.tempCloneToken = tempCloneToken;
     }
 
     public NullableMinimalRepository deleteBranchOnMerge(Boolean deleteBranchOnMerge) {
-        this.deleteBranchOnMerge = deleteBranchOnMerge;
+        this.deleteBranchOnMerge = Optional.ofNullable(deleteBranchOnMerge);
         return this;
     }
 
@@ -2040,16 +2036,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "delete_branch_on_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("delete_branch_on_merge")
-    public Boolean getDeleteBranchOnMerge() {
+    public Optional<Boolean> getDeleteBranchOnMerge() {
         return deleteBranchOnMerge;
     }
 
-    public void setDeleteBranchOnMerge(Boolean deleteBranchOnMerge) {
+    public void setDeleteBranchOnMerge(Optional<Boolean> deleteBranchOnMerge) {
         this.deleteBranchOnMerge = deleteBranchOnMerge;
     }
 
     public NullableMinimalRepository subscribersCount(Long subscribersCount) {
-        this.subscribersCount = subscribersCount;
+        this.subscribersCount = Optional.ofNullable(subscribersCount);
         return this;
     }
 
@@ -2059,16 +2055,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "subscribers_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("subscribers_count")
-    public Long getSubscribersCount() {
+    public Optional<Long> getSubscribersCount() {
         return subscribersCount;
     }
 
-    public void setSubscribersCount(Long subscribersCount) {
+    public void setSubscribersCount(Optional<Long> subscribersCount) {
         this.subscribersCount = subscribersCount;
     }
 
     public NullableMinimalRepository networkCount(Long networkCount) {
-        this.networkCount = networkCount;
+        this.networkCount = Optional.ofNullable(networkCount);
         return this;
     }
 
@@ -2078,16 +2074,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "network_count", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("network_count")
-    public Long getNetworkCount() {
+    public Optional<Long> getNetworkCount() {
         return networkCount;
     }
 
-    public void setNetworkCount(Long networkCount) {
+    public void setNetworkCount(Optional<Long> networkCount) {
         this.networkCount = networkCount;
     }
 
     public NullableMinimalRepository codeOfConduct(CodeOfConduct codeOfConduct) {
-        this.codeOfConduct = codeOfConduct;
+        this.codeOfConduct = Optional.ofNullable(codeOfConduct);
         return this;
     }
 
@@ -2098,16 +2094,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "code_of_conduct", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code_of_conduct")
-    public CodeOfConduct getCodeOfConduct() {
+    public Optional<CodeOfConduct> getCodeOfConduct() {
         return codeOfConduct;
     }
 
-    public void setCodeOfConduct(CodeOfConduct codeOfConduct) {
+    public void setCodeOfConduct(Optional<CodeOfConduct> codeOfConduct) {
         this.codeOfConduct = codeOfConduct;
     }
 
     public NullableMinimalRepository license(MinimalRepositoryLicense license) {
-        this.license = license;
+        this.license = JsonNullable.of(license);
         return this;
     }
 
@@ -2118,16 +2114,16 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license")
-    public MinimalRepositoryLicense getLicense() {
+    public JsonNullable<MinimalRepositoryLicense> getLicense() {
         return license;
     }
 
-    public void setLicense(MinimalRepositoryLicense license) {
+    public void setLicense(JsonNullable<MinimalRepositoryLicense> license) {
         this.license = license;
     }
 
     public NullableMinimalRepository forks(Long forks) {
-        this.forks = forks;
+        this.forks = Optional.ofNullable(forks);
         return this;
     }
 
@@ -2137,16 +2133,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "forks", example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("forks")
-    public Long getForks() {
+    public Optional<Long> getForks() {
         return forks;
     }
 
-    public void setForks(Long forks) {
+    public void setForks(Optional<Long> forks) {
         this.forks = forks;
     }
 
     public NullableMinimalRepository openIssues(Long openIssues) {
-        this.openIssues = openIssues;
+        this.openIssues = Optional.ofNullable(openIssues);
         return this;
     }
 
@@ -2156,16 +2152,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "open_issues", example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("open_issues")
-    public Long getOpenIssues() {
+    public Optional<Long> getOpenIssues() {
         return openIssues;
     }
 
-    public void setOpenIssues(Long openIssues) {
+    public void setOpenIssues(Optional<Long> openIssues) {
         this.openIssues = openIssues;
     }
 
     public NullableMinimalRepository watchers(Long watchers) {
-        this.watchers = watchers;
+        this.watchers = Optional.ofNullable(watchers);
         return this;
     }
 
@@ -2175,16 +2171,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "watchers", example = "0", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("watchers")
-    public Long getWatchers() {
+    public Optional<Long> getWatchers() {
         return watchers;
     }
 
-    public void setWatchers(Long watchers) {
+    public void setWatchers(Optional<Long> watchers) {
         this.watchers = watchers;
     }
 
     public NullableMinimalRepository allowForking(Boolean allowForking) {
-        this.allowForking = allowForking;
+        this.allowForking = Optional.ofNullable(allowForking);
         return this;
     }
 
@@ -2194,16 +2190,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "allow_forking", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allow_forking")
-    public Boolean getAllowForking() {
+    public Optional<Boolean> getAllowForking() {
         return allowForking;
     }
 
-    public void setAllowForking(Boolean allowForking) {
+    public void setAllowForking(Optional<Boolean> allowForking) {
         this.allowForking = allowForking;
     }
 
     public NullableMinimalRepository webCommitSignoffRequired(Boolean webCommitSignoffRequired) {
-        this.webCommitSignoffRequired = webCommitSignoffRequired;
+        this.webCommitSignoffRequired = Optional.ofNullable(webCommitSignoffRequired);
         return this;
     }
 
@@ -2213,16 +2209,16 @@ public class NullableMinimalRepository {
      */
     @Schema(name = "web_commit_signoff_required", example = "false", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("web_commit_signoff_required")
-    public Boolean getWebCommitSignoffRequired() {
+    public Optional<Boolean> getWebCommitSignoffRequired() {
         return webCommitSignoffRequired;
     }
 
-    public void setWebCommitSignoffRequired(Boolean webCommitSignoffRequired) {
+    public void setWebCommitSignoffRequired(Optional<Boolean> webCommitSignoffRequired) {
         this.webCommitSignoffRequired = webCommitSignoffRequired;
     }
 
     public NullableMinimalRepository securityAndAnalysis(SecurityAndAnalysis securityAndAnalysis) {
-        this.securityAndAnalysis = securityAndAnalysis;
+        this.securityAndAnalysis = JsonNullable.of(securityAndAnalysis);
         return this;
     }
 
@@ -2233,11 +2229,11 @@ public class NullableMinimalRepository {
     @Valid
     @Schema(name = "security_and_analysis", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("security_and_analysis")
-    public SecurityAndAnalysis getSecurityAndAnalysis() {
+    public JsonNullable<SecurityAndAnalysis> getSecurityAndAnalysis() {
         return securityAndAnalysis;
     }
 
-    public void setSecurityAndAnalysis(SecurityAndAnalysis securityAndAnalysis) {
+    public void setSecurityAndAnalysis(JsonNullable<SecurityAndAnalysis> securityAndAnalysis) {
         this.securityAndAnalysis = securityAndAnalysis;
     }
 
@@ -2329,11 +2325,11 @@ public class NullableMinimalRepository {
                 && Objects.equals(this.teamsUrl, nullableMinimalRepository.teamsUrl)
                 && Objects.equals(this.treesUrl, nullableMinimalRepository.treesUrl)
                 && Objects.equals(this.cloneUrl, nullableMinimalRepository.cloneUrl)
-                && Objects.equals(this.mirrorUrl, nullableMinimalRepository.mirrorUrl)
+                && equalsNullable(this.mirrorUrl, nullableMinimalRepository.mirrorUrl)
                 && Objects.equals(this.hooksUrl, nullableMinimalRepository.hooksUrl)
                 && Objects.equals(this.svnUrl, nullableMinimalRepository.svnUrl)
-                && Objects.equals(this.homepage, nullableMinimalRepository.homepage)
-                && Objects.equals(this.language, nullableMinimalRepository.language)
+                && equalsNullable(this.homepage, nullableMinimalRepository.homepage)
+                && equalsNullable(this.language, nullableMinimalRepository.language)
                 && Objects.equals(this.forksCount, nullableMinimalRepository.forksCount)
                 && Objects.equals(this.stargazersCount, nullableMinimalRepository.stargazersCount)
                 && Objects.equals(this.watchersCount, nullableMinimalRepository.watchersCount)
@@ -2353,9 +2349,9 @@ public class NullableMinimalRepository {
                 && Objects.equals(this.archived, nullableMinimalRepository.archived)
                 && Objects.equals(this.disabled, nullableMinimalRepository.disabled)
                 && Objects.equals(this.visibility, nullableMinimalRepository.visibility)
-                && Objects.equals(this.pushedAt, nullableMinimalRepository.pushedAt)
-                && Objects.equals(this.createdAt, nullableMinimalRepository.createdAt)
-                && Objects.equals(this.updatedAt, nullableMinimalRepository.updatedAt)
+                && equalsNullable(this.pushedAt, nullableMinimalRepository.pushedAt)
+                && equalsNullable(this.createdAt, nullableMinimalRepository.createdAt)
+                && equalsNullable(this.updatedAt, nullableMinimalRepository.updatedAt)
                 && Objects.equals(this.permissions, nullableMinimalRepository.permissions)
                 && Objects.equals(this.roleName, nullableMinimalRepository.roleName)
                 && Objects.equals(this.tempCloneToken, nullableMinimalRepository.tempCloneToken)
@@ -2363,14 +2359,19 @@ public class NullableMinimalRepository {
                 && Objects.equals(this.subscribersCount, nullableMinimalRepository.subscribersCount)
                 && Objects.equals(this.networkCount, nullableMinimalRepository.networkCount)
                 && Objects.equals(this.codeOfConduct, nullableMinimalRepository.codeOfConduct)
-                && Objects.equals(this.license, nullableMinimalRepository.license)
+                && equalsNullable(this.license, nullableMinimalRepository.license)
                 && Objects.equals(this.forks, nullableMinimalRepository.forks)
                 && Objects.equals(this.openIssues, nullableMinimalRepository.openIssues)
                 && Objects.equals(this.watchers, nullableMinimalRepository.watchers)
                 && Objects.equals(this.allowForking, nullableMinimalRepository.allowForking)
                 && Objects.equals(this.webCommitSignoffRequired, nullableMinimalRepository.webCommitSignoffRequired)
-                && Objects.equals(this.securityAndAnalysis, nullableMinimalRepository.securityAndAnalysis)
+                && equalsNullable(this.securityAndAnalysis, nullableMinimalRepository.securityAndAnalysis)
                 && Objects.equals(this.customProperties, nullableMinimalRepository.customProperties);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -2424,11 +2425,11 @@ public class NullableMinimalRepository {
                 teamsUrl,
                 treesUrl,
                 cloneUrl,
-                mirrorUrl,
+                hashCodeNullable(mirrorUrl),
                 hooksUrl,
                 svnUrl,
-                homepage,
-                language,
+                hashCodeNullable(homepage),
+                hashCodeNullable(language),
                 forksCount,
                 stargazersCount,
                 watchersCount,
@@ -2448,9 +2449,9 @@ public class NullableMinimalRepository {
                 archived,
                 disabled,
                 visibility,
-                pushedAt,
-                createdAt,
-                updatedAt,
+                hashCodeNullable(pushedAt),
+                hashCodeNullable(createdAt),
+                hashCodeNullable(updatedAt),
                 permissions,
                 roleName,
                 tempCloneToken,
@@ -2458,14 +2459,21 @@ public class NullableMinimalRepository {
                 subscribersCount,
                 networkCount,
                 codeOfConduct,
-                license,
+                hashCodeNullable(license),
                 forks,
                 openIssues,
                 watchers,
                 allowForking,
                 webCommitSignoffRequired,
-                securityAndAnalysis,
+                hashCodeNullable(securityAndAnalysis),
                 customProperties);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -6,9 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * PullsUpdateRequest
@@ -16,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("pulls_update_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullsUpdateRequest {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
-    private String body;
+    private Optional<String> body = Optional.empty();
 
     /**
      * State of this Pull Request. Either `open` or `closed`.
@@ -59,14 +58,14 @@ public class PullsUpdateRequest {
         }
     }
 
-    private StateEnum state;
+    private Optional<StateEnum> state = Optional.empty();
 
-    private String base;
+    private Optional<String> base = Optional.empty();
 
-    private Boolean maintainerCanModify;
+    private Optional<Boolean> maintainerCanModify = Optional.empty();
 
     public PullsUpdateRequest title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -79,16 +78,16 @@ public class PullsUpdateRequest {
             description = "The title of the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 
     public PullsUpdateRequest body(String body) {
-        this.body = body;
+        this.body = Optional.ofNullable(body);
         return this;
     }
 
@@ -101,16 +100,16 @@ public class PullsUpdateRequest {
             description = "The contents of the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public Optional<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(Optional<String> body) {
         this.body = body;
     }
 
     public PullsUpdateRequest state(StateEnum state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -123,16 +122,16 @@ public class PullsUpdateRequest {
             description = "State of this Pull Request. Either `open` or `closed`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public StateEnum getState() {
+    public Optional<StateEnum> getState() {
         return state;
     }
 
-    public void setState(StateEnum state) {
+    public void setState(Optional<StateEnum> state) {
         this.state = state;
     }
 
     public PullsUpdateRequest base(String base) {
-        this.base = base;
+        this.base = Optional.ofNullable(base);
         return this;
     }
 
@@ -146,16 +145,16 @@ public class PullsUpdateRequest {
                     "The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("base")
-    public String getBase() {
+    public Optional<String> getBase() {
         return base;
     }
 
-    public void setBase(String base) {
+    public void setBase(Optional<String> base) {
         this.base = base;
     }
 
     public PullsUpdateRequest maintainerCanModify(Boolean maintainerCanModify) {
-        this.maintainerCanModify = maintainerCanModify;
+        this.maintainerCanModify = Optional.ofNullable(maintainerCanModify);
         return this;
     }
 
@@ -169,11 +168,11 @@ public class PullsUpdateRequest {
                     "Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("maintainer_can_modify")
-    public Boolean getMaintainerCanModify() {
+    public Optional<Boolean> getMaintainerCanModify() {
         return maintainerCanModify;
     }
 
-    public void setMaintainerCanModify(Boolean maintainerCanModify) {
+    public void setMaintainerCanModify(Optional<Boolean> maintainerCanModify) {
         this.maintainerCanModify = maintainerCanModify;
     }
 

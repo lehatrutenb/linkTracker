@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,22 +21,22 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("secret-scanning-scan")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningScan {
 
-    private String type;
+    private Optional<String> type = Optional.empty();
 
-    private String status;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private Optional<String> status = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private JsonNullable<OffsetDateTime> startedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public SecretScanningScan type(String type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -45,16 +46,16 @@ public class SecretScanningScan {
      */
     @Schema(name = "type", description = "The type of scan", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public String getType() {
+    public Optional<String> getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Optional<String> type) {
         this.type = type;
     }
 
     public SecretScanningScan status(String status) {
-        this.status = status;
+        this.status = Optional.ofNullable(status);
         return this;
     }
 
@@ -67,16 +68,16 @@ public class SecretScanningScan {
             description = "The state of the scan. Either \"completed\", \"running\", or \"pending\"",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("status")
-    public String getStatus() {
+    public Optional<String> getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Optional<String> status) {
         this.status = status;
     }
 
     public SecretScanningScan completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -90,16 +91,16 @@ public class SecretScanningScan {
             description = "The time that the scan was completed. Empty if the scan is running",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public SecretScanningScan startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = JsonNullable.of(startedAt);
         return this;
     }
 
@@ -113,11 +114,11 @@ public class SecretScanningScan {
             description = "The time that the scan was started. Empty if the scan is pending",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public JsonNullable<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(JsonNullable<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
@@ -132,13 +133,25 @@ public class SecretScanningScan {
         SecretScanningScan secretScanningScan = (SecretScanningScan) o;
         return Objects.equals(this.type, secretScanningScan.type)
                 && Objects.equals(this.status, secretScanningScan.status)
-                && Objects.equals(this.completedAt, secretScanningScan.completedAt)
-                && Objects.equals(this.startedAt, secretScanningScan.startedAt);
+                && equalsNullable(this.completedAt, secretScanningScan.completedAt)
+                && equalsNullable(this.startedAt, secretScanningScan.startedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, status, completedAt, startedAt);
+        return Objects.hash(type, status, hashCodeNullable(completedAt), hashCodeNullable(startedAt));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

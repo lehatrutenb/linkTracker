@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Protected Branch Required Status Check
@@ -18,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("protected-branch-required-status-check")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProtectedBranchRequiredStatusCheck {
 
-    private String url;
+    private Optional<String> url = Optional.empty();
 
-    private String enforcementLevel;
+    private Optional<String> enforcementLevel = Optional.empty();
 
     @Valid
     private List<String> contexts = new ArrayList<>();
@@ -32,9 +32,9 @@ public class ProtectedBranchRequiredStatusCheck {
     @Valid
     private List<@Valid ProtectedBranchRequiredStatusCheckChecksInner> checks = new ArrayList<>();
 
-    private String contextsUrl;
+    private Optional<String> contextsUrl = Optional.empty();
 
-    private Boolean strict;
+    private Optional<Boolean> strict = Optional.empty();
 
     public ProtectedBranchRequiredStatusCheck() {
         super();
@@ -50,7 +50,7 @@ public class ProtectedBranchRequiredStatusCheck {
     }
 
     public ProtectedBranchRequiredStatusCheck url(String url) {
-        this.url = url;
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -60,16 +60,16 @@ public class ProtectedBranchRequiredStatusCheck {
      */
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public String getUrl() {
+    public Optional<String> getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(Optional<String> url) {
         this.url = url;
     }
 
     public ProtectedBranchRequiredStatusCheck enforcementLevel(String enforcementLevel) {
-        this.enforcementLevel = enforcementLevel;
+        this.enforcementLevel = Optional.ofNullable(enforcementLevel);
         return this;
     }
 
@@ -79,11 +79,11 @@ public class ProtectedBranchRequiredStatusCheck {
      */
     @Schema(name = "enforcement_level", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enforcement_level")
-    public String getEnforcementLevel() {
+    public Optional<String> getEnforcementLevel() {
         return enforcementLevel;
     }
 
-    public void setEnforcementLevel(String enforcementLevel) {
+    public void setEnforcementLevel(Optional<String> enforcementLevel) {
         this.enforcementLevel = enforcementLevel;
     }
 
@@ -146,7 +146,7 @@ public class ProtectedBranchRequiredStatusCheck {
     }
 
     public ProtectedBranchRequiredStatusCheck contextsUrl(String contextsUrl) {
-        this.contextsUrl = contextsUrl;
+        this.contextsUrl = Optional.ofNullable(contextsUrl);
         return this;
     }
 
@@ -156,16 +156,16 @@ public class ProtectedBranchRequiredStatusCheck {
      */
     @Schema(name = "contexts_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("contexts_url")
-    public String getContextsUrl() {
+    public Optional<String> getContextsUrl() {
         return contextsUrl;
     }
 
-    public void setContextsUrl(String contextsUrl) {
+    public void setContextsUrl(Optional<String> contextsUrl) {
         this.contextsUrl = contextsUrl;
     }
 
     public ProtectedBranchRequiredStatusCheck strict(Boolean strict) {
-        this.strict = strict;
+        this.strict = Optional.ofNullable(strict);
         return this;
     }
 
@@ -175,11 +175,11 @@ public class ProtectedBranchRequiredStatusCheck {
      */
     @Schema(name = "strict", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("strict")
-    public Boolean getStrict() {
+    public Optional<Boolean> getStrict() {
         return strict;
     }
 
-    public void setStrict(Boolean strict) {
+    public void setStrict(Optional<Boolean> strict) {
         this.strict = strict;
     }
 

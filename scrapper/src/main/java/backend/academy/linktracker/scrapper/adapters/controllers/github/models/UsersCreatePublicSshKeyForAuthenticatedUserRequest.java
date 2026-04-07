@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * UsersCreatePublicSshKeyForAuthenticatedUserRequest
@@ -14,11 +15,11 @@ import java.util.Objects;
 @JsonTypeName("users_create_public_ssh_key_for_authenticated_user_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class UsersCreatePublicSshKeyForAuthenticatedUserRequest {
 
-    private String title;
+    private Optional<String> title = Optional.empty();
 
     private String key;
 
@@ -34,7 +35,7 @@ public class UsersCreatePublicSshKeyForAuthenticatedUserRequest {
     }
 
     public UsersCreatePublicSshKeyForAuthenticatedUserRequest title(String title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -48,11 +49,11 @@ public class UsersCreatePublicSshKeyForAuthenticatedUserRequest {
             description = "A descriptive name for the new key.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public String getTitle() {
+    public Optional<String> getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(Optional<String> title) {
         this.title = title;
     }
 

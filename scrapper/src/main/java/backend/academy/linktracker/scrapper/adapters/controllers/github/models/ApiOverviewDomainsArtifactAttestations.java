@@ -5,11 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ApiOverviewDomainsArtifactAttestations
@@ -17,17 +16,17 @@ import java.util.Objects;
 @JsonTypeName("api_overview_domains_artifact_attestations")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiOverviewDomainsArtifactAttestations {
 
-    private String trustDomain;
+    private Optional<String> trustDomain = Optional.empty();
 
     @Valid
     private List<String> services = new ArrayList<>();
 
     public ApiOverviewDomainsArtifactAttestations trustDomain(String trustDomain) {
-        this.trustDomain = trustDomain;
+        this.trustDomain = Optional.ofNullable(trustDomain);
         return this;
     }
 
@@ -37,11 +36,11 @@ public class ApiOverviewDomainsArtifactAttestations {
      */
     @Schema(name = "trust_domain", example = "[\"example\"]", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("trust_domain")
-    public String getTrustDomain() {
+    public Optional<String> getTrustDomain() {
         return trustDomain;
     }
 
-    public void setTrustDomain(String trustDomain) {
+    public void setTrustDomain(Optional<String> trustDomain) {
         this.trustDomain = trustDomain;
     }
 

@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -22,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("authentication-token")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AuthenticationToken {
 
@@ -31,12 +29,12 @@ public class AuthenticationToken {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime expiresAt;
 
-    private Object permissions;
+    private Optional<Object> permissions = Optional.empty();
 
     @Valid
     private List<@Valid Repository> repositories = new ArrayList<>();
 
-    private String singleFile = null;
+    private JsonNullable<String> singleFile = JsonNullable.<String>undefined();
 
     /**
      * Describe whether all repositories have been selected or there's a selection involved
@@ -73,7 +71,7 @@ public class AuthenticationToken {
         }
     }
 
-    private RepositorySelectionEnum repositorySelection;
+    private Optional<RepositorySelectionEnum> repositorySelection = Optional.empty();
 
     public AuthenticationToken() {
         super();
@@ -137,7 +135,7 @@ public class AuthenticationToken {
     }
 
     public AuthenticationToken permissions(Object permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -150,11 +148,11 @@ public class AuthenticationToken {
             example = "{\"issues\":\"read\",\"deployments\":\"write\"}",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public Object getPermissions() {
+    public Optional<Object> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(Object permissions) {
+    public void setPermissions(Optional<Object> permissions) {
         this.permissions = permissions;
     }
 
@@ -190,7 +188,7 @@ public class AuthenticationToken {
     }
 
     public AuthenticationToken singleFile(String singleFile) {
-        this.singleFile = singleFile;
+        this.singleFile = JsonNullable.of(singleFile);
         return this;
     }
 
@@ -200,16 +198,16 @@ public class AuthenticationToken {
      */
     @Schema(name = "single_file", example = "config.yaml", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("single_file")
-    public String getSingleFile() {
+    public JsonNullable<String> getSingleFile() {
         return singleFile;
     }
 
-    public void setSingleFile(String singleFile) {
+    public void setSingleFile(JsonNullable<String> singleFile) {
         this.singleFile = singleFile;
     }
 
     public AuthenticationToken repositorySelection(RepositorySelectionEnum repositorySelection) {
-        this.repositorySelection = repositorySelection;
+        this.repositorySelection = Optional.ofNullable(repositorySelection);
         return this;
     }
 
@@ -222,11 +220,11 @@ public class AuthenticationToken {
             description = "Describe whether all repositories have been selected or there's a selection involved",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository_selection")
-    public RepositorySelectionEnum getRepositorySelection() {
+    public Optional<RepositorySelectionEnum> getRepositorySelection() {
         return repositorySelection;
     }
 
-    public void setRepositorySelection(RepositorySelectionEnum repositorySelection) {
+    public void setRepositorySelection(Optional<RepositorySelectionEnum> repositorySelection) {
         this.repositorySelection = repositorySelection;
     }
 
@@ -243,13 +241,26 @@ public class AuthenticationToken {
                 && Objects.equals(this.expiresAt, authenticationToken.expiresAt)
                 && Objects.equals(this.permissions, authenticationToken.permissions)
                 && Objects.equals(this.repositories, authenticationToken.repositories)
-                && Objects.equals(this.singleFile, authenticationToken.singleFile)
+                && equalsNullable(this.singleFile, authenticationToken.singleFile)
                 && Objects.equals(this.repositorySelection, authenticationToken.repositorySelection);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(token, expiresAt, permissions, repositories, singleFile, repositorySelection);
+        return Objects.hash(
+                token, expiresAt, permissions, repositories, hashCodeNullable(singleFile), repositorySelection);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

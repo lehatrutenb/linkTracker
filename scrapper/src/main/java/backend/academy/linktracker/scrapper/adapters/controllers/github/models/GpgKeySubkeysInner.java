@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * GpgKeySubkeysInner
@@ -17,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("gpg_key_subkeys_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GpgKeySubkeysInner {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private Long primaryKeyId;
+    private Optional<Long> primaryKeyId = Optional.empty();
 
-    private String keyId;
+    private Optional<String> keyId = Optional.empty();
 
-    private String publicKey;
+    private Optional<String> publicKey = Optional.empty();
 
     @Valid
     private List<@Valid GpgKeyEmailsInner> emails = new ArrayList<>();
@@ -35,24 +32,24 @@ public class GpgKeySubkeysInner {
     @Valid
     private List<Object> subkeys = new ArrayList<>();
 
-    private Boolean canSign;
+    private Optional<Boolean> canSign = Optional.empty();
 
-    private Boolean canEncryptComms;
+    private Optional<Boolean> canEncryptComms = Optional.empty();
 
-    private Boolean canEncryptStorage;
+    private Optional<Boolean> canEncryptStorage = Optional.empty();
 
-    private Boolean canCertify;
+    private Optional<Boolean> canCertify = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String expiresAt = null;
+    private JsonNullable<String> expiresAt = JsonNullable.<String>undefined();
 
-    private String rawKey = null;
+    private JsonNullable<String> rawKey = JsonNullable.<String>undefined();
 
-    private Boolean revoked;
+    private Optional<Boolean> revoked = Optional.empty();
 
     public GpgKeySubkeysInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -62,16 +59,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public GpgKeySubkeysInner primaryKeyId(Long primaryKeyId) {
-        this.primaryKeyId = primaryKeyId;
+        this.primaryKeyId = Optional.ofNullable(primaryKeyId);
         return this;
     }
 
@@ -81,16 +78,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "primary_key_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("primary_key_id")
-    public Long getPrimaryKeyId() {
+    public Optional<Long> getPrimaryKeyId() {
         return primaryKeyId;
     }
 
-    public void setPrimaryKeyId(Long primaryKeyId) {
+    public void setPrimaryKeyId(Optional<Long> primaryKeyId) {
         this.primaryKeyId = primaryKeyId;
     }
 
     public GpgKeySubkeysInner keyId(String keyId) {
-        this.keyId = keyId;
+        this.keyId = Optional.ofNullable(keyId);
         return this;
     }
 
@@ -100,16 +97,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "key_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("key_id")
-    public String getKeyId() {
+    public Optional<String> getKeyId() {
         return keyId;
     }
 
-    public void setKeyId(String keyId) {
+    public void setKeyId(Optional<String> keyId) {
         this.keyId = keyId;
     }
 
     public GpgKeySubkeysInner publicKey(String publicKey) {
-        this.publicKey = publicKey;
+        this.publicKey = Optional.ofNullable(publicKey);
         return this;
     }
 
@@ -119,11 +116,11 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "public_key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("public_key")
-    public String getPublicKey() {
+    public Optional<String> getPublicKey() {
         return publicKey;
     }
 
-    public void setPublicKey(String publicKey) {
+    public void setPublicKey(Optional<String> publicKey) {
         this.publicKey = publicKey;
     }
 
@@ -183,7 +180,7 @@ public class GpgKeySubkeysInner {
     }
 
     public GpgKeySubkeysInner canSign(Boolean canSign) {
-        this.canSign = canSign;
+        this.canSign = Optional.ofNullable(canSign);
         return this;
     }
 
@@ -193,16 +190,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "can_sign", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_sign")
-    public Boolean getCanSign() {
+    public Optional<Boolean> getCanSign() {
         return canSign;
     }
 
-    public void setCanSign(Boolean canSign) {
+    public void setCanSign(Optional<Boolean> canSign) {
         this.canSign = canSign;
     }
 
     public GpgKeySubkeysInner canEncryptComms(Boolean canEncryptComms) {
-        this.canEncryptComms = canEncryptComms;
+        this.canEncryptComms = Optional.ofNullable(canEncryptComms);
         return this;
     }
 
@@ -212,16 +209,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "can_encrypt_comms", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_encrypt_comms")
-    public Boolean getCanEncryptComms() {
+    public Optional<Boolean> getCanEncryptComms() {
         return canEncryptComms;
     }
 
-    public void setCanEncryptComms(Boolean canEncryptComms) {
+    public void setCanEncryptComms(Optional<Boolean> canEncryptComms) {
         this.canEncryptComms = canEncryptComms;
     }
 
     public GpgKeySubkeysInner canEncryptStorage(Boolean canEncryptStorage) {
-        this.canEncryptStorage = canEncryptStorage;
+        this.canEncryptStorage = Optional.ofNullable(canEncryptStorage);
         return this;
     }
 
@@ -231,16 +228,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "can_encrypt_storage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_encrypt_storage")
-    public Boolean getCanEncryptStorage() {
+    public Optional<Boolean> getCanEncryptStorage() {
         return canEncryptStorage;
     }
 
-    public void setCanEncryptStorage(Boolean canEncryptStorage) {
+    public void setCanEncryptStorage(Optional<Boolean> canEncryptStorage) {
         this.canEncryptStorage = canEncryptStorage;
     }
 
     public GpgKeySubkeysInner canCertify(Boolean canCertify) {
-        this.canCertify = canCertify;
+        this.canCertify = Optional.ofNullable(canCertify);
         return this;
     }
 
@@ -250,16 +247,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "can_certify", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_certify")
-    public Boolean getCanCertify() {
+    public Optional<Boolean> getCanCertify() {
         return canCertify;
     }
 
-    public void setCanCertify(Boolean canCertify) {
+    public void setCanCertify(Optional<Boolean> canCertify) {
         this.canCertify = canCertify;
     }
 
     public GpgKeySubkeysInner createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -269,16 +266,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public GpgKeySubkeysInner expiresAt(String expiresAt) {
-        this.expiresAt = expiresAt;
+        this.expiresAt = JsonNullable.of(expiresAt);
         return this;
     }
 
@@ -288,16 +285,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "expires_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("expires_at")
-    public String getExpiresAt() {
+    public JsonNullable<String> getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(String expiresAt) {
+    public void setExpiresAt(JsonNullable<String> expiresAt) {
         this.expiresAt = expiresAt;
     }
 
     public GpgKeySubkeysInner rawKey(String rawKey) {
-        this.rawKey = rawKey;
+        this.rawKey = JsonNullable.of(rawKey);
         return this;
     }
 
@@ -307,16 +304,16 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "raw_key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("raw_key")
-    public String getRawKey() {
+    public JsonNullable<String> getRawKey() {
         return rawKey;
     }
 
-    public void setRawKey(String rawKey) {
+    public void setRawKey(JsonNullable<String> rawKey) {
         this.rawKey = rawKey;
     }
 
     public GpgKeySubkeysInner revoked(Boolean revoked) {
-        this.revoked = revoked;
+        this.revoked = Optional.ofNullable(revoked);
         return this;
     }
 
@@ -326,11 +323,11 @@ public class GpgKeySubkeysInner {
      */
     @Schema(name = "revoked", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("revoked")
-    public Boolean getRevoked() {
+    public Optional<Boolean> getRevoked() {
         return revoked;
     }
 
-    public void setRevoked(Boolean revoked) {
+    public void setRevoked(Optional<Boolean> revoked) {
         this.revoked = revoked;
     }
 
@@ -354,9 +351,14 @@ public class GpgKeySubkeysInner {
                 && Objects.equals(this.canEncryptStorage, gpgKeySubkeysInner.canEncryptStorage)
                 && Objects.equals(this.canCertify, gpgKeySubkeysInner.canCertify)
                 && Objects.equals(this.createdAt, gpgKeySubkeysInner.createdAt)
-                && Objects.equals(this.expiresAt, gpgKeySubkeysInner.expiresAt)
-                && Objects.equals(this.rawKey, gpgKeySubkeysInner.rawKey)
+                && equalsNullable(this.expiresAt, gpgKeySubkeysInner.expiresAt)
+                && equalsNullable(this.rawKey, gpgKeySubkeysInner.rawKey)
                 && Objects.equals(this.revoked, gpgKeySubkeysInner.revoked);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -373,9 +375,16 @@ public class GpgKeySubkeysInner {
                 canEncryptStorage,
                 canCertify,
                 createdAt,
-                expiresAt,
-                rawKey,
+                hashCodeNullable(expiresAt),
+                hashCodeNullable(rawKey),
                 revoked);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

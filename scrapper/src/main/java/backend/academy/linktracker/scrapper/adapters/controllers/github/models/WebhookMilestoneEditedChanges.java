@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The changes to the milestone if the action was &#x60;edited&#x60;.
@@ -18,18 +17,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_milestone_edited_changes")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookMilestoneEditedChanges {
 
-    private WebhookLabelEditedChangesDescription description;
+    private Optional<WebhookLabelEditedChangesDescription> description = Optional.empty();
 
-    private WebhookMilestoneEditedChangesDueOn dueOn;
+    private Optional<WebhookMilestoneEditedChangesDueOn> dueOn = Optional.empty();
 
-    private WebhookMilestoneEditedChangesTitle title;
+    private Optional<WebhookMilestoneEditedChangesTitle> title = Optional.empty();
 
     public WebhookMilestoneEditedChanges description(WebhookLabelEditedChangesDescription description) {
-        this.description = description;
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -40,16 +39,16 @@ public class WebhookMilestoneEditedChanges {
     @Valid
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public WebhookLabelEditedChangesDescription getDescription() {
+    public Optional<WebhookLabelEditedChangesDescription> getDescription() {
         return description;
     }
 
-    public void setDescription(WebhookLabelEditedChangesDescription description) {
+    public void setDescription(Optional<WebhookLabelEditedChangesDescription> description) {
         this.description = description;
     }
 
     public WebhookMilestoneEditedChanges dueOn(WebhookMilestoneEditedChangesDueOn dueOn) {
-        this.dueOn = dueOn;
+        this.dueOn = Optional.ofNullable(dueOn);
         return this;
     }
 
@@ -60,16 +59,16 @@ public class WebhookMilestoneEditedChanges {
     @Valid
     @Schema(name = "due_on", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("due_on")
-    public WebhookMilestoneEditedChangesDueOn getDueOn() {
+    public Optional<WebhookMilestoneEditedChangesDueOn> getDueOn() {
         return dueOn;
     }
 
-    public void setDueOn(WebhookMilestoneEditedChangesDueOn dueOn) {
+    public void setDueOn(Optional<WebhookMilestoneEditedChangesDueOn> dueOn) {
         this.dueOn = dueOn;
     }
 
     public WebhookMilestoneEditedChanges title(WebhookMilestoneEditedChangesTitle title) {
-        this.title = title;
+        this.title = Optional.ofNullable(title);
         return this;
     }
 
@@ -80,11 +79,11 @@ public class WebhookMilestoneEditedChanges {
     @Valid
     @Schema(name = "title", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title")
-    public WebhookMilestoneEditedChangesTitle getTitle() {
+    public Optional<WebhookMilestoneEditedChangesTitle> getTitle() {
         return title;
     }
 
-    public void setTitle(WebhookMilestoneEditedChangesTitle title) {
+    public void setTitle(Optional<WebhookMilestoneEditedChangesTitle> title) {
         this.title = title;
     }
 

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPackageUpdatedPackagePackageVersionRelease
@@ -16,11 +16,11 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_updated_package_package_version_release")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackageUpdatedPackagePackageVersionRelease {
 
-    private User author = null;
+    private JsonNullable<User> author = JsonNullable.<User>undefined();
 
     private String createdAt;
 
@@ -61,7 +61,7 @@ public class WebhookPackageUpdatedPackagePackageVersionRelease {
             String tagName,
             String targetCommitish,
             URI url) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         this.createdAt = createdAt;
         this.draft = draft;
         this.htmlUrl = htmlUrl;
@@ -75,7 +75,7 @@ public class WebhookPackageUpdatedPackagePackageVersionRelease {
     }
 
     public WebhookPackageUpdatedPackagePackageVersionRelease author(User author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -87,11 +87,11 @@ public class WebhookPackageUpdatedPackagePackageVersionRelease {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public User getAuthor() {
+    public JsonNullable<User> getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(JsonNullable<User> author) {
         this.author = author;
     }
 

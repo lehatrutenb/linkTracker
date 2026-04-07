@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * License Simple
@@ -17,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("license-simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LicenseSimple {
 
@@ -25,13 +26,13 @@ public class LicenseSimple {
 
     private String name;
 
-    private URI url = null;
+    private JsonNullable<URI> url = JsonNullable.<URI>undefined();
 
-    private String spdxId = null;
+    private JsonNullable<String> spdxId = JsonNullable.<String>undefined();
 
     private String nodeId;
 
-    private URI htmlUrl;
+    private Optional<URI> htmlUrl = Optional.empty();
 
     public LicenseSimple() {
         super();
@@ -43,8 +44,8 @@ public class LicenseSimple {
     public LicenseSimple(String key, String name, URI url, String spdxId, String nodeId) {
         this.key = key;
         this.name = name;
-        this.url = url;
-        this.spdxId = spdxId;
+        this.url = JsonNullable.of(url);
+        this.spdxId = JsonNullable.of(spdxId);
         this.nodeId = nodeId;
     }
 
@@ -89,7 +90,7 @@ public class LicenseSimple {
     }
 
     public LicenseSimple url(URI url) {
-        this.url = url;
+        this.url = JsonNullable.of(url);
         return this;
     }
 
@@ -101,16 +102,16 @@ public class LicenseSimple {
     @Valid
     @Schema(name = "url", example = "https://api.github.com/licenses/mit", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("url")
-    public URI getUrl() {
+    public JsonNullable<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(URI url) {
+    public void setUrl(JsonNullable<URI> url) {
         this.url = url;
     }
 
     public LicenseSimple spdxId(String spdxId) {
-        this.spdxId = spdxId;
+        this.spdxId = JsonNullable.of(spdxId);
         return this;
     }
 
@@ -121,11 +122,11 @@ public class LicenseSimple {
     @NotNull
     @Schema(name = "spdx_id", example = "MIT", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("spdx_id")
-    public String getSpdxId() {
+    public JsonNullable<String> getSpdxId() {
         return spdxId;
     }
 
-    public void setSpdxId(String spdxId) {
+    public void setSpdxId(JsonNullable<String> spdxId) {
         this.spdxId = spdxId;
     }
 
@@ -150,7 +151,7 @@ public class LicenseSimple {
     }
 
     public LicenseSimple htmlUrl(URI htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = Optional.ofNullable(htmlUrl);
         return this;
     }
 
@@ -161,11 +162,11 @@ public class LicenseSimple {
     @Valid
     @Schema(name = "html_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public URI getHtmlUrl() {
+    public Optional<URI> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(URI htmlUrl) {
+    public void setHtmlUrl(Optional<URI> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 

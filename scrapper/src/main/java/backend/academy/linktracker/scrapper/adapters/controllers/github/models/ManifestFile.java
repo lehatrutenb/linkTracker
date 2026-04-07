@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ManifestFile
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("manifest_file")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ManifestFile {
 
-    private String sourceLocation;
+    private Optional<String> sourceLocation = Optional.empty();
 
     public ManifestFile sourceLocation(String sourceLocation) {
-        this.sourceLocation = sourceLocation;
+        this.sourceLocation = Optional.ofNullable(sourceLocation);
         return this;
     }
 
@@ -35,11 +34,11 @@ public class ManifestFile {
             description = "The path of the manifest file relative to the root of the Git repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source_location")
-    public String getSourceLocation() {
+    public Optional<String> getSourceLocation() {
         return sourceLocation;
     }
 
-    public void setSourceLocation(String sourceLocation) {
+    public void setSourceLocation(Optional<String> sourceLocation) {
         this.sourceLocation = sourceLocation;
     }
 

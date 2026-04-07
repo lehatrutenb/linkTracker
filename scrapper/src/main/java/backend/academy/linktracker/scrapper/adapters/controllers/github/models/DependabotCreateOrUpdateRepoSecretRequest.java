@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.Pattern;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * DependabotCreateOrUpdateRepoSecretRequest
@@ -14,16 +14,20 @@ import java.util.Objects;
 @JsonTypeName("dependabot_create_or_update_repo_secret_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class DependabotCreateOrUpdateRepoSecretRequest {
 
-    private String encryptedValue;
+    private Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            encryptedValue = Optional.empty();
 
-    private String keyId;
+    private Optional<String> keyId = Optional.empty();
 
     public DependabotCreateOrUpdateRepoSecretRequest encryptedValue(String encryptedValue) {
-        this.encryptedValue = encryptedValue;
+        this.encryptedValue = Optional.ofNullable(encryptedValue);
         return this;
     }
 
@@ -31,23 +35,26 @@ public class DependabotCreateOrUpdateRepoSecretRequest {
      * Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.
      * @return encryptedValue
      */
-    @Pattern(regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
     @Schema(
             name = "encrypted_value",
             description =
                     "Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("encrypted_value")
-    public String getEncryptedValue() {
+    public Optional<
+                    @Pattern(
+                            regexp = "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$")
+                    String>
+            getEncryptedValue() {
         return encryptedValue;
     }
 
-    public void setEncryptedValue(String encryptedValue) {
+    public void setEncryptedValue(Optional<String> encryptedValue) {
         this.encryptedValue = encryptedValue;
     }
 
     public DependabotCreateOrUpdateRepoSecretRequest keyId(String keyId) {
-        this.keyId = keyId;
+        this.keyId = Optional.ofNullable(keyId);
         return this;
     }
 
@@ -60,11 +67,11 @@ public class DependabotCreateOrUpdateRepoSecretRequest {
             description = "ID of the key you used to encrypt the secret.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("key_id")
-    public String getKeyId() {
+    public Optional<String> getKeyId() {
         return keyId;
     }
 
-    public void setKeyId(String keyId) {
+    public void setKeyId(Optional<String> keyId) {
         this.keyId = keyId;
     }
 

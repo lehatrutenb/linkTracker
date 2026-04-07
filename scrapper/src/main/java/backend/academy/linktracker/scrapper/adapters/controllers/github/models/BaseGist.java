@@ -5,13 +5,14 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("base-gist")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class BaseGist {
 
@@ -52,17 +53,17 @@ public class BaseGist {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private Long comments;
 
-    private Boolean commentsEnabled;
+    private Optional<Boolean> commentsEnabled = Optional.empty();
 
     private URI commentsUrl;
 
-    private SimpleUser owner;
+    private Optional<SimpleUser> owner = Optional.empty();
 
-    private Boolean truncated;
+    private Optional<Boolean> truncated = Optional.empty();
 
     public BaseGist() {
         super();
@@ -99,7 +100,7 @@ public class BaseGist {
         this._public = _public;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.comments = comments;
         this.commentsUrl = commentsUrl;
     }
@@ -362,7 +363,7 @@ public class BaseGist {
     }
 
     public BaseGist description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -373,11 +374,11 @@ public class BaseGist {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -402,7 +403,7 @@ public class BaseGist {
     }
 
     public BaseGist commentsEnabled(Boolean commentsEnabled) {
-        this.commentsEnabled = commentsEnabled;
+        this.commentsEnabled = Optional.ofNullable(commentsEnabled);
         return this;
     }
 
@@ -412,11 +413,11 @@ public class BaseGist {
      */
     @Schema(name = "comments_enabled", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("comments_enabled")
-    public Boolean getCommentsEnabled() {
+    public Optional<Boolean> getCommentsEnabled() {
         return commentsEnabled;
     }
 
-    public void setCommentsEnabled(Boolean commentsEnabled) {
+    public void setCommentsEnabled(Optional<Boolean> commentsEnabled) {
         this.commentsEnabled = commentsEnabled;
     }
 
@@ -442,7 +443,7 @@ public class BaseGist {
     }
 
     public BaseGist owner(SimpleUser owner) {
-        this.owner = owner;
+        this.owner = Optional.ofNullable(owner);
         return this;
     }
 
@@ -453,16 +454,16 @@ public class BaseGist {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public SimpleUser getOwner() {
+    public Optional<SimpleUser> getOwner() {
         return owner;
     }
 
-    public void setOwner(SimpleUser owner) {
+    public void setOwner(Optional<SimpleUser> owner) {
         this.owner = owner;
     }
 
     public BaseGist truncated(Boolean truncated) {
-        this.truncated = truncated;
+        this.truncated = Optional.ofNullable(truncated);
         return this;
     }
 
@@ -472,11 +473,11 @@ public class BaseGist {
      */
     @Schema(name = "truncated", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("truncated")
-    public Boolean getTruncated() {
+    public Optional<Boolean> getTruncated() {
         return truncated;
     }
 
-    public void setTruncated(Boolean truncated) {
+    public void setTruncated(Optional<Boolean> truncated) {
         this.truncated = truncated;
     }
 

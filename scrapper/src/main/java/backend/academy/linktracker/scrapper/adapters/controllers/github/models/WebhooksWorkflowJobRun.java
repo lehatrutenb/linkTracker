@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhooksWorkflowJobRun
@@ -14,11 +14,11 @@ import java.util.Objects;
 @JsonTypeName("webhooks_workflow_job_run")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksWorkflowJobRun {
 
-    private Object conclusion = null;
+    private JsonNullable<Object> conclusion = JsonNullable.<Object>undefined();
 
     private String createdAt;
 
@@ -28,7 +28,7 @@ public class WebhooksWorkflowJobRun {
 
     private Long id;
 
-    private Object name = null;
+    private JsonNullable<Object> name = JsonNullable.<Object>undefined();
 
     private String status;
 
@@ -50,18 +50,18 @@ public class WebhooksWorkflowJobRun {
             Object name,
             String status,
             String updatedAt) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         this.createdAt = createdAt;
         this.environment = environment;
         this.htmlUrl = htmlUrl;
         this.id = id;
-        this.name = name;
+        this.name = JsonNullable.of(name);
         this.status = status;
         this.updatedAt = updatedAt;
     }
 
     public WebhooksWorkflowJobRun conclusion(Object conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = JsonNullable.of(conclusion);
         return this;
     }
 
@@ -72,11 +72,11 @@ public class WebhooksWorkflowJobRun {
     @NotNull
     @Schema(name = "conclusion", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("conclusion")
-    public Object getConclusion() {
+    public JsonNullable<Object> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(Object conclusion) {
+    public void setConclusion(JsonNullable<Object> conclusion) {
         this.conclusion = conclusion;
     }
 
@@ -161,7 +161,7 @@ public class WebhooksWorkflowJobRun {
     }
 
     public WebhooksWorkflowJobRun name(Object name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -172,11 +172,11 @@ public class WebhooksWorkflowJobRun {
     @NotNull
     @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
-    public Object getName() {
+    public JsonNullable<Object> getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(JsonNullable<Object> name) {
         this.name = name;
     }
 

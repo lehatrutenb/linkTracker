@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsSetDefaultWorkflowPermissions
@@ -15,17 +14,17 @@ import java.util.Objects;
 @JsonTypeName("actions-set-default-workflow-permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsSetDefaultWorkflowPermissions {
 
-    private ActionsDefaultWorkflowPermissions defaultWorkflowPermissions;
+    private Optional<ActionsDefaultWorkflowPermissions> defaultWorkflowPermissions = Optional.empty();
 
-    private Boolean canApprovePullRequestReviews;
+    private Optional<Boolean> canApprovePullRequestReviews = Optional.empty();
 
     public ActionsSetDefaultWorkflowPermissions defaultWorkflowPermissions(
             ActionsDefaultWorkflowPermissions defaultWorkflowPermissions) {
-        this.defaultWorkflowPermissions = defaultWorkflowPermissions;
+        this.defaultWorkflowPermissions = Optional.ofNullable(defaultWorkflowPermissions);
         return this;
     }
 
@@ -36,16 +35,16 @@ public class ActionsSetDefaultWorkflowPermissions {
     @Valid
     @Schema(name = "default_workflow_permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_workflow_permissions")
-    public ActionsDefaultWorkflowPermissions getDefaultWorkflowPermissions() {
+    public Optional<ActionsDefaultWorkflowPermissions> getDefaultWorkflowPermissions() {
         return defaultWorkflowPermissions;
     }
 
-    public void setDefaultWorkflowPermissions(ActionsDefaultWorkflowPermissions defaultWorkflowPermissions) {
+    public void setDefaultWorkflowPermissions(Optional<ActionsDefaultWorkflowPermissions> defaultWorkflowPermissions) {
         this.defaultWorkflowPermissions = defaultWorkflowPermissions;
     }
 
     public ActionsSetDefaultWorkflowPermissions canApprovePullRequestReviews(Boolean canApprovePullRequestReviews) {
-        this.canApprovePullRequestReviews = canApprovePullRequestReviews;
+        this.canApprovePullRequestReviews = Optional.ofNullable(canApprovePullRequestReviews);
         return this;
     }
 
@@ -58,11 +57,11 @@ public class ActionsSetDefaultWorkflowPermissions {
             description = "Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("can_approve_pull_request_reviews")
-    public Boolean getCanApprovePullRequestReviews() {
+    public Optional<Boolean> getCanApprovePullRequestReviews() {
         return canApprovePullRequestReviews;
     }
 
-    public void setCanApprovePullRequestReviews(Boolean canApprovePullRequestReviews) {
+    public void setCanApprovePullRequestReviews(Optional<Boolean> canApprovePullRequestReviews) {
         this.canApprovePullRequestReviews = canApprovePullRequestReviews;
     }
 

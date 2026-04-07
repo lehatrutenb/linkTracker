@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SecretScanningUpdateOrgPatternConfigs200Response
@@ -14,14 +13,14 @@ import java.util.Objects;
 @JsonTypeName("secret_scanning_update_org_pattern_configs_200_response")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningUpdateOrgPatternConfigs200Response {
 
-    private String patternConfigVersion;
+    private Optional<String> patternConfigVersion = Optional.empty();
 
     public SecretScanningUpdateOrgPatternConfigs200Response patternConfigVersion(String patternConfigVersion) {
-        this.patternConfigVersion = patternConfigVersion;
+        this.patternConfigVersion = Optional.ofNullable(patternConfigVersion);
         return this;
     }
 
@@ -34,11 +33,11 @@ public class SecretScanningUpdateOrgPatternConfigs200Response {
             description = "The updated pattern configuration version.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("pattern_config_version")
-    public String getPatternConfigVersion() {
+    public Optional<String> getPatternConfigVersion() {
         return patternConfigVersion;
     }
 
-    public void setPatternConfigVersion(String patternConfigVersion) {
+    public void setPatternConfigVersion(Optional<String> patternConfigVersion) {
         this.patternConfigVersion = patternConfigVersion;
     }
 

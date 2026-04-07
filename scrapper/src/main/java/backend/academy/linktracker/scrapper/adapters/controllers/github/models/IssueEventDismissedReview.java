@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * IssueEventDismissedReview
@@ -14,7 +15,7 @@ import java.util.Objects;
 @JsonTypeName("issue-event-dismissed-review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueEventDismissedReview {
 
@@ -22,9 +23,9 @@ public class IssueEventDismissedReview {
 
     private Long reviewId;
 
-    private String dismissalMessage = null;
+    private JsonNullable<String> dismissalMessage = JsonNullable.<String>undefined();
 
-    private String dismissalCommitId = null;
+    private JsonNullable<String> dismissalCommitId = JsonNullable.<String>undefined();
 
     public IssueEventDismissedReview() {
         super();
@@ -36,7 +37,7 @@ public class IssueEventDismissedReview {
     public IssueEventDismissedReview(String state, Long reviewId, String dismissalMessage) {
         this.state = state;
         this.reviewId = reviewId;
-        this.dismissalMessage = dismissalMessage;
+        this.dismissalMessage = JsonNullable.of(dismissalMessage);
     }
 
     public IssueEventDismissedReview state(String state) {
@@ -80,7 +81,7 @@ public class IssueEventDismissedReview {
     }
 
     public IssueEventDismissedReview dismissalMessage(String dismissalMessage) {
-        this.dismissalMessage = dismissalMessage;
+        this.dismissalMessage = JsonNullable.of(dismissalMessage);
         return this;
     }
 
@@ -91,16 +92,16 @@ public class IssueEventDismissedReview {
     @NotNull
     @Schema(name = "dismissal_message", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("dismissal_message")
-    public String getDismissalMessage() {
+    public JsonNullable<String> getDismissalMessage() {
         return dismissalMessage;
     }
 
-    public void setDismissalMessage(String dismissalMessage) {
+    public void setDismissalMessage(JsonNullable<String> dismissalMessage) {
         this.dismissalMessage = dismissalMessage;
     }
 
     public IssueEventDismissedReview dismissalCommitId(String dismissalCommitId) {
-        this.dismissalCommitId = dismissalCommitId;
+        this.dismissalCommitId = JsonNullable.of(dismissalCommitId);
         return this;
     }
 
@@ -110,11 +111,11 @@ public class IssueEventDismissedReview {
      */
     @Schema(name = "dismissal_commit_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("dismissal_commit_id")
-    public String getDismissalCommitId() {
+    public JsonNullable<String> getDismissalCommitId() {
         return dismissalCommitId;
     }
 
-    public void setDismissalCommitId(String dismissalCommitId) {
+    public void setDismissalCommitId(JsonNullable<String> dismissalCommitId) {
         this.dismissalCommitId = dismissalCommitId;
     }
 
@@ -130,12 +131,24 @@ public class IssueEventDismissedReview {
         return Objects.equals(this.state, issueEventDismissedReview.state)
                 && Objects.equals(this.reviewId, issueEventDismissedReview.reviewId)
                 && Objects.equals(this.dismissalMessage, issueEventDismissedReview.dismissalMessage)
-                && Objects.equals(this.dismissalCommitId, issueEventDismissedReview.dismissalCommitId);
+                && equalsNullable(this.dismissalCommitId, issueEventDismissedReview.dismissalCommitId);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, reviewId, dismissalMessage, dismissalCommitId);
+        return Objects.hash(state, reviewId, dismissalMessage, hashCodeNullable(dismissalCommitId));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Restricted commit
@@ -15,13 +15,13 @@ import java.util.Objects;
 @JsonTypeName("repository-rule-params-restricted-commits")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryRuleParamsRestrictedCommits {
 
     private String oid;
 
-    private String reason;
+    private Optional<String> reason = Optional.empty();
 
     public RepositoryRuleParamsRestrictedCommits() {
         super();
@@ -58,7 +58,7 @@ public class RepositoryRuleParamsRestrictedCommits {
     }
 
     public RepositoryRuleParamsRestrictedCommits reason(String reason) {
-        this.reason = reason;
+        this.reason = Optional.ofNullable(reason);
         return this;
     }
 
@@ -68,11 +68,11 @@ public class RepositoryRuleParamsRestrictedCommits {
      */
     @Schema(name = "reason", description = "Reason for restriction", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reason")
-    public String getReason() {
+    public Optional<String> getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason(Optional<String> reason) {
         this.reason = reason;
     }
 

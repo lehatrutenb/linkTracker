@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * WebhookPackagePublishedPackagePackageVersionContainerMetadataTag
@@ -14,16 +13,16 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_published_package_package_version_container_metadata_tag")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackagePublishedPackagePackageVersionContainerMetadataTag {
 
-    private String digest;
+    private Optional<String> digest = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
     public WebhookPackagePublishedPackagePackageVersionContainerMetadataTag digest(String digest) {
-        this.digest = digest;
+        this.digest = Optional.ofNullable(digest);
         return this;
     }
 
@@ -33,16 +32,16 @@ public class WebhookPackagePublishedPackagePackageVersionContainerMetadataTag {
      */
     @Schema(name = "digest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("digest")
-    public String getDigest() {
+    public Optional<String> getDigest() {
         return digest;
     }
 
-    public void setDigest(String digest) {
+    public void setDigest(Optional<String> digest) {
         this.digest = digest;
     }
 
     public WebhookPackagePublishedPackagePackageVersionContainerMetadataTag name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -52,11 +51,11 @@ public class WebhookPackagePublishedPackagePackageVersionContainerMetadataTag {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 

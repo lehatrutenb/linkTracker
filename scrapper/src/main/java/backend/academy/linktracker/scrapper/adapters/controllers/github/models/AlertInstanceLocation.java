@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AlertInstanceLocation
@@ -14,22 +13,22 @@ import java.util.Objects;
 @JsonTypeName("Alert_Instance_location")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class AlertInstanceLocation {
 
-    private Long endColumn;
+    private Optional<Long> endColumn = Optional.empty();
 
-    private Long endLine;
+    private Optional<Long> endLine = Optional.empty();
 
-    private String path;
+    private Optional<String> path = Optional.empty();
 
-    private Long startColumn;
+    private Optional<Long> startColumn = Optional.empty();
 
-    private Long startLine;
+    private Optional<Long> startLine = Optional.empty();
 
     public AlertInstanceLocation endColumn(Long endColumn) {
-        this.endColumn = endColumn;
+        this.endColumn = Optional.ofNullable(endColumn);
         return this;
     }
 
@@ -39,16 +38,16 @@ public class AlertInstanceLocation {
      */
     @Schema(name = "end_column", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("end_column")
-    public Long getEndColumn() {
+    public Optional<Long> getEndColumn() {
         return endColumn;
     }
 
-    public void setEndColumn(Long endColumn) {
+    public void setEndColumn(Optional<Long> endColumn) {
         this.endColumn = endColumn;
     }
 
     public AlertInstanceLocation endLine(Long endLine) {
-        this.endLine = endLine;
+        this.endLine = Optional.ofNullable(endLine);
         return this;
     }
 
@@ -58,16 +57,16 @@ public class AlertInstanceLocation {
      */
     @Schema(name = "end_line", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("end_line")
-    public Long getEndLine() {
+    public Optional<Long> getEndLine() {
         return endLine;
     }
 
-    public void setEndLine(Long endLine) {
+    public void setEndLine(Optional<Long> endLine) {
         this.endLine = endLine;
     }
 
     public AlertInstanceLocation path(String path) {
-        this.path = path;
+        this.path = Optional.ofNullable(path);
         return this;
     }
 
@@ -77,16 +76,16 @@ public class AlertInstanceLocation {
      */
     @Schema(name = "path", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public Optional<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(Optional<String> path) {
         this.path = path;
     }
 
     public AlertInstanceLocation startColumn(Long startColumn) {
-        this.startColumn = startColumn;
+        this.startColumn = Optional.ofNullable(startColumn);
         return this;
     }
 
@@ -96,16 +95,16 @@ public class AlertInstanceLocation {
      */
     @Schema(name = "start_column", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_column")
-    public Long getStartColumn() {
+    public Optional<Long> getStartColumn() {
         return startColumn;
     }
 
-    public void setStartColumn(Long startColumn) {
+    public void setStartColumn(Optional<Long> startColumn) {
         this.startColumn = startColumn;
     }
 
     public AlertInstanceLocation startLine(Long startLine) {
-        this.startLine = startLine;
+        this.startLine = Optional.ofNullable(startLine);
         return this;
     }
 
@@ -115,11 +114,11 @@ public class AlertInstanceLocation {
      */
     @Schema(name = "start_line", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_line")
-    public Long getStartLine() {
+    public Optional<Long> getStartLine() {
         return startLine;
     }
 
-    public void setStartLine(Long startLine) {
+    public void setStartLine(Optional<Long> startLine) {
         this.startLine = startLine;
     }
 

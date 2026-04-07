@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner
@@ -14,34 +15,34 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_updated_registry_package_package_version_package_files_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner {
 
-    private String contentType;
+    private Optional<String> contentType = Optional.empty();
 
-    private String createdAt;
+    private Optional<String> createdAt = Optional.empty();
 
-    private String downloadUrl;
+    private Optional<String> downloadUrl = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String md5 = null;
+    private JsonNullable<String> md5 = JsonNullable.<String>undefined();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String sha1 = null;
+    private JsonNullable<String> sha1 = JsonNullable.<String>undefined();
 
-    private String sha256;
+    private Optional<String> sha256 = Optional.empty();
 
-    private Long size;
+    private Optional<Long> size = Optional.empty();
 
-    private String state;
+    private Optional<String> state = Optional.empty();
 
-    private String updatedAt;
+    private Optional<String> updatedAt = Optional.empty();
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner contentType(String contentType) {
-        this.contentType = contentType;
+        this.contentType = Optional.ofNullable(contentType);
         return this;
     }
 
@@ -51,16 +52,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "content_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("content_type")
-    public String getContentType() {
+    public Optional<String> getContentType() {
         return contentType;
     }
 
-    public void setContentType(String contentType) {
+    public void setContentType(Optional<String> contentType) {
         this.contentType = contentType;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = Optional.ofNullable(createdAt);
         return this;
     }
 
@@ -70,16 +71,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public Optional<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Optional<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner downloadUrl(String downloadUrl) {
-        this.downloadUrl = downloadUrl;
+        this.downloadUrl = Optional.ofNullable(downloadUrl);
         return this;
     }
 
@@ -89,16 +90,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "download_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("download_url")
-    public String getDownloadUrl() {
+    public Optional<String> getDownloadUrl() {
         return downloadUrl;
     }
 
-    public void setDownloadUrl(String downloadUrl) {
+    public void setDownloadUrl(Optional<String> downloadUrl) {
         this.downloadUrl = downloadUrl;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -108,16 +109,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner md5(String md5) {
-        this.md5 = md5;
+        this.md5 = JsonNullable.of(md5);
         return this;
     }
 
@@ -127,16 +128,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "md5", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("md5")
-    public String getMd5() {
+    public JsonNullable<String> getMd5() {
         return md5;
     }
 
-    public void setMd5(String md5) {
+    public void setMd5(JsonNullable<String> md5) {
         this.md5 = md5;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -146,16 +147,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner sha1(String sha1) {
-        this.sha1 = sha1;
+        this.sha1 = JsonNullable.of(sha1);
         return this;
     }
 
@@ -165,16 +166,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "sha1", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha1")
-    public String getSha1() {
+    public JsonNullable<String> getSha1() {
         return sha1;
     }
 
-    public void setSha1(String sha1) {
+    public void setSha1(JsonNullable<String> sha1) {
         this.sha1 = sha1;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner sha256(String sha256) {
-        this.sha256 = sha256;
+        this.sha256 = Optional.ofNullable(sha256);
         return this;
     }
 
@@ -184,16 +185,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "sha256", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha256")
-    public String getSha256() {
+    public Optional<String> getSha256() {
         return sha256;
     }
 
-    public void setSha256(String sha256) {
+    public void setSha256(Optional<String> sha256) {
         this.sha256 = sha256;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner size(Long size) {
-        this.size = size;
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -203,16 +204,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public Long getSize() {
+    public Optional<Long> getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(Optional<Long> size) {
         this.size = size;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner state(String state) {
-        this.state = state;
+        this.state = Optional.ofNullable(state);
         return this;
     }
 
@@ -222,16 +223,16 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "state", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public Optional<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Optional<String> state) {
         this.state = state;
     }
 
     public WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = Optional.ofNullable(updatedAt);
         return this;
     }
 
@@ -241,11 +242,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
      */
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public Optional<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Optional<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -271,11 +272,11 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
                         webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.downloadUrl)
                 && Objects.equals(
                         this.id, webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.id)
-                && Objects.equals(
+                && equalsNullable(
                         this.md5, webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.md5)
                 && Objects.equals(
                         this.name, webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.name)
-                && Objects.equals(
+                && equalsNullable(
                         this.sha1, webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.sha1)
                 && Objects.equals(
                         this.sha256, webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.sha256)
@@ -288,9 +289,32 @@ public class WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFi
                         webhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesInner.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(contentType, createdAt, downloadUrl, id, md5, name, sha1, sha256, size, state, updatedAt);
+        return Objects.hash(
+                contentType,
+                createdAt,
+                downloadUrl,
+                id,
+                hashCodeNullable(md5),
+                name,
+                hashCodeNullable(sha1),
+                sha256,
+                size,
+                state,
+                updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

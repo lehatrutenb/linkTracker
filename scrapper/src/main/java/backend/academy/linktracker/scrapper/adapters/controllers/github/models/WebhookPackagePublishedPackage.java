@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Information about the package.
@@ -17,13 +17,13 @@ import java.util.Objects;
 @JsonTypeName("webhook_package_published_package")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPackagePublishedPackage {
 
-    private String createdAt = null;
+    private JsonNullable<String> createdAt = JsonNullable.<String>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private String ecosystem;
 
@@ -35,15 +35,17 @@ public class WebhookPackagePublishedPackage {
 
     private String namespace;
 
-    private User owner = null;
+    private JsonNullable<User> owner = JsonNullable.<User>undefined();
 
     private String packageType;
 
-    private WebhookPackagePublishedPackagePackageVersion packageVersion = null;
+    private JsonNullable<WebhookPackagePublishedPackagePackageVersion> packageVersion =
+            JsonNullable.<WebhookPackagePublishedPackagePackageVersion>undefined();
 
-    private WebhookPackagePublishedPackageRegistry registry = null;
+    private JsonNullable<WebhookPackagePublishedPackageRegistry> registry =
+            JsonNullable.<WebhookPackagePublishedPackageRegistry>undefined();
 
-    private String updatedAt = null;
+    private JsonNullable<String> updatedAt = JsonNullable.<String>undefined();
 
     public WebhookPackagePublishedPackage() {
         super();
@@ -65,22 +67,22 @@ public class WebhookPackagePublishedPackage {
             WebhookPackagePublishedPackagePackageVersion packageVersion,
             WebhookPackagePublishedPackageRegistry registry,
             String updatedAt) {
-        this.createdAt = createdAt;
-        this.description = description;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.description = JsonNullable.of(description);
         this.ecosystem = ecosystem;
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.name = name;
         this.namespace = namespace;
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         this.packageType = packageType;
-        this.packageVersion = packageVersion;
-        this.registry = registry;
-        this.updatedAt = updatedAt;
+        this.packageVersion = JsonNullable.of(packageVersion);
+        this.registry = JsonNullable.of(registry);
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public WebhookPackagePublishedPackage createdAt(String createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -91,16 +93,16 @@ public class WebhookPackagePublishedPackage {
     @NotNull
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public String getCreatedAt() {
+    public JsonNullable<String> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(JsonNullable<String> createdAt) {
         this.createdAt = createdAt;
     }
 
     public WebhookPackagePublishedPackage description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -111,11 +113,11 @@ public class WebhookPackagePublishedPackage {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -221,7 +223,7 @@ public class WebhookPackagePublishedPackage {
     }
 
     public WebhookPackagePublishedPackage owner(User owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -233,11 +235,11 @@ public class WebhookPackagePublishedPackage {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public User getOwner() {
+    public JsonNullable<User> getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(JsonNullable<User> owner) {
         this.owner = owner;
     }
 
@@ -262,7 +264,7 @@ public class WebhookPackagePublishedPackage {
     }
 
     public WebhookPackagePublishedPackage packageVersion(WebhookPackagePublishedPackagePackageVersion packageVersion) {
-        this.packageVersion = packageVersion;
+        this.packageVersion = JsonNullable.of(packageVersion);
         return this;
     }
 
@@ -274,16 +276,16 @@ public class WebhookPackagePublishedPackage {
     @Valid
     @Schema(name = "package_version", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("package_version")
-    public WebhookPackagePublishedPackagePackageVersion getPackageVersion() {
+    public JsonNullable<WebhookPackagePublishedPackagePackageVersion> getPackageVersion() {
         return packageVersion;
     }
 
-    public void setPackageVersion(WebhookPackagePublishedPackagePackageVersion packageVersion) {
+    public void setPackageVersion(JsonNullable<WebhookPackagePublishedPackagePackageVersion> packageVersion) {
         this.packageVersion = packageVersion;
     }
 
     public WebhookPackagePublishedPackage registry(WebhookPackagePublishedPackageRegistry registry) {
-        this.registry = registry;
+        this.registry = JsonNullable.of(registry);
         return this;
     }
 
@@ -295,16 +297,16 @@ public class WebhookPackagePublishedPackage {
     @Valid
     @Schema(name = "registry", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("registry")
-    public WebhookPackagePublishedPackageRegistry getRegistry() {
+    public JsonNullable<WebhookPackagePublishedPackageRegistry> getRegistry() {
         return registry;
     }
 
-    public void setRegistry(WebhookPackagePublishedPackageRegistry registry) {
+    public void setRegistry(JsonNullable<WebhookPackagePublishedPackageRegistry> registry) {
         this.registry = registry;
     }
 
     public WebhookPackagePublishedPackage updatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -315,11 +317,11 @@ public class WebhookPackagePublishedPackage {
     @NotNull
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public String getUpdatedAt() {
+    public JsonNullable<String> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(JsonNullable<String> updatedAt) {
         this.updatedAt = updatedAt;
     }
 

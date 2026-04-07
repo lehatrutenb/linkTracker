@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposCreateForkRequest
@@ -14,18 +13,18 @@ import java.util.Objects;
 @JsonTypeName("repos_create_fork_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreateForkRequest {
 
-    private String organization;
+    private Optional<String> organization = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Boolean defaultBranchOnly;
+    private Optional<Boolean> defaultBranchOnly = Optional.empty();
 
     public ReposCreateForkRequest organization(String organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -38,16 +37,16 @@ public class ReposCreateForkRequest {
             description = "Optional parameter to specify the organization name if forking into an organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public String getOrganization() {
+    public Optional<String> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(String organization) {
+    public void setOrganization(Optional<String> organization) {
         this.organization = organization;
     }
 
     public ReposCreateForkRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -60,16 +59,16 @@ public class ReposCreateForkRequest {
             description = "When forking from an existing repository, a new name for the fork.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ReposCreateForkRequest defaultBranchOnly(Boolean defaultBranchOnly) {
-        this.defaultBranchOnly = defaultBranchOnly;
+        this.defaultBranchOnly = Optional.ofNullable(defaultBranchOnly);
         return this;
     }
 
@@ -82,11 +81,11 @@ public class ReposCreateForkRequest {
             description = "When forking from an existing repository, fork with only the default branch.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("default_branch_only")
-    public Boolean getDefaultBranchOnly() {
+    public Optional<Boolean> getDefaultBranchOnly() {
         return defaultBranchOnly;
     }
 
-    public void setDefaultBranchOnly(Boolean defaultBranchOnly) {
+    public void setDefaultBranchOnly(Optional<Boolean> defaultBranchOnly) {
         this.defaultBranchOnly = defaultBranchOnly;
     }
 

@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookStatus
@@ -20,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("webhook-status")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookStatus {
 
-    private URI avatarUrl = null;
+    private JsonNullable<URI> avatarUrl = JsonNullable.<URI>undefined();
 
     @Valid
     private List<@Valid WebhookStatusBranchesInner> branches = new ArrayList<>();
@@ -35,17 +33,17 @@ public class WebhookStatus {
 
     private String createdAt;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
     private Long id;
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
     private String name;
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private RepositoryWebhooks repository;
 
@@ -94,7 +92,7 @@ public class WebhookStatus {
 
     private StateEnum state;
 
-    private String targetUrl = null;
+    private JsonNullable<String> targetUrl = JsonNullable.<String>undefined();
 
     private String updatedAt;
 
@@ -123,19 +121,19 @@ public class WebhookStatus {
         this.commit = commit;
         this.context = context;
         this.createdAt = createdAt;
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.id = id;
         this.name = name;
         this.repository = repository;
         this.sender = sender;
         this.sha = sha;
         this.state = state;
-        this.targetUrl = targetUrl;
+        this.targetUrl = JsonNullable.of(targetUrl);
         this.updatedAt = updatedAt;
     }
 
     public WebhookStatus avatarUrl(URI avatarUrl) {
-        this.avatarUrl = avatarUrl;
+        this.avatarUrl = JsonNullable.of(avatarUrl);
         return this;
     }
 
@@ -146,11 +144,11 @@ public class WebhookStatus {
     @Valid
     @Schema(name = "avatar_url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("avatar_url")
-    public URI getAvatarUrl() {
+    public JsonNullable<URI> getAvatarUrl() {
         return avatarUrl;
     }
 
-    public void setAvatarUrl(URI avatarUrl) {
+    public void setAvatarUrl(JsonNullable<URI> avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
 
@@ -249,7 +247,7 @@ public class WebhookStatus {
     }
 
     public WebhookStatus description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -263,16 +261,16 @@ public class WebhookStatus {
             description = "The optional human-readable description added to the status.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
     public WebhookStatus enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -283,11 +281,11 @@ public class WebhookStatus {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
@@ -315,7 +313,7 @@ public class WebhookStatus {
     }
 
     public WebhookStatus installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -326,11 +324,11 @@ public class WebhookStatus {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
@@ -355,7 +353,7 @@ public class WebhookStatus {
     }
 
     public WebhookStatus organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -366,11 +364,11 @@ public class WebhookStatus {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -460,7 +458,7 @@ public class WebhookStatus {
     }
 
     public WebhookStatus targetUrl(String targetUrl) {
-        this.targetUrl = targetUrl;
+        this.targetUrl = JsonNullable.of(targetUrl);
         return this;
     }
 
@@ -474,11 +472,11 @@ public class WebhookStatus {
             description = "The optional link added to the status.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("target_url")
-    public String getTargetUrl() {
+    public JsonNullable<String> getTargetUrl() {
         return targetUrl;
     }
 
-    public void setTargetUrl(String targetUrl) {
+    public void setTargetUrl(JsonNullable<String> targetUrl) {
         this.targetUrl = targetUrl;
     }
 
@@ -511,7 +509,7 @@ public class WebhookStatus {
             return false;
         }
         WebhookStatus webhookStatus = (WebhookStatus) o;
-        return Objects.equals(this.avatarUrl, webhookStatus.avatarUrl)
+        return equalsNullable(this.avatarUrl, webhookStatus.avatarUrl)
                 && Objects.equals(this.branches, webhookStatus.branches)
                 && Objects.equals(this.commit, webhookStatus.commit)
                 && Objects.equals(this.context, webhookStatus.context)
@@ -530,10 +528,15 @@ public class WebhookStatus {
                 && Objects.equals(this.updatedAt, webhookStatus.updatedAt);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
-                avatarUrl,
+                hashCodeNullable(avatarUrl),
                 branches,
                 commit,
                 context,
@@ -550,6 +553,13 @@ public class WebhookStatus {
                 state,
                 targetUrl,
                 updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

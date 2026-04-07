@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner
@@ -14,13 +14,13 @@ import java.util.Objects;
 @JsonTypeName("repos_update_branch_protection_request_required_status_checks_checks_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner {
 
     private String context;
 
-    private Long appId;
+    private Optional<Long> appId = Optional.empty();
 
     public ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner() {
         super();
@@ -57,7 +57,7 @@ public class ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner {
     }
 
     public ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner appId(Long appId) {
-        this.appId = appId;
+        this.appId = Optional.ofNullable(appId);
         return this;
     }
 
@@ -71,11 +71,11 @@ public class ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksInner {
                     "The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("app_id")
-    public Long getAppId() {
+    public Optional<Long> getAppId() {
         return appId;
     }
 
-    public void setAppId(Long appId) {
+    public void setAppId(Optional<Long> appId) {
         this.appId = appId;
     }
 

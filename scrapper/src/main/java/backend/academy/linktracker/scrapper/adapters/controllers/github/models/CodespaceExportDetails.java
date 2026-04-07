@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -21,27 +22,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("codespace-export-details")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespaceExportDetails {
 
-    private String state = null;
+    private JsonNullable<String> state = JsonNullable.<String>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt = null;
+    private JsonNullable<OffsetDateTime> completedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String branch = null;
+    private JsonNullable<String> branch = JsonNullable.<String>undefined();
 
-    private String sha = null;
+    private JsonNullable<String> sha = JsonNullable.<String>undefined();
 
-    private String id;
+    private Optional<String> id = Optional.empty();
 
-    private String exportUrl;
+    private Optional<String> exportUrl = Optional.empty();
 
-    private String htmlUrl = null;
+    private JsonNullable<String> htmlUrl = JsonNullable.<String>undefined();
 
     public CodespaceExportDetails state(String state) {
-        this.state = state;
+        this.state = JsonNullable.of(state);
         return this;
     }
 
@@ -55,16 +56,16 @@ public class CodespaceExportDetails {
             description = "State of the latest export",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("state")
-    public String getState() {
+    public JsonNullable<String> getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(JsonNullable<String> state) {
         this.state = state;
     }
 
     public CodespaceExportDetails completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = JsonNullable.of(completedAt);
         return this;
     }
 
@@ -79,16 +80,16 @@ public class CodespaceExportDetails {
             description = "Completion time of the last export operation",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public JsonNullable<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(JsonNullable<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public CodespaceExportDetails branch(String branch) {
-        this.branch = branch;
+        this.branch = JsonNullable.of(branch);
         return this;
     }
 
@@ -102,16 +103,16 @@ public class CodespaceExportDetails {
             description = "Name of the exported branch",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("branch")
-    public String getBranch() {
+    public JsonNullable<String> getBranch() {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(JsonNullable<String> branch) {
         this.branch = branch;
     }
 
     public CodespaceExportDetails sha(String sha) {
-        this.sha = sha;
+        this.sha = JsonNullable.of(sha);
         return this;
     }
 
@@ -125,16 +126,16 @@ public class CodespaceExportDetails {
             description = "Git commit SHA of the exported branch",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("sha")
-    public String getSha() {
+    public JsonNullable<String> getSha() {
         return sha;
     }
 
-    public void setSha(String sha) {
+    public void setSha(JsonNullable<String> sha) {
         this.sha = sha;
     }
 
     public CodespaceExportDetails id(String id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -148,16 +149,16 @@ public class CodespaceExportDetails {
             description = "Id for the export details",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public String getId() {
+    public Optional<String> getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Optional<String> id) {
         this.id = id;
     }
 
     public CodespaceExportDetails exportUrl(String exportUrl) {
-        this.exportUrl = exportUrl;
+        this.exportUrl = Optional.ofNullable(exportUrl);
         return this;
     }
 
@@ -171,16 +172,16 @@ public class CodespaceExportDetails {
             description = "Url for fetching export details",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("export_url")
-    public String getExportUrl() {
+    public Optional<String> getExportUrl() {
         return exportUrl;
     }
 
-    public void setExportUrl(String exportUrl) {
+    public void setExportUrl(Optional<String> exportUrl) {
         this.exportUrl = exportUrl;
     }
 
     public CodespaceExportDetails htmlUrl(String htmlUrl) {
-        this.htmlUrl = htmlUrl;
+        this.htmlUrl = JsonNullable.of(htmlUrl);
         return this;
     }
 
@@ -194,11 +195,11 @@ public class CodespaceExportDetails {
             description = "Web url for the exported branch",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("html_url")
-    public String getHtmlUrl() {
+    public JsonNullable<String> getHtmlUrl() {
         return htmlUrl;
     }
 
-    public void setHtmlUrl(String htmlUrl) {
+    public void setHtmlUrl(JsonNullable<String> htmlUrl) {
         this.htmlUrl = htmlUrl;
     }
 
@@ -211,18 +212,37 @@ public class CodespaceExportDetails {
             return false;
         }
         CodespaceExportDetails codespaceExportDetails = (CodespaceExportDetails) o;
-        return Objects.equals(this.state, codespaceExportDetails.state)
-                && Objects.equals(this.completedAt, codespaceExportDetails.completedAt)
-                && Objects.equals(this.branch, codespaceExportDetails.branch)
-                && Objects.equals(this.sha, codespaceExportDetails.sha)
+        return equalsNullable(this.state, codespaceExportDetails.state)
+                && equalsNullable(this.completedAt, codespaceExportDetails.completedAt)
+                && equalsNullable(this.branch, codespaceExportDetails.branch)
+                && equalsNullable(this.sha, codespaceExportDetails.sha)
                 && Objects.equals(this.id, codespaceExportDetails.id)
                 && Objects.equals(this.exportUrl, codespaceExportDetails.exportUrl)
-                && Objects.equals(this.htmlUrl, codespaceExportDetails.htmlUrl);
+                && equalsNullable(this.htmlUrl, codespaceExportDetails.htmlUrl);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(state, completedAt, branch, sha, id, exportUrl, htmlUrl);
+        return Objects.hash(
+                hashCodeNullable(state),
+                hashCodeNullable(completedAt),
+                hashCodeNullable(branch),
+                hashCodeNullable(sha),
+                id,
+                exportUrl,
+                hashCodeNullable(htmlUrl));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

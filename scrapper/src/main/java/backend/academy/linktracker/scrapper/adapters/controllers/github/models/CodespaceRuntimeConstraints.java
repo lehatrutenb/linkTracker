@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * CodespaceRuntimeConstraints
@@ -17,23 +14,23 @@ import java.util.Objects;
 @JsonTypeName("codespace_runtime_constraints")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CodespaceRuntimeConstraints {
 
     @Valid
-    private List<String> allowedPortPrivacySettings;
+    private JsonNullable<List<String>> allowedPortPrivacySettings = JsonNullable.<List<String>>undefined();
 
     public CodespaceRuntimeConstraints allowedPortPrivacySettings(List<String> allowedPortPrivacySettings) {
-        this.allowedPortPrivacySettings = allowedPortPrivacySettings;
+        this.allowedPortPrivacySettings = JsonNullable.of(allowedPortPrivacySettings);
         return this;
     }
 
     public CodespaceRuntimeConstraints addAllowedPortPrivacySettingsItem(String allowedPortPrivacySettingsItem) {
-        if (this.allowedPortPrivacySettings == null) {
-            this.allowedPortPrivacySettings = new ArrayList<>();
+        if (this.allowedPortPrivacySettings == null || !this.allowedPortPrivacySettings.isPresent()) {
+            this.allowedPortPrivacySettings = JsonNullable.of(new ArrayList<>());
         }
-        this.allowedPortPrivacySettings.add(allowedPortPrivacySettingsItem);
+        this.allowedPortPrivacySettings.get().add(allowedPortPrivacySettingsItem);
         return this;
     }
 
@@ -46,11 +43,11 @@ public class CodespaceRuntimeConstraints {
             description = "The privacy settings a user can select from when forwarding a port.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("allowed_port_privacy_settings")
-    public List<String> getAllowedPortPrivacySettings() {
+    public JsonNullable<List<String>> getAllowedPortPrivacySettings() {
         return allowedPortPrivacySettings;
     }
 
-    public void setAllowedPortPrivacySettings(List<String> allowedPortPrivacySettings) {
+    public void setAllowedPortPrivacySettings(JsonNullable<List<String>> allowedPortPrivacySettings) {
         this.allowedPortPrivacySettings = allowedPortPrivacySettings;
     }
 
@@ -63,12 +60,24 @@ public class CodespaceRuntimeConstraints {
             return false;
         }
         CodespaceRuntimeConstraints codespaceRuntimeConstraints = (CodespaceRuntimeConstraints) o;
-        return Objects.equals(this.allowedPortPrivacySettings, codespaceRuntimeConstraints.allowedPortPrivacySettings);
+        return equalsNullable(this.allowedPortPrivacySettings, codespaceRuntimeConstraints.allowedPortPrivacySettings);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(allowedPortPrivacySettings);
+        return Objects.hash(hashCodeNullable(allowedPortPrivacySettings));
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

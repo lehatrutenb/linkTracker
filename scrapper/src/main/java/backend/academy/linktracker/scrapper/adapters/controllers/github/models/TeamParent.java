@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * TeamParent
@@ -18,11 +18,11 @@ import java.util.Objects;
 @JsonTypeName("Team_parent")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TeamParent {
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     private URI htmlUrl;
 
@@ -100,7 +100,7 @@ public class TeamParent {
             URI repositoriesUrl,
             String slug,
             URI url) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         this.htmlUrl = htmlUrl;
         this.id = id;
         this.membersUrl = membersUrl;
@@ -114,7 +114,7 @@ public class TeamParent {
     }
 
     public TeamParent description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -125,11 +125,11 @@ public class TeamParent {
     @NotNull
     @Schema(name = "description", description = "Description of the team", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 

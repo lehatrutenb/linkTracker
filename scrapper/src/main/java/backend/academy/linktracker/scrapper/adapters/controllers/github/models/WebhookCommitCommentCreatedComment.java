@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * The [commit comment](${externalDocsUpapp/api/description/components/schemas/webhooks/issue-comment-created.yamlrl}/rest/commits/comments#get-a-commit-comment) resource.
@@ -22,7 +23,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_commit_comment_created_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCommitCommentCreatedComment {
 
@@ -85,21 +86,21 @@ public class WebhookCommitCommentCreatedComment {
 
     private Long id;
 
-    private Long line = null;
+    private JsonNullable<Long> line = JsonNullable.<Long>undefined();
 
     private String nodeId;
 
-    private String path = null;
+    private JsonNullable<String> path = JsonNullable.<String>undefined();
 
-    private Long position = null;
+    private JsonNullable<Long> position = JsonNullable.<Long>undefined();
 
-    private Reactions reactions;
+    private Optional<Reactions> reactions = Optional.empty();
 
     private String updatedAt;
 
     private URI url;
 
-    private User1 user = null;
+    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
 
     public WebhookCommitCommentCreatedComment() {
         super();
@@ -128,13 +129,13 @@ public class WebhookCommitCommentCreatedComment {
         this.createdAt = createdAt;
         this.htmlUrl = htmlUrl;
         this.id = id;
-        this.line = line;
+        this.line = JsonNullable.of(line);
         this.nodeId = nodeId;
-        this.path = path;
-        this.position = position;
+        this.path = JsonNullable.of(path);
+        this.position = JsonNullable.of(position);
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhookCommitCommentCreatedComment authorAssociation(AuthorAssociationEnum authorAssociation) {
@@ -265,7 +266,7 @@ public class WebhookCommitCommentCreatedComment {
     }
 
     public WebhookCommitCommentCreatedComment line(Long line) {
-        this.line = line;
+        this.line = JsonNullable.of(line);
         return this;
     }
 
@@ -280,11 +281,11 @@ public class WebhookCommitCommentCreatedComment {
                     "The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("line")
-    public Long getLine() {
+    public JsonNullable<Long> getLine() {
         return line;
     }
 
-    public void setLine(Long line) {
+    public void setLine(JsonNullable<Long> line) {
         this.line = line;
     }
 
@@ -312,7 +313,7 @@ public class WebhookCommitCommentCreatedComment {
     }
 
     public WebhookCommitCommentCreatedComment path(String path) {
-        this.path = path;
+        this.path = JsonNullable.of(path);
         return this;
     }
 
@@ -326,16 +327,16 @@ public class WebhookCommitCommentCreatedComment {
             description = "The relative path of the file to which the comment applies.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("path")
-    public String getPath() {
+    public JsonNullable<String> getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(JsonNullable<String> path) {
         this.path = path;
     }
 
     public WebhookCommitCommentCreatedComment position(Long position) {
-        this.position = position;
+        this.position = JsonNullable.of(position);
         return this;
     }
 
@@ -349,16 +350,16 @@ public class WebhookCommitCommentCreatedComment {
             description = "The line index in the diff to which the comment applies.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("position")
-    public Long getPosition() {
+    public JsonNullable<Long> getPosition() {
         return position;
     }
 
-    public void setPosition(Long position) {
+    public void setPosition(JsonNullable<Long> position) {
         this.position = position;
     }
 
     public WebhookCommitCommentCreatedComment reactions(Reactions reactions) {
-        this.reactions = reactions;
+        this.reactions = Optional.ofNullable(reactions);
         return this;
     }
 
@@ -369,11 +370,11 @@ public class WebhookCommitCommentCreatedComment {
     @Valid
     @Schema(name = "reactions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("reactions")
-    public Reactions getReactions() {
+    public Optional<Reactions> getReactions() {
         return reactions;
     }
 
-    public void setReactions(Reactions reactions) {
+    public void setReactions(Optional<Reactions> reactions) {
         this.reactions = reactions;
     }
 
@@ -419,7 +420,7 @@ public class WebhookCommitCommentCreatedComment {
     }
 
     public WebhookCommitCommentCreatedComment user(User1 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -431,11 +432,11 @@ public class WebhookCommitCommentCreatedComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User1 getUser() {
+    public JsonNullable<User1> getUser() {
         return user;
     }
 
-    public void setUser(User1 user) {
+    public void setUser(JsonNullable<User1> user) {
         this.user = user;
     }
 

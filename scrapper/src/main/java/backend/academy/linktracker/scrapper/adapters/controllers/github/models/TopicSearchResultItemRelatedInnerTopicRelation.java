@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * TopicSearchResultItemRelatedInnerTopicRelation
@@ -14,20 +13,20 @@ import java.util.Objects;
 @JsonTypeName("topic_search_result_item_related_inner_topic_relation")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class TopicSearchResultItemRelatedInnerTopicRelation {
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private Long topicId;
+    private Optional<Long> topicId = Optional.empty();
 
-    private String relationType;
+    private Optional<String> relationType = Optional.empty();
 
     public TopicSearchResultItemRelatedInnerTopicRelation id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -37,16 +36,16 @@ public class TopicSearchResultItemRelatedInnerTopicRelation {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public TopicSearchResultItemRelatedInnerTopicRelation name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -56,16 +55,16 @@ public class TopicSearchResultItemRelatedInnerTopicRelation {
      */
     @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public TopicSearchResultItemRelatedInnerTopicRelation topicId(Long topicId) {
-        this.topicId = topicId;
+        this.topicId = Optional.ofNullable(topicId);
         return this;
     }
 
@@ -75,16 +74,16 @@ public class TopicSearchResultItemRelatedInnerTopicRelation {
      */
     @Schema(name = "topic_id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("topic_id")
-    public Long getTopicId() {
+    public Optional<Long> getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(Long topicId) {
+    public void setTopicId(Optional<Long> topicId) {
         this.topicId = topicId;
     }
 
     public TopicSearchResultItemRelatedInnerTopicRelation relationType(String relationType) {
-        this.relationType = relationType;
+        this.relationType = Optional.ofNullable(relationType);
         return this;
     }
 
@@ -94,11 +93,11 @@ public class TopicSearchResultItemRelatedInnerTopicRelation {
      */
     @Schema(name = "relation_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("relation_type")
-    public String getRelationType() {
+    public Optional<String> getRelationType() {
         return relationType;
     }
 
-    public void setRelationType(String relationType) {
+    public void setRelationType(Optional<String> relationType) {
         this.relationType = relationType;
     }
 

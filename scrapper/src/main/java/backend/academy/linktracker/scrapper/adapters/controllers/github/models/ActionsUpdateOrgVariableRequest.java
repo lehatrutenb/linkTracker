@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * ActionsUpdateOrgVariableRequest
@@ -19,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("actions_update_org_variable_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ActionsUpdateOrgVariableRequest {
 
-    private String name;
+    private Optional<String> name = Optional.empty();
 
-    private String value;
+    private Optional<String> value = Optional.empty();
 
     /**
      * The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
@@ -64,13 +63,13 @@ public class ActionsUpdateOrgVariableRequest {
         }
     }
 
-    private VisibilityEnum visibility;
+    private Optional<VisibilityEnum> visibility = Optional.empty();
 
     @Valid
     private List<Long> selectedRepositoryIds = new ArrayList<>();
 
     public ActionsUpdateOrgVariableRequest name(String name) {
-        this.name = name;
+        this.name = Optional.ofNullable(name);
         return this;
     }
 
@@ -80,16 +79,16 @@ public class ActionsUpdateOrgVariableRequest {
      */
     @Schema(name = "name", description = "The name of the variable.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public Optional<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Optional<String> name) {
         this.name = name;
     }
 
     public ActionsUpdateOrgVariableRequest value(String value) {
-        this.value = value;
+        this.value = Optional.ofNullable(value);
         return this;
     }
 
@@ -99,16 +98,16 @@ public class ActionsUpdateOrgVariableRequest {
      */
     @Schema(name = "value", description = "The value of the variable.", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("value")
-    public String getValue() {
+    public Optional<String> getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Optional<String> value) {
         this.value = value;
     }
 
     public ActionsUpdateOrgVariableRequest visibility(VisibilityEnum visibility) {
-        this.visibility = visibility;
+        this.visibility = Optional.ofNullable(visibility);
         return this;
     }
 
@@ -122,11 +121,11 @@ public class ActionsUpdateOrgVariableRequest {
                     "The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("visibility")
-    public VisibilityEnum getVisibility() {
+    public Optional<VisibilityEnum> getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(VisibilityEnum visibility) {
+    public void setVisibility(Optional<VisibilityEnum> visibility) {
         this.visibility = visibility;
     }
 

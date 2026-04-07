@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * A GitHub organization. Webhook payloads contain the &#x60;organization&#x60; property when the webhook is configured for an organization, or when the event occurs from activity in a repository owned by an organization.
@@ -20,7 +20,7 @@ import java.util.Objects;
 @JsonTypeName("organization-simple-webhooks")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrganizationSimpleWebhooks {
 
@@ -46,7 +46,7 @@ public class OrganizationSimpleWebhooks {
 
     private String avatarUrl;
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     public OrganizationSimpleWebhooks() {
         super();
@@ -79,7 +79,7 @@ public class OrganizationSimpleWebhooks {
         this.membersUrl = membersUrl;
         this.publicMembersUrl = publicMembersUrl;
         this.avatarUrl = avatarUrl;
-        this.description = description;
+        this.description = JsonNullable.of(description);
     }
 
     public OrganizationSimpleWebhooks login(String login) {
@@ -327,7 +327,7 @@ public class OrganizationSimpleWebhooks {
     }
 
     public OrganizationSimpleWebhooks description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -338,11 +338,11 @@ public class OrganizationSimpleWebhooks {
     @NotNull
     @Schema(name = "description", example = "A great organization", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 

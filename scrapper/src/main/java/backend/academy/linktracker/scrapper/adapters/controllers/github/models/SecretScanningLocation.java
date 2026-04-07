@@ -7,9 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * SecretScanningLocation
@@ -17,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("secret-scanning-location")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class SecretScanningLocation {
 
@@ -78,12 +77,12 @@ public class SecretScanningLocation {
         }
     }
 
-    private TypeEnum type;
+    private Optional<TypeEnum> type = Optional.empty();
 
-    private SecretScanningLocationDetails details;
+    private Optional<SecretScanningLocationDetails> details = Optional.empty();
 
     public SecretScanningLocation type(TypeEnum type) {
-        this.type = type;
+        this.type = Optional.ofNullable(type);
         return this;
     }
 
@@ -98,16 +97,16 @@ public class SecretScanningLocation {
                     "The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("type")
-    public TypeEnum getType() {
+    public Optional<TypeEnum> getType() {
         return type;
     }
 
-    public void setType(TypeEnum type) {
+    public void setType(Optional<TypeEnum> type) {
         this.type = type;
     }
 
     public SecretScanningLocation details(SecretScanningLocationDetails details) {
-        this.details = details;
+        this.details = Optional.ofNullable(details);
         return this;
     }
 
@@ -118,11 +117,11 @@ public class SecretScanningLocation {
     @Valid
     @Schema(name = "details", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("details")
-    public SecretScanningLocationDetails getDetails() {
+    public Optional<SecretScanningLocationDetails> getDetails() {
         return details;
     }
 
-    public void setDetails(SecretScanningLocationDetails details) {
+    public void setDetails(Optional<SecretScanningLocationDetails> details) {
         this.details = details;
     }
 

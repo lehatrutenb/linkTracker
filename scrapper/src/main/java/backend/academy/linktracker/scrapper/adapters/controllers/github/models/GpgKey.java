@@ -5,12 +5,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -20,15 +21,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("gpg-key")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class GpgKey {
 
     private Long id;
 
-    private String name = null;
+    private JsonNullable<String> name = JsonNullable.<String>undefined();
 
-    private Long primaryKeyId = null;
+    private JsonNullable<Long> primaryKeyId = JsonNullable.<Long>undefined();
 
     private String keyId;
 
@@ -52,11 +53,11 @@ public class GpgKey {
     private OffsetDateTime createdAt;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime expiresAt = null;
+    private JsonNullable<OffsetDateTime> expiresAt = JsonNullable.<OffsetDateTime>undefined();
 
     private Boolean revoked;
 
-    private String rawKey = null;
+    private JsonNullable<String> rawKey = JsonNullable.<String>undefined();
 
     public GpgKey() {
         super();
@@ -81,7 +82,7 @@ public class GpgKey {
             Boolean revoked,
             String rawKey) {
         this.id = id;
-        this.primaryKeyId = primaryKeyId;
+        this.primaryKeyId = JsonNullable.of(primaryKeyId);
         this.keyId = keyId;
         this.publicKey = publicKey;
         this.emails = emails;
@@ -91,9 +92,9 @@ public class GpgKey {
         this.canEncryptStorage = canEncryptStorage;
         this.canCertify = canCertify;
         this.createdAt = createdAt;
-        this.expiresAt = expiresAt;
+        this.expiresAt = JsonNullable.of(expiresAt);
         this.revoked = revoked;
-        this.rawKey = rawKey;
+        this.rawKey = JsonNullable.of(rawKey);
     }
 
     public GpgKey id(Long id) {
@@ -117,7 +118,7 @@ public class GpgKey {
     }
 
     public GpgKey name(String name) {
-        this.name = name;
+        this.name = JsonNullable.of(name);
         return this;
     }
 
@@ -127,16 +128,16 @@ public class GpgKey {
      */
     @Schema(name = "name", example = "Octocat's GPG Key", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("name")
-    public String getName() {
+    public JsonNullable<String> getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(JsonNullable<String> name) {
         this.name = name;
     }
 
     public GpgKey primaryKeyId(Long primaryKeyId) {
-        this.primaryKeyId = primaryKeyId;
+        this.primaryKeyId = JsonNullable.of(primaryKeyId);
         return this;
     }
 
@@ -147,11 +148,11 @@ public class GpgKey {
     @NotNull
     @Schema(name = "primary_key_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("primary_key_id")
-    public Long getPrimaryKeyId() {
+    public JsonNullable<Long> getPrimaryKeyId() {
         return primaryKeyId;
     }
 
-    public void setPrimaryKeyId(Long primaryKeyId) {
+    public void setPrimaryKeyId(JsonNullable<Long> primaryKeyId) {
         this.primaryKeyId = primaryKeyId;
     }
 
@@ -362,7 +363,7 @@ public class GpgKey {
     }
 
     public GpgKey expiresAt(OffsetDateTime expiresAt) {
-        this.expiresAt = expiresAt;
+        this.expiresAt = JsonNullable.of(expiresAt);
         return this;
     }
 
@@ -374,11 +375,11 @@ public class GpgKey {
     @Valid
     @Schema(name = "expires_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("expires_at")
-    public OffsetDateTime getExpiresAt() {
+    public JsonNullable<OffsetDateTime> getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(OffsetDateTime expiresAt) {
+    public void setExpiresAt(JsonNullable<OffsetDateTime> expiresAt) {
         this.expiresAt = expiresAt;
     }
 
@@ -403,7 +404,7 @@ public class GpgKey {
     }
 
     public GpgKey rawKey(String rawKey) {
-        this.rawKey = rawKey;
+        this.rawKey = JsonNullable.of(rawKey);
         return this;
     }
 
@@ -414,11 +415,11 @@ public class GpgKey {
     @NotNull
     @Schema(name = "raw_key", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("raw_key")
-    public String getRawKey() {
+    public JsonNullable<String> getRawKey() {
         return rawKey;
     }
 
-    public void setRawKey(String rawKey) {
+    public void setRawKey(JsonNullable<String> rawKey) {
         this.rawKey = rawKey;
     }
 
@@ -432,7 +433,7 @@ public class GpgKey {
         }
         GpgKey gpgKey = (GpgKey) o;
         return Objects.equals(this.id, gpgKey.id)
-                && Objects.equals(this.name, gpgKey.name)
+                && equalsNullable(this.name, gpgKey.name)
                 && Objects.equals(this.primaryKeyId, gpgKey.primaryKeyId)
                 && Objects.equals(this.keyId, gpgKey.keyId)
                 && Objects.equals(this.publicKey, gpgKey.publicKey)
@@ -448,11 +449,16 @@ public class GpgKey {
                 && Objects.equals(this.rawKey, gpgKey.rawKey);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
                 id,
-                name,
+                hashCodeNullable(name),
                 primaryKeyId,
                 keyId,
                 publicKey,
@@ -466,6 +472,13 @@ public class GpgKey {
                 expiresAt,
                 revoked,
                 rawKey);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

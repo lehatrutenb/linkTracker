@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -26,14 +24,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("App_4")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class App4 {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt = null;
+    private JsonNullable<OffsetDateTime> createdAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private String description = null;
+    private JsonNullable<String> description = JsonNullable.<String>undefined();
 
     /**
      * Gets or Sets events
@@ -165,26 +163,26 @@ public class App4 {
     @Valid
     private List<EventsEnum> events = new ArrayList<>();
 
-    private URI externalUrl = null;
+    private JsonNullable<URI> externalUrl = JsonNullable.<URI>undefined();
 
     private URI htmlUrl;
 
-    private Long id = null;
+    private JsonNullable<Long> id = JsonNullable.<Long>undefined();
 
-    private String clientId = null;
+    private JsonNullable<String> clientId = JsonNullable.<String>undefined();
 
     private String name;
 
     private String nodeId;
 
-    private User owner = null;
+    private JsonNullable<User> owner = JsonNullable.<User>undefined();
 
-    private App3Permissions permissions;
+    private Optional<App3Permissions> permissions = Optional.empty();
 
-    private String slug;
+    private Optional<String> slug = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime updatedAt = null;
+    private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
     public App4() {
         super();
@@ -203,19 +201,19 @@ public class App4 {
             String nodeId,
             User owner,
             OffsetDateTime updatedAt) {
-        this.createdAt = createdAt;
-        this.description = description;
-        this.externalUrl = externalUrl;
+        this.createdAt = JsonNullable.of(createdAt);
+        this.description = JsonNullable.of(description);
+        this.externalUrl = JsonNullable.of(externalUrl);
         this.htmlUrl = htmlUrl;
-        this.id = id;
+        this.id = JsonNullable.of(id);
         this.name = name;
         this.nodeId = nodeId;
-        this.owner = owner;
-        this.updatedAt = updatedAt;
+        this.owner = JsonNullable.of(owner);
+        this.updatedAt = JsonNullable.of(updatedAt);
     }
 
     public App4 createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
+        this.createdAt = JsonNullable.of(createdAt);
         return this;
     }
 
@@ -227,16 +225,16 @@ public class App4 {
     @Valid
     @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
+    public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(JsonNullable<OffsetDateTime> createdAt) {
         this.createdAt = createdAt;
     }
 
     public App4 description(String description) {
-        this.description = description;
+        this.description = JsonNullable.of(description);
         return this;
     }
 
@@ -247,11 +245,11 @@ public class App4 {
     @NotNull
     @Schema(name = "description", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("description")
-    public String getDescription() {
+    public JsonNullable<String> getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(JsonNullable<String> description) {
         this.description = description;
     }
 
@@ -286,7 +284,7 @@ public class App4 {
     }
 
     public App4 externalUrl(URI externalUrl) {
-        this.externalUrl = externalUrl;
+        this.externalUrl = JsonNullable.of(externalUrl);
         return this;
     }
 
@@ -298,11 +296,11 @@ public class App4 {
     @Valid
     @Schema(name = "external_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("external_url")
-    public URI getExternalUrl() {
+    public JsonNullable<URI> getExternalUrl() {
         return externalUrl;
     }
 
-    public void setExternalUrl(URI externalUrl) {
+    public void setExternalUrl(JsonNullable<URI> externalUrl) {
         this.externalUrl = externalUrl;
     }
 
@@ -328,7 +326,7 @@ public class App4 {
     }
 
     public App4 id(Long id) {
-        this.id = id;
+        this.id = JsonNullable.of(id);
         return this;
     }
 
@@ -342,16 +340,16 @@ public class App4 {
             description = "Unique identifier of the GitHub app",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public JsonNullable<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(JsonNullable<Long> id) {
         this.id = id;
     }
 
     public App4 clientId(String clientId) {
-        this.clientId = clientId;
+        this.clientId = JsonNullable.of(clientId);
         return this;
     }
 
@@ -364,11 +362,11 @@ public class App4 {
             description = "The Client ID for the GitHub app",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("client_id")
-    public String getClientId() {
+    public JsonNullable<String> getClientId() {
         return clientId;
     }
 
-    public void setClientId(String clientId) {
+    public void setClientId(JsonNullable<String> clientId) {
         this.clientId = clientId;
     }
 
@@ -413,7 +411,7 @@ public class App4 {
     }
 
     public App4 owner(User owner) {
-        this.owner = owner;
+        this.owner = JsonNullable.of(owner);
         return this;
     }
 
@@ -425,16 +423,16 @@ public class App4 {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("owner")
-    public User getOwner() {
+    public JsonNullable<User> getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(JsonNullable<User> owner) {
         this.owner = owner;
     }
 
     public App4 permissions(App3Permissions permissions) {
-        this.permissions = permissions;
+        this.permissions = Optional.ofNullable(permissions);
         return this;
     }
 
@@ -445,16 +443,16 @@ public class App4 {
     @Valid
     @Schema(name = "permissions", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("permissions")
-    public App3Permissions getPermissions() {
+    public Optional<App3Permissions> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(App3Permissions permissions) {
+    public void setPermissions(Optional<App3Permissions> permissions) {
         this.permissions = permissions;
     }
 
     public App4 slug(String slug) {
-        this.slug = slug;
+        this.slug = Optional.ofNullable(slug);
         return this;
     }
 
@@ -467,16 +465,16 @@ public class App4 {
             description = "The slug name of the GitHub app",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("slug")
-    public String getSlug() {
+    public Optional<String> getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
+    public void setSlug(Optional<String> slug) {
         this.slug = slug;
     }
 
     public App4 updatedAt(OffsetDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+        this.updatedAt = JsonNullable.of(updatedAt);
         return this;
     }
 
@@ -488,11 +486,11 @@ public class App4 {
     @Valid
     @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
-    public OffsetDateTime getUpdatedAt() {
+    public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(JsonNullable<OffsetDateTime> updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -511,13 +509,18 @@ public class App4 {
                 && Objects.equals(this.externalUrl, app4.externalUrl)
                 && Objects.equals(this.htmlUrl, app4.htmlUrl)
                 && Objects.equals(this.id, app4.id)
-                && Objects.equals(this.clientId, app4.clientId)
+                && equalsNullable(this.clientId, app4.clientId)
                 && Objects.equals(this.name, app4.name)
                 && Objects.equals(this.nodeId, app4.nodeId)
                 && Objects.equals(this.owner, app4.owner)
                 && Objects.equals(this.permissions, app4.permissions)
                 && Objects.equals(this.slug, app4.slug)
                 && Objects.equals(this.updatedAt, app4.updatedAt);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
@@ -529,13 +532,20 @@ public class App4 {
                 externalUrl,
                 htmlUrl,
                 id,
-                clientId,
+                hashCodeNullable(clientId),
                 name,
                 nodeId,
                 owner,
                 permissions,
                 slug,
                 updatedAt);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

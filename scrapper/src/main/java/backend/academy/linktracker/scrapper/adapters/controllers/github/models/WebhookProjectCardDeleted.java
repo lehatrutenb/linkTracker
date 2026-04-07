@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookProjectCardDeleted
@@ -17,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("webhook-project-card-deleted")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookProjectCardDeleted {
 
@@ -56,15 +58,15 @@ public class WebhookProjectCardDeleted {
 
     private ActionEnum action;
 
-    private EnterpriseWebhooks enterprise;
+    private Optional<EnterpriseWebhooks> enterprise = Optional.empty();
 
-    private SimpleInstallation installation;
+    private Optional<SimpleInstallation> installation = Optional.empty();
 
-    private OrganizationSimpleWebhooks organization;
+    private Optional<OrganizationSimpleWebhooks> organization = Optional.empty();
 
     private ProjectCard projectCard;
 
-    private NullableRepositoryWebhooks repository = null;
+    private JsonNullable<NullableRepositoryWebhooks> repository = JsonNullable.<NullableRepositoryWebhooks>undefined();
 
     private SimpleUser sender;
 
@@ -102,7 +104,7 @@ public class WebhookProjectCardDeleted {
     }
 
     public WebhookProjectCardDeleted enterprise(EnterpriseWebhooks enterprise) {
-        this.enterprise = enterprise;
+        this.enterprise = Optional.ofNullable(enterprise);
         return this;
     }
 
@@ -113,16 +115,16 @@ public class WebhookProjectCardDeleted {
     @Valid
     @Schema(name = "enterprise", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("enterprise")
-    public EnterpriseWebhooks getEnterprise() {
+    public Optional<EnterpriseWebhooks> getEnterprise() {
         return enterprise;
     }
 
-    public void setEnterprise(EnterpriseWebhooks enterprise) {
+    public void setEnterprise(Optional<EnterpriseWebhooks> enterprise) {
         this.enterprise = enterprise;
     }
 
     public WebhookProjectCardDeleted installation(SimpleInstallation installation) {
-        this.installation = installation;
+        this.installation = Optional.ofNullable(installation);
         return this;
     }
 
@@ -133,16 +135,16 @@ public class WebhookProjectCardDeleted {
     @Valid
     @Schema(name = "installation", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("installation")
-    public SimpleInstallation getInstallation() {
+    public Optional<SimpleInstallation> getInstallation() {
         return installation;
     }
 
-    public void setInstallation(SimpleInstallation installation) {
+    public void setInstallation(Optional<SimpleInstallation> installation) {
         this.installation = installation;
     }
 
     public WebhookProjectCardDeleted organization(OrganizationSimpleWebhooks organization) {
-        this.organization = organization;
+        this.organization = Optional.ofNullable(organization);
         return this;
     }
 
@@ -153,11 +155,11 @@ public class WebhookProjectCardDeleted {
     @Valid
     @Schema(name = "organization", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("organization")
-    public OrganizationSimpleWebhooks getOrganization() {
+    public Optional<OrganizationSimpleWebhooks> getOrganization() {
         return organization;
     }
 
-    public void setOrganization(OrganizationSimpleWebhooks organization) {
+    public void setOrganization(Optional<OrganizationSimpleWebhooks> organization) {
         this.organization = organization;
     }
 
@@ -183,7 +185,7 @@ public class WebhookProjectCardDeleted {
     }
 
     public WebhookProjectCardDeleted repository(NullableRepositoryWebhooks repository) {
-        this.repository = repository;
+        this.repository = JsonNullable.of(repository);
         return this;
     }
 
@@ -194,11 +196,11 @@ public class WebhookProjectCardDeleted {
     @Valid
     @Schema(name = "repository", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("repository")
-    public NullableRepositoryWebhooks getRepository() {
+    public JsonNullable<NullableRepositoryWebhooks> getRepository() {
         return repository;
     }
 
-    public void setRepository(NullableRepositoryWebhooks repository) {
+    public void setRepository(JsonNullable<NullableRepositoryWebhooks> repository) {
         this.repository = repository;
     }
 
@@ -237,13 +239,26 @@ public class WebhookProjectCardDeleted {
                 && Objects.equals(this.installation, webhookProjectCardDeleted.installation)
                 && Objects.equals(this.organization, webhookProjectCardDeleted.organization)
                 && Objects.equals(this.projectCard, webhookProjectCardDeleted.projectCard)
-                && Objects.equals(this.repository, webhookProjectCardDeleted.repository)
+                && equalsNullable(this.repository, webhookProjectCardDeleted.repository)
                 && Objects.equals(this.sender, webhookProjectCardDeleted.sender);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(action, enterprise, installation, organization, projectCard, repository, sender);
+        return Objects.hash(
+                action, enterprise, installation, organization, projectCard, hashCodeNullable(repository), sender);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

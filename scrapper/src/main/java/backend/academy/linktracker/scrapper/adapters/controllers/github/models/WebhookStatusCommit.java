@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookStatusCommit
@@ -18,17 +18,17 @@ import java.util.Objects;
 @JsonTypeName("webhook_status_commit")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookStatusCommit {
 
-    private User8 author = null;
+    private JsonNullable<User8> author = JsonNullable.<User8>undefined();
 
     private URI commentsUrl;
 
     private WebhookStatusCommitCommit commit;
 
-    private User8 committer = null;
+    private JsonNullable<User8> committer = JsonNullable.<User8>undefined();
 
     private URI htmlUrl;
 
@@ -58,10 +58,10 @@ public class WebhookStatusCommit {
             List<@Valid WebhookStatusCommitParentsInner> parents,
             String sha,
             URI url) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         this.commentsUrl = commentsUrl;
         this.commit = commit;
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         this.htmlUrl = htmlUrl;
         this.nodeId = nodeId;
         this.parents = parents;
@@ -70,7 +70,7 @@ public class WebhookStatusCommit {
     }
 
     public WebhookStatusCommit author(User8 author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -82,11 +82,11 @@ public class WebhookStatusCommit {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public User8 getAuthor() {
+    public JsonNullable<User8> getAuthor() {
         return author;
     }
 
-    public void setAuthor(User8 author) {
+    public void setAuthor(JsonNullable<User8> author) {
         this.author = author;
     }
 
@@ -133,7 +133,7 @@ public class WebhookStatusCommit {
     }
 
     public WebhookStatusCommit committer(User8 committer) {
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         return this;
     }
 
@@ -145,11 +145,11 @@ public class WebhookStatusCommit {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("committer")
-    public User8 getCommitter() {
+    public JsonNullable<User8> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(User8 committer) {
+    public void setCommitter(JsonNullable<User8> committer) {
         this.committer = committer;
     }
 

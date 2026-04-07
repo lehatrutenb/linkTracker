@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookPullRequestReviewCommentDeletedPullRequest
@@ -20,7 +18,7 @@ import java.util.Objects;
 @JsonTypeName("webhook_pull_request_review_comment_deleted_pull_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookPullRequestReviewCommentDeletedPullRequest {
 
@@ -65,9 +63,9 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
         }
     }
 
-    private ActiveLockReasonEnum activeLockReason = null;
+    private JsonNullable<ActiveLockReasonEnum> activeLockReason = JsonNullable.<ActiveLockReasonEnum>undefined();
 
-    private User assignee = null;
+    private JsonNullable<User> assignee = JsonNullable.<User>undefined();
 
     @Valid
     private List<@Valid User2> assignees = new ArrayList<>();
@@ -121,13 +119,13 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
 
     private AuthorAssociationEnum authorAssociation;
 
-    private PullRequestAutoMerge autoMerge = null;
+    private JsonNullable<PullRequestAutoMerge> autoMerge = JsonNullable.<PullRequestAutoMerge>undefined();
 
     private PullRequestBase base;
 
-    private String body = null;
+    private JsonNullable<String> body = JsonNullable.<String>undefined();
 
-    private String closedAt = null;
+    private JsonNullable<String> closedAt = JsonNullable.<String>undefined();
 
     private URI commentsUrl;
 
@@ -137,7 +135,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
 
     private URI diffUrl;
 
-    private Boolean draft;
+    private Optional<Boolean> draft = Optional.empty();
 
     private WebhookPullRequestReviewCommentDeletedPullRequestHead head;
 
@@ -152,9 +150,9 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
 
     private Boolean locked;
 
-    private String mergedAt = null;
+    private JsonNullable<String> mergedAt = JsonNullable.<String>undefined();
 
-    private Milestone1 milestone = null;
+    private JsonNullable<Milestone1> milestone = JsonNullable.<Milestone1>undefined();
 
     private String nodeId;
 
@@ -217,7 +215,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
 
     private URI url;
 
-    private User3 user = null;
+    private JsonNullable<User3> user = JsonNullable.<User3>undefined();
 
     public WebhookPullRequestReviewCommentDeletedPullRequest() {
         super();
@@ -261,13 +259,13 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
             URI url,
             User3 user) {
         this.links = links;
-        this.activeLockReason = activeLockReason;
-        this.assignee = assignee;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
+        this.assignee = JsonNullable.of(assignee);
         this.assignees = assignees;
         this.authorAssociation = authorAssociation;
         this.base = base;
-        this.body = body;
-        this.closedAt = closedAt;
+        this.body = JsonNullable.of(body);
+        this.closedAt = JsonNullable.of(closedAt);
         this.commentsUrl = commentsUrl;
         this.commitsUrl = commitsUrl;
         this.createdAt = createdAt;
@@ -278,8 +276,8 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
         this.issueUrl = issueUrl;
         this.labels = labels;
         this.locked = locked;
-        this.mergedAt = mergedAt;
-        this.milestone = milestone;
+        this.mergedAt = JsonNullable.of(mergedAt);
+        this.milestone = JsonNullable.of(milestone);
         this.nodeId = nodeId;
         this.number = number;
         this.patchUrl = patchUrl;
@@ -292,7 +290,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
         this.title = title;
         this.updatedAt = updatedAt;
         this.url = url;
-        this.user = user;
+        this.user = JsonNullable.of(user);
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest links(WebhooksPullRequest5Links links) {
@@ -317,7 +315,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest activeLockReason(ActiveLockReasonEnum activeLockReason) {
-        this.activeLockReason = activeLockReason;
+        this.activeLockReason = JsonNullable.of(activeLockReason);
         return this;
     }
 
@@ -328,16 +326,16 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @NotNull
     @Schema(name = "active_lock_reason", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("active_lock_reason")
-    public ActiveLockReasonEnum getActiveLockReason() {
+    public JsonNullable<ActiveLockReasonEnum> getActiveLockReason() {
         return activeLockReason;
     }
 
-    public void setActiveLockReason(ActiveLockReasonEnum activeLockReason) {
+    public void setActiveLockReason(JsonNullable<ActiveLockReasonEnum> activeLockReason) {
         this.activeLockReason = activeLockReason;
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest assignee(User assignee) {
-        this.assignee = assignee;
+        this.assignee = JsonNullable.of(assignee);
         return this;
     }
 
@@ -349,11 +347,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("assignee")
-    public User getAssignee() {
+    public JsonNullable<User> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(User assignee) {
+    public void setAssignee(JsonNullable<User> assignee) {
         this.assignee = assignee;
     }
 
@@ -411,7 +409,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest autoMerge(PullRequestAutoMerge autoMerge) {
-        this.autoMerge = autoMerge;
+        this.autoMerge = JsonNullable.of(autoMerge);
         return this;
     }
 
@@ -422,11 +420,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @Valid
     @Schema(name = "auto_merge", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("auto_merge")
-    public PullRequestAutoMerge getAutoMerge() {
+    public JsonNullable<PullRequestAutoMerge> getAutoMerge() {
         return autoMerge;
     }
 
-    public void setAutoMerge(PullRequestAutoMerge autoMerge) {
+    public void setAutoMerge(JsonNullable<PullRequestAutoMerge> autoMerge) {
         this.autoMerge = autoMerge;
     }
 
@@ -452,7 +450,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest body(String body) {
-        this.body = body;
+        this.body = JsonNullable.of(body);
         return this;
     }
 
@@ -463,16 +461,16 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @NotNull
     @Schema(name = "body", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("body")
-    public String getBody() {
+    public JsonNullable<String> getBody() {
         return body;
     }
 
-    public void setBody(String body) {
+    public void setBody(JsonNullable<String> body) {
         this.body = body;
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest closedAt(String closedAt) {
-        this.closedAt = closedAt;
+        this.closedAt = JsonNullable.of(closedAt);
         return this;
     }
 
@@ -483,11 +481,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @NotNull
     @Schema(name = "closed_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("closed_at")
-    public String getClosedAt() {
+    public JsonNullable<String> getClosedAt() {
         return closedAt;
     }
 
-    public void setClosedAt(String closedAt) {
+    public void setClosedAt(JsonNullable<String> closedAt) {
         this.closedAt = closedAt;
     }
 
@@ -575,7 +573,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest draft(Boolean draft) {
-        this.draft = draft;
+        this.draft = Optional.ofNullable(draft);
         return this;
     }
 
@@ -585,11 +583,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
      */
     @Schema(name = "draft", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("draft")
-    public Boolean getDraft() {
+    public Optional<Boolean> getDraft() {
         return draft;
     }
 
-    public void setDraft(Boolean draft) {
+    public void setDraft(Optional<Boolean> draft) {
         this.draft = draft;
     }
 
@@ -727,7 +725,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest mergedAt(String mergedAt) {
-        this.mergedAt = mergedAt;
+        this.mergedAt = JsonNullable.of(mergedAt);
         return this;
     }
 
@@ -738,16 +736,16 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @NotNull
     @Schema(name = "merged_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("merged_at")
-    public String getMergedAt() {
+    public JsonNullable<String> getMergedAt() {
         return mergedAt;
     }
 
-    public void setMergedAt(String mergedAt) {
+    public void setMergedAt(JsonNullable<String> mergedAt) {
         this.mergedAt = mergedAt;
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest milestone(Milestone1 milestone) {
-        this.milestone = milestone;
+        this.milestone = JsonNullable.of(milestone);
         return this;
     }
 
@@ -759,11 +757,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @Valid
     @Schema(name = "milestone", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("milestone")
-    public Milestone1 getMilestone() {
+    public JsonNullable<Milestone1> getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Milestone1 milestone) {
+    public void setMilestone(JsonNullable<Milestone1> milestone) {
         this.milestone = milestone;
     }
 
@@ -1032,7 +1030,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     }
 
     public WebhookPullRequestReviewCommentDeletedPullRequest user(User3 user) {
-        this.user = user;
+        this.user = JsonNullable.of(user);
         return this;
     }
 
@@ -1044,11 +1042,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public User3 getUser() {
+    public JsonNullable<User3> getUser() {
         return user;
     }
 
-    public void setUser(User3 user) {
+    public void setUser(JsonNullable<User3> user) {
         this.user = user;
     }
 
@@ -1069,7 +1067,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
                 && Objects.equals(this.assignees, webhookPullRequestReviewCommentDeletedPullRequest.assignees)
                 && Objects.equals(
                         this.authorAssociation, webhookPullRequestReviewCommentDeletedPullRequest.authorAssociation)
-                && Objects.equals(this.autoMerge, webhookPullRequestReviewCommentDeletedPullRequest.autoMerge)
+                && equalsNullable(this.autoMerge, webhookPullRequestReviewCommentDeletedPullRequest.autoMerge)
                 && Objects.equals(this.base, webhookPullRequestReviewCommentDeletedPullRequest.base)
                 && Objects.equals(this.body, webhookPullRequestReviewCommentDeletedPullRequest.body)
                 && Objects.equals(this.closedAt, webhookPullRequestReviewCommentDeletedPullRequest.closedAt)
@@ -1104,6 +1102,11 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
                 && Objects.equals(this.user, webhookPullRequestReviewCommentDeletedPullRequest.user);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -1112,7 +1115,7 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
                 assignee,
                 assignees,
                 authorAssociation,
-                autoMerge,
+                hashCodeNullable(autoMerge),
                 base,
                 body,
                 closedAt,
@@ -1142,6 +1145,13 @@ public class WebhookPullRequestReviewCommentDeletedPullRequest {
                 updatedAt,
                 url,
                 user);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

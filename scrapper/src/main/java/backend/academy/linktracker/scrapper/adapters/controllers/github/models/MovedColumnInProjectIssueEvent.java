@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * Moved Column in Project Issue Event
@@ -16,7 +17,7 @@ import java.util.Objects;
 @JsonTypeName("moved-column-in-project-issue-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MovedColumnInProjectIssueEvent {
 
@@ -30,15 +31,15 @@ public class MovedColumnInProjectIssueEvent {
 
     private String event;
 
-    private String commitId = null;
+    private JsonNullable<String> commitId = JsonNullable.<String>undefined();
 
-    private String commitUrl = null;
+    private JsonNullable<String> commitUrl = JsonNullable.<String>undefined();
 
     private String createdAt;
 
-    private NullableIntegration performedViaGithubApp = null;
+    private JsonNullable<NullableIntegration> performedViaGithubApp = JsonNullable.<NullableIntegration>undefined();
 
-    private AddedToProjectIssueEventProjectCard projectCard;
+    private Optional<AddedToProjectIssueEventProjectCard> projectCard = Optional.empty();
 
     public MovedColumnInProjectIssueEvent() {
         super();
@@ -62,10 +63,10 @@ public class MovedColumnInProjectIssueEvent {
         this.url = url;
         this.actor = actor;
         this.event = event;
-        this.commitId = commitId;
-        this.commitUrl = commitUrl;
+        this.commitId = JsonNullable.of(commitId);
+        this.commitUrl = JsonNullable.of(commitUrl);
         this.createdAt = createdAt;
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
     }
 
     public MovedColumnInProjectIssueEvent id(Long id) {
@@ -170,7 +171,7 @@ public class MovedColumnInProjectIssueEvent {
     }
 
     public MovedColumnInProjectIssueEvent commitId(String commitId) {
-        this.commitId = commitId;
+        this.commitId = JsonNullable.of(commitId);
         return this;
     }
 
@@ -181,16 +182,16 @@ public class MovedColumnInProjectIssueEvent {
     @NotNull
     @Schema(name = "commit_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_id")
-    public String getCommitId() {
+    public JsonNullable<String> getCommitId() {
         return commitId;
     }
 
-    public void setCommitId(String commitId) {
+    public void setCommitId(JsonNullable<String> commitId) {
         this.commitId = commitId;
     }
 
     public MovedColumnInProjectIssueEvent commitUrl(String commitUrl) {
-        this.commitUrl = commitUrl;
+        this.commitUrl = JsonNullable.of(commitUrl);
         return this;
     }
 
@@ -201,11 +202,11 @@ public class MovedColumnInProjectIssueEvent {
     @NotNull
     @Schema(name = "commit_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("commit_url")
-    public String getCommitUrl() {
+    public JsonNullable<String> getCommitUrl() {
         return commitUrl;
     }
 
-    public void setCommitUrl(String commitUrl) {
+    public void setCommitUrl(JsonNullable<String> commitUrl) {
         this.commitUrl = commitUrl;
     }
 
@@ -230,7 +231,7 @@ public class MovedColumnInProjectIssueEvent {
     }
 
     public MovedColumnInProjectIssueEvent performedViaGithubApp(NullableIntegration performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
+        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
 
@@ -242,16 +243,16 @@ public class MovedColumnInProjectIssueEvent {
     @Valid
     @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("performed_via_github_app")
-    public NullableIntegration getPerformedViaGithubApp() {
+    public JsonNullable<NullableIntegration> getPerformedViaGithubApp() {
         return performedViaGithubApp;
     }
 
-    public void setPerformedViaGithubApp(NullableIntegration performedViaGithubApp) {
+    public void setPerformedViaGithubApp(JsonNullable<NullableIntegration> performedViaGithubApp) {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
     public MovedColumnInProjectIssueEvent projectCard(AddedToProjectIssueEventProjectCard projectCard) {
-        this.projectCard = projectCard;
+        this.projectCard = Optional.ofNullable(projectCard);
         return this;
     }
 
@@ -262,11 +263,11 @@ public class MovedColumnInProjectIssueEvent {
     @Valid
     @Schema(name = "project_card", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("project_card")
-    public AddedToProjectIssueEventProjectCard getProjectCard() {
+    public Optional<AddedToProjectIssueEventProjectCard> getProjectCard() {
         return projectCard;
     }
 
-    public void setProjectCard(AddedToProjectIssueEventProjectCard projectCard) {
+    public void setProjectCard(Optional<AddedToProjectIssueEventProjectCard> projectCard) {
         this.projectCard = projectCard;
     }
 

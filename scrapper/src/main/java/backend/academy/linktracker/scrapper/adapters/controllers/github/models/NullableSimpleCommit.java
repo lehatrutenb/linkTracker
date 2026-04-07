@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
-import java.util.*;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("nullable-simple-commit")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class NullableSimpleCommit {
 
@@ -31,9 +31,10 @@ public class NullableSimpleCommit {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime timestamp;
 
-    private NullableSimpleCommitAuthor author = null;
+    private JsonNullable<NullableSimpleCommitAuthor> author = JsonNullable.<NullableSimpleCommitAuthor>undefined();
 
-    private NullableSimpleCommitCommitter committer = null;
+    private JsonNullable<NullableSimpleCommitCommitter> committer =
+            JsonNullable.<NullableSimpleCommitCommitter>undefined();
 
     public NullableSimpleCommit() {
         super();
@@ -53,8 +54,8 @@ public class NullableSimpleCommit {
         this.treeId = treeId;
         this.message = message;
         this.timestamp = timestamp;
-        this.author = author;
-        this.committer = committer;
+        this.author = JsonNullable.of(author);
+        this.committer = JsonNullable.of(committer);
     }
 
     public NullableSimpleCommit id(String id) {
@@ -151,7 +152,7 @@ public class NullableSimpleCommit {
     }
 
     public NullableSimpleCommit author(NullableSimpleCommitAuthor author) {
-        this.author = author;
+        this.author = JsonNullable.of(author);
         return this;
     }
 
@@ -163,16 +164,16 @@ public class NullableSimpleCommit {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public NullableSimpleCommitAuthor getAuthor() {
+    public JsonNullable<NullableSimpleCommitAuthor> getAuthor() {
         return author;
     }
 
-    public void setAuthor(NullableSimpleCommitAuthor author) {
+    public void setAuthor(JsonNullable<NullableSimpleCommitAuthor> author) {
         this.author = author;
     }
 
     public NullableSimpleCommit committer(NullableSimpleCommitCommitter committer) {
-        this.committer = committer;
+        this.committer = JsonNullable.of(committer);
         return this;
     }
 
@@ -184,11 +185,11 @@ public class NullableSimpleCommit {
     @Valid
     @Schema(name = "committer", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("committer")
-    public NullableSimpleCommitCommitter getCommitter() {
+    public JsonNullable<NullableSimpleCommitCommitter> getCommitter() {
         return committer;
     }
 
-    public void setCommitter(NullableSimpleCommitCommitter committer) {
+    public void setCommitter(JsonNullable<NullableSimpleCommitCommitter> committer) {
         this.committer = committer;
     }
 

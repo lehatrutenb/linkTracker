@@ -5,10 +5,12 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * An iteration setting for an iteration field
@@ -17,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("projects-v2-iteration-setting")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedChangesOneOfFieldValueFrom {
 
@@ -25,13 +27,13 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
 
     private String title;
 
-    private String titleHtml;
+    private Optional<String> titleHtml = Optional.empty();
 
-    private BigDecimal duration = null;
+    private JsonNullable<BigDecimal> duration = JsonNullable.<BigDecimal>undefined();
 
-    private String startDate = null;
+    private JsonNullable<String> startDate = JsonNullable.<String>undefined();
 
-    private Boolean completed;
+    private Optional<Boolean> completed = Optional.empty();
 
     public ProjectsV2IterationSetting() {
         super();
@@ -89,7 +91,7 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
     }
 
     public ProjectsV2IterationSetting titleHtml(String titleHtml) {
-        this.titleHtml = titleHtml;
+        this.titleHtml = Optional.ofNullable(titleHtml);
         return this;
     }
 
@@ -102,16 +104,16 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
             description = "The iteration title, rendered as HTML.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("title_html")
-    public String getTitleHtml() {
+    public Optional<String> getTitleHtml() {
         return titleHtml;
     }
 
-    public void setTitleHtml(String titleHtml) {
+    public void setTitleHtml(Optional<String> titleHtml) {
         this.titleHtml = titleHtml;
     }
 
     public ProjectsV2IterationSetting duration(BigDecimal duration) {
-        this.duration = duration;
+        this.duration = JsonNullable.of(duration);
         return this;
     }
 
@@ -125,16 +127,16 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
             description = "The duration of the iteration in days.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("duration")
-    public BigDecimal getDuration() {
+    public JsonNullable<BigDecimal> getDuration() {
         return duration;
     }
 
-    public void setDuration(BigDecimal duration) {
+    public void setDuration(JsonNullable<BigDecimal> duration) {
         this.duration = duration;
     }
 
     public ProjectsV2IterationSetting startDate(String startDate) {
-        this.startDate = startDate;
+        this.startDate = JsonNullable.of(startDate);
         return this;
     }
 
@@ -147,16 +149,16 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
             description = "The start date of the iteration.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("start_date")
-    public String getStartDate() {
+    public JsonNullable<String> getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(JsonNullable<String> startDate) {
         this.startDate = startDate;
     }
 
     public ProjectsV2IterationSetting completed(Boolean completed) {
-        this.completed = completed;
+        this.completed = Optional.ofNullable(completed);
         return this;
     }
 
@@ -169,11 +171,11 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
             description = "Whether the iteration has been completed.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed")
-    public Boolean getCompleted() {
+    public Optional<Boolean> getCompleted() {
         return completed;
     }
 
-    public void setCompleted(Boolean completed) {
+    public void setCompleted(Optional<Boolean> completed) {
         this.completed = completed;
     }
 
@@ -189,14 +191,26 @@ public class ProjectsV2IterationSetting implements WebhookProjectsV2ItemEditedCh
         return Objects.equals(this.id, projectsV2IterationSetting.id)
                 && Objects.equals(this.title, projectsV2IterationSetting.title)
                 && Objects.equals(this.titleHtml, projectsV2IterationSetting.titleHtml)
-                && Objects.equals(this.duration, projectsV2IterationSetting.duration)
-                && Objects.equals(this.startDate, projectsV2IterationSetting.startDate)
+                && equalsNullable(this.duration, projectsV2IterationSetting.duration)
+                && equalsNullable(this.startDate, projectsV2IterationSetting.startDate)
                 && Objects.equals(this.completed, projectsV2IterationSetting.completed);
+    }
+
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, titleHtml, duration, startDate, completed);
+        return Objects.hash(id, title, titleHtml, hashCodeNullable(duration), hashCodeNullable(startDate), completed);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

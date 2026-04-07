@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * OrgsCreateInvitationRequest
@@ -19,13 +18,13 @@ import java.util.Objects;
 @JsonTypeName("orgs_create_invitation_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class OrgsCreateInvitationRequest {
 
-    private Long inviteeId;
+    private Optional<Long> inviteeId = Optional.empty();
 
-    private String email;
+    private Optional<String> email = Optional.empty();
 
     /**
      * The role for the new member.   * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.    * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.    * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.   * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.
@@ -66,13 +65,13 @@ public class OrgsCreateInvitationRequest {
         }
     }
 
-    private RoleEnum role = RoleEnum.DIRECT_MEMBER;
+    private Optional<RoleEnum> role = Optional.of(RoleEnum.DIRECT_MEMBER);
 
     @Valid
     private List<Long> teamIds = new ArrayList<>();
 
     public OrgsCreateInvitationRequest inviteeId(Long inviteeId) {
-        this.inviteeId = inviteeId;
+        this.inviteeId = Optional.ofNullable(inviteeId);
         return this;
     }
 
@@ -85,16 +84,16 @@ public class OrgsCreateInvitationRequest {
             description = "**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("invitee_id")
-    public Long getInviteeId() {
+    public Optional<Long> getInviteeId() {
         return inviteeId;
     }
 
-    public void setInviteeId(Long inviteeId) {
+    public void setInviteeId(Optional<Long> inviteeId) {
         this.inviteeId = inviteeId;
     }
 
     public OrgsCreateInvitationRequest email(String email) {
-        this.email = email;
+        this.email = Optional.ofNullable(email);
         return this;
     }
 
@@ -108,16 +107,16 @@ public class OrgsCreateInvitationRequest {
                     "**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("email")
-    public String getEmail() {
+    public Optional<String> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Optional<String> email) {
         this.email = email;
     }
 
     public OrgsCreateInvitationRequest role(RoleEnum role) {
-        this.role = role;
+        this.role = Optional.ofNullable(role);
         return this;
     }
 
@@ -131,11 +130,11 @@ public class OrgsCreateInvitationRequest {
                     "The role for the new member.   * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.    * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.    * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.   * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("role")
-    public RoleEnum getRole() {
+    public Optional<RoleEnum> getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(Optional<RoleEnum> role) {
         this.role = role;
     }
 

@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * MarkdownRenderRequest
@@ -16,7 +16,7 @@ import java.util.Objects;
 @JsonTypeName("markdown_render_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MarkdownRenderRequest {
 
@@ -57,9 +57,9 @@ public class MarkdownRenderRequest {
         }
     }
 
-    private ModeEnum mode = ModeEnum.MARKDOWN;
+    private Optional<ModeEnum> mode = Optional.of(ModeEnum.MARKDOWN);
 
-    private String context;
+    private Optional<String> context = Optional.empty();
 
     public MarkdownRenderRequest() {
         super();
@@ -96,7 +96,7 @@ public class MarkdownRenderRequest {
     }
 
     public MarkdownRenderRequest mode(ModeEnum mode) {
-        this.mode = mode;
+        this.mode = Optional.ofNullable(mode);
         return this;
     }
 
@@ -110,16 +110,16 @@ public class MarkdownRenderRequest {
             description = "The rendering mode.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("mode")
-    public ModeEnum getMode() {
+    public Optional<ModeEnum> getMode() {
         return mode;
     }
 
-    public void setMode(ModeEnum mode) {
+    public void setMode(Optional<ModeEnum> mode) {
         this.mode = mode;
     }
 
     public MarkdownRenderRequest context(String context) {
-        this.context = context;
+        this.context = Optional.ofNullable(context);
         return this;
     }
 
@@ -133,11 +133,11 @@ public class MarkdownRenderRequest {
                     "The repository context to use when creating references in `gfm` mode.  For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("context")
-    public String getContext() {
+    public Optional<String> getContext() {
         return context;
     }
 
-    public void setContext(String context) {
+    public void setContext(Optional<String> context) {
         this.context = context;
     }
 

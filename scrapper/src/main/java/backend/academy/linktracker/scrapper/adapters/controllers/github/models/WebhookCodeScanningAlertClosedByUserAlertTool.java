@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
+import java.util.Arrays;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookCodeScanningAlertClosedByUserAlertTool
@@ -14,15 +15,15 @@ import java.util.Objects;
 @JsonTypeName("webhook_code_scanning_alert_closed_by_user_alert_tool")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookCodeScanningAlertClosedByUserAlertTool {
 
-    private String guid = null;
+    private JsonNullable<String> guid = JsonNullable.<String>undefined();
 
     private String name;
 
-    private String version = null;
+    private JsonNullable<String> version = JsonNullable.<String>undefined();
 
     public WebhookCodeScanningAlertClosedByUserAlertTool() {
         super();
@@ -33,11 +34,11 @@ public class WebhookCodeScanningAlertClosedByUserAlertTool {
      */
     public WebhookCodeScanningAlertClosedByUserAlertTool(String name, String version) {
         this.name = name;
-        this.version = version;
+        this.version = JsonNullable.of(version);
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertTool guid(String guid) {
-        this.guid = guid;
+        this.guid = JsonNullable.of(guid);
         return this;
     }
 
@@ -47,11 +48,11 @@ public class WebhookCodeScanningAlertClosedByUserAlertTool {
      */
     @Schema(name = "guid", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("guid")
-    public String getGuid() {
+    public JsonNullable<String> getGuid() {
         return guid;
     }
 
-    public void setGuid(String guid) {
+    public void setGuid(JsonNullable<String> guid) {
         this.guid = guid;
     }
 
@@ -79,7 +80,7 @@ public class WebhookCodeScanningAlertClosedByUserAlertTool {
     }
 
     public WebhookCodeScanningAlertClosedByUserAlertTool version(String version) {
-        this.version = version;
+        this.version = JsonNullable.of(version);
         return this;
     }
 
@@ -93,11 +94,11 @@ public class WebhookCodeScanningAlertClosedByUserAlertTool {
             description = "The version of the tool used to detect the alert.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("version")
-    public String getVersion() {
+    public JsonNullable<String> getVersion() {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(JsonNullable<String> version) {
         this.version = version;
     }
 
@@ -111,14 +112,26 @@ public class WebhookCodeScanningAlertClosedByUserAlertTool {
         }
         WebhookCodeScanningAlertClosedByUserAlertTool webhookCodeScanningAlertClosedByUserAlertTool =
                 (WebhookCodeScanningAlertClosedByUserAlertTool) o;
-        return Objects.equals(this.guid, webhookCodeScanningAlertClosedByUserAlertTool.guid)
+        return equalsNullable(this.guid, webhookCodeScanningAlertClosedByUserAlertTool.guid)
                 && Objects.equals(this.name, webhookCodeScanningAlertClosedByUserAlertTool.name)
                 && Objects.equals(this.version, webhookCodeScanningAlertClosedByUserAlertTool.version);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(guid, name, version);
+        return Objects.hash(hashCodeNullable(guid), name, version);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

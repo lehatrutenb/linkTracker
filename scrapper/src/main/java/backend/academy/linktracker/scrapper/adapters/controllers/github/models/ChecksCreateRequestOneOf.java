@@ -9,13 +9,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -24,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("checks_create_request_oneOf")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
 
@@ -67,12 +64,12 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
 
     private String headSha;
 
-    private String detailsUrl;
+    private Optional<String> detailsUrl = Optional.empty();
 
-    private String externalId;
+    private Optional<String> externalId = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime startedAt;
+    private Optional<OffsetDateTime> startedAt = Optional.empty();
 
     /**
      * **Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check.  **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.
@@ -121,12 +118,12 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
         }
     }
 
-    private ConclusionEnum conclusion;
+    private Optional<ConclusionEnum> conclusion = Optional.empty();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime completedAt;
+    private Optional<OffsetDateTime> completedAt = Optional.empty();
 
-    private ChecksCreateRequestOutput output;
+    private Optional<ChecksCreateRequestOutput> output = Optional.empty();
 
     @Valid
     private List<@Valid ChecksCreateRequestActionsInner> actions = new ArrayList<>();
@@ -151,13 +148,13 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
 
     /**
      * Get status
-     *
      * @return status
      */
+    @NotNull
     @Schema(name = "status", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("status")
     public String getStatus() {
-        return String.valueOf(status);
+        return status.toString();
     }
 
     public void setStatus(StatusEnum status) {
@@ -208,7 +205,7 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
     }
 
     public ChecksCreateRequestOneOf detailsUrl(String detailsUrl) {
-        this.detailsUrl = detailsUrl;
+        this.detailsUrl = Optional.ofNullable(detailsUrl);
         return this;
     }
 
@@ -222,16 +219,16 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
                     "The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("details_url")
-    public String getDetailsUrl() {
+    public Optional<String> getDetailsUrl() {
         return detailsUrl;
     }
 
-    public void setDetailsUrl(String detailsUrl) {
+    public void setDetailsUrl(Optional<String> detailsUrl) {
         this.detailsUrl = detailsUrl;
     }
 
     public ChecksCreateRequestOneOf externalId(String externalId) {
-        this.externalId = externalId;
+        this.externalId = Optional.ofNullable(externalId);
         return this;
     }
 
@@ -244,16 +241,16 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
             description = "A reference for the run on the integrator's system.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("external_id")
-    public String getExternalId() {
+    public Optional<String> getExternalId() {
         return externalId;
     }
 
-    public void setExternalId(String externalId) {
+    public void setExternalId(Optional<String> externalId) {
         this.externalId = externalId;
     }
 
     public ChecksCreateRequestOneOf startedAt(OffsetDateTime startedAt) {
-        this.startedAt = startedAt;
+        this.startedAt = Optional.ofNullable(startedAt);
         return this;
     }
 
@@ -268,16 +265,16 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
                     "The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("started_at")
-    public OffsetDateTime getStartedAt() {
+    public Optional<OffsetDateTime> getStartedAt() {
         return startedAt;
     }
 
-    public void setStartedAt(OffsetDateTime startedAt) {
+    public void setStartedAt(Optional<OffsetDateTime> startedAt) {
         this.startedAt = startedAt;
     }
 
     public ChecksCreateRequestOneOf conclusion(ConclusionEnum conclusion) {
-        this.conclusion = conclusion;
+        this.conclusion = Optional.ofNullable(conclusion);
         return this;
     }
 
@@ -291,16 +288,16 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
                     "**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check.  **Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("conclusion")
-    public ConclusionEnum getConclusion() {
+    public Optional<ConclusionEnum> getConclusion() {
         return conclusion;
     }
 
-    public void setConclusion(ConclusionEnum conclusion) {
+    public void setConclusion(Optional<ConclusionEnum> conclusion) {
         this.conclusion = conclusion;
     }
 
     public ChecksCreateRequestOneOf completedAt(OffsetDateTime completedAt) {
-        this.completedAt = completedAt;
+        this.completedAt = Optional.ofNullable(completedAt);
         return this;
     }
 
@@ -315,16 +312,16 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
                     "The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("completed_at")
-    public OffsetDateTime getCompletedAt() {
+    public Optional<OffsetDateTime> getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(OffsetDateTime completedAt) {
+    public void setCompletedAt(Optional<OffsetDateTime> completedAt) {
         this.completedAt = completedAt;
     }
 
     public ChecksCreateRequestOneOf output(ChecksCreateRequestOutput output) {
-        this.output = output;
+        this.output = Optional.ofNullable(output);
         return this;
     }
 
@@ -335,11 +332,11 @@ public class ChecksCreateRequestOneOf implements ChecksCreateRequest {
     @Valid
     @Schema(name = "output", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("output")
-    public ChecksCreateRequestOutput getOutput() {
+    public Optional<ChecksCreateRequestOutput> getOutput() {
         return output;
     }
 
-    public void setOutput(ChecksCreateRequestOutput output) {
+    public void setOutput(Optional<ChecksCreateRequestOutput> output) {
         this.output = output;
     }
 

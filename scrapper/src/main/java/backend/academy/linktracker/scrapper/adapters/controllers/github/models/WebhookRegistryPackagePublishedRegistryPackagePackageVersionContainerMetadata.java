@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.Optional;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata
@@ -15,18 +16,18 @@ import java.util.Objects;
 @JsonTypeName("webhook_registry_package_published_registry_package_package_version_container_metadata")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata {
 
-    private Object labels = null;
+    private JsonNullable<Object> labels = JsonNullable.<Object>undefined();
 
-    private Object manifest = null;
+    private JsonNullable<Object> manifest = JsonNullable.<Object>undefined();
 
-    private WebhookPackagePublishedPackagePackageVersionContainerMetadataTag tag;
+    private Optional<WebhookPackagePublishedPackagePackageVersionContainerMetadataTag> tag = Optional.empty();
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata labels(Object labels) {
-        this.labels = labels;
+        this.labels = JsonNullable.of(labels);
         return this;
     }
 
@@ -36,16 +37,16 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionContain
      */
     @Schema(name = "labels", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("labels")
-    public Object getLabels() {
+    public JsonNullable<Object> getLabels() {
         return labels;
     }
 
-    public void setLabels(Object labels) {
+    public void setLabels(JsonNullable<Object> labels) {
         this.labels = labels;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata manifest(Object manifest) {
-        this.manifest = manifest;
+        this.manifest = JsonNullable.of(manifest);
         return this;
     }
 
@@ -55,17 +56,17 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionContain
      */
     @Schema(name = "manifest", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("manifest")
-    public Object getManifest() {
+    public JsonNullable<Object> getManifest() {
         return manifest;
     }
 
-    public void setManifest(Object manifest) {
+    public void setManifest(JsonNullable<Object> manifest) {
         this.manifest = manifest;
     }
 
     public WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata tag(
             WebhookPackagePublishedPackagePackageVersionContainerMetadataTag tag) {
-        this.tag = tag;
+        this.tag = Optional.ofNullable(tag);
         return this;
     }
 
@@ -76,11 +77,11 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionContain
     @Valid
     @Schema(name = "tag", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("tag")
-    public WebhookPackagePublishedPackagePackageVersionContainerMetadataTag getTag() {
+    public Optional<WebhookPackagePublishedPackagePackageVersionContainerMetadataTag> getTag() {
         return tag;
     }
 
-    public void setTag(WebhookPackagePublishedPackagePackageVersionContainerMetadataTag tag) {
+    public void setTag(Optional<WebhookPackagePublishedPackagePackageVersionContainerMetadataTag> tag) {
         this.tag = tag;
     }
 
@@ -95,19 +96,31 @@ public class WebhookRegistryPackagePublishedRegistryPackagePackageVersionContain
         WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata
                 webhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata =
                         (WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata) o;
-        return Objects.equals(
+        return equalsNullable(
                         this.labels,
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata.labels)
-                && Objects.equals(
+                && equalsNullable(
                         this.manifest,
                         webhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata.manifest)
                 && Objects.equals(
                         this.tag, webhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata.tag);
     }
 
+    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+        return a == b
+                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(labels, manifest, tag);
+        return Objects.hash(hashCodeNullable(labels), hashCodeNullable(manifest), tag);
+    }
+
+    private static <T> int hashCodeNullable(JsonNullable<T> a) {
+        if (a == null) {
+            return 1;
+        }
+        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
     }
 
     @Override

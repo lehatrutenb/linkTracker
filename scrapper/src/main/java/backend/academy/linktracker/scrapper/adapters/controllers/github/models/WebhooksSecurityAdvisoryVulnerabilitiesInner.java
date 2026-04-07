@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * WebhooksSecurityAdvisoryVulnerabilitiesInner
@@ -15,11 +15,12 @@ import java.util.Objects;
 @JsonTypeName("webhooks_security_advisory_vulnerabilities_inner")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class WebhooksSecurityAdvisoryVulnerabilitiesInner {
 
-    private WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion firstPatchedVersion = null;
+    private JsonNullable<WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion> firstPatchedVersion =
+            JsonNullable.<WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion>undefined();
 
     private WebhooksSecurityAdvisoryVulnerabilitiesInnerPackage _package;
 
@@ -39,7 +40,7 @@ public class WebhooksSecurityAdvisoryVulnerabilitiesInner {
             WebhooksSecurityAdvisoryVulnerabilitiesInnerPackage _package,
             String severity,
             String vulnerableVersionRange) {
-        this.firstPatchedVersion = firstPatchedVersion;
+        this.firstPatchedVersion = JsonNullable.of(firstPatchedVersion);
         this._package = _package;
         this.severity = severity;
         this.vulnerableVersionRange = vulnerableVersionRange;
@@ -47,7 +48,7 @@ public class WebhooksSecurityAdvisoryVulnerabilitiesInner {
 
     public WebhooksSecurityAdvisoryVulnerabilitiesInner firstPatchedVersion(
             WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion firstPatchedVersion) {
-        this.firstPatchedVersion = firstPatchedVersion;
+        this.firstPatchedVersion = JsonNullable.of(firstPatchedVersion);
         return this;
     }
 
@@ -59,12 +60,12 @@ public class WebhooksSecurityAdvisoryVulnerabilitiesInner {
     @Valid
     @Schema(name = "first_patched_version", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("first_patched_version")
-    public WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion getFirstPatchedVersion() {
+    public JsonNullable<WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion> getFirstPatchedVersion() {
         return firstPatchedVersion;
     }
 
     public void setFirstPatchedVersion(
-            WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion firstPatchedVersion) {
+            JsonNullable<WebhooksSecurityAdvisoryVulnerabilitiesInnerFirstPatchedVersion> firstPatchedVersion) {
         this.firstPatchedVersion = firstPatchedVersion;
     }
 

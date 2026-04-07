@@ -7,9 +7,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The source branch and directory used to publish your Pages site.
@@ -20,7 +19,7 @@ import java.util.Objects;
 @JsonTypeName("repos_create_pages_site_request")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-03-23T19:30:01.508827706Z[Etc/UTC]",
+        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReposCreatePagesSiteRequest {
 
@@ -59,12 +58,12 @@ public class ReposCreatePagesSiteRequest {
         }
     }
 
-    private BuildTypeEnum buildType;
+    private Optional<BuildTypeEnum> buildType = Optional.empty();
 
-    private ReposCreatePagesSiteRequestSource source;
+    private Optional<ReposCreatePagesSiteRequestSource> source = Optional.empty();
 
     public ReposCreatePagesSiteRequest buildType(BuildTypeEnum buildType) {
-        this.buildType = buildType;
+        this.buildType = Optional.ofNullable(buildType);
         return this;
     }
 
@@ -78,16 +77,16 @@ public class ReposCreatePagesSiteRequest {
                     "The process in which the Page will be built. Possible values are `\"legacy\"` and `\"workflow\"`.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("build_type")
-    public BuildTypeEnum getBuildType() {
+    public Optional<BuildTypeEnum> getBuildType() {
         return buildType;
     }
 
-    public void setBuildType(BuildTypeEnum buildType) {
+    public void setBuildType(Optional<BuildTypeEnum> buildType) {
         this.buildType = buildType;
     }
 
     public ReposCreatePagesSiteRequest source(ReposCreatePagesSiteRequestSource source) {
-        this.source = source;
+        this.source = Optional.ofNullable(source);
         return this;
     }
 
@@ -98,11 +97,11 @@ public class ReposCreatePagesSiteRequest {
     @Valid
     @Schema(name = "source", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("source")
-    public ReposCreatePagesSiteRequestSource getSource() {
+    public Optional<ReposCreatePagesSiteRequestSource> getSource() {
         return source;
     }
 
-    public void setSource(ReposCreatePagesSiteRequestSource source) {
+    public void setSource(Optional<ReposCreatePagesSiteRequestSource> source) {
         this.source = source;
     }
 
