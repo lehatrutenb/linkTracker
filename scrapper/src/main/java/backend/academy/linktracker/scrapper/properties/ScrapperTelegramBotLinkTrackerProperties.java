@@ -1,6 +1,6 @@
 package backend.academy.linktracker.scrapper.properties;
 
-import backend.academy.linktracker.bot.properties.RefreshScopeProperty;
+import backend.academy.linktracker.properties.RefreshScopeProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

@@ -68,4 +68,12 @@
     <Match>
         <Package name="~.*\.jmh_generated"/>
     </Match>
+
+    <Match>
+        <Package name="~.*\.models\..*" />
+    </Match>
+
+    <Match>
+        <Package name="~.*\.models" />
+    </Match>
 </FindBugsFilter>

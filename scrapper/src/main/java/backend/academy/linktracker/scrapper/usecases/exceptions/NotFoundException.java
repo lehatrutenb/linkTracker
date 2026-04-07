@@ -1,10 +1,13 @@
 package backend.academy.linktracker.scrapper.usecases.exceptions;
 
+import java.io.Serial;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public abstract class NotFoundException extends DomainException {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final String entityName;
     private final String id;
 

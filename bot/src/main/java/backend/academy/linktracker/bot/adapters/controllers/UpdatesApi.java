@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.adapters.controllers;
 
 import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
-import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
-import backend.academy.linktracker.bot.usecases.dtos.LinkUpdate;
+import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.LinkUpdate;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -16,16 +16,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@Validated
-@Tag(name = "updates", description = "the updates API")
-@RequiredArgsConstructor
-@Controller
 /**
  * Public methods and fields started with `_` for testing purposes only.
  * Do not use in production code.
  */
+@Validated
+@Tag(name = "updates", description = "the updates API")
+@RequiredArgsConstructor
+@Controller
 public class UpdatesApi {
     private final LinkTracerFacade facade;
 
@@ -53,7 +55,7 @@ public class UpdatesApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = UpdatesApi._PATH_UPDATES_POST,
+            value = _PATH_UPDATES_POST,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<Void> updatesPost(

@@ -2,15 +2,15 @@ package backend.academy.linktracker.bot.usecases.services;
 
 import backend.academy.linktracker.bot.adapters.controllers.UpdatesScrapperHTTPClient;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
-import backend.academy.linktracker.bot.usecases.dtos.AddLinkRequest;
-import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
-import backend.academy.linktracker.bot.usecases.dtos.LinkResponse;
-import backend.academy.linktracker.bot.usecases.dtos.ListLinksResponse;
-import backend.academy.linktracker.bot.usecases.dtos.RemoveLinkRequest;
+import backend.academy.linktracker.bot.usecases.dtos.models.AddLinkRequest;
+import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.LinkResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.ListLinksResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.RemoveLinkRequest;
+import io.github.resilience4j.core.functions.Either;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import io.github.resilience4j.core.functions.Either;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +31,8 @@ public class ScrapperUpdatesService {
         return scrapperHTTPClient.listLinks(chatID.getID());
     }
 
-    public Either<LinkResponse, ApiErrorResponse> trackLink(TelegramBotChatID chatID, String link, List<String> tags, List<String> filters) {
+    public Either<LinkResponse, ApiErrorResponse> trackLink(
+            TelegramBotChatID chatID, String link, List<String> tags, List<String> filters) {
         registerChat(chatID);
         return scrapperHTTPClient.trackLink(
                 chatID.getID(),

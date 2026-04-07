@@ -6,7 +6,7 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
-import backend.academy.linktracker.scrapper.usecases.dtos.AddLinkRequest;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;

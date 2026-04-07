@@ -1,22 +1,27 @@
-package backend.academy.linktracker.bot.usecases.dtos;
+package backend.academy.linktracker.bot.usecases.dtos.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
 
 /**
  * ListLinksResponse
  */
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-04-05T13:05:18.391121671Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ListLinksResponse {
 
     @Valid
     private List<@Valid LinkResponse> links = new ArrayList<>();
 
-    private @Nullable Integer size;
+    private Optional<Integer> size = Optional.empty();
 
     public ListLinksResponse links(List<@Valid LinkResponse> links) {
         this.links = links;
@@ -46,8 +51,8 @@ public class ListLinksResponse {
         this.links = links;
     }
 
-    public ListLinksResponse size(@Nullable Integer size) {
-        this.size = size;
+    public ListLinksResponse size(Integer size) {
+        this.size = Optional.ofNullable(size);
         return this;
     }
 
@@ -57,11 +62,11 @@ public class ListLinksResponse {
      */
     @Schema(name = "size", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("size")
-    public @Nullable Integer getSize() {
+    public Optional<Integer> getSize() {
         return size;
     }
 
-    public void setSize(@Nullable Integer size) {
+    public void setSize(Optional<Integer> size) {
         this.size = size;
     }
 
@@ -96,7 +101,7 @@ public class ListLinksResponse {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(@Nullable Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

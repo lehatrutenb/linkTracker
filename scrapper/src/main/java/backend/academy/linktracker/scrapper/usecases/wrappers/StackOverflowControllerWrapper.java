@@ -50,15 +50,16 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
     }
 
     public boolean checkCanScrap(URI uri) {
-       return getQuestionID(uri).isPresent(); // TODO add better check with request to api?
+        return getQuestionID(uri).isPresent(); // TODO add better check with request to api?
     }
 
     public Optional<String> getQuestionID(URI uri) {
         var template = new UriTemplate(properties.getStackOverflowRoot().toString()
-            + EXPECTED_CONCRETE_URI_FORMAT); // TODO check can add to fields
-        var templateNoDescription = new UriTemplate(properties.getStackOverflowRoot().toString()
-            + EXPECTED_CONCRETE_URI_FORMAT_NO_DESCRIPTION);
+                + EXPECTED_CONCRETE_URI_FORMAT); // TODO check can add to fields
+        var templateNoDescription = new UriTemplate(
+                properties.getStackOverflowRoot().toString() + EXPECTED_CONCRETE_URI_FORMAT_NO_DESCRIPTION);
         return Optional.ofNullable(template.match(uri.toString()).get(QUESTION_ID_PATH_PARAM))
-            .or(() -> Optional.ofNullable(templateNoDescription.match(uri.toString()).get(QUESTION_ID_PATH_PARAM)));
+                .or(() -> Optional.ofNullable(
+                        templateNoDescription.match(uri.toString()).get(QUESTION_ID_PATH_PARAM)));
     }
 }

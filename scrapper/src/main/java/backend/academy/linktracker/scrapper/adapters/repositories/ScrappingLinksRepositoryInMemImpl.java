@@ -62,7 +62,9 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
 
     @Override
     public Optional<ScrapperLinkListener> getScrapperLinkListener(String id) {
-        return scrapperLinkListeners.stream().filter(listener -> listener.listenerID().equals(id)).findAny();
+        return scrapperLinkListeners.stream()
+                .filter(listener -> listener.listenerID().equals(id))
+                .findAny();
     }
 
     @Override
@@ -73,18 +75,18 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
         scrapperLinks.add(scrapperLink);
     }
 
-    @Override
     /**
      * Returns previous link if found
      */
+    @Override
     public Optional<ScrapperLink> updateScrapperLink(ScrapperLink scrapperLink) {
         var prevLink = scrapperLinks.stream()
                 .filter(link -> scrapperLink.id().equals(link.id()))
                 .findAny();
         if (prevLink.isEmpty()) {
-           return Optional.empty();
+            return Optional.empty();
         }
-        scrapperLinks.remove(prevLink.get());
+        scrapperLinks.remove(prevLink.orElseThrow());
         scrapperLinks.add(scrapperLink);
         return prevLink;
     }

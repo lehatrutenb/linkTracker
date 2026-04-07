@@ -8,7 +8,7 @@ import java.util.Collection;
 import org.apache.commons.lang3.tuple.Pair;
 
 public interface OuterServiceScrapper {
-    public Pair<Collection<ScrapperLinkUpdateEvent>, Instant> scrap(URI uri, Instant since);
+    Pair<Collection<ScrapperLinkUpdateEvent>, Instant> scrap(URI uri, Instant since);
 
     boolean checkCanScrap(ScrapperLink link);
 }

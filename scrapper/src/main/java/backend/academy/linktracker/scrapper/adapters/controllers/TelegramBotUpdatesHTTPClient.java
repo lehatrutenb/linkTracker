@@ -18,7 +18,7 @@ public class TelegramBotUpdatesHTTPClient {
     }
 
     public void publishUpdate(LinkUpdate linkUpdate) {
-        var response = restClient
+        restClient
                 .post()
                 .uri(trackerProperties.getPaths().getUpdates())
                 .body(linkUpdate)

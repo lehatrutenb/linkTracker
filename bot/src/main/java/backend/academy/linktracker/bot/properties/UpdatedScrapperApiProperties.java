@@ -1,16 +1,14 @@
 package backend.academy.linktracker.bot.properties;
 
+import backend.academy.linktracker.properties.RefreshScopeProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.aop.target.dynamic.Refreshable;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -50,6 +48,4 @@ public class UpdatedScrapperApiProperties {
         @NotNull
         private String untrackLink;
     }
-
-
 }

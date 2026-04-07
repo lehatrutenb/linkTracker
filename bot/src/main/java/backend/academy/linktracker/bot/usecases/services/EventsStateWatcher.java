@@ -30,10 +30,7 @@ public class EventsStateWatcher {
 
     public boolean isEventDone(EventID eventId) {
         var event = eventsRepository.getEvent(eventId);
-        return event.isPresent()
-            && event.orElseThrow()
-            .state()
-            .equals(EventState.DONE);
+        return event.isPresent() && event.orElseThrow().state().equals(EventState.DONE);
     }
 
     public void markEventAsDone(EventID eventId) {

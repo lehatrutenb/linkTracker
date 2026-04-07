@@ -20,8 +20,8 @@ public class UserChatStateMachineConcurrentService {
         var state = userChatStateRepository.getChatSharedState(userChatID);
         if (state.isEmpty()) {
             state = Optional.of(new ChatSharedState());
-            setChatSharedState(userChatID, state.get());
+            setChatSharedState(userChatID, state.orElseThrow());
         }
-        return state.get();
+        return state.orElseThrow();
     }
 }

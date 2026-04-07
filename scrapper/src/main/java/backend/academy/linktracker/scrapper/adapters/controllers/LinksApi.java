@@ -1,11 +1,11 @@
 package backend.academy.linktracker.scrapper.adapters.controllers;
 
 import backend.academy.linktracker.scrapper.usecases.ScrapperFacade;
-import backend.academy.linktracker.scrapper.usecases.dtos.AddLinkRequest;
-import backend.academy.linktracker.scrapper.usecases.dtos.ApiErrorResponse;
-import backend.academy.linktracker.scrapper.usecases.dtos.LinkResponse;
-import backend.academy.linktracker.scrapper.usecases.dtos.ListLinksResponse;
-import backend.academy.linktracker.scrapper.usecases.dtos.RemoveLinkRequest;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.ApiErrorResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.LinkResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.ListLinksResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.RemoveLinkRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -20,16 +20,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@Validated
-@Tag(name = "links", description = "the links API")
-@Controller
-@RequiredArgsConstructor
 /**
  * Public methods and fields started with `_` for testing purposes only.
  * Do not use in production code.
  */
+@Validated
+@Tag(name = "links", description = "the links API")
+@Controller
+@RequiredArgsConstructor
 public class LinksApi {
     private final ScrapperFacade scrapperFacade;
 
@@ -74,7 +77,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = LinksApi._PATH_LINKS_DELETE,
+            value = _PATH_LINKS_DELETE,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksDelete(
@@ -128,7 +131,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.GET,
-            value = LinksApi._PATH_LINKS_GET,
+            value = _PATH_LINKS_GET,
             produces = {"application/json"})
     public ResponseEntity<ListLinksResponse> linksGet(
             @NotNull
@@ -188,7 +191,7 @@ public class LinksApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = LinksApi._PATH_LINKS_POST,
+            value = _PATH_LINKS_POST,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksPost(

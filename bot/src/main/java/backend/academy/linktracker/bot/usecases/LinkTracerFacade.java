@@ -3,8 +3,9 @@ package backend.academy.linktracker.bot.usecases;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
-import backend.academy.linktracker.bot.usecases.dtos.LinkUpdate;
+import backend.academy.linktracker.bot.usecases.dtos.models.LinkUpdate;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecases.exceptions.RequestBodyFieldValidationException;
 import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcher;
@@ -47,7 +48,6 @@ public class LinkTracerFacade {
                     eventsStateWatcher.markEventAsProcessing(eventId);
                     var event = new LinkTracerNewMessageEvent(this, message, replyServiceQualifier, eventId);
                     applicationEventPublisher.publishEvent(event);
-                } else {
                 }
             } else if (!eventsStateWatcher.isEventDone(eventId)) {
                 // We currently do some staff with that event
@@ -56,13 +56,14 @@ public class LinkTracerFacade {
         });
         messagesOrderService.clear();
         return eventsStateWatcher
-            .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
-            .map(TelegramUpdatesMapper::mapUpdateId);
+                .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
+                .map(TelegramUpdatesMapper::mapUpdateId);
     }
 
     public void processScrapperUpdates(Collection<LinkUpdate> updates) {
         updates.forEach(update -> {
-            EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(update.getId());
+            EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(
+                    update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);
                 scrapperUpdatesHandleService.handle(update, eventId);

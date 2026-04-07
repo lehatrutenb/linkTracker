@@ -1,23 +1,25 @@
-package backend.academy.linktracker.scrapper.usecases.dtos;
+package backend.academy.linktracker.scrapper.usecases.dtos.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
 
 /**
- * LinkResponse
+ * AddLinkRequest
  */
-public class LinkResponse {
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-04-05T13:05:18.391121671Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
+public class AddLinkRequest {
 
-    private @Nullable Long id;
-
-    private @Nullable URI url;
+    private Optional<URI> link = Optional.empty();
 
     @Valid
     private List<String> tags = new ArrayList<>();
@@ -25,51 +27,32 @@ public class LinkResponse {
     @Valid
     private List<String> filters = new ArrayList<>();
 
-    public LinkResponse id(@Nullable Long id) {
-        this.id = id;
+    public AddLinkRequest link(URI link) {
+        this.link = Optional.ofNullable(link);
         return this;
     }
 
     /**
-     * Get id
-     * @return id
-     */
-    @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("id")
-    public @Nullable Long getId() {
-        return id;
-    }
-
-    public void setId(@Nullable Long id) {
-        this.id = id;
-    }
-
-    public LinkResponse url(@Nullable URI url) {
-        this.url = url;
-        return this;
-    }
-
-    /**
-     * Get url
-     * @return url
+     * Get link
+     * @return link
      */
     @Valid
-    @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("url")
-    public @Nullable URI getUrl() {
-        return url;
+    @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("link")
+    public Optional<URI> getLink() {
+        return link;
     }
 
-    public void setUrl(@Nullable URI url) {
-        this.url = url;
+    public void setLink(Optional<URI> link) {
+        this.link = link;
     }
 
-    public LinkResponse tags(List<String> tags) {
+    public AddLinkRequest tags(List<String> tags) {
         this.tags = tags;
         return this;
     }
 
-    public LinkResponse addTagsItem(String tagsItem) {
+    public AddLinkRequest addTagsItem(String tagsItem) {
         if (this.tags == null) {
             this.tags = new ArrayList<>();
         }
@@ -91,12 +74,12 @@ public class LinkResponse {
         this.tags = tags;
     }
 
-    public LinkResponse filters(List<String> filters) {
+    public AddLinkRequest filters(List<String> filters) {
         this.filters = filters;
         return this;
     }
 
-    public LinkResponse addFiltersItem(String filtersItem) {
+    public AddLinkRequest addFiltersItem(String filtersItem) {
         if (this.filters == null) {
             this.filters = new ArrayList<>();
         }
@@ -126,24 +109,22 @@ public class LinkResponse {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LinkResponse linkResponse = (LinkResponse) o;
-        return Objects.equals(this.id, linkResponse.id)
-                && Objects.equals(this.url, linkResponse.url)
-                && Objects.equals(this.tags, linkResponse.tags)
-                && Objects.equals(this.filters, linkResponse.filters);
+        AddLinkRequest addLinkRequest = (AddLinkRequest) o;
+        return Objects.equals(this.link, addLinkRequest.link)
+                && Objects.equals(this.tags, addLinkRequest.tags)
+                && Objects.equals(this.filters, addLinkRequest.filters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, url, tags, filters);
+        return Objects.hash(link, tags, filters);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class LinkResponse {\n");
-        sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("class AddLinkRequest {\n");
+        sb.append("    link: ").append(toIndentedString(link)).append("\n");
         sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
         sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
         sb.append("}");
@@ -154,7 +135,7 @@ public class LinkResponse {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(@Nullable Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

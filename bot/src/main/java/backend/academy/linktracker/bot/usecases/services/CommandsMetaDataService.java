@@ -16,8 +16,8 @@ public class CommandsMetaDataService {
     public Collection<CommandHandler> getAllCommandList() {
         Map<String, Object> nameToBean = applicationContext.getBeansWithAnnotation(CommandHandler.class);
         return nameToBean.keySet().stream()
-            .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
-            .toList();
+                .map(beanName -> applicationContext.findAnnotationOnBean(beanName, CommandHandler.class))
+                .toList();
     }
 
     public Collection<CommandHandler> getUserCommandList() {

@@ -1,22 +1,17 @@
 package backend.academy.linktracker.bot;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
 
 import backend.academy.linktracker.bot.adapters.controllers.UpdatesApi;
 import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils.Message;
-import backend.academy.linktracker.bot.usecases.dtos.LinkResponse;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import com.pengrad.telegrambot.TelegramBot;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
@@ -27,18 +22,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.web.client.RestClient;
 import org.wiremock.spring.EnableWireMock;
 
@@ -55,10 +46,16 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @BeforeEach
     void setupWireMock() {
-        stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)?
-            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
-        stubFor(post(urlMatching(".*/sendMessage"))
-            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
+        stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just
+                // withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)?
+                .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
+        stubFor(
+                post(urlMatching(".*/sendMessage"))
+                        .willReturn(
+                                aResponse()
+                                        .withStatus(200)
+                                        .withBody(
+                                                "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
     }
 
     @BeforeEach
@@ -142,35 +139,37 @@ class TelegramBotIntegrationTest implements WithAssertions {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
 
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
-        var response = restClient.method(HttpMethod.POST)
-            .uri(UpdatesApi._PATH_UPDATES_POST)
-            .contentType(MediaType.APPLICATION_JSON)
-            .body("{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}")
-            .retrieve()
-            .toBodilessEntity();
+        var response = restClient
+                .method(HttpMethod.POST)
+                .uri(UpdatesApi._PATH_UPDATES_POST)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body("{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}")
+                .retrieve()
+                .toBodilessEntity();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Timeout(10)
     @ParameterizedTest
-    @ValueSource(strings = {
-        "{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[\"wrongCharID\"]}",
-        "{\"id\":1,\"description\":\"Test\",\"tgChatIds\":[1]}",
-        "{\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}",
-        "{}"
-    })
+    @ValueSource(
+            strings = {
+                "{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[\"wrongChatID\"]}",
+                "{\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}",
+                "{}"
+            })
     void invalidUpdatesSendsReceivesError(String invalidUpdateBody) {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("invalidUpdatesSendsReceivesError");
 
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
 
-        Supplier<?> doResponse = () -> restClient.method(HttpMethod.POST)
-            .uri(UpdatesApi._PATH_UPDATES_POST)
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(invalidUpdateBody)
-            .retrieve()
-            .toBodilessEntity();
+        Supplier<?> doResponse = () -> restClient
+                .method(HttpMethod.POST)
+                .uri(UpdatesApi._PATH_UPDATES_POST)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(invalidUpdateBody)
+                .retrieve()
+                .toBodilessEntity();
 
         assertThatThrownBy(doResponse::get);
     }

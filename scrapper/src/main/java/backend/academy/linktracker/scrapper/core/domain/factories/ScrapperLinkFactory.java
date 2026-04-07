@@ -2,12 +2,10 @@ package backend.academy.linktracker.scrapper.core.domain.factories;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
-import cn.hutool.core.lang.Snowflake;
+import com.google.common.hash.Hashing;
 import java.net.URI;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import com.google.common.hash.Hashing;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +13,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ScrapperLinkFactory {
     private ScrapperLinkID createScrapperLinkID(URI uri) {
-        return new ScrapperLinkID(uri, Hashing.sha256().hashString(uri.toASCIIString(), StandardCharsets.US_ASCII).asLong());
+        return new ScrapperLinkID(
+                uri,
+                Hashing.sha256()
+                        .hashString(uri.toASCIIString(), StandardCharsets.US_ASCII)
+                        .asLong());
     }
 
     public ScrapperLink createScrapperLink(URI uri, Instant updatedAt) {

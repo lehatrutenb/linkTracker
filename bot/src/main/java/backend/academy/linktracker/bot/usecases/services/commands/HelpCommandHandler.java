@@ -57,7 +57,9 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
 
     public String addCommandsToReply(String reply) {
         StringBuilder stringBuilder = new StringBuilder(reply);
-        commandsMetaDataService.getUserCommandList().forEach(commandHandler -> addCommand(stringBuilder, commandHandler));
+        commandsMetaDataService
+                .getUserCommandList()
+                .forEach(commandHandler -> addCommand(stringBuilder, commandHandler));
         return stringBuilder.toString();
     }
 

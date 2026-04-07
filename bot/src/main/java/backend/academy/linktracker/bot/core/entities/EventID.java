@@ -1,6 +1,7 @@
 package backend.academy.linktracker.bot.core.entities;
 
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import java.io.Serial;
 import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,6 +11,9 @@ import org.jetbrains.annotations.NotNull;
 @RequiredArgsConstructor
 @EqualsAndHashCode
 public class EventID implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final String id;
 
     @Getter

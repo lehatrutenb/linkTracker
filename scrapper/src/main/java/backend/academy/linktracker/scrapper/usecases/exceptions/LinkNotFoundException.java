@@ -1,10 +1,13 @@
 package backend.academy.linktracker.scrapper.usecases.exceptions;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
-import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
+import java.io.Serial;
 import java.net.URI;
 
 public class LinkNotFoundException extends NotFoundException {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     public LinkNotFoundException(URI link) {
         super(ScrapperLink.class.getSimpleName(), link.toString());
     }

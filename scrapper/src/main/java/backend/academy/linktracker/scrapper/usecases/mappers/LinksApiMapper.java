@@ -1,8 +1,8 @@
 package backend.academy.linktracker.scrapper.usecases.mappers;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperFatLink;
-import backend.academy.linktracker.scrapper.usecases.dtos.LinkResponse;
-import backend.academy.linktracker.scrapper.usecases.dtos.ListLinksResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.LinkResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.ListLinksResponse;
 import java.util.Collection;
 import lombok.experimental.UtilityClass;
 

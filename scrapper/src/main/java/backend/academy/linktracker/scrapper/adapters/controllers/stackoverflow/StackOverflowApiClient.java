@@ -56,8 +56,12 @@ public class StackOverflowApiClient {
         return Pair.of(
                 updates,
                 answers.stream()
-                        .max(Comparator.comparing(Answer::getLastActivityDate))
-                        .map(answer -> answer.getLastActivityDate().toInstant().plusSeconds(1))
+                        .max(Comparator.comparing(
+                                answer -> answer.getLastActivityDate().orElseThrow()))
+                        .map(answer -> answer.getLastActivityDate()
+                                .orElseThrow()
+                                .toInstant()
+                                .plusSeconds(1))
                         .orElse(since) // TODO care may loose updates because date precision, but let it be
                 );
     }
@@ -65,7 +69,8 @@ public class StackOverflowApiClient {
     public ScrapperLinkStackOverflowUpdateEvent mapAnswerToUpdateEvent(Answer answer) {
         return new ScrapperLinkStackOverflowUpdateEvent(
                 answer.getQuestionId().toString(),
-                new ScrapperLinkUpdateEventDescription(answer.getOwner().getDisplayName() + " answered"));
+                new ScrapperLinkUpdateEventDescription(
+                        answer.getOwner().orElseThrow().getDisplayName() + " answered"));
     }
 
     private Collection<Answer> scrapAnswersUpdates(Collection<String> questionIDs, Instant since, Instant to) {
@@ -113,8 +118,7 @@ public class StackOverflowApiClient {
                 break;
             }
             rateLimitService.setUpdateRateLimitData(
-                    Optional.of(Long.valueOf(response.getQuotaMax())),
-                    Optional.of(Long.valueOf(response.getQuotaRemaining())));
+                    Optional.of(response.getQuotaMax()), Optional.of(response.getQuotaRemaining()));
             answers.addAll(response.getItems());
             hasMoreUpdates = response.getHasMore();
         }

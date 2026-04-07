@@ -1,14 +1,13 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
 import backend.academy.linktracker.scrapper.adapters.repositories.ScrappingLinksRepository;
-import backend.academy.linktracker.scrapper.core.domain.factories.ScrapperLinkFactory;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.enums.ScrapperLinkListenerType;
 import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
 import backend.academy.linktracker.scrapper.usecases.exceptions.ListenerNotFoundException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +30,8 @@ public class ScrappingLinkListenerService {
     }
 
     public ScrapperLinkListener getLinkListenerOrThrow(String id, ScrapperLinkListenerType listenerType) {
-        return linksRepository.getScrapperLinkListener(id).orElseThrow(() ->  new ListenerNotFoundException(id, listenerType));
+        return linksRepository
+                .getScrapperLinkListener(id)
+                .orElseThrow(() -> new ListenerNotFoundException(id, listenerType));
     }
 }

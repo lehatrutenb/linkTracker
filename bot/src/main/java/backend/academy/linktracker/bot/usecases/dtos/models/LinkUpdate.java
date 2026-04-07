@@ -1,32 +1,35 @@
-package backend.academy.linktracker.bot.usecases.dtos;
+package backend.academy.linktracker.bot.usecases.dtos.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import java.net.URI;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * LinkUpdate
- * Remove nullable from open api specs cause there is no point in it - just additional path to share inconsistent data
  */
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-04-05T12:43:50.364860284Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LinkUpdate {
 
-    private @NotNull Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private @NotNull URI url;
+    private Optional<URI> url = Optional.empty();
 
-    private @NotNull String description;
+    private Optional<String> description = Optional.empty();
 
     @Valid
     private List<Long> tgChatIds = new ArrayList<>();
 
-    public LinkUpdate id(@NotNull Long id) {
-        this.id = id;
+    public LinkUpdate id(Long id) {
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -36,16 +39,16 @@ public class LinkUpdate {
      */
     @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public @NotNull Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(@NotNull Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
-    public LinkUpdate url(@NotNull URI url) {
-        this.url = url;
+    public LinkUpdate url(URI url) {
+        this.url = Optional.ofNullable(url);
         return this;
     }
 
@@ -56,16 +59,16 @@ public class LinkUpdate {
     @Valid
     @Schema(name = "url", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("url")
-    public @NotNull URI getUrl() {
+    public Optional<URI> getUrl() {
         return url;
     }
 
-    public void setUrl(@NotNull URI url) {
+    public void setUrl(Optional<URI> url) {
         this.url = url;
     }
 
-    public LinkUpdate description(@NotNull String description) {
-        this.description = description;
+    public LinkUpdate description(String description) {
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -75,11 +78,11 @@ public class LinkUpdate {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public @NotNull String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(@NotNull String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
@@ -146,7 +149,7 @@ public class LinkUpdate {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(@NotNull Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

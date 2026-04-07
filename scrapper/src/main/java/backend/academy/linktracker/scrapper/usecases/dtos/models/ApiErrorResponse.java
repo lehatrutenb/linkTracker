@@ -1,31 +1,36 @@
-package backend.academy.linktracker.bot.usecases.dtos;
+package backend.academy.linktracker.scrapper.usecases.dtos.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
 
 /**
  * ApiErrorResponse
  */
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-04-05T13:05:18.391121671Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ApiErrorResponse {
 
-    private @Nullable String description;
+    private Optional<String> description = Optional.empty();
 
-    private @Nullable String code;
+    private Optional<String> code = Optional.empty();
 
-    private @Nullable String exceptionName;
+    private Optional<String> exceptionName = Optional.empty();
 
-    private @Nullable String exceptionMessage;
+    private Optional<String> exceptionMessage = Optional.empty();
 
     @Valid
     private List<String> stacktrace = new ArrayList<>();
 
-    public ApiErrorResponse description(@Nullable String description) {
-        this.description = description;
+    public ApiErrorResponse description(String description) {
+        this.description = Optional.ofNullable(description);
         return this;
     }
 
@@ -35,16 +40,16 @@ public class ApiErrorResponse {
      */
     @Schema(name = "description", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("description")
-    public @Nullable String getDescription() {
+    public Optional<String> getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable String description) {
+    public void setDescription(Optional<String> description) {
         this.description = description;
     }
 
-    public ApiErrorResponse code(@Nullable String code) {
-        this.code = code;
+    public ApiErrorResponse code(String code) {
+        this.code = Optional.ofNullable(code);
         return this;
     }
 
@@ -54,16 +59,16 @@ public class ApiErrorResponse {
      */
     @Schema(name = "code", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("code")
-    public @Nullable String getCode() {
+    public Optional<String> getCode() {
         return code;
     }
 
-    public void setCode(@Nullable String code) {
+    public void setCode(Optional<String> code) {
         this.code = code;
     }
 
-    public ApiErrorResponse exceptionName(@Nullable String exceptionName) {
-        this.exceptionName = exceptionName;
+    public ApiErrorResponse exceptionName(String exceptionName) {
+        this.exceptionName = Optional.ofNullable(exceptionName);
         return this;
     }
 
@@ -73,16 +78,16 @@ public class ApiErrorResponse {
      */
     @Schema(name = "exceptionName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exceptionName")
-    public @Nullable String getExceptionName() {
+    public Optional<String> getExceptionName() {
         return exceptionName;
     }
 
-    public void setExceptionName(@Nullable String exceptionName) {
+    public void setExceptionName(Optional<String> exceptionName) {
         this.exceptionName = exceptionName;
     }
 
-    public ApiErrorResponse exceptionMessage(@Nullable String exceptionMessage) {
-        this.exceptionMessage = exceptionMessage;
+    public ApiErrorResponse exceptionMessage(String exceptionMessage) {
+        this.exceptionMessage = Optional.ofNullable(exceptionMessage);
         return this;
     }
 
@@ -92,11 +97,11 @@ public class ApiErrorResponse {
      */
     @Schema(name = "exceptionMessage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("exceptionMessage")
-    public @Nullable String getExceptionMessage() {
+    public Optional<String> getExceptionMessage() {
         return exceptionMessage;
     }
 
-    public void setExceptionMessage(@Nullable String exceptionMessage) {
+    public void setExceptionMessage(Optional<String> exceptionMessage) {
         this.exceptionMessage = exceptionMessage;
     }
 
@@ -167,7 +172,7 @@ public class ApiErrorResponse {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(@Nullable Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

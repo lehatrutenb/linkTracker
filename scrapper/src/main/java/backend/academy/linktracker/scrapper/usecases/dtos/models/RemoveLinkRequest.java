@@ -1,22 +1,26 @@
-package backend.academy.linktracker.scrapper.usecases.dtos;
+package backend.academy.linktracker.scrapper.usecases.dtos.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import java.net.URI;
-import java.util.*;
 import java.util.Objects;
-import org.springframework.lang.Nullable;
+import java.util.Optional;
 
 /**
  * RemoveLinkRequest
  */
+@Generated(
+        value = "org.openapitools.codegen.languages.SpringCodegen",
+        date = "2026-04-05T13:05:18.391121671Z[Etc/UTC]",
+        comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RemoveLinkRequest {
 
-    private @Nullable URI link;
+    private Optional<URI> link = Optional.empty();
 
-    public RemoveLinkRequest link(@Nullable URI link) {
-        this.link = link;
+    public RemoveLinkRequest link(URI link) {
+        this.link = Optional.ofNullable(link);
         return this;
     }
 
@@ -27,11 +31,11 @@ public class RemoveLinkRequest {
     @Valid
     @Schema(name = "link", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("link")
-    public @Nullable URI getLink() {
+    public Optional<URI> getLink() {
         return link;
     }
 
-    public void setLink(@Nullable URI link) {
+    public void setLink(Optional<URI> link) {
         this.link = link;
     }
 
@@ -65,7 +69,7 @@ public class RemoveLinkRequest {
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
      */
-    private String toIndentedString(@Nullable Object o) {
+    private String toIndentedString(Object o) {
         if (o == null) {
             return "null";
         }

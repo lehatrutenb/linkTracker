@@ -4,7 +4,7 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
-import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
@@ -108,13 +108,15 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
         // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
-            case HttpStatus.NOT_FOUND -> UNTRACKED_URL_REPLY;
-            default -> "";
-        };
+        String reply =
+                switch (HttpStatus.resolve(
+                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
+                    case HttpStatus.NOT_FOUND -> UNTRACKED_URL_REPLY;
+                    default -> "";
+                };
         if (!reply.isBlank()) {
             event.getReplyService(applicationContext)
-                .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

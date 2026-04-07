@@ -1,7 +1,7 @@
 package backend.academy.linktracker.scrapper.adapters.controllers;
 
 import backend.academy.linktracker.scrapper.usecases.ScrapperFacade;
-import backend.academy.linktracker.scrapper.usecases.dtos.ApiErrorResponse;
+import backend.academy.linktracker.scrapper.usecases.dtos.models.ApiErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -9,29 +9,25 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@Validated
-@Tag(name = "tg-chat", description = "the tg-chat API")
-@Controller
-@RequiredArgsConstructor
 /**
  * Public methods and fields started with `_` for testing purposes only.
  * Do not use in production code.
  */
+@Validated
+@Tag(name = "tg-chat", description = "the tg-chat API")
+@Controller
+@RequiredArgsConstructor
 public class TgChatApi {
     private final ScrapperFacade scrapperFacade;
-
-    private Optional<NativeWebRequest> getRequest() {
-        return Optional.empty();
-    }
 
     public static final String _PATH_TG_CHAT_ID_DELETE = "/tg-chat/{id}";
     /**
@@ -66,7 +62,7 @@ public class TgChatApi {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = TgChatApi._PATH_TG_CHAT_ID_DELETE,
+            value = _PATH_TG_CHAT_ID_DELETE,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdDelete(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")
@@ -108,7 +104,7 @@ public class TgChatApi {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = TgChatApi._PATH_TG_CHAT_ID_POST,
+            value = _PATH_TG_CHAT_ID_POST,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdPost(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")

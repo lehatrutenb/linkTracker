@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapters.repository;
 
 import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.usecases.dtos.LinkUpdate;
+import backend.academy.linktracker.bot.usecases.dtos.models.LinkUpdate;
 import java.util.Optional;
 
 public interface ScrapperLinkUpdatesRepository {

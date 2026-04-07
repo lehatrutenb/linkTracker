@@ -6,6 +6,10 @@ import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 
+import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
+import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
+import com.github.tomakehurst.wiremock.verification.LoggedRequest;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -14,14 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
-import com.github.tomakehurst.wiremock.stubbing.ServeEvent;
-import com.github.tomakehurst.wiremock.verification.LoggedRequest;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -54,25 +53,24 @@ public class TelegramBotTestUtils {
 
     public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait) {
         return waitAndGetUpdates(amtUpdatesToWait).stream()
-            .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
-            .map(UriComponentsBuilder::fromUriString)
-            .map(UriComponentsBuilder::build)
-            .map(UriComponents::getQueryParams)
-            .map(qMap -> qMap.getFirst("text"))
-            .toList();
+                .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
+                .map(UriComponentsBuilder::fromUriString)
+                .map(UriComponentsBuilder::build)
+                .map(UriComponents::getQueryParams)
+                .map(qMap -> qMap.getFirst("text"))
+                .toList();
     }
 
     public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait) {
         return waitAndGetUpdates(amtUpdatesToWait).stream()
-            .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
-            .map(UriComponentsBuilder::fromUriString)
-            .map(UriComponentsBuilder::build)
-            .map(UriComponents::getQueryParams)
-            .collect(Collectors.toMap(
-                query -> query.getFirst("chat_id"),
-                query -> Stream.of(query.getFirst("text")),
-                Stream::concat
-            ));
+                .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
+                .map(UriComponentsBuilder::fromUriString)
+                .map(UriComponentsBuilder::build)
+                .map(UriComponents::getQueryParams)
+                .collect(Collectors.toMap(
+                        query -> query.getFirst("chat_id"),
+                        query -> Stream.of(query.getFirst("text")),
+                        Stream::concat));
     }
 
     /**
@@ -80,30 +78,31 @@ public class TelegramBotTestUtils {
      *
      * @return ResponseDefinitionBuilder with constructed body
      */
-    public ResponseDefinitionBuilder writeMessageToBot(
-            ResponseDefinitionBuilder responseDefinitionBuilder) {
-        return responseDefinitionBuilder.withBody(String.format(
-            """
+    @SuppressFBWarnings("VA_FORMAT_STRING_USES_NEWLINE")
+    public ResponseDefinitionBuilder writeMessageToBot(ResponseDefinitionBuilder responseDefinitionBuilder) {
+        return responseDefinitionBuilder.withBody(String.format("""
             {
                 "ok": true,
                 "result": [
                     %s
                 ]
-            }""", String.join(",", botMessagesSummator)
-            ));
+            }""", String.join(",", botMessagesSummator)));
     }
 
     public record Message(long chatID, long updateID, long messageID, String messageText) {
         public Message(long messageID, String messageText) {
             this(1, messageID, messageID, messageText);
         }
+
         public Message(long chatID, long messageID, String messageText) {
             this(chatID, messageID, messageID, messageText);
         }
     }
 
+    @SuppressFBWarnings("VA_FORMAT_STRING_USES_NEWLINE")
     private void addUpdateEvent(Message message) {
-        botMessagesSummator.add(String.format("""
+        botMessagesSummator.add(
+                String.format("""
                                  {
                                   "update_id": %d,
                                   "message": {
@@ -125,29 +124,26 @@ public class TelegramBotTestUtils {
                                 """, message.messageID, message.messageID, message.chatID, message.messageText));
     }
 
-    public void writeMessageToBot(
-            String fromState, String toState, Message message) {
+    public void writeMessageToBot(String fromState, String toState, Message message) {
         addUpdateEvent(message);
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
                 .inScenario(wiremockScenario)
                 .whenScenarioStateIs(fromState)
-                .willReturn(writeMessageToBot(
-                        aResponse()
-                                .withStatus(200)
-                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
+                .willReturn(writeMessageToBot(aResponse()
+                        .withStatus(200)
+                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
                 .willSetStateTo(toState));
     }
 
     public void repeatLastMessage(
-        String fromState, String toState, long messageId) { // TODO use inside writeMessageToBot
+            String fromState, String toState, long messageId) { // TODO use inside writeMessageToBot
         addUpdateEvent(new Message(messageId, "/ignore"));
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
-            .inScenario(wiremockScenario)
-            .whenScenarioStateIs(fromState)
-            .willReturn(writeMessageToBot(
-                aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
-            .willSetStateTo(toState));
+                .inScenario(wiremockScenario)
+                .whenScenarioStateIs(fromState)
+                .willReturn(writeMessageToBot(aResponse()
+                        .withStatus(200)
+                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
+                .willSetStateTo(toState));
     }
 }

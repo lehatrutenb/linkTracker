@@ -4,7 +4,7 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
-import backend.academy.linktracker.bot.usecases.dtos.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
@@ -18,14 +18,14 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-@Slf4j
-@Service
-@RequiredArgsConstructor
-@CommandHandler(command = "/track")
 /**
  * Public methods and fields started with `_` for testing purposes only.
  * Do not use in production code.
  */
+@Slf4j
+@Service
+@RequiredArgsConstructor
+@CommandHandler(command = "/track")
 public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     public static final String _BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите отслеживать";
@@ -34,10 +34,8 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
     public static final String _BASIC_TAGS_REPLY =
             "Ссылка принята к отслеживанию"; // TODO check if it makes sense to move to storage
     public static final String _BASIC_URL_REPLY = "Введите теги к данной ссылке разделённые запятыми";
-    public static final String _INVALID_URL_REPLY =
-        "Полученная ссылка не поддерживается к отслеживанию";
-    public static final String _URL_ALREADY_TRACKED_REPLY =
-        "Данная ссылка уже отслеживается. Отпишитесь для начала";
+    public static final String _INVALID_URL_REPLY = "Полученная ссылка не поддерживается к отслеживанию";
+    public static final String _URL_ALREADY_TRACKED_REPLY = "Данная ссылка уже отслеживается. Отпишитесь для начала";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
@@ -109,8 +107,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
-    public void handleUrlSet(
-            LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
+    public void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
         commandsSharedStateService.setChatSharedState(
                 message.chat().id(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
         event.getReplyService(applicationContext)
@@ -137,14 +134,16 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
         // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply = switch (HttpStatus.resolve(Integer.parseInt(response.getCode()))) {
-            case HttpStatus.CONFLICT -> _URL_ALREADY_TRACKED_REPLY;
-            case HttpStatus.BAD_REQUEST -> _INVALID_URL_REPLY;
-            default -> "";
-        };
+        String reply =
+                switch (HttpStatus.resolve(
+                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
+                    case HttpStatus.CONFLICT -> _URL_ALREADY_TRACKED_REPLY;
+                    case HttpStatus.BAD_REQUEST -> _INVALID_URL_REPLY;
+                    default -> "";
+                };
         if (!reply.isBlank()) {
             event.getReplyService(applicationContext)
-                .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

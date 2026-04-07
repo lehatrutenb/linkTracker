@@ -28,8 +28,9 @@
         <module>ai-agent</module>
         <module>bot</module>
         <module>build-report-aggregate</module>
-        <module>scrapper</module>
+        <module>common</module>
         <module>integration-tests</module>
+        <module>scrapper</module>
     </modules>
 
     <scm>
@@ -80,10 +81,18 @@
         <spotbugs-maven-plugin.version>${spotbugs.version}.2</spotbugs-maven-plugin.version>
         <spotbugs-slf4j-plugin.version>1.5.0</spotbugs-slf4j-plugin.version>
         <spotless-maven-plugin.version>3.2.1</spotless-maven-plugin.version>
+        <jackson-databind-nullable.version>0.2.10</jackson-databind-nullable.version>
+        <rewrite-maven-plugin.version>6.35.0</rewrite-maven-plugin.version>
+        <rewrite-plugin.version>8.78.4</rewrite-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>2.41.0</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -210,6 +219,12 @@
             <version>${spotbugs.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>${jackson-databind-nullable.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -309,6 +324,9 @@
                         <rulesets>
                             <ruleset>pmd.xml</ruleset>
                         </rulesets>
+                        <excludes>
+                            <exclude>**/models/*.java</exclude>
+                        </excludes>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -394,6 +412,23 @@
         </pluginManagement>
 
         <plugins>
+            <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <version>${rewrite-maven-plugin.version}</version>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
+                    </activeRecipes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.openrewrite</groupId>
+                        <artifactId>rewrite-java</artifactId>
+                        <version>${rewrite-plugin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>

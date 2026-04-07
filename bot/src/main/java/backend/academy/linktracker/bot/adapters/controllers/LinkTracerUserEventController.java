@@ -1,8 +1,6 @@
 package backend.academy.linktracker.bot.adapters.controllers;
 
 import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
-import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
-import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -27,7 +25,6 @@ public class LinkTracerUserEventController implements UpdatesListener {
     public int process(List<Update> list) {
         var lastProcessedID = linkTracerFacade.processLinkTrackerUpdates(
                 list, LinkTracerTelegramBotReplier.class.getAnnotation(Qualifier.class));
-        return lastProcessedID
-            .orElse(CONFIRMED_UPDATES_NONE);
+        return lastProcessedID.orElse(CONFIRMED_UPDATES_NONE);
     }
 }
