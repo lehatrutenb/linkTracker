@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ReplyServiceMatcher {
+public class ReplyServiceMatcherService {
     private final ApplicationContext applicationContext;
     private final ReplyServiceMatcherRepository serviceMatcherRepository;
 

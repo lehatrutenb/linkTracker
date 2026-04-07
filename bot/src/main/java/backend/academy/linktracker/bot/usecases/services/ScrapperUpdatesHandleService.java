@@ -30,7 +30,7 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
 
     private final EventsStateWatcher eventsStateWatcher;
     private final ScrapperLinkUpdatesRepository linkUpdatesRepository;
-    private final ReplyServiceMatcher replyServiceMatcher;
+    private final ReplyServiceMatcherService replyServiceMatcher;
     private final Lock scrapperEventsProcessingLock = new ReentrantLock();
 
     public void handle(LinkUpdate update, EventID eventID) { // TODO surround with try cath finally to free lock

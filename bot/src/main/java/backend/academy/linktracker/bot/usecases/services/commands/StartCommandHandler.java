@@ -5,6 +5,7 @@ import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
     private final EventsStateWatcher eventsStateWatcher;
     private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -37,7 +39,9 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
                 .log("Handle /start user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }

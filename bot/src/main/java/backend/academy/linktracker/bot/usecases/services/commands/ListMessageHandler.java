@@ -8,6 +8,7 @@ import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.dtos.models.ListLinksResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
@@ -37,6 +38,7 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
     private final CancelMessageHandler cancelMessageHandler;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -63,7 +65,9 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
             return;
         }
 
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), getReply(response.getLeft(), tag));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
@@ -100,7 +104,9 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            event.getReplyService(applicationContext)
+            replyServiceMatcher
+                    .getReplyService(event.getMessage().chat().id())
+                    .orElseThrow()
                     .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());

@@ -7,6 +7,7 @@ import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
@@ -42,6 +43,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
     private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -68,7 +70,9 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/track")
                         .withProcessingCommandStep(0));
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), _BASIC_TRACK_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
@@ -110,7 +114,9 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
     public void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
         commandsSharedStateService.setChatSharedState(
                 message.chat().id(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), _BASIC_URL_REPLY);
     }
 
@@ -128,7 +134,9 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
             return;
         }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), _BASIC_TAGS_REPLY);
     }
 
@@ -142,7 +150,9 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            event.getReplyService(applicationContext)
+            replyServiceMatcher
+                    .getReplyService(event.getMessage().chat().id())
+                    .orElseThrow()
                     .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());

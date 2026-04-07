@@ -6,6 +6,7 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesOrderService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
     private final TelegramBotMessagesOrderService messagesService;
     private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -41,7 +43,9 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
                 .log("Handle /help user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }

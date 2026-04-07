@@ -8,7 +8,7 @@ import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent
 import backend.academy.linktracker.bot.usecases.exceptions.RequestBodyFieldValidationException;
 import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesOrderService;
 import com.pengrad.telegrambot.model.Update;
@@ -27,7 +27,7 @@ public class LinkTracerFacade {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final EventsStateWatcher eventsStateWatcher;
     private final TelegramBotMessagesOrderService messagesOrderService;
-    private final ReplyServiceMatcher replyServiceMatcher;
+    private final ReplyServiceMatcherService replyServiceMatcher;
     private final ScrapperUpdatesHandleService scrapperUpdatesHandleService;
 
     // Need transactional here not to be inconsistent between event and message states
@@ -46,7 +46,7 @@ public class LinkTracerFacade {
                 if (messagesOrderService.toProcessMessage(message)) {
                     replyServiceMatcher.setReplyService(message.chat().id(), replyServiceQualifier);
                     eventsStateWatcher.markEventAsProcessing(eventId);
-                    var event = new LinkTracerNewMessageEvent(this, message, replyServiceQualifier, eventId);
+                    var event = new LinkTracerNewMessageEvent(this, message, eventId);
                     applicationEventPublisher.publishEvent(event);
                 }
             } else if (!eventsStateWatcher.isEventDone(eventId)) {

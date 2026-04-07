@@ -7,6 +7,7 @@ import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
     private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -61,7 +63,9 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/untrack")
                         .withProcessingCommandStep(0));
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), BASIC_TRACK_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
@@ -102,7 +106,9 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
     }
 
@@ -115,7 +121,9 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            event.getReplyService(applicationContext)
+            replyServiceMatcher
+                    .getReplyService(event.getMessage().chat().id())
+                    .orElseThrow()
                     .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());

@@ -4,6 +4,7 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
     private final ApplicationContext applicationContext;
+    private final ReplyServiceMatcherService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -48,7 +50,9 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
                 .addKeyValue("message date", message.date())
                 .log("Handle unknown user command");
 
-        event.getReplyService(applicationContext)
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
                 .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
