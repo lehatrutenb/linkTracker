@@ -7,18 +7,23 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * ForkEventForkee
  */
-@JsonTypeName("fork_event_forkee")
+@JsonTypeName("ForkEvent_forkee")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ForkEventForkee {
 
@@ -32,7 +37,7 @@ public class ForkEventForkee {
 
     private Optional<Boolean> _private = Optional.empty();
 
-    private Optional<SimpleUser> owner = Optional.empty();
+    private Optional<SimpleUser1> owner = Optional.empty();
 
     private Optional<String> htmlUrl = Optional.empty();
 
@@ -192,8 +197,6 @@ public class ForkEventForkee {
 
     private Optional<PullRequestCreationPolicyEnum> pullRequestCreationPolicy = Optional.empty();
 
-    private Optional<Boolean> hasCommitComments = Optional.empty();
-
     private Optional<Long> forksCount = Optional.empty();
 
     private JsonNullable<String> mirrorUrl = JsonNullable.<String>undefined();
@@ -204,7 +207,7 @@ public class ForkEventForkee {
 
     private Optional<Long> openIssuesCount = Optional.empty();
 
-    private JsonNullable<NullableLicenseSimple> license = JsonNullable.<NullableLicenseSimple>undefined();
+    private JsonNullable<LicenseSimple> license = JsonNullable.<LicenseSimple>undefined();
 
     private Optional<Boolean> allowForking = Optional.empty();
 
@@ -322,7 +325,7 @@ public class ForkEventForkee {
         this._private = _private;
     }
 
-    public ForkEventForkee owner(SimpleUser owner) {
+    public ForkEventForkee owner(SimpleUser1 owner) {
         this.owner = Optional.ofNullable(owner);
         return this;
     }
@@ -334,11 +337,11 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "owner", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("owner")
-    public Optional<SimpleUser> getOwner() {
+    public Optional<SimpleUser1> getOwner() {
         return owner;
     }
 
-    public void setOwner(Optional<SimpleUser> owner) {
+    public void setOwner(Optional<SimpleUser1> owner) {
         this.owner = owner;
     }
 
@@ -1488,25 +1491,6 @@ public class ForkEventForkee {
         this.pullRequestCreationPolicy = pullRequestCreationPolicy;
     }
 
-    public ForkEventForkee hasCommitComments(Boolean hasCommitComments) {
-        this.hasCommitComments = Optional.ofNullable(hasCommitComments);
-        return this;
-    }
-
-    /**
-     * Get hasCommitComments
-     * @return hasCommitComments
-     */
-    @Schema(name = "has_commit_comments", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("has_commit_comments")
-    public Optional<Boolean> getHasCommitComments() {
-        return hasCommitComments;
-    }
-
-    public void setHasCommitComments(Optional<Boolean> hasCommitComments) {
-        this.hasCommitComments = hasCommitComments;
-    }
-
     public ForkEventForkee forksCount(Long forksCount) {
         this.forksCount = Optional.ofNullable(forksCount);
         return this;
@@ -1602,7 +1586,7 @@ public class ForkEventForkee {
         this.openIssuesCount = openIssuesCount;
     }
 
-    public ForkEventForkee license(NullableLicenseSimple license) {
+    public ForkEventForkee license(LicenseSimple license) {
         this.license = JsonNullable.of(license);
         return this;
     }
@@ -1614,11 +1598,11 @@ public class ForkEventForkee {
     @Valid
     @Schema(name = "license", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("license")
-    public JsonNullable<NullableLicenseSimple> getLicense() {
+    public JsonNullable<LicenseSimple> getLicense() {
         return license;
     }
 
-    public void setLicense(JsonNullable<NullableLicenseSimple> license) {
+    public void setLicense(JsonNullable<LicenseSimple> license) {
         this.license = license;
     }
 
@@ -1895,7 +1879,6 @@ public class ForkEventForkee {
                 && Objects.equals(this.hasDiscussions, forkEventForkee.hasDiscussions)
                 && Objects.equals(this.hasPullRequests, forkEventForkee.hasPullRequests)
                 && Objects.equals(this.pullRequestCreationPolicy, forkEventForkee.pullRequestCreationPolicy)
-                && Objects.equals(this.hasCommitComments, forkEventForkee.hasCommitComments)
                 && Objects.equals(this.forksCount, forkEventForkee.forksCount)
                 && equalsNullable(this.mirrorUrl, forkEventForkee.mirrorUrl)
                 && Objects.equals(this.archived, forkEventForkee.archived)
@@ -1988,7 +1971,6 @@ public class ForkEventForkee {
                 hasDiscussions,
                 hasPullRequests,
                 pullRequestCreationPolicy,
-                hasCommitComments,
                 forksCount,
                 hashCodeNullable(mirrorUrl),
                 archived,
@@ -2107,9 +2089,6 @@ public class ForkEventForkee {
                 .append("\n");
         sb.append("    pullRequestCreationPolicy: ")
                 .append(toIndentedString(pullRequestCreationPolicy))
-                .append("\n");
-        sb.append("    hasCommitComments: ")
-                .append(toIndentedString(hasCommitComments))
                 .append("\n");
         sb.append("    forksCount: ").append(toIndentedString(forksCount)).append("\n");
         sb.append("    mirrorUrl: ").append(toIndentedString(mirrorUrl)).append("\n");

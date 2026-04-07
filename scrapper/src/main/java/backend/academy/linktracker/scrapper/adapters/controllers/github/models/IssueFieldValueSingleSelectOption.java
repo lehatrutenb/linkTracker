@@ -4,19 +4,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import java.util.*;
 import java.util.Objects;
 
 /**
  * Details about the selected option (only present for single_select fields)
  */
 @Schema(
-        name = "issue_field_value_single_select_option",
+        name = "Issue_Field_Value_single_select_option",
         description = "Details about the selected option (only present for single_select fields)")
-@JsonTypeName("issue_field_value_single_select_option")
+@JsonTypeName("Issue_Field_Value_single_select_option")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueFieldValueSingleSelectOption {
 
@@ -49,11 +50,7 @@ public class IssueFieldValueSingleSelectOption {
      * @return id
      */
     @NotNull
-    @Schema(
-            name = "id",
-            example = "1",
-            description = "Unique identifier for the option.",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "id", description = "Unique identifier for the option.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("id")
     public Long getId() {
         return id;
@@ -73,11 +70,7 @@ public class IssueFieldValueSingleSelectOption {
      * @return name
      */
     @NotNull
-    @Schema(
-            name = "name",
-            example = "High",
-            description = "The name of the option",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "name", description = "The name of the option", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
     public String getName() {
         return name;
@@ -97,11 +90,7 @@ public class IssueFieldValueSingleSelectOption {
      * @return color
      */
     @NotNull
-    @Schema(
-            name = "color",
-            example = "red",
-            description = "The color of the option",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "color", description = "The color of the option", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("color")
     public String getColor() {
         return color;

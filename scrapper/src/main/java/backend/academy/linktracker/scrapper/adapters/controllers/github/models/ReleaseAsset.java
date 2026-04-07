@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
+import java.util.*;
 import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,36 +22,29 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonTypeName("Release_Asset")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReleaseAsset {
 
+    private URI url;
+
     private URI browserDownloadUrl;
-
-    private String contentType;
-
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private OffsetDateTime createdAt;
-
-    private Long downloadCount;
 
     private Long id;
 
-    private JsonNullable<String> label = JsonNullable.<String>undefined();
+    private String nodeId;
 
     private String name;
 
-    private String nodeId;
-
-    private Long size;
-
-    private JsonNullable<String> digest = JsonNullable.<String>undefined();
+    private JsonNullable<String> label = JsonNullable.<String>undefined();
 
     /**
      * State of the release asset.
      */
     public enum StateEnum {
-        UPLOADED("uploaded");
+        UPLOADED("uploaded"),
+
+        OPEN("open");
 
         private final String value;
 
@@ -82,12 +75,21 @@ public class ReleaseAsset {
 
     private StateEnum state;
 
+    private String contentType;
+
+    private Long size;
+
+    private JsonNullable<String> digest = JsonNullable.<String>undefined();
+
+    private Long downloadCount;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private OffsetDateTime createdAt;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private JsonNullable<User2> uploader = JsonNullable.<User2>undefined();
-
-    private URI url;
+    private JsonNullable<SimpleUser> uploader = JsonNullable.<SimpleUser>undefined();
 
     public ReleaseAsset() {
         super();
@@ -97,31 +99,54 @@ public class ReleaseAsset {
      * Constructor with only required parameters
      */
     public ReleaseAsset(
+            URI url,
             URI browserDownloadUrl,
-            String contentType,
-            OffsetDateTime createdAt,
-            Long downloadCount,
             Long id,
-            String label,
-            String name,
             String nodeId,
+            String name,
+            String label,
+            StateEnum state,
+            String contentType,
             Long size,
             String digest,
-            StateEnum state,
+            Long downloadCount,
+            OffsetDateTime createdAt,
             OffsetDateTime updatedAt,
-            URI url) {
+            SimpleUser uploader) {
+        this.url = url;
         this.browserDownloadUrl = browserDownloadUrl;
-        this.contentType = contentType;
-        this.createdAt = createdAt;
-        this.downloadCount = downloadCount;
         this.id = id;
-        this.label = JsonNullable.of(label);
-        this.name = name;
         this.nodeId = nodeId;
+        this.name = name;
+        this.label = JsonNullable.of(label);
+        this.state = state;
+        this.contentType = contentType;
         this.size = size;
         this.digest = JsonNullable.of(digest);
-        this.state = state;
+        this.downloadCount = downloadCount;
+        this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.uploader = JsonNullable.of(uploader);
+    }
+
+    public ReleaseAsset url(URI url) {
+        this.url = url;
+        return this;
+    }
+
+    /**
+     * Get url
+     * @return url
+     */
+    @NotNull
+    @Valid
+    @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("url")
+    public URI getUrl() {
+        return url;
+    }
+
+    public void setUrl(URI url) {
         this.url = url;
     }
 
@@ -146,67 +171,6 @@ public class ReleaseAsset {
         this.browserDownloadUrl = browserDownloadUrl;
     }
 
-    public ReleaseAsset contentType(String contentType) {
-        this.contentType = contentType;
-        return this;
-    }
-
-    /**
-     * Get contentType
-     * @return contentType
-     */
-    @NotNull
-    @Schema(name = "content_type", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("content_type")
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public ReleaseAsset createdAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    /**
-     * Get createdAt
-     * @return createdAt
-     */
-    @NotNull
-    @Valid
-    @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("created_at")
-    public OffsetDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(OffsetDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public ReleaseAsset downloadCount(Long downloadCount) {
-        this.downloadCount = downloadCount;
-        return this;
-    }
-
-    /**
-     * Get downloadCount
-     * @return downloadCount
-     */
-    @NotNull
-    @Schema(name = "download_count", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("download_count")
-    public Long getDownloadCount() {
-        return downloadCount;
-    }
-
-    public void setDownloadCount(Long downloadCount) {
-        this.downloadCount = downloadCount;
-    }
-
     public ReleaseAsset id(Long id) {
         this.id = id;
         return this;
@@ -227,24 +191,24 @@ public class ReleaseAsset {
         this.id = id;
     }
 
-    public ReleaseAsset label(String label) {
-        this.label = JsonNullable.of(label);
+    public ReleaseAsset nodeId(String nodeId) {
+        this.nodeId = nodeId;
         return this;
     }
 
     /**
-     * Get label
-     * @return label
+     * Get nodeId
+     * @return nodeId
      */
     @NotNull
-    @Schema(name = "label", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("label")
-    public JsonNullable<String> getLabel() {
-        return label;
+    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("node_id")
+    public String getNodeId() {
+        return nodeId;
     }
 
-    public void setLabel(JsonNullable<String> label) {
-        this.label = label;
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
     }
 
     public ReleaseAsset name(String name) {
@@ -267,24 +231,64 @@ public class ReleaseAsset {
         this.name = name;
     }
 
-    public ReleaseAsset nodeId(String nodeId) {
-        this.nodeId = nodeId;
+    public ReleaseAsset label(String label) {
+        this.label = JsonNullable.of(label);
         return this;
     }
 
     /**
-     * Get nodeId
-     * @return nodeId
+     * Get label
+     * @return label
      */
     @NotNull
-    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("node_id")
-    public String getNodeId() {
-        return nodeId;
+    @Schema(name = "label", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("label")
+    public JsonNullable<String> getLabel() {
+        return label;
     }
 
-    public void setNodeId(String nodeId) {
-        this.nodeId = nodeId;
+    public void setLabel(JsonNullable<String> label) {
+        this.label = label;
+    }
+
+    public ReleaseAsset state(StateEnum state) {
+        this.state = state;
+        return this;
+    }
+
+    /**
+     * State of the release asset.
+     * @return state
+     */
+    @NotNull
+    @Schema(name = "state", description = "State of the release asset.", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("state")
+    public StateEnum getState() {
+        return state;
+    }
+
+    public void setState(StateEnum state) {
+        this.state = state;
+    }
+
+    public ReleaseAsset contentType(String contentType) {
+        this.contentType = contentType;
+        return this;
+    }
+
+    /**
+     * Get contentType
+     * @return contentType
+     */
+    @NotNull
+    @Schema(name = "content_type", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("content_type")
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     public ReleaseAsset size(Long size) {
@@ -327,24 +331,45 @@ public class ReleaseAsset {
         this.digest = digest;
     }
 
-    public ReleaseAsset state(StateEnum state) {
-        this.state = state;
+    public ReleaseAsset downloadCount(Long downloadCount) {
+        this.downloadCount = downloadCount;
         return this;
     }
 
     /**
-     * State of the release asset.
-     * @return state
+     * Get downloadCount
+     * @return downloadCount
      */
     @NotNull
-    @Schema(name = "state", description = "State of the release asset.", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("state")
-    public StateEnum getState() {
-        return state;
+    @Schema(name = "download_count", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("download_count")
+    public Long getDownloadCount() {
+        return downloadCount;
     }
 
-    public void setState(StateEnum state) {
-        this.state = state;
+    public void setDownloadCount(Long downloadCount) {
+        this.downloadCount = downloadCount;
+    }
+
+    public ReleaseAsset createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     * @return createdAt
+     */
+    @NotNull
+    @Valid
+    @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("created_at")
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public ReleaseAsset updatedAt(OffsetDateTime updatedAt) {
@@ -368,7 +393,7 @@ public class ReleaseAsset {
         this.updatedAt = updatedAt;
     }
 
-    public ReleaseAsset uploader(User2 uploader) {
+    public ReleaseAsset uploader(SimpleUser uploader) {
         this.uploader = JsonNullable.of(uploader);
         return this;
     }
@@ -377,36 +402,16 @@ public class ReleaseAsset {
      * Get uploader
      * @return uploader
      */
+    @NotNull
     @Valid
-    @Schema(name = "uploader", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @Schema(name = "uploader", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("uploader")
-    public JsonNullable<User2> getUploader() {
+    public JsonNullable<SimpleUser> getUploader() {
         return uploader;
     }
 
-    public void setUploader(JsonNullable<User2> uploader) {
+    public void setUploader(JsonNullable<SimpleUser> uploader) {
         this.uploader = uploader;
-    }
-
-    public ReleaseAsset url(URI url) {
-        this.url = url;
-        return this;
-    }
-
-    /**
-     * Get url
-     * @return url
-     */
-    @NotNull
-    @Valid
-    @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("url")
-    public URI getUrl() {
-        return url;
-    }
-
-    public void setUrl(URI url) {
-        this.url = url;
     }
 
     @Override
@@ -418,73 +423,61 @@ public class ReleaseAsset {
             return false;
         }
         ReleaseAsset releaseAsset = (ReleaseAsset) o;
-        return Objects.equals(this.browserDownloadUrl, releaseAsset.browserDownloadUrl)
-                && Objects.equals(this.contentType, releaseAsset.contentType)
-                && Objects.equals(this.createdAt, releaseAsset.createdAt)
-                && Objects.equals(this.downloadCount, releaseAsset.downloadCount)
+        return Objects.equals(this.url, releaseAsset.url)
+                && Objects.equals(this.browserDownloadUrl, releaseAsset.browserDownloadUrl)
                 && Objects.equals(this.id, releaseAsset.id)
-                && Objects.equals(this.label, releaseAsset.label)
-                && Objects.equals(this.name, releaseAsset.name)
                 && Objects.equals(this.nodeId, releaseAsset.nodeId)
+                && Objects.equals(this.name, releaseAsset.name)
+                && Objects.equals(this.label, releaseAsset.label)
+                && Objects.equals(this.state, releaseAsset.state)
+                && Objects.equals(this.contentType, releaseAsset.contentType)
                 && Objects.equals(this.size, releaseAsset.size)
                 && Objects.equals(this.digest, releaseAsset.digest)
-                && Objects.equals(this.state, releaseAsset.state)
+                && Objects.equals(this.downloadCount, releaseAsset.downloadCount)
+                && Objects.equals(this.createdAt, releaseAsset.createdAt)
                 && Objects.equals(this.updatedAt, releaseAsset.updatedAt)
-                && equalsNullable(this.uploader, releaseAsset.uploader)
-                && Objects.equals(this.url, releaseAsset.url);
-    }
-
-    private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-        return a == b
-                || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+                && Objects.equals(this.uploader, releaseAsset.uploader);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
+                url,
                 browserDownloadUrl,
-                contentType,
-                createdAt,
-                downloadCount,
                 id,
-                label,
-                name,
                 nodeId,
+                name,
+                label,
+                state,
+                contentType,
                 size,
                 digest,
-                state,
+                downloadCount,
+                createdAt,
                 updatedAt,
-                hashCodeNullable(uploader),
-                url);
-    }
-
-    private static <T> int hashCodeNullable(JsonNullable<T> a) {
-        if (a == null) {
-            return 1;
-        }
-        return a.isPresent() ? Arrays.deepHashCode(new Object[] {a.get()}) : 31;
+                uploader);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ReleaseAsset {\n");
+        sb.append("    url: ").append(toIndentedString(url)).append("\n");
         sb.append("    browserDownloadUrl: ")
                 .append(toIndentedString(browserDownloadUrl))
                 .append("\n");
-        sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
-        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
-        sb.append("    downloadCount: ").append(toIndentedString(downloadCount)).append("\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
-        sb.append("    label: ").append(toIndentedString(label)).append("\n");
-        sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
+        sb.append("    name: ").append(toIndentedString(name)).append("\n");
+        sb.append("    label: ").append(toIndentedString(label)).append("\n");
+        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
         sb.append("    size: ").append(toIndentedString(size)).append("\n");
         sb.append("    digest: ").append(toIndentedString(digest)).append("\n");
-        sb.append("    state: ").append(toIndentedString(state)).append("\n");
+        sb.append("    downloadCount: ").append(toIndentedString(downloadCount)).append("\n");
+        sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
         sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
         sb.append("    uploader: ").append(toIndentedString(uploader)).append("\n");
-        sb.append("    url: ").append(toIndentedString(url)).append("\n");
         sb.append("}");
         return sb.toString();
     }

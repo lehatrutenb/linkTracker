@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import java.util.*;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * RepositoryPermissions
@@ -14,19 +14,19 @@ import java.util.Optional;
 @JsonTypeName("Repository_permissions")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class RepositoryPermissions {
 
     private Boolean admin;
 
-    private Optional<Boolean> maintain = Optional.empty();
-
     private Boolean pull;
+
+    private Optional<Boolean> triage = Optional.empty();
 
     private Boolean push;
 
-    private Optional<Boolean> triage = Optional.empty();
+    private Optional<Boolean> maintain = Optional.empty();
 
     public RepositoryPermissions() {
         super();
@@ -61,25 +61,6 @@ public class RepositoryPermissions {
         this.admin = admin;
     }
 
-    public RepositoryPermissions maintain(Boolean maintain) {
-        this.maintain = Optional.ofNullable(maintain);
-        return this;
-    }
-
-    /**
-     * Get maintain
-     * @return maintain
-     */
-    @Schema(name = "maintain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("maintain")
-    public Optional<Boolean> getMaintain() {
-        return maintain;
-    }
-
-    public void setMaintain(Optional<Boolean> maintain) {
-        this.maintain = maintain;
-    }
-
     public RepositoryPermissions pull(Boolean pull) {
         this.pull = pull;
         return this;
@@ -98,6 +79,25 @@ public class RepositoryPermissions {
 
     public void setPull(Boolean pull) {
         this.pull = pull;
+    }
+
+    public RepositoryPermissions triage(Boolean triage) {
+        this.triage = Optional.ofNullable(triage);
+        return this;
+    }
+
+    /**
+     * Get triage
+     * @return triage
+     */
+    @Schema(name = "triage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("triage")
+    public Optional<Boolean> getTriage() {
+        return triage;
+    }
+
+    public void setTriage(Optional<Boolean> triage) {
+        this.triage = triage;
     }
 
     public RepositoryPermissions push(Boolean push) {
@@ -120,23 +120,23 @@ public class RepositoryPermissions {
         this.push = push;
     }
 
-    public RepositoryPermissions triage(Boolean triage) {
-        this.triage = Optional.ofNullable(triage);
+    public RepositoryPermissions maintain(Boolean maintain) {
+        this.maintain = Optional.ofNullable(maintain);
         return this;
     }
 
     /**
-     * Get triage
-     * @return triage
+     * Get maintain
+     * @return maintain
      */
-    @Schema(name = "triage", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("triage")
-    public Optional<Boolean> getTriage() {
-        return triage;
+    @Schema(name = "maintain", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("maintain")
+    public Optional<Boolean> getMaintain() {
+        return maintain;
     }
 
-    public void setTriage(Optional<Boolean> triage) {
-        this.triage = triage;
+    public void setMaintain(Optional<Boolean> maintain) {
+        this.maintain = maintain;
     }
 
     @Override
@@ -149,15 +149,15 @@ public class RepositoryPermissions {
         }
         RepositoryPermissions repositoryPermissions = (RepositoryPermissions) o;
         return Objects.equals(this.admin, repositoryPermissions.admin)
-                && Objects.equals(this.maintain, repositoryPermissions.maintain)
                 && Objects.equals(this.pull, repositoryPermissions.pull)
+                && Objects.equals(this.triage, repositoryPermissions.triage)
                 && Objects.equals(this.push, repositoryPermissions.push)
-                && Objects.equals(this.triage, repositoryPermissions.triage);
+                && Objects.equals(this.maintain, repositoryPermissions.maintain);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(admin, maintain, pull, push, triage);
+        return Objects.hash(admin, pull, triage, push, maintain);
     }
 
     @Override
@@ -165,10 +165,10 @@ public class RepositoryPermissions {
         StringBuilder sb = new StringBuilder();
         sb.append("class RepositoryPermissions {\n");
         sb.append("    admin: ").append(toIndentedString(admin)).append("\n");
-        sb.append("    maintain: ").append(toIndentedString(maintain)).append("\n");
         sb.append("    pull: ").append(toIndentedString(pull)).append("\n");
-        sb.append("    push: ").append(toIndentedString(push)).append("\n");
         sb.append("    triage: ").append(toIndentedString(triage)).append("\n");
+        sb.append("    push: ").append(toIndentedString(push)).append("\n");
+        sb.append("    maintain: ").append(toIndentedString(maintain)).append("\n");
         sb.append("}");
         return sb.toString();
     }

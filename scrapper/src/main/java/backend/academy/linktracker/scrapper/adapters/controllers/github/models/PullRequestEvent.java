@@ -1,23 +1,21 @@
 package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 /**
  * PullRequestEvent
  */
-@JsonTypeName("pull-request-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestEvent implements EventPayload {
 
@@ -27,10 +25,10 @@ public class PullRequestEvent implements EventPayload {
 
     private PullRequestMinimal pullRequest;
 
-    private Optional<SimpleUser> assignee = Optional.empty();
+    private Optional<SimpleUser1> assignee = Optional.empty();
 
     @Valid
-    private List<@Valid SimpleUser> assignees = new ArrayList<>();
+    private List<@Valid SimpleUser1> assignees = new ArrayList<>();
 
     private Optional<Label> label = Optional.empty();
 
@@ -111,7 +109,7 @@ public class PullRequestEvent implements EventPayload {
         this.pullRequest = pullRequest;
     }
 
-    public PullRequestEvent assignee(SimpleUser assignee) {
+    public PullRequestEvent assignee(SimpleUser1 assignee) {
         this.assignee = Optional.ofNullable(assignee);
         return this;
     }
@@ -123,20 +121,20 @@ public class PullRequestEvent implements EventPayload {
     @Valid
     @Schema(name = "assignee", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignee")
-    public Optional<SimpleUser> getAssignee() {
+    public Optional<SimpleUser1> getAssignee() {
         return assignee;
     }
 
-    public void setAssignee(Optional<SimpleUser> assignee) {
+    public void setAssignee(Optional<SimpleUser1> assignee) {
         this.assignee = assignee;
     }
 
-    public PullRequestEvent assignees(List<@Valid SimpleUser> assignees) {
+    public PullRequestEvent assignees(List<@Valid SimpleUser1> assignees) {
         this.assignees = assignees;
         return this;
     }
 
-    public PullRequestEvent addAssigneesItem(SimpleUser assigneesItem) {
+    public PullRequestEvent addAssigneesItem(SimpleUser1 assigneesItem) {
         if (this.assignees == null) {
             this.assignees = new ArrayList<>();
         }
@@ -151,11 +149,11 @@ public class PullRequestEvent implements EventPayload {
     @Valid
     @Schema(name = "assignees", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("assignees")
-    public List<@Valid SimpleUser> getAssignees() {
+    public List<@Valid SimpleUser1> getAssignees() {
         return assignees;
     }
 
-    public void setAssignees(List<@Valid SimpleUser> assignees) {
+    public void setAssignees(List<@Valid SimpleUser1> assignees) {
         this.assignees = assignees;
     }
 

@@ -5,19 +5,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import java.net.URI;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * PullRequestReviewEventReview
  */
-@JsonTypeName("pull_request_review_event_review")
+@JsonTypeName("PullRequestReviewEvent_review")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestReviewEventReview {
 
@@ -25,7 +26,7 @@ public class PullRequestReviewEventReview {
 
     private Optional<String> nodeId = Optional.empty();
 
-    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
+    private JsonNullable<SimpleUser> user = JsonNullable.<SimpleUser>undefined();
 
     private Optional<String> body = Optional.empty();
 
@@ -39,7 +40,7 @@ public class PullRequestReviewEventReview {
 
     private Optional<URI> pullRequestUrl = Optional.empty();
 
-    private Optional<TimelineReviewedEventLinks> links = Optional.empty();
+    private Optional<PullRequestReviewEventReviewLinks> links = Optional.empty();
 
     private Optional<String> updatedAt = Optional.empty();
 
@@ -81,7 +82,7 @@ public class PullRequestReviewEventReview {
         this.nodeId = nodeId;
     }
 
-    public PullRequestReviewEventReview user(NullableSimpleUser user) {
+    public PullRequestReviewEventReview user(SimpleUser user) {
         this.user = JsonNullable.of(user);
         return this;
     }
@@ -93,11 +94,11 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public JsonNullable<NullableSimpleUser> getUser() {
+    public JsonNullable<SimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(JsonNullable<NullableSimpleUser> user) {
+    public void setUser(JsonNullable<SimpleUser> user) {
         this.user = user;
     }
 
@@ -217,7 +218,7 @@ public class PullRequestReviewEventReview {
         this.pullRequestUrl = pullRequestUrl;
     }
 
-    public PullRequestReviewEventReview links(TimelineReviewedEventLinks links) {
+    public PullRequestReviewEventReview links(PullRequestReviewEventReviewLinks links) {
         this.links = Optional.ofNullable(links);
         return this;
     }
@@ -229,11 +230,11 @@ public class PullRequestReviewEventReview {
     @Valid
     @Schema(name = "_links", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("_links")
-    public Optional<TimelineReviewedEventLinks> getLinks() {
+    public Optional<PullRequestReviewEventReviewLinks> getLinks() {
         return links;
     }
 
-    public void setLinks(Optional<TimelineReviewedEventLinks> links) {
+    public void setLinks(Optional<PullRequestReviewEventReviewLinks> links) {
         this.links = links;
     }
 

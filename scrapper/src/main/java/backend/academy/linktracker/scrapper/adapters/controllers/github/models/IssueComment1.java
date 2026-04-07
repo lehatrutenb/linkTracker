@@ -19,13 +19,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Comments provide a way for people to collaborate on an issue.
  */
-@Schema(name = "Issue_Comment", description = "Comments provide a way for people to collaborate on an issue.")
-@JsonTypeName("Issue_Comment")
+@Schema(name = "Issue_Comment_1", description = "Comments provide a way for people to collaborate on an issue.")
+@JsonTypeName("Issue_Comment_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
         date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class IssueComment {
+public class IssueComment1 {
 
     private Long id;
 
@@ -106,14 +106,14 @@ public class IssueComment {
 
     private JsonNullable<PinnedIssueComment> pin = JsonNullable.<PinnedIssueComment>undefined();
 
-    public IssueComment() {
+    public IssueComment1() {
         super();
     }
 
     /**
      * Constructor with only required parameters
      */
-    public IssueComment(
+    public IssueComment1(
             Long id,
             String nodeId,
             URI url,
@@ -132,7 +132,7 @@ public class IssueComment {
         this.issueUrl = issueUrl;
     }
 
-    public IssueComment id(Long id) {
+    public IssueComment1 id(Long id) {
         this.id = id;
         return this;
     }
@@ -155,7 +155,7 @@ public class IssueComment {
         this.id = id;
     }
 
-    public IssueComment nodeId(String nodeId) {
+    public IssueComment1 nodeId(String nodeId) {
         this.nodeId = nodeId;
         return this;
     }
@@ -175,7 +175,7 @@ public class IssueComment {
         this.nodeId = nodeId;
     }
 
-    public IssueComment url(URI url) {
+    public IssueComment1 url(URI url) {
         this.url = url;
         return this;
     }
@@ -196,7 +196,7 @@ public class IssueComment {
         this.url = url;
     }
 
-    public IssueComment body(String body) {
+    public IssueComment1 body(String body) {
         this.body = Optional.ofNullable(body);
         return this;
     }
@@ -218,7 +218,7 @@ public class IssueComment {
         this.body = body;
     }
 
-    public IssueComment bodyText(String bodyText) {
+    public IssueComment1 bodyText(String bodyText) {
         this.bodyText = Optional.ofNullable(bodyText);
         return this;
     }
@@ -237,7 +237,7 @@ public class IssueComment {
         this.bodyText = bodyText;
     }
 
-    public IssueComment bodyHtml(String bodyHtml) {
+    public IssueComment1 bodyHtml(String bodyHtml) {
         this.bodyHtml = Optional.ofNullable(bodyHtml);
         return this;
     }
@@ -256,7 +256,7 @@ public class IssueComment {
         this.bodyHtml = bodyHtml;
     }
 
-    public IssueComment htmlUrl(URI htmlUrl) {
+    public IssueComment1 htmlUrl(URI htmlUrl) {
         this.htmlUrl = htmlUrl;
         return this;
     }
@@ -277,7 +277,7 @@ public class IssueComment {
         this.htmlUrl = htmlUrl;
     }
 
-    public IssueComment user(SimpleUser user) {
+    public IssueComment1 user(SimpleUser user) {
         this.user = JsonNullable.of(user);
         return this;
     }
@@ -298,7 +298,7 @@ public class IssueComment {
         this.user = user;
     }
 
-    public IssueComment createdAt(OffsetDateTime createdAt) {
+    public IssueComment1 createdAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
         return this;
     }
@@ -319,7 +319,7 @@ public class IssueComment {
         this.createdAt = createdAt;
     }
 
-    public IssueComment updatedAt(OffsetDateTime updatedAt) {
+    public IssueComment1 updatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
         return this;
     }
@@ -340,7 +340,7 @@ public class IssueComment {
         this.updatedAt = updatedAt;
     }
 
-    public IssueComment issueUrl(URI issueUrl) {
+    public IssueComment1 issueUrl(URI issueUrl) {
         this.issueUrl = issueUrl;
         return this;
     }
@@ -361,7 +361,7 @@ public class IssueComment {
         this.issueUrl = issueUrl;
     }
 
-    public IssueComment authorAssociation(AuthorAssociationEnum authorAssociation) {
+    public IssueComment1 authorAssociation(AuthorAssociationEnum authorAssociation) {
         this.authorAssociation = Optional.ofNullable(authorAssociation);
         return this;
     }
@@ -383,7 +383,7 @@ public class IssueComment {
         this.authorAssociation = authorAssociation;
     }
 
-    public IssueComment performedViaGithubApp(GitHubApp1 performedViaGithubApp) {
+    public IssueComment1 performedViaGithubApp(GitHubApp1 performedViaGithubApp) {
         this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
         return this;
     }
@@ -403,7 +403,7 @@ public class IssueComment {
         this.performedViaGithubApp = performedViaGithubApp;
     }
 
-    public IssueComment reactions(ReactionRollup reactions) {
+    public IssueComment1 reactions(ReactionRollup reactions) {
         this.reactions = Optional.ofNullable(reactions);
         return this;
     }
@@ -423,7 +423,7 @@ public class IssueComment {
         this.reactions = reactions;
     }
 
-    public IssueComment pin(PinnedIssueComment pin) {
+    public IssueComment1 pin(PinnedIssueComment pin) {
         this.pin = JsonNullable.of(pin);
         return this;
     }
@@ -451,22 +451,22 @@ public class IssueComment {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        IssueComment issueComment = (IssueComment) o;
-        return Objects.equals(this.id, issueComment.id)
-                && Objects.equals(this.nodeId, issueComment.nodeId)
-                && Objects.equals(this.url, issueComment.url)
-                && Objects.equals(this.body, issueComment.body)
-                && Objects.equals(this.bodyText, issueComment.bodyText)
-                && Objects.equals(this.bodyHtml, issueComment.bodyHtml)
-                && Objects.equals(this.htmlUrl, issueComment.htmlUrl)
-                && Objects.equals(this.user, issueComment.user)
-                && Objects.equals(this.createdAt, issueComment.createdAt)
-                && Objects.equals(this.updatedAt, issueComment.updatedAt)
-                && Objects.equals(this.issueUrl, issueComment.issueUrl)
-                && Objects.equals(this.authorAssociation, issueComment.authorAssociation)
-                && equalsNullable(this.performedViaGithubApp, issueComment.performedViaGithubApp)
-                && Objects.equals(this.reactions, issueComment.reactions)
-                && equalsNullable(this.pin, issueComment.pin);
+        IssueComment1 issueComment1 = (IssueComment1) o;
+        return Objects.equals(this.id, issueComment1.id)
+                && Objects.equals(this.nodeId, issueComment1.nodeId)
+                && Objects.equals(this.url, issueComment1.url)
+                && Objects.equals(this.body, issueComment1.body)
+                && Objects.equals(this.bodyText, issueComment1.bodyText)
+                && Objects.equals(this.bodyHtml, issueComment1.bodyHtml)
+                && Objects.equals(this.htmlUrl, issueComment1.htmlUrl)
+                && Objects.equals(this.user, issueComment1.user)
+                && Objects.equals(this.createdAt, issueComment1.createdAt)
+                && Objects.equals(this.updatedAt, issueComment1.updatedAt)
+                && Objects.equals(this.issueUrl, issueComment1.issueUrl)
+                && Objects.equals(this.authorAssociation, issueComment1.authorAssociation)
+                && equalsNullable(this.performedViaGithubApp, issueComment1.performedViaGithubApp)
+                && Objects.equals(this.reactions, issueComment1.reactions)
+                && equalsNullable(this.pin, issueComment1.pin);
     }
 
     private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -504,7 +504,7 @@ public class IssueComment {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class IssueComment {\n");
+        sb.append("class IssueComment1 {\n");
         sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");

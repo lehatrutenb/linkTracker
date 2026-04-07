@@ -7,11 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -20,9 +20,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @JsonTypeName("User_2")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
+public class User2 {
 
     private Optional<URI> avatarUrl = Optional.empty();
 
@@ -42,9 +42,9 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
 
     private Optional<URI> htmlUrl = Optional.empty();
 
-    private Long id;
+    private Optional<Long> id = Optional.empty();
 
-    private String login;
+    private Optional<String> login = Optional.empty();
 
     private Optional<String> name = Optional.empty();
 
@@ -103,17 +103,7 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
 
     private Optional<URI> url = Optional.empty();
 
-    public User2() {
-        super();
-    }
-
-    /**
-     * Constructor with only required parameters
-     */
-    public User2(Long id, String login) {
-        this.id = id;
-        this.login = login;
-    }
+    private Optional<String> userViewType = Optional.empty();
 
     public User2 avatarUrl(URI avatarUrl) {
         this.avatarUrl = Optional.ofNullable(avatarUrl);
@@ -290,7 +280,7 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
     }
 
     public User2 id(Long id) {
-        this.id = id;
+        this.id = Optional.ofNullable(id);
         return this;
     }
 
@@ -298,19 +288,18 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
      * Get id
      * @return id
      */
-    @NotNull
-    @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("id")
-    public Long getId() {
+    public Optional<Long> getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Optional<Long> id) {
         this.id = id;
     }
 
     public User2 login(String login) {
-        this.login = login;
+        this.login = Optional.ofNullable(login);
         return this;
     }
 
@@ -318,14 +307,13 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
      * Get login
      * @return login
      */
-    @NotNull
-    @Schema(name = "login", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "login", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("login")
-    public String getLogin() {
+    public Optional<String> getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public void setLogin(Optional<String> login) {
         this.login = login;
     }
 
@@ -524,6 +512,25 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
         this.url = url;
     }
 
+    public User2 userViewType(String userViewType) {
+        this.userViewType = Optional.ofNullable(userViewType);
+        return this;
+    }
+
+    /**
+     * Get userViewType
+     * @return userViewType
+     */
+    @Schema(name = "user_view_type", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    @JsonProperty("user_view_type")
+    public Optional<String> getUserViewType() {
+        return userViewType;
+    }
+
+    public void setUserViewType(Optional<String> userViewType) {
+        this.userViewType = userViewType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -553,7 +560,8 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
                 && Objects.equals(this.starredUrl, user2.starredUrl)
                 && Objects.equals(this.subscriptionsUrl, user2.subscriptionsUrl)
                 && Objects.equals(this.type, user2.type)
-                && Objects.equals(this.url, user2.url);
+                && Objects.equals(this.url, user2.url)
+                && Objects.equals(this.userViewType, user2.userViewType);
     }
 
     private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -584,7 +592,8 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
                 starredUrl,
                 subscriptionsUrl,
                 type,
-                url);
+                url,
+                userViewType);
     }
 
     private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -625,6 +634,7 @@ public class User2 implements WebhooksPullRequest5RequestedReviewersInner {
                 .append("\n");
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    url: ").append(toIndentedString(url)).append("\n");
+        sb.append("    userViewType: ").append(toIndentedString(userViewType)).append("\n");
         sb.append("}");
         return sb.toString();
     }

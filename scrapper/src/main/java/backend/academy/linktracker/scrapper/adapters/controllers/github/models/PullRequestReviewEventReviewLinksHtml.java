@@ -1,6 +1,7 @@
 package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.*;
@@ -8,45 +9,46 @@ import java.util.*;
 import java.util.Objects;
 
 /**
- * WatchEvent
+ * PullRequestReviewEventReviewLinksHtml
  */
+@JsonTypeName("PullRequestReviewEvent_review__links_html")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
         date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class WatchEvent implements EventPayload {
+public class PullRequestReviewEventReviewLinksHtml {
 
-    private String action;
+    private String href;
 
-    public WatchEvent() {
+    public PullRequestReviewEventReviewLinksHtml() {
         super();
     }
 
     /**
      * Constructor with only required parameters
      */
-    public WatchEvent(String action) {
-        this.action = action;
+    public PullRequestReviewEventReviewLinksHtml(String href) {
+        this.href = href;
     }
 
-    public WatchEvent action(String action) {
-        this.action = action;
+    public PullRequestReviewEventReviewLinksHtml href(String href) {
+        this.href = href;
         return this;
     }
 
     /**
-     * Get action
-     * @return action
+     * Get href
+     * @return href
      */
     @NotNull
-    @Schema(name = "action", requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("action")
-    public String getAction() {
-        return action;
+    @Schema(name = "href", requiredMode = Schema.RequiredMode.REQUIRED)
+    @JsonProperty("href")
+    public String getHref() {
+        return href;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setHref(String href) {
+        this.href = href;
     }
 
     @Override
@@ -57,20 +59,21 @@ public class WatchEvent implements EventPayload {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        WatchEvent watchEvent = (WatchEvent) o;
-        return Objects.equals(this.action, watchEvent.action);
+        PullRequestReviewEventReviewLinksHtml pullRequestReviewEventReviewLinksHtml =
+                (PullRequestReviewEventReviewLinksHtml) o;
+        return Objects.equals(this.href, pullRequestReviewEventReviewLinksHtml.href);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(action);
+        return Objects.hash(href);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class WatchEvent {\n");
-        sb.append("    action: ").append(toIndentedString(action)).append("\n");
+        sb.append("class PullRequestReviewEventReviewLinksHtml {\n");
+        sb.append("    href: ").append(toIndentedString(href)).append("\n");
         sb.append("}");
         return sb.toString();
     }

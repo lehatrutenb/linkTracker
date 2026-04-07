@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
@@ -18,9 +18,9 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class User implements PullRequest3RequestedReviewersInner, PullRequest6RequestedReviewersInner {
+public class User {
 
     private Optional<URI> avatarUrl = Optional.empty();
 

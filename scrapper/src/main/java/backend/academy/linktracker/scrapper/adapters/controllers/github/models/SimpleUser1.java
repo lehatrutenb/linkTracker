@@ -15,13 +15,13 @@ import org.openapitools.jackson.nullable.JsonNullable;
 /**
  * A GitHub user.
  */
-@Schema(name = "Simple_User", description = "A GitHub user.")
-@JsonTypeName("Simple_User")
+@Schema(name = "Simple_User_1", description = "A GitHub user.")
+@JsonTypeName("Simple_User_1")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
         date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class SimpleUser {
+public class SimpleUser1 implements GitHubAppOwner {
 
     private JsonNullable<String> name = JsonNullable.<String>undefined();
 
@@ -67,14 +67,14 @@ public class SimpleUser {
 
     private Optional<String> userViewType = Optional.empty();
 
-    public SimpleUser() {
+    public SimpleUser1() {
         super();
     }
 
     /**
      * Constructor with only required parameters
      */
-    public SimpleUser(
+    public SimpleUser1(
             String login,
             Long id,
             String nodeId,
@@ -113,7 +113,7 @@ public class SimpleUser {
         this.siteAdmin = siteAdmin;
     }
 
-    public SimpleUser name(String name) {
+    public SimpleUser1 name(String name) {
         this.name = JsonNullable.of(name);
         return this;
     }
@@ -132,7 +132,7 @@ public class SimpleUser {
         this.name = name;
     }
 
-    public SimpleUser email(String email) {
+    public SimpleUser1 email(String email) {
         this.email = JsonNullable.of(email);
         return this;
     }
@@ -151,7 +151,7 @@ public class SimpleUser {
         this.email = email;
     }
 
-    public SimpleUser login(String login) {
+    public SimpleUser1 login(String login) {
         this.login = login;
         return this;
     }
@@ -171,7 +171,7 @@ public class SimpleUser {
         this.login = login;
     }
 
-    public SimpleUser id(Long id) {
+    public SimpleUser1 id(Long id) {
         this.id = id;
         return this;
     }
@@ -191,7 +191,7 @@ public class SimpleUser {
         this.id = id;
     }
 
-    public SimpleUser nodeId(String nodeId) {
+    public SimpleUser1 nodeId(String nodeId) {
         this.nodeId = nodeId;
         return this;
     }
@@ -211,7 +211,7 @@ public class SimpleUser {
         this.nodeId = nodeId;
     }
 
-    public SimpleUser avatarUrl(URI avatarUrl) {
+    public SimpleUser1 avatarUrl(URI avatarUrl) {
         this.avatarUrl = avatarUrl;
         return this;
     }
@@ -232,7 +232,7 @@ public class SimpleUser {
         this.avatarUrl = avatarUrl;
     }
 
-    public SimpleUser gravatarId(String gravatarId) {
+    public SimpleUser1 gravatarId(String gravatarId) {
         this.gravatarId = JsonNullable.of(gravatarId);
         return this;
     }
@@ -252,7 +252,7 @@ public class SimpleUser {
         this.gravatarId = gravatarId;
     }
 
-    public SimpleUser url(URI url) {
+    public SimpleUser1 url(URI url) {
         this.url = url;
         return this;
     }
@@ -273,7 +273,7 @@ public class SimpleUser {
         this.url = url;
     }
 
-    public SimpleUser htmlUrl(URI htmlUrl) {
+    public SimpleUser1 htmlUrl(URI htmlUrl) {
         this.htmlUrl = htmlUrl;
         return this;
     }
@@ -294,7 +294,7 @@ public class SimpleUser {
         this.htmlUrl = htmlUrl;
     }
 
-    public SimpleUser followersUrl(URI followersUrl) {
+    public SimpleUser1 followersUrl(URI followersUrl) {
         this.followersUrl = followersUrl;
         return this;
     }
@@ -315,7 +315,7 @@ public class SimpleUser {
         this.followersUrl = followersUrl;
     }
 
-    public SimpleUser followingUrl(String followingUrl) {
+    public SimpleUser1 followingUrl(String followingUrl) {
         this.followingUrl = followingUrl;
         return this;
     }
@@ -335,7 +335,7 @@ public class SimpleUser {
         this.followingUrl = followingUrl;
     }
 
-    public SimpleUser gistsUrl(String gistsUrl) {
+    public SimpleUser1 gistsUrl(String gistsUrl) {
         this.gistsUrl = gistsUrl;
         return this;
     }
@@ -355,7 +355,7 @@ public class SimpleUser {
         this.gistsUrl = gistsUrl;
     }
 
-    public SimpleUser starredUrl(String starredUrl) {
+    public SimpleUser1 starredUrl(String starredUrl) {
         this.starredUrl = starredUrl;
         return this;
     }
@@ -375,7 +375,7 @@ public class SimpleUser {
         this.starredUrl = starredUrl;
     }
 
-    public SimpleUser subscriptionsUrl(URI subscriptionsUrl) {
+    public SimpleUser1 subscriptionsUrl(URI subscriptionsUrl) {
         this.subscriptionsUrl = subscriptionsUrl;
         return this;
     }
@@ -396,7 +396,7 @@ public class SimpleUser {
         this.subscriptionsUrl = subscriptionsUrl;
     }
 
-    public SimpleUser organizationsUrl(URI organizationsUrl) {
+    public SimpleUser1 organizationsUrl(URI organizationsUrl) {
         this.organizationsUrl = organizationsUrl;
         return this;
     }
@@ -417,7 +417,7 @@ public class SimpleUser {
         this.organizationsUrl = organizationsUrl;
     }
 
-    public SimpleUser reposUrl(URI reposUrl) {
+    public SimpleUser1 reposUrl(URI reposUrl) {
         this.reposUrl = reposUrl;
         return this;
     }
@@ -438,7 +438,7 @@ public class SimpleUser {
         this.reposUrl = reposUrl;
     }
 
-    public SimpleUser eventsUrl(String eventsUrl) {
+    public SimpleUser1 eventsUrl(String eventsUrl) {
         this.eventsUrl = eventsUrl;
         return this;
     }
@@ -458,7 +458,7 @@ public class SimpleUser {
         this.eventsUrl = eventsUrl;
     }
 
-    public SimpleUser receivedEventsUrl(URI receivedEventsUrl) {
+    public SimpleUser1 receivedEventsUrl(URI receivedEventsUrl) {
         this.receivedEventsUrl = receivedEventsUrl;
         return this;
     }
@@ -479,7 +479,7 @@ public class SimpleUser {
         this.receivedEventsUrl = receivedEventsUrl;
     }
 
-    public SimpleUser type(String type) {
+    public SimpleUser1 type(String type) {
         this.type = type;
         return this;
     }
@@ -499,7 +499,7 @@ public class SimpleUser {
         this.type = type;
     }
 
-    public SimpleUser siteAdmin(Boolean siteAdmin) {
+    public SimpleUser1 siteAdmin(Boolean siteAdmin) {
         this.siteAdmin = siteAdmin;
         return this;
     }
@@ -519,7 +519,7 @@ public class SimpleUser {
         this.siteAdmin = siteAdmin;
     }
 
-    public SimpleUser starredAt(String starredAt) {
+    public SimpleUser1 starredAt(String starredAt) {
         this.starredAt = Optional.ofNullable(starredAt);
         return this;
     }
@@ -538,7 +538,7 @@ public class SimpleUser {
         this.starredAt = starredAt;
     }
 
-    public SimpleUser userViewType(String userViewType) {
+    public SimpleUser1 userViewType(String userViewType) {
         this.userViewType = Optional.ofNullable(userViewType);
         return this;
     }
@@ -565,29 +565,29 @@ public class SimpleUser {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        SimpleUser simpleUser = (SimpleUser) o;
-        return equalsNullable(this.name, simpleUser.name)
-                && equalsNullable(this.email, simpleUser.email)
-                && Objects.equals(this.login, simpleUser.login)
-                && Objects.equals(this.id, simpleUser.id)
-                && Objects.equals(this.nodeId, simpleUser.nodeId)
-                && Objects.equals(this.avatarUrl, simpleUser.avatarUrl)
-                && Objects.equals(this.gravatarId, simpleUser.gravatarId)
-                && Objects.equals(this.url, simpleUser.url)
-                && Objects.equals(this.htmlUrl, simpleUser.htmlUrl)
-                && Objects.equals(this.followersUrl, simpleUser.followersUrl)
-                && Objects.equals(this.followingUrl, simpleUser.followingUrl)
-                && Objects.equals(this.gistsUrl, simpleUser.gistsUrl)
-                && Objects.equals(this.starredUrl, simpleUser.starredUrl)
-                && Objects.equals(this.subscriptionsUrl, simpleUser.subscriptionsUrl)
-                && Objects.equals(this.organizationsUrl, simpleUser.organizationsUrl)
-                && Objects.equals(this.reposUrl, simpleUser.reposUrl)
-                && Objects.equals(this.eventsUrl, simpleUser.eventsUrl)
-                && Objects.equals(this.receivedEventsUrl, simpleUser.receivedEventsUrl)
-                && Objects.equals(this.type, simpleUser.type)
-                && Objects.equals(this.siteAdmin, simpleUser.siteAdmin)
-                && Objects.equals(this.starredAt, simpleUser.starredAt)
-                && Objects.equals(this.userViewType, simpleUser.userViewType);
+        SimpleUser1 simpleUser1 = (SimpleUser1) o;
+        return equalsNullable(this.name, simpleUser1.name)
+                && equalsNullable(this.email, simpleUser1.email)
+                && Objects.equals(this.login, simpleUser1.login)
+                && Objects.equals(this.id, simpleUser1.id)
+                && Objects.equals(this.nodeId, simpleUser1.nodeId)
+                && Objects.equals(this.avatarUrl, simpleUser1.avatarUrl)
+                && Objects.equals(this.gravatarId, simpleUser1.gravatarId)
+                && Objects.equals(this.url, simpleUser1.url)
+                && Objects.equals(this.htmlUrl, simpleUser1.htmlUrl)
+                && Objects.equals(this.followersUrl, simpleUser1.followersUrl)
+                && Objects.equals(this.followingUrl, simpleUser1.followingUrl)
+                && Objects.equals(this.gistsUrl, simpleUser1.gistsUrl)
+                && Objects.equals(this.starredUrl, simpleUser1.starredUrl)
+                && Objects.equals(this.subscriptionsUrl, simpleUser1.subscriptionsUrl)
+                && Objects.equals(this.organizationsUrl, simpleUser1.organizationsUrl)
+                && Objects.equals(this.reposUrl, simpleUser1.reposUrl)
+                && Objects.equals(this.eventsUrl, simpleUser1.eventsUrl)
+                && Objects.equals(this.receivedEventsUrl, simpleUser1.receivedEventsUrl)
+                && Objects.equals(this.type, simpleUser1.type)
+                && Objects.equals(this.siteAdmin, simpleUser1.siteAdmin)
+                && Objects.equals(this.starredAt, simpleUser1.starredAt)
+                && Objects.equals(this.userViewType, simpleUser1.userViewType);
     }
 
     private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -632,7 +632,7 @@ public class SimpleUser {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class SimpleUser {\n");
+        sb.append("class SimpleUser1 {\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    login: ").append(toIndentedString(login)).append("\n");

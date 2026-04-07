@@ -2,28 +2,26 @@ package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.time.OffsetDateTime;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A Discussion in a repository.
  */
-@Schema(name = "discussion", description = "A Discussion in a repository.")
-@JsonTypeName("discussion")
+@Schema(name = "Discussion", description = "A Discussion in a repository.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class Discussion {
 
@@ -31,7 +29,7 @@ public class Discussion {
 
     private JsonNullable<String> answerChosenAt = JsonNullable.<String>undefined();
 
-    private JsonNullable<User> answerChosenBy = JsonNullable.<User>undefined();
+    private User answerChosenBy;
 
     private JsonNullable<String> answerHtmlUrl = JsonNullable.<String>undefined();
 
@@ -198,7 +196,7 @@ public class Discussion {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime updatedAt;
 
-    private JsonNullable<User1> user = JsonNullable.<User1>undefined();
+    private User1 user;
 
     @Valid
     private List<@Valid Label> labels = new ArrayList<>();
@@ -232,7 +230,7 @@ public class Discussion {
             User1 user) {
         this.activeLockReason = JsonNullable.of(activeLockReason);
         this.answerChosenAt = JsonNullable.of(answerChosenAt);
-        this.answerChosenBy = JsonNullable.of(answerChosenBy);
+        this.answerChosenBy = answerChosenBy;
         this.answerHtmlUrl = JsonNullable.of(answerHtmlUrl);
         this.body = body;
         this.category = category;
@@ -248,7 +246,7 @@ public class Discussion {
         this.stateReason = JsonNullable.of(stateReason);
         this.title = title;
         this.updatedAt = updatedAt;
-        this.user = JsonNullable.of(user);
+        this.user = user;
     }
 
     public Discussion activeLockReason(String activeLockReason) {
@@ -292,7 +290,7 @@ public class Discussion {
     }
 
     public Discussion answerChosenBy(User answerChosenBy) {
-        this.answerChosenBy = JsonNullable.of(answerChosenBy);
+        this.answerChosenBy = answerChosenBy;
         return this;
     }
 
@@ -304,11 +302,11 @@ public class Discussion {
     @Valid
     @Schema(name = "answer_chosen_by", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("answer_chosen_by")
-    public JsonNullable<User> getAnswerChosenBy() {
+    public User getAnswerChosenBy() {
         return answerChosenBy;
     }
 
-    public void setAnswerChosenBy(JsonNullable<User> answerChosenBy) {
+    public void setAnswerChosenBy(User answerChosenBy) {
         this.answerChosenBy = answerChosenBy;
     }
 
@@ -612,7 +610,6 @@ public class Discussion {
     @NotNull
     @Schema(
             name = "state_reason",
-            example = "resolved",
             description = "The reason for the current state",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("state_reason")
@@ -685,7 +682,7 @@ public class Discussion {
     }
 
     public Discussion user(User1 user) {
-        this.user = JsonNullable.of(user);
+        this.user = user;
         return this;
     }
 
@@ -697,11 +694,11 @@ public class Discussion {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public JsonNullable<User1> getUser() {
+    public User1 getUser() {
         return user;
     }
 
-    public void setUser(JsonNullable<User1> user) {
+    public void setUser(User1 user) {
         this.user = user;
     }
 

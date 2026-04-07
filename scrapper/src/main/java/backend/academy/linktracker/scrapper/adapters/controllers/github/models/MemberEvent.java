@@ -1,26 +1,25 @@
 package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import java.util.*;
 import java.util.Objects;
 
 /**
  * MemberEvent
  */
-@JsonTypeName("member-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class MemberEvent implements EventPayload {
 
     private String action;
 
-    private SimpleUser member;
+    private SimpleUser1 member;
 
     public MemberEvent() {
         super();
@@ -29,7 +28,7 @@ public class MemberEvent implements EventPayload {
     /**
      * Constructor with only required parameters
      */
-    public MemberEvent(String action, SimpleUser member) {
+    public MemberEvent(String action, SimpleUser1 member) {
         this.action = action;
         this.member = member;
     }
@@ -54,7 +53,7 @@ public class MemberEvent implements EventPayload {
         this.action = action;
     }
 
-    public MemberEvent member(SimpleUser member) {
+    public MemberEvent member(SimpleUser1 member) {
         this.member = member;
         return this;
     }
@@ -67,11 +66,11 @@ public class MemberEvent implements EventPayload {
     @Valid
     @Schema(name = "member", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("member")
-    public SimpleUser getMember() {
+    public SimpleUser1 getMember() {
         return member;
     }
 
-    public void setMember(SimpleUser member) {
+    public void setMember(SimpleUser1 member) {
         this.member = member;
     }
 

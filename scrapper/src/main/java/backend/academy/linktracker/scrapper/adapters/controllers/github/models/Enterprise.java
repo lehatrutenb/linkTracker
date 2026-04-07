@@ -1,13 +1,13 @@
 package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -16,13 +16,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * An enterprise on GitHub.
  */
-@Schema(name = "enterprise", description = "An enterprise on GitHub.")
-@JsonTypeName("enterprise")
+@Schema(name = "Enterprise", description = "An enterprise on GitHub.")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class Enterprise implements IntegrationOwner {
+public class Enterprise implements GitHubAppOwner {
 
     private JsonNullable<String> description = JsonNullable.<String>undefined();
 
@@ -105,10 +104,7 @@ public class Enterprise implements IntegrationOwner {
      */
     @NotNull
     @Valid
-    @Schema(
-            name = "html_url",
-            example = "https://github.com/enterprises/octo-business",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "html_url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("html_url")
     public URI getHtmlUrl() {
         return htmlUrl;
@@ -153,7 +149,6 @@ public class Enterprise implements IntegrationOwner {
     @NotNull
     @Schema(
             name = "id",
-            example = "42",
             description = "Unique identifier of the enterprise",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("id")
@@ -175,7 +170,7 @@ public class Enterprise implements IntegrationOwner {
      * @return nodeId
      */
     @NotNull
-    @Schema(name = "node_id", example = "MDEwOlJlcG9zaXRvcnkxMjk2MjY5", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("node_id")
     public String getNodeId() {
         return nodeId;
@@ -195,11 +190,7 @@ public class Enterprise implements IntegrationOwner {
      * @return name
      */
     @NotNull
-    @Schema(
-            name = "name",
-            example = "Octo Business",
-            description = "The name of the enterprise.",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "name", description = "The name of the enterprise.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
     public String getName() {
         return name;
@@ -221,7 +212,6 @@ public class Enterprise implements IntegrationOwner {
     @NotNull
     @Schema(
             name = "slug",
-            example = "octo-business",
             description = "The slug url identifier for the enterprise.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("slug")
@@ -244,7 +234,7 @@ public class Enterprise implements IntegrationOwner {
      */
     @NotNull
     @Valid
-    @Schema(name = "created_at", example = "2019-01-26T19:01:12Z", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "created_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("created_at")
     public JsonNullable<OffsetDateTime> getCreatedAt() {
         return createdAt;
@@ -265,7 +255,7 @@ public class Enterprise implements IntegrationOwner {
      */
     @NotNull
     @Valid
-    @Schema(name = "updated_at", example = "2019-01-26T19:14:43Z", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "updated_at", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("updated_at")
     public JsonNullable<OffsetDateTime> getUpdatedAt() {
         return updatedAt;

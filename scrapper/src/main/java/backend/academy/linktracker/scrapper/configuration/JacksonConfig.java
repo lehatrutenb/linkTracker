@@ -5,7 +5,6 @@ import backend.academy.linktracker.scrapper.adapters.controllers.github.EventDes
 import backend.academy.linktracker.scrapper.adapters.controllers.github.ProblematicClassDeserializer;
 import backend.academy.linktracker.scrapper.adapters.controllers.github.models.Event;
 import backend.academy.linktracker.scrapper.adapters.controllers.github.models.EventPayload;
-import backend.academy.linktracker.scrapper.adapters.controllers.github.models.IntegrationOwner;
 import java.net.URI;
 import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -37,8 +36,7 @@ public class JacksonConfig {
 
     public static JacksonModule customGithubAPIEventModule() {
         SimpleModule module = (SimpleModule) customURIModule();
-        module.addDeserializer(EventPayload.class, new ProblematicClassDeserializer<>());
-        module.addDeserializer(IntegrationOwner.class, new ProblematicClassDeserializer<>());
+        module.addDeserializer(EventPayload.class, new ProblematicClassDeserializer<>()); // TODO recheck
         module.addDeserializer(Event.class, new EventDeserializer());
         return module;
     }

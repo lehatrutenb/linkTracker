@@ -5,20 +5,20 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
+import java.util.*;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 /**
  * License Simple
  */
-@Schema(name = "license-simple", description = "License Simple")
-@JsonTypeName("license-simple")
+@Schema(name = "License_Simple", description = "License Simple")
+@JsonTypeName("License_Simple")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class LicenseSimple {
 
@@ -59,7 +59,7 @@ public class LicenseSimple {
      * @return key
      */
     @NotNull
-    @Schema(name = "key", example = "mit", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "key", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("key")
     public String getKey() {
         return key;
@@ -79,7 +79,7 @@ public class LicenseSimple {
      * @return name
      */
     @NotNull
-    @Schema(name = "name", example = "MIT License", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "name", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("name")
     public String getName() {
         return name;
@@ -100,7 +100,7 @@ public class LicenseSimple {
      */
     @NotNull
     @Valid
-    @Schema(name = "url", example = "https://api.github.com/licenses/mit", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "url", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("url")
     public JsonNullable<URI> getUrl() {
         return url;
@@ -120,7 +120,7 @@ public class LicenseSimple {
      * @return spdxId
      */
     @NotNull
-    @Schema(name = "spdx_id", example = "MIT", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "spdx_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("spdx_id")
     public JsonNullable<String> getSpdxId() {
         return spdxId;
@@ -140,7 +140,7 @@ public class LicenseSimple {
      * @return nodeId
      */
     @NotNull
-    @Schema(name = "node_id", example = "MDc6TGljZW5zZW1pdA==", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "node_id", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("node_id")
     public String getNodeId() {
         return nodeId;

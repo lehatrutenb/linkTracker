@@ -5,22 +5,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * PullRequestReviewCommentEventComment
  */
-@JsonTypeName("pull_request_review_comment_event_comment")
+@JsonTypeName("PullRequestReviewCommentEvent_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class PullRequestReviewCommentEventComment {
 
@@ -44,7 +44,7 @@ public class PullRequestReviewCommentEventComment {
 
     private String commitId;
 
-    private JsonNullable<User9> user = JsonNullable.<User9>undefined();
+    private User2 user;
 
     private String body;
 
@@ -58,7 +58,7 @@ public class PullRequestReviewCommentEventComment {
 
     private URI pullRequestUrl;
 
-    private WebhooksReviewCommentLinks links;
+    private PullRequestReviewCommentEventCommentLinks links;
 
     private String originalCommitId;
 
@@ -83,13 +83,13 @@ public class PullRequestReviewCommentEventComment {
             Long position,
             Long originalPosition,
             String commitId,
-            User9 user,
+            User2 user,
             String body,
             OffsetDateTime createdAt,
             OffsetDateTime updatedAt,
             URI htmlUrl,
             URI pullRequestUrl,
-            WebhooksReviewCommentLinks links,
+            PullRequestReviewCommentEventCommentLinks links,
             String originalCommitId,
             Reactions1 reactions) {
         this.id = id;
@@ -101,7 +101,7 @@ public class PullRequestReviewCommentEventComment {
         this.position = JsonNullable.of(position);
         this.originalPosition = originalPosition;
         this.commitId = commitId;
-        this.user = JsonNullable.of(user);
+        this.user = user;
         this.body = body;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -312,8 +312,8 @@ public class PullRequestReviewCommentEventComment {
         this.commitId = commitId;
     }
 
-    public PullRequestReviewCommentEventComment user(User9 user) {
-        this.user = JsonNullable.of(user);
+    public PullRequestReviewCommentEventComment user(User2 user) {
+        this.user = user;
         return this;
     }
 
@@ -325,11 +325,11 @@ public class PullRequestReviewCommentEventComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("user")
-    public JsonNullable<User9> getUser() {
+    public User2 getUser() {
         return user;
     }
 
-    public void setUser(JsonNullable<User9> user) {
+    public void setUser(User2 user) {
         this.user = user;
     }
 
@@ -437,7 +437,7 @@ public class PullRequestReviewCommentEventComment {
         this.pullRequestUrl = pullRequestUrl;
     }
 
-    public PullRequestReviewCommentEventComment links(WebhooksReviewCommentLinks links) {
+    public PullRequestReviewCommentEventComment links(PullRequestReviewCommentEventCommentLinks links) {
         this.links = links;
         return this;
     }
@@ -450,11 +450,11 @@ public class PullRequestReviewCommentEventComment {
     @Valid
     @Schema(name = "_links", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("_links")
-    public WebhooksReviewCommentLinks getLinks() {
+    public PullRequestReviewCommentEventCommentLinks getLinks() {
         return links;
     }
 
-    public void setLinks(WebhooksReviewCommentLinks links) {
+    public void setLinks(PullRequestReviewCommentEventCommentLinks links) {
         this.links = links;
     }
 

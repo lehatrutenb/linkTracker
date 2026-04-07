@@ -5,21 +5,22 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.*;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Optional;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * CommitCommentEventComment
  */
-@JsonTypeName("commit_comment_event_comment")
+@JsonTypeName("CommitCommentEvent_comment")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class CommitCommentEventComment {
 
@@ -41,7 +42,7 @@ public class CommitCommentEventComment {
 
     private Optional<String> commitId = Optional.empty();
 
-    private JsonNullable<NullableSimpleUser> user = JsonNullable.<NullableSimpleUser>undefined();
+    private JsonNullable<SimpleUser> user = JsonNullable.<SimpleUser>undefined();
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Optional<OffsetDateTime> createdAt = Optional.empty();
@@ -224,7 +225,7 @@ public class CommitCommentEventComment {
         this.commitId = commitId;
     }
 
-    public CommitCommentEventComment user(NullableSimpleUser user) {
+    public CommitCommentEventComment user(SimpleUser user) {
         this.user = JsonNullable.of(user);
         return this;
     }
@@ -236,11 +237,11 @@ public class CommitCommentEventComment {
     @Valid
     @Schema(name = "user", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("user")
-    public JsonNullable<NullableSimpleUser> getUser() {
+    public JsonNullable<SimpleUser> getUser() {
         return user;
     }
 
-    public void setUser(JsonNullable<NullableSimpleUser> user) {
+    public void setUser(JsonNullable<SimpleUser> user) {
         this.user = user;
     }
 

@@ -5,20 +5,24 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * ReleaseEventRelease
  */
-@JsonTypeName("release_event_release")
+@JsonTypeName("ReleaseEvent_release")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class ReleaseEventRelease {
 
@@ -61,7 +65,7 @@ public class ReleaseEventRelease {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private JsonNullable<OffsetDateTime> updatedAt = JsonNullable.<OffsetDateTime>undefined();
 
-    private SimpleUser author;
+    private SimpleUser1 author;
 
     @Valid
     private List<@Valid ReleaseAsset> assets = new ArrayList<>();
@@ -103,7 +107,7 @@ public class ReleaseEventRelease {
             Boolean prerelease,
             OffsetDateTime createdAt,
             OffsetDateTime publishedAt,
-            SimpleUser author,
+            SimpleUser1 author,
             List<@Valid ReleaseAsset> assets) {
         this.url = url;
         this.htmlUrl = htmlUrl;
@@ -299,11 +303,7 @@ public class ReleaseEventRelease {
      * @return tagName
      */
     @NotNull
-    @Schema(
-            name = "tag_name",
-            example = "v1.0.0",
-            description = "The name of the tag.",
-            requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(name = "tag_name", description = "The name of the tag.", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("tag_name")
     public String getTagName() {
         return tagName;
@@ -325,7 +325,6 @@ public class ReleaseEventRelease {
     @NotNull
     @Schema(
             name = "target_commitish",
-            example = "master",
             description = "Specifies the commitish value that determines where the Git tag is created from.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("target_commitish")
@@ -388,7 +387,6 @@ public class ReleaseEventRelease {
     @NotNull
     @Schema(
             name = "draft",
-            example = "false",
             description = "true to create a draft (unpublished) release, false to create a published one.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("draft")
@@ -412,7 +410,6 @@ public class ReleaseEventRelease {
     @NotNull
     @Schema(
             name = "prerelease",
-            example = "false",
             description = "Whether to identify the release as a prerelease or a full release.",
             requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("prerelease")
@@ -435,7 +432,6 @@ public class ReleaseEventRelease {
      */
     @Schema(
             name = "immutable",
-            example = "false",
             description = "Whether or not the release is immutable.",
             requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     @JsonProperty("immutable")
@@ -509,7 +505,7 @@ public class ReleaseEventRelease {
         this.updatedAt = updatedAt;
     }
 
-    public ReleaseEventRelease author(SimpleUser author) {
+    public ReleaseEventRelease author(SimpleUser1 author) {
         this.author = author;
         return this;
     }
@@ -522,11 +518,11 @@ public class ReleaseEventRelease {
     @Valid
     @Schema(name = "author", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("author")
-    public SimpleUser getAuthor() {
+    public SimpleUser1 getAuthor() {
         return author;
     }
 
-    public void setAuthor(SimpleUser author) {
+    public void setAuthor(SimpleUser1 author) {
         this.author = author;
     }
 

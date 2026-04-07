@@ -1,28 +1,27 @@
 package backend.academy.linktracker.scrapper.adapters.controllers.github.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
+import java.util.*;
 import java.util.Objects;
 
 /**
  * IssueCommentEvent
  */
-@JsonTypeName("issue-comment-event")
 @Generated(
         value = "org.openapitools.codegen.languages.SpringCodegen",
-        date = "2026-04-05T13:06:55.012025427Z[Etc/UTC]",
+        date = "2026-04-07T21:07:31.193741288Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
 public class IssueCommentEvent implements EventPayload {
 
     private String action;
 
-    private Issue issue;
+    private Issue1 issue;
 
-    private IssueComment comment;
+    private IssueComment1 comment;
 
     public IssueCommentEvent() {
         super();
@@ -31,7 +30,7 @@ public class IssueCommentEvent implements EventPayload {
     /**
      * Constructor with only required parameters
      */
-    public IssueCommentEvent(String action, Issue issue, IssueComment comment) {
+    public IssueCommentEvent(String action, Issue1 issue, IssueComment1 comment) {
         this.action = action;
         this.issue = issue;
         this.comment = comment;
@@ -57,7 +56,7 @@ public class IssueCommentEvent implements EventPayload {
         this.action = action;
     }
 
-    public IssueCommentEvent issue(Issue issue) {
+    public IssueCommentEvent issue(Issue1 issue) {
         this.issue = issue;
         return this;
     }
@@ -70,15 +69,15 @@ public class IssueCommentEvent implements EventPayload {
     @Valid
     @Schema(name = "issue", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("issue")
-    public Issue getIssue() {
+    public Issue1 getIssue() {
         return issue;
     }
 
-    public void setIssue(Issue issue) {
+    public void setIssue(Issue1 issue) {
         this.issue = issue;
     }
 
-    public IssueCommentEvent comment(IssueComment comment) {
+    public IssueCommentEvent comment(IssueComment1 comment) {
         this.comment = comment;
         return this;
     }
@@ -91,11 +90,11 @@ public class IssueCommentEvent implements EventPayload {
     @Valid
     @Schema(name = "comment", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("comment")
-    public IssueComment getComment() {
+    public IssueComment1 getComment() {
         return comment;
     }
 
-    public void setComment(IssueComment comment) {
+    public void setComment(IssueComment1 comment) {
         this.comment = comment;
     }
 
