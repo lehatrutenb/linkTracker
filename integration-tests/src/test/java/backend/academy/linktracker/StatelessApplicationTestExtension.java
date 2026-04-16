@@ -17,7 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 // My masterpiece
 public class StatelessApplicationTestExtension implements BeforeAllCallback, AfterAllCallback {
     private final Class<?> applicationClass;
-    private final ArrayList<String> args = new ArrayList<>();
+    protected final ArrayList<String> args = new ArrayList<>();
     protected ConfigurableApplicationContext applicationContext;
 
     public StatelessApplicationTestExtension(Class<?> applicationClass, String... args) {

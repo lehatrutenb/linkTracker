@@ -1,0 +1,64 @@
+package backend.academy.linktracker.bot.usecase.services.commands;
+
+import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
+import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.CommandsMetaDataService;
+import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
+import java.util.Arrays;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Service;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+    private static final String BASIC_REPLY =
+            "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it
+    // makes sense to
+    // move to storage
+
+    private final EventsStateWatcher eventsStateWatcher;
+    private final CommandsMetaDataService commandsMetaDataService;
+    private final ApplicationContext applicationContext;
+    private final ReplyServiceMatcherService replyServiceMatcher;
+
+    @Override
+    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/")) {
+            return;
+        }
+        TelegramBotMessage message = event.getMessage();
+        if (commandsMetaDataService
+                .getCommandHandlerByCommand(
+                        Arrays.stream(message.message().strip().split(" "))
+                                .findFirst()
+                                .orElseThrow())
+                .isPresent()) {
+            return;
+        }
+
+        log.atInfo() // TODO Check how to move such logging to shared part
+                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle unknown user command");
+
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().id())
+                .orElseThrow()
+                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventId());
+    }
+
+    @Override
+    public boolean supportsAsyncExecution() {
+        return false;
+    }
+}

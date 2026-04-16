@@ -1,0 +1,6 @@
+CREATE SEQUENCE message_id_seq
+    START WITH 1
+    INCREMENT BY 10
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;

@@ -8,9 +8,9 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
-import backend.academy.linktracker.bot.adapters.controllers.UpdatesApi;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils.Message;
+import backend.academy.linktracker.bot.adapter.controller.UpdatesApi;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +24,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestClient;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.wiremock.spring.EnableWireMock;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -43,6 +46,10 @@ import org.wiremock.spring.EnableWireMock;
                         .AFTER_EACH_TEST_METHOD) // Need cause has repository bean that serves requests statuses
 class TelegramBotIntegrationTest implements WithAssertions {
     RestClient restClient;
+
+    @Container
+    @ServiceConnection
+    private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
     @BeforeEach
     void setupWireMock() {

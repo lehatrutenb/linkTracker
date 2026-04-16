@@ -13,10 +13,10 @@ import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import backend.academy.linktracker.bot.BotApplication;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
-import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleService;
-import backend.academy.linktracker.bot.usecases.services.commands.ListMessageHandler;
-import backend.academy.linktracker.bot.usecases.services.commands.TrackMessageHandler;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
+import backend.academy.linktracker.bot.usecase.services.commands.ListMessageHandler;
+import backend.academy.linktracker.bot.usecase.services.commands.TrackMessageHandler;
 import backend.academy.linktracker.scrapper.ScrapperApplication;
 import java.util.Map;
 import lombok.SneakyThrows;
@@ -39,12 +39,15 @@ import org.wiremock.spring.EnableWireMock;
 @EnableWireMock
 class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @RegisterExtension
+    static SharedPostgresContainer postgresContainer = new SharedPostgresContainer();
+
+    @RegisterExtension
     static StatefulApplicationTestExtension tgBot =
-            new StatefulApplicationTestExtension(BotApplication.class, "--server.port=0");
+            new DatasourcedApplicationTestExtension(BotApplication.class, postgresContainer, "--server.port=0");
 
     @RegisterExtension
     static StatefulApplicationTestExtension scrapper =
-            new StatefulApplicationTestExtension(ScrapperApplication.class, "--server.port=0");
+            new DatasourcedApplicationTestExtension(ScrapperApplication.class, postgresContainer, "--server.port=0");
 
     @BeforeAll
     static void configConnections() {

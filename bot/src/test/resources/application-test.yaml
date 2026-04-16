@@ -1,3 +1,6 @@
+spring:
+  liquibase:
+    change-log: classpath:/migrations/master.xml
 app:
   scrapper:
     api-path: http://127.0.0.1:8081
@@ -7,6 +10,8 @@ app:
       listLinks: /links
       trackLink: /links
       untrackLink: /links
+  data:
+    access-type: "SQL" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:

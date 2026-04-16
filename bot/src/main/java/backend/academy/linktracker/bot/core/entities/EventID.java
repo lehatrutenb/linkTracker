@@ -14,7 +14,7 @@ public class EventID implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private final String id;
+    private final Long id;
 
     @Getter
     private final OwnerIDType ownerIDType;
@@ -23,11 +23,11 @@ public class EventID implements Serializable {
         return ownerIDType + ":" + id;
     }
 
-    public String getRawId() {
+    public Long getRawId() {
         return id;
     }
 
     public int numericComparing(@NotNull EventID o) {
-        return Long.valueOf(id).compareTo(Long.valueOf(o.id));
+        return id.compareTo(o.id);
     }
 }

@@ -4,8 +4,26 @@ server:
 spring:
   application:
     name: bot
+  liquibase:
+    change-log: classpath:/migrations/master.xml
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/linktracker_bot
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #hibernate:
+    #  ddl-auto: validate
+  docker:
+    compose:
+      enabled: true
+      file: "classpath:/compose.yaml"
 
 app:
+  data:
+    access-type: "IN_MEM" # IN_MEM ORM SQL
   scrapper:
     api-path: http://127.0.0.1:8081
     paths:
@@ -14,6 +32,8 @@ app:
       listLinks: /links
       trackLink: /links
       untrackLink: /links
+  global:
+    shared-state-group: 1
   telegram:
     link:
       tracker:

@@ -1,3 +1,9 @@
+spring:
+  liquibase:
+    change-log: classpath:/bot-migrations/master.xml
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 app:
   scrapper:
     api-path: http://127.0.0.1:8081
