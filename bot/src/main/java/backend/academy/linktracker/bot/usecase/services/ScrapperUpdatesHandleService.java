@@ -1,10 +1,9 @@
 package backend.academy.linktracker.bot.usecase.services;
 
 import backend.academy.linktracker.bot.core.entities.EventID;
+import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
-import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdate;
-import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -30,26 +29,27 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
 
     private final EventsStateWatcher eventsStateWatcher;
     private final ScrapperLinkUpdatesRepository linkUpdatesRepository;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
     private final Lock scrapperEventsProcessingLock = new ReentrantLock();
 
     public void handle(LinkUpdate update, EventID eventID) { // TODO surround with try cath finally to free lock
         if (!scrapperEventsProcessingLock.tryLock()) { // We are in processScrapperScheduledUpdates
-            linkUpdatesRepository.setLinkUpdate(eventID, update);
+            linkUpdatesRepository.addLinkUpdate(eventID, update);
             return;
         }
 
         try {
-            var linkUpdateOptional = linkUpdatesRepository.getLinkUpdate(eventID);
+            var linkUpdateOptional = linkUpdatesRepository.getLinkUpdate(
+                    eventID); // TODO may be just rm and handle repo error? dont really need trans here
             if (linkUpdateOptional.isPresent()) {
                 log.atWarn().addKeyValue("event id", eventID).log("Attempt to handle link update event twice");
                 return;
             }
-            linkUpdatesRepository.setLinkUpdate(eventID, update);
+            linkUpdatesRepository.addLinkUpdate(eventID, update);
             log.atInfo().addKeyValue("event id", eventID).log("Handle link update event");
 
-            update.getTgChatIds().forEach(chatId -> {
-                var replyService = replyServiceMatcher.getReplyService(TelegramUpdatesMapper.mapScrapperChatId(chatId));
+            update.botChatIDS().forEach(chatId -> {
+                var replyService = replyServiceMatcher.getReplyService(chatId);
                 if (replyService.isEmpty()) {
                     log.atWarn().addKeyValue("event id", eventID).log("Found no replier service for such event");
                     eventsStateWatcher.markEventAsSkipped(eventID);
@@ -57,7 +57,8 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
                 }
                 replyService
                         .orElseThrow()
-                        .sendMessage(chatId, String.format(_BASIC_REPLY, update.getUrl(), update.getDescription()));
+                        .sendMessage(
+                                chatId.getNumericID(), String.format(_BASIC_REPLY, update.url(), update.description()));
             });
             eventsStateWatcher.markEventAsDone(
                     eventID); // TODO currently may repeat message twice cause may process only part of chats - but let

@@ -17,11 +17,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 @RequiredArgsConstructor
 public class EventsRepositoryInMemImpl implements EventsRepository {
     Map<EventID, Event> events = new ConcurrentHashMap<>();
@@ -33,25 +28,28 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     }
 
     @Override
-    public Optional<EventID> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
+    public Optional<Event> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
         return events.entrySet().stream()
                 .filter(eventIDEventEntry -> eventIDEventEntry.getKey().getOwnerIDType() == type)
                 .filter(entry -> !entry.getValue().state().equals(EventState.DONE))
-                .map(Map.Entry::getKey)
-                .min(EventID::numericComparing);
+                .min((entry1, entry2) -> entry1.getKey().numericComparing(entry2.getKey()))
+                .map(Map.Entry::getValue);
     }
 
     @Override
-    public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
         var firstNotDone = getNumericFirstNotDoneEventByOwnerType(type);
         if (firstNotDone.isEmpty()) {
-            return events.keySet().stream()
-                    .filter(id -> id.getOwnerIDType() == type)
-                    .max(EventID::numericComparing);
+            return events.entrySet().stream()
+                    .filter(id -> id.getKey().getOwnerIDType() == type)
+                    .max((entry1, entry2) -> entry1.getKey().numericComparing(entry2.getKey()))
+                    .map(Map.Entry::getValue);
         }
-        return firstNotDone.flatMap(id -> events.keySet().stream()
-                .filter(eventId -> eventId.numericComparing(id) < 0)
-                .max(EventID::numericComparing));
+        return firstNotDone
+                .flatMap(id -> events.entrySet().stream()
+                        .filter(eventId -> eventId.getKey().numericComparing(id.id()) < 0)
+                        .max((entry1, entry2) -> entry1.getKey().numericComparing(entry2.getKey())))
+                .map(Map.Entry::getValue);
     }
 
     @Override
@@ -67,5 +65,10 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     @Override
     public void updateEvent(Event event) {
         events.put(event.id(), event);
+    }
+
+    @Override
+    public void insertEvent(Event event) {
+        updateEvent(event);
     }
 }

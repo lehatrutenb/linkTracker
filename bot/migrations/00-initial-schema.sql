@@ -6,6 +6,12 @@ CREATE TABLE telegram_bot_user (
     version BIGINT
 );
 
+CREATE TABLE bot_chat (
+    id BIGINT PRIMARY KEY,
+    reply_service VARCHAR(255) NOT NULL,
+    version BIGINT
+);
+
 CREATE TABLE telegram_bot_chat (
     id BIGINT PRIMARY KEY,
     type VARCHAR(50) NOT NULL,
@@ -21,18 +27,20 @@ CREATE TABLE chat_shared_state (
 );
 
 CREATE TABLE event (
-    id BIGINT PRIMARY KEY,
+    id BIGINT,
     owner_id_type VARCHAR(50) NOT NULL,
     state VARCHAR(50) NOT NULL,
     updated_at TIMESTAMP,
-    version BIGINT
+    version BIGINT,
+    PRIMARY KEY (id, owner_id_type)
 );
 
 CREATE TABLE link_update (
     id BIGINT PRIMARY KEY,
+    event_id BIGINT,
+    event_owner_id_type VARCHAR(50) NOT NULL,
     url VARCHAR(500),
     description TEXT,
-    tg_chat_i_ds BIGINT[],
     version BIGINT
 );
 
@@ -61,4 +69,12 @@ CREATE TABLE shared_state_messages_mapping (
     PRIMARY KEY (shared_state_id, message_id),
     FOREIGN KEY (shared_state_id) REFERENCES chat_shared_state(id) ON DELETE CASCADE,
     FOREIGN KEY (message_id) REFERENCES telegram_bot_message(tech_id) ON DELETE CASCADE
+);
+
+CREATE TABLE link_update_bot_chats_mapping (
+    link_update_id BIGINT NOT NULL,
+    bot_chat_id BIGINT NOT NULL,
+    PRIMARY KEY (link_update_id, bot_chat_id),
+    FOREIGN KEY (link_update_id) REFERENCES link_update(id) ON DELETE CASCADE,
+    FOREIGN KEY (bot_chat_id) REFERENCES bot_chat(id) ON DELETE CASCADE
 );

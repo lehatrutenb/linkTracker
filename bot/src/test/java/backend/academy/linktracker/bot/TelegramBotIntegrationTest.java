@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -29,6 +30,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestClient;
@@ -51,6 +53,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @ServiceConnection
     private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
+    @Autowired
+    private JdbcClient jdbcClient;
+
     @BeforeEach
     void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just
@@ -68,6 +73,14 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @BeforeEach
     void setupBotClient(@Value("${local.server.port}") String linkTrackerAppPort) {
         restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
+    }
+
+    @BeforeEach
+    void cleanData(@Value("${local.server.port}") String linkTrackerAppPort) {
+        jdbcClient
+                .sql(
+                        "TRUNCATE TABLE telegram_bot_user,bot_chat,telegram_bot_chat,chat_shared_state,event,link_update,telegram_bot_message CASCADE")
+                .update();
     }
 
     @AfterEach
@@ -144,8 +157,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Timeout(10)
     void updatesSendsReceivesOK() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
-
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
+        testUtils.waitAndGetUpdates(1);
+
         var response = restClient
                 .method(HttpMethod.POST)
                 .uri(UpdatesApi._PATH_UPDATES_POST)

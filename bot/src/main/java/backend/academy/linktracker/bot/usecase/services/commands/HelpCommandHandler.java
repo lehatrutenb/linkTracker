@@ -4,9 +4,9 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
     private final TelegramBotMessagesOrderService messagesService;
     private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -37,16 +37,16 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
         }
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle /help user command");
 
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));
+                .sendMessage(message.chat().getId().getNumericID(), addCommandsToReply(BASIC_REPLY));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 

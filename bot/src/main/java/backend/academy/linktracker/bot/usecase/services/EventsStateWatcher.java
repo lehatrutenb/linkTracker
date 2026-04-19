@@ -42,7 +42,7 @@ public class EventsStateWatcher {
     }
 
     public void markEventAsProcessing(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
+        eventsRepository.insertEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
     }
 
     public Collection<Event> getElderlyProcessingEvents(OwnerIDType ownerIDType) {
@@ -52,7 +52,7 @@ public class EventsStateWatcher {
                 timeUtils.now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
-    public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
         return eventsRepository.getNumericLastOfPrefixOfDoneByOwnerType(type);
     }
 }

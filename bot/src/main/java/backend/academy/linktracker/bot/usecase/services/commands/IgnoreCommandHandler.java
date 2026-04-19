@@ -29,7 +29,7 @@ public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMe
         }
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle /ignore user command");

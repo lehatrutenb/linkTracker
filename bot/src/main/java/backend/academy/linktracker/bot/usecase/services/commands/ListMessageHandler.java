@@ -7,8 +7,8 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dtos.models.ListLinksResponse;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
@@ -38,7 +38,7 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
     private final CancelMessageHandler cancelMessageHandler;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -47,28 +47,28 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
         }
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle /list user command");
 
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
         // Skip command to get tag
         var tag = Arrays.stream(message.message().strip().split(" "))
                 .skip(1)
                 .findFirst()
                 .map(LinkTag::new);
 
-        var response = updatesService.listLinks(message.chat().id());
+        var response = updatesService.listLinks(message.chat().getId());
         if (response.isRight()) {
             handleErrorScrapperResponse(event, response.get());
             return;
         }
 
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), getReply(response.getLeft(), tag));
+                .sendMessage(message.chat().getId().getNumericID(), getReply(response.getLeft(), tag));
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
@@ -105,9 +105,9 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
                 };
         if (!reply.isBlank()) {
             replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().id())
+                    .getReplyService(event.getMessage().chat().getId())
                     .orElseThrow()
-                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+                    .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

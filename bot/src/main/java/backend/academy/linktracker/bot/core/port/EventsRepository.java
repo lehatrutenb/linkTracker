@@ -11,12 +11,14 @@ import java.util.Optional;
 public interface EventsRepository {
     Optional<Event> getEvent(EventID eventId);
 
-    Optional<EventID> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type);
+    Optional<Event> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type);
 
-    Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type);
+    Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type);
 
     Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType ownerIDType, EventState eventState, Instant updateAt);
 
-    void updateEvent(Event event); // TODO is it fine to use core event structure there?
+    void updateEvent(Event event);
+
+    void insertEvent(Event event);
 }

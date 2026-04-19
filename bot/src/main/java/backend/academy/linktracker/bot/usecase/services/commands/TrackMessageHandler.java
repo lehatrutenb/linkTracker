@@ -6,8 +6,8 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
@@ -43,7 +43,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
     private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -56,38 +56,38 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
         TelegramBotMessage message = event.getMessage();
 
         log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle /track user message");
 
         var sharedState =
-                commandsSharedStateService.getChatSharedState(message.chat().id());
+                commandsSharedStateService.getChatSharedState(message.chat().getId());
 
         commandsSharedStateService.setChatSharedState(
-                message.chat().id(),
+                message.chat().getId(),
                 sharedState
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/track")
                         .withProcessingCommandStep(0));
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_TRACK_REPLY);
+                .sendMessage(message.chat().getId().getNumericID(), _BASIC_TRACK_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
     public void handleTags(LinkTracerNewMessageEvent event) {
         TelegramBotMessage message = event.getMessage();
         var sharedState =
-                commandsSharedStateService.getChatSharedState(message.chat().id());
+                commandsSharedStateService.getChatSharedState(message.chat().getId());
 
         if (!sharedState.getProcessingCommand().equals("/track")) {
             return;
         }
 
         log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle tags for /track command");
@@ -113,11 +113,11 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
 
     public void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
         commandsSharedStateService.setChatSharedState(
-                message.chat().id(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
+                message.chat().getId(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_URL_REPLY);
+                .sendMessage(message.chat().getId().getNumericID(), _BASIC_URL_REPLY);
     }
 
     public void handleTagsSet(
@@ -125,7 +125,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
         var tags =
                 Arrays.stream(message.message().split(",")).map(String::strip).toList();
         var response = scrapper.trackLink(
-                event.getMessage().chat().id(),
+                event.getMessage().chat().getId(),
                 sharedState.getProcessingMessages().getLast().message(),
                 tags,
                 List.of()); // TODO add check on empty proc msgs
@@ -133,11 +133,11 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
             handleErrorScrapperResponse(event, response.get());
             return;
         }
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_TAGS_REPLY);
+                .sendMessage(message.chat().getId().getNumericID(), _BASIC_TAGS_REPLY);
     }
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
@@ -151,9 +151,9 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                 };
         if (!reply.isBlank()) {
             replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().id())
+                    .getReplyService(event.getMessage().chat().getId())
                     .orElseThrow()
-                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+                    .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

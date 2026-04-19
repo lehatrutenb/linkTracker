@@ -2,9 +2,9 @@ package backend.academy.linktracker.bot.usecase.services.commands;
 
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
 import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
     private final ApplicationContext applicationContext;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -45,15 +45,15 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
         }
 
         log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
+                .addKeyValue("chat id", message.chat().getId())
                 .addKeyValue("message id", message.id())
                 .addKeyValue("message date", message.date())
                 .log("Handle unknown user command");
 
         replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
+                .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+                .sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 

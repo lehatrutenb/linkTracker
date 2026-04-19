@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.time.Instant;
 import lombok.Getter;
@@ -19,6 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "telegram_bot_message")
 @NoArgsConstructor
 public class TelegramBotMessageEntity {
     @Id
@@ -30,7 +32,6 @@ public class TelegramBotMessageEntity {
 
     private String message;
     private Instant date;
-    private long chatID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "chat_id")
@@ -46,7 +47,6 @@ public class TelegramBotMessageEntity {
     public TelegramBotMessageEntity(TelegramBotMessage message) {
         techID = message.id().getTechID();
         id = getID(message.id());
-        chatID = message.id().getChatID().getNumericID();
         this.message = message.message();
         date = message.date();
         chat = new TelegramBotChatEntity(message.chat());

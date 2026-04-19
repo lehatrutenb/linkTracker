@@ -1,44 +1,34 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
+import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotChat;
-import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Table(name = "telegram_bot_chat")
 @Entity
 @NoArgsConstructor
-public class TelegramBotChatEntity {
-    @Id
-    private long id;
-
+public class TelegramBotChatEntity extends BotChatEntity {
     @Enumerated(EnumType.STRING)
     private TelegramBotChat.Type type;
 
-    @Version
-    private Long version;
-
     public TelegramBotChatEntity(TelegramBotChat chat) {
-        id = getID(chat.id());
-        type = chat.type();
-    }
-
-    public static long getID(TelegramBotChatID id) {
-        return id.getNumericID();
+        super(chat);
+        type = chat.getType();
     }
 
     public TelegramBotChat toDomain() {
-        return new TelegramBotChat(toDomainID(), type);
+        return new TelegramBotChat(toDomainID(), getReplyService(), type);
     }
 
-    public TelegramBotChatID toDomainID() {
-        return new TelegramBotChatID(id);
+    public BotChatID toDomainID() {
+        return new BotChatID(getId());
     }
 }

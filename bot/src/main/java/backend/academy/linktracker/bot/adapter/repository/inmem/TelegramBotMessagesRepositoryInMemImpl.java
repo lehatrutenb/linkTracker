@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.adapter.repository.inmem;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
+import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
@@ -13,13 +13,9 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessagesRepository {
     private final Map<String, TelegramBotMessage> messageRepo = new HashMap<>();
+    private long lastMessageInd = 0;
 
     @Override
     public Optional<TelegramBotMessage> getMessage(TelegramBotMessageID messageID) {
@@ -27,14 +23,21 @@ public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessag
     }
 
     @Override
-    public Optional<TelegramBotMessage> getLastMessageInChat(TelegramBotChatID telegramBotChatID) {
+    public Optional<TelegramBotMessage> getLastMessageInChat(BotChatID telegramBotChatID) {
         return messageRepo.values().stream()
-                .filter(message -> message.chat().id().equals(telegramBotChatID))
-                .max(Comparator.comparing(message -> message.chat().id().getID()));
+                .filter(message -> message.chat().getId().equals(telegramBotChatID))
+                .max(Comparator.comparing(message -> message.chat().getId().getID()));
     }
 
     @Override
-    public void setMessage(TelegramBotMessage message) {
+    public TelegramBotMessage addMessage(TelegramBotMessage message) {
         messageRepo.put(message.id().getUniqueId(), message);
+        lastMessageInd++;
+        return new TelegramBotMessage(
+                message.message(),
+                new TelegramBotMessageID(lastMessageInd, message.id().getChatID()),
+                message.date(),
+                message.chat(),
+                message.user());
     }
 }

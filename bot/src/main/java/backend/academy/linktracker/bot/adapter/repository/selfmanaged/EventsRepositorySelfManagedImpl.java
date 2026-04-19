@@ -1,6 +1,7 @@
 package backend.academy.linktracker.bot.adapter.repository.selfmanaged;
 
 import backend.academy.linktracker.bot.adapter.entity.EventEntity;
+import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.enums.EventState;
@@ -27,43 +28,49 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
 
     @Override
     public Optional<Event> getEvent(EventID eventId) {
-        return client.sql("SELECT * FROM event WHERE id = :id")
-                .param("id", EventEntity.getID(eventId))
+        return client.sql("""
+                        SELECT
+                        *
+                        FROM event
+                        WHERE id = :id AND owner_id_type = :owner_id_type
+                        """)
+                .param("id", EventIDEntity.getID(eventId))
+                .param("owner_id_type", eventId.getOwnerIDType().toString())
                 .query(EventEntity.class)
                 .optional()
                 .map(EventEntity::toDomain);
     }
 
     @Override
-    public Optional<EventID> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
+    public Optional<Event> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
         return client.sql(
                         "SELECT * FROM event WHERE owner_id_type = :owner_id_type AND state <> :done_state ORDER BY id ASC LIMIT 1")
                 .param("owner_id_type", type.toString())
                 .param("done_state", EventState.DONE.toString())
                 .query(EventEntity.class)
                 .optional()
-                .map(EventEntity::toDomain)
-                .map(Event::id);
+                .map(EventEntity::toDomain);
     }
 
     @Override
-    public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
-        return client.sql("SELECT * FROM event \n" + "WHERE owner_id_type = :owner_id_type \n"
-                        + "  AND state = :done_state\n"
-                        + "  AND NOT EXISTS (\n"
-                        + "    SELECT 1 FROM event e2 \n"
-                        + "    WHERE e2.owner_id_type = :owner_id_type \n"
-                        + "      AND e2.state <> :done_state \n"
-                        + "      AND e2.id < event.id\n"
-                        + "  )\n"
-                        + "ORDER BY id DESC \n"
-                        + "LIMIT 1;")
+    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+        return client.sql("""
+                        SELECT * FROM event WHERE owner_id_type = :owner_id_type
+                        AND state = :done_state
+                        AND NOT EXISTS (
+                            SELECT 1 FROM event e2
+                            WHERE e2.owner_id_type = :owner_id_type
+                            AND e2.state <> :done_state
+                            AND e2.id < event.id
+                        )
+                        ORDER BY id DESC
+                        LIMIT 1
+                        """)
                 .param("owner_id_type", type.toString())
                 .param("done_state", EventState.DONE.toString())
                 .query(EventEntity.class)
                 .optional()
-                .map(EventEntity::toDomain)
-                .map(Event::id);
+                .map(EventEntity::toDomain);
     }
 
     @Override
@@ -85,11 +92,24 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
     @Override
     public void updateEvent(Event event) {
         var entity = new EventEntity(event);
-        client.sql("UPDATE event SET owner_id_type=:owner_id_type,state=:state,updated_at=:updated_at WHERE id = :id")
-                .param("owner_id_type", entity.getOwnerIDType().toString())
+        client.sql(
+                        "UPDATE event SET state=:state,updated_at=:updated_at WHERE id = :id AND owner_id_type = :owner_id_type")
+                .param("owner_id_type", entity.getEventID().getOwnerIDType().toString())
                 .param("state", entity.getState().toString())
                 .param("updated_at", Timestamp.from(entity.getUpdatedAt()))
-                .param("id", entity.getId())
+                .param("id", entity.getEventID().getId())
+                .update();
+    }
+
+    @Override
+    public void insertEvent(Event event) {
+        var entity = new EventEntity(event);
+        client.sql(
+                        "INSERT INTO event (id,owner_id_type,state,updated_at) VALUES (:id,:owner_id_type,:state,:updated_at)")
+                .param("owner_id_type", entity.getEventID().getOwnerIDType().toString())
+                .param("state", entity.getState().toString())
+                .param("updated_at", Timestamp.from(entity.getUpdatedAt()))
+                .param("id", entity.getEventID().getId())
                 .update();
     }
 }

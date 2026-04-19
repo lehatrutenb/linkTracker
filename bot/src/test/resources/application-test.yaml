@@ -11,7 +11,7 @@ app:
       trackLink: /links
       untrackLink: /links
   data:
-    access-type: "SQL" # IN_MEM ORM SQL
+    access-type: "ORM" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:

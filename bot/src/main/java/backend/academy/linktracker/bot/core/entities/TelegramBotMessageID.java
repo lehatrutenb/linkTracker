@@ -23,7 +23,7 @@ public class TelegramBotMessageID implements Serializable, Comparable<TelegramBo
     private final long id;
 
     @Getter
-    private final TelegramBotChatID chatID;
+    private final BotChatID chatID;
 
     public long getForChatUniqueId() {
         return id;

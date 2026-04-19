@@ -1,14 +1,17 @@
 package backend.academy.linktracker.bot.usecase;
 
+import backend.academy.linktracker.bot.core.entities.BotChat;
+import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
+import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
-import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdate;
+import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.exceptions.RequestBodyFieldValidationException;
 import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
 import com.pengrad.telegrambot.model.Update;
@@ -27,7 +30,7 @@ public class LinkTracerFacade {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final EventsStateWatcher eventsStateWatcher;
     private final TelegramBotMessagesOrderService messagesOrderService;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final BotChatMetaDataService replyServiceMatcher;
     private final ScrapperUpdatesHandleService scrapperUpdatesHandleService;
 
     // Need transactional here not to be inconsistent between event and message states
@@ -41,10 +44,11 @@ public class LinkTracerFacade {
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
             EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
-            TelegramBotMessage message = TelegramUpdatesMapper.map(update);
+            TelegramBotMessage message = TelegramUpdatesMapper.map(update, replyServiceQualifier);
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 if (messagesOrderService.toProcessMessage(message)) {
-                    replyServiceMatcher.setReplyService(message.chat().id(), replyServiceQualifier);
+                    replyServiceMatcher.addBotChat(
+                            new BotChat(message.chat().getId(), replyServiceQualifier.value())); // TODO map in mapper
                     eventsStateWatcher.markEventAsProcessing(eventId);
                     var event = new LinkTracerNewMessageEvent(this, message, eventId);
                     applicationEventPublisher.publishEvent(event);
@@ -57,16 +61,18 @@ public class LinkTracerFacade {
         messagesOrderService.clear();
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
+                .map(Event::id)
                 .map(TelegramUpdatesMapper::mapUpdateId);
     }
 
-    public void processScrapperUpdates(Collection<LinkUpdate> updates) {
+    public void processScrapperUpdates(Collection<LinkUpdateRequest> updates) {
         updates.forEach(update -> {
+            LinkUpdate linkUpdate = TelegramUpdatesMapper.mapLinkUpdateRequest(update);
             EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(
                     update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);
-                scrapperUpdatesHandleService.handle(update, eventId);
+                scrapperUpdatesHandleService.handle(TelegramUpdatesMapper.mapLinkUpdateRequest(update), eventId);
             }
         });
     }

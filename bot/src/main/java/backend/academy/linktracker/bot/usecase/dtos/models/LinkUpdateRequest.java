@@ -17,7 +17,7 @@ import java.util.Optional;
         value = "org.openapitools.codegen.languages.SpringCodegen",
         date = "2026-04-05T12:43:50.364860284Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class LinkUpdate {
+public class LinkUpdateRequest {
 
     private Optional<Long> id = Optional.empty();
 
@@ -28,7 +28,7 @@ public class LinkUpdate {
     @Valid
     private List<Long> tgChatIds = new ArrayList<>();
 
-    public LinkUpdate id(Long id) {
+    public LinkUpdateRequest id(Long id) {
         this.id = Optional.ofNullable(id);
         return this;
     }
@@ -47,7 +47,7 @@ public class LinkUpdate {
         this.id = id;
     }
 
-    public LinkUpdate url(URI url) {
+    public LinkUpdateRequest url(URI url) {
         this.url = Optional.ofNullable(url);
         return this;
     }
@@ -67,7 +67,7 @@ public class LinkUpdate {
         this.url = url;
     }
 
-    public LinkUpdate description(String description) {
+    public LinkUpdateRequest description(String description) {
         this.description = Optional.ofNullable(description);
         return this;
     }
@@ -86,12 +86,12 @@ public class LinkUpdate {
         this.description = description;
     }
 
-    public LinkUpdate tgChatIds(List<Long> tgChatIds) {
+    public LinkUpdateRequest tgChatIds(List<Long> tgChatIds) {
         this.tgChatIds = tgChatIds;
         return this;
     }
 
-    public LinkUpdate addTgChatIdsItem(Long tgChatIdsItem) {
+    public LinkUpdateRequest addTgChatIdsItem(Long tgChatIdsItem) {
         if (this.tgChatIds == null) {
             this.tgChatIds = new ArrayList<>();
         }
@@ -121,7 +121,7 @@ public class LinkUpdate {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LinkUpdate linkUpdate = (LinkUpdate) o;
+        LinkUpdateRequest linkUpdate = (LinkUpdateRequest) o;
         return Objects.equals(this.id, linkUpdate.id)
                 && Objects.equals(this.url, linkUpdate.url)
                 && Objects.equals(this.description, linkUpdate.description)

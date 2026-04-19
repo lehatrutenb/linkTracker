@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.core.port;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
+import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface TelegramBotMessagesRepository {
     Optional<TelegramBotMessage> getMessage(TelegramBotMessageID messageID);
 
-    Optional<TelegramBotMessage> getLastMessageInChat(TelegramBotChatID telegramBotChatID);
+    Optional<TelegramBotMessage> getLastMessageInChat(BotChatID telegramBotChatID);
 
-    void setMessage(TelegramBotMessage message);
+    TelegramBotMessage addMessage(TelegramBotMessage message);
 }

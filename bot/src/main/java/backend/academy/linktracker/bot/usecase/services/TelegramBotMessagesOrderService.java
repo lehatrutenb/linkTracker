@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.usecase.services;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotChatID;
+import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,18 +13,18 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TelegramBotMessagesOrderService {
     // private final TelegramBotMessagesRepository messagesRepository; # TODO am i really longer need it?
-    private final Set<TelegramBotChatID> processingMessages = new HashSet<>();
+    private final Set<BotChatID> processingMessages = new HashSet<>();
 
     public boolean toProcessMessage(TelegramBotMessage message) {
-        return !processingMessages.contains(message.chat().id());
+        return !processingMessages.contains(message.chat().getId());
     }
 
     public void addProcessingMessage(TelegramBotMessage message) {
-        if (processingMessages.contains(message.chat().id())) {
+        if (processingMessages.contains(message.chat().getId())) {
             log.atError().addKeyValue("message id", message.id()).log("Attempt to add processing message twice");
             throw new IllegalStateException("Attempt to add processing message twice");
         }
-        processingMessages.add(message.chat().id());
+        processingMessages.add(message.chat().getId());
     }
 
     public void clear() {

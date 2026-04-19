@@ -2,7 +2,7 @@ package backend.academy.linktracker.bot.adapter.controller;
 
 import backend.academy.linktracker.bot.usecase.LinkTracerFacade;
 import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
-import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdate;
+import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -60,7 +60,7 @@ public class UpdatesApi {
             consumes = {"application/json"})
     public ResponseEntity<Void> updatesPost(
             @Parameter(name = "LinkUpdate", description = "", required = true) @Valid @RequestBody
-                    LinkUpdate linkUpdate) {
+                    LinkUpdateRequest linkUpdate) {
         facade.processScrapperUpdates(List.of(linkUpdate));
         return new ResponseEntity<>(HttpStatus.OK); // TODO No error handling
     }

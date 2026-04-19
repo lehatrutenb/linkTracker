@@ -25,6 +25,8 @@ import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -252,7 +254,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(url);
     }
 
-    @Timeout(1000)
+    @Timeout(10)
     @Test
     void trackSendsNotReceivesReplyInNotSenderChat() {
         String url = "https://stackoverflow.com/questions/4568645";
@@ -280,4 +282,8 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .extractingByKey("2", as(InstanceOfAssertFactories.STREAM))
                 .hasSize(1);
     }
+
+    @Nested
+    @DisplayName("DB tests")
+    class DBTests {}
 }
