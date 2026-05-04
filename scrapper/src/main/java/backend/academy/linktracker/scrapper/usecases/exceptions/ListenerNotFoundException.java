@@ -8,8 +8,8 @@ public class ListenerNotFoundException extends NotFoundException {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public ListenerNotFoundException(String listenerID, ScrapperLinkListenerType listenerType) {
-        super(ScrapperLinkListener.class.getSimpleName() + " of " + listenerType.name(), listenerID);
+    public ListenerNotFoundException(long listenerID, ScrapperLinkListenerType listenerType) {
+        super(ScrapperLinkListener.class.getSimpleName() + " of " + listenerType.name(), String.valueOf(listenerID));
     }
 
     @Override

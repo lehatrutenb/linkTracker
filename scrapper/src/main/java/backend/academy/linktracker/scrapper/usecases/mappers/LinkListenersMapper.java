@@ -7,6 +7,6 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class LinkListenersMapper {
     public ScrapperLinkListener map(Long chatID, ScrapperLinkListenerType listenerType) {
-        return new ScrapperLinkListener(chatID.toString(), listenerType);
+        return new ScrapperLinkListener(chatID, listenerType);
     }
 }

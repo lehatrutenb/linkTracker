@@ -4,6 +4,7 @@ import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.port.ReplyServiceMatcherRepository;
+import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -21,7 +22,17 @@ public class ReplyServiceMatcherRepositorySelfManagedImpl implements ReplyServic
     private final JdbcClient client;
 
     @Override
-    public Optional<BotChat> getBotChat(BotChatID chatID) {
+    public Collection<BotChat> readAllBotChats() {
+        return client.sql("SELECT * FROM bot_chat")
+                .query(BotChatEntity.class)
+                .list()
+                .stream()
+                .map(BotChatEntity::toDomain)
+                .toList();
+    }
+
+    @Override
+    public Optional<BotChat> readBotChat(BotChatID chatID) {
         return client.sql("SELECT * FROM bot_chat WHERE id = :id")
                 .param("id", BotChatEntity.getID(chatID))
                 .query(BotChatEntity.class)
@@ -30,11 +41,29 @@ public class ReplyServiceMatcherRepositorySelfManagedImpl implements ReplyServic
     }
 
     @Override
-    public void addBotChat(BotChat botChat) {
+    public void createBotChat(BotChat botChat) {
         var entity = new BotChatEntity(botChat);
         client.sql("INSERT INTO bot_chat (id,reply_service) VALUES (:id,:reply_service)")
                 .param("id", entity.getId())
                 .param("reply_service", entity.getReplyService())
+                .update();
+    }
+
+    @Override
+    public BotChat updateBotChat(BotChat botChat) {
+        var entity = new BotChatEntity(botChat);
+        return client.sql("UPDATE bot_chat SET reply_service = :reply_service WHERE id = :id RETURNING *")
+                .param("id", entity.getId())
+                .param("reply_service", entity.getReplyService())
+                .query(BotChatEntity.class)
+                .single()
+                .toDomain();
+    }
+
+    @Override
+    public void deleteBotChatByID(BotChatID chatID) {
+        client.sql("DELETE FROM bot_chat WHERE id = :id")
+                .param("id", BotChatEntity.getID(chatID))
                 .update();
     }
 }

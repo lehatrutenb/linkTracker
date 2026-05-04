@@ -1,6 +1,6 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
-import backend.academy.linktracker.scrapper.adapters.repositories.ScrappingLinkMetaDataRepository;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperFatLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
@@ -20,24 +20,24 @@ import org.springframework.stereotype.Service;
 public class ScrapperLinkMetaDataService {
     private final ScrappingLinkMetaDataRepository metaDataRepository;
 
-    public ScrapperFatLink addMetaData(AddLinkRequest addLinkRequest, Long listener, ScrapperLink scrapperLink) {
+    public ScrapperFatLink addMetaData(AddLinkRequest addLinkRequest, Long listenerID, ScrapperLink scrapperLink) {
         var metaData = new ScrapperLinkMetaData(
-                new ScrapperLinkMetaDataID(scrapperLink.id(), listener.toString()),
+                new ScrapperLinkMetaDataID(scrapperLink.getId(), listenerID),
                 addLinkRequest.getTags(),
                 addLinkRequest.getFilters());
-        metaDataRepository.addLinkMetaData(metaData);
+        metaDataRepository.createLinkMetaData(metaData);
         return new ScrapperFatLink(scrapperLink, metaData);
     }
 
     public Optional<ScrapperFatLink> enrichWithMetaData(
             ScrapperLink scrapperLink,
             ScrapperLinkListener listener) { // Not return not to mark that copy may happen inside
-        var metaData = metaDataRepository.getLinkMetaData(
-                new ScrapperLinkMetaDataID(scrapperLink.id(), listener.listenerID()));
+        var metaData = metaDataRepository.readLinkMetaData(
+                new ScrapperLinkMetaDataID(scrapperLink.getId(), listener.listenerID()));
         if (metaData.isEmpty()) {
             log.atError()
                     .addKeyValue("link", scrapperLink)
-                    .addKeyValue("listener", listener)
+                    .addKeyValue("listenerID", listener)
                     .log("Failed to match link with meta data");
             return Optional.empty();
         }

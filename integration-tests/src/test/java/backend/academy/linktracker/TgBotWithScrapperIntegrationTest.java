@@ -76,7 +76,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                                                 "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
     }
 
-    @AfterEach
+    @BeforeEach
     void cleanWireMock() {
         reset();
         resetAllRequests();

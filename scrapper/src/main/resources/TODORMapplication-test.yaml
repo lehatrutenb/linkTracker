@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: scrapper
+  liquibase:
+    change-log: classpath:/migrations/master.xml
 
 app:
   telegram:
@@ -12,6 +14,8 @@ app:
         api-path: http://127.0.0.1:8080
         paths:
           updates: /updates
+  data:
+    access-type: "IN_MEM" # IN_MEM ORM SQL
   snowflake:
     worker-id: 1
     datacenter-id: 1

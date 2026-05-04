@@ -5,6 +5,8 @@ import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.transaction.Transactional;
+
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import lombok.RequiredArgsConstructor;
@@ -32,20 +34,21 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
     private final BotChatMetaDataService replyServiceMatcher;
     private final Lock scrapperEventsProcessingLock = new ReentrantLock();
 
+    @Transactional
     public void handle(LinkUpdate update, EventID eventID) { // TODO surround with try cath finally to free lock
         if (!scrapperEventsProcessingLock.tryLock()) { // We are in processScrapperScheduledUpdates
-            linkUpdatesRepository.addLinkUpdate(eventID, update);
+            linkUpdatesRepository.createLinkUpdate(eventID, update);
             return;
         }
 
         try {
-            var linkUpdateOptional = linkUpdatesRepository.getLinkUpdate(
+            var linkUpdateOptional = linkUpdatesRepository.readLinkUpdate(
                     eventID); // TODO may be just rm and handle repo error? dont really need trans here
             if (linkUpdateOptional.isPresent()) {
                 log.atWarn().addKeyValue("event id", eventID).log("Attempt to handle link update event twice");
                 return;
             }
-            linkUpdatesRepository.addLinkUpdate(eventID, update);
+            linkUpdatesRepository.createLinkUpdate(eventID, update);
             log.atInfo().addKeyValue("event id", eventID).log("Handle link update event");
 
             update.botChatIDS().forEach(chatId -> {
@@ -75,7 +78,7 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
         try {
             eventsStateWatcher.getElderlyProcessingEvents(OwnerIDType.SCRAPPER).forEach(event -> {
                 if (eventsStateWatcher.toProcessEvent(event.id())) {
-                    handle(linkUpdatesRepository.getLinkUpdate(event.id()).orElseThrow(), event.id()); // TODO add check
+                    handle(linkUpdatesRepository.readLinkUpdate(event.id()).orElseThrow(), event.id()); // TODO add check
                 }
             });
         } finally {

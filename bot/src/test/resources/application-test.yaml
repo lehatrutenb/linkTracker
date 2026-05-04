@@ -1,6 +1,6 @@
 spring:
   liquibase:
-    change-log: classpath:/migrations/master.xml
+    change-log: classpath:/migrations/bot/master.xml
 app:
   scrapper:
     api-path: http://127.0.0.1:8081

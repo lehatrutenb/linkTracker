@@ -4,8 +4,24 @@ server:
 spring:
   application:
     name: scrapper
+  liquibase:
+    change-log: classpath:/migrations/scrapper/master.xml
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/linktracker_scrapper
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  docker:
+    compose:
+      enabled: true
+      file: "classpath:/compose.yaml"
 
 app:
+  data:
+    access-type: "IN_MEM" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:
@@ -17,8 +33,8 @@ app:
     datacenter-id: 1
   global:
   stackoverflow:
-    key: ${STACKOVERFLOW_KEY} # Use env variable. DO NOT KEEP TOKEN HERE
-    access-token: ${STACKOVERFLOW_ACCESS_KEY} # Use env variable. DO NOT KEEP TOKEN HERE
+    key: ${STACKOVERFLOW_KEY}
+    access-token: ${STACKOVERFLOW_ACCESS_KEY}
   github:
-    token: ${GITHUB_TOKEN} # Use env variable. DO NOT KEEP TOKEN HERE
+    token: ${GITHUB_TOKEN}
     user-agent: github-events-scrapping-service

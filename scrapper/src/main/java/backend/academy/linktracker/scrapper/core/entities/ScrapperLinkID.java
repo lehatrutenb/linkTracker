@@ -1,5 +1,11 @@
 package backend.academy.linktracker.scrapper.core.entities;
 
 import java.net.URI;
+import java.util.Optional;
 
-public record ScrapperLinkID(URI uri, long UUID) {}
+// TODO rewrite all generated ids to optional?
+public record ScrapperLinkID(URI uri, Optional<Long> id) {
+    public ScrapperLinkID(URI uri) {
+        this(uri, Optional.empty());
+    }
+}

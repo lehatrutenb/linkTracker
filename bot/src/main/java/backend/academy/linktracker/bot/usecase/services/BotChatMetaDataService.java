@@ -18,7 +18,7 @@ public class BotChatMetaDataService {
     private final ReplyServiceMatcherRepository serviceMatcherRepository;
 
     public Optional<LinkTracerTelegramBotReplier> getReplyService(BotChatID chatID) {
-        var replyServiceQualifier = serviceMatcherRepository.getBotChat(chatID);
+        var replyServiceQualifier = serviceMatcherRepository.readBotChat(chatID);
         if (replyServiceQualifier.isEmpty()) {
             return Optional.empty();
         }
@@ -32,7 +32,7 @@ public class BotChatMetaDataService {
                 .findAny();
     }
 
-    public void addBotChat(BotChat botChat) {
-        serviceMatcherRepository.addBotChat(botChat);
+    public void createBotChat(BotChat botChat) {
+        serviceMatcherRepository.createBotChat(botChat);
     }
 }

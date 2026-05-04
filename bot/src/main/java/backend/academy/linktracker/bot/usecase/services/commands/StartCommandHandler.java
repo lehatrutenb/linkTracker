@@ -7,6 +7,7 @@ import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +28,7 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
     private final BotChatMetaDataService replyServiceMatcher;
 
     @Override
+    @Transactional
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/start")) {
             return;

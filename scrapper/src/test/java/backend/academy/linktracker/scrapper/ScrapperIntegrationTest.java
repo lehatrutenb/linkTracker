@@ -13,15 +13,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.RestClient;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.wiremock.spring.EnableWireMock;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,12 +37,27 @@ import org.wiremock.spring.EnableWireMock;
 public class ScrapperIntegrationTest {
     RestClient restClient;
 
+    @Container
+    @ServiceConnection
+    private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
+
+    @Autowired
+    private JdbcClient jdbcClient;
+
     @BeforeEach
     void setupScrapperClient(@Value("${local.server.port}") String linkTrackerAppPort) {
         restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
     }
 
-    @AfterEach
+    @BeforeEach
+    void cleanData(@Value("${local.server.port}") String linkTrackerAppPort) {
+        jdbcClient
+            .sql(
+                "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
+            .update();
+    }
+
+    @BeforeEach
     void cleanWireMock() {
         WireMock.reset();
         WireMock.resetAllRequests();
@@ -88,7 +108,7 @@ public class ScrapperIntegrationTest {
     void deleteListeningLinkSendsReceivesEmptyListeningLinks() {
         String chatID = "1";
         String link = "https://github.com/openclaw/openclaw";
-        String tgChatHeaderName = "Tg-Chat-Id";
+        String tgChatHeaderName = "Tg-Chat-Id"; // TODO Move to class field cause its nearly constant?
         String bodyLinkAdd = String.format("{\"link\":\"%s\"}", link);
         String bodyLinkDelete = bodyLinkAdd;
 

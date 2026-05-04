@@ -21,7 +21,7 @@ public class EventsStateWatcher {
     private final TelegramLinkTrackerProperties telegramLinkTrackerProperties;
 
     public boolean toProcessEvent(EventID eventId) {
-        var event = eventsRepository.getEvent(eventId);
+        var event = eventsRepository.readEvent(eventId);
         return event.isEmpty()
                 || event.orElseThrow()
                         .state()
@@ -29,7 +29,7 @@ public class EventsStateWatcher {
     }
 
     public boolean isEventDone(EventID eventId) {
-        var event = eventsRepository.getEvent(eventId);
+        var event = eventsRepository.readEvent(eventId);
         return event.isPresent() && event.orElseThrow().state().equals(EventState.DONE);
     }
 
@@ -42,17 +42,17 @@ public class EventsStateWatcher {
     }
 
     public void markEventAsProcessing(EventID eventId) {
-        eventsRepository.insertEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
+        eventsRepository.createEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
     }
 
     public Collection<Event> getElderlyProcessingEvents(OwnerIDType ownerIDType) {
-        return eventsRepository.getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+        return eventsRepository.readEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
                 ownerIDType,
                 EventState.PROCESSING,
                 timeUtils.now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
     public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
-        return eventsRepository.getNumericLastOfPrefixOfDoneByOwnerType(type);
+        return eventsRepository.readNumericLastOfPrefixOfDoneByOwnerType(type);
     }
 }

@@ -21,5 +21,5 @@ public interface ScrapperLinkUpdatesRepositoryOrmInner extends JpaRepository<Lin
         FROM LinkUpdateEntity lu
         WHERE lu.eventID.id = :#{#id.id} AND lu.eventID.ownerIDType = :#{#id.ownerIDType}
         """)
-    public Optional<LinkUpdateEntity> getLinkUpdate(@Param("id") EventIDEntity id);
+    Optional<LinkUpdateEntity> readLinkUpdate(@Param("id") EventIDEntity id);
 }

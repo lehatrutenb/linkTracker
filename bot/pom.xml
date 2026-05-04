@@ -233,7 +233,7 @@
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
-                <targetPath>migrations</targetPath>
+                <targetPath>migrations/bot</targetPath>
                 <directory>migrations</directory>
             </resource>
         </resources>

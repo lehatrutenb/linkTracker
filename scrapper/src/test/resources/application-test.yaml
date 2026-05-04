@@ -1,8 +1,14 @@
 spring:
   application:
     name: scrapper
+  liquibase:
+    change-log: classpath:/migrations/scrapper/master.xml
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 app:
+  data:
+    access-type: "SQL" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:

@@ -17,7 +17,7 @@ public class UserChatStateMachineConcurrentService {
     }
 
     public synchronized ChatSharedState getChatSharedState(BotChatID userChatID) {
-        var state = userChatStateRepository.getChatSharedState(userChatID);
+        var state = userChatStateRepository.readChatSharedState(userChatID);
         if (state.isEmpty()) {
             state = Optional.of(new ChatSharedState());
             setChatSharedState(userChatID, state.orElseThrow());

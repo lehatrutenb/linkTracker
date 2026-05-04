@@ -31,26 +31,31 @@ public class EventsRepositoryOrmImpl implements EventsRepository {
     private final EntityManager entityManager;
 
     @Override
-    public Optional<Event> getEvent(EventID eventId) {
+    public Collection<Event> readAllEvents() {
+        return repository.findAll().stream().map(EventEntity::toDomain).toList();
+    }
+
+    @Override
+    public Optional<Event> readEvent(EventID eventId) {
         return repository.findById(new EventIDEntity(eventId)).map(EventEntity::toDomain);
     }
 
     @Override
-    public Optional<Event> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
+    public Optional<Event> readNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
         return repository
                 .findByEventIDOwnerIDTypeAndStateNotOrderByIdAsc(type, EventState.DONE)
                 .map(EventEntity::toDomain);
     }
 
     @Override
-    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+    public Optional<Event> readNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
         return repository.getNumericLastOfPrefixOfDoneByOwnerIdTypeAndState(type, EventState.DONE).stream()
                 .findFirst()
                 .map(EventEntity::toDomain);
     }
 
     @Override
-    public Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+    public Collection<Event> readEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType type, EventState state, Instant updateAt) {
         return repository.findAllByEventIDOwnerIDTypeAndStateAndUpdatedAtLessThan(type, state, updateAt).stream()
                 .map(EventEntity::toDomain)
@@ -59,16 +64,21 @@ public class EventsRepositoryOrmImpl implements EventsRepository {
 
     @Override
     @Transactional
-    public void updateEvent(Event event) {
+    public Event updateEvent(Event event) {
         EventEntity curEntity =
                 repository.getReferenceById(new EventIDEntity(event.id())); // Not to dirty core with outer fields
         EventEntity addEntity = new EventEntity(event);
         addEntity.setVersion(curEntity.getVersion());
-        entityManager.merge(addEntity);
+        return entityManager.merge(addEntity).toDomain();
     }
 
     @Override
-    public void insertEvent(Event event) {
+    public void createEvent(Event event) {
         repository.save(new EventEntity(event));
+    }
+
+    @Override
+    public void deleteEventByID(EventID eventID) {
+        repository.deleteById(new EventIDEntity(eventID));
     }
 }

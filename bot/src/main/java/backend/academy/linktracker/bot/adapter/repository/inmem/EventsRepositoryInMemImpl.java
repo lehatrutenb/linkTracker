@@ -10,25 +10,28 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Repository;
+import lombok.RequiredArgsConstructor;
 
 @RefreshScope
 @Repository
 @RequiredArgsConstructor
 public class EventsRepositoryInMemImpl implements EventsRepository {
     Map<EventID, Event> events = new ConcurrentHashMap<>();
-    final ApplicationContext applicationContext;
 
     @Override
-    public Optional<Event> getEvent(EventID eventId) {
+    public Collection<Event> readAllEvents() {
+        return events.values();
+    }
+
+    @Override
+    public Optional<Event> readEvent(EventID eventId) {
         return Optional.ofNullable(events.get(eventId));
     }
 
     @Override
-    public Optional<Event> getNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
+    public Optional<Event> readNumericFirstNotDoneEventByOwnerType(OwnerIDType type) {
         return events.entrySet().stream()
                 .filter(eventIDEventEntry -> eventIDEventEntry.getKey().getOwnerIDType() == type)
                 .filter(entry -> !entry.getValue().state().equals(EventState.DONE))
@@ -37,8 +40,8 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     }
 
     @Override
-    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
-        var firstNotDone = getNumericFirstNotDoneEventByOwnerType(type);
+    public Optional<Event> readNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+        var firstNotDone = readNumericFirstNotDoneEventByOwnerType(type);
         if (firstNotDone.isEmpty()) {
             return events.entrySet().stream()
                     .filter(id -> id.getKey().getOwnerIDType() == type)
@@ -53,7 +56,7 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     }
 
     @Override
-    public Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+    public Collection<Event> readEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType ownerIDType, EventState eventState, Instant maxUpdatedAt) {
         return events.values().stream()
                 .filter(event -> event.state() == eventState)
@@ -63,12 +66,18 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     }
 
     @Override
-    public void updateEvent(Event event) {
+    public Event updateEvent(Event event) {
         events.put(event.id(), event);
+        return event;
     }
 
     @Override
-    public void insertEvent(Event event) {
+    public void createEvent(Event event) {
         updateEvent(event);
+    }
+
+    @Override
+    public void deleteEventByID(EventID eventID) {
+        events.remove(eventID);
     }
 }

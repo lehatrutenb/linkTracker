@@ -22,7 +22,7 @@ public class ScheduleUpdatesOnLinksService {
             var toScrap = linksToListen.stream().filter(scrapper::checkCanScrap).toList();
 
             toScrap.forEach(link -> {
-                var updates = scrapper.scrap(link.uri(), link.updatedAt());
+                var updates = scrapper.scrap(link.getUri(), link.getUpdatedAt());
                 publishService.publishUpdates(updates.getLeft(), link);
                 linkListenersService.setFreshUpdatedTag(
                         link, updates.getRight()); // Set new time only after successful send

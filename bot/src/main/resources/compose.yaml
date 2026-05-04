@@ -1,3 +1,4 @@
+# TODO may be move compose just to parent dir? (and have one for all services)
 services:
   postgres:
     image: postgres:18-alpine

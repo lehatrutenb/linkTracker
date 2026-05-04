@@ -1,12 +1,15 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
-import backend.academy.linktracker.scrapper.adapters.repositories.ScrappingLinksRepository;
-import backend.academy.linktracker.scrapper.core.domain.factories.ScrapperLinkFactory;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
+import jakarta.transaction.Transactional;
+
 import java.net.URI;
 import java.sql.SQLException;
 import java.time.Instant;
@@ -15,6 +18,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 
 @Slf4j
 @Service
@@ -22,50 +26,51 @@ import org.springframework.stereotype.Service;
 // TODO USE mapper not new ScrapperLinkListener(listenerID)
 public class ScrappingLinkService {
     private final ScrappingLinksRepository linksRepository;
-    private final ScrapperLinkFactory scrapperLinkFactory;
+    private final ScrappingLinkMetaDataRepository metaDataRepository;
 
-    public void deleteLinkForLinkListener(ScrapperLinkID linkID, ScrapperLinkListener listener) {
-        linksRepository.deleteScrapperLinkListenerLink(
-                listener, linkID); // TODO won't work if run in parallel - need to do as atomic op
-        if (linksRepository.getScrapperLinkListeners(linkID).isEmpty()) {
+    public void deleteLinkForLinkListener(ScrapperLinkMetaDataID metaDataID) {
+        metaDataRepository.deleteLinkMetaData(metaDataID); // TODO won't work if run in parallel - need to do as atomic op
+        /*if (listenerRepository.readScrapperLinkListener(linkID).isEmpty()) {
             linksRepository.deleteScrapperLink(linkID);
-        }
+        }*/ // TODO Currently dont need, but its better to use some scheduling task for it, not check on every request
     }
 
+    @Transactional
     public ScrapperLink addLinkToListen(AddLinkRequest addLinkRequest, ScrapperLinkListener listener) {
-        var link = scrapperLinkFactory.createScrapperLink(
+        var link = new ScrapperLink(
+                new ScrapperLinkID(addLinkRequest.getLink().orElseThrow()),
                 addLinkRequest.getLink().orElseThrow(),
-                Instant.EPOCH); // Not min cause cant format to date string in request it
-        if (getListenersOfLink(link.id()).contains(listener)) {
-            throw new DuplicateEntityException(
-                    ScrapperLink.class, link.id().uri().toString());
-        }
+                Instant.EPOCH); // Not min, but epoch cause cant format to date string in request it
         try {
-            linksRepository.addScrapperLink(link);
-        } catch (SQLException _) { // TODO recheck
+            link = linksRepository.createScrapperLink(link);
+        } catch (SQLException e) { // TODO recheck
             log.error("Got SQL exception");
         }
-        linksRepository.addLinkToScrapperLinkListener(listener, link.id());
+        if (getListenersOfLink(link.getId()).contains(listener)) {
+            throw new DuplicateEntityException(
+                    ScrapperLink.class, link.getUri().toString());
+        }
+        // metaDataRepository.createLinkMetaData(new ScrapperLinkMetaData(new ScrapperLinkMetaDataID(link.getId(), listener.listenerID()), addLinkRequest.getTags(), addLinkRequest.getFilters())); Moved to metaDataService
         return link;
     }
 
     public Optional<ScrapperLink> getLink(URI uri) {
-        return linksRepository.getScrapperLinkByURI(uri);
+        return linksRepository.readScrapperLinkByURI(uri);
     }
 
     public Collection<ScrapperLinkListener> getListenersOfLink(ScrapperLinkID scrapperLinkID) {
-        return linksRepository.getScrapperLinkListeners(scrapperLinkID);
+        return metaDataRepository.readScrapperLinkListeners(scrapperLinkID);
     }
 
     public void setFreshUpdatedTag(ScrapperLink scrapperLink, Instant updatedAt) {
-        linksRepository.updateScrapperLink(new ScrapperLink(scrapperLink.id(), scrapperLink.uri(), updatedAt));
+        linksRepository.updateScrapperLink(new ScrapperLink(scrapperLink.getId(), scrapperLink.getUri(), updatedAt));
     }
 
     public Collection<ScrapperLink> getAllListeningLinks() {
-        return linksRepository.getAllScrapperLinks();
+        return linksRepository.readAllScrapperLinks();
     }
 
     public Collection<ScrapperLink> getAllListeningLinks(ScrapperLinkListener linkListener) {
-        return linksRepository.getAllScrapperLinks(linkListener);
+        return metaDataRepository.readAllListenningLinks(linkListener.listenerID());
     }
 }

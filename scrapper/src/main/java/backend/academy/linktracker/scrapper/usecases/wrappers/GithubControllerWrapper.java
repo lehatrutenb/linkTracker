@@ -32,7 +32,7 @@ public class GithubControllerWrapper implements OuterServiceScrapper {
     }
 
     public boolean checkCanScrap(ScrapperLink link) {
-        return checkCanScrap(link.uri());
+        return checkCanScrap(link.getUri());
     }
 
     public boolean checkCanScrap(URI uri) {

@@ -7,6 +7,7 @@ import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -26,18 +27,42 @@ public class UserChatStateRepositoryOrmImpl implements UserChatStateRepository {
     private final EntityManager entityManager;
 
     @Override
-    public Optional<ChatSharedState> getChatSharedState(BotChatID userChatID) {
+    public Collection<ChatSharedState> readAllChatSharedStates() {
+        return repository.findAll().stream().map(ChatSharedStateEntity::toDomain).toList();
+    }
+
+    @Override
+    public Optional<ChatSharedState> readChatSharedState(BotChatID userChatID) {
         return repository.findById(ChatSharedStateEntity.getID(userChatID)).map(ChatSharedStateEntity::toDomain);
     }
 
     @Override
+    public void createChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
+        repository.save(new ChatSharedStateEntity(chatID, chatSharedState));
+    }
+
+    @Override
     @Transactional
-    public void upsertChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
+    public ChatSharedState updateChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
+        var addEntity = new ChatSharedStateEntity(chatID, chatSharedState);
+        var curEntity = repository.getReferenceById(ChatSharedStateEntity.getID(chatID));
+        addEntity.setVersion(curEntity.getVersion());
+        return entityManager.merge(addEntity).toDomain();
+    }
+
+    @Override
+    @Transactional
+    public ChatSharedState upsertChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
         var addEntity = new ChatSharedStateEntity(chatID, chatSharedState);
         var curEntity = repository.findById(ChatSharedStateEntity.getID(chatID));
         if (curEntity.isPresent()) {
             addEntity.setVersion(curEntity.orElseThrow().getVersion());
         }
-        repository.save(addEntity);
+        return repository.save(addEntity).toDomain();
+    }
+
+    @Override
+    public void deleteChatSharedStateByID(BotChatID chatID) {
+        repository.deleteById(ChatSharedStateEntity.getID(chatID));
     }
 }

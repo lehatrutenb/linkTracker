@@ -1,5 +1,6 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
+import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
@@ -7,13 +8,16 @@ import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.net.URI;
@@ -44,12 +48,12 @@ public class LinkUpdateEntity {
     private String url;
     private String description;
 
-    @OneToMany
-    @JoinTable(
+    @ElementCollection
+    @CollectionTable(
             name = "link_update_bot_chats_mapping",
-            joinColumns = @JoinColumn(name = "link_update_id"),
-            inverseJoinColumns = @JoinColumn(name = "bot_chat_id"))
-    private List<BotChatEntity> tgChatIDs;
+            joinColumns = @JoinColumn(name = "link_update_id"))
+    @Column(name = "bot_chat_id")
+    private List<Long> tgChatIDs;
 
     @Version
     private Long version;
@@ -57,6 +61,7 @@ public class LinkUpdateEntity {
     public LinkUpdateEntity(LinkUpdate linkUpdate, EventID eventID) {
         this.eventID = new EventIDEntity(eventID);
         id = getID(linkUpdate.id());
+        tgChatIDs = linkUpdate.botChatIDS().stream().map(BotChatEntity::getID).toList();
         url = linkUpdate.url().toString();
         description = linkUpdate.description();
     }
@@ -67,7 +72,7 @@ public class LinkUpdateEntity {
                     TelegramUpdatesMapper.mapLinkUpdateID(id),
                     new URI(url),
                     description,
-                    tgChatIDs.stream().map(BotChatEntity::toDomainID).toList());
+                    tgChatIDs.stream().map(BotChatID::new).toList());
         } catch (URISyntaxException e) {
             log.error("LinkUpdateEntity contains corrupted URI value");
             throw new RuntimeException(e);

@@ -16,8 +16,8 @@ public class LinksApiMapper {
 
     public LinkResponse map(ScrapperFatLink scrapperLink) {
         return new LinkResponse()
-                .id(scrapperLink.link().id().UUID())
-                .url(scrapperLink.link().uri())
+                .id(scrapperLink.link().getId().id().orElseThrow())
+                .url(scrapperLink.link().getUri())
                 .tags(scrapperLink.metaData().tags())
                 .filters(scrapperLink.metaData().filters());
     }

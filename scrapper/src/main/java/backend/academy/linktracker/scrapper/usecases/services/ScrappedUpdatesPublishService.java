@@ -19,11 +19,11 @@ public class ScrappedUpdatesPublishService {
     // scrapper not to loose updates
 
     void publishUpdates(Collection<ScrapperLinkUpdateEvent> updateEvents, ScrapperLink link) {
-        var linkListeners = linkListenersService.getListenersOfLink(link.id());
+        var linkListeners = linkListenersService.getListenersOfLink(link.getId());
         updateEvents.forEach(update -> {
             updatesClient.publishUpdate(new LinkUpdate()
                     .id(updateIDGenerator.nextId())
-                    .url(link.uri())
+                    .url(link.getUri())
                     .description(update.description().description())
                     .tgChatIds(linkListeners.stream()
                             .map(listener -> Long.valueOf(listener.listenerID()))
