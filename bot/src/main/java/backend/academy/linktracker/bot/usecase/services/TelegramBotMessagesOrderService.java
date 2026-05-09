@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TelegramBotMessagesOrderService {
-    // private final TelegramBotMessagesRepository messagesRepository; # TODO am i really longer need it?
     private final Set<BotChatID> processingMessages = new HashSet<>();
 
     public boolean toProcessMessage(TelegramBotMessage message) {

@@ -15,12 +15,6 @@ public class UserChatStateMachineConcurrentService {
 
     @Transactional
     public synchronized void setChatSharedState(BotChatID userChatID, ChatSharedState chatSharedState) {
-        /*var newMessages = new ArrayList<TelegramBotMessage>();
-        for (var message : chatSharedState.getProcessingMessages()) {
-            newMessages.add(botMessagesRepository.createMessage(message));
-        }
-        chatSharedState.setProcessingMessages(newMessages);*/
-        // TODO RM WAS BAD IDEA TO CREATE SUCH CREATION POLICY
         if (userChatStateRepository.readChatSharedState(userChatID).isPresent()) {
             userChatStateRepository.updateChatSharedState(userChatID, chatSharedState);
         } else {
