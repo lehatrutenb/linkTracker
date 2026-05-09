@@ -11,12 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
-// @ConditionalOnMissingBean(UserChatStateRepository.class)
 public class UserCharStateRepositoryConcurrentInMemImpl implements UserChatStateRepository {
     private final ConcurrentMap<String, ChatSharedState> currentCommandFlowStates = new ConcurrentHashMap<>();
 

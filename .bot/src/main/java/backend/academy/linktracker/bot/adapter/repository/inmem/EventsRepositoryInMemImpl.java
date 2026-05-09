@@ -17,11 +17,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 @RequiredArgsConstructor
 public class EventsRepositoryInMemImpl implements EventsRepository {
     Map<EventID, Event> events = new ConcurrentHashMap<>();

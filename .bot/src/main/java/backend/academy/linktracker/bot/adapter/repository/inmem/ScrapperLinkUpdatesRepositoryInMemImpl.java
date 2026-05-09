@@ -13,11 +13,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 public class ScrapperLinkUpdatesRepositoryInMemImpl implements ScrapperLinkUpdatesRepository {
     private final Map<LinkUpdateID, LinkUpdate> linkUpdates = new HashMap<>();
     private final Map<EventID, LinkUpdate> linkUpdatesByEventID = new HashMap<>();

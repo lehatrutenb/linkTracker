@@ -11,11 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 public class ReplyServiceMatcherRepositoryInMemImpl implements ReplyServiceMatcherRepository {
     private final Map<String, BotChat> replyServiceQualifiers = new HashMap<>();
 

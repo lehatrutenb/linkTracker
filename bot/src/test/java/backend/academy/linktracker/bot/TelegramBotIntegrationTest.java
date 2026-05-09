@@ -77,7 +77,6 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just
-                // withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)?
                 .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
         stubFor(
                 post(urlMatching(".*/sendMessage"))
