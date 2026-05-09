@@ -1,4 +1,8 @@
 spring:
+  docker:
+    compose:
+      enabled: false
+      file: []
   liquibase:
     change-log: classpath:linktracker-migrations/master.xml
   jpa:

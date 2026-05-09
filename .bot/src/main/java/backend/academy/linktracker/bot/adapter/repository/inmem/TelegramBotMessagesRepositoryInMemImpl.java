@@ -13,11 +13,6 @@ import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
-// @ConditionalOnProperty(
-//    name = "app.data.access-type",
-//    havingValue = "IN_MEM",
-//    matchIfMissing = true
-// )
 public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessagesRepository {
     private final Map<String, TelegramBotMessage> messageRepo = new HashMap<>();
 
