@@ -3,7 +3,6 @@ package backend.academy.linktracker.bot.adapter.repository.inmem;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
-import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -14,11 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserChatStateRepositoryConcurrentInMemImpl implements UserChatStateRepository {
     private final ConcurrentMap<String, ChatSharedState> currentCommandFlowStates = new ConcurrentHashMap<>();
-
-    @Override
-    public Collection<ChatSharedState> readAllChatSharedStates() {
-        return currentCommandFlowStates.values();
-    }
 
     @Override
     public Optional<ChatSharedState> readChatSharedState(BotChatID userChatID) {
@@ -37,13 +31,7 @@ public class UserChatStateRepositoryConcurrentInMemImpl implements UserChatState
     }
 
     @Override
-    public ChatSharedState upsertChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
-        currentCommandFlowStates.put(chatID.getID(), chatSharedState);
-        return chatSharedState;
-    }
-
-    @Override
-    public void deleteChatSharedStateByID(BotChatID chatID) {
+    public void deleteChatSharedState(BotChatID chatID) {
         currentCommandFlowStates.remove(chatID.getID());
     }
 }

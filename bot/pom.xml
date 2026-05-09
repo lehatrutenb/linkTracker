@@ -233,8 +233,12 @@
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
-                <targetPath>migrations/bot</targetPath>
-                <directory>migrations</directory>
+                <targetPath>bot-migrations</targetPath>
+                <directory>../migrations</directory>
+            </resource>
+            <resource>
+                <targetPath>bot-infra</targetPath>
+                <directory>../infra</directory>
             </resource>
         </resources>
         <plugins>

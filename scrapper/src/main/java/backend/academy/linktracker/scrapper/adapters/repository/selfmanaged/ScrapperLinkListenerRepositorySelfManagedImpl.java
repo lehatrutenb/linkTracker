@@ -9,7 +9,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
-import java.util.Collection;
 import java.util.Optional;
 
 @RefreshScope
@@ -19,16 +18,6 @@ import java.util.Optional;
 @ConditionalOnProperty(name = "app.data.access-type", havingValue = "SQL")
 public class ScrapperLinkListenerRepositorySelfManagedImpl implements ScrappingLinkListenerRepository {
     private final JdbcClient client;
-
-    @Override
-    public Collection<ScrapperLinkListener> readAllScrapperLinkListeners() {
-        return client.sql("SELECT * FROM link_listener")
-            .query(ScrapperLinkListenerEntity.class)
-            .list()
-            .stream()
-            .map(ScrapperLinkListenerEntity::toDomain)
-            .toList();
-    }
 
     @Override
     public Optional<ScrapperLinkListener> readScrapperLinkListener(long id) {

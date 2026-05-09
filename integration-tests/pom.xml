@@ -28,25 +28,18 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>backend.academy.link-tracker</groupId>
             <artifactId>bot</artifactId>
-            <version>0.0.1</version>
-            <scope>test</scope>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>backend.academy.link-tracker</groupId>
             <artifactId>scrapper</artifactId>
-            <version>0.0.1</version>
-            <scope>test</scope>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -57,11 +50,6 @@
             <groupId>org.wiremock.integrations</groupId>
             <artifactId>wiremock-spring-boot</artifactId>
             <version>4.1.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -112,4 +100,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <targetPath>linktracker-migrations</targetPath>
+                <directory>../migrations</directory>
+            </resource>
+            <resource>
+                <targetPath>linktracker-infra</targetPath>
+                <directory>../infra</directory>
+            </resource>
+        </resources>
+    </build>
 </project>

@@ -31,19 +31,6 @@ public class ScrappingMetaDataRepositorySelfManagedImpl implements ScrappingLink
     private final JdbcClient client;
 
     @Override
-    public Collection<ScrapperLinkMetaData> readAllLinkMetaData() {
-        return client.sql("""
-            SELECT lm.*, lmtm.tag_name
-            FROM link_metadata lm
-            INNER JOIN link_metadata_tags_mapping lmtm ON lm.link_id = lmtm.link_id AND lm.listener_id = lmtm.listener_id
-            """)
-            .query(new ScrapperLinkMetaDataEntityRowMapper())
-            .stream()
-            .map(ScrapperLinkMetaDataEntity::toDomain)
-            .toList();
-    }
-
-    @Override
     public Optional<ScrapperLinkMetaData> readLinkMetaData(ScrapperLinkMetaDataID metaDataID) {
         ScrapperLinkMetaDataIDEntity id = new ScrapperLinkMetaDataIDEntity(metaDataID);
         var res =  client.sql("""
@@ -66,7 +53,7 @@ public class ScrappingMetaDataRepositorySelfManagedImpl implements ScrappingLink
     @Transactional
     public void createLinkMetaData(ScrapperLinkMetaData metaData) {
         var entity = new ScrapperLinkMetaDataEntity(metaData);
-        client.sql("INSERT INTO link_metadata (link_id, listener_id, link_uri) VALUES (:link_id, :listener_id, :link_uri) ON CONFLICT (link_id, listener_id) DO NOTHING")
+        client.sql("INSERT INTO link_metadata (link_id, listener_id, link_uri) VALUES (:link_id, :listener_id, :link_uri)")
             .param("link_id", entity.getId().getLinkID().getLinkID())
             .param("listener_id", entity.getId().getListenerID())
             .param("link_uri", entity.getId().getLinkID().getLinkURI())
@@ -78,8 +65,9 @@ public class ScrappingMetaDataRepositorySelfManagedImpl implements ScrappingLink
                 .update();
 
             client.sql(
-                    "INSERT INTO link_metadata_tags_mapping(link_id, listener_id, tag_name) VALUES (:link_id, :listener_id, :tag) ON CONFLICT (link_id, listener_id, tag_name) DO NOTHING RETURNING *")
+                    "INSERT INTO link_metadata_tags_mapping(link_id, link_uri, listener_id, tag_name) VALUES (:link_id, :link_uri, :listener_id, :tag)")
                 .param("link_id", entity.getId().getLinkID().getLinkID())
+                .param("link_uri", entity.getId().getLinkID().getLinkURI())
                 .param("listener_id", entity.getId().getListenerID())
                 .param("tag", tag.getName())
                 .update();
@@ -90,15 +78,11 @@ public class ScrappingMetaDataRepositorySelfManagedImpl implements ScrappingLink
     @Transactional
     public ScrapperLinkMetaData updateLinkMetaData(ScrapperLinkMetaData metaData) {
         var entity = new ScrapperLinkMetaDataEntity(metaData);
-        var addedEntity = client.sql("INSERT INTO link_metadata (link_id, listener_id, link_uri) VALUES (:link_id, :listener_id, :link_uri) ON CONFLICT (link_id, listener_id) DO NOTHING RETURNING *")
+        client.sql("UPDATE link_metadata SET link_uri = :link_uri WHERE link_id = :link_id AND listener_id = :listener_id RETURNING *")
             .param("link_id", entity.getId().getLinkID().getLinkID())
             .param("listener_id", entity.getId().getListenerID())
             .param("link_uri", entity.getId().getLinkID().getLinkURI())
-            .query(new ScrapperLinkMetaDataEntityRowMapper())
-            .stream()
-            .findFirst()
-            .orElseThrow(() -> new RuntimeException("Failed to add link metadata"))
-            .toDomain();
+            .update();
 
         client.sql("DELETE FROM link_metadata_tags_mapping WHERE link_id = :link_id AND listener_id = :listener_id")
             .param("link_id", entity.getId().getLinkID().getLinkID())
@@ -111,13 +95,14 @@ public class ScrappingMetaDataRepositorySelfManagedImpl implements ScrappingLink
                 .update();
 
             client.sql(
-                    "INSERT INTO link_metadata_tags_mapping(link_id, listener_id, tag_name) VALUES (:link_id, :listener_id, :tag) ON CONFLICT (link_id, listener_id, tag_name) DO NOTHING RETURNING *")
+                    "INSERT INTO link_metadata_tags_mapping(link_id, link_uri, listener_id, tag_name) VALUES (:link_id, :link_uri, :listener_id, :tag) RETURNING *")
                 .param("link_id", entity.getId().getLinkID().getLinkID())
+                .param("link_uri", entity.getId().getLinkID().getLinkURI())
                 .param("listener_id", entity.getId().getListenerID())
                 .param("tag", tag.getName())
                 .update();
         }
-        return addedEntity;
+        return readLinkMetaData(metaData.id()).orElseThrow();
     }
 
     @Override

@@ -31,11 +31,6 @@ public class EventsRepositoryOrmImpl implements EventsRepository {
     private final EntityManager entityManager;
 
     @Override
-    public Collection<Event> readAllEvents() {
-        return repository.findAll().stream().map(EventEntity::toDomain).toList();
-    }
-
-    @Override
     public Optional<Event> readEvent(EventID eventId) {
         return repository.findById(new EventIDEntity(eventId)).map(EventEntity::toDomain);
     }
@@ -65,11 +60,7 @@ public class EventsRepositoryOrmImpl implements EventsRepository {
     @Override
     @Transactional
     public Event updateEvent(Event event) {
-        EventEntity curEntity =
-                repository.getReferenceById(new EventIDEntity(event.id())); // Not to dirty core with outer fields
-        EventEntity addEntity = new EventEntity(event);
-        addEntity.setVersion(curEntity.getVersion());
-        return entityManager.merge(addEntity).toDomain();
+        return repository.save(new EventEntity(event)).toDomain();
     }
 
     @Override
@@ -78,7 +69,7 @@ public class EventsRepositoryOrmImpl implements EventsRepository {
     }
 
     @Override
-    public void deleteEventByID(EventID eventID) {
+    public void deleteEvent(EventID eventID) {
         repository.deleteById(new EventIDEntity(eventID));
     }
 }

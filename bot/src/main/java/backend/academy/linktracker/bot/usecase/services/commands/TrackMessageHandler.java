@@ -10,14 +10,20 @@ import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
+import jakarta.transaction.Transactional;
+
 import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
  * Public methods and fields started with `_` for testing purposes only.
@@ -25,9 +31,8 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/track")
-public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class TrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     public static final String _BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите отслеживать";
     // sense to move to
@@ -38,43 +43,13 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
     public static final String _INVALID_URL_REPLY = "Полученная ссылка не поддерживается к отслеживанию";
     public static final String _URL_ALREADY_TRACKED_REPLY = "Данная ссылка уже отслеживается. Отпишитесь для начала";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
-    private final BotChatMetaDataService replyServiceMatcher;
 
-    @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
-        if (!event.getMessage().message().strip().startsWith("/")) {
-            handleTags(event);
-        }
-        if (!event.getMessage().message().strip().startsWith("/track")) {
-            return;
-        }
-        TelegramBotMessage message = event.getMessage();
-
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /track user message");
-
-        var sharedState =
-                commandsSharedStateService.getChatSharedState(message.chat().getId());
-
-        commandsSharedStateService.setChatSharedState(
-                message.chat().getId(),
-                sharedState
-                        .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
-                        .withProcessingCommand("/track")
-                        .withProcessingCommandStep(0));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), _BASIC_TRACK_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+    public TrackMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, ScrapperUpdatesService scrapper, CancelMessageHandler cancelMessageHandler) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+        this.scrapper = scrapper;
+        this.cancelMessageHandler = cancelMessageHandler;
     }
 
     public void handleTags(LinkTracerNewMessageEvent event) {
@@ -155,11 +130,38 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                     .orElseThrow()
                     .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
         }
-        cancelMessageHandler.onBotError(event, reply.isBlank());
+        cancelMessageHandler.processBotError(event, reply.isBlank());
     }
 
     @Override
-    public boolean supportsAsyncExecution() {
-        return false;
+    public void processEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/")) {
+            handleTags(event);
+        }
+        if (!event.getMessage().message().strip().startsWith("/track")) {
+            return;
+        }
+        TelegramBotMessage message = event.getMessage();
+
+        log.atInfo() // TODO Check how to move such logging to shared part
+                .addKeyValue("chat id", message.chat().getId())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle /track user message");
+
+        var sharedState =
+                commandsSharedStateService.getChatSharedState(message.chat().getId());
+
+        commandsSharedStateService.setChatSharedState(
+                message.chat().getId(),
+                sharedState
+                        .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
+                        .withProcessingCommand("/track")
+                        .withProcessingCommandStep(0));
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().getId())
+                .orElseThrow()
+                .sendMessage(message.chat().getId().getNumericID(), _BASIC_TRACK_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 }

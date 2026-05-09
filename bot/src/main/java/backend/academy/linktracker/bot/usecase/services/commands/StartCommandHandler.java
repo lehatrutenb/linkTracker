@@ -13,23 +13,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/start")
-public class StartCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class StartCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
             "Добро пожаловать! Используйте /help, чтобы посмотреть доступные команды.";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final BotChatMetaDataService replyServiceMatcher;
+    public StartCommandHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+    }
 
     @Override
-    @Transactional
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/start")) {
             return;
         }
@@ -46,10 +45,5 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
                 .orElseThrow()
                 .sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

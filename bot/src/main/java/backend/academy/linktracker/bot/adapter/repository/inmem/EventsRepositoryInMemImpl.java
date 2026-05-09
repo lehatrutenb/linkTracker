@@ -21,11 +21,6 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     Map<EventID, Event> events = new ConcurrentHashMap<>();
 
     @Override
-    public Collection<Event> readAllEvents() {
-        return events.values();
-    }
-
-    @Override
     public Optional<Event> readEvent(EventID eventId) {
         return Optional.ofNullable(events.get(eventId));
     }
@@ -77,7 +72,7 @@ public class EventsRepositoryInMemImpl implements EventsRepository {
     }
 
     @Override
-    public void deleteEventByID(EventID eventID) {
+    public void deleteEvent(EventID eventID) {
         events.remove(eventID);
     }
 }

@@ -15,7 +15,7 @@ app:
         paths:
           updates: /updates
   data:
-    access-type: "IN_MEM" # IN_MEM ORM SQL
+    access-type: "ORM" # IN_MEM ORM SQL
   snowflake:
     worker-id: 1
     datacenter-id: 1

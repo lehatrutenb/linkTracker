@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: linktracker_bot
+      POSTGRES_DB: linktracker
     ports:
       - "5432:5432"
     volumes:
@@ -20,7 +20,7 @@ services:
       - --searchPath=/changesets
       - --changelog-file=master.xml
       - --driver=org.postgresql.Driver
-      - --url=jdbc:postgresql://postgresql:5432/scrapper
+      - --url=jdbc:postgresql://postgresql:5432/linktracker
       - --username=postgres
       - --password=postgres
       - update

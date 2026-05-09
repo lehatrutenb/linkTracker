@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -17,11 +16,6 @@ public class ScrapperLinkUpdatesRepositoryInMemImpl implements ScrapperLinkUpdat
     private final Map<LinkUpdateID, LinkUpdate> linkUpdates = new HashMap<>();
     private final Map<EventID, LinkUpdate> linkUpdatesByEventID = new HashMap<>();
     private final Map<LinkUpdateID, EventID> eventIDByLinkUpdateID = new HashMap<>();
-
-    @Override
-    public Collection<LinkUpdate> readAllLinkUpdates() {
-        return linkUpdates.values();
-    }
 
     @Override
     public Optional<LinkUpdate> readLinkUpdate(EventID id) {
@@ -50,7 +44,7 @@ public class ScrapperLinkUpdatesRepositoryInMemImpl implements ScrapperLinkUpdat
     }
 
     @Override
-    public void deleteLinkUpdateByID(LinkUpdateID id) {
+    public void deleteLinkUpdate(LinkUpdateID id) {
         linkUpdates.remove(id);
         var eventID = eventIDByLinkUpdateID.remove(id);
         if (eventID != null) {

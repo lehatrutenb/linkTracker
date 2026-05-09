@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface ScrappingLinkListenerRepository {
-    Collection<ScrapperLinkListener> readAllScrapperLinkListeners();
     Optional<ScrapperLinkListener> readScrapperLinkListener(long id);
     void createScrapperLinkListener(ScrapperLinkListener scrapperLinkListener);
     ScrapperLinkListener updateScrapperLinkListener(ScrapperLinkListener scrapperLinkListener);

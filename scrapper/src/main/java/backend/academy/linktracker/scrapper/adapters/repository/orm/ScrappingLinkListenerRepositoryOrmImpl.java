@@ -5,7 +5,6 @@ import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListener
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import jakarta.transaction.Transactional;
 
-import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -22,11 +21,6 @@ public class ScrappingLinkListenerRepositoryOrmImpl implements ScrappingLinkList
     private final ScrappingLinkListenerRepositoryOrmInner repository;
 
     @Override
-    public Collection<ScrapperLinkListener> readAllScrapperLinkListeners() {
-        return repository.findAll().stream().map(ScrapperLinkListenerEntity::toDomain).toList();
-    }
-
-    @Override
     public Optional<ScrapperLinkListener> readScrapperLinkListener(long id) {
         return repository.findById(id).map(ScrapperLinkListenerEntity::toDomain);
     }
@@ -40,8 +34,6 @@ public class ScrappingLinkListenerRepositoryOrmImpl implements ScrappingLinkList
     @Transactional
     public ScrapperLinkListener updateScrapperLinkListener(ScrapperLinkListener scrapperLinkListener) {
         var addEntity = new ScrapperLinkListenerEntity(scrapperLinkListener);
-        var curEntity = repository.getReferenceById(addEntity.getId());
-        addEntity.setVersion(curEntity.getVersion());
         repository.save(addEntity);
         return addEntity.toDomain();
     }

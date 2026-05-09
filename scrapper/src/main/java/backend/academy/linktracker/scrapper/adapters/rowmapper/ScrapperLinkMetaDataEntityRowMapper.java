@@ -21,8 +21,9 @@ public class ScrapperLinkMetaDataEntityRowMapper implements ResultSetExtractor<L
             var curEntity = mapRow(rs);
             if (!map.containsKey(curEntity.getId())) {
                 map.put(curEntity.getId(), curEntity);
+            } else {
+                map.get(curEntity.getId()).getTags().addAll(curEntity.getTags());
             }
-            map.get(curEntity.getId()).getTags().add(new ScrapperLinkMetaDataEntity.TagEntity(rs.getString("tag_name")));
         }
         return map.values().stream().toList();
     }
@@ -35,8 +36,7 @@ public class ScrapperLinkMetaDataEntityRowMapper implements ResultSetExtractor<L
         metaDataIDEntity.setListenerID(rs.getLong("listener_id"));
 
         entity.setId(metaDataIDEntity);
-        entity.setTags(new ArrayList<>());
-        entity.setVersion(rs.getLong("version"));
+        entity.setTags(new ArrayList<>(List.of(new ScrapperLinkMetaDataEntity.TagEntity(rs.getString("tag_name")))));
         return entity;
     }
 }

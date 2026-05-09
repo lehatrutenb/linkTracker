@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,11 +16,6 @@ import org.springframework.stereotype.Repository;
 public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessagesRepository {
     private final Map<String, TelegramBotMessage> messageRepo = new HashMap<>();
     private long lastMessageInd = 0;
-
-    @Override
-    public Collection<TelegramBotMessage> readAllMessages() {
-        return messageRepo.values();
-    }
 
     @Override
     public Optional<TelegramBotMessage> readMessage(TelegramBotMessageID messageID) {
@@ -54,7 +48,7 @@ public class TelegramBotMessagesRepositoryInMemImpl implements TelegramBotMessag
     }
 
     @Override
-    public void deleteMessageByID(TelegramBotMessageID messageID) {
+    public void deleteMessage(TelegramBotMessageID messageID) {
         messageRepo.remove(messageID.getUniqueId());
     }
 }

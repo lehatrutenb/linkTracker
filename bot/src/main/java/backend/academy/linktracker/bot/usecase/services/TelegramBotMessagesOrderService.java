@@ -21,8 +21,8 @@ public class TelegramBotMessagesOrderService {
 
     public void addProcessingMessage(TelegramBotMessage message) {
         if (processingMessages.contains(message.chat().getId())) {
-            log.atError().addKeyValue("message id", message.id()).log("Attempt to add processing message twice");
-            throw new IllegalStateException("Attempt to add processing message twice");
+            log.atError().addKeyValue("message id", message.id()).log("Currently processing 2 messages for the same chat");
+            throw new IllegalStateException("Currently processing 2 messages for the same chat");
         }
         processingMessages.add(message.chat().getId());
     }

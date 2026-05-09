@@ -5,9 +5,9 @@ spring:
   application:
     name: bot
   liquibase:
-    change-log: classpath:/migrations/bot/master.xml
+    change-log: classpath:bot-migrations/master.xml
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/linktracker_bot
+    url: jdbc:postgresql://127.0.0.1:5432/linktracker
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -19,11 +19,11 @@ spring:
   docker:
     compose:
       enabled: true
-      file: "classpath:/compose.yaml"
+      file: "classpath:bot-infra/compose.yaml"
 
 app:
   data:
-    access-type: "IN_MEM" # IN_MEM ORM SQL
+    access-type: "ORM" # IN_MEM ORM SQL
   scrapper:
     api-path: http://127.0.0.1:8081
     paths:
@@ -45,3 +45,7 @@ app:
         debug: false
         update-notifier-before-retry: 10s
         processing-message-timeout: 10s
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n"

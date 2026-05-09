@@ -49,16 +49,14 @@ public class ScrappingLinksRepositoryOrmImpl implements ScrappingLinksRepository
     }
 
     @Override
-    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) throws SQLException {
+    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) {
         return repository.save(new ScrapperLinkEntity(scrapperLink)).toDomain();
     }
 
     @Override
     @Transactional
     public ScrapperLink updateScrapperLink(ScrapperLink scrapperLink) {
-        ScrapperLinkEntity curEntity = repository.getReferenceById(new ScrapperLinkIDEntity(scrapperLink.getId()));
         ScrapperLinkEntity addEntity = new ScrapperLinkEntity(scrapperLink);
-        addEntity.setVersion(curEntity.getVersion());
         repository.save(addEntity);
         return addEntity.toDomain();
     }

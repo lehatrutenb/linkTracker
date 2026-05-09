@@ -66,7 +66,7 @@ public class ScrappingLinksRepositorySelfManagedImpl implements ScrappingLinksRe
     }
 
     @Override
-    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) throws SQLException {
+    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) {
         var entity = new ScrapperLinkEntity(scrapperLink);
         return client.sql("INSERT INTO scrapper_link (link_id, link_uri, updated_at) VALUES (nextval('link_id_seq'), :link_uri, :updated_at) RETURNING *")
             .param("link_uri", entity.getId().getLinkURI())

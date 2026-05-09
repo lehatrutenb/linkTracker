@@ -13,22 +13,26 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class UnknownMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
             "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
-    private final BotChatMetaDataService replyServiceMatcher;
+    public UnknownMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public int getOrder() {
+        return Ordered.HIGHEST_PRECEDENCE;
+    }
+
+    @Override
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (event.getMessage().message().strip().startsWith("/")) {
             return;
         }
@@ -52,10 +56,5 @@ public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewM
                 .orElseThrow()
                 .sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

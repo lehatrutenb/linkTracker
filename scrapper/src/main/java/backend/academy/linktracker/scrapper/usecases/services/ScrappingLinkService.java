@@ -41,16 +41,15 @@ public class ScrappingLinkService {
                 new ScrapperLinkID(addLinkRequest.getLink().orElseThrow()),
                 addLinkRequest.getLink().orElseThrow(),
                 Instant.EPOCH); // Not min, but epoch cause cant format to date string in request it
-        try {
+        if (linksRepository.readScrapperLinkIDByURI(link.getUri()).isEmpty()) {
             link = linksRepository.createScrapperLink(link);
-        } catch (SQLException e) { // TODO recheck
-            log.error("Got SQL exception");
+        } else {
+            link = linksRepository.readScrapperLinkByURI(link.getUri()).orElseThrow();
         }
-        if (getListenersOfLink(link.getId()).contains(listener)) {
+        if (metaDataRepository.readScrapperLinkListeners(link.getId()).contains(listener)) {
             throw new DuplicateEntityException(
                     ScrapperLink.class, link.getUri().toString());
         }
-        // metaDataRepository.createLinkMetaData(new ScrapperLinkMetaData(new ScrapperLinkMetaDataID(link.getId(), listener.listenerID()), addLinkRequest.getTags(), addLinkRequest.getFilters())); Moved to metaDataService
         return link;
     }
 

@@ -3,7 +3,7 @@ package backend.academy.linktracker.bot.usecase.services;
 import backend.academy.linktracker.bot.adapter.controller.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.port.ReplyServiceMatcherRepository;
+import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
 import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BotChatMetaDataService {
     private final ApplicationContext applicationContext;
-    private final ReplyServiceMatcherRepository serviceMatcherRepository;
+    private final BotChatEntityRepository repository;
 
     public Optional<LinkTracerTelegramBotReplier> getReplyService(BotChatID chatID) {
-        var replyServiceQualifier = serviceMatcherRepository.readBotChat(chatID);
+        var replyServiceQualifier = repository.getBotChat(chatID);
         if (replyServiceQualifier.isEmpty()) {
             return Optional.empty();
         }
@@ -33,6 +33,6 @@ public class BotChatMetaDataService {
     }
 
     public void createBotChat(BotChat botChat) {
-        serviceMatcherRepository.createBotChat(botChat);
+        repository.createBotChat(botChat);
     }
 }

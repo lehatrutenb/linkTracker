@@ -14,7 +14,6 @@ public class ScrapperLinkEntityRowMapper implements RowMapper<ScrapperLinkEntity
 
         entity.setId(idEntity);
         entity.setUpdatedAt(rs.getTimestamp("updated_at").toInstant());
-        entity.setVersion(rs.getLong("version"));
         return entity;
     }
 }

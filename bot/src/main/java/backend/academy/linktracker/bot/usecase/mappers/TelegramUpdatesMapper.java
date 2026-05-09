@@ -1,17 +1,16 @@
 package backend.academy.linktracker.bot.usecase.mappers;
 
 import backend.academy.linktracker.bot.core.entities.BotChatID;
+import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
-import backend.academy.linktracker.bot.core.entities.TelegramBotChat;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
 import backend.academy.linktracker.bot.usecase.exceptions.RequestBodyFieldValidationException;
-import com.pengrad.telegrambot.model.Chat;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.User;
 import java.time.Instant;
@@ -53,7 +52,7 @@ public class TelegramUpdatesMapper {
                 request.getUrl().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "url")),
                 request.getDescription().orElse(""),
                 request.getTgChatIds().stream()
-                        .map(TelegramUpdatesMapper::mapBotChatID)
+                        .map(chatId -> mapBotChatID(chatId.longValue()))
                         .toList());
     }
 
@@ -81,14 +80,7 @@ public class TelegramUpdatesMapper {
         return new TelegramBotUser(user.id(), user.username(), user.firstName(), user.isBot());
     }
 
-    public static TelegramBotChat mapToChat(Update update, Qualifier replyServiceQualifier) {
-        return new TelegramBotChat(
-                mapBotChatID(update),
-                replyServiceQualifier.value(),
-                map(update.message().chat().type()));
-    }
-
-    public static TelegramBotChat.Type map(Chat.Type chatType) {
-        return TelegramBotChat.Type.valueOf(chatType.name().toUpperCase());
+    public static BotChat mapToChat(Update update, Qualifier replyServiceQualifier) {
+        return new BotChat(mapBotChatID(update), replyServiceQualifier.value());
     }
 }

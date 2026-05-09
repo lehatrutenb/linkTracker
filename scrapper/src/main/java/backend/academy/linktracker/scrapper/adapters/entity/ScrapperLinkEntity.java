@@ -31,9 +31,6 @@ public class ScrapperLinkEntity {
 
     private Instant updatedAt;
 
-    @Version
-    private Long version;
-
     public ScrapperLinkEntity(ScrapperLink link) {
         id = new ScrapperLinkIDEntity(link.getId());
         updatedAt = link.getUpdatedAt();

@@ -27,16 +27,6 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
     private final JdbcClient client;
 
     @Override
-    public Collection<Event> readAllEvents() {
-        return client.sql("SELECT * FROM event")
-                .query(EventEntity.class)
-                .list()
-                .stream()
-                .map(EventEntity::toDomain)
-                .toList();
-    }
-
-    @Override
     public Optional<Event> readEvent(EventID eventId) {
         return client.sql("""
                         SELECT
@@ -103,11 +93,11 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
     public Event updateEvent(Event event) {
         var entity = new EventEntity(event);
         return client.sql(
-                        "UPDATE event SET state=:state,updated_at=:updated_at WHERE id = :id AND owner_id_type = :owner_id_type")
+                        "UPDATE event SET state=:state,updated_at=:updated_at WHERE id = :id AND owner_id_type = :owner_id_type RETURNING *")
                 .param("owner_id_type", entity.getEventID().getOwnerIDType().toString())
                 .param("state", entity.getState().toString())
                 .param("updated_at", Timestamp.from(entity.getUpdatedAt()))
-                .param("id", entity.getEventID().getId())
+                .param("id", EventIDEntity.getID(event.id()))
                 .query(EventEntity.class)
                 .single()
                 .toDomain();
@@ -121,12 +111,12 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
                 .param("owner_id_type", entity.getEventID().getOwnerIDType().toString())
                 .param("state", entity.getState().toString())
                 .param("updated_at", Timestamp.from(entity.getUpdatedAt()))
-                .param("id", entity.getEventID().getId())
+                .param("id", EventIDEntity.getID(event.id()))
                 .update();
     }
 
     @Override
-    public void deleteEventByID(EventID eventID) {
+    public void deleteEvent(EventID eventID) {
         client.sql("DELETE FROM event WHERE id = :id AND owner_id_type = :owner_id_type")
                 .param("id", EventIDEntity.getID(eventID))
                 .param("owner_id_type", eventID.getOwnerIDType().toString())

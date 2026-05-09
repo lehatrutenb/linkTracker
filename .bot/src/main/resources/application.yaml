@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bot
+  liquibase:
+    change-log: classpath:/migrations/master.xml
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/linktracker_bot
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #hibernate:
+    #  ddl-auto: validate
+  docker:
+    compose:
+      enabled: true
+      file: "classpath:/compose.yaml"
+
+app:
+  data:
+    access-type: "IN_MEM" # IN_MEM ORM SQL
+  scrapper:
+    api-path: http://127.0.0.1:8081
+    paths:
+      addChat: /tg-chat/{id}
+      deleteChat: /tg-chat/{id}
+      listLinks: /links
+      trackLink: /links
+      untrackLink: /links
+  global:
+    shared-state-group: 1
+  telegram:
+    link:
+      tracker:
+        url: https://api.telegram.org/bot
+        token: ${TELEGRAM_TOKEN} # Must be set in env
+        init-state-try-set-fixed-rate: 1s
+        max-messages-batch-size: 100
+        update-listener-sleep: 1s
+        debug: false
+        update-notifier-before-retry: 10s
+        processing-message-timeout: 10s

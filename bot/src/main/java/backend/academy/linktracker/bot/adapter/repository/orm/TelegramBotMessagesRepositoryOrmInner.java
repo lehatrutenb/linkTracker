@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @ConditionalOnProperty(name = "app.data.access-type", havingValue = "ORM")
 @Primary
 public interface TelegramBotMessagesRepositoryOrmInner extends JpaRepository<TelegramBotMessageEntity, Long> {
-    Optional<TelegramBotMessageEntity> findByIdOrderByDateDesc(Long id);
+    Optional<TelegramBotMessageEntity> findByMessageIDOrderByDateDesc(Long id);
 }

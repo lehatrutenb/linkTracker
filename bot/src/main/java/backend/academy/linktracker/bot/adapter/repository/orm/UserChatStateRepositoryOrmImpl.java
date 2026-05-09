@@ -7,7 +7,6 @@ import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -22,14 +21,11 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class UserChatStateRepositoryOrmImpl implements UserChatStateRepository {
     private final UserChatStateRepositoryOrmInner repository;
+    private final TelegramBotMessagesRepositoryOrmImpl botMessagesRepository;
+    private final TelegramBotMessagesRepositoryOrmInner botMessagesRepositoryInner;
 
     @PersistenceContext
     private final EntityManager entityManager;
-
-    @Override
-    public Collection<ChatSharedState> readAllChatSharedStates() {
-        return repository.findAll().stream().map(ChatSharedStateEntity::toDomain).toList();
-    }
 
     @Override
     public Optional<ChatSharedState> readChatSharedState(BotChatID userChatID) {
@@ -38,31 +34,18 @@ public class UserChatStateRepositoryOrmImpl implements UserChatStateRepository {
 
     @Override
     public void createChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
-        repository.save(new ChatSharedStateEntity(chatID, chatSharedState));
+        var addEntity = new ChatSharedStateEntity(chatID, chatSharedState);
+        repository.save(addEntity);
     }
 
     @Override
     @Transactional
     public ChatSharedState updateChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
-        var addEntity = new ChatSharedStateEntity(chatID, chatSharedState);
-        var curEntity = repository.getReferenceById(ChatSharedStateEntity.getID(chatID));
-        addEntity.setVersion(curEntity.getVersion());
-        return entityManager.merge(addEntity).toDomain();
+        return entityManager.merge(new ChatSharedStateEntity(chatID, chatSharedState)).toDomain();
     }
 
     @Override
-    @Transactional
-    public ChatSharedState upsertChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
-        var addEntity = new ChatSharedStateEntity(chatID, chatSharedState);
-        var curEntity = repository.findById(ChatSharedStateEntity.getID(chatID));
-        if (curEntity.isPresent()) {
-            addEntity.setVersion(curEntity.orElseThrow().getVersion());
-        }
-        return repository.save(addEntity).toDomain();
-    }
-
-    @Override
-    public void deleteChatSharedStateByID(BotChatID chatID) {
+    public void deleteChatSharedState(BotChatID chatID) {
         repository.deleteById(ChatSharedStateEntity.getID(chatID));
     }
 }

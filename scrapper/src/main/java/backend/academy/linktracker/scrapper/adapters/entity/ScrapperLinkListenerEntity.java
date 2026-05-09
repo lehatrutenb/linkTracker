@@ -24,9 +24,6 @@ public class ScrapperLinkListenerEntity {
     @Enumerated(value = EnumType.STRING)
     private ScrapperLinkListenerType type;
 
-    @Version
-    private Long version;
-
     public ScrapperLinkListenerEntity(ScrapperLinkListener listener) {
         id = getID(listener);
         type = listener.listenerType();

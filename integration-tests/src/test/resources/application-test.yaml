@@ -1,10 +1,12 @@
 spring:
   liquibase:
-    change-log: classpath:/bot-migrations/master.xml
+    change-log: classpath:linktracker-migrations/master.xml
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 app:
+  data:
+    access-type: "ORM" # IN_MEM ORM SQL
   scrapper:
     api-path: http://127.0.0.1:8081
     paths:
@@ -38,3 +40,7 @@ app:
     token: test-token
     user-agent: github-events-scrapping-service
     api-root: ${wiremock.server.baseUrl}/github-api/
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n"

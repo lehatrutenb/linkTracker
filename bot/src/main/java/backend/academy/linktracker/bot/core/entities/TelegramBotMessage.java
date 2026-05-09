@@ -4,5 +4,5 @@ import java.io.Serializable;
 import java.time.Instant;
 
 public record TelegramBotMessage(
-        String message, TelegramBotMessageID id, Instant date, TelegramBotChat chat, TelegramBotUser user)
+        String message, TelegramBotMessageID id, Instant date, BotChat chat, TelegramBotUser user)
         implements Serializable {}

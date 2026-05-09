@@ -1,6 +1,6 @@
 spring:
   liquibase:
-    change-log: classpath:/migrations/bot/master.xml
+    change-log: classpath:bot-migrations/master.xml
 app:
   scrapper:
     api-path: http://127.0.0.1:8081
@@ -11,7 +11,7 @@ app:
       trackLink: /links
       untrackLink: /links
   data:
-    access-type: "ORM" # IN_MEM ORM SQL
+    access-type: "SQL" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:
@@ -21,3 +21,7 @@ app:
         update-listener-sleep: 1s
         debug: true
         update-notifier-before-retry: 1s
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n"

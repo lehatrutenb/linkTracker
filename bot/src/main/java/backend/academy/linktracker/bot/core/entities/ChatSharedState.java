@@ -3,10 +3,12 @@ package backend.academy.linktracker.bot.core.entities;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 // Currently can be record, but globally will have more complex logic
 public class ChatSharedState {
     @Getter
@@ -19,7 +21,8 @@ public class ChatSharedState {
     private final int processingCommandStep;
 
     @Getter
-    private final List<TelegramBotMessage> processingMessages;
+    @Setter
+    private List<TelegramBotMessage> processingMessages;
 
     public ChatSharedState() {
         this(ChatCommandFlowState.INITIAL, "", 0, List.of());

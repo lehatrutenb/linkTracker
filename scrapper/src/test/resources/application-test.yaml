@@ -2,13 +2,13 @@ spring:
   application:
     name: scrapper
   liquibase:
-    change-log: classpath:/migrations/scrapper/master.xml
+    change-log: classpath:scrapper-migrations/master.xml
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 app:
   data:
-    access-type: "SQL" # IN_MEM ORM SQL
+    access-type: "ORM" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:
@@ -28,3 +28,7 @@ app:
     token: test-token
     user-agent: github-events-scrapping-service
     api-root: ${wiremock.server.baseUrl}/github-api/
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n"

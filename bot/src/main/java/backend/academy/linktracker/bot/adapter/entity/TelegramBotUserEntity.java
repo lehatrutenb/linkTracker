@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "telegram_bot_user")
 @Entity
 @NoArgsConstructor
-public class TelegramBotUserEntity {
+public class TelegramBotUserEntity { // User is expected to be constant and not even used outside of message context - so currently it merged with it
     @Id
     private long id;
 
@@ -22,14 +22,15 @@ public class TelegramBotUserEntity {
     private String firstName;
     private boolean isBot;
 
-    @Version
-    private Long version;
-
     public TelegramBotUserEntity(TelegramBotUser user) {
-        id = user.userId();
+        id = getID(user);
         userName = user.userName();
         firstName = user.firstName();
         isBot = user.isBot();
+    }
+
+    public static long getID(TelegramBotUser user) {
+        return user.userId();
     }
 
     public TelegramBotUser toDomain() {

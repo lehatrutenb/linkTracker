@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.usecase.services.commands;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -11,19 +12,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/ignore", showToUser = false)
 @Profile("test")
-public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
+public class IgnoreCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
+
+    public IgnoreCommandHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/ignore")) {
             return;
         }
@@ -36,10 +39,5 @@ public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMe
 
         // Not update shared state to have real stub event
         eventsStateWatcher.markEventAsDone(event.getEventId());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

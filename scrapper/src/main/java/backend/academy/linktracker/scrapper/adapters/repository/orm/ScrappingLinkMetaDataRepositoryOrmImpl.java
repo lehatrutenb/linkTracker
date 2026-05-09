@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkEntity;
 import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
 import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListenerEntity;
+import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.TagEntity;
 
 @RefreshScope
 @Repository
@@ -27,11 +28,7 @@ import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListener
 @RequiredArgsConstructor
 public class ScrappingLinkMetaDataRepositoryOrmImpl implements ScrappingLinkMetaDataRepository {
     private final ScrappingLinkMetaDataRepositoryOrmInner repository;
-
-    @Override
-    public Collection<ScrapperLinkMetaData> readAllLinkMetaData() {
-        return repository.findAll().stream().map(ScrapperLinkMetaDataEntity::toDomain).toList();
-    }
+    private final ScrappingLinkTagsRepositoryOrmInner tagsRepository;
 
     @Override
     public Optional<ScrapperLinkMetaData> readLinkMetaData(ScrapperLinkMetaDataID metaDataID) {
@@ -40,15 +37,17 @@ public class ScrappingLinkMetaDataRepositoryOrmImpl implements ScrappingLinkMeta
 
     @Override
     public void createLinkMetaData(ScrapperLinkMetaData metaData) {
-        repository.save(new ScrapperLinkMetaDataEntity(metaData));
+        var entity = new ScrapperLinkMetaDataEntity(metaData);
+        entity.getTags().forEach(tag -> {
+            tagsRepository.save(new TagEntity(tag.getName()));
+        });
+        repository.save(entity);
     }
 
     @Override
     @Transactional
     public ScrapperLinkMetaData updateLinkMetaData(ScrapperLinkMetaData metaData) {
-        ScrapperLinkMetaDataEntity curEntity = repository.getReferenceById(new ScrapperLinkMetaDataIDEntity(metaData.id()));
         ScrapperLinkMetaDataEntity addEntity = new ScrapperLinkMetaDataEntity(metaData);
-        addEntity.setVersion(curEntity.getVersion());
         repository.save(addEntity);
         return addEntity.toDomain();
     }

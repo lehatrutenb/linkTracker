@@ -52,4 +52,8 @@ build/
 ### Mac OS ###
 .DS_Store
 
-bot/.env
+openApiGenerator
+.tmp
+
+.env
+.Makefile

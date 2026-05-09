@@ -6,12 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.Nullable;
 
 @AllArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class TelegramBotMessageID implements Serializable, Comparable<TelegramBotMessageID> {
     @Serial
     private static final long serialVersionUID = 1L;

@@ -19,26 +19,32 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Slf4j
 @RequiredArgsConstructor
 public class TelegramBotTestUtils {
     private final String wiremockScenario;
     private final Collection<String> botMessagesSummator = new ArrayList<>();
 
     public Collection<LoggedRequest> waitAndGetUpdates(int amtUpdatesToWait) {
-        List<LoggedRequest> gotRequests;
+        List<LoggedRequest> gotRequests = List.of();
         while (true) {
             Collection<ServeEvent> events = getAllServeEvents();
+            var currentAmt = gotRequests.size();
             gotRequests = events.stream()
                     .map(ServeEvent::getRequest)
                     .filter(request -> urlMatching(".*/sendMessage")
                             .match(request.getUrl())
                             .isExactMatch())
                     .toList();
+            if (currentAmt != gotRequests.size()) {
+                log.atInfo().addKeyValue("total responses amount", gotRequests.size()).log("Got new responses");
+            }
             if (amtUpdatesToWait <= gotRequests.size()) {
                 break;
             }

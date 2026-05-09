@@ -28,9 +28,6 @@ public class EventEntity {
 
     private Instant updatedAt;
 
-    @Version
-    private Long version;
-
     public Event toDomain() {
         return new Event(eventID.toDomain(), state, updatedAt);
     }

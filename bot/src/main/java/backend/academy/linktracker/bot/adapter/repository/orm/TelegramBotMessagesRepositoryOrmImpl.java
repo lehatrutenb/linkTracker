@@ -1,13 +1,14 @@
 package backend.academy.linktracker.bot.adapter.repository.orm;
 
-import backend.academy.linktracker.bot.adapter.entity.TelegramBotChatEntity;
+import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotMessageEntity;
+import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
+import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
 import jakarta.transaction.Transactional;
-import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -22,11 +23,8 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class TelegramBotMessagesRepositoryOrmImpl implements TelegramBotMessagesRepository {
     private final TelegramBotMessagesRepositoryOrmInner repository;
-
-    @Override
-    public Collection<TelegramBotMessage> readAllMessages() {
-        return repository.findAll().stream().map(TelegramBotMessageEntity::toDomain).toList();
-    }
+    private final BotChatEntityRepositoryOrmInner botChatsRepository;
+    private final TelegramBotUserRepositoryOrmInner botUsersRepository;
 
     @Override
     public Optional<TelegramBotMessage> readMessage(TelegramBotMessageID messageID) {
@@ -36,26 +34,26 @@ public class TelegramBotMessagesRepositoryOrmImpl implements TelegramBotMessages
     @Override
     public Optional<TelegramBotMessage> readLastMessageInChat(BotChatID telegramBotChatID) {
         return repository
-                .findByIdOrderByDateDesc(TelegramBotChatEntity.getID(telegramBotChatID))
+                .findByMessageIDOrderByDateDesc(BotChatEntity.getID(telegramBotChatID))
                 .map(TelegramBotMessageEntity::toDomain);
     }
 
     @Override
     public TelegramBotMessage createMessage(TelegramBotMessage message) {
-        return repository.save(new TelegramBotMessageEntity(message)).toDomain();
+        var entity = new TelegramBotMessageEntity(message);
+        entity.setChat(botChatsRepository.getReferenceById(BotChatEntity.getID(message.chat().getId())));
+        entity.setUser(botUsersRepository.getReferenceById(message.user().userId()));
+        return repository.save(entity).toDomain();
     }
 
     @Override
     @Transactional
     public TelegramBotMessage updateMessage(TelegramBotMessage message) {
-        var addEntity = new TelegramBotMessageEntity(message);
-        var curEntity = repository.getReferenceById(TelegramBotMessageEntity.getID(message.id()));
-        addEntity.setVersion(curEntity.getVersion());
-        return repository.save(addEntity).toDomain();
+        return repository.save(new TelegramBotMessageEntity(message)).toDomain();
     }
 
     @Override
-    public void deleteMessageByID(TelegramBotMessageID messageID) {
+    public void deleteMessage(TelegramBotMessageID messageID) {
         repository.deleteById(TelegramBotMessageEntity.getID(messageID));
     }
 }

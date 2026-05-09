@@ -11,43 +11,28 @@ import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrder
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/help", shortDescription = "возвращает список с описанием существующих команд")
-public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class HelpCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY = "Вот список доступных команд:" + System.lineSeparator();
     private static final String BASIC_COMMAND_DESCRIPTION_SEPARATOR = " - ";
 
-    private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
     private final TelegramBotMessagesOrderService messagesService;
-    private final ApplicationContext applicationContext;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final BotChatMetaDataService replyServiceMatcher;
 
-    @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
-        if (!event.getMessage().message().strip().startsWith("/help")) {
-            return;
-        }
-        TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /help user command");
-
-        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), addCommandsToReply(BASIC_REPLY));
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+    public HelpCommandHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, CommandsMetaDataService commandsMetaDataService, TelegramBotMessagesOrderService messagesService) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+        this.commandsMetaDataService = commandsMetaDataService;
+        this.messagesService = messagesService;
     }
 
     private static void addCommand(StringBuilder stringBuilder, CommandHandler commandHandler) {
@@ -68,7 +53,22 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
     }
 
     @Override
-    public boolean supportsAsyncExecution() {
-        return false;
+    public void processEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/help")) {
+            return;
+        }
+        TelegramBotMessage message = event.getMessage();
+        log.atInfo()
+                .addKeyValue("chat id", message.chat().getId())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle /help user command");
+
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().getId())
+                .orElseThrow()
+                .sendMessage(message.chat().getId().getNumericID(), addCommandsToReply(BASIC_REPLY));
+        eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 }

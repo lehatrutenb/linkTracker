@@ -4,9 +4,11 @@ import java.io.Serial;
 import java.io.Serializable;
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @RequiredArgsConstructor
 @EqualsAndHashCode
+@ToString
 public class BotChatID implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

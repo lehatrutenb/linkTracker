@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.adapter.entity;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,6 +13,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,15 +34,13 @@ public class ChatSharedStateEntity {
     private String processingCommand;
     private int processingCommandStep;
 
+    //cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     @ManyToMany // But in real is OneToMany - just JPA can't handle JoinTable with OneToMany
     @JoinTable(
             name = "shared_state_messages_mapping",
             joinColumns = @JoinColumn(name = "shared_state_id"),
             inverseJoinColumns = @JoinColumn(name = "message_id"))
-    private List<TelegramBotMessageEntity> telegramBotMessages;
-
-    @Version
-    private Long version;
+    private List<TelegramBotMessageEntity> telegramBotMessages = List.of(); // Prevent nulls
 
     public ChatSharedState toDomain() {
         return new ChatSharedState(

@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface EventsRepository {
-    Collection<Event> readAllEvents();
     Optional<Event> readEvent(EventID eventId);
     Optional<Event> readNumericFirstNotDoneEventByOwnerType(OwnerIDType type);
     Optional<Event> readNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type);
@@ -17,5 +16,5 @@ public interface EventsRepository {
             OwnerIDType ownerIDType, EventState eventState, Instant updateAt);
     void createEvent(Event event);
     Event updateEvent(Event event);
-    void deleteEventByID(EventID eventID);
+    void deleteEvent(EventID eventID);
 }

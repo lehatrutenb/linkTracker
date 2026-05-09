@@ -5,9 +5,9 @@ spring:
   application:
     name: scrapper
   liquibase:
-    change-log: classpath:/migrations/scrapper/master.xml
+    change-log: classpath:scrapper-migrations/master.xml
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/linktracker_scrapper
+    url: jdbc:postgresql://127.0.0.1:5432/linktracker
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -17,11 +17,11 @@ spring:
   docker:
     compose:
       enabled: true
-      file: "classpath:/compose.yaml"
+      file: "classpath:scrapper-infra/compose.yaml"
 
 app:
   data:
-    access-type: "IN_MEM" # IN_MEM ORM SQL
+    access-type: "ORM" # IN_MEM ORM SQL
   telegram:
     link:
       tracker:
@@ -38,3 +38,7 @@ app:
   github:
     token: ${GITHUB_TOKEN}
     user-agent: github-events-scrapping-service
+
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n"

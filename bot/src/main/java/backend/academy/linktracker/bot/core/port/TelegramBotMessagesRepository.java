@@ -7,10 +7,9 @@ import java.util.Collection;
 import java.util.Optional;
 
 public interface TelegramBotMessagesRepository {
-    Collection<TelegramBotMessage> readAllMessages();
     Optional<TelegramBotMessage> readMessage(TelegramBotMessageID messageID);
     Optional<TelegramBotMessage> readLastMessageInChat(BotChatID telegramBotChatID);
     TelegramBotMessage createMessage(TelegramBotMessage message);
     TelegramBotMessage updateMessage(TelegramBotMessage message);
-    void deleteMessageByID(TelegramBotMessageID messageID);
+    void deleteMessage(TelegramBotMessageID messageID);
 }

@@ -3,17 +3,29 @@ package backend.academy.linktracker.bot;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.reset;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetAllRequests;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetAllScenarios;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetToDefault;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
 import backend.academy.linktracker.bot.adapter.controller.UpdatesApi;
+import backend.academy.linktracker.bot.adapter.controller.LinkTrackerUserEventController;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
-import com.github.tomakehurst.wiremock.client.WireMock;
+import backend.academy.linktracker.bot.usecase.dtos.models.LinkResponse;
+import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
+import io.github.resilience4j.core.functions.Either;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 import java.util.function.Supplier;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
@@ -33,6 +45,7 @@ import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.web.client.RestClient;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.postgresql.PostgreSQLContainer;
@@ -55,8 +68,11 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @Autowired
     private JdbcClient jdbcClient;
+    @Autowired
+    private LinkTrackerUserEventController linkTracerUserEventController;
+    @MockitoBean
+    private ScrapperUpdatesService scrapperUpdatesService;
 
-    @BeforeEach
     void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just
                 // withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)?
@@ -71,24 +87,26 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @BeforeEach
-    void setupBotClient(@Value("${local.server.port}") String linkTrackerAppPort) {
-        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
-    }
+    void setupBeforeEach(@Value("${local.server.port}") String linkTrackerAppPort) {
+        linkTracerUserEventController.stopListener();
 
-    @BeforeEach
-    void cleanData(@Value("${local.server.port}") String linkTrackerAppPort) {
+        reset();
+        resetAllRequests();
+        resetAllScenarios();
+        resetToDefault();
+        setupWireMock();
+
         jdbcClient
                 .sql(
-                        "TRUNCATE TABLE telegram_bot_user,bot_chat,telegram_bot_chat,chat_shared_state,event,link_update,telegram_bot_message CASCADE")
+                        "TRUNCATE TABLE telegram_bot_user,bot_chat,chat_shared_state,event,link_update,telegram_bot_message,shared_state_messages_mapping,link_update_bot_chats_mapping CASCADE")
                 .update();
+        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
+        linkTracerUserEventController.startListener();
     }
 
     @AfterEach
-    void cleanWireMock() {
-        WireMock.reset();
-        WireMock.resetAllRequests();
-        WireMock.resetAllScenarios();
-        WireMock.resetToDefault();
+    void teardownAfterEach() {
+        linkTracerUserEventController.stopListener();
     }
 
     @Test
@@ -156,9 +174,18 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Test
     @Timeout(10)
     void updatesSendsReceivesOK() {
+        when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
+            .thenReturn(Either.left(new LinkResponse().id(1L)));
+        when(scrapperUpdatesService.registerChat(any()))
+            .thenReturn(Optional.empty());
+        
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
-        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
-        testUtils.waitAndGetUpdates(1);
+        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
+        testUtils.writeMessageToBot(
+                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, "https://test.com"));
+        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
+        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
+        testUtils.waitAndGetBotResponses(3);
 
         var response = restClient
                 .method(HttpMethod.POST)
@@ -180,9 +207,18 @@ class TelegramBotIntegrationTest implements WithAssertions {
                 "{}"
             })
     void invalidUpdatesSendsReceivesError(String invalidUpdateBody) {
+        when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
+            .thenReturn(Either.left(new LinkResponse().id(1L)));
+        when(scrapperUpdatesService.registerChat(any()))
+            .thenReturn(Optional.empty());
+    
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("invalidUpdatesSendsReceivesError");
-
-        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
+        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
+        testUtils.writeMessageToBot(
+                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, "https://test.com"));
+        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
+        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
+        testUtils.waitAndGetBotResponses(3);
 
         Supplier<?> doResponse = () -> restClient
                 .method(HttpMethod.POST)

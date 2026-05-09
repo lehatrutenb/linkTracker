@@ -3,12 +3,12 @@ package backend.academy.linktracker.bot.adapter.repository.selfmanaged;
 import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.adapter.entity.LinkUpdateEntity;
+import backend.academy.linktracker.bot.adapter.rowmapper.LinkUpdateEntityRowMapper;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
 import jakarta.transaction.Transactional;
-import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -26,21 +26,6 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     private final JdbcClient client;
 
     @Override
-    public Collection<LinkUpdate> readAllLinkUpdates() {
-        return client.sql("""
-                        SELECT *
-                        FROM link_update lu
-                        LEFT JOIN link_update_bot_chats_mapping m ON lu.id = m.link_update_id
-                        INNER JOIN bot_chat bc ON m.bot_chat_id = bc.id
-                        """)
-                .query(LinkUpdateEntity.class)
-                .list()
-                .stream()
-                .map(LinkUpdateEntity::toDomain)
-                .toList();
-    }
-
-    @Override
     public Optional<LinkUpdate> readLinkUpdate(EventID id) {
         return client.sql("""
                 SELECT *
@@ -51,8 +36,9 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
                 """)
                 .param("event_id", EventIDEntity.getID(id))
                 .param("event_owner_id_type", id.getOwnerIDType().toString())
-                .query(LinkUpdateEntity.class)
-                .optional()
+                .query(new LinkUpdateEntityRowMapper())
+                .stream()
+                .findFirst()
                 .map(LinkUpdateEntity::toDomain);
     }
 
@@ -66,8 +52,9 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
                 WHERE lu.id = :id
                 """)
                 .param("id", LinkUpdateEntity.getID(id))
-                .query(LinkUpdateEntity.class)
-                .optional()
+                .query(new LinkUpdateEntityRowMapper())
+                .stream()
+                .findFirst()
                 .map(LinkUpdateEntity::toDomain);
     }
 
@@ -75,46 +62,56 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     @Transactional
     public LinkUpdate createLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
         var entity = new LinkUpdateEntity(linkUpdate, eventID);
-        var addedEntity = client.sql(
-                        "INSERT INTO link_update (id,event_id,event_owner_id_type,url,description) VALUES (:id,:event_id,:event_owner_id_type,:url,:description)")
+        client.sql("""
+            INSERT INTO link_update
+                (id,event_id,event_owner_id_type,url,description)
+            VALUES
+                (:id,:event_id,:event_owner_id_type,:url,:description)
+            """)
                 .param("id", entity.getId())
-                .param("event_id", entity.getEventID())
-                .param(
-                        "event_owner_id_type",
-                        entity.getEventID().getOwnerIDType().toString())
+                .param("event_id", EventIDEntity.getID(eventID))
+                .param("event_owner_id_type", eventID.getOwnerIDType().toString())
                 .param("url", entity.getUrl())
                 .param("description", entity.getDescription())
-                .query(LinkUpdateEntity.class)
-                .single()
-                .toDomain();
+                .update();
 
-        linkUpdate.botChatIDS().forEach(botChatID -> client.sql(
-                        "INSERT INTO link_update_bot_chats_mapping (link_update_id,bot_chat_id) VALUES (:link_update_id,:bot_chat_id)")
+        linkUpdate.botChatIDS().forEach(botChatID -> client.sql("""
+            INSERT INTO link_update_bot_chats_mapping
+                (link_update_id,bot_chat_id)
+            VALUES (:link_update_id,:bot_chat_id)
+                ON CONFLICT (link_update_id,bot_chat_id) DO NOTHING
+            """)
                 .param("link_update_id", entity.getId())
                 .param("bot_chat_id", BotChatEntity.getID(botChatID))
                 .update());
-        return addedEntity;
+        return readLinkUpdate(eventID).orElseThrow();
     }
 
     @Override
     @Transactional
     public LinkUpdate updateLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
         var entity = new LinkUpdateEntity(linkUpdate, eventID);
-        var updatedEntity = client.sql(
-                        """
-                        UPDATE link_update
-                        SET event_id = :event_id, event_owner_id_type = :event_owner_id_type, url = :url, description = :description
-                        WHERE id = :id
-                        RETURNING *
-                        """)
+        var updatedEntity = client.sql("""
+            WITH updated AS (
+                UPDATE link_update
+                SET event_id = :event_id, event_owner_id_type = :event_owner_id_type, url = :url, description = :description
+                WHERE id = :id
+                RETURNING *
+            )
+            SELECT * FROM updated
+            LEFT JOIN link_update_bot_chats_mapping m ON updated.id = m.link_update_id
+            INNER JOIN bot_chat bc ON m.bot_chat_id = bc.id
+            """)
                 .param("id", entity.getId())
                 .param("event_id", EventIDEntity.getID(eventID))
                 .param("event_owner_id_type", eventID.getOwnerIDType().toString())
                 .param("url", entity.getUrl())
                 .param("description", entity.getDescription())
-                .query(LinkUpdateEntity.class)
-                .single()
-                .toDomain();
+                .query(new LinkUpdateEntityRowMapper())
+                .stream()
+                .findFirst()
+                .map(LinkUpdateEntity::toDomain)
+                .orElseThrow();
 
         client.sql("DELETE FROM link_update_bot_chats_mapping WHERE link_update_id = :link_update_id")
                 .param("link_update_id", entity.getId())
@@ -128,7 +125,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     }
 
     @Override
-    public void deleteLinkUpdateByID(LinkUpdateID id) {
+    public void deleteLinkUpdate(LinkUpdateID id) {
         client.sql("DELETE FROM link_update WHERE id = :id")
                 .param("id", LinkUpdateEntity.getID(id))
                 .update();

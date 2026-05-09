@@ -36,9 +36,17 @@ public class TelegramBotInitStateSetterService {
                 .toArray(BotCommand[]::new);
         Optional<BaseResponse> response = Optional.empty();
         for (int retryInd = 0; retryInd < DEFAULT_RETRY_AMT; retryInd++) {
-            response = Optional.of(telegramBot.execute(new SetMyCommands(commands)));
-            if (response.orElseThrow().isOk()) {
-                break;
+            try {
+                response = Optional.of(telegramBot.execute(new SetMyCommands(commands)));
+                if (response.orElseThrow().isOk()) {
+                    break;
+                }
+            } catch (RuntimeException e) {
+                log.atWarn()
+                        .setCause(e)
+                        .addKeyValue("attempt", retryInd + 1)
+                        .addKeyValue("maxAttempts", DEFAULT_RETRY_AMT)
+                        .log("Failed to call telegram API while setting bot commands, will retry");
             }
             Thread.yield();
             try {
@@ -48,10 +56,10 @@ public class TelegramBotInitStateSetterService {
                 throw new RuntimeException(e);
             }
         }
-        if (!response.orElseThrow().isOk()) {
+        if (response.isEmpty() || !response.orElseThrow().isOk()) {
             log.atWarn()
-                    .addKeyValue("error", response.orElseThrow().errorCode())
-                    .addKeyValue("description", response.orElseThrow().description())
+                    .addKeyValue("error", response.map(BaseResponse::errorCode).orElse(null))
+                    .addKeyValue("description", response.map(BaseResponse::description).orElse("no telegram response"))
                     .log("Failed to set bot commands");
             return;
         }

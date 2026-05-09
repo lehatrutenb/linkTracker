@@ -13,11 +13,13 @@ import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import backend.academy.linktracker.bot.BotApplication;
+import backend.academy.linktracker.bot.adapter.controller.LinkTrackerUserEventController;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.services.commands.ListMessageHandler;
 import backend.academy.linktracker.bot.usecase.services.commands.TrackMessageHandler;
 import backend.academy.linktracker.scrapper.ScrapperApplication;
+import java.util.List;
 import java.util.Map;
 import lombok.SneakyThrows;
 import org.assertj.core.api.InstanceOfAssertFactories;
@@ -27,21 +29,31 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.Ordered;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.wiremock.spring.EnableWireMock;
 
-@SpringBootTest
+@SpringBootTest(classes = TestApplication.class)
 @ActiveProfiles("test")
 @EnableWireMock
 class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @RegisterExtension
     static SharedPostgresContainer postgresContainer = new SharedPostgresContainer();
+
+    @Autowired
+    private JdbcClient jdbcClient;
 
     @RegisterExtension
     static StatefulApplicationTestExtension tgBot =
@@ -51,7 +63,13 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     static StatefulApplicationTestExtension scrapper =
             new DatasourcedApplicationTestExtension(ScrapperApplication.class, postgresContainer, "--server.port=0");
 
-    @BeforeAll
+    @DynamicPropertySource
+    static void postgresProperties(DynamicPropertyRegistry registry) { // Add to use jdbcClient
+        registry.add("spring.datasource.url", SharedPostgresContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", SharedPostgresContainer::getUsername);
+        registry.add("spring.datasource.password", SharedPostgresContainer::getPassword);
+    }
+
     static void configConnections() {
         scrapper.addProperties(
                 "test-config",
@@ -63,28 +81,50 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         tgBot.refreshScope();
     }
 
-    @BeforeEach // TODO Move to bot test config?
+    // TODO Move to bot test config?
     void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands"))
-                .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
+            .atPriority(1)
+            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
         stubFor(
                 post(urlMatching(".*/sendMessage"))
-                        .willReturn(
-                                aResponse()
-                                        .withStatus(200)
-                                        .withBody(
-                                                "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
+                    .atPriority(1)
+                    .willReturn(
+                            aResponse()
+                                    .withStatus(200)
+                                    .withBody(
+                                            "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}"))
+        );
     }
 
     @BeforeEach
-    void cleanWireMock() {
+    @SneakyThrows
+    @Order(Ordered.LOWEST_PRECEDENCE)
+    void setupBeforeEach() {
+        configConnections();
+
         reset();
         resetAllRequests();
         resetAllScenarios();
         resetToDefault();
+        setupWireMock();
 
-        scrapper.refreshScope();
+        jdbcClient
+            .sql(
+                "TRUNCATE TABLE telegram_bot_user,bot_chat,chat_shared_state,event,link_update,telegram_bot_message,shared_state_messages_mapping,link_update_bot_chats_mapping CASCADE")
+            .update();
+        jdbcClient
+            .sql(
+                "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
+            .update();
+
+        scrapper.refreshScope(); // Can not to refresh scopes, cause currently rerun, but let it be
         tgBot.refreshScope();
+    }
+
+    @AfterEach
+    void teardownAfterEach() {
+        tgBot.getBean(LinkTrackerUserEventController.class).stopListener();
     }
 
     @Timeout(10)
@@ -234,7 +274,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @Timeout(10)
     @Test
     void trackSendsReceivesReplyInSenderChat() {
-        String url = "https://stackoverflow.com/questions/4568645";
+        String url = "https://stackoverflow.com/questions/4568645"; // TODO Add github too
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsReceivesReplyInSenderChat");
 
         stubFor(get(urlMatching(".*/stack-overflow-api/.*/questions/.*/answers.*"))
@@ -285,5 +325,40 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
 
     @Nested
     @DisplayName("DB tests")
-    class DBTests {}
+    class DBTests {
+        private List<String> publicBaseTableNames() {
+            return jdbcClient
+                    .sql("""
+                        SELECT table_name FROM information_schema.tables
+                        WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
+                    """)
+                    .query(String.class)
+                    .list();
+        }
+
+        @Test
+        void botMigrationTablesExist() {
+            assertThat(publicBaseTableNames())
+                    .contains(
+                            "telegram_bot_user",
+                            "bot_chat",
+                            "chat_shared_state",
+                            "event",
+                            "link_update",
+                            "telegram_bot_message",
+                            "shared_state_messages_mapping",
+                            "link_update_bot_chats_mapping");
+        }
+
+        @Test
+        void scrapperMigrationTablesExist() {
+            assertThat(publicBaseTableNames())
+                    .contains(
+                            "scrapper_link",
+                            "link_listener",
+                            "link_metadata",
+                            "link_tag",
+                            "link_metadata_tags_mapping");
+        }
+    }
 }

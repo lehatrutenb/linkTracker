@@ -4,7 +4,6 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
@@ -45,11 +44,6 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
     }
 
     @Override
-    public Collection<ScrapperLinkListener> readAllScrapperLinkListeners() {
-        return scrapperLinkListeners;
-    }
-
-    @Override
     public Optional<ScrapperLinkListener> readScrapperLinkListener(long id) {
         return scrapperLinkListeners.stream()
             .filter(listener -> listener.listenerID() == id)
@@ -57,13 +51,13 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
     }
 
     @Override
-    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) throws SQLException {
+    public ScrapperLink createScrapperLink(ScrapperLink scrapperLink) {
         if (scrapperLink.getId().id().isEmpty()) {
             scrapperLink.setId(new ScrapperLinkID(scrapperLink.getId().uri(), Optional.of(lastLinkID)));
             lastLinkID++;
         }
         if (scrapperLinks.stream().anyMatch(link -> link.getId().id().equals(scrapperLink.getId().id()))) {
-            throw new SQLException("Repository already have entity with same id");
+            throw new RuntimeException("Repository already have entity with same id");
         }
         scrapperLinks.add(scrapperLink);
         return scrapperLink;

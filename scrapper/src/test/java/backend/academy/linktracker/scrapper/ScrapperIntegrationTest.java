@@ -2,11 +2,14 @@ package backend.academy.linktracker.scrapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static com.github.tomakehurst.wiremock.client.WireMock.reset;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetAllRequests;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetAllScenarios;
+import static com.github.tomakehurst.wiremock.client.WireMock.resetToDefault;
 
 import backend.academy.linktracker.scrapper.adapters.controllers.LinksApi;
 import backend.academy.linktracker.scrapper.adapters.controllers.TgChatApi;
 import backend.academy.linktracker.scrapper.usecases.dtos.models.ListLinksResponse;
-import com.github.tomakehurst.wiremock.client.WireMock;
 import java.net.URI;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
@@ -45,24 +48,25 @@ public class ScrapperIntegrationTest {
     private JdbcClient jdbcClient;
 
     @BeforeEach
-    void setupScrapperClient(@Value("${local.server.port}") String linkTrackerAppPort) {
-        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
-    }
+    void setupBeforeEach(@Value("${local.server.port}") String linkTrackerAppPort) {
+        reset();
+        resetAllRequests();
+        resetAllScenarios();
+        resetToDefault();
 
-    @BeforeEach
-    void cleanData(@Value("${local.server.port}") String linkTrackerAppPort) {
         jdbcClient
             .sql(
                 "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
             .update();
+        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
     }
 
-    @BeforeEach
-    void cleanWireMock() {
-        WireMock.reset();
-        WireMock.resetAllRequests();
-        WireMock.resetAllScenarios();
-        WireMock.resetToDefault();
+    @AfterEach
+    void teardownAfterEach() {
+        reset();
+        resetAllRequests();
+        resetAllScenarios();
+        resetToDefault();
     }
 
     @Test

@@ -34,7 +34,7 @@ public class ScrapperLinkMetaDataEntity {
     @EmbeddedId
     private ScrapperLinkMetaDataIDEntity id;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH}) // Not All to not delete tags
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) // Not All to not delete tags
     @JoinTable(
         name = "link_metadata_tags_mapping",
         joinColumns = {@JoinColumn(name = "link_id"), @JoinColumn(name = "link_uri"), @JoinColumn(name = "listener_id")},
@@ -42,9 +42,6 @@ public class ScrapperLinkMetaDataEntity {
     )
     private List<TagEntity> tags;
     // private List<String> filters; // :) let it just be  TODO or rm? in business why filter even if we will need it will be connected to such connection entity
-
-    @Version
-    private Long version;
 
     public ScrapperLinkMetaDataEntity(ScrapperLinkMetaData metaData) {
         id = getID(metaData);
@@ -91,9 +88,6 @@ public class ScrapperLinkMetaDataEntity {
     public static class TagEntity { // We basically can have more complex struct or may just have generating id, but i think such structure is easy solution in place where we do not really need to think
         @Id
         private String name;
-
-        @Version
-        private Long version; // TODO Care not handling version in db correcly
 
         public TagEntity(String name) {
             this.name = name;

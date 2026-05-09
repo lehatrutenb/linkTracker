@@ -55,9 +55,6 @@ public class LinkUpdateEntity {
     @Column(name = "bot_chat_id")
     private List<Long> tgChatIDs;
 
-    @Version
-    private Long version;
-
     public LinkUpdateEntity(LinkUpdate linkUpdate, EventID eventID) {
         this.eventID = new EventIDEntity(eventID);
         id = getID(linkUpdate.id());
@@ -81,19 +78,5 @@ public class LinkUpdateEntity {
 
     public static long getID(LinkUpdateID id) {
         return id.getId();
-    }
-
-    public void setId(long id) {
-        if (this.eventID == null) {
-            this.eventID = new EventIDEntity();
-        }
-        this.eventID.setId(id);
-    }
-
-    public void setOwnerIdType(OwnerIDType ownerIDType) {
-        if (this.eventID == null) {
-            this.eventID = new EventIDEntity();
-        }
-        this.eventID.setOwnerIDType(ownerIDType);
     }
 }

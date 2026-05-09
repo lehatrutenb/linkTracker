@@ -16,12 +16,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/untrack")
-public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class UntrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите перестать отслеживать"; // TODO check
     // if it makes
@@ -31,43 +32,13 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
     private static final String BASIC_URL_REPLY = "Ссылка больше не будет отслеживаться";
     private static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
-    private final BotChatMetaDataService replyServiceMatcher;
 
-    @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
-        if (!event.getMessage().message().strip().startsWith("/")) {
-            handleURL(event);
-        }
-        if (!event.getMessage().message().strip().startsWith("/untrack")) {
-            return;
-        }
-        TelegramBotMessage message = event.getMessage();
-
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /untrack user message");
-
-        var sharedState =
-                commandsSharedStateService.getChatSharedState(message.chat().getId());
-
-        commandsSharedStateService.setChatSharedState(
-                message.chat().getId(),
-                sharedState
-                        .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
-                        .withProcessingCommand("/untrack")
-                        .withProcessingCommandStep(0));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), BASIC_TRACK_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+    public UntrackMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, ScrapperUpdatesService scrapper, CancelMessageHandler cancelMessageHandler) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+        this.scrapper = scrapper;
+        this.cancelMessageHandler = cancelMessageHandler;
     }
 
     public void handleURL(LinkTracerNewMessageEvent event) {
@@ -92,11 +63,6 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
 
         handleUrlSet(event, message);
         eventsStateWatcher.markEventAsDone(event.getEventId());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 
     private void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message) {
@@ -126,6 +92,38 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
                     .orElseThrow()
                     .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
         }
-        cancelMessageHandler.onBotError(event, reply.isBlank());
+        cancelMessageHandler.processBotError(event, reply.isBlank());
+    }
+
+    @Override
+    public void processEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/")) {
+            handleURL(event);
+        }
+        if (!event.getMessage().message().strip().startsWith("/untrack")) {
+            return;
+        }
+        TelegramBotMessage message = event.getMessage();
+
+        log.atInfo() // TODO Check how to move such logging to shared part
+                .addKeyValue("chat id", message.chat().getId())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle /untrack user message");
+
+        var sharedState =
+                commandsSharedStateService.getChatSharedState(message.chat().getId());
+
+        commandsSharedStateService.setChatSharedState(
+                message.chat().getId(),
+                sharedState
+                        .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
+                        .withProcessingCommand("/untrack")
+                        .withProcessingCommandStep(0));
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().getId())
+                .orElseThrow()
+                .sendMessage(message.chat().getId().getNumericID(), BASIC_TRACK_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 }

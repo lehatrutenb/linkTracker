@@ -12,22 +12,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalApplicationListener;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/cancel")
-public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class CancelMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY = "";
     private static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final BotChatMetaDataService replyServiceMatcher;
+    public CancelMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/cancel")) {
             return;
         }
@@ -46,7 +47,8 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 
-    public void onBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
+
+    public void processBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
                 .addKeyValue("chat id", message.chat().getId())
@@ -63,10 +65,5 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
                     .sendMessage(message.chat().getId().getNumericID(), ERROR_REPLY);
         }
         eventsStateWatcher.markEventAsDone(event.getEventId());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

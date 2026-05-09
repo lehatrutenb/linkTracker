@@ -31,11 +31,6 @@ public class ScrappingLinkMetaDataRepositoryInMemImpl implements ScrappingLinkMe
     }
 
     @Override
-    public Collection<ScrapperLinkMetaData> readAllLinkMetaData() {
-        return metaDatas;
-    }
-
-    @Override
     public void createLinkMetaData(ScrapperLinkMetaData metaData) {
         metaDatas.add(metaData);
     }
