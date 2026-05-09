@@ -1,17 +1,14 @@
 package backend.academy.linktracker.scrapper.adapters.rowmapper;
 
 import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity;
-import org.springframework.jdbc.core.RowMapper;
+import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import java.util.ArrayList;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
-import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 public class ScrapperLinkMetaDataEntityRowMapper implements ResultSetExtractor<List<ScrapperLinkMetaDataEntity>> {
     @Override

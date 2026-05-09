@@ -38,7 +38,7 @@ public class TelegramBotMessagesRepositorySelfManagedImpl implements TelegramBot
                 FROM telegram_bot_message me
                 INNER JOIN bot_chat bc ON me.chat_id = bc.id
                 INNER JOIN telegram_bot_user bu ON me.user_id = bu.id
-                WHERE 
+                WHERE
                     me.local_chat_id = :local_chat_id
                     AND me.chat_id = :chat_id
                 """)

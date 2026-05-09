@@ -6,15 +6,8 @@ import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
@@ -22,13 +15,16 @@ public class UnknownMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
     private static final String BASIC_REPLY =
             "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
 
-    public UnknownMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher) {
+    public UnknownMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher) {
         super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
     }
 
     @Override
     public int getOrder() {
-        return Ordered.HIGHEST_PRECEDENCE;
+        return HIGHEST_PRECEDENCE;
     }
 
     @Override

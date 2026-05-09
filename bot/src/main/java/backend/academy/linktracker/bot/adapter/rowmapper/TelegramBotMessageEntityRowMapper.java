@@ -1,15 +1,13 @@
 package backend.academy.linktracker.bot.adapter.rowmapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import org.springframework.jdbc.core.RowMapper;
-
 import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotMessageEntity;
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotUserEntity;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import org.springframework.jdbc.core.RowMapper;
 
-public class TelegramBotMessageEntityRowMapper implements RowMapper<TelegramBotMessageEntity>{
+public class TelegramBotMessageEntityRowMapper implements RowMapper<TelegramBotMessageEntity> {
 
     @Override
     public TelegramBotMessageEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -33,5 +31,4 @@ public class TelegramBotMessageEntityRowMapper implements RowMapper<TelegramBotM
 
         return entity;
     }
-
 }

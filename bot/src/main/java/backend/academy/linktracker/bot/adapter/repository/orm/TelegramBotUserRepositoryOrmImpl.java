@@ -1,17 +1,14 @@
 package backend.academy.linktracker.bot.adapter.repository.orm;
 
+import backend.academy.linktracker.bot.adapter.entity.TelegramBotUserEntity;
+import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import java.util.Optional;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-
-import backend.academy.linktracker.bot.adapter.entity.TelegramBotUserEntity;
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
-import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
-
-import lombok.RequiredArgsConstructor;
 
 @RefreshScope
 @Repository
@@ -40,5 +37,4 @@ public class TelegramBotUserRepositoryOrmImpl implements TelegramBotUserReposito
     public void deleteTelegramBotUser(long userID) {
         repository.deleteById(userID);
     }
-
 }

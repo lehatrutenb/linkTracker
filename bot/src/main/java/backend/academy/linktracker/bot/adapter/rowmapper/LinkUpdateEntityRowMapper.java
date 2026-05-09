@@ -1,19 +1,16 @@
 package backend.academy.linktracker.bot.adapter.rowmapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.ResultSetExtractor;
-
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.adapter.entity.LinkUpdateEntity;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ResultSetExtractor;
 
 public class LinkUpdateEntityRowMapper implements ResultSetExtractor<List<LinkUpdateEntity>> {
 
@@ -36,7 +33,7 @@ public class LinkUpdateEntityRowMapper implements ResultSetExtractor<List<LinkUp
         var eventIDEntity = new EventIDEntity();
         eventIDEntity.setId(rs.getLong("event_id"));
         eventIDEntity.setOwnerIDType(OwnerIDType.valueOf(rs.getString("event_owner_id_type")));
-        
+
         entity.setId(rs.getLong("id"));
         entity.setEventID(eventIDEntity);
         entity.setUrl(rs.getString("url"));

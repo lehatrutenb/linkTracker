@@ -1,24 +1,21 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
 import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
 import jakarta.transaction.Transactional;
-
 import java.net.URI;
-import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 
 @Slf4j
 @Service
@@ -29,10 +26,12 @@ public class ScrappingLinkService {
     private final ScrappingLinkMetaDataRepository metaDataRepository;
 
     public void deleteLinkForLinkListener(ScrapperLinkMetaDataID metaDataID) {
-        metaDataRepository.deleteLinkMetaData(metaDataID); // TODO won't work if run in parallel - need to do as atomic op
+        metaDataRepository.deleteLinkMetaData(
+                metaDataID); // TODO won't work if run in parallel - need to do as atomic op
         /*if (listenerRepository.readScrapperLinkListener(linkID).isEmpty()) {
             linksRepository.deleteScrapperLink(linkID);
-        }*/ // TODO Currently dont need, but its better to use some scheduling task for it, not check on every request
+        }*/
+        // TODO Currently dont need, but its better to use some scheduling task for it, not check on every request
     }
 
     @Transactional
@@ -47,8 +46,7 @@ public class ScrappingLinkService {
             link = linksRepository.readScrapperLinkByURI(link.getUri()).orElseThrow();
         }
         if (metaDataRepository.readScrapperLinkListeners(link.getId()).contains(listener)) {
-            throw new DuplicateEntityException(
-                    ScrapperLink.class, link.getUri().toString());
+            throw new DuplicateEntityException(ScrapperLink.class, link.getUri().toString());
         }
         return link;
     }

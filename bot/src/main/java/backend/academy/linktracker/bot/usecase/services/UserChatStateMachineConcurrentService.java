@@ -2,10 +2,7 @@ package backend.academy.linktracker.bot.usecase.services;
 
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
 import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
-import java.util.ArrayList;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +19,8 @@ public class UserChatStateMachineConcurrentService {
         for (var message : chatSharedState.getProcessingMessages()) {
             newMessages.add(botMessagesRepository.createMessage(message));
         }
-        chatSharedState.setProcessingMessages(newMessages);*/ // TODO RM WAS BAD IDEA TO CREATE SUCH CREATION POLICY
+        chatSharedState.setProcessingMessages(newMessages);*/
+        // TODO RM WAS BAD IDEA TO CREATE SUCH CREATION POLICY
         if (userChatStateRepository.readChatSharedState(userChatID).isPresent()) {
             userChatStateRepository.updateChatSharedState(userChatID, chatSharedState);
         } else {

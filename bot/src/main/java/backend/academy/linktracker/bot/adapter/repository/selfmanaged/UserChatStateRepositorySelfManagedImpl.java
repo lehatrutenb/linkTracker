@@ -33,10 +33,7 @@ public class UserChatStateRepositorySelfManagedImpl implements UserChatStateRepo
                 LEFT JOIN bot_chat bc ON tm.chat_id = bc.id
                 LEFT JOIN telegram_bot_user tu ON tm.user_id = tu.id
                 WHERE cs.id = :id
-                """)
-                .param("id", BotChatEntity.getID(chatID))
-                .query(new ChatSharedStateRowMapper())
-                .stream()
+                """).param("id", BotChatEntity.getID(chatID)).query(new ChatSharedStateRowMapper()).stream()
                 .findFirst()
                 .map(ChatSharedStateEntity::toDomain);
     }
@@ -46,7 +43,7 @@ public class UserChatStateRepositorySelfManagedImpl implements UserChatStateRepo
     public void createChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
         var entity = new ChatSharedStateEntity(chatID, chatSharedState);
         client.sql("""
-                INSERT INTO chat_shared_state 
+                INSERT INTO chat_shared_state
                     (id,command_flow_state,processing_command,processing_command_step)
                 VALUES
                     (:id,:command_flow_state,:processing_command,:processing_command_step)
@@ -56,12 +53,13 @@ public class UserChatStateRepositorySelfManagedImpl implements UserChatStateRepo
                 .param("processing_command", entity.getProcessingCommand())
                 .param("processing_command_step", entity.getProcessingCommandStep())
                 .update();
-        
+
         chatSharedState.getProcessingMessages().forEach(message -> {
-            client.sql("INSERT INTO shared_state_messages_mapping (shared_state_id,message_id) VALUES (:shared_state_id,:message_id)")
-                .param("shared_state_id", entity.getId())
-                .param("message_id", TelegramBotMessageEntity.getID(message.id()))
-                .update();
+            client.sql(
+                            "INSERT INTO shared_state_messages_mapping (shared_state_id,message_id) VALUES (:shared_state_id,:message_id)")
+                    .param("shared_state_id", entity.getId())
+                    .param("message_id", TelegramBotMessageEntity.getID(message.id()))
+                    .update();
         });
     }
 
@@ -69,9 +67,10 @@ public class UserChatStateRepositorySelfManagedImpl implements UserChatStateRepo
     @Transactional
     public ChatSharedState updateChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
         var entity = new ChatSharedStateEntity(chatID, chatSharedState);
-        var updatedEntity = client.sql("""
+        var updatedEntity = client
+                .sql("""
                 WITH updated AS (
-                UPDATE chat_shared_state 
+                UPDATE chat_shared_state
                     SET
                         command_flow_state=:command_flow_state,processing_command=:processing_command,processing_command_step=:processing_command_step
                     WHERE
@@ -93,16 +92,17 @@ public class UserChatStateRepositorySelfManagedImpl implements UserChatStateRepo
                 .findFirst()
                 .map(ChatSharedStateEntity::toDomain)
                 .orElseThrow();
-        
+
         client.sql("DELETE FROM shared_state_messages_mapping WHERE shared_state_id = :shared_state_id")
                 .param("shared_state_id", ChatSharedStateEntity.getID(chatID))
                 .update();
-        
+
         chatSharedState.getProcessingMessages().forEach(message -> {
-            client.sql("INSERT INTO shared_state_messages_mapping (shared_state_id,message_id) VALUES (:shared_state_id,:message_id)")
-                .param("shared_state_id", ChatSharedStateEntity.getID(chatID))
-                .param("message_id", TelegramBotMessageEntity.getID(message.id()))
-                .update();
+            client.sql(
+                            "INSERT INTO shared_state_messages_mapping (shared_state_id,message_id) VALUES (:shared_state_id,:message_id)")
+                    .param("shared_state_id", ChatSharedStateEntity.getID(chatID))
+                    .param("message_id", TelegramBotMessageEntity.getID(message.id()))
+                    .update();
         });
 
         return updatedEntity;

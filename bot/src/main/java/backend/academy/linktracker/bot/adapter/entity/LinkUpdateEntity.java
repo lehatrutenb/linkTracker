@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
@@ -13,13 +12,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -49,9 +44,7 @@ public class LinkUpdateEntity {
     private String description;
 
     @ElementCollection
-    @CollectionTable(
-            name = "link_update_bot_chats_mapping",
-            joinColumns = @JoinColumn(name = "link_update_id"))
+    @CollectionTable(name = "link_update_bot_chats_mapping", joinColumns = @JoinColumn(name = "link_update_id"))
     @Column(name = "bot_chat_id")
     private List<Long> tgChatIDs;
 

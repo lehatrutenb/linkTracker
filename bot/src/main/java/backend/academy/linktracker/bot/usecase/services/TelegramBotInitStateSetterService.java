@@ -59,7 +59,9 @@ public class TelegramBotInitStateSetterService {
         if (response.isEmpty() || !response.orElseThrow().isOk()) {
             log.atWarn()
                     .addKeyValue("error", response.map(BaseResponse::errorCode).orElse(null))
-                    .addKeyValue("description", response.map(BaseResponse::description).orElse("no telegram response"))
+                    .addKeyValue(
+                            "description",
+                            response.map(BaseResponse::description).orElse("no telegram response"))
                     .log("Failed to set bot commands");
             return;
         }

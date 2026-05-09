@@ -4,20 +4,16 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
-import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
+import backend.academy.linktracker.bot.usecase.services.ErrorMessageHandler;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
-import lombok.RequiredArgsConstructor;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
@@ -33,12 +29,17 @@ public class UntrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
     private static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
 
     private final ScrapperUpdatesService scrapper;
-    private final CancelMessageHandler cancelMessageHandler;
+    private final ErrorMessageHandler errorMessageHandler;
 
-    public UntrackMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, ScrapperUpdatesService scrapper, CancelMessageHandler cancelMessageHandler) {
+    public UntrackMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher,
+            ScrapperUpdatesService scrapper,
+            ErrorMessageHandler errorMessageHandler) { // TODO :(
         super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
         this.scrapper = scrapper;
-        this.cancelMessageHandler = cancelMessageHandler;
+        this.errorMessageHandler = errorMessageHandler;
     }
 
     public void handleURL(LinkTracerNewMessageEvent event) {
@@ -68,7 +69,8 @@ public class UntrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
     private void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message) {
         var response = scrapper.untrackLink(event.getMessage().chat().getId(), message.message());
         if (response.isRight()) {
-            handleErrorScrapperResponse(event, response.get());
+            errorMessageHandler.handleErrorScrapperResponse(
+                    event, response.get(), Map.of(HttpStatus.NOT_FOUND, UNTRACKED_URL_REPLY));
             return;
         }
         commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
@@ -76,23 +78,6 @@ public class UntrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
                 .getReplyService(event.getMessage().chat().getId())
                 .orElseThrow()
                 .sendMessage(message.chat().getId().getNumericID(), BASIC_URL_REPLY);
-    }
-
-    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
-        // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply =
-                switch (HttpStatus.resolve(
-                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
-                    case HttpStatus.NOT_FOUND -> UNTRACKED_URL_REPLY;
-                    default -> "";
-                };
-        if (!reply.isBlank()) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
-        }
-        cancelMessageHandler.processBotError(event, reply.isBlank());
     }
 
     @Override

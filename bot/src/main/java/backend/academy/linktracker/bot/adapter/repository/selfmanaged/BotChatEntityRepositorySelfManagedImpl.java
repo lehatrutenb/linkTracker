@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
-import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

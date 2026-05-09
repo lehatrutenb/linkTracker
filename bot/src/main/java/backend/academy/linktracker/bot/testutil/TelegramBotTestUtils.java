@@ -43,7 +43,9 @@ public class TelegramBotTestUtils {
                             .isExactMatch())
                     .toList();
             if (currentAmt != gotRequests.size()) {
-                log.atInfo().addKeyValue("total responses amount", gotRequests.size()).log("Got new responses");
+                log.atInfo()
+                        .addKeyValue("total responses amount", gotRequests.size())
+                        .log("Got new responses");
             }
             if (amtUpdatesToWait <= gotRequests.size()) {
                 break;

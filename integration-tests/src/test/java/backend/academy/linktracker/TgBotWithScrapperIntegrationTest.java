@@ -25,14 +25,12 @@ import lombok.SneakyThrows;
 import org.assertj.core.api.InstanceOfAssertFactories;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -84,17 +82,16 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     // TODO Move to bot test config?
     void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands"))
-            .atPriority(1)
-            .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
+                .atPriority(1)
+                .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
         stubFor(
                 post(urlMatching(".*/sendMessage"))
-                    .atPriority(1)
-                    .willReturn(
-                            aResponse()
-                                    .withStatus(200)
-                                    .withBody(
-                                            "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}"))
-        );
+                        .atPriority(1)
+                        .willReturn(
+                                aResponse()
+                                        .withStatus(200)
+                                        .withBody(
+                                                "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
     }
 
     @BeforeEach
@@ -110,13 +107,13 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         setupWireMock();
 
         jdbcClient
-            .sql(
-                "TRUNCATE TABLE telegram_bot_user,bot_chat,chat_shared_state,event,link_update,telegram_bot_message,shared_state_messages_mapping,link_update_bot_chats_mapping CASCADE")
-            .update();
+                .sql(
+                        "TRUNCATE TABLE telegram_bot_user,bot_chat,chat_shared_state,event,link_update,telegram_bot_message,shared_state_messages_mapping,link_update_bot_chats_mapping CASCADE")
+                .update();
         jdbcClient
-            .sql(
-                "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
-            .update();
+                .sql(
+                        "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
+                .update();
 
         scrapper.refreshScope(); // Can not to refresh scopes, cause currently rerun, but let it be
         tgBot.refreshScope();
@@ -327,13 +324,10 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @DisplayName("DB tests")
     class DBTests {
         private List<String> publicBaseTableNames() {
-            return jdbcClient
-                    .sql("""
+            return jdbcClient.sql("""
                         SELECT table_name FROM information_schema.tables
                         WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
-                    """)
-                    .query(String.class)
-                    .list();
+                    """).query(String.class).list();
         }
 
         @Test

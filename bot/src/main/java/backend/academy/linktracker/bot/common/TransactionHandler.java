@@ -1,10 +1,9 @@
 package backend.academy.linktracker.bot.common;
 
+import java.util.function.Function;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Service
 // TODO No longer need?

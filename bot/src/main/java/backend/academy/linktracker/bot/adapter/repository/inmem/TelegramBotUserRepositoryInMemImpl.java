@@ -1,14 +1,12 @@
 package backend.academy.linktracker.bot.adapter.repository.inmem;
 
+import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
-
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
-import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 
 @RefreshScope
 @Repository

@@ -3,7 +3,6 @@ package backend.academy.linktracker.bot.adapter.repository.inmem;
 import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

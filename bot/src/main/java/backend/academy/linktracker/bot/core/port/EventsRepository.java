@@ -10,11 +10,17 @@ import java.util.Optional;
 
 public interface EventsRepository {
     Optional<Event> readEvent(EventID eventId);
+
     Optional<Event> readNumericFirstNotDoneEventByOwnerType(OwnerIDType type);
+
     Optional<Event> readNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type);
+
     Collection<Event> readEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType ownerIDType, EventState eventState, Instant updateAt);
+
     void createEvent(Event event);
+
     Event updateEvent(Event event);
+
     void deleteEvent(EventID eventID);
 }

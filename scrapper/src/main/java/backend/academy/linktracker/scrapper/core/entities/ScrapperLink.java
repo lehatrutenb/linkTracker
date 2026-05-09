@@ -1,12 +1,10 @@
 package backend.academy.linktracker.scrapper.core.entities;
 
+import java.net.URI;
+import java.time.Instant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import java.net.URI;
-import java.time.Instant;
-import java.util.Optional;
-
 
 @Getter
 @Setter

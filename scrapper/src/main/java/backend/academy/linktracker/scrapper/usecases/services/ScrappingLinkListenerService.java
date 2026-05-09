@@ -1,12 +1,10 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.enums.ScrapperLinkListenerType;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
 import backend.academy.linktracker.scrapper.usecases.exceptions.ListenerNotFoundException;
-
-
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

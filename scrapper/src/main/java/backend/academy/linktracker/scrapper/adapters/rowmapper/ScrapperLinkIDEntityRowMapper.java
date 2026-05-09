@@ -1,9 +1,9 @@
 package backend.academy.linktracker.scrapper.adapters.rowmapper;
 
 import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
-import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.springframework.jdbc.core.RowMapper;
 
 public class ScrapperLinkIDEntityRowMapper implements RowMapper<ScrapperLinkIDEntity> {
     @Override

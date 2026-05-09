@@ -1,23 +1,16 @@
 package backend.academy.linktracker.scrapper.adapters.entity;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
-import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.Instant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.time.Instant;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.SequenceGenerator;
-import java.util.Optional;
 
 @Slf4j
 @Entity

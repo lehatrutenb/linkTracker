@@ -5,15 +5,15 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
-import lombok.RequiredArgsConstructor;
 
 @Repository
 @RefreshScope

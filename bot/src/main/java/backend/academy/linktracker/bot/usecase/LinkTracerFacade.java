@@ -1,10 +1,8 @@
 package backend.academy.linktracker.bot.usecase;
 
-import backend.academy.linktracker.bot.common.TransactionHandler;
 import backend.academy.linktracker.bot.core.entities.BotChat;
 import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.LinkUpdate;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
@@ -14,11 +12,11 @@ import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.exceptions.RequestBodyFieldValidationException;
 import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
-import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
 import com.pengrad.telegrambot.model.Update;
+import jakarta.transaction.Transactional;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +25,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.context.annotation.Lazy;
-import jakarta.transaction.Transactional;
 
 @Slf4j
 @Service
@@ -53,7 +49,8 @@ public class LinkTracerFacade {
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
         messagesOrderService.clear();
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
-            transactionTemplate.executeWithoutResult(status -> this.processLinkTrackerUpdate(update, replyServiceQualifier));
+            transactionTemplate.executeWithoutResult(
+                    status -> this.processLinkTrackerUpdate(update, replyServiceQualifier));
         });
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
@@ -65,15 +62,19 @@ public class LinkTracerFacade {
     private void processLinkTrackerUpdate(Update update, Qualifier replyServiceQualifier) {
         EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
         TelegramBotMessage message = TelegramUpdatesMapper.map(update, replyServiceQualifier);
-        
+
         if (eventsStateWatcher.toProcessEvent(eventId)) {
             if (messagesOrderService.toProcessMessage(message)) {
                 log.atInfo()
-                    .addKeyValue("message id", message.id())
-                    .addKeyValue("chat id", message.chat().getId())
-                    .log("Processing new message");
-                if (botUsersRepository.getTelegramBotUser(message.user().userId()).isEmpty()) {
-                    botUsersRepository.createTelegramBotUser(message.user()); // Globally user info may change, but we do not really depents on such changes
+                        .addKeyValue("message id", message.id())
+                        .addKeyValue("chat id", message.chat().getId())
+                        .log("Processing new message");
+                if (botUsersRepository
+                        .getTelegramBotUser(message.user().userId())
+                        .isEmpty()) {
+                    botUsersRepository.createTelegramBotUser(
+                            message.user()); // Globally user info may change, but we do not really depents on such
+                    // changes
                 }
                 if (botChatsRepository.getBotChat(message.chat().getId()).isEmpty()) {
                     botChatsRepository.createBotChat(

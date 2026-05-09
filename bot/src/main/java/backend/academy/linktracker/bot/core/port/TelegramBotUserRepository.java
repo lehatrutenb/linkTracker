@@ -5,7 +5,10 @@ import java.util.Optional;
 
 public interface TelegramBotUserRepository {
     Optional<TelegramBotUser> getTelegramBotUser(long userID);
+
     TelegramBotUser createTelegramBotUser(TelegramBotUser telegramBotUser);
+
     TelegramBotUser updateTelegramBotUser(TelegramBotUser telegramBotUser);
+
     void deleteTelegramBotUser(long userID);
 }

@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
-
 import org.springframework.context.ApplicationEvent;
 import org.springframework.transaction.event.TransactionalApplicationListener;
 
@@ -16,7 +15,7 @@ public abstract class GeneralCommandHandler<T extends ApplicationEvent> implemen
 
     @Override
     public void onApplicationEvent(T event) {
-       processEvent(event);
+        processEvent(event);
     }
 
     @Override
@@ -24,5 +23,4 @@ public abstract class GeneralCommandHandler<T extends ApplicationEvent> implemen
 
     @Override
     public abstract void processEvent(T event);
-
 }

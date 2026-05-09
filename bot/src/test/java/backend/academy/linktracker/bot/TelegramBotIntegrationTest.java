@@ -16,8 +16,8 @@ import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import backend.academy.linktracker.bot.adapter.controller.UpdatesApi;
 import backend.academy.linktracker.bot.adapter.controller.LinkTrackerUserEventController;
+import backend.academy.linktracker.bot.adapter.controller.UpdatesApi;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
 import backend.academy.linktracker.bot.usecase.dtos.models.LinkResponse;
@@ -68,8 +68,10 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @Autowired
     private JdbcClient jdbcClient;
+
     @Autowired
     private LinkTrackerUserEventController linkTracerUserEventController;
+
     @MockitoBean
     private ScrapperUpdatesService scrapperUpdatesService;
 
@@ -175,10 +177,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @Timeout(10)
     void updatesSendsReceivesOK() {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
-            .thenReturn(Either.left(new LinkResponse().id(1L)));
-        when(scrapperUpdatesService.registerChat(any()))
-            .thenReturn(Optional.empty());
-        
+                .thenReturn(Either.left(new LinkResponse().id(1L)));
+        when(scrapperUpdatesService.registerChat(any())).thenReturn(Optional.empty());
+
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
         testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
         testUtils.writeMessageToBot(
@@ -208,10 +209,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
             })
     void invalidUpdatesSendsReceivesError(String invalidUpdateBody) {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
-            .thenReturn(Either.left(new LinkResponse().id(1L)));
-        when(scrapperUpdatesService.registerChat(any()))
-            .thenReturn(Optional.empty());
-    
+                .thenReturn(Either.left(new LinkResponse().id(1L)));
+        when(scrapperUpdatesService.registerChat(any())).thenReturn(Optional.empty());
+
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("invalidUpdatesSendsReceivesError");
         testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
         testUtils.writeMessageToBot(

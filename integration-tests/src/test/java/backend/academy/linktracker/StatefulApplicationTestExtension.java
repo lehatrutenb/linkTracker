@@ -2,7 +2,6 @@ package backend.academy.linktracker;
 
 import backend.academy.linktracker.properties.RefreshScopeProperty;
 import java.util.Arrays;
-import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.springframework.beans.factory.support.DefaultSingletonBeanRegistry;

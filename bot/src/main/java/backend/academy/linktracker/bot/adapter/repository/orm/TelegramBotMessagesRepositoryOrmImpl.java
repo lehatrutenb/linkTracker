@@ -2,8 +2,6 @@ package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotMessageEntity;
-import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
-import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import backend.academy.linktracker.bot.core.entities.BotChatID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
@@ -41,7 +39,8 @@ public class TelegramBotMessagesRepositoryOrmImpl implements TelegramBotMessages
     @Override
     public TelegramBotMessage createMessage(TelegramBotMessage message) {
         var entity = new TelegramBotMessageEntity(message);
-        entity.setChat(botChatsRepository.getReferenceById(BotChatEntity.getID(message.chat().getId())));
+        entity.setChat(botChatsRepository.getReferenceById(
+                BotChatEntity.getID(message.chat().getId())));
         entity.setUser(botUsersRepository.getReferenceById(message.user().userId()));
         return repository.save(entity).toDomain();
     }

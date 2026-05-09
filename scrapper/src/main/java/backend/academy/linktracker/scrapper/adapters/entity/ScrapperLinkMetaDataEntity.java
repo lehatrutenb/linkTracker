@@ -1,29 +1,24 @@
 package backend.academy.linktracker.scrapper.adapters.entity;
 
-import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
-import lombok.AllArgsConstructor;
+import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.List;
-import jakarta.persistence.Id;
-import jakarta.persistence.CascadeType;
 
 @Entity
 @Table(name = "link_metadata")
@@ -36,12 +31,16 @@ public class ScrapperLinkMetaDataEntity {
 
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}) // Not All to not delete tags
     @JoinTable(
-        name = "link_metadata_tags_mapping",
-        joinColumns = {@JoinColumn(name = "link_id"), @JoinColumn(name = "link_uri"), @JoinColumn(name = "listener_id")},
-        inverseJoinColumns = @JoinColumn(name = "tag_name")
-    )
+            name = "link_metadata_tags_mapping",
+            joinColumns = {
+                @JoinColumn(name = "link_id"),
+                @JoinColumn(name = "link_uri"),
+                @JoinColumn(name = "listener_id")
+            },
+            inverseJoinColumns = @JoinColumn(name = "tag_name"))
     private List<TagEntity> tags;
-    // private List<String> filters; // :) let it just be  TODO or rm? in business why filter even if we will need it will be connected to such connection entity
+    // private List<String> filters; // :) let it just be  TODO or rm? in business why filter even if we will need it
+    // will be connected to such connection entity
 
     public ScrapperLinkMetaDataEntity(ScrapperLinkMetaData metaData) {
         id = getID(metaData);
@@ -53,7 +52,8 @@ public class ScrapperLinkMetaDataEntity {
     }
 
     public ScrapperLinkMetaData toDomain() {
-        return new ScrapperLinkMetaData(id.toDomain(), tags.stream().map(TagEntity::getName).toList(), List.of());
+        return new ScrapperLinkMetaData(
+                id.toDomain(), tags.stream().map(TagEntity::getName).toList(), List.of());
     }
 
     @Embeddable
@@ -67,6 +67,7 @@ public class ScrapperLinkMetaDataEntity {
             @AttributeOverride(name = "uri", column = @Column(name = "link_uri")),
         })
         private ScrapperLinkIDEntity linkID;
+
         @Column(name = "listener_id")
         private long listenerID;
 
@@ -85,7 +86,9 @@ public class ScrapperLinkMetaDataEntity {
     @Entity
     @Getter
     @Setter
-    public static class TagEntity { // We basically can have more complex struct or may just have generating id, but i think such structure is easy solution in place where we do not really need to think
+    public static
+    class TagEntity { // We basically can have more complex struct or may just have generating id, but i think such
+        // structure is easy solution in place where we do not really need to think
         @Id
         private String name;
 

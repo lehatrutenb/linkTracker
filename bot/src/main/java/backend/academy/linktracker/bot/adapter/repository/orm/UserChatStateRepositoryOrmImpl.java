@@ -41,7 +41,9 @@ public class UserChatStateRepositoryOrmImpl implements UserChatStateRepository {
     @Override
     @Transactional
     public ChatSharedState updateChatSharedState(BotChatID chatID, ChatSharedState chatSharedState) {
-        return entityManager.merge(new ChatSharedStateEntity(chatID, chatSharedState)).toDomain();
+        return entityManager
+                .merge(new ChatSharedStateEntity(chatID, chatSharedState))
+                .toDomain();
     }
 
     @Override

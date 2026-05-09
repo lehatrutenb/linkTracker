@@ -4,24 +4,20 @@ import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.LinkTag;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dtos.models.ListLinksResponse;
 import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
+import backend.academy.linktracker.bot.usecase.services.ErrorMessageHandler;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
  * Public methods and fields started with `_` for testing purposes only.
@@ -35,12 +31,17 @@ public class ListMessageHandler extends GeneralCommandHandler<LinkTracerNewMessa
     public static final String _NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     private final ScrapperUpdatesService updatesService;
-    private final CancelMessageHandler cancelMessageHandler;
+    private final ErrorMessageHandler errorMessageHandler;
 
-    public ListMessageHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, ScrapperUpdatesService updatesService, CancelMessageHandler cancelMessageHandler) {
+    public ListMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher,
+            ScrapperUpdatesService updatesService,
+            ErrorMessageHandler errorMessageHandler) {
         super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
         this.updatesService = updatesService;
-        this.cancelMessageHandler = cancelMessageHandler;
+        this.errorMessageHandler = errorMessageHandler;
     }
 
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
@@ -59,23 +60,6 @@ public class ListMessageHandler extends GeneralCommandHandler<LinkTracerNewMessa
                         links.stream()
                                 .map(link -> link.getUrl() + " - " + Strings.join(link.getTags(), ','))
                                 .toList());
-    }
-
-    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
-        // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply =
-                switch (HttpStatus.resolve(
-                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
-                    case HttpStatus.NOT_FOUND -> _NO_LINKS_TRACKED_URL_REPLY;
-                    default -> "";
-                };
-        if (!reply.isBlank()) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(event.getMessage().chat().getId().getNumericID(), reply);
-        }
-        cancelMessageHandler.processBotError(event, reply.isBlank());
     }
 
     @Override
@@ -99,7 +83,8 @@ public class ListMessageHandler extends GeneralCommandHandler<LinkTracerNewMessa
 
         var response = updatesService.listLinks(message.chat().getId());
         if (response.isRight()) {
-            handleErrorScrapperResponse(event, response.get());
+            errorMessageHandler.handleErrorScrapperResponse(
+                    event, response.get(), Map.of(HttpStatus.NOT_FOUND, _NO_LINKS_TRACKED_URL_REPLY));
             return;
         }
 

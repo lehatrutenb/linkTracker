@@ -9,15 +9,8 @@ import backend.academy.linktracker.bot.usecase.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
 import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.event.TransactionPhase;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 @Slf4j
 @Service
@@ -29,7 +22,12 @@ public class HelpCommandHandler extends GeneralCommandHandler<LinkTracerNewMessa
     private final CommandsMetaDataService commandsMetaDataService;
     private final TelegramBotMessagesOrderService messagesService;
 
-    public HelpCommandHandler(EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService, BotChatMetaDataService replyServiceMatcher, CommandsMetaDataService commandsMetaDataService, TelegramBotMessagesOrderService messagesService) {
+    public HelpCommandHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher,
+            CommandsMetaDataService commandsMetaDataService,
+            TelegramBotMessagesOrderService messagesService) {
         super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
         this.commandsMetaDataService = commandsMetaDataService;
         this.messagesService = messagesService;

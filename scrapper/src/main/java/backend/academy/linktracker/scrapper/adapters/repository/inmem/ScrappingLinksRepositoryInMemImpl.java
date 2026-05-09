@@ -3,13 +3,13 @@ package backend.academy.linktracker.scrapper.adapters.repository.inmem;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
 import java.net.URI;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
@@ -46,8 +46,8 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
     @Override
     public Optional<ScrapperLinkListener> readScrapperLinkListener(long id) {
         return scrapperLinkListeners.stream()
-            .filter(listener -> listener.listenerID() == id)
-            .findAny();
+                .filter(listener -> listener.listenerID() == id)
+                .findAny();
     }
 
     @Override
@@ -56,7 +56,8 @@ public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksReposito
             scrapperLink.setId(new ScrapperLinkID(scrapperLink.getId().uri(), Optional.of(lastLinkID)));
             lastLinkID++;
         }
-        if (scrapperLinks.stream().anyMatch(link -> link.getId().id().equals(scrapperLink.getId().id()))) {
+        if (scrapperLinks.stream()
+                .anyMatch(link -> link.getId().id().equals(scrapperLink.getId().id()))) {
             throw new RuntimeException("Repository already have entity with same id");
         }
         scrapperLinks.add(scrapperLink);

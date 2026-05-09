@@ -6,7 +6,6 @@ import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import jakarta.transaction.Transactional;
-
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import lombok.RequiredArgsConstructor;
@@ -78,7 +77,9 @@ class ScrapperUpdatesHandleService { // TODO maybe finally rewrite as handler? I
         try {
             eventsStateWatcher.getElderlyProcessingEvents(OwnerIDType.SCRAPPER).forEach(event -> {
                 if (eventsStateWatcher.toProcessEvent(event.id())) {
-                    handle(linkUpdatesRepository.readLinkUpdate(event.id()).orElseThrow(), event.id()); // TODO add check
+                    handle(
+                            linkUpdatesRepository.readLinkUpdate(event.id()).orElseThrow(),
+                            event.id()); // TODO add check
                 }
             });
         } finally {

@@ -1,11 +1,11 @@
 package backend.academy.linktracker.scrapper.usecases.services;
 
-import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperFatLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
 import java.util.Collection;
 import java.util.List;

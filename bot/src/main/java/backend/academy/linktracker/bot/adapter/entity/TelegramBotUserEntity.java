@@ -4,7 +4,6 @@ import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +13,9 @@ import lombok.Setter;
 @Table(name = "telegram_bot_user")
 @Entity
 @NoArgsConstructor
-public class TelegramBotUserEntity { // User is expected to be constant and not even used outside of message context - so currently it merged with it
+public
+class TelegramBotUserEntity { // User is expected to be constant and not even used outside of message context - so
+    // currently it merged with it
     @Id
     private long id;
 

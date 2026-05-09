@@ -27,7 +27,8 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
 
     @Override
     public Optional<LinkUpdate> readLinkUpdate(EventID id) {
-        return client.sql("""
+        return client
+                .sql("""
                 SELECT *
                 FROM link_update lu
                 LEFT JOIN link_update_bot_chats_mapping m ON lu.id = m.link_update_id
@@ -50,10 +51,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
                 LEFT JOIN link_update_bot_chats_mapping m ON lu.id = m.link_update_id
                 INNER JOIN bot_chat bc ON m.bot_chat_id = bc.id
                 WHERE lu.id = :id
-                """)
-                .param("id", LinkUpdateEntity.getID(id))
-                .query(new LinkUpdateEntityRowMapper())
-                .stream()
+                """).param("id", LinkUpdateEntity.getID(id)).query(new LinkUpdateEntityRowMapper()).stream()
                 .findFirst()
                 .map(LinkUpdateEntity::toDomain);
     }
@@ -91,7 +89,8 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     @Transactional
     public LinkUpdate updateLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
         var entity = new LinkUpdateEntity(linkUpdate, eventID);
-        var updatedEntity = client.sql("""
+        var updatedEntity = client
+                .sql("""
             WITH updated AS (
                 UPDATE link_update
                 SET event_id = :event_id, event_owner_id_type = :event_owner_id_type, url = :url, description = :description
