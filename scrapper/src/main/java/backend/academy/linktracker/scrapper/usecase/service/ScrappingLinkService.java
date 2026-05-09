@@ -7,6 +7,7 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
+import backend.academy.linktracker.scrapper.property.ScrapperGlobalProperties;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecase.exception.DuplicateEntityException;
 import backend.academy.linktracker.scrapper.usecase.exception.LinkNotFoundException;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ScrappingLinkService {
     private final ScrappingLinksRepository linksRepository;
     private final ScrappingLinkMetaDataRepository metaDataRepository;
+    private final ScrapperGlobalProperties globalProperties;
 
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     public ScrapperLinkMetaData deleteLinkForLinkListener(ScrapperLinkMetaDataID metaDataID) {
@@ -47,7 +49,7 @@ public class ScrappingLinkService {
         var link = new ScrapperLink(
                 new ScrapperLinkID(addLinkRequest.getLink().orElseThrow()),
                 addLinkRequest.getLink().orElseThrow(),
-                Instant.EPOCH); // Not min, but epoch cause cant format to date string in request it
+                globalProperties.getDefaultLinkCreationDate());
         if (linksRepository.readScrapperLinkIDByURI(link.getUri()).isEmpty()) {
             link = linksRepository.createScrapperLink(link);
         } else {

@@ -14,11 +14,13 @@ public class ScrapperRateLimitService {
     private Instant nextAcceptRequestsTime = Instant.MIN;
 
     public boolean isReachedRateLimit() {
-        if (nextAcceptRequestsTime.isAfter(Instant.now())) {
-            log.error("Scrapper is using too much requests - refusing request");
-            return true;
+        synchronized (this) {
+            if (nextAcceptRequestsTime.isAfter(Instant.now())) {
+                log.error("Scrapper is using too much requests - refusing request");
+                return true;
+            }
+            return false;   
         }
-        return false;
     }
 
     public void setUpdateRateLimitData(Optional<Long> quoutaMax, Optional<Long> quotaRemaining) {
@@ -30,9 +32,11 @@ public class ScrapperRateLimitService {
             log.atError()
                     .addKeyValue("used API rate procs", procsUsed)
                     .log("Scrapper is using too much requests - next requests will be refused");
-            var newAcceptTime = Instant.now().plus(Duration.ofHours(1));
-            if (newAcceptTime.isAfter(nextAcceptRequestsTime)) {
-                nextAcceptRequestsTime = newAcceptTime;
+            synchronized (this) {
+                var newAcceptTime = Instant.now().plus(Duration.ofHours(1));
+                if (newAcceptTime.isAfter(nextAcceptRequestsTime)) {
+                    nextAcceptRequestsTime = newAcceptTime;
+                }
             }
         }
     }

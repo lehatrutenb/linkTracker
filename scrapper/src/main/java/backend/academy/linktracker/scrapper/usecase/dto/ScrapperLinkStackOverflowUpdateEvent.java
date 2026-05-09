@@ -1,3 +1,5 @@
 package backend.academy.linktracker.scrapper.usecase.dto;
 
-public record ScrapperLinkStackOverflowUpdateEvent(String questionID, ScrapperLinkUpdateEventDescription description) {}
+import java.time.Instant;
+
+public record ScrapperLinkStackOverflowUpdateEvent(String questionID, ScrapperLinkUpdateEventDescription description, Instant lastActivityDate) {}

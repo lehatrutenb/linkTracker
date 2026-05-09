@@ -1,12 +1,15 @@
 package backend.academy.linktracker.scrapper.adapter.scrapper.github;
 
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.Event;
+import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.IssuesEvent;
+import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.PushEvent;
 import backend.academy.linktracker.scrapper.property.GithubProperties;
 import backend.academy.linktracker.scrapper.property.ScrapperGlobalProperties;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEvent;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEventDescription;
 import backend.academy.linktracker.scrapper.usecase.service.ScrapperRateLimitService;
 import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -124,11 +127,25 @@ public class GitHubApiClient {
 
     public Collection<ScrapperLinkUpdateEvent> mapEventUpdates(Event[] events) {
         return Arrays.stream(events)
-                .map(event -> new ScrapperLinkUpdateEvent(
-                        event.getRepo().getUrl(),
-                        new ScrapperLinkUpdateEventDescription(
-                                event.getActor().getDisplayLogin() + " did " + event.getType())))
-                .toList();
+            .filter(event -> event.getPayload() instanceof PushEvent || event.getPayload() instanceof IssuesEvent && ((IssuesEvent) event.getPayload()).getAction().equals("opened")) // Ignore reopened issues
+            .map(event -> new ScrapperLinkUpdateEvent(
+                event.getRepo().getUrl(),
+                new ScrapperLinkUpdateEventDescription(
+                    """
+                    name: `{}`
+                    user did: `{}`
+                    timestamp: `{}`
+                    description: `{}`
+                    """
+                    .formatted(
+                        event.getActor().getDisplayLogin(),
+                        event.getType(),
+                        event.getCreatedAt().map(OffsetDateTime::toInstant).map(Instant::toString).orElse(""),
+                        event.getPayload() instanceof PushEvent ? "new push request to " + ((PushEvent) event.getPayload()).getRef() : "new issue of " + ((IssuesEvent) event.getPayload()).getIssue().getTitle()
+                    )
+                )
+            ))
+            .toList();
     }
 
     public ResponseEntity<Event[]> getEventUpdatesPage(

@@ -17,7 +17,7 @@ public class TelegramBotUpdatesHTTPClient {
         restClient = RestClient.create(trackerProperties.getApiPath());
     }
 
-    public void publishUpdate(LinkUpdate linkUpdate) {
+    public synchronized void publishUpdate(LinkUpdate linkUpdate) {
         restClient
                 .post()
                 .uri(trackerProperties.getPaths().getUpdates())

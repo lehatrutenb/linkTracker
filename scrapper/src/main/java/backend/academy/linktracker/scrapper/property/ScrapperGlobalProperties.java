@@ -2,6 +2,7 @@ package backend.academy.linktracker.scrapper.property;
 
 import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -26,4 +27,11 @@ public class ScrapperGlobalProperties {
 
     long rateLimitWarningProcs = 10;
     long rateLimitDebugModeRefuseProcs = 25;
+
+    int parallelScrappersAmount = 5;
+
+    long maxDescriptionLength = 200;
+
+    @NotNull
+    Instant defaultLinkCreationDate = Instant.EPOCH; // Not min, but epoch cause cant format to date string in request it
 }

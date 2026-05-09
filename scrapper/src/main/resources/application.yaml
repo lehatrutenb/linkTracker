@@ -32,6 +32,7 @@ app:
     worker-id: 1
     datacenter-id: 1
   global:
+    parallel-scrappers-amount: 5
   stackoverflow:
     key: ${STACKOVERFLOW_KEY}
     access-token: ${STACKOVERFLOW_ACCESS_KEY}
