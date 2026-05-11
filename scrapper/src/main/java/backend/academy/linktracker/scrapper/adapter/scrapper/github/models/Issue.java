@@ -192,7 +192,7 @@ public class Issue {
 
     private JsonNullable<URI> parentIssueUrl = JsonNullable.<URI>undefined();
 
-    private JsonNullable<IssueComment> pinnedComment = JsonNullable.<IssueComment>undefined();
+    // private JsonNullable<IssueComment> pinnedComment = JsonNullable.<IssueComment>undefined();
 
     private Optional<IssueDependenciesSummary> issueDependenciesSummary = Optional.empty();
 
@@ -219,7 +219,7 @@ public class Issue {
             String state,
             String title,
             SimpleUser user,
-            List<IssueLabelsInner> labels,
+            //            List<IssueLabelsInner> labels,
             Milestone milestone,
             Boolean locked,
             Long comments,
@@ -238,7 +238,7 @@ public class Issue {
         this.state = state;
         this.title = title;
         this.user = JsonNullable.of(user);
-        this.labels = labels;
+        // this.labels = labels;
         this.milestone = JsonNullable.of(milestone);
         this.locked = locked;
         this.comments = comments;
@@ -540,38 +540,40 @@ public class Issue {
         this.user = user;
     }
 
-    public Issue labels(List<IssueLabelsInner> labels) {
-        this.labels = labels;
-        return this;
-    }
+    // public Issue labels(List<IssueLabelsInner> labels) {
+    //     this.labels = labels;
+    //     return this;
+    // }
 
-    public Issue addLabelsItem(IssueLabelsInner labelsItem) {
-        if (this.labels == null) {
-            this.labels = new ArrayList<>();
-        }
-        this.labels.add(labelsItem);
-        return this;
-    }
+    // public Issue addLabelsItem(IssueLabelsInner labelsItem) {
+    //     if (this.labels == null) {
+    //         this.labels = new ArrayList<>();
+    //     }
+    //     this.labels.add(labelsItem);
+    //     return this;
+    // }
 
     /**
      * Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository
      * @return labels
      */
-    @NotNull
-    @Valid
-    @Schema(
-            name = "labels",
-            description =
-                    "Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository",
-            requiredMode = Schema.RequiredMode.REQUIRED)
-    @JsonProperty("labels")
-    public List<IssueLabelsInner> getLabels() {
-        return labels;
-    }
+    // @NotNull
+    // @Valid
+    // @Schema(
+    //         name = "labels",
+    //         description =
+    //                 "Labels to associate with this issue; pass one or more label names to replace the set of labels
+    // on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped
+    // for users without push access to the repository",
+    //         requiredMode = Schema.RequiredMode.REQUIRED)
+    // @JsonProperty("labels")
+    // public List<IssueLabelsInner> getLabels() {
+    //     return labels;
+    // }
 
-    public void setLabels(List<IssueLabelsInner> labels) {
-        this.labels = labels;
-    }
+    // public void setLabels(List<IssueLabelsInner> labels) {
+    //     this.labels = labels;
+    // }
 
     public Issue assignees(List<@Valid SimpleUser1> assignees) {
         this.assignees = assignees;
@@ -901,25 +903,25 @@ public class Issue {
         this.repository = repository;
     }
 
-    public Issue performedViaGithubApp(GitHubApp performedViaGithubApp) {
-        this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
-        return this;
-    }
+    // public Issue performedViaGithubApp(GitHubApp performedViaGithubApp) {
+    //     this.performedViaGithubApp = JsonNullable.of(performedViaGithubApp);
+    //     return this;
+    // }
 
     /**
      * Get performedViaGithubApp
      * @return performedViaGithubApp
      */
-    @Valid
-    @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("performed_via_github_app")
-    public JsonNullable<GitHubApp> getPerformedViaGithubApp() {
-        return performedViaGithubApp;
-    }
+    // @Valid
+    // @Schema(name = "performed_via_github_app", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    // @JsonProperty("performed_via_github_app")
+    // public JsonNullable<GitHubApp> getPerformedViaGithubApp() {
+    //     return performedViaGithubApp;
+    // }
 
-    public void setPerformedViaGithubApp(JsonNullable<GitHubApp> performedViaGithubApp) {
-        this.performedViaGithubApp = performedViaGithubApp;
-    }
+    // public void setPerformedViaGithubApp(JsonNullable<GitHubApp> performedViaGithubApp) {
+    //     this.performedViaGithubApp = performedViaGithubApp;
+    // }
 
     public Issue authorAssociation(AuthorAssociationEnum authorAssociation) {
         this.authorAssociation = Optional.ofNullable(authorAssociation);
@@ -1006,25 +1008,25 @@ public class Issue {
         this.parentIssueUrl = parentIssueUrl;
     }
 
-    public Issue pinnedComment(IssueComment pinnedComment) {
-        this.pinnedComment = JsonNullable.of(pinnedComment);
-        return this;
-    }
+    // public Issue pinnedComment(IssueComment pinnedComment) {
+    //     this.pinnedComment = JsonNullable.of(pinnedComment);
+    //     return this;
+    // }
 
     /**
      * Get pinnedComment
      * @return pinnedComment
      */
-    @Valid
-    @Schema(name = "pinned_comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-    @JsonProperty("pinned_comment")
-    public JsonNullable<IssueComment> getPinnedComment() {
-        return pinnedComment;
-    }
+    // @Valid
+    // @Schema(name = "pinned_comment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+    // @JsonProperty("pinned_comment")
+    // public JsonNullable<IssueComment> getPinnedComment() {
+    //     return pinnedComment;
+    // }
 
-    public void setPinnedComment(JsonNullable<IssueComment> pinnedComment) {
-        this.pinnedComment = pinnedComment;
-    }
+    // public void setPinnedComment(JsonNullable<IssueComment> pinnedComment) {
+    //     this.pinnedComment = pinnedComment;
+    // }
 
     public Issue issueDependenciesSummary(IssueDependenciesSummary issueDependenciesSummary) {
         this.issueDependenciesSummary = Optional.ofNullable(issueDependenciesSummary);
@@ -1097,7 +1099,7 @@ public class Issue {
                 && Objects.equals(this.title, issue.title)
                 && equalsNullable(this.body, issue.body)
                 && Objects.equals(this.user, issue.user)
-                && Objects.equals(this.labels, issue.labels)
+                // && Objects.equals(this.labels, issue.labels)
                 && Objects.equals(this.assignees, issue.assignees)
                 && Objects.equals(this.milestone, issue.milestone)
                 && Objects.equals(this.locked, issue.locked)
@@ -1114,12 +1116,12 @@ public class Issue {
                 && Objects.equals(this.timelineUrl, issue.timelineUrl)
                 && Objects.equals(this.type, issue.type)
                 && Objects.equals(this.repository, issue.repository)
-                && equalsNullable(this.performedViaGithubApp, issue.performedViaGithubApp)
+                // && equalsNullable(this.performedViaGithubApp, issue.performedViaGithubApp)
                 && Objects.equals(this.authorAssociation, issue.authorAssociation)
                 && Objects.equals(this.reactions, issue.reactions)
                 && Objects.equals(this.subIssuesSummary, issue.subIssuesSummary)
                 && equalsNullable(this.parentIssueUrl, issue.parentIssueUrl)
-                && equalsNullable(this.pinnedComment, issue.pinnedComment)
+                // && equalsNullable(this.pinnedComment, issue.pinnedComment)
                 && Objects.equals(this.issueDependenciesSummary, issue.issueDependenciesSummary)
                 && Objects.equals(this.issueFieldValues, issue.issueFieldValues);
     }
@@ -1146,7 +1148,7 @@ public class Issue {
                 title,
                 hashCodeNullable(body),
                 user,
-                labels,
+                // labels,
                 assignees,
                 milestone,
                 locked,
@@ -1163,12 +1165,12 @@ public class Issue {
                 timelineUrl,
                 type,
                 repository,
-                hashCodeNullable(performedViaGithubApp),
+                // hashCodeNullable(performedViaGithubApp),
                 authorAssociation,
                 reactions,
                 subIssuesSummary,
                 hashCodeNullable(parentIssueUrl),
-                hashCodeNullable(pinnedComment),
+                // hashCodeNullable(pinnedComment),
                 issueDependenciesSummary,
                 issueFieldValues);
     }
@@ -1198,7 +1200,7 @@ public class Issue {
         sb.append("    title: ").append(toIndentedString(title)).append("\n");
         sb.append("    body: ").append(toIndentedString(body)).append("\n");
         sb.append("    user: ").append(toIndentedString(user)).append("\n");
-        sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+        // sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
         sb.append("    assignees: ").append(toIndentedString(assignees)).append("\n");
         sb.append("    milestone: ").append(toIndentedString(milestone)).append("\n");
         sb.append("    locked: ").append(toIndentedString(locked)).append("\n");
@@ -1218,7 +1220,7 @@ public class Issue {
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    repository: ").append(toIndentedString(repository)).append("\n");
         sb.append("    performedViaGithubApp: ")
-                .append(toIndentedString(performedViaGithubApp))
+                // .append(toIndentedString(performedViaGithubApp))
                 .append("\n");
         sb.append("    authorAssociation: ")
                 .append(toIndentedString(authorAssociation))
@@ -1230,7 +1232,7 @@ public class Issue {
         sb.append("    parentIssueUrl: ")
                 .append(toIndentedString(parentIssueUrl))
                 .append("\n");
-        sb.append("    pinnedComment: ").append(toIndentedString(pinnedComment)).append("\n");
+        // sb.append("    pinnedComment: ").append(toIndentedString(pinnedComment)).append("\n");
         sb.append("    issueDependenciesSummary: ")
                 .append(toIndentedString(issueDependenciesSummary))
                 .append("\n");
