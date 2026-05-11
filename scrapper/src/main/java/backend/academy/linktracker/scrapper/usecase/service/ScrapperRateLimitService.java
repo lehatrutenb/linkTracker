@@ -19,7 +19,7 @@ public class ScrapperRateLimitService {
                 log.error("Scrapper is using too much requests - refusing request");
                 return true;
             }
-            return false;   
+            return false;
         }
     }
 

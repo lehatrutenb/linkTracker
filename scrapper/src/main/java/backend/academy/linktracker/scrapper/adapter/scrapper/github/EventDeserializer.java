@@ -6,14 +6,20 @@ import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.Event
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.EventRepo;
 import java.time.OffsetDateTime;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.openapitools.jackson.nullable.JsonNullable;
+import org.springframework.beans.factory.annotation.Autowired;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ValueDeserializer;
 
+@Slf4j
 public class EventDeserializer extends ValueDeserializer<Event> {
+    @Autowired
+    private final EventPayloadDeserializer eventPayloadDeserializer = new EventPayloadDeserializer();
+
     @Override
     public Event deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
         JsonNode rootNode = p.objectReadContext().readTree(p);
@@ -30,8 +36,10 @@ public class EventDeserializer extends ValueDeserializer<Event> {
         event.setCreatedAt(JsonNullable.of(
                 readContext.readValue(rootNode.get("created_at").traverse(ctxt), OffsetDateTime.class)));
 
-        ctxt.setAttribute("type", event.getType());
-        event.setPayload(readContext.readValue(rootNode.get("payload").traverse(ctxt), EventPayload.class));
+        eventPayloadDeserializer.setType(event.getType().orElse(null));
+        JsonParser payloadParser = rootNode.get("payload").traverse(ctxt);
+        payloadParser.nextToken();
+        event.setPayload(eventPayloadDeserializer.deserialize(payloadParser, ctxt));
         return event;
     }
 }

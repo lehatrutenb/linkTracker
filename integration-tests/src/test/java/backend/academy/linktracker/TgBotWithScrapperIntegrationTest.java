@@ -34,6 +34,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.Ordered;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -75,7 +78,6 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         registry.add("spring.datasource.password", SharedPostgresContainer::getPassword);
     }
 
-    // TODO Move to bot test config?
     static void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands"))
                 .atPriority(Integer.MAX_VALUE)
@@ -88,6 +90,12 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                                         .withStatus(200)
                                         .withBody(
                                                 "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
+        stubFor(get(urlMatching(".*/stack-overflow-api/.*/questions/.*"))
+                .atPriority(Integer.MAX_VALUE)
+                .willReturn(aResponse()
+                        .withStatus(HttpStatus.OK.value())
+                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                        .withBodyFile("exampleStackOverflowQuestionDescriptionResponse.json")));
     }
 
     @BeforeEach

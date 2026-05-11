@@ -1,0 +1,105 @@
+[
+    {
+        "id": "9288038988",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 268418229,
+            "login": "milo-operator",
+            "display_login": "milo-operator",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/milo-operator",
+            "avatar_url": "https://avatars.githubusercontent.com/u/268418229?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "opened",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80389",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80389",
+                "id": 4416514690,
+                "node_id": "I_kwDOQb6kR88AAAABBz6qgg",
+                "number": 80389,
+                "title": "[Bug]: `message send --media` routes .mp4 through sendVideo and `--force-document` does not override",
+                "user": {
+                    "login": "milo-operator",
+                    "id": 268418229,
+                    "node_id": "U_kgDOD_-8tQ",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/268418229?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/milo-operator",
+                    "html_url": "https://github.com/milo-operator",
+                    "followers_url": "https://api.github.com/users/milo-operator/followers",
+                    "following_url": "https://api.github.com/users/milo-operator/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/milo-operator/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/milo-operator/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/milo-operator/subscriptions",
+                    "organizations_url": "https://api.github.com/users/milo-operator/orgs",
+                    "repos_url": "https://api.github.com/users/milo-operator/repos",
+                    "events_url": "https://api.github.com/users/milo-operator/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/milo-operator/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 2,
+                "created_at": "2026-05-10T18:53:59Z",
+                "updated_at": "2026-05-10T19:26:10Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "CUT BODY TEXT",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            }
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:54:00Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    }
+]

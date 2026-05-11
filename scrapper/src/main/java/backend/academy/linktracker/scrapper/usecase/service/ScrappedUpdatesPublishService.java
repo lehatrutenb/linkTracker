@@ -18,7 +18,7 @@ public class ScrappedUpdatesPublishService {
             updateIDGenerator; // TODO Currently just used to set unique IDS, later should be used by repo inside
     // scrapper not to loose updates
 
-    void publishUpdates(Collection<ScrapperLinkUpdateEvent> updateEvents, ScrapperLink link) {
+    public void publishUpdates(Collection<ScrapperLinkUpdateEvent> updateEvents, ScrapperLink link) {
         var linkListeners = linkListenersService.getListenersOfLink(link.getId());
         updateEvents.forEach(update -> {
             updatesClient.publishUpdate(new LinkUpdate()

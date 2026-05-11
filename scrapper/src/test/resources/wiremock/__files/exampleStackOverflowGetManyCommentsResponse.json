@@ -1,0 +1,673 @@
+{
+    "items": [
+      {
+        "owner": {
+          "user_type": "does_not_exist",
+          "display_name": "user332325"
+        },
+        "reply_to_user": {
+          "account_id": 207473,
+          "reputation": 79893,
+          "user_id": 457352,
+          "user_type": "registered",
+          "accept_rate": 88,
+          "profile_image": "https://www.gravatar.com/avatar/71fae1115a09663bed6c685c523cb0f0?s=256&d=identicon&r=PG",
+          "display_name": "Benoit",
+          "link": "https://stackoverflow.com/users/457352/benoit"
+        },
+        "edited": false,
+        "score": 1,
+        "creation_date": 1296725684,
+        "post_id": 4568645,
+        "comment_id": 5432840,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "@Benoit I would add that 1 is a loop beheld from a side. Maybe other digits are just some twisted loops looked from some funny angle =:P",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5432840_4568645",
+        "body": "@Benoit I would add that 1 is a loop beheld from a side. Maybe other digits are just some twisted loops looked from some funny angle =:P"
+      },
+      {
+        "owner": {
+          "account_id": 207473,
+          "reputation": 79893,
+          "user_id": 457352,
+          "user_type": "registered",
+          "accept_rate": 88,
+          "profile_image": "https://www.gravatar.com/avatar/71fae1115a09663bed6c685c523cb0f0?s=256&d=identicon&r=PG",
+          "display_name": "Benoit",
+          "link": "https://stackoverflow.com/users/457352/benoit"
+        },
+        "edited": false,
+        "score": 2,
+        "creation_date": 1296635271,
+        "post_id": 4568645,
+        "comment_id": 5416722,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Beware, digits 0, 4, 6, 8 and 9 somewhat loop *per se*.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5416722_4568645",
+        "body": "Beware, digits 0, 4, 6, 8 and 9 somewhat loop \u003Ci\u003Eper se\u003C/i\u003E."
+      },
+      {
+        "owner": {
+          "account_id": 265671,
+          "reputation": 34158,
+          "user_id": 552792,
+          "user_type": "registered",
+          "accept_rate": 43,
+          "profile_image": "https://i.sstatic.net/cIcvv.jpg?s=256",
+          "display_name": "jamesmortensen",
+          "link": "https://stackoverflow.com/users/552792/jamesmortensen"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1296356255,
+        "post_id": 4568645,
+        "comment_id": 5374157,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "I think that the main goal of an interview question like this is to see if someone is capable of solving not just a complex problem, but also that they&#39;ll solve problems even if they&#39;re not that interesting.  I wouldn&#39;t want to hire someone who wouldn&#39;t work on a project they weren&#39;t interested in.  On the other hand, the problem with a question like this is that it could attract people who would rather spend their time solving puzzles instead of just getting the job done. MUST BE CUT IN TESTS",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5374157_4568645",
+        "body": "I think that the main goal of an interview question like this is to see if someone is capable of solving not just a complex problem, but also that they&#39;ll solve problems even if they&#39;re not that interesting.  I wouldn&#39;t want to hire someone who wouldn&#39;t work on a project they weren&#39;t interested in.  On the other hand, the problem with a question like this is that it could attract people who would rather spend their time solving puzzles instead of just getting the job done."
+      },
+      {
+        "owner": {
+          "account_id": 241879,
+          "reputation": 10878,
+          "user_id": 512993,
+          "user_type": "registered",
+          "accept_rate": 90,
+          "profile_image": "https://www.gravatar.com/avatar/51d44174b0768f7703925d969ca149df?s=256&d=identicon&r=PG",
+          "display_name": "Ho&#224;ng Long",
+          "link": "https://stackoverflow.com/users/512993/ho%c3%a0ng-long"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1296271791,
+        "post_id": 4568645,
+        "comment_id": 5366277,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Don&#39;t understand, people could grant bounty in a community wiki?",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5366277_4568645",
+        "body": "Don&#39;t understand, people could grant bounty in a community wiki?"
+      },
+      {
+        "owner": {
+          "account_id": 102727,
+          "reputation": 14609,
+          "user_id": 275581,
+          "user_type": "registered",
+          "accept_rate": 92,
+          "profile_image": "https://www.gravatar.com/avatar/e84da79590a8906f48d0b96ba0f7f572?s=256&d=identicon&r=PG",
+          "display_name": "metamatt",
+          "link": "https://stackoverflow.com/users/275581/metamatt"
+        },
+        "edited": false,
+        "score": 3,
+        "creation_date": 1296264964,
+        "post_id": 4568645,
+        "comment_id": 5365704,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "The question is lame, but the answers are awesome.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5365704_4568645",
+        "body": "The question is lame, but the answers are awesome."
+      },
+      {
+        "owner": {
+          "account_id": 51914,
+          "reputation": 69234,
+          "user_id": 155137,
+          "user_type": "registered",
+          "accept_rate": 91,
+          "profile_image": "https://www.gravatar.com/avatar/00f9d78517e7e17837e0e7ac227305ca?s=256&d=identicon&r=PG",
+          "display_name": "Martijn Courteaux",
+          "link": "https://stackoverflow.com/users/155137/martijn-courteaux"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1295465071,
+        "post_id": 4568645,
+        "comment_id": 5238896,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Most programmers do count from zero.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5238896_4568645",
+        "body": "Most programmers do count from zero."
+      },
+      {
+        "owner": {
+          "account_id": 259071,
+          "reputation": 213048,
+          "user_id": 541686,
+          "user_type": "registered",
+          "accept_rate": 81,
+          "profile_image": "https://www.gravatar.com/avatar/f2d0d2c0f7a83e2f8797a5ae79a324b6?s=256&d=identicon&r=PG",
+          "display_name": "user541686",
+          "link": "https://stackoverflow.com/users/541686/user541686"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1294180175,
+        "post_id": 4568645,
+        "comment_id": 5053053,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "I&#39;m just curious why this post got *91* +1&#39;s (and counting)? It&#39;s interesting, but is it really *that* interesting?!",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5053053_4568645",
+        "body": "I&#39;m just curious why this post got \u003Ci\u003E91\u003C/i\u003E +1&#39;s (and counting)? It&#39;s interesting, but is it really \u003Ci\u003Ethat\u003C/i\u003E interesting?!"
+      },
+      {
+        "owner": {
+          "account_id": 251,
+          "reputation": 2254,
+          "user_id": 311,
+          "user_type": "registered",
+          "accept_rate": 100,
+          "profile_image": "https://www.gravatar.com/avatar/f11daa085e44f0af96a5b76c6adb6547?s=256&d=identicon&r=PG",
+          "display_name": "Bruce Alderman",
+          "link": "https://stackoverflow.com/users/311/bruce-alderman"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1294072952,
+        "post_id": 4568645,
+        "comment_id": 5036886,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "If they want developers who program like that, their codebase is going to be a bear to maintain.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5036886_4568645",
+        "body": "If they want developers who program like that, their codebase is going to be a bear to maintain."
+      },
+      {
+        "owner": {
+          "account_id": 32380,
+          "reputation": 139620,
+          "user_id": 89806,
+          "user_type": "registered",
+          "accept_rate": 58,
+          "profile_image": "https://www.gravatar.com/avatar/ec1badc96f503965770beaaa2fb29c16?s=256&d=identicon&r=PG&f=y&so-version=2",
+          "display_name": "moinudin",
+          "link": "https://stackoverflow.com/users/89806/moinudin"
+        },
+        "edited": false,
+        "score": 4,
+        "creation_date": 1294055137,
+        "post_id": 4568645,
+        "comment_id": 5034062,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Discussion on [proggit](http://www.reddit.com/r/programming/comments/ev2fc/printing_1_to_1000_without_loop_or_conditionals/).",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5034062_4568645",
+        "body": "Discussion on \u003Ca href=\"http://www.reddit.com/r/programming/comments/ev2fc/printing_1_to_1000_without_loop_or_conditionals/\" rel=\"nofollow noreferrer\"\u003Eproggit\u003C/a\u003E."
+      },
+      {
+        "owner": {
+          "account_id": 50166,
+          "reputation": 41159,
+          "user_id": 149530,
+          "user_type": "registered",
+          "accept_rate": 100,
+          "profile_image": "https://www.gravatar.com/avatar/9b6c8b04130af49735de5be666d67c00?s=256&d=identicon&r=PG",
+          "display_name": "Michael F",
+          "link": "https://stackoverflow.com/users/149530/michael-f"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1294050525,
+        "post_id": 4568645,
+        "comment_id": 5033491,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "People still equate conditional expressions with conditional statements. How nice.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5033491_4568645",
+        "body": "People still equate conditional expressions with conditional statements. How nice."
+      },
+      {
+        "owner": {
+          "account_id": 130079,
+          "reputation": 1477,
+          "user_id": 329076,
+          "user_type": "registered",
+          "accept_rate": 96,
+          "profile_image": "https://www.gravatar.com/avatar/c8e738f27adc36efb2f4a25edc9692eb?s=256&d=identicon&r=PG",
+          "display_name": "Joel",
+          "link": "https://stackoverflow.com/users/329076/joel"
+        },
+        "reply_to_user": {
+          "account_id": 50706,
+          "reputation": 357351,
+          "user_id": 151292,
+          "user_type": "registered",
+          "accept_rate": 85,
+          "profile_image": "https://i.sstatic.net/AQNZx.jpg?s=256",
+          "display_name": "James McNellis",
+          "link": "https://stackoverflow.com/users/151292/james-mcnellis"
+        },
+        "edited": false,
+        "score": 2,
+        "creation_date": 1294024020,
+        "post_id": 4568645,
+        "comment_id": 5031170,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "@James Or you could just call printf 999 times, and use one of them to print two numbers.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5031170_4568645",
+        "body": "@James Or you could just call printf 999 times, and use one of them to print two numbers."
+      },
+      {
+        "owner": {
+          "account_id": 831,
+          "reputation": 129026,
+          "user_id": 1084,
+          "user_type": "registered",
+          "accept_rate": 86,
+          "profile_image": "https://www.gravatar.com/avatar/898c2217a5457bdef0a0ed58283010dc?s=256&d=identicon&r=PG",
+          "display_name": "Nathan Fellman",
+          "link": "https://stackoverflow.com/users/1084/nathan-fellman"
+        },
+        "edited": false,
+        "score": 2,
+        "creation_date": 1293995143,
+        "post_id": 4568645,
+        "comment_id": 5028484,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Continuing my previous comment, I&#39;ve hired many people who didn&#39;t solve the problems, and rejected many who did. A single question is never the basis for such a decision.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5028484_4568645",
+        "body": "Continuing my previous comment, I&#39;ve hired many people who didn&#39;t solve the problems, and rejected many who did. A single question is never the basis for such a decision."
+      },
+      {
+        "owner": {
+          "account_id": 831,
+          "reputation": 129026,
+          "user_id": 1084,
+          "user_type": "registered",
+          "accept_rate": 86,
+          "profile_image": "https://www.gravatar.com/avatar/898c2217a5457bdef0a0ed58283010dc?s=256&d=identicon&r=PG",
+          "display_name": "Nathan Fellman",
+          "link": "https://stackoverflow.com/users/1084/nathan-fellman"
+        },
+        "edited": false,
+        "score": 7,
+        "creation_date": 1293995058,
+        "post_id": 4568645,
+        "comment_id": 5028472,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "As someone who has interviewed many times and considered the &quot;add a constraint&quot; questions, there is definitely value to these questions. (a) You want to see how the interviewee deals with changes to the spec (b) see how the interviewee tries to find different approaches (c) weed out people who don&#39;t have any clue at all. Basically, the point in these questions is not the final answer, but the thought process. Another advantage of such simple questions is that they can weed out people who knew the question and said they&#39;d never heard it before. I don&#39;t like to hire people who lie to me.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5028472_4568645",
+        "body": "As someone who has interviewed many times and considered the &quot;add a constraint&quot; questions, there is definitely value to these questions. (a) You want to see how the interviewee deals with changes to the spec (b) see how the interviewee tries to find different approaches (c) weed out people who don&#39;t have any clue at all. Basically, the point in these questions is not the final answer, but the thought process. Another advantage of such simple questions is that they can weed out people who knew the question and said they&#39;d never heard it before. I don&#39;t like to hire people who lie to me."
+      },
+      {
+        "owner": {
+          "account_id": 55292,
+          "reputation": 93330,
+          "user_id": 165520,
+          "user_type": "registered",
+          "accept_rate": 80,
+          "profile_image": "https://i.sstatic.net/yJCdp.jpg?s=256",
+          "display_name": "Prasoon Saurav",
+          "link": "https://stackoverflow.com/users/165520/prasoon-saurav"
+        },
+        "edited": false,
+        "score": 2,
+        "creation_date": 1293939622,
+        "post_id": 4568645,
+        "comment_id": 5024481,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Why are you people determined to close this one?",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5024481_4568645",
+        "body": "Why are you people determined to close this one?"
+      },
+      {
+        "owner": {
+          "account_id": 151321,
+          "reputation": 28092,
+          "user_id": 365102,
+          "user_type": "registered",
+          "accept_rate": 94,
+          "profile_image": "https://i.sstatic.net/4cFxJ9Lj.jpg?s=256",
+          "display_name": "Mateen Ulhaq",
+          "link": "https://stackoverflow.com/users/365102/mateen-ulhaq"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1293851018,
+        "post_id": 4568645,
+        "comment_id": 5018611,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "`printf(&quot;42&quot;);` or `&quot;00101010&quot;` or `&quot;0x2A&quot;` or `&quot;6*9&quot;` or `&quot;54&quot;`.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5018611_4568645",
+        "body": "\u003Ccode\u003Eprintf(&quot;42&quot;);\u003C/code\u003E or \u003Ccode\u003E&quot;00101010&quot;\u003C/code\u003E or \u003Ccode\u003E&quot;0x2A&quot;\u003C/code\u003E or \u003Ccode\u003E&quot;6*9&quot;\u003C/code\u003E or \u003Ccode\u003E&quot;54&quot;\u003C/code\u003E."
+      },
+      {
+        "owner": {
+          "account_id": 7335,
+          "reputation": 342587,
+          "user_id": 12711,
+          "user_type": "registered",
+          "accept_rate": 75,
+          "profile_image": "https://www.gravatar.com/avatar/c330bdee507c95c603a93ca91d9145a9?s=256&d=identicon&r=PG",
+          "display_name": "Michael Burr",
+          "link": "https://stackoverflow.com/users/12711/michael-burr"
+        },
+        "edited": false,
+        "score": 8,
+        "creation_date": 1293837467,
+        "post_id": 4568645,
+        "comment_id": 5018095,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Personally, I think there were several answers that had clever, interesting solutions. I also think that while this could easily be an awful interview question, there could be good value in it, as long as the interviewer is really looking not so much for a completely well-formed solution as looking for whether the interviewee considered approaches that indicate a knowledge of TMP or using constructs in unusual ways. I think it would be bad if this were used this as a pure &#39;got-it-right/wrong&#39; question, but if it were used as the starting point of a discussion, I could see a lot of value.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5018095_4568645",
+        "body": "Personally, I think there were several answers that had clever, interesting solutions. I also think that while this could easily be an awful interview question, there could be good value in it, as long as the interviewer is really looking not so much for a completely well-formed solution as looking for whether the interviewee considered approaches that indicate a knowledge of TMP or using constructs in unusual ways. I think it would be bad if this were used this as a pure &#39;got-it-right/wrong&#39; question, but if it were used as the starting point of a discussion, I could see a lot of value."
+      },
+      {
+        "owner": {
+          "account_id": 37175,
+          "reputation": 729440,
+          "user_id": 106224,
+          "user_type": "registered",
+          "accept_rate": 96,
+          "profile_image": "https://www.gravatar.com/avatar/a2d818d801ce38a33807f68fdd92043a?s=256&d=identicon&r=PG",
+          "display_name": "BoltClock",
+          "link": "https://stackoverflow.com/users/106224/boltclock"
+        },
+        "reply_to_user": {
+          "account_id": 1827,
+          "reputation": 101943,
+          "user_id": 2509,
+          "user_type": "registered",
+          "accept_rate": 88,
+          "profile_image": "https://www.gravatar.com/avatar/a0b76a96bc18dfe728fa8774ed32d321?s=256&d=identicon&r=PG&f=y&so-version=2",
+          "display_name": "dmckee --- ex-moderator kitten",
+          "link": "https://stackoverflow.com/users/2509/dmckee-ex-moderator-kitten"
+        },
+        "edited": false,
+        "score": 4,
+        "creation_date": 1293830844,
+        "post_id": 4568645,
+        "comment_id": 5017598,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "@dmckee: &quot;Print 1 to 1000 without doing so.&quot;",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5017598_4568645",
+        "body": "@dmckee: &quot;Print 1 to 1000 without doing so.&quot;"
+      },
+      {
+        "owner": {
+          "account_id": 1827,
+          "reputation": 101943,
+          "user_id": 2509,
+          "user_type": "registered",
+          "accept_rate": 88,
+          "profile_image": "https://www.gravatar.com/avatar/a0b76a96bc18dfe728fa8774ed32d321?s=256&d=identicon&r=PG&f=y&so-version=2",
+          "display_name": "dmckee --- ex-moderator kitten",
+          "link": "https://stackoverflow.com/users/2509/dmckee-ex-moderator-kitten"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1293829093,
+        "post_id": 4568645,
+        "comment_id": 5017429,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "From my point of view *&quot;Solve this puzzle with one more constraint than the last time it was posted&quot;* question are unwanted, because they admit *&quot;Solve the same puzzle with still another constraint&quot;* and so on *ad nauseum*. To be sure the constructor solution is neat and understanding it means you know something about OO languages, but pone question on the matter is enough.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5017429_4568645",
+        "body": "From my point of view \u003Ci\u003E&quot;Solve this puzzle with one more constraint than the last time it was posted&quot;\u003C/i\u003E question are unwanted, because they admit \u003Ci\u003E&quot;Solve the same puzzle with still another constraint&quot;\u003C/i\u003E and so on \u003Ci\u003Ead nauseum\u003C/i\u003E. To be sure the constructor solution is neat and understanding it means you know something about OO languages, but pone question on the matter is enough."
+      },
+      {
+        "owner": {
+          "account_id": 72087,
+          "reputation": 53995,
+          "user_id": 208257,
+          "user_type": "registered",
+          "accept_rate": 100,
+          "profile_image": "https://www.gravatar.com/avatar/8d59503078761ba50620cbee4348882e?s=256&d=identicon&r=PG",
+          "display_name": "Dan Burton",
+          "link": "https://stackoverflow.com/users/208257/dan-burton"
+        },
+        "edited": false,
+        "score": 5,
+        "creation_date": 1293828617,
+        "post_id": 4568645,
+        "comment_id": 5017396,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "If instead of C/C++ you were asked to do this in assembly language, with equivalent constraints, it would be impossible. So why are you not allowed to do things that your compiler will make your code do anyways?",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5017396_4568645",
+        "body": "If instead of C/C++ you were asked to do this in assembly language, with equivalent constraints, it would be impossible. So why are you not allowed to do things that your compiler will make your code do anyways?"
+      },
+      {
+        "owner": {
+          "account_id": 20815,
+          "reputation": 478,
+          "user_id": 50073,
+          "user_type": "registered",
+          "profile_image": "https://www.gravatar.com/avatar/bdc4eb7e2fcf1313fbf246d400701c0e?s=256&d=identicon&r=PG",
+          "display_name": "Miguel L&#243;pez",
+          "link": "https://stackoverflow.com/users/50073/miguel-l%c3%b3pez"
+        },
+        "edited": false,
+        "score": 1,
+        "creation_date": 1293823532,
+        "post_id": 4568645,
+        "comment_id": 5016954,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "-1 Because its duplicated and nonsense. Also kind of offtopic I think it fits better in programmers.stackchange or as an example to Code Golf and Programming Puzzles beta",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5016954_4568645",
+        "body": "-1 Because its duplicated and nonsense. Also kind of offtopic I think it fits better in programmers.stackchange or as an example to Code Golf and Programming Puzzles beta"
+      },
+      {
+        "owner": {
+          "account_id": 14543,
+          "reputation": 35003,
+          "user_id": 30018,
+          "user_type": "registered",
+          "accept_rate": 97,
+          "profile_image": "https://www.gravatar.com/avatar/ccddf43f6a7a99378f32a0c39c3f8733?s=256&d=identicon&r=PG",
+          "display_name": "JohnFx",
+          "link": "https://stackoverflow.com/users/30018/johnfx"
+        },
+        "edited": false,
+        "score": 127,
+        "creation_date": 1293820806,
+        "post_id": 4568645,
+        "comment_id": 5016675,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "The interview your chance to shine. Tell them &quot;Without loops or conditionals? Child&#39;s play. I can do it without a computer!&quot; Then pull out pen and notepad. They may give you a confused look, but just explain that if you can&#39;t count on built in language constructs, you really can&#39;t assume anything.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5016675_4568645",
+        "body": "The interview your chance to shine. Tell them &quot;Without loops or conditionals? Child&#39;s play. I can do it without a computer!&quot; Then pull out pen and notepad. They may give you a confused look, but just explain that if you can&#39;t count on built in language constructs, you really can&#39;t assume anything."
+      },
+      {
+        "owner": {
+          "account_id": 73130,
+          "reputation": 15329,
+          "user_id": 210774,
+          "user_type": "registered",
+          "accept_rate": 100,
+          "profile_image": "https://www.gravatar.com/avatar/c9bc8019f26f2112390568c1bf175b2b?s=256&d=identicon&r=PG",
+          "display_name": "arcain",
+          "link": "https://stackoverflow.com/users/210774/arcain"
+        },
+        "edited": false,
+        "score": 4,
+        "creation_date": 1293820013,
+        "post_id": 4568645,
+        "comment_id": 5016584,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "I&#39;d relish the opportunity to question the interviewer about what real insights into my skills and ability he/she was getting out of asking this question, especially since I&#39;d already know that I wouldn&#39;t want to work there.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5016584_4568645",
+        "body": "I&#39;d relish the opportunity to question the interviewer about what real insights into my skills and ability he/she was getting out of asking this question, especially since I&#39;d already know that I wouldn&#39;t want to work there."
+      },
+      {
+        "owner": {
+          "account_id": 103497,
+          "reputation": 72934,
+          "user_id": 277176,
+          "user_type": "registered",
+          "accept_rate": 78,
+          "profile_image": "https://www.gravatar.com/avatar/2678da280c230bccef9781b8e5fbaf80?s=256&d=identicon&r=PG",
+          "display_name": "Yakov Galka",
+          "link": "https://stackoverflow.com/users/277176/yakov-galka"
+        },
+        "reply_to_user": {
+          "account_id": 28947,
+          "reputation": 92441,
+          "user_id": 77779,
+          "user_type": "registered",
+          "accept_rate": 89,
+          "profile_image": "https://www.gravatar.com/avatar/1a62456c71b0851726898e87ec88b69c?s=256&d=identicon&r=PG",
+          "display_name": "Yishai",
+          "link": "https://stackoverflow.com/users/77779/yishai"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1293814254,
+        "post_id": 4568645,
+        "comment_id": 5015955,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "@Yishai: that someone answered a wrong question there doesn&#39;t make this question a duplicate.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5015955_4568645",
+        "body": "@Yishai: that someone answered a wrong question there doesn&#39;t make this question a duplicate."
+      },
+      {
+        "owner": {
+          "account_id": 28947,
+          "reputation": 92441,
+          "user_id": 77779,
+          "user_type": "registered",
+          "accept_rate": 89,
+          "profile_image": "https://www.gravatar.com/avatar/1a62456c71b0851726898e87ec88b69c?s=256&d=identicon&r=PG",
+          "display_name": "Yishai",
+          "link": "https://stackoverflow.com/users/77779/yishai"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1293813841,
+        "post_id": 4568645,
+        "comment_id": 5015913,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Note that this is answered in the duplicate question for C++ here: http://stackoverflow.com/questions/2044033/display-numbers-from-1-to-100-without-loops-or-conditions/2046685#2046685",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5015913_4568645",
+        "body": "Note that this is answered in the duplicate question for C++ here: \u003Ca href=\"http://stackoverflow.com/questions/2044033/display-numbers-from-1-to-100-without-loops-or-conditions/2046685#2046685\" title=\"display numbers from 1 to 100 without loops or conditions\"\u003Estackoverflow.com/questions/2044033/&hellip;\u003C/a\u003E"
+      },
+      {
+        "owner": {
+          "account_id": 16029,
+          "reputation": 510522,
+          "user_id": 34509,
+          "user_type": "registered",
+          "accept_rate": 62,
+          "profile_image": "https://i.sstatic.net/7FnYg.jpg?s=256",
+          "display_name": "Johannes Schaub - litb",
+          "link": "https://stackoverflow.com/users/34509/johannes-schaub-litb"
+        },
+        "edited": false,
+        "score": 3,
+        "creation_date": 1293808925,
+        "post_id": 4568645,
+        "comment_id": 5015326,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "lol this is not an exact duplicate of that java question. reopening...",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5015326_4568645",
+        "body": "lol this is not an exact duplicate of that java question. reopening..."
+      },
+      {
+        "owner": {
+          "user_type": "does_not_exist",
+          "display_name": "user34537"
+        },
+        "edited": false,
+        "score": 0,
+        "creation_date": 1293807544,
+        "post_id": 4568645,
+        "comment_id": 5015168,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "I could understand no loops but why on earth no conditionals!? Theres no true way to do this without conditionals (unless its 1 to infinity) but i know it can be done without loops -edit- maybe templates as its compile time. Also i dont consider function calls as a loop (even if its recursion. Its just a jump/functional call).",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5015168_4568645",
+        "body": "I could understand no loops but why on earth no conditionals!? Theres no true way to do this without conditionals (unless its 1 to infinity) but i know it can be done without loops -edit- maybe templates as its compile time. Also i dont consider function calls as a loop (even if its recursion. Its just a jump/functional call)."
+      },
+      {
+        "owner": {
+          "account_id": 103497,
+          "reputation": 72934,
+          "user_id": 277176,
+          "user_type": "registered",
+          "accept_rate": 78,
+          "profile_image": "https://www.gravatar.com/avatar/2678da280c230bccef9781b8e5fbaf80?s=256&d=identicon&r=PG",
+          "display_name": "Yakov Galka",
+          "link": "https://stackoverflow.com/users/277176/yakov-galka"
+        },
+        "edited": false,
+        "score": 6,
+        "creation_date": 1293799734,
+        "post_id": 4568645,
+        "comment_id": 5014464,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Who votes it to be EXACT duplicate? The other question is about java, and it has different answers! The two languages are different!",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5014464_4568645",
+        "body": "Who votes it to be EXACT duplicate? The other question is about java, and it has different answers! The two languages are different!"
+      },
+      {
+        "owner": {
+          "account_id": 37175,
+          "reputation": 729440,
+          "user_id": 106224,
+          "user_type": "registered",
+          "accept_rate": 96,
+          "profile_image": "https://www.gravatar.com/avatar/a2d818d801ce38a33807f68fdd92043a?s=256&d=identicon&r=PG",
+          "display_name": "BoltClock",
+          "link": "https://stackoverflow.com/users/106224/boltclock"
+        },
+        "reply_to_user": {
+          "account_id": 24020,
+          "reputation": 76085,
+          "user_id": 60777,
+          "user_type": "registered",
+          "accept_rate": 77,
+          "profile_image": "https://www.gravatar.com/avatar/4e698bea14e1d5f5c86d0359e5f24d28?s=256&d=identicon&r=PG",
+          "display_name": "Chris Lutz",
+          "link": "https://stackoverflow.com/users/60777/chris-lutz"
+        },
+        "edited": false,
+        "score": 6,
+        "creation_date": 1293796754,
+        "post_id": 4568645,
+        "comment_id": 5014206,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "@Chris: `:?` is a &quot;confused&quot; face on some forum software.",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5014206_4568645",
+        "body": "@Chris: \u003Ccode\u003E:?\u003C/code\u003E is a &quot;confused&quot; face on some forum software."
+      },
+      {
+        "owner": {
+          "account_id": 165340,
+          "reputation": 4622,
+          "user_id": 388702,
+          "user_type": "registered",
+          "profile_image": "https://www.gravatar.com/avatar/9e3e81a245610306e15787f137dc28bd?s=256&d=identicon&r=PG",
+          "display_name": "RobertB",
+          "link": "https://stackoverflow.com/users/388702/robertb"
+        },
+        "edited": false,
+        "score": 4,
+        "creation_date": 1293789502,
+        "post_id": 4568645,
+        "comment_id": 5013528,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "Sounds like a CompSci homework question. :-)",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5013528_4568645",
+        "body": "Sounds like a CompSci homework question. :-)"
+      },
+      {
+        "owner": {
+          "account_id": 24020,
+          "reputation": 76085,
+          "user_id": 60777,
+          "user_type": "registered",
+          "accept_rate": 77,
+          "profile_image": "https://www.gravatar.com/avatar/4e698bea14e1d5f5c86d0359e5f24d28?s=256&d=identicon&r=PG",
+          "display_name": "Chris Lutz",
+          "link": "https://stackoverflow.com/users/60777/chris-lutz"
+        },
+        "edited": false,
+        "score": 7,
+        "creation_date": 1293788887,
+        "post_id": 4568645,
+        "comment_id": 5013461,
+        "content_license": "CC BY-SA 2.5",
+        "body_markdown": "`:?` isn&#39;t a conditional _statement_ (it&#39;s an expression)...",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals#comment5013461_4568645",
+        "body": "\u003Ccode\u003E:?\u003C/code\u003E isn&#39;t a conditional \u003Ci\u003Estatement\u003C/i\u003E (it&#39;s an expression)..."
+      }
+    ],
+    "has_more": true,
+    "quota_max": 10000,
+    "quota_remaining": 9999
+  }

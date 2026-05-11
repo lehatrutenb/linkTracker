@@ -32,7 +32,7 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
             throw new IllegalArgumentException("Got incorrect uri to scrap");
         }
         var questionID = getQuestionID(uri).orElseThrow();
-        var res = apiClient.getAnswersUpdates(List.of(questionID), since, now());
+        var res = apiClient.getUpdates(List.of(questionID), since, now());
         return Pair.of(mapToInnerEvents(res.getLeft(), uri), res.getRight());
     }
 

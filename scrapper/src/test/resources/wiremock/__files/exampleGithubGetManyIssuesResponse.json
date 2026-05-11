@@ -1,0 +1,764 @@
+[
+    {
+        "id": "9288038988",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 268418229,
+            "login": "milo-operator",
+            "display_login": "milo-operator",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/milo-operator",
+            "avatar_url": "https://avatars.githubusercontent.com/u/268418229?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "opened",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80389",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80389",
+                "id": 4416514690,
+                "node_id": "I_kwDOQb6kR88AAAABBz6qgg",
+                "number": 80389,
+                "title": "[Bug]: `message send --media` routes .mp4 through sendVideo and `--force-document` does not override",
+                "user": {
+                    "login": "milo-operator",
+                    "id": 268418229,
+                    "node_id": "U_kgDOD_-8tQ",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/268418229?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/milo-operator",
+                    "html_url": "https://github.com/milo-operator",
+                    "followers_url": "https://api.github.com/users/milo-operator/followers",
+                    "following_url": "https://api.github.com/users/milo-operator/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/milo-operator/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/milo-operator/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/milo-operator/subscriptions",
+                    "organizations_url": "https://api.github.com/users/milo-operator/orgs",
+                    "repos_url": "https://api.github.com/users/milo-operator/repos",
+                    "events_url": "https://api.github.com/users/milo-operator/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/milo-operator/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 2,
+                "created_at": "2026-05-10T18:53:59Z",
+                "updated_at": "2026-05-10T19:26:10Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Summary\n\n`openclaw message send --channel telegram --target <chat> --media <file.mp4>` routes MP4 files through Telegram's `sendVideo` endpoint, which fails with `Network request for 'sendVideo' failed!` (no further detail). The documented `--force-document` flag, intended to \"send media as document to avoid Telegram compression,\" **does not override the routing** — the same `sendVideo` call is made and the same error returned.\n\nThe result is that no video file can be delivered to Telegram via `message send` regardless of flags, and the agent CLI returns exit 0 with the failure only visible in stderr lines, so callers (scripts, agents) think the send succeeded.\n\n### Workaround\n\nBypass the plugin and POST directly to Telegram's bot API with `sendDocument` — works first try, in seconds, and Telegram still renders an inline video player for MP4s. So the underlying network and bot setup are fine; it's specifically the plugin's routing.\n\n```bash\nTOKEN=$(jq -r '.channels.telegram.botToken' /path/to/openclaw.json)\ncurl -s -F chat_id=<chat> -F document=@/path/file.mp4 \\\n  \"https://api.telegram.org/bot${TOKEN}/sendDocument\"\n# → {\"ok\": true, \"result\": {\"message_id\": ..., \"video\": {...}}}\n```\n\n### Steps to reproduce\n\n1. Have a working Telegram bot configured in `openclaw.json` (text sends fine).\n2. Have any valid `.mp4` file on disk under 50 MB (the bot API hard limit).\n3. Run:\n   ```\n   openclaw message send --channel telegram --target <chatId> --media /path/to/file.mp4\n   ```\n4. Wait ~30–60s. Stderr eventually shows:\n   ```\n   [telegram] video failed: Network request for 'sendVideo' failed!\n   HttpError: Network request for 'sendVideo' failed!\n   ```\n5. Exit code is 0 despite the failure.\n6. Re-run with `--force-document` added — same error, same routing through `sendVideo`.\n\nReproduced with a 7.8 MB H.264 MP4 (1224×720, 94s, valid container) — same file uploads cleanly via direct `sendDocument`.\n\n### Expected behavior\n\nEither:\n\n- (A) `--force-document` actually routes through `sendDocument`, OR\n- (B) When `sendVideo` fails, the plugin auto-falls back to `sendDocument` (Telegram's recommended general-purpose endpoint), OR\n- (C) Both — `--force-document` as explicit override AND auto-fallback when typed endpoints fail\n\nIn any case, exit code should be non-zero on failure so callers can react.\n\n### Actual behavior\n\n- Routes through `sendVideo` regardless of `--force-document`\n- `sendVideo` fails (likely codec/container strictness on Telegram's side, or upload timeout — the error message gives no detail)\n- No fallback to `sendDocument` even though that's the universally-compatible path\n- Process exits 0, hiding the failure from callers\n\n### Environment\n\n- **OpenClaw Version:** 2026.4.29 (a448042)\n- **OS:** macOS Darwin 25.3.0 (Apple Silicon)\n- **Integration:** Telegram bot API\n- **File tested:** 7.8 MB MP4, H.264, 1224×720, 94s, well under the 50 MB bot-API limit\n\n### Why this matters\n\nVideo delivery is a common request (downloaded YouTube/X videos, screen recordings, generated content). The current state means **any agent skill that downloads a video and tries to deliver it via `message send --media` silently fails**, and the agent has no way to detect this without scraping stderr.\n\nRelated: #74061 (`<final>MEDIA:...` regression in 2026.4.26+) is a different code path with the same outward symptom (\"Media failed\"). Fixing this `--media` bug doesn't fix #74061 and vice versa.\n\n### Suggested fix priority\n\n1. Make `--force-document` actually force `sendDocument` (one-line routing change)\n2. Add `sendDocument` auto-fallback when typed endpoint fails (`sendVideo` / `sendAudio` / `sendPhoto` → retry as document)\n3. Fix exit code: any non-200 final outcome → exit non-zero",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80389/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            }
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:54:00Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    },
+    {
+        "id": "9288033279",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 257215752,
+            "login": "openclaw-barnacle[bot]",
+            "display_login": "openclaw-barnacle",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/openclaw-barnacle[bot]",
+            "avatar_url": "https://avatars.githubusercontent.com/u/257215752?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "labeled",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80387",
+                "id": 4416513048,
+                "node_id": "I_kwDOQb6kR88AAAABBz6kGA",
+                "number": 80387,
+                "title": "[Bug]: Openclaw command disappears after brew upgrade installs a new Node major",
+                "user": {
+                    "login": "yaanfpv",
+                    "id": 102520430,
+                    "node_id": "U_kgDOBhxWbg",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/102520430?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/yaanfpv",
+                    "html_url": "https://github.com/yaanfpv",
+                    "followers_url": "https://api.github.com/users/yaanfpv/followers",
+                    "following_url": "https://api.github.com/users/yaanfpv/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/yaanfpv/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/yaanfpv/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/yaanfpv/subscriptions",
+                    "organizations_url": "https://api.github.com/users/yaanfpv/orgs",
+                    "repos_url": "https://api.github.com/users/yaanfpv/repos",
+                    "events_url": "https://api.github.com/users/yaanfpv/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/yaanfpv/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [
+                    {
+                        "id": 9706244967,
+                        "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                        "name": "bug",
+                        "color": "d73a4a",
+                        "default": true,
+                        "description": "Something isn't working"
+                    },
+                    {
+                        "id": 10321003530,
+                        "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                        "name": "bug:crash",
+                        "color": "B60205",
+                        "default": false,
+                        "description": "Process/app exits unexpectedly or hangs"
+                    }
+                ],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 1,
+                "created_at": "2026-05-10T18:53:12Z",
+                "updated_at": "2026-05-10T19:02:23Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Bug type\n\nCrash (process/app exits or hangs)\n\n### Beta release blocker\n\nNo\n\n### Summary\n\nAfter a routine `brew upgrade` bumped Homebrew Node from 25.9.0_3 to 26.0.0, the `openclaw` command was gone from PATH with no warning. The bin shim at `/opt/homebrew/bin/openclaw` pointed inside the now-deleted Node 25 cellar directory, and `~/.openclaw/` config was untouched. Earlier `openclaw update` runs had been quietly reinstalling openclaw back inside the same per-version Node directory the version manager was about to delete, so each successful update was setting up the next breakage.\n\n### Steps to reproduce\n\n1. Have openclaw installed under `/opt/homebrew/Cellar/node/<X>/lib/node_modules/openclaw/` (this is what you get if any post-install or tooling step invokes the brew-bundled `npm` directly instead of the version-agnostic shim).\n2. Run `brew upgrade` (or `brew upgrade node`) so Homebrew bumps Node to a new major and deletes the old cellar directory.\n3. Open a fresh shell and run `which openclaw`. Expected the command to be on PATH. Actual: `openclaw not found`. Inspect `/opt/homebrew/bin/openclaw` and confirm the symlink target is the deleted cellar path.\n\n### Expected behavior\n\n`openclaw` stays reachable on PATH across routine `brew upgrade` cycles. Self-update relocates the install to a version-agnostic prefix (e.g. `/opt/homebrew/lib/node_modules/openclaw/`) that survives Node version bumps, the same way it would behave on an install that never landed inside a cellar.\n\n### Actual behavior\n\n`openclaw: command not found` after the brew upgrade. `/opt/homebrew/bin/openclaw` was a dangling symlink into `/opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs`, which no longer existed. The gateway service kept running because it had already loaded the deleted Node binary into memory, so the breakage stayed invisible until a restart or a fresh shell.\n\n```\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n```\n\n### OpenClaw version\n\n2026.5.7\n\n### Operating system\n\nmacOS 26.4.1 (Apple Silicon, arm64)\n\n### Install method\n\nHomebrew Node + `npm install -g openclaw` (which had previously landed inside the brew Cellar via the bundled per-version npm).\n\n### Model\n\nN/A (install/CLI plumbing, not model-related)\n\n### Provider / routing chain\n\nN/A (install/CLI plumbing, not provider-related)\n\n### Additional provider/model setup details\n\nN/A. Issue is in the self-update resolver in `src/infra/update-global.ts`, not in any provider or routing path.\n\n### Logs, screenshots, and evidence\n\n```shell\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n\n# After applying the fix in PR #80386 and reinstalling via the brew-shimmed npm:\n$ openclaw --version\nOpenClaw 2026.5.2 (8b2a6e5)\n$ readlink /opt/homebrew/bin/openclaw\n/opt/homebrew/lib/node_modules/openclaw/openclaw.mjs\n```\n\n### Impact and severity\n\nAffected: any operator whose openclaw install ended up inside a per-version Node directory (Homebrew Cellar, nvm, asdf, volta, fnm, n) and who later ran a routine version-manager bump.\nSeverity: High. CLI vanishes silently. Gateway service keeps running on the in-memory copy of the deleted Node binary, so the breakage hides until restart or a fresh shell.\nFrequency: Reproducible 1/1 once you are in the trap. The trap is self-perpetuating because `openclaw update` would keep reinstalling into the same per-version directory.\nConsequence: Operators see `openclaw: command not found`, hunt for what they did wrong (nothing), and have to manually rebuild the install path under the new Node directory to recover.\n\n### Additional information\n\nLast known good: openclaw 2026.5.7 with Homebrew Node 25.9.0_3 (just before the brew upgrade).\nFirst known bad: same openclaw 2026.5.7 immediately after `brew upgrade` bumped Node to 26.0.0.\nWorkaround: reinstall openclaw via the version-agnostic shimmed npm: `/opt/homebrew/bin/npm install -g openclaw`. That lands the install at `/opt/homebrew/lib/node_modules/openclaw/` instead of the cellar.\n\nFix proposed in PR #80386 (https://github.com/openclaw/openclaw/pull/80386). The self-update resolver now spots per-Node ephemeral install prefixes (Homebrew Cellar, nvm, asdf, volta, fnm, n) and refuses to use the per-version `npm` from inside them, so the fallback to PATH `npm` lands the install at a stable prefix that survives the next bump.",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            },
+            "label": {
+                "id": 10321003530,
+                "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                "name": "bug:crash",
+                "color": "B60205",
+                "default": false,
+                "description": "Process/app exits unexpectedly or hangs"
+            },
+            "labels": [
+                {
+                    "id": 9706244967,
+                    "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                    "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                    "name": "bug",
+                    "color": "d73a4a",
+                    "default": true,
+                    "description": "Something isn't working"
+                },
+                {
+                    "id": 10321003530,
+                    "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                    "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                    "name": "bug:crash",
+                    "color": "B60205",
+                    "default": false,
+                    "description": "Process/app exits unexpectedly or hangs"
+                }
+            ]
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:53:31Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    },
+    {
+        "id": "9288029954",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 102520430,
+            "login": "yaanfpv",
+            "display_login": "yaanfpv",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/yaanfpv",
+            "avatar_url": "https://avatars.githubusercontent.com/u/102520430?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "labeled",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80387",
+                "id": 4416513048,
+                "node_id": "I_kwDOQb6kR88AAAABBz6kGA",
+                "number": 80387,
+                "title": "[Bug]: Openclaw command disappears after brew upgrade installs a new Node major",
+                "user": {
+                    "login": "yaanfpv",
+                    "id": 102520430,
+                    "node_id": "U_kgDOBhxWbg",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/102520430?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/yaanfpv",
+                    "html_url": "https://github.com/yaanfpv",
+                    "followers_url": "https://api.github.com/users/yaanfpv/followers",
+                    "following_url": "https://api.github.com/users/yaanfpv/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/yaanfpv/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/yaanfpv/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/yaanfpv/subscriptions",
+                    "organizations_url": "https://api.github.com/users/yaanfpv/orgs",
+                    "repos_url": "https://api.github.com/users/yaanfpv/repos",
+                    "events_url": "https://api.github.com/users/yaanfpv/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/yaanfpv/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [
+                    {
+                        "id": 9706244967,
+                        "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                        "name": "bug",
+                        "color": "d73a4a",
+                        "default": true,
+                        "description": "Something isn't working"
+                    },
+                    {
+                        "id": 10321003530,
+                        "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                        "name": "bug:crash",
+                        "color": "B60205",
+                        "default": false,
+                        "description": "Process/app exits unexpectedly or hangs"
+                    }
+                ],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 1,
+                "created_at": "2026-05-10T18:53:12Z",
+                "updated_at": "2026-05-10T19:02:23Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Bug type\n\nCrash (process/app exits or hangs)\n\n### Beta release blocker\n\nNo\n\n### Summary\n\nAfter a routine `brew upgrade` bumped Homebrew Node from 25.9.0_3 to 26.0.0, the `openclaw` command was gone from PATH with no warning. The bin shim at `/opt/homebrew/bin/openclaw` pointed inside the now-deleted Node 25 cellar directory, and `~/.openclaw/` config was untouched. Earlier `openclaw update` runs had been quietly reinstalling openclaw back inside the same per-version Node directory the version manager was about to delete, so each successful update was setting up the next breakage.\n\n### Steps to reproduce\n\n1. Have openclaw installed under `/opt/homebrew/Cellar/node/<X>/lib/node_modules/openclaw/` (this is what you get if any post-install or tooling step invokes the brew-bundled `npm` directly instead of the version-agnostic shim).\n2. Run `brew upgrade` (or `brew upgrade node`) so Homebrew bumps Node to a new major and deletes the old cellar directory.\n3. Open a fresh shell and run `which openclaw`. Expected the command to be on PATH. Actual: `openclaw not found`. Inspect `/opt/homebrew/bin/openclaw` and confirm the symlink target is the deleted cellar path.\n\n### Expected behavior\n\n`openclaw` stays reachable on PATH across routine `brew upgrade` cycles. Self-update relocates the install to a version-agnostic prefix (e.g. `/opt/homebrew/lib/node_modules/openclaw/`) that survives Node version bumps, the same way it would behave on an install that never landed inside a cellar.\n\n### Actual behavior\n\n`openclaw: command not found` after the brew upgrade. `/opt/homebrew/bin/openclaw` was a dangling symlink into `/opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs`, which no longer existed. The gateway service kept running because it had already loaded the deleted Node binary into memory, so the breakage stayed invisible until a restart or a fresh shell.\n\n```\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n```\n\n### OpenClaw version\n\n2026.5.7\n\n### Operating system\n\nmacOS 26.4.1 (Apple Silicon, arm64)\n\n### Install method\n\nHomebrew Node + `npm install -g openclaw` (which had previously landed inside the brew Cellar via the bundled per-version npm).\n\n### Model\n\nN/A (install/CLI plumbing, not model-related)\n\n### Provider / routing chain\n\nN/A (install/CLI plumbing, not provider-related)\n\n### Additional provider/model setup details\n\nN/A. Issue is in the self-update resolver in `src/infra/update-global.ts`, not in any provider or routing path.\n\n### Logs, screenshots, and evidence\n\n```shell\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n\n# After applying the fix in PR #80386 and reinstalling via the brew-shimmed npm:\n$ openclaw --version\nOpenClaw 2026.5.2 (8b2a6e5)\n$ readlink /opt/homebrew/bin/openclaw\n/opt/homebrew/lib/node_modules/openclaw/openclaw.mjs\n```\n\n### Impact and severity\n\nAffected: any operator whose openclaw install ended up inside a per-version Node directory (Homebrew Cellar, nvm, asdf, volta, fnm, n) and who later ran a routine version-manager bump.\nSeverity: High. CLI vanishes silently. Gateway service keeps running on the in-memory copy of the deleted Node binary, so the breakage hides until restart or a fresh shell.\nFrequency: Reproducible 1/1 once you are in the trap. The trap is self-perpetuating because `openclaw update` would keep reinstalling into the same per-version directory.\nConsequence: Operators see `openclaw: command not found`, hunt for what they did wrong (nothing), and have to manually rebuild the install path under the new Node directory to recover.\n\n### Additional information\n\nLast known good: openclaw 2026.5.7 with Homebrew Node 25.9.0_3 (just before the brew upgrade).\nFirst known bad: same openclaw 2026.5.7 immediately after `brew upgrade` bumped Node to 26.0.0.\nWorkaround: reinstall openclaw via the version-agnostic shimmed npm: `/opt/homebrew/bin/npm install -g openclaw`. That lands the install at `/opt/homebrew/lib/node_modules/openclaw/` instead of the cellar.\n\nFix proposed in PR #80386 (https://github.com/openclaw/openclaw/pull/80386). The self-update resolver now spots per-Node ephemeral install prefixes (Homebrew Cellar, nvm, asdf, volta, fnm, n) and refuses to use the per-version `npm` from inside them, so the fallback to PATH `npm` lands the install at a stable prefix that survives the next bump.",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            },
+            "label": {
+                "id": 9706244967,
+                "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                "name": "bug",
+                "color": "d73a4a",
+                "default": true,
+                "description": "Something isn't working"
+            },
+            "labels": [
+                {
+                    "id": 9706244967,
+                    "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                    "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                    "name": "bug",
+                    "color": "d73a4a",
+                    "default": true,
+                    "description": "Something isn't working"
+                }
+            ]
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:53:14Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    },
+    {
+        "id": "9288029913",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 102520430,
+            "login": "yaanfpv",
+            "display_login": "yaanfpv",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/yaanfpv",
+            "avatar_url": "https://avatars.githubusercontent.com/u/102520430?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "opened",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80387",
+                "id": 4416513048,
+                "node_id": "I_kwDOQb6kR88AAAABBz6kGA",
+                "number": 80387,
+                "title": "[Bug]: Openclaw command disappears after brew upgrade installs a new Node major",
+                "user": {
+                    "login": "yaanfpv",
+                    "id": 102520430,
+                    "node_id": "U_kgDOBhxWbg",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/102520430?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/yaanfpv",
+                    "html_url": "https://github.com/yaanfpv",
+                    "followers_url": "https://api.github.com/users/yaanfpv/followers",
+                    "following_url": "https://api.github.com/users/yaanfpv/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/yaanfpv/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/yaanfpv/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/yaanfpv/subscriptions",
+                    "organizations_url": "https://api.github.com/users/yaanfpv/orgs",
+                    "repos_url": "https://api.github.com/users/yaanfpv/repos",
+                    "events_url": "https://api.github.com/users/yaanfpv/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/yaanfpv/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [
+                    {
+                        "id": 9706244967,
+                        "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                        "name": "bug",
+                        "color": "d73a4a",
+                        "default": true,
+                        "description": "Something isn't working"
+                    },
+                    {
+                        "id": 10321003530,
+                        "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                        "name": "bug:crash",
+                        "color": "B60205",
+                        "default": false,
+                        "description": "Process/app exits unexpectedly or hangs"
+                    }
+                ],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 1,
+                "created_at": "2026-05-10T18:53:12Z",
+                "updated_at": "2026-05-10T19:02:23Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Bug type\n\nCrash (process/app exits or hangs)\n\n### Beta release blocker\n\nNo\n\n### Summary\n\nAfter a routine `brew upgrade` bumped Homebrew Node from 25.9.0_3 to 26.0.0, the `openclaw` command was gone from PATH with no warning. The bin shim at `/opt/homebrew/bin/openclaw` pointed inside the now-deleted Node 25 cellar directory, and `~/.openclaw/` config was untouched. Earlier `openclaw update` runs had been quietly reinstalling openclaw back inside the same per-version Node directory the version manager was about to delete, so each successful update was setting up the next breakage.\n\n### Steps to reproduce\n\n1. Have openclaw installed under `/opt/homebrew/Cellar/node/<X>/lib/node_modules/openclaw/` (this is what you get if any post-install or tooling step invokes the brew-bundled `npm` directly instead of the version-agnostic shim).\n2. Run `brew upgrade` (or `brew upgrade node`) so Homebrew bumps Node to a new major and deletes the old cellar directory.\n3. Open a fresh shell and run `which openclaw`. Expected the command to be on PATH. Actual: `openclaw not found`. Inspect `/opt/homebrew/bin/openclaw` and confirm the symlink target is the deleted cellar path.\n\n### Expected behavior\n\n`openclaw` stays reachable on PATH across routine `brew upgrade` cycles. Self-update relocates the install to a version-agnostic prefix (e.g. `/opt/homebrew/lib/node_modules/openclaw/`) that survives Node version bumps, the same way it would behave on an install that never landed inside a cellar.\n\n### Actual behavior\n\n`openclaw: command not found` after the brew upgrade. `/opt/homebrew/bin/openclaw` was a dangling symlink into `/opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs`, which no longer existed. The gateway service kept running because it had already loaded the deleted Node binary into memory, so the breakage stayed invisible until a restart or a fresh shell.\n\n```\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n```\n\n### OpenClaw version\n\n2026.5.7\n\n### Operating system\n\nmacOS 26.4.1 (Apple Silicon, arm64)\n\n### Install method\n\nHomebrew Node + `npm install -g openclaw` (which had previously landed inside the brew Cellar via the bundled per-version npm).\n\n### Model\n\nN/A (install/CLI plumbing, not model-related)\n\n### Provider / routing chain\n\nN/A (install/CLI plumbing, not provider-related)\n\n### Additional provider/model setup details\n\nN/A. Issue is in the self-update resolver in `src/infra/update-global.ts`, not in any provider or routing path.\n\n### Logs, screenshots, and evidence\n\n```shell\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n\n# After applying the fix in PR #80386 and reinstalling via the brew-shimmed npm:\n$ openclaw --version\nOpenClaw 2026.5.2 (8b2a6e5)\n$ readlink /opt/homebrew/bin/openclaw\n/opt/homebrew/lib/node_modules/openclaw/openclaw.mjs\n```\n\n### Impact and severity\n\nAffected: any operator whose openclaw install ended up inside a per-version Node directory (Homebrew Cellar, nvm, asdf, volta, fnm, n) and who later ran a routine version-manager bump.\nSeverity: High. CLI vanishes silently. Gateway service keeps running on the in-memory copy of the deleted Node binary, so the breakage hides until restart or a fresh shell.\nFrequency: Reproducible 1/1 once you are in the trap. The trap is self-perpetuating because `openclaw update` would keep reinstalling into the same per-version directory.\nConsequence: Operators see `openclaw: command not found`, hunt for what they did wrong (nothing), and have to manually rebuild the install path under the new Node directory to recover.\n\n### Additional information\n\nLast known good: openclaw 2026.5.7 with Homebrew Node 25.9.0_3 (just before the brew upgrade).\nFirst known bad: same openclaw 2026.5.7 immediately after `brew upgrade` bumped Node to 26.0.0.\nWorkaround: reinstall openclaw via the version-agnostic shimmed npm: `/opt/homebrew/bin/npm install -g openclaw`. That lands the install at `/opt/homebrew/lib/node_modules/openclaw/` instead of the cellar.\n\nFix proposed in PR #80386 (https://github.com/openclaw/openclaw/pull/80386). The self-update resolver now spots per-Node ephemeral install prefixes (Homebrew Cellar, nvm, asdf, volta, fnm, n) and refuses to use the per-version `npm` from inside them, so the fallback to PATH `npm` lands the install at a stable prefix that survives the next bump.",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            }
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:53:14Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    },
+    {
+        "id": "9288029913",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 102520430,
+            "login": "yaanfpv",
+            "display_login": "yaanfpv",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/yaanfpv",
+            "avatar_url": "https://avatars.githubusercontent.com/u/102520430?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "opened",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/80387",
+                "id": 4416513048,
+                "node_id": "I_kwDOQb6kR88AAAABBz6kGA",
+                "number": 80387,
+                "title": "[Bug]: Openclaw command disappears after brew upgrade installs a new Node major",
+                "user": {
+                    "login": "yaanfpv",
+                    "id": 102520430,
+                    "node_id": "U_kgDOBhxWbg",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/102520430?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/yaanfpv",
+                    "html_url": "https://github.com/yaanfpv",
+                    "followers_url": "https://api.github.com/users/yaanfpv/followers",
+                    "following_url": "https://api.github.com/users/yaanfpv/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/yaanfpv/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/yaanfpv/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/yaanfpv/subscriptions",
+                    "organizations_url": "https://api.github.com/users/yaanfpv/orgs",
+                    "repos_url": "https://api.github.com/users/yaanfpv/repos",
+                    "events_url": "https://api.github.com/users/yaanfpv/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/yaanfpv/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [
+                    {
+                        "id": 9706244967,
+                        "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                        "name": "bug",
+                        "color": "d73a4a",
+                        "default": true,
+                        "description": "Something isn't working"
+                    },
+                    {
+                        "id": 10321003530,
+                        "node_id": "LA_kwDOQb6kR88AAAACZy4ECg",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug:crash",
+                        "name": "bug:crash",
+                        "color": "B60205",
+                        "default": false,
+                        "description": "Process/app exits unexpectedly or hangs"
+                    }
+                ],
+                "state": "open",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 1,
+                "created_at": "2026-05-10T18:53:12Z",
+                "updated_at": "2026-05-10T19:02:23Z",
+                "closed_at": null,
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Bug type\n\nCrash (process/app exits or hangs)\n\n### Beta release blocker\n\nNo\n\n### Summary\n\nAfter a routine `brew upgrade` bumped Homebrew Node from 25.9.0_3 to 26.0.0, the `openclaw` command was gone from PATH with no warning. The bin shim at `/opt/homebrew/bin/openclaw` pointed inside the now-deleted Node 25 cellar directory, and `~/.openclaw/` config was untouched. Earlier `openclaw update` runs had been quietly reinstalling openclaw back inside the same per-version Node directory the version manager was about to delete, so each successful update was setting up the next breakage.\n\n### Steps to reproduce\n\n1. Have openclaw installed under `/opt/homebrew/Cellar/node/<X>/lib/node_modules/openclaw/` (this is what you get if any post-install or tooling step invokes the brew-bundled `npm` directly instead of the version-agnostic shim).\n2. Run `brew upgrade` (or `brew upgrade node`) so Homebrew bumps Node to a new major and deletes the old cellar directory.\n3. Open a fresh shell and run `which openclaw`. Expected the command to be on PATH. Actual: `openclaw not found`. Inspect `/opt/homebrew/bin/openclaw` and confirm the symlink target is the deleted cellar path.\n\n### Expected behavior\n\n`openclaw` stays reachable on PATH across routine `brew upgrade` cycles. Self-update relocates the install to a version-agnostic prefix (e.g. `/opt/homebrew/lib/node_modules/openclaw/`) that survives Node version bumps, the same way it would behave on an install that never landed inside a cellar.\n\n### Actual behavior\n\n`openclaw: command not found` after the brew upgrade. `/opt/homebrew/bin/openclaw` was a dangling symlink into `/opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs`, which no longer existed. The gateway service kept running because it had already loaded the deleted Node binary into memory, so the breakage stayed invisible until a restart or a fresh shell.\n\n```\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n```\n\n### OpenClaw version\n\n2026.5.7\n\n### Operating system\n\nmacOS 26.4.1 (Apple Silicon, arm64)\n\n### Install method\n\nHomebrew Node + `npm install -g openclaw` (which had previously landed inside the brew Cellar via the bundled per-version npm).\n\n### Model\n\nN/A (install/CLI plumbing, not model-related)\n\n### Provider / routing chain\n\nN/A (install/CLI plumbing, not provider-related)\n\n### Additional provider/model setup details\n\nN/A. Issue is in the self-update resolver in `src/infra/update-global.ts`, not in any provider or routing path.\n\n### Logs, screenshots, and evidence\n\n```shell\n$ which openclaw\nopenclaw not found\n$ ls -la /opt/homebrew/bin/openclaw\nlrwxr-xr-x 1 sohamagents admin 73 May 4 21:27 /opt/homebrew/bin/openclaw -> /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\n$ ls /opt/homebrew/Cellar/node/25.9.0_3/lib/node_modules/openclaw/openclaw.mjs\nls: No such file or directory\n\n# After applying the fix in PR #80386 and reinstalling via the brew-shimmed npm:\n$ openclaw --version\nOpenClaw 2026.5.2 (8b2a6e5)\n$ readlink /opt/homebrew/bin/openclaw\n/opt/homebrew/lib/node_modules/openclaw/openclaw.mjs\n```\n\n### Impact and severity\n\nAffected: any operator whose openclaw install ended up inside a per-version Node directory (Homebrew Cellar, nvm, asdf, volta, fnm, n) and who later ran a routine version-manager bump.\nSeverity: High. CLI vanishes silently. Gateway service keeps running on the in-memory copy of the deleted Node binary, so the breakage hides until restart or a fresh shell.\nFrequency: Reproducible 1/1 once you are in the trap. The trap is self-perpetuating because `openclaw update` would keep reinstalling into the same per-version directory.\nConsequence: Operators see `openclaw: command not found`, hunt for what they did wrong (nothing), and have to manually rebuild the install path under the new Node directory to recover.\n\n### Additional information\n\nLast known good: openclaw 2026.5.7 with Homebrew Node 25.9.0_3 (just before the brew upgrade).\nFirst known bad: same openclaw 2026.5.7 immediately after `brew upgrade` bumped Node to 26.0.0.\nWorkaround: reinstall openclaw via the version-agnostic shimmed npm: `/opt/homebrew/bin/npm install -g openclaw`. That lands the install at `/opt/homebrew/lib/node_modules/openclaw/` instead of the cellar.\n\nFix proposed in PR #80386 (https://github.com/openclaw/openclaw/pull/80386). The self-update resolver now spots per-Node ephemeral install prefixes (Homebrew Cellar, nvm, asdf, volta, fnm, n) and refuses to use the per-version `npm` from inside them, so the fallback to PATH `npm` lands the install at a stable prefix that survives the next bump.",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/reactions",
+                    "total_count": 2,
+                    "+1": 1,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 1
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/80387/timeline",
+                "performed_via_github_app": null,
+                "state_reason": null,
+                "pinned_comment": null
+            }
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:53:14Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    },
+    {
+        "id": "9288016792",
+        "type": "IssuesEvent",
+        "actor": {
+            "id": 274271284,
+            "login": "clawsweeper[bot]",
+            "display_login": "clawsweeper",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/clawsweeper[bot]",
+            "avatar_url": "https://avatars.githubusercontent.com/u/274271284?"
+        },
+        "repo": {
+            "id": 1103012935,
+            "name": "openclaw/openclaw",
+            "url": "https://api.github.com/repos/openclaw/openclaw"
+        },
+        "payload": {
+            "action": "closed",
+            "issue": {
+                "url": "https://api.github.com/repos/openclaw/openclaw/issues/42354",
+                "repository_url": "https://api.github.com/repos/openclaw/openclaw",
+                "labels_url": "https://api.github.com/repos/openclaw/openclaw/issues/42354/labels{/name}",
+                "comments_url": "https://api.github.com/repos/openclaw/openclaw/issues/42354/comments",
+                "events_url": "https://api.github.com/repos/openclaw/openclaw/issues/42354/events",
+                "html_url": "https://github.com/openclaw/openclaw/issues/42354",
+                "id": 4052953463,
+                "node_id": "I_kwDOQb6kR87xkyl3",
+                "number": 42354,
+                "title": "[Bug]: [Feishu/Lark] WebSocket long connection fails - code: 1000040351, system busy",
+                "user": {
+                    "login": "xifengxx",
+                    "id": 15701172,
+                    "node_id": "MDQ6VXNlcjE1NzAxMTcy",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/15701172?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/xifengxx",
+                    "html_url": "https://github.com/xifengxx",
+                    "followers_url": "https://api.github.com/users/xifengxx/followers",
+                    "following_url": "https://api.github.com/users/xifengxx/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/xifengxx/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/xifengxx/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/xifengxx/subscriptions",
+                    "organizations_url": "https://api.github.com/users/xifengxx/orgs",
+                    "repos_url": "https://api.github.com/users/xifengxx/repos",
+                    "events_url": "https://api.github.com/users/xifengxx/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/xifengxx/received_events",
+                    "type": "User",
+                    "user_view_type": "public",
+                    "site_admin": false
+                },
+                "labels": [
+                    {
+                        "id": 9706244967,
+                        "node_id": "LA_kwDOQb6kR88AAAACQomLZw",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/bug",
+                        "name": "bug",
+                        "color": "d73a4a",
+                        "default": true,
+                        "description": "Something isn't working"
+                    },
+                    {
+                        "id": 10313822852,
+                        "node_id": "LA_kwDOQb6kR88AAAACZsByhA",
+                        "url": "https://api.github.com/repos/openclaw/openclaw/labels/regression",
+                        "name": "regression",
+                        "color": "D93F0B",
+                        "default": false,
+                        "description": "Behavior that previously worked and now fails"
+                    }
+                ],
+                "state": "closed",
+                "locked": false,
+                "assignees": [],
+                "milestone": null,
+                "comments": 4,
+                "created_at": "2026-03-10T16:43:43Z",
+                "updated_at": "2026-05-10T18:52:04Z",
+                "closed_at": "2026-05-10T18:52:04Z",
+                "assignee": null,
+                "issue_field_values": [],
+                "type": null,
+                "active_lock_reason": null,
+                "sub_issues_summary": {
+                    "total": 0,
+                    "completed": 0,
+                    "percent_completed": 0
+                },
+                "issue_dependencies_summary": {
+                    "blocked_by": 0,
+                    "total_blocked_by": 0,
+                    "blocking": 0,
+                    "total_blocking": 0
+                },
+                "body": "### Bug type\n\nRegression (worked before, now fails)\n\n### Summary\n\nFeishu channel WebSocket long connection cannot be established. Lark console shows \"No application connection detected\" when saving event subscription. Error loops: \"code: 1000040351, system busy\" and \"Cannot read properties of undefined (reading 'PingInterval')\".\n\n### Steps to reproduce\n\n1. Configure OpenClaw Feishu channel with connectionMode: \"websocket\"\n2. Start Gateway: openclaw gateway\n3. Open Lark Developer Console → Events and Callbacks\n4. Select \"Use long connection to receive events\"\n5. Check event: im.message.receive_v1\n6. Click Save\n\n### Expected behavior\n\nSave successful, WebSocket connection established, Lark console detects connection\n\n### Actual behavior\n\nError: \"No application connection detected\", save fails. Gateway logs show connection errors looping every 25-30s.\n\n### OpenClaw version\n\n2026.3.8 (3caab92)\n\n### Operating system\n\nmacOS 15.x (Darwin 24.6.0 arm64)\n\n### Install method\n\nnpm install -g openclaw\n\n### Model\n\nbailian/qwen3.5-plus\n\n### Provider / routing chain\n\nopenclaw -> bailian (DashScope)\n\n### Config file / key location\n\n_No response_\n\n### Additional provider/model setup details\n\n_No response_\n\n### Logs, screenshots, and evidence\n\n```shell\n[error]: [ '[ws]', 'code: 1000040351, system busy' ]\n[error]: [ '[ws]', \"Cannot read properties of undefined (reading 'PingInterval')\" ]\n[error]: [ '[ws]', 'connect failed' ]\n[info]: [ 'ws', 'unable to connect to the server after trying N times\")' ]\n\nEnvironment:\n- Node.js: v23.11.0\n- Feishu Plugin: @openclaw/feishu@2026.3.8-beta.1\n- Lark SDK: @larksuiteoapi/node-sdk@^1.59.0\n```\n\n### Impact and severity\n\nAffected: All enterprise users using Feishu/Lark channel\nSeverity: High (blocks Feishu channel deployment)\nFrequency: 100% reproducible\nConsequence: Cannot use WebSocket mode, must fallback to Webhook (requires public URL)\n\n### Additional information\n\nRoot cause: createFeishuWSClient() in extensions/feishu/src/client.ts missing wsConfig parameter.\n\nSuggested fix:\n```typescript\nreturn new Lark.WSClient({\n  appId,\n  appSecret,\n  domain: resolveDomain(domain),\n  loggerLevel: Lark.LoggerLevel.info,\n  wsConfig: {\n    PingInterval: 30,\n    PingTimeout: 5,\n  },\n  ...(agent ? { agent } : {}),\n});",
+                "reactions": {
+                    "url": "https://api.github.com/repos/openclaw/openclaw/issues/42354/reactions",
+                    "total_count": 0,
+                    "+1": 0,
+                    "-1": 0,
+                    "laugh": 0,
+                    "hooray": 0,
+                    "confused": 0,
+                    "heart": 0,
+                    "rocket": 0,
+                    "eyes": 0
+                },
+                "timeline_url": "https://api.github.com/repos/openclaw/openclaw/issues/42354/timeline",
+                "performed_via_github_app": null,
+                "state_reason": "completed",
+                "pinned_comment": null
+            }
+        },
+        "public": true,
+        "created_at": "2026-05-10T18:52:06Z",
+        "org": {
+            "id": 252820863,
+            "login": "openclaw",
+            "gravatar_id": "",
+            "url": "https://api.github.com/orgs/openclaw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/252820863?"
+        }
+    }
+]

@@ -20,6 +20,7 @@ app:
     datacenter-id: 1
   global:
     scrapping-fixed-rate: 100
+    max-description-length: 200
   stackoverflow:
     key: test-token
     access-token: test-token

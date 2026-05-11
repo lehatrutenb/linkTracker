@@ -8,6 +8,8 @@ import backend.academy.linktracker.scrapper.property.ScrapperGlobalProperties;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEvent;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEventDescription;
 import backend.academy.linktracker.scrapper.usecase.service.ScrapperRateLimitService;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
@@ -27,11 +29,14 @@ import org.springframework.hateoas.Link;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
 @Component
+@SuppressFBWarnings("VA_FORMAT_STRING_USES_NEWLINE")
 public class GitHubApiClient {
     private ScrapperGlobalProperties globalProperties;
     private static final String CURRENT_API_VERSION = "2026-03-10";
@@ -64,8 +69,12 @@ public class GitHubApiClient {
             Instant since, String repo, String repoOwner) {
         Optional<String> etagHeader = Optional.empty();
         var response = getEventUpdatesPage(since, repoOwner, repo, etagHeader, 1);
-        var events = response.getBody();
-        var headers = response.getHeaders();
+        if (response.isEmpty()) {
+            return Pair.of(List.of(), since);
+        }
+
+        var events = response.orElseThrow().getBody();
+        var headers = response.orElseThrow().getHeaders();
         var eventsDescriptions = new ArrayList<>(mapEventUpdates(events));
 
         if (events == null) {
@@ -89,7 +98,8 @@ public class GitHubApiClient {
 
         IntStream.range(2, lastUpdatesPage + 1).forEach(page -> {
             eventsDescriptions.addAll(mapEventUpdates(getEventUpdatesPage(since, repoOwner, repo, etagHeader, page)
-                    .getBody()));
+                    .map(ResponseEntity::getBody)
+                    .orElse(new Event[0])));
         });
 
         return Pair.of(eventsDescriptions, newSince);
@@ -127,31 +137,43 @@ public class GitHubApiClient {
 
     public Collection<ScrapperLinkUpdateEvent> mapEventUpdates(Event[] events) {
         return Arrays.stream(events)
-            .filter(event -> event.getPayload() instanceof PushEvent || event.getPayload() instanceof IssuesEvent && ((IssuesEvent) event.getPayload()).getAction().equals("opened")) // Ignore reopened issues
-            .map(event -> new ScrapperLinkUpdateEvent(
-                event.getRepo().getUrl(),
-                new ScrapperLinkUpdateEventDescription(
-                    """
-                    name: `{}`
-                    user did: `{}`
-                    timestamp: `{}`
-                    description: `{}`
-                    """
-                    .formatted(
-                        event.getActor().getDisplayLogin(),
-                        event.getType(),
-                        event.getCreatedAt().map(OffsetDateTime::toInstant).map(Instant::toString).orElse(""),
-                        event.getPayload() instanceof PushEvent ? "new push request to " + ((PushEvent) event.getPayload()).getRef() : "new issue of " + ((IssuesEvent) event.getPayload()).getIssue().getTitle()
-                    )
-                )
-            ))
-            .toList();
+                .filter(event -> event.getPayload() instanceof PushEvent
+                        || event.getPayload() instanceof IssuesEvent
+                                && ((IssuesEvent) event.getPayload())
+                                        .getAction()
+                                        .equals("opened")) // Ignore reopened issues
+                .map(event -> new ScrapperLinkUpdateEvent(
+                        event.getRepo().getUrl(), new ScrapperLinkUpdateEventDescription("""
+                    user: `%s`
+                    did: `%s`
+                    timestamp: `%s`
+                    description: %s
+                    """.formatted(
+                                event.getActor().getDisplayLogin().orElse(""),
+                                event.getType().orElse(""),
+                                event.getCreatedAt()
+                                        .map(OffsetDateTime::toInstant)
+                                        .map(Instant::toString)
+                                        .orElse(""),
+                                Optional.of(
+                                                event.getPayload() instanceof PushEvent
+                                                        ? "new push request to `"
+                                                                + ((PushEvent) event.getPayload()).getRef() + '`'
+                                                        : "new issue of `"
+                                                                + ((IssuesEvent) event.getPayload())
+                                                                        .getIssue()
+                                                                        .getTitle()
+                                                                + '`')
+                                        .map(text -> text.substring(
+                                                0, Math.min(text.length(), globalProperties.getMaxDescriptionLength())))
+                                        .orElse("")))))
+                .toList();
     }
 
-    public ResponseEntity<Event[]> getEventUpdatesPage(
+    public Optional<ResponseEntity<Event[]>> getEventUpdatesPage(
             Instant since, String owner, String repo, Optional<String> etagHeader, Integer page) {
         if (rateLimitService.isReachedRateLimit()) {
-            return ResponseEntity.of(Optional.of(new Event[0]));
+            return Optional.empty();
         }
 
         RestClient client =
@@ -170,13 +192,22 @@ public class GitHubApiClient {
         if (etagHeader.isPresent()) {
             request = request.header("if-none-match", etagHeader.orElseThrow());
         }
-        var response = request.retrieve().toEntity(Event[].class); // Стоило ли оно того?:)
+        ResponseEntity<Event[]> response = null;
+        try {
+            response = request.retrieve().toEntity(Event[].class);
+        } catch (HttpServerErrorException | HttpClientErrorException e) {
+            log.atError()
+                    .addKeyValue("owner", owner)
+                    .addKeyValue("repo", repo)
+                    .log("Error scrapping github updates", e);
+            return Optional.empty();
+        }
         var headers = response.getHeaders();
         rateLimitService.setUpdateRateLimitData(getQuotaMax(headers), getQuotaRemaining(headers));
         if (!response.hasBody()) {
-            return ResponseEntity.of(Optional.of(new Event[0]));
+            return Optional.empty();
         }
-        return response;
+        return Optional.of(response);
     }
 
     public Optional<Long> getQuotaMax(HttpHeaders headers) {

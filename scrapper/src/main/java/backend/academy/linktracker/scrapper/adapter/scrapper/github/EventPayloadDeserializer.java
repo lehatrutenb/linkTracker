@@ -44,7 +44,7 @@ public class EventPayloadDeserializer extends ValueDeserializer<EventPayload> {
         typeMap.put("CommitCommentEvent", CommitCommentEvent.class);
         typeMap.put("DiscussionEvent", DiscussionEvent.class);
         typeMap.put("DeleteEvent", DeleteEvent.class);
-        typeMap.put("IssueCommentEvent", IssueCommentEvent.class);
+        typeMap.put("IssueCommentEvent", null); // Badly parse it - so ignore and null
         typeMap.put("ReleaseEvent", ReleaseEvent.class);
         typeMap.put("ForkEvent", ForkEvent.class);
     }
@@ -53,8 +53,7 @@ public class EventPayloadDeserializer extends ValueDeserializer<EventPayload> {
     public EventPayload deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
         Class<? extends EventPayload> targetClass = typeMap.get(type);
         if (targetClass != null) {
-            var deserializer = ctxt.findNonContextualValueDeserializer(ctxt.constructType(targetClass));
-            return (EventPayload) deserializer.deserialize(p, ctxt);
+            return ctxt.readValue(p, ctxt.constructType(targetClass));
         }
 
         return null;

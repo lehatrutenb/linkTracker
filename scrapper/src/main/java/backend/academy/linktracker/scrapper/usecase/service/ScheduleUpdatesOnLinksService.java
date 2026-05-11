@@ -7,12 +7,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -36,13 +33,22 @@ public class ScheduleUpdatesOnLinksService {
     @Scheduled(fixedDelayString = "${app.global.scrapping-fixed-rate}")
     public void scrapUpdates() {
         var linksToListen = linkListenersService.getAllListeningLinks();
-        linksToListen.forEach(link -> executorService.submit(() -> scrapOneLink(link)));
+        runningTasks.addAndGet(linksToListen.size());
+        linksToListen.forEach(link -> executorService.submit(() -> {
+            try {
+                scrapOneLink(link);
+            } catch (Exception e) {
+                log.atError().addKeyValue("link", link.getUri()).log("Error scrapping link: {}", e.getMessage());
+            } finally {
+                runningTasks.decrementAndGet();
+            }
+        }));
         while (runningTasks.get() > 0) {
             try {
                 Thread.sleep(WAIT_FOR_TERMINATION_TIMEOUT_SECONDS * 1000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException(e);
+                return;
             }
         }
     }

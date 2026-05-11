@@ -9,6 +9,7 @@ import java.net.URI;
 import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.JacksonModule;
 import tools.jackson.databind.json.JsonMapper;
 import tools.jackson.databind.module.SimpleModule;
@@ -17,7 +18,8 @@ import tools.jackson.databind.module.SimpleModule;
 public class JacksonConfig {
     @Bean
     public JsonMapperBuilderCustomizer jsonMapperBuilderCustomizer() {
-        return builder -> builder.addModule(customURIModule()).build();
+        return builder ->
+                builder.disable(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE).addModule(customURIModule());
     }
 
     @Bean
@@ -36,7 +38,6 @@ public class JacksonConfig {
 
     public static JacksonModule customGithubAPIEventModule() {
         SimpleModule module = (SimpleModule) customURIModule();
-        module.addDeserializer(EventPayload.class, new ProblematicClassDeserializer<>()); // TODO recheck
         module.addDeserializer(Event.class, new EventDeserializer());
         return module;
     }

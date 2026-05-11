@@ -1,0 +1,37 @@
+{
+    "items": [
+      {
+        "tags": [
+          "c++",
+          "c",
+          "printf"
+        ],
+        "owner": {
+          "account_id": 690264,
+          "reputation": 311,
+          "user_id": 559062,
+          "user_type": "unregistered",
+          "profile_image": "https://www.gravatar.com/avatar/1a8cd34d01e7e918923eb2e40d48c003?s=256&d=identicon&r=PG",
+          "display_name": "Saurabh Gokhale",
+          "link": "https://stackoverflow.com/users/559062/saurabh-gokhale"
+        },
+        "is_answered": true,
+        "view_count": 257333,
+        "accepted_answer_id": 4568650,
+        "answer_count": 106,
+        "community_owned_date": 1294022168,
+        "score": 321,
+        "locked_date": 1372276868,
+        "last_activity_date": 1372276857,
+        "creation_date": 1293778516,
+        "last_edit_date": 1296371678,
+        "question_id": 4568645,
+        "content_license": "CC BY-SA 2.5",
+        "link": "https://stackoverflow.com/questions/4568645/printing-1-to-1000-without-loop-or-conditionals",
+        "title": "Printing 1 to 1000 without loop or conditionals"
+      }
+    ],
+    "has_more": false,
+    "quota_max": 300,
+    "quota_remaining": 299
+  }

@@ -30,8 +30,9 @@ public class ScrapperGlobalProperties {
 
     int parallelScrappersAmount = 5;
 
-    long maxDescriptionLength = 200;
+    int maxDescriptionLength = 200;
 
     @NotNull
-    Instant defaultLinkCreationDate = Instant.EPOCH; // Not min, but epoch cause cant format to date string in request it
+    Instant defaultLinkCreationDate =
+            Instant.EPOCH; // Not min, but epoch cause cant format to date string in request it
 }
