@@ -326,6 +326,7 @@
                         </rulesets>
                         <excludes>
                             <exclude>**/models/*.java</exclude>
+                            <exclude>**/generated/*.java</exclude>
                         </excludes>
                     </configuration>
                     <dependencies>

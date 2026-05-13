@@ -1,4 +1,4 @@
-package backend.academy.linktracker.bot.adapters.repository;
+package backend.academy.linktracker.bot.adapter.repository;
 
 import backend.academy.linktracker.bot.core.entity.TelegramBotChatID;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;

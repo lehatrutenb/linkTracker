@@ -76,4 +76,12 @@
     <Match>
         <Package name="~.*\.models" />
     </Match>
+
+    <Match>
+        <Package name="~.*\.generated\..*" />
+    </Match>
+
+    <Match>
+        <Package name="~.*\.generated" />
+    </Match>
 </FindBugsFilter>
