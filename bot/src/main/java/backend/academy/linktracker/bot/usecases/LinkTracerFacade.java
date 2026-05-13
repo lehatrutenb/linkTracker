@@ -17,6 +17,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,6 @@ public class LinkTracerFacade {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final EventsStateWatcher eventsStateWatcher;
     private final TelegramBotMessagesOrderService messagesOrderService;
-    private final ReplyServiceMatcherService replyServiceMatcher;
     private final ScrapperUpdatesHandleService scrapperUpdatesHandleService;
 
     // Need transactional here not to be inconsistent between event and message states
@@ -38,13 +38,12 @@ public class LinkTracerFacade {
      * @param replyServiceQualifier
      * @return last fully processed eventID on prefix if exists such
      */
-    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
+    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates) {
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
             EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
             TelegramBotMessage message = TelegramUpdatesMapper.map(update);
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 if (messagesOrderService.toProcessMessage(message)) {
-                    replyServiceMatcher.setReplyService(message.chat().id(), replyServiceQualifier);
                     eventsStateWatcher.markEventAsProcessing(eventId);
                     var event = new LinkTracerNewMessageEvent(this, message, eventId);
                     applicationEventPublisher.publishEvent(event);

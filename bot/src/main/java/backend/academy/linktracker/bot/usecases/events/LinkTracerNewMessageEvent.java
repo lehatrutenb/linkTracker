@@ -15,11 +15,11 @@ public class LinkTracerNewMessageEvent extends ApplicationEvent implements Seria
     private final TelegramBotMessage message;
 
     @Getter
-    private final EventID eventId;
+    private final EventID eventID;
 
-    public LinkTracerNewMessageEvent(Object source, TelegramBotMessage message, EventID eventId) {
+    public LinkTracerNewMessageEvent(Object source, TelegramBotMessage message, EventID eventID) {
         super(source);
         this.message = message;
-        this.eventId = eventId;
+        this.eventID = eventID;
     }
 }

@@ -10,7 +10,6 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.convert.DurationUnit;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
 @ConfigurationProperties(prefix = "app.telegram.link.tracker")
@@ -19,7 +18,6 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-@Component
 public class TelegramLinkTrackerProperties {
 
     @NotEmpty

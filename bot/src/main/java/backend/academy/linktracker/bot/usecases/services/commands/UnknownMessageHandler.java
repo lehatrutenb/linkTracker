@@ -2,13 +2,12 @@ package backend.academy.linktracker.bot.usecases.services.commands;
 
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -20,12 +19,11 @@ import org.springframework.stereotype.Service;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
-            "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
+            "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд.";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -45,11 +43,8 @@ public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewM
                 .addKeyValue("message date", message.date())
                 .log("Handle unexpected user message");
 
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     @Override

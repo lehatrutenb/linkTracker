@@ -1,15 +1,14 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +21,8 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
             "Добро пожаловать! Используйте /help, чтобы посмотреть доступные команды.";
 
     private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -39,11 +37,8 @@ public class StartCommandHandler implements ApplicationListener<LinkTracerNewMes
                 .log("Handle /start user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     @Override

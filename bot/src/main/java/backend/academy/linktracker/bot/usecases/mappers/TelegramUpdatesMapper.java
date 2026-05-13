@@ -16,6 +16,9 @@ import lombok.experimental.UtilityClass;
 public class TelegramUpdatesMapper {
     public static TelegramBotMessage map(Update update) {
         var message = update.message();
+        if (message == null) {
+            throw new IllegalArgumentException("Message is null");
+        }
         return new TelegramBotMessage(
                 message.text() == null ? "" : message.text(),
                 mapMessageID(update),
@@ -29,6 +32,9 @@ public class TelegramUpdatesMapper {
     }
 
     public static EventID mapScrapperUpdateId(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Update ID is null");
+        }
         return new EventID(id.toString(), OwnerIDType.SCRAPPER);
     }
 
@@ -37,26 +43,59 @@ public class TelegramUpdatesMapper {
     }
 
     public static int mapUpdateId(EventID id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Event ID is null");
+        }
         return Integer.parseInt(id.getRawId());
     }
 
     public static TelegramBotChatID mapChatId(Update update) {
+        if (update == null) {
+            throw new IllegalArgumentException("Update is null");
+        }
+        if (update.message().chat() == null) {
+            throw new IllegalArgumentException("Chat is null");
+        }
+        if (update.message().chat().id() == null) {
+            throw new IllegalArgumentException("Chat ID is null");
+        }
         return new TelegramBotChatID(update.message().chat().id());
     }
 
     public static TelegramBotChatID mapScrapperChatId(Long scrapperChatID) {
+        if (scrapperChatID == null) {
+            throw new IllegalArgumentException("Scrapper chat ID is null");
+        }
         return new TelegramBotChatID(scrapperChatID);
     }
 
     public static TelegramBotMessageID mapMessageID(Update update) {
+        if (update == null) {
+            throw new IllegalArgumentException("Update is null");
+        }
+        if (update.message().messageId() == null) {
+            throw new IllegalArgumentException("Message ID is null");
+        }
+        if (mapChatId(update) == null) {
+            throw new IllegalArgumentException("Chat ID is null");
+        }
         return new TelegramBotMessageID(update.message().messageId(), mapChatId(update));
     }
 
     public static TelegramBotUser map(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User is null");
+        }
         return new TelegramBotUser(user.id(), user.username(), user.firstName(), user.isBot());
     }
 
     public static TelegramBotChat mapToChat(Update update) {
+        if (update == null) {
+            throw new IllegalArgumentException("Update is null");
+        }
+        if (update.message().chat().type() == null) {
+            throw new IllegalArgumentException("Chat type is null");
+        }
         return new TelegramBotChat(mapChatId(update), update.message().chat().type());
     }
 }

@@ -15,6 +15,13 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
+import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.Update;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +29,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
@@ -43,6 +51,17 @@ import org.wiremock.spring.EnableWireMock;
                         .AFTER_EACH_TEST_METHOD) // Need cause has repository bean that serves requests statuses
 class TelegramBotIntegrationTest implements WithAssertions {
     RestClient restClient;
+
+    @Autowired
+    TelegramBot telegramBot;
+
+    @Autowired
+    LinkTracerFacade linkTracerFacade;
+
+    @AfterEach
+    void clearUpdatesListener() {
+        telegramBot.removeGetUpdatesListener();
+    }
 
     @BeforeEach
     void setupWireMock() {
@@ -172,5 +191,11 @@ class TelegramBotIntegrationTest implements WithAssertions {
                 .toBodilessEntity();
 
         assertThatThrownBy(doResponse::get);
+    }
+
+    @Test
+    void updateWithNullMessageAndIDSendsNoPanic() {
+        assertThatThrownBy(() -> linkTracerFacade.processLinkTrackerUpdates(List.of(new Update())))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
