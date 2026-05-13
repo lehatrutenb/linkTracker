@@ -30,12 +30,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 @Component
 public class GitHubApiClient {
-    private GithubProperties githubProperties;
     private ScrapperGlobalProperties globalProperties;
     private static final String CURRENT_API_VERSION = "2026-03-10";
     private static final String GET_EVENTS_UPDATES_PATH = "/repos/{owner}/{repo}/events";
     private ScrapperRateLimitService rateLimitService;
-    // As i understood - github api requires RFC1123 that requires ENGLISH locale // TODO recheck locale info
+    // As i understood - github api requires RFC1123 that requires ENGLISH locale
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                     "EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
             .withZone(ZoneId.of("GMT"));
@@ -43,6 +42,9 @@ public class GitHubApiClient {
     @Qualifier("githubRestClient")
     @Autowired
     private RestClient restClient;
+
+    @Autowired
+    private GithubProperties githubProperties;
 
     @Autowired
     public void setScrapperGlobalProperties(ScrapperGlobalProperties globalProperties) {
