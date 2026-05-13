@@ -19,6 +19,8 @@ import org.springframework.web.util.UriTemplate;
 @RequiredArgsConstructor
 public class GithubControllerWrapper implements OuterServiceScrapper {
     private static final String EXPECTED_CONCRETE_URI_FORMAT = "/{owner}/{repository}";
+    private static final String OWNER_PATH_PARAM = "owner";
+    private static final String REPO_PATH_PARAM = "repository";
     private final GithubProperties properties;
     private final GitHubApiClient apiClient;
 
@@ -36,22 +38,17 @@ public class GithubControllerWrapper implements OuterServiceScrapper {
     }
 
     public boolean checkCanScrap(URI uri) {
-        var template = new UriTemplate(
-                properties.getGithubRoot() + EXPECTED_CONCRETE_URI_FORMAT); // TODO check can add to fields
-        return template.matches(uri.toString()); // TODO add better check with request to api
+        var template = new UriTemplate(properties.getGithubRoot() + EXPECTED_CONCRETE_URI_FORMAT);
+        return template.matches(uri.toString());
     }
 
     public Optional<String> getRepo(URI repoUri) {
         var template = new UriTemplate(properties.getGithubRoot() + EXPECTED_CONCRETE_URI_FORMAT);
-        return Optional.ofNullable(
-                template.match(repoUri.toString()).get("repository") // TODO move to consts
-                );
+        return Optional.ofNullable(template.match(repoUri.toString()).get(REPO_PATH_PARAM));
     }
 
     public Optional<String> getRepoOwner(URI repoUri) {
         var template = new UriTemplate(properties.getGithubRoot() + EXPECTED_CONCRETE_URI_FORMAT);
-        return Optional.ofNullable(
-                template.match(repoUri.toString()).get("owner") // TODO move to consts
-                );
+        return Optional.ofNullable(template.match(repoUri.toString()).get(OWNER_PATH_PARAM));
     }
 }

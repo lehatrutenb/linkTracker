@@ -1,4 +1,4 @@
-package backend.academy.linktracker.scrapper.adapters.controllers.github;
+package backend.academy.linktracker.scrapper.usecases.deserializer;
 
 import java.net.URI;
 import java.net.URLDecoder;
@@ -12,7 +12,7 @@ import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.ValueDeserializer;
 
 @JacksonComponent
-public class CustomURIDeserializer extends ValueDeserializer<URI> { // TODO move deserilizers to another idir
+public class CustomURIDeserializer extends ValueDeserializer<URI> {
     @Override
     public URI deserialize(JsonParser p, DeserializationContext ctxt) throws JacksonException {
         JsonToken token = p.currentToken();

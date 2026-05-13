@@ -7,8 +7,8 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.usecases.dtos.models.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecases.exceptions.DuplicateEntityException;
+import backend.academy.linktracker.scrapper.usecases.exceptions.LinkNotFoundException;
 import java.net.URI;
-import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-// TODO USE mapper not new ScrapperLinkListener(listenerID)
 public class ScrappingLinkService {
     private final ScrappingLinksRepository linksRepository;
     private final ScrapperLinkFactory scrapperLinkFactory;
@@ -40,17 +39,21 @@ public class ScrappingLinkService {
             throw new DuplicateEntityException(
                     ScrapperLink.class, link.id().uri().toString());
         }
-        try {
-            linksRepository.addScrapperLink(link);
-        } catch (SQLException _) { // TODO recheck
-            log.error("Got SQL exception");
-        }
+        linksRepository.addScrapperLink(link);
         linksRepository.addLinkToScrapperLinkListener(listener, link.id());
         return link;
     }
 
     public Optional<ScrapperLink> getLink(URI uri) {
         return linksRepository.getScrapperLinkByURI(uri);
+    }
+
+    public ScrapperLinkID getScrapperLinkIDByURI(URI uri) {
+        return linksRepository.getScrapperLinkIDByURI(uri).orElseThrow(() -> new LinkNotFoundException(uri));
+    }
+
+    public ScrapperLink getScrapperLinkByURI(URI uri) {
+        return linksRepository.getScrapperLinkByURI(uri).orElseThrow(() -> new LinkNotFoundException(uri));
     }
 
     public Collection<ScrapperLinkListener> getListenersOfLink(ScrapperLinkID scrapperLinkID) {

@@ -4,7 +4,6 @@ import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public interface ScrappingLinksRepository {
 
     Optional<ScrapperLinkListener> getScrapperLinkListener(String id);
 
-    void addScrapperLink(ScrapperLink scrapperLink) throws SQLException;
+    void addScrapperLink(ScrapperLink scrapperLink);
 
     Optional<ScrapperLink> updateScrapperLink(ScrapperLink scrapperLink);
 

@@ -1,7 +1,5 @@
 package backend.academy.linktracker;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;

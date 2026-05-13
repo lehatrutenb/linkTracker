@@ -29,7 +29,7 @@ public class ScrappingLinkListenerService {
         return linksRepository.getScrapperLinkListener(id);
     }
 
-    public ScrapperLinkListener getLinkListenerOrThrow(String id, ScrapperLinkListenerType listenerType) {
+    public ScrapperLinkListener getLinkListener(String id, ScrapperLinkListenerType listenerType) {
         return linksRepository
                 .getScrapperLinkListener(id)
                 .orElseThrow(() -> new ListenerNotFoundException(id, listenerType));

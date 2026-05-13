@@ -15,7 +15,7 @@ public class ScheduleUpdatesOnLinksService {
     private final ScrappingLinkService linkListenersService;
     private final ScrappedUpdatesPublishService publishService;
 
-    @Scheduled(fixedDelayString = "#{@scrapperGlobalProperties.scrappingFixedRate.toMillis()}")
+    @Scheduled(fixedDelayString = "${app.global.scrapping-fixed-rate}")
     public void scrapUpdates() {
         var linksToListen = linkListenersService.getAllListeningLinks();
         scrappers.forEach(scrapper -> {

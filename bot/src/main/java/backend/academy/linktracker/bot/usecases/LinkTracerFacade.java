@@ -6,6 +6,7 @@ import backend.academy.linktracker.bot.core.enums.OwnerIDType;
 import backend.academy.linktracker.bot.usecases.dtos.models.LinkUpdate;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.exceptions.RequestBodyFieldValidationException;
+import backend.academy.linktracker.bot.usecases.mappers.ScrapperEventsMapper;
 import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleService;
@@ -58,7 +59,7 @@ public class LinkTracerFacade {
 
     public void processScrapperUpdates(Collection<LinkUpdate> updates) {
         updates.forEach(update -> {
-            EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(
+            EventID eventId = ScrapperEventsMapper.mapScrapperUpdateId(
                     update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);

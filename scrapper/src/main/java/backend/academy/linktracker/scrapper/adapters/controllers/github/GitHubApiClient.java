@@ -26,7 +26,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.UriTemplate;
 
 @Slf4j
 @Component
@@ -36,7 +35,6 @@ public class GitHubApiClient {
     private static final String CURRENT_API_VERSION = "2026-03-10";
     private static final String GET_EVENTS_UPDATES_PATH = "/repos/{owner}/{repo}/events";
     private ScrapperRateLimitService rateLimitService;
-    private UriTemplate getEventsUriTemplate;
     // As i understood - github api requires RFC1123 that requires ENGLISH locale // TODO recheck locale info
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                     "EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
@@ -45,12 +43,6 @@ public class GitHubApiClient {
     @Qualifier("githubRestClient")
     @Autowired
     private RestClient restClient;
-
-    @Autowired
-    public void setGithubProperties(GithubProperties githubProperties) {
-        this.githubProperties = githubProperties;
-        getEventsUriTemplate = new UriTemplate(githubProperties.getGithubRoot().toString() + GET_EVENTS_UPDATES_PATH);
-    }
 
     @Autowired
     public void setScrapperGlobalProperties(ScrapperGlobalProperties globalProperties) {
