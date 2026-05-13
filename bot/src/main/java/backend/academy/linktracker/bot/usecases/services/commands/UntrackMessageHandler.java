@@ -1,5 +1,6 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
@@ -7,12 +8,10 @@ import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,20 +22,15 @@ import org.springframework.stereotype.Service;
 @CommandHandler(command = "/untrack")
 public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     private static final String BASIC_TRACK_REPLY =
-            "Введите github repo/stackoverflow question ссылку которую вы хотите перестать отслеживать"; // TODO check
-    // if it makes
-    // sense to
-    // move to
-    // storage
+            "Введите github repo/stackoverflow question ссылку которую вы хотите перестать отслеживать";
     private static final String BASIC_URL_REPLY = "Ссылка больше не будет отслеживаться";
     private static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -63,11 +57,8 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/untrack")
                         .withProcessingCommandStep(0));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), BASIC_TRACK_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_TRACK_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     public void handleURL(LinkTracerNewMessageEvent event) {
@@ -91,7 +82,7 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
         }
 
         handleUrlSet(event, message);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     @Override
@@ -106,10 +97,7 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
     }
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
@@ -121,10 +109,8 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().id())
-                    .orElseThrow()
-                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+            linkTracerTelegramBotReplier.sendMessage(
+                    event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

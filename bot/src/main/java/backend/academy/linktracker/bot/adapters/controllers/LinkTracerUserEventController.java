@@ -1,8 +1,6 @@
 package backend.academy.linktracker.bot.adapters.controllers;
 
 import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
-import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
-import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;

@@ -35,7 +35,7 @@ public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMe
                 .log("Handle /ignore user command");
 
         // Not update shared state to have real stub event
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     @Override

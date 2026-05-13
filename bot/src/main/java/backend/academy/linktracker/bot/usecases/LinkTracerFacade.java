@@ -8,7 +8,6 @@ import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent
 import backend.academy.linktracker.bot.usecases.exceptions.RequestBodyFieldValidationException;
 import backend.academy.linktracker.bot.usecases.mappers.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecases.services.TelegramBotMessagesOrderService;
 import com.pengrad.telegrambot.model.Update;
@@ -16,8 +15,6 @@ import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +36,7 @@ public class LinkTracerFacade {
      * @return last fully processed eventID on prefix if exists such
      */
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates) {
-        updates.stream().filter(update -> update.message() != null).forEach(update -> {
+        updates.stream().forEach(update -> {
             EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
             TelegramBotMessage message = TelegramUpdatesMapper.map(update);
             if (eventsStateWatcher.toProcessEvent(eventId)) {

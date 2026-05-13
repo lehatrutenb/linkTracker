@@ -249,7 +249,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(url);
     }
 
-    @Timeout(1000)
+    @Timeout(10)
     @Test
     void trackSendsNotReceivesReplyInNotSenderChat() {
         String url = "https://stackoverflow.com/questions/4568645";

@@ -39,6 +39,9 @@ public class TelegramUpdatesMapper {
     }
 
     public static EventID mapLinkTrackerUpdateId(Integer id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Update ID is null");
+        }
         return new EventID(id.toString(), OwnerIDType.LINK_TRACKER);
     }
 

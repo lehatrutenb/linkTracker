@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
-import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
+import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
@@ -39,8 +39,7 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
                 .log("Handle /help user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        linkTracerTelegramBotReplier
-                .sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));
         eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 

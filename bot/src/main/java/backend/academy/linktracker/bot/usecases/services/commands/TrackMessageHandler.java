@@ -1,5 +1,6 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
@@ -7,14 +8,12 @@ import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -30,20 +29,16 @@ import org.springframework.stereotype.Service;
 public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
     public static final String _BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите отслеживать";
-    // sense to move to
-    // storage
-    public static final String _BASIC_TAGS_REPLY =
-            "Ссылка принята к отслеживанию"; // TODO check if it makes sense to move to storage
+    public static final String _BASIC_TAGS_REPLY = "Ссылка принята к отслеживанию";
     public static final String _BASIC_URL_REPLY = "Введите теги к данной ссылке разделённые запятыми";
     public static final String _INVALID_URL_REPLY = "Полученная ссылка не поддерживается к отслеживанию";
     public static final String _URL_ALREADY_TRACKED_REPLY = "Данная ссылка уже отслеживается. Отпишитесь для начала";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final ApplicationContext applicationContext;
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -70,11 +65,8 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/track")
                         .withProcessingCommandStep(0));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_TRACK_REPLY);
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), _BASIC_TRACK_REPLY);
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     public void handleTags(LinkTracerNewMessageEvent event) {
@@ -108,16 +100,13 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                 throw new IllegalArgumentException("Got unexpected processing command step");
         }
 
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     public void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
         commandsSharedStateService.setChatSharedState(
                 message.chat().id(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_URL_REPLY);
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), _BASIC_URL_REPLY);
     }
 
     public void handleTagsSet(
@@ -134,10 +123,7 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
             return;
         }
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), _BASIC_TAGS_REPLY);
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), _BASIC_TAGS_REPLY);
     }
 
     public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
@@ -150,10 +136,8 @@ public class TrackMessageHandler implements ApplicationListener<LinkTracerNewMes
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().id())
-                    .orElseThrow()
-                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+            linkTracerTelegramBotReplier.sendMessage(
+                    event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }

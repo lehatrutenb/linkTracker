@@ -1,5 +1,6 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.ChatSharedState;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.LinkTag;
@@ -8,7 +9,6 @@ import backend.academy.linktracker.bot.usecases.dtos.models.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecases.dtos.models.ListLinksResponse;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecases.services.ReplyServiceMatcherService;
 import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecases.services.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
@@ -16,7 +16,6 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -34,11 +33,10 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     public static final String _NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
     private final CancelMessageHandler cancelMessageHandler;
-    private final ReplyServiceMatcherService replyServiceMatcher;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @Override
     public void onApplicationEvent(LinkTracerNewMessageEvent event) {
@@ -65,11 +63,8 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
             return;
         }
 
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().id())
-                .orElseThrow()
-                .sendMessage(message.chat().id().getNumericID(), getReply(response.getLeft(), tag));
-        eventsStateWatcher.markEventAsDone(event.getEventId());
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), getReply(response.getLeft(), tag));
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
@@ -104,10 +99,8 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
                     default -> "";
                 };
         if (!reply.isBlank()) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().id())
-                    .orElseThrow()
-                    .sendMessage(event.getMessage().chat().id().getNumericID(), reply);
+            linkTracerTelegramBotReplier.sendMessage(
+                    event.getMessage().chat().id().getNumericID(), reply);
         }
         cancelMessageHandler.onBotError(event, reply.isBlank());
     }
