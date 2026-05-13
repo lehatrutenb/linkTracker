@@ -1,12 +1,12 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.CommandHandler;
 import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class StartCommandHandler {
             "Добро пожаловать! Используйте /help, чтобы посмотреть доступные команды.";
 
     private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @EventListener(condition = "#event.getMessage().message().strip().equals('/start')")
     public void handle(LinkTracerNewMessageEvent event) {
@@ -30,7 +30,7 @@ public class StartCommandHandler {
                 .addKeyValue("message date", message.date())
                 .log("Handle /start user command");
 
-        event.getReplyService(applicationContext).sendMessage(message.chat().id(), BASIC_REPLY);
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 }

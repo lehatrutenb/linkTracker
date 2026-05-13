@@ -7,7 +7,7 @@ import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import com.pengrad.telegrambot.model.Update;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +16,14 @@ import org.springframework.stereotype.Service;
 public class LinkTracerFacade {
     private final ApplicationEventPublisher applicationEventPublisher;
     private final EventsStateWatcher eventsStateWatcher;
+    private final ApplicationContext applicationContext;
 
-    public void processUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
+    public void processUpdates(Collection<Update> updates) {
         updates.forEach(update -> {
             EventId eventId = TelegramUpdatesMapper.mapUpdateId(update.updateId());
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);
-                var event = new LinkTracerNewMessageEvent(
-                        this, TelegramUpdatesMapper.map(update), replyServiceQualifier, eventId);
+                var event = new LinkTracerNewMessageEvent(this, TelegramUpdatesMapper.map(update), eventId);
                 applicationEventPublisher.publishEvent(event);
             }
         });

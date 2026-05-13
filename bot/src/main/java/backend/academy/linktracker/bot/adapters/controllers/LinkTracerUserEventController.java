@@ -9,7 +9,6 @@ import com.pengrad.telegrambot.model.Update;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -26,7 +25,7 @@ public class LinkTracerUserEventController implements UpdatesListener {
 
     @Override
     public int process(List<Update> list) {
-        linkTracerFacade.processUpdates(list, LinkTracerTelegramBotReplier.class.getAnnotation(Qualifier.class));
+        linkTracerFacade.processUpdates(list);
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDone()
                 .map(TelegramUpdatesMapper::mapUpdateId)

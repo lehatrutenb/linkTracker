@@ -6,10 +6,13 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
+import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.Update;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +36,9 @@ import org.wiremock.spring.EnableWireMock;
 class TelegramBotIntegrationTest implements WithAssertions {
     @Autowired
     TelegramBot telegramBot;
+
+    @Autowired
+    LinkTracerFacade linkTracerFacade;
 
     @AfterEach
     void clearUpdatesListener() {
@@ -110,5 +116,11 @@ class TelegramBotIntegrationTest implements WithAssertions {
         assertThat(response).isNotEmpty();
         assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
                 .contains("/help");
+    }
+
+    @Test
+    void updateWithNullMessageAndIDSendsNoPanic() {
+        assertThatThrownBy(() -> linkTracerFacade.processUpdates(List.of(new Update())))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

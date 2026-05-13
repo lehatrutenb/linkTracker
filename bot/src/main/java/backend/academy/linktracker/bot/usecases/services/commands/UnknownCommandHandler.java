@@ -1,12 +1,12 @@
 package backend.academy.linktracker.bot.usecases.services.commands;
 
+import backend.academy.linktracker.bot.adapters.controllers.LinkTracerTelegramBotReplier;
 import backend.academy.linktracker.bot.core.entities.LinkTracerMessage;
 import backend.academy.linktracker.bot.usecases.events.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecases.services.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecases.services.EventsStateWatcher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UnknownCommandHandler {
     private static final String BASIC_REPLY =
-            "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it
-    // makes sense to
-    // move to storage
+            "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд.";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
-    private final ApplicationContext applicationContext;
+    private final LinkTracerTelegramBotReplier linkTracerTelegramBotReplier;
 
     @EventListener(condition = "#event.getMessage().message().strip().startsWith('/')")
     public void handle(LinkTracerNewMessageEvent event) {
@@ -38,7 +36,7 @@ public class UnknownCommandHandler {
                 .addKeyValue("message date", message.date())
                 .log("Handle unknown user command");
 
-        event.getReplyService(applicationContext).sendMessage(message.chat().id(), BASIC_REPLY);
+        linkTracerTelegramBotReplier.sendMessage(message.chat().id(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventId());
     }
 }
