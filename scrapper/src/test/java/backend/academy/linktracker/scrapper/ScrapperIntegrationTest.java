@@ -3,9 +3,9 @@ package backend.academy.linktracker.scrapper;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import backend.academy.linktracker.scrapper.adapters.controllers.LinksApi;
-import backend.academy.linktracker.scrapper.adapters.controllers.TgChatApi;
-import backend.academy.linktracker.scrapper.usecases.dtos.models.ListLinksResponse;
+import backend.academy.linktracker.scrapper.adapter.controller.LinksApiController;
+import backend.academy.linktracker.scrapper.adapter.controller.TgChatApiController;
+import backend.academy.linktracker.scrapper.usecase.dto.generated.ListLinksResponse;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.net.URI;
 import java.util.Optional;
@@ -55,12 +55,12 @@ public class ScrapperIntegrationTest {
 
         var responseChatRegister = restClient
                 .method(HttpMethod.POST)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_POST, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_POST, chatID)
                 .retrieve()
                 .toBodilessEntity();
         var responseLinkAdd = restClient
                 .method(HttpMethod.POST)
-                .uri(LinksApi._PATH_LINKS_POST)
+                .uri(LinksApiController._PATH_LINKS_POST)
                 .header(tgChatHeaderName, chatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkAdd)
@@ -68,7 +68,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
         var responseLinkList = restClient
                 .method(HttpMethod.GET)
-                .uri(LinksApi._PATH_LINKS_GET, link)
+                .uri(LinksApiController._PATH_LINKS_GET, link)
                 .header(tgChatHeaderName, chatID)
                 .retrieve()
                 .toEntity(ListLinksResponse.class);
@@ -94,12 +94,12 @@ public class ScrapperIntegrationTest {
 
         var responseChatRegister = restClient
                 .method(HttpMethod.POST)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_POST, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_POST, chatID)
                 .retrieve()
                 .toBodilessEntity();
         var responseLinkAdd = restClient
                 .method(HttpMethod.POST)
-                .uri(LinksApi._PATH_LINKS_POST)
+                .uri(LinksApiController._PATH_LINKS_POST)
                 .header(tgChatHeaderName, chatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkAdd)
@@ -107,7 +107,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
         var responseLinkDelete = restClient
                 .method(HttpMethod.DELETE)
-                .uri(LinksApi._PATH_LINKS_DELETE)
+                .uri(LinksApiController._PATH_LINKS_DELETE)
                 .header(tgChatHeaderName, chatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkDelete)
@@ -115,7 +115,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
         var responseLinkList = restClient
                 .method(HttpMethod.GET)
-                .uri(LinksApi._PATH_LINKS_GET, link)
+                .uri(LinksApiController._PATH_LINKS_GET, link)
                 .header(tgChatHeaderName, chatID)
                 .retrieve()
                 .toEntity(ListLinksResponse.class);
@@ -139,12 +139,12 @@ public class ScrapperIntegrationTest {
 
         var responseChatRegister = restClient
                 .method(HttpMethod.POST)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_POST, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_POST, chatID)
                 .retrieve()
                 .toBodilessEntity();
         var responseLinkAdd = restClient
                 .method(HttpMethod.POST)
-                .uri(LinksApi._PATH_LINKS_POST)
+                .uri(LinksApiController._PATH_LINKS_POST)
                 .header(tgChatHeaderName, chatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkAdd)
@@ -152,7 +152,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
         assertThatThrownBy(() -> restClient
                 .method(HttpMethod.DELETE)
-                .uri(LinksApi._PATH_LINKS_DELETE)
+                .uri(LinksApiController._PATH_LINKS_DELETE)
                 .header(tgChatHeaderName, deleteChatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkDelete)
@@ -160,7 +160,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity());
         var responseLinkList = restClient
                 .method(HttpMethod.GET)
-                .uri(LinksApi._PATH_LINKS_GET, link)
+                .uri(LinksApiController._PATH_LINKS_GET, link)
                 .header(tgChatHeaderName, chatID)
                 .retrieve()
                 .toEntity(ListLinksResponse.class);
@@ -186,12 +186,12 @@ public class ScrapperIntegrationTest {
 
         var responseChatRegister = restClient
                 .method(HttpMethod.POST)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_POST, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_POST, chatID)
                 .retrieve()
                 .toBodilessEntity();
         assertThatThrownBy(() -> restClient
                 .method(HttpMethod.POST)
-                .uri(LinksApi._PATH_LINKS_POST)
+                .uri(LinksApiController._PATH_LINKS_POST)
                 .header(tgChatHeaderName, nonExistingChatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkAdd)
@@ -211,12 +211,12 @@ public class ScrapperIntegrationTest {
 
         var responseChatRegister = restClient
                 .method(HttpMethod.POST)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_POST, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_POST, chatID)
                 .retrieve()
                 .toBodilessEntity();
         var responseLinkAdd = restClient
                 .method(HttpMethod.POST)
-                .uri(LinksApi._PATH_LINKS_POST)
+                .uri(LinksApiController._PATH_LINKS_POST)
                 .header(tgChatHeaderName, chatID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyLinkAdd)
@@ -224,12 +224,12 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
         var responseChatDelete = restClient
                 .method(HttpMethod.DELETE)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_DELETE, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_DELETE, chatID)
                 .retrieve()
                 .toBodilessEntity();
         assertThatThrownBy(() -> restClient
                 .method(HttpMethod.GET)
-                .uri(LinksApi._PATH_LINKS_GET, link)
+                .uri(LinksApiController._PATH_LINKS_GET, link)
                 .header(tgChatHeaderName, chatID)
                 .retrieve()
                 .toEntity(ListLinksResponse.class));
@@ -246,7 +246,7 @@ public class ScrapperIntegrationTest {
 
         assertThatThrownBy(() -> restClient
                 .method(HttpMethod.DELETE)
-                .uri(TgChatApi._PATH_TG_CHAT_ID_DELETE, chatID)
+                .uri(TgChatApiController._PATH_TG_CHAT_ID_DELETE, chatID)
                 .retrieve()
                 .toBodilessEntity());
     }

@@ -13,10 +13,10 @@ import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import backend.academy.linktracker.bot.BotApplication;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
-import backend.academy.linktracker.bot.usecases.services.ScrapperUpdatesHandleService;
-import backend.academy.linktracker.bot.usecases.services.commands.ListMessageHandler;
-import backend.academy.linktracker.bot.usecases.services.commands.TrackMessageHandler;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesHandleService;
+import backend.academy.linktracker.bot.usecase.service.command.ListMessageHandler;
+import backend.academy.linktracker.bot.usecase.service.command.TrackMessageHandler;
 import backend.academy.linktracker.scrapper.ScrapperApplication;
 import java.util.Map;
 import lombok.SneakyThrows;

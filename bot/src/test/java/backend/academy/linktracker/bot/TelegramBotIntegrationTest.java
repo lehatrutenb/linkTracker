@@ -8,10 +8,10 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
-import backend.academy.linktracker.bot.adapters.controllers.UpdatesApi;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils;
-import backend.academy.linktracker.bot.testutils.TelegramBotTestUtils.Message;
-import backend.academy.linktracker.bot.usecases.LinkTracerFacade;
+import backend.academy.linktracker.bot.adapter.controller.UpdatesApiController;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
+import backend.academy.linktracker.bot.usecase.LinkTracerFacade;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Update;
@@ -157,7 +157,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, 1, "/start"));
         var response = restClient
                 .method(HttpMethod.POST)
-                .uri(UpdatesApi._PATH_UPDATES_POST)
+                .uri(UpdatesApiController._PATH_UPDATES_POST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body("{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}")
                 .retrieve()
@@ -181,7 +181,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         Supplier<?> doResponse = () -> restClient
                 .method(HttpMethod.POST)
-                .uri(UpdatesApi._PATH_UPDATES_POST)
+                .uri(UpdatesApiController._PATH_UPDATES_POST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(invalidUpdateBody)
                 .retrieve()
