@@ -1,6 +1,7 @@
 image: "${GITLAB_DOCKER_PROXY}/eclipse-temurin:25-jdk-alpine"
 
 variables:
+  MAVEN_USER_HOME: "$CI_PROJECT_DIR/.m2"
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
   GITLAB_DOCKER_PROXY: "gitlab.education.tbank.ru:443/backend-academy-java-2025/lecture-materials/dependency_proxy/containers"
 
@@ -19,6 +20,7 @@ cache:
   key: "$CI_COMMIT_REF_SLUG"
   paths:
     - .m2/repository/
+    - .m2/wrapper/
 
 build:
   stage: build
@@ -51,4 +53,4 @@ test:
     - apk add --no-cache docker-cli
     - echo "$CI_JOB_TOKEN" | docker login gitlab.education.tbank.ru:443 -u gitlab-ci-token --password-stdin
   script:
-    - ./mvnw verify
+    - ./mvnw -T 1C verify
