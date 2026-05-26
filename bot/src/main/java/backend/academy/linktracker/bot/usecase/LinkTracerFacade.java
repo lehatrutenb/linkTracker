@@ -33,7 +33,6 @@ public class LinkTracerFacade {
     /**
      *
      * @param updates
-     * @param replyServiceQualifier
      * @return last fully processed eventID on prefix if exists such
      */
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates) {

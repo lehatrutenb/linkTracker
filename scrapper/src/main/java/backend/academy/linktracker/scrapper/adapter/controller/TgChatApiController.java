@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Validated
 @Tag(name = "tg-chat", description = "the tg-chat API")
 @Controller
@@ -29,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TgChatApiController {
     private final ScrapperFacade scrapperFacade;
 
-    public static final String _PATH_TG_CHAT_ID_DELETE = "/tg-chat/{id}";
+    public static final String PATH_TG_CHAT_ID_DELETE = "/tg-chat/{id}";
     /**
      * DELETE /tg-chat/{id} : Удалить чат
      *
@@ -62,7 +58,7 @@ public class TgChatApiController {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = _PATH_TG_CHAT_ID_DELETE,
+            value = PATH_TG_CHAT_ID_DELETE,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdDelete(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")
@@ -71,7 +67,7 @@ public class TgChatApiController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public static final String _PATH_TG_CHAT_ID_POST = "/tg-chat/{id}";
+    public static final String PATH_TG_CHAT_ID_POST = "/tg-chat/{id}";
     /**
      * POST /tg-chat/{id} : Зарегистрировать чат
      *
@@ -104,7 +100,7 @@ public class TgChatApiController {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = _PATH_TG_CHAT_ID_POST,
+            value = PATH_TG_CHAT_ID_POST,
             produces = {"application/json"})
     public ResponseEntity<Void> tgChatIdPost(
             @Parameter(name = "id", description = "", required = true, in = ParameterIn.PATH) @PathVariable("id")

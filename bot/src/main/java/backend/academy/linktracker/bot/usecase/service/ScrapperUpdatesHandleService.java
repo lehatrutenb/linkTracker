@@ -10,21 +10,19 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@RefreshScope
 @SuppressFBWarnings(
         "VA_FORMAT_STRING_USES_NEWLINE") // ignored warning cause assertj matches not works correctly with %n
 public class ScrapperUpdatesHandleService {
     // it not that hard
-    public static final String _BASIC_REPLY = "Получено обновление по url: %s:\n%s";
+    public static final String BASIC_REPLY = "Получено обновление по url: %s:\n%s";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final ScrapperLinkUpdatesRepository linkUpdatesRepository;
@@ -48,7 +46,7 @@ public class ScrapperUpdatesHandleService {
 
             update.getTgChatIds().forEach(chatId -> {
                 linkTracerTelegramBotReplier.sendMessage(
-                        chatId, String.format(_BASIC_REPLY, update.getUrl(), update.getDescription()));
+                        chatId, String.format(BASIC_REPLY, update.getUrl(), update.getDescription()));
             });
             eventsStateWatcher.markEventAsDone(
                     eventID); // TODO currently may repeat message twice cause may process only part of chats - but let

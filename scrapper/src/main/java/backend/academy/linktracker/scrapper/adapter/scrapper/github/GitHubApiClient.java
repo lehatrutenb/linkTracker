@@ -93,7 +93,11 @@ public class GitHubApiClient {
     }
 
     private int getLastUpdatesPage(HttpHeaders headers) {
-        return headers.get("Link").stream() // TODO add check
+        var links = headers.get("Link");
+        if (links == null) {
+            return 1;
+        }
+        return links.stream()
                 .map(Link::of)
                 .filter(link -> link.getRel().value().equals("last"))
                 .findAny()
@@ -107,10 +111,13 @@ public class GitHubApiClient {
     }
 
     private Instant updateSince(HttpHeaders headers, Instant since) {
-        var curLastModified =
-                Instant.from(formatter.parse(headers.get("Last-Modified").getFirst())); // TODO add check
-        if (curLastModified.isAfter(since) || curLastModified.equals(since)) {
-            since = curLastModified.plusSeconds(1);
+        var lastModifiedHeader = headers.get("Last-Modified");
+        if (lastModifiedHeader == null || lastModifiedHeader.isEmpty()) {
+            return since;
+        }
+        var lastModified = Instant.from(formatter.parse(lastModifiedHeader.getFirst()));
+        if (lastModified.isAfter(since) || lastModified.equals(since)) {
+            since = lastModified.plusSeconds(1);
         }
         return since;
     }

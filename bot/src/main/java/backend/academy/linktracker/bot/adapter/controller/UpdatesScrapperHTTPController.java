@@ -18,8 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
 @Slf4j
 @Component
@@ -106,8 +106,7 @@ public class UpdatesScrapperHTTPController {
     }
 
     public <T> Either<T, ApiErrorResponse> doRequest(
-            Supplier<ResponseEntity<T>> request, Collection<HttpStatus> expectedStatuses)
-            throws HttpServerErrorException {
+            Supplier<ResponseEntity<T>> request, Collection<HttpStatus> expectedStatuses) {
         try {
             return Either.left(request.get().getBody());
         } catch (HttpClientErrorException exception) {
@@ -118,9 +117,16 @@ public class UpdatesScrapperHTTPController {
                 log.atError()
                         .addKeyValue("status text", exception.getStatusText())
                         .addKeyValue("status code", exception.getStatusCode())
+                        .addKeyValue("message", exception.getMessage())
                         .log("Got unexpected bad status code");
             }
             return Either.right(exception.getResponseBodyAs(ApiErrorResponse.class));
+        } catch (RestClientException exception) {
+            log.atError().addKeyValue("message", exception.getMessage()).log("Failed to request scrapper");
+            return Either.right(new ApiErrorResponse()
+                    .code(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()))
+                    .exceptionName(exception.getClass().getName())
+                    .exceptionMessage(exception.getMessage()));
         }
     }
 }

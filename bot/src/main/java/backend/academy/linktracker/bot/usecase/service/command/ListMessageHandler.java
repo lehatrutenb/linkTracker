@@ -20,17 +20,13 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 @CommandHandler(command = "/list")
 public class ListMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    public static final String _BASIC_REPLY = "Список отслеживаемых ссылок:\n";
-    public static final String _NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
+    public static final String BASIC_REPLY = "Список отслеживаемых ссылок:\n";
+    public static final String NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;
@@ -70,14 +66,14 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
         var links = response.getLinks();
         if (links.isEmpty()) {
-            return _NO_LINKS_TRACKED_URL_REPLY;
+            return NO_LINKS_TRACKED_URL_REPLY;
         }
         if (tag.isPresent()) {
             links = links.stream()
                     .filter(link -> link.getTags().contains(tag.orElseThrow().tag()))
                     .toList();
         }
-        return _BASIC_REPLY
+        return BASIC_REPLY
                 + String.join(
                         "\n",
                         links.stream()
@@ -95,7 +91,7 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
         String reply =
                 switch (HttpStatus.resolve(
                         Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
-                    case HttpStatus.NOT_FOUND -> _NO_LINKS_TRACKED_URL_REPLY;
+                    case HttpStatus.NOT_FOUND -> NO_LINKS_TRACKED_URL_REPLY;
                     default -> "";
                 };
         if (!reply.isBlank()) {

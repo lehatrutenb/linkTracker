@@ -1,7 +1,6 @@
 package backend.academy.linktracker.scrapper.usecase.wrapper;
 
 import backend.academy.linktracker.scrapper.adapter.scrapper.stackoverflow.StackOverflowApiClient;
-import backend.academy.linktracker.scrapper.common.TimeUtils;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.property.StackoverflowProperties;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkStackOverflowUpdateEvent;
@@ -26,7 +25,6 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
     private static final String QUESTION_ID_PATH_PARAM = "question_id";
     private final StackoverflowProperties properties;
     private final StackOverflowApiClient apiClient;
-    private final TimeUtils timeUtils;
 
     public Pair<Collection<ScrapperLinkUpdateEvent>, Instant> scrap(URI uri, Instant since) {
         if (!checkCanScrap(uri)) {
@@ -34,7 +32,7 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
             throw new IllegalArgumentException("Got incorrect uri to scrap");
         }
         var questionID = getQuestionID(uri).orElseThrow();
-        var res = apiClient.getAnswersUpdates(List.of(questionID), since, timeUtils.now());
+        var res = apiClient.getAnswersUpdates(List.of(questionID), since, now());
         return Pair.of(mapToInnerEvents(res.getLeft(), uri), res.getRight());
     }
 
@@ -60,5 +58,9 @@ public class StackOverflowControllerWrapper implements OuterServiceScrapper {
         return Optional.ofNullable(template.match(uri.toString()).get(QUESTION_ID_PATH_PARAM))
                 .or(() -> Optional.ofNullable(
                         templateNoDescription.match(uri.toString()).get(QUESTION_ID_PATH_PARAM)));
+    }
+
+    private Instant now() {
+        return Instant.now();
     }
 }

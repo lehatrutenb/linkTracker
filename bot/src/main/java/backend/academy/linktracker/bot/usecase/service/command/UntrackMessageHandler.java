@@ -21,10 +21,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @CommandHandler(command = "/untrack")
 public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private static final String BASIC_TRACK_REPLY =
+    public static final String BASIC_TRACK_REPLY =
             "Введите github repo/stackoverflow question ссылку которую вы хотите перестать отслеживать";
-    private static final String BASIC_URL_REPLY = "Ссылка больше не будет отслеживаться";
-    private static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
+    public static final String BASIC_URL_REPLY = "Ссылка больше не будет отслеживаться";
+    public static final String UNTRACKED_URL_REPLY = "Ссылка ранее не отслеживалась";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;

@@ -39,7 +39,9 @@ public class ScrappingLinkService {
             throw new DuplicateEntityException(
                     ScrapperLink.class, link.id().uri().toString());
         }
-        linksRepository.addScrapperLink(link);
+        if (getLink(link.uri()).isEmpty()) {
+            linksRepository.addScrapperLink(link);
+        }
         linksRepository.addLinkToScrapperLinkListener(listener, link.id());
         return link;
     }

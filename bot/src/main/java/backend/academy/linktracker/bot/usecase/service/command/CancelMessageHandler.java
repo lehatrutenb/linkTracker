@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @CommandHandler(command = "/cancel")
 public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private static final String BASIC_REPLY = "";
-    private static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
+    public static final String BASIC_REPLY = "";
+    public static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
 
     private final EventsStateWatcher eventsStateWatcher;
     private final UserChatStateMachineConcurrentService commandsSharedStateService;

@@ -18,5 +18,5 @@ public interface EventsRepository {
     Collection<Event> getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
             OwnerIDType ownerIDType, EventState eventState, Instant updateAt);
 
-    void updateEvent(Event event); // TODO is it fine to use core event structure there?
+    void updateEvent(Event event);
 }

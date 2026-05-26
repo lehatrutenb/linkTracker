@@ -1,6 +1,5 @@
 package backend.academy.linktracker.bot.property;
 
-import backend.academy.linktracker.properties.RefreshScopeProperty;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
@@ -17,7 +16,6 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-@RefreshScopeProperty
 public class UpdatedScrapperApiProperties {
     @NotNull
     private URI apiPath;

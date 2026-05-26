@@ -25,10 +25,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Validated
 @Tag(name = "links", description = "the links API")
 @Controller
@@ -36,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LinksApiController {
     private final ScrapperFacade scrapperFacade;
 
-    public static final String _PATH_LINKS_DELETE = "/links";
+    public static final String PATH_LINKS_DELETE = "/links";
     /**
      * DELETE /links : Убрать отслеживание ссылки
      *
@@ -77,7 +73,7 @@ public class LinksApiController {
             })
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = _PATH_LINKS_DELETE,
+            value = PATH_LINKS_DELETE,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksDelete(
@@ -91,7 +87,7 @@ public class LinksApiController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public static final String _PATH_LINKS_GET = "/links";
+    public static final String PATH_LINKS_GET = "/links";
     /**
      * GET /links : Получить все отслеживаемые ссылки
      *
@@ -131,7 +127,7 @@ public class LinksApiController {
             })
     @RequestMapping(
             method = RequestMethod.GET,
-            value = _PATH_LINKS_GET,
+            value = PATH_LINKS_GET,
             produces = {"application/json"})
     public ResponseEntity<ListLinksResponse> linksGet(
             @NotNull
@@ -141,7 +137,7 @@ public class LinksApiController {
         return new ResponseEntity<>(scrapperFacade.getSchedulingLinks(tgChatId), HttpStatus.OK);
     }
 
-    public static final String _PATH_LINKS_POST = "/links";
+    public static final String PATH_LINKS_POST = "/links";
     /**
      * POST /links : Добавить отслеживание ссылки
      *
@@ -191,7 +187,7 @@ public class LinksApiController {
             })
     @RequestMapping(
             method = RequestMethod.POST,
-            value = _PATH_LINKS_POST,
+            value = PATH_LINKS_POST,
             produces = {"application/json"},
             consumes = {"application/json"})
     public ResponseEntity<LinkResponse> linksPost(

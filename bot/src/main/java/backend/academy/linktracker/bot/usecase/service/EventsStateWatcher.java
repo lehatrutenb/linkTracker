@@ -1,12 +1,12 @@
 package backend.academy.linktracker.bot.usecase.service;
 
 import backend.academy.linktracker.bot.adapter.repository.EventsRepository;
-import backend.academy.linktracker.bot.common.TimeUtils;
 import backend.academy.linktracker.bot.core.entity.Event;
 import backend.academy.linktracker.bot.core.entity.EventID;
 import backend.academy.linktracker.bot.core.enumeration.EventState;
 import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import backend.academy.linktracker.bot.property.TelegramLinkTrackerProperties;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EventsStateWatcher {
     private final EventsRepository eventsRepository;
-    private final TimeUtils timeUtils;
     private final TelegramLinkTrackerProperties telegramLinkTrackerProperties;
 
     public boolean toProcessEvent(EventID eventId) {
@@ -34,25 +33,29 @@ public class EventsStateWatcher {
     }
 
     public void markEventAsDone(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.DONE, timeUtils.now()));
+        eventsRepository.updateEvent(new Event(eventId, EventState.DONE, now()));
     }
 
     public void markEventAsSkipped(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.SKIPPED, timeUtils.now()));
+        eventsRepository.updateEvent(new Event(eventId, EventState.SKIPPED, now()));
     }
 
     public void markEventAsProcessing(EventID eventId) {
-        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
+        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING, now()));
     }
 
     public Collection<Event> getElderlyProcessingEvents(OwnerIDType ownerIDType) {
         return eventsRepository.getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
                 ownerIDType,
                 EventState.PROCESSING,
-                timeUtils.now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
+                now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
     public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
         return eventsRepository.getNumericLastOfPrefixOfDoneByOwnerType(type);
+    }
+
+    private Instant now() {
+        return Instant.now();
     }
 }
