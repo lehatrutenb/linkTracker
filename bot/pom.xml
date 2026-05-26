@@ -211,12 +211,6 @@
             <artifactId>awaitility</artifactId>
         </dependency>
         <dependency>
-            <groupId>backend.academy.link-tracker</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jdk8</artifactId>
         </dependency>

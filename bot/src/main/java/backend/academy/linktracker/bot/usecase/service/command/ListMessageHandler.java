@@ -5,9 +5,10 @@ import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.LinkTag;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
-import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
@@ -17,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.context.ApplicationListener;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -40,11 +40,7 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /list user command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /list user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         // Skip command to get tag
@@ -53,14 +49,17 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
                 .findFirst()
                 .map(LinkTag::new);
 
-        var response = updatesService.listLinks(message.chat().id());
-        if (response.isRight()) {
-            handleErrorScrapperResponse(event, response.get());
-            return;
+        try {
+            var response = updatesService.listLinks(message.chat().id());
+            linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), getReply(response, tag));
+        } catch (NotFoundException e) {
+            linkTracerTelegramBotReplier.sendMessage(
+                    event.getMessage().chat().id().getNumericID(), NO_LINKS_TRACKED_URL_REPLY);
+        } catch (Exception e) {
+            cancelMessageHandler.onBotError(event, true);
+        } finally {
+            eventsStateWatcher.markEventAsDone(event.getEventID());
         }
-
-        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), getReply(response.getLeft(), tag));
-        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
@@ -84,20 +83,5 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     @Override
     public boolean supportsAsyncExecution() {
         return false;
-    }
-
-    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
-        // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply =
-                switch (HttpStatus.resolve(
-                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
-                    case HttpStatus.NOT_FOUND -> NO_LINKS_TRACKED_URL_REPLY;
-                    default -> "";
-                };
-        if (!reply.isBlank()) {
-            linkTracerTelegramBotReplier.sendMessage(
-                    event.getMessage().chat().id().getNumericID(), reply);
-        }
-        cancelMessageHandler.onBotError(event, reply.isBlank());
     }
 }

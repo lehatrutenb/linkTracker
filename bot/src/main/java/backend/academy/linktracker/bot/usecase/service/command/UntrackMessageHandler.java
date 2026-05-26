@@ -5,15 +5,15 @@ import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
-import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -42,11 +42,7 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
         }
         TelegramBotMessage message = event.getMessage();
 
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /untrack user message");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /untrack user message");
 
         var sharedState =
                 commandsSharedStateService.getChatSharedState(message.chat().id());
@@ -70,11 +66,7 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
 
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle URL for /untrack command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle URL for /untrack command");
 
         if (sharedState.getCommandFlowState() != ChatCommandFlowState.WAITING_USER_INPUT) {
             log.warn("Suspiciously got not waiting flow state in command handler");
@@ -91,27 +83,16 @@ public class UntrackMessageHandler implements ApplicationListener<LinkTracerNewM
     }
 
     private void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message) {
-        var response = scrapper.untrackLink(event.getMessage().chat().id(), message.message());
-        if (response.isRight()) {
-            handleErrorScrapperResponse(event, response.get());
-            return;
+        try {
+            scrapper.untrackLink(event.getMessage().chat().id(), message.message());
+            commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+            linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
+        } catch (NotFoundException e) {
+            linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), UNTRACKED_URL_REPLY);
+        } catch (Exception e) {
+            cancelMessageHandler.onBotError(event, true);
+        } finally {
+            eventsStateWatcher.markEventAsDone(event.getEventID());
         }
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_URL_REPLY);
-    }
-
-    public void handleErrorScrapperResponse(LinkTracerNewMessageEvent event, ApiErrorResponse response) {
-        // It was hard decision to use http codes inside business - but alternatives are hard to implement
-        String reply =
-                switch (HttpStatus.resolve(
-                        Integer.parseInt(response.getCode().orElse(HttpStatus.INTERNAL_SERVER_ERROR.toString())))) {
-                    case HttpStatus.NOT_FOUND -> UNTRACKED_URL_REPLY;
-                    default -> "";
-                };
-        if (!reply.isBlank()) {
-            linkTracerTelegramBotReplier.sendMessage(
-                    event.getMessage().chat().id().getNumericID(), reply);
-        }
-        cancelMessageHandler.onBotError(event, reply.isBlank());
     }
 }

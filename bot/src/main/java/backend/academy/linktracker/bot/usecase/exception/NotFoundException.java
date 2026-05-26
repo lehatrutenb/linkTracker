@@ -4,7 +4,7 @@ import java.io.Serial;
 import lombok.Getter;
 
 @Getter
-public abstract class NotFoundException extends DomainException {
+public class NotFoundException extends DomainException {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -15,5 +15,10 @@ public abstract class NotFoundException extends DomainException {
         super(String.format("Entity `%s` with id `%s` not found", entityName, id));
         this.entityName = entityName;
         this.id = id;
+    }
+
+    @Override
+    public String getUserDescription() {
+        return String.format("Requested not found entity", entityName, id);
     }
 }

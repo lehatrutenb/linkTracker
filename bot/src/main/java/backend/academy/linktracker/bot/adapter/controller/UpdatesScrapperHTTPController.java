@@ -6,28 +6,27 @@ import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.LinkResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.RemoveLinkRequest;
-import io.github.resilience4j.core.functions.Either;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import backend.academy.linktracker.bot.usecase.exception.BadOuterRequestException;
+import backend.academy.linktracker.bot.usecase.exception.ConflictException;
+import backend.academy.linktracker.bot.usecase.exception.DomainException;
+import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
+import backend.academy.linktracker.bot.usecase.exception.OuterServiceInnerException;
 import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 
 @Slf4j
 @Component
 @RefreshScope
-// TODO is either fine in such context? Перейду чуть на русский - вот действительно интересный вопрос
-// просто на конкретно java код я не мега насмотрен, но разница между использование ex vs Either/Optional
-// в данном случае в том, что приходится везде прописывать эти контексты объекта, но мы меняем это
-// на `линейность` потока исполнения - я чуть поспрашивал и мне сказали, что такое видели - но как будто не мега принято
 public class UpdatesScrapperHTTPController {
     private UpdatedScrapperApiProperties configuration;
     private RestClient restClient;
@@ -38,8 +37,8 @@ public class UpdatesScrapperHTTPController {
         restClient = RestClient.create(configuration.getApiPath());
     }
 
-    public Optional<ApiErrorResponse> registerChat(String chatID) {
-        return doRequestWithEmptyResult(
+    public void registerChat(String chatID) throws DomainException {
+        doRequest(
                 () -> restClient
                         .post()
                         .uri(uriBuilder -> uriBuilder
@@ -47,11 +46,11 @@ public class UpdatesScrapperHTTPController {
                                 .build(chatID))
                         .retrieve()
                         .toBodilessEntity(),
-                List.of(HttpStatus.BAD_REQUEST, HttpStatus.CONFLICT));
+                "registerChat");
     }
 
-    public Optional<ApiErrorResponse> deleteChat(String chatID) {
-        return doRequestWithEmptyResult(
+    public void deleteChat(String chatID) throws DomainException {
+        doRequest(
                 () -> restClient
                         .delete()
                         .uri(uriBuilder -> uriBuilder
@@ -59,10 +58,10 @@ public class UpdatesScrapperHTTPController {
                                 .build(chatID))
                         .retrieve()
                         .toBodilessEntity(),
-                List.of(HttpStatus.BAD_REQUEST, HttpStatus.NOT_FOUND));
+                "deleteChat");
     }
 
-    public Either<ListLinksResponse, ApiErrorResponse> listLinks(String chatID) {
+    public ListLinksResponse listLinks(String chatID) throws DomainException {
         return doRequest(
                 () -> restClient
                         .get()
@@ -70,10 +69,10 @@ public class UpdatesScrapperHTTPController {
                         .header(TG_CHAT_ID_HEADER, chatID)
                         .retrieve()
                         .toEntity(ListLinksResponse.class),
-                List.of(HttpStatus.BAD_REQUEST, HttpStatus.NOT_FOUND));
+                "listLinks");
     }
 
-    public Either<LinkResponse, ApiErrorResponse> trackLink(String chatID, AddLinkRequest request) {
+    public LinkResponse trackLink(String chatID, AddLinkRequest request) throws DomainException {
         return doRequest(
                 () -> restClient
                         .post()
@@ -82,10 +81,10 @@ public class UpdatesScrapperHTTPController {
                         .body(request)
                         .retrieve()
                         .toEntity(LinkResponse.class),
-                List.of(HttpStatus.BAD_REQUEST, HttpStatus.NOT_FOUND, HttpStatus.CONFLICT));
+                "trackLink");
     }
 
-    public Either<LinkResponse, ApiErrorResponse> untrackLink(String chatID, RemoveLinkRequest request) {
+    public LinkResponse untrackLink(String chatID, RemoveLinkRequest request) throws DomainException {
         return doRequest(
                 () -> restClient
                         .method(
@@ -97,36 +96,42 @@ public class UpdatesScrapperHTTPController {
                         .body(request)
                         .retrieve()
                         .toEntity(LinkResponse.class),
-                List.of(HttpStatus.BAD_REQUEST, HttpStatus.NOT_FOUND));
+                "untrackLink");
     }
 
-    public Optional<ApiErrorResponse> doRequestWithEmptyResult(
-            Supplier<ResponseEntity<Void>> request, Collection<HttpStatus> expectedStatuses) {
-        return Optional.ofNullable(doRequest(request, expectedStatuses).getOrNull());
-    }
+    public <T> T doRequest(Supplier<ResponseEntity<T>> request, String entityName) throws DomainException {
 
-    public <T> Either<T, ApiErrorResponse> doRequest(
-            Supplier<ResponseEntity<T>> request, Collection<HttpStatus> expectedStatuses) {
         try {
-            return Either.left(request.get().getBody());
+            return request.get().getBody();
         } catch (HttpClientErrorException exception) {
-            if (!expectedStatuses.stream()
-                    .map(HttpStatus::value)
-                    .toList()
-                    .contains(exception.getStatusCode().value())) {
-                log.atError()
-                        .addKeyValue("status text", exception.getStatusText())
-                        .addKeyValue("status code", exception.getStatusCode())
-                        .addKeyValue("message", exception.getMessage())
-                        .log("Got unexpected bad status code");
+            MDC.put("status text", exception.getStatusText());
+            MDC.put("status code", String.valueOf(exception.getStatusCode().value()));
+            MDC.put("message", exception.getMessage());
+            ApiErrorResponse response = exception.getResponseBodyAs(ApiErrorResponse.class);
+            switch (exception.getStatusCode()) {
+                case HttpStatus.BAD_REQUEST:
+                    throw new BadOuterRequestException(
+                            entityName, response.getDescription().orElse(""));
+                case HttpStatus.NOT_FOUND:
+                    throw new NotFoundException(
+                            entityName, response.getDescription().orElse(""));
+                case HttpStatus.CONFLICT:
+                    throw new ConflictException(
+                            entityName, response.getDescription().orElse(""));
+                default:
+                    throw new RuntimeException(exception);
             }
-            return Either.right(exception.getResponseBodyAs(ApiErrorResponse.class));
+        } catch (HttpServerErrorException exception) {
+            MDC.put("status text", exception.getStatusText());
+            MDC.put("status code", String.valueOf(exception.getStatusCode().value()));
+            MDC.put("message", exception.getMessage());
+            throw new OuterServiceInnerException(exception.getResponseBodyAs(ApiErrorResponse.class));
         } catch (RestClientException exception) {
-            log.atError().addKeyValue("message", exception.getMessage()).log("Failed to request scrapper");
-            return Either.right(new ApiErrorResponse()
-                    .code(String.valueOf(HttpStatus.INTERNAL_SERVER_ERROR.value()))
-                    .exceptionName(exception.getClass().getName())
-                    .exceptionMessage(exception.getMessage()));
+            MDC.put("message", exception.getMessage());
+            throw new RuntimeException(exception);
+        } finally {
+            log.atError().log("Got error response from scrapper");
+            MDC.clear();
         }
     }
 }

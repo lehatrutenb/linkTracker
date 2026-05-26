@@ -56,14 +56,14 @@ public class LinkTracerFacade {
                 .map(TelegramUpdatesMapper::mapUpdateId);
     }
 
-    public void processScrapperUpdates(Collection<LinkUpdate> updates) {
-        updates.forEach(update -> {
+    public void processScrapperUpdates(Collection<LinkUpdate> updates) throws RequestBodyFieldValidationException {
+        for (var update : updates) {
             EventID eventId = ScrapperEventsMapper.mapScrapperUpdateId(
                     update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
             if (eventsStateWatcher.toProcessEvent(eventId)) {
                 eventsStateWatcher.markEventAsProcessing(eventId);
                 scrapperUpdatesHandleService.handle(update, eventId);
             }
-        });
+        }
     }
 }

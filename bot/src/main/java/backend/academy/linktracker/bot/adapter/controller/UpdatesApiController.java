@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.adapter.controller;
 import backend.academy.linktracker.bot.usecase.LinkTracerFacade;
 import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.LinkUpdate;
+import backend.academy.linktracker.bot.usecase.exception.RequestBodyFieldValidationException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -56,7 +57,8 @@ public class UpdatesApiController {
             consumes = {"application/json"})
     public ResponseEntity<Void> updatesPost(
             @Parameter(name = "LinkUpdate", description = "", required = true) @Valid @RequestBody
-                    LinkUpdate linkUpdate) {
+                    LinkUpdate linkUpdate)
+            throws RequestBodyFieldValidationException {
         facade.processScrapperUpdates(List.of(linkUpdate));
         return new ResponseEntity<>(HttpStatus.OK); // TODO No error handling
     }

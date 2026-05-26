@@ -5,6 +5,7 @@ import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -30,11 +31,7 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /cancel user command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /cancel user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
@@ -43,11 +40,7 @@ public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMe
 
     public void onBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle bot internal error");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle bot internal error");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
 

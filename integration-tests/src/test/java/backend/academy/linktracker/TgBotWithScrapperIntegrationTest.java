@@ -163,7 +163,6 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         assertThat(responses).isNotEmpty();
         assertThat(responses)
                 .hasSize(7)
-                .last()
                 .asString()
                 .containsOnlyOnce(ListMessageHandler.BASIC_REPLY)
                 .containsOnlyOnce(url1)

@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.usecase.service.command;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -28,11 +29,7 @@ public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMe
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /ignore user command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /ignore user command");
 
         // Not update shared state to have real stub event
         eventsStateWatcher.markEventAsDone(event.getEventID());

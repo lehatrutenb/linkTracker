@@ -5,6 +5,7 @@ import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
@@ -32,11 +33,7 @@ public class HelpCommandHandler implements ApplicationListener<LinkTracerNewMess
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle /help user command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /help user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
         linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), addCommandsToReply(BASIC_REPLY));

@@ -3,6 +3,7 @@ package backend.academy.linktracker.bot.usecase.service.command;
 import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import java.util.Arrays;
@@ -40,11 +41,7 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
 
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle unknown user command");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle unknown user command");
 
         linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());

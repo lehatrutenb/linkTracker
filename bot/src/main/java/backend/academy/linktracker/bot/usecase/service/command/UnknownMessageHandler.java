@@ -4,6 +4,7 @@ import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClien
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -37,11 +38,7 @@ public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
 
-        log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().id())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
-                .log("Handle unexpected user message");
+        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle unexpected user message");
 
         linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
