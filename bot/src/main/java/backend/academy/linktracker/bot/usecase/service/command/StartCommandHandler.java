@@ -33,9 +33,6 @@ public class StartCommandHandler extends GeneralCommandHandler<LinkTracerNewMess
         }
         TelegramBotMessage message = event.getMessage();
         log.atInfo()
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
                 .log("Handle /start user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());

@@ -45,9 +45,6 @@ public class UnknownMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
         }
 
         log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
                 .log("Handle unexpected user message");
 
         telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);

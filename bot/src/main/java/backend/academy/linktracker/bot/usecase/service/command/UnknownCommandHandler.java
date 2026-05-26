@@ -52,9 +52,6 @@ public class UnknownCommandHandler extends GeneralCommandHandler<LinkTracerNewMe
         }
 
         log.atInfo() // TODO Check how to move such logging to shared part
-                .addKeyValue("chat id", message.chat().getId())
-                .addKeyValue("message id", message.id())
-                .addKeyValue("message date", message.date())
                 .log("Handle unknown user command");
 
         telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
