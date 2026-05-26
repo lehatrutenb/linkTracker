@@ -1,39 +1,27 @@
 package backend.academy.linktracker.bot.usecase;
 
-import backend.academy.linktracker.bot.core.entities.BotChat;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
-import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
-import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
-import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
-import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
-import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.exceptions.RequestBodyFieldValidationException;
-import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
-import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
-import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
-========
+import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
+import backend.academy.linktracker.bot.core.entity.BotChat;
+import backend.academy.linktracker.bot.core.entity.Event;
 import backend.academy.linktracker.bot.core.entity.EventID;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
+import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
+import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
+import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import backend.academy.linktracker.bot.usecase.dto.generated.LinkUpdate;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.exception.RequestBodyFieldValidationException;
-import backend.academy.linktracker.bot.usecase.mapper.ScrapperEventsMapper;
 import backend.academy.linktracker.bot.usecase.mapper.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.service.TelegramBotMessagesOrderService;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/LinkTracerFacade.java
 import com.pengrad.telegrambot.model.Update;
 import jakarta.transaction.Transactional;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -51,19 +39,14 @@ public class LinkTracerFacade {
     private final TelegramBotMessagesRepository botMessagesRepository;
     private final TransactionTemplate transactionTemplate;
 
-    // Need transactional here not to be inconsistent between event and message states
-
-    /**
-     *
-     * @param updates
-     * @return last fully processed eventID on prefix if exists such
-     */
     public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates) {
+        return processLinkTrackerUpdates(updates, LinkTracerTelegramBotClient.QUALIFIER);
+    }
+
+    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, String replyServiceQualifier) {
         messagesOrderService.clear();
-        updates.stream().filter(update -> update.message() != null).forEach(update -> {
-            transactionTemplate.executeWithoutResult(
-                    status -> this.processLinkTrackerUpdate(update));
-        });
+        updates.forEach(update -> transactionTemplate.executeWithoutResult(
+                status -> this.processLinkTrackerUpdate(update, replyServiceQualifier)));
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
                 .map(Event::id)
@@ -71,9 +54,9 @@ public class LinkTracerFacade {
     }
 
     @Transactional
-    private void processLinkTrackerUpdate(Update update) {
+    private void processLinkTrackerUpdate(Update update, String replyServiceQualifier) {
         EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
-        TelegramBotMessage message = TelegramUpdatesMapper.map(update);
+        TelegramBotMessage message = TelegramUpdatesMapper.map(update, replyServiceQualifier);
 
         if (eventsStateWatcher.toProcessEvent(eventId)) {
             if (messagesOrderService.toProcessMessage(message)) {
@@ -84,40 +67,35 @@ public class LinkTracerFacade {
                 if (botUsersRepository
                         .getTelegramBotUser(message.user().userId())
                         .isEmpty()) {
-                    botUsersRepository.createTelegramBotUser(
-                            message.user()); // Globally user info may change, but we do not really depents on such
-                    // changes
+                    botUsersRepository.createTelegramBotUser(message.user());
                 }
                 if (botChatsRepository.getBotChat(message.chat().getId()).isEmpty()) {
-                    botChatsRepository.createBotChat(
-                            new BotChat(message.chat().getId())); // TODO map in mapper
+                    botChatsRepository.createBotChat(new BotChat(message.chat().getId(), replyServiceQualifier));
                 }
                 message = botMessagesRepository.createMessage(message);
                 eventsStateWatcher.markEventAsProcessing(eventId);
                 var event = new LinkTracerNewMessageEvent(this, message, eventId);
                 messagesOrderService.addProcessingMessage(message);
-                // Run in new transaction to be consistent with listeners
                 applicationEventPublisher.publishEvent(event);
             }
         } else if (!eventsStateWatcher.isEventDone(eventId)) {
-            // We currently do some staff with that event
             messagesOrderService.addProcessingMessage(message);
         }
     }
 
-    public void processScrapperUpdates(Collection<LinkUpdateRequest> updates) throws RequestBodyFieldValidationException {
-        updates.forEach(update -> {
-            transactionTemplate.executeWithoutResult(status -> processScrapperUpdate(update));
-        });
+    public void processScrapperUpdates(Collection<LinkUpdate> updates) throws RequestBodyFieldValidationException {
+        for (var update : updates) {
+            processScrapperUpdate(update);
+        }
     }
 
     @Transactional
-    private void processScrapperUpdate(LinkUpdateRequest update) throws RequestBodyFieldValidationException {
+    private void processScrapperUpdate(LinkUpdate update) throws RequestBodyFieldValidationException {
         EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(
                 update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
         if (eventsStateWatcher.toProcessEvent(eventId)) {
             eventsStateWatcher.markEventAsProcessing(eventId);
-            scrapperUpdatesHandleService.handle(TelegramUpdatesMapper.mapLinkUpdateRequest(update), eventId);
+            scrapperUpdatesHandleService.handle(TelegramUpdatesMapper.mapLinkUpdate(update), eventId);
         }
     }
 }

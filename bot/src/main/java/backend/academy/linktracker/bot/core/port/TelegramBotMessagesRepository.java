@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.core.port;
 
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessageID;
 import java.util.Optional;
 
 public interface TelegramBotMessagesRepository {

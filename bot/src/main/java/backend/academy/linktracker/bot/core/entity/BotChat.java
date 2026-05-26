@@ -1,4 +1,4 @@
-package backend.academy.linktracker.bot.core.entities;
+package backend.academy.linktracker.bot.core.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

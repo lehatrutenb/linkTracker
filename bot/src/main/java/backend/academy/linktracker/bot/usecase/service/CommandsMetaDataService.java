@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/CommandsMetaDataService.java
-package backend.academy.linktracker.bot.usecase.services;
-========
 package backend.academy.linktracker.bot.usecase.service;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/CommandsMetaDataService.java
 
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import java.util.Collection;

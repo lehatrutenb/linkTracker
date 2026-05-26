@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.core.port;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.entity.TelegramBotUser;
 import java.util.Optional;
 
 public interface TelegramBotUserRepository {

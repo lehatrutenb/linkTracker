@@ -1,48 +1,43 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/commands/UnknownCommandHandler.java
-package backend.academy.linktracker.bot.usecase.services.commands;
-
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.services.CommandsMetaDataService;
-import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.BotChatMetaDataService;
-========
 package backend.academy.linktracker.bot.usecase.service.command;
 
 import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/command/UnknownCommandHandler.java
+import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class UnknownCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
-            "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд.";
+            "Неизвестная команда. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it
+    // makes sense to
+    // move to storage
 
-    private final EventsStateWatcher eventsStateWatcher;
     private final CommandsMetaDataService commandsMetaDataService;
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/commands/UnknownCommandHandler.java
-    private final ApplicationContext applicationContext;
-    private final BotChatMetaDataService replyServiceMatcher;
-========
-    private final LinkTracerTelegramBotClient linkTracerTelegramBotReplier;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/command/UnknownCommandHandler.java
+    private final LinkTracerTelegramBotClient telegramBotClient;
+
+    public UnknownCommandHandler(
+            EventsStateWatcher eventsStateWatcher,
+            CommandsMetaDataService commandsMetaDataService,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            LinkTracerTelegramBotClient telegramBotClient) {
+        super(eventsStateWatcher, commandsSharedStateService, null);
+        this.commandsMetaDataService = commandsMetaDataService;
+        this.telegramBotClient = telegramBotClient;
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public int getOrder() {
+        return HIGHEST_PRECEDENCE;
+    }
+
+    @Override
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/")) {
             return;
         }
@@ -56,14 +51,13 @@ public class UnknownCommandHandler implements ApplicationListener<LinkTracerNewM
             return;
         }
 
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle unknown user command");
+        log.atInfo() // TODO Check how to move such logging to shared part
+                .addKeyValue("chat id", message.chat().getId())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle unknown user command");
 
-        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

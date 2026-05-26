@@ -12,11 +12,13 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RefreshScope
+@ConditionalOnProperty(name = "app.data.access-type", havingValue = "IN_MEM")
 @RequiredArgsConstructor
 public class ScrappingLinkMetaDataRepositoryInMemImpl implements ScrappingLinkMetaDataRepository {
     Set<ScrapperLinkMetaData> metaDatas = new HashSet<>();

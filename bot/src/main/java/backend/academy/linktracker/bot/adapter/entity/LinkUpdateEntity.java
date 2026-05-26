@@ -1,10 +1,10 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.LinkUpdate;
-import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
-import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.entity.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.ScrapperLinkUpdate;
+import backend.academy.linktracker.bot.usecase.mapper.TelegramUpdatesMapper;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CollectionTable;
@@ -48,7 +48,7 @@ public class LinkUpdateEntity {
     @Column(name = "bot_chat_id")
     private List<Long> tgChatIDs;
 
-    public LinkUpdateEntity(LinkUpdate linkUpdate, EventID eventID) {
+    public LinkUpdateEntity(ScrapperLinkUpdate linkUpdate, EventID eventID) {
         this.eventID = new EventIDEntity(eventID);
         id = getID(linkUpdate.id());
         tgChatIDs = linkUpdate.botChatIDS().stream().map(BotChatEntity::getID).toList();
@@ -56,13 +56,15 @@ public class LinkUpdateEntity {
         description = linkUpdate.description();
     }
 
-    public LinkUpdate toDomain() {
+    public ScrapperLinkUpdate toDomain() {
         try {
-            return new LinkUpdate(
+            return new ScrapperLinkUpdate(
                     TelegramUpdatesMapper.mapLinkUpdateID(id),
                     new URI(url),
                     description,
-                    tgChatIDs.stream().map(BotChatID::new).toList());
+                    tgChatIDs.stream()
+                            .map(chatID -> new BotChatID(chatID.longValue()))
+                            .toList());
         } catch (URISyntaxException e) {
             log.error("LinkUpdateEntity contains corrupted URI value");
             throw new RuntimeException(e);

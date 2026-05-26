@@ -39,8 +39,6 @@ public class ScrapperLinkMetaDataEntity {
             },
             inverseJoinColumns = @JoinColumn(name = "tag_name"))
     private List<TagEntity> tags;
-    // private List<String> filters; // :) let it just be  TODO or rm? in business why filter even if we will need it
-    // will be connected to such connection entity
 
     public ScrapperLinkMetaDataEntity(ScrapperLinkMetaData metaData) {
         id = getID(metaData);
@@ -53,7 +51,9 @@ public class ScrapperLinkMetaDataEntity {
 
     public ScrapperLinkMetaData toDomain() {
         return new ScrapperLinkMetaData(
-                id.toDomain(), tags.stream().map(TagEntity::getName).toList(), List.of());
+                id.toDomain(),
+                tags == null ? List.of() : tags.stream().map(TagEntity::getName).toList(),
+                List.of());
     }
 
     @Embeddable
@@ -86,6 +86,7 @@ public class ScrapperLinkMetaDataEntity {
     @Entity
     @Getter
     @Setter
+    @EqualsAndHashCode
     public static
     class TagEntity { // We basically can have more complex struct or may just have generating id, but i think such
         // structure is easy solution in place where we do not really need to think

@@ -2,10 +2,10 @@ package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.EventEntity;
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
-import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.entity.Event;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.enumeration.EventState;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.EventsRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

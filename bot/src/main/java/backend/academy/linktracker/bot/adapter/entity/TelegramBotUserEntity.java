@@ -1,6 +1,6 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.entity.TelegramBotUser;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;

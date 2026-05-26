@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import backend.academy.linktracker.scrapper.adapter.controller.LinksApiController;
 import backend.academy.linktracker.scrapper.adapter.controller.TgChatApiController;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
+import backend.academy.linktracker.scrapper.usecase.dto.generated.LinkResponse;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.RemoveLinkRequest;
 import java.net.URI;
@@ -23,22 +24,21 @@ import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.wiremock.spring.EnableWireMock;
 
@@ -46,6 +46,7 @@ import org.wiremock.spring.EnableWireMock;
 @Import(TestcontainersConfiguration.class)
 @ActiveProfiles("test")
 @EnableWireMock
+@Testcontainers
 public class ScrapperIntegrationTest {
 
     private static final String TG_CHAT_HEADER_NAME = "Tg-Chat-Id";
@@ -103,7 +104,7 @@ public class ScrapperIntegrationTest {
         var responseLinkList = getLinks(DEFAULT_CHAT_ID);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(link), List.of());
         assertThat(responseLinkList.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseLinkList.getBody().getLinks())
                 .hasSize(1)
@@ -121,8 +122,8 @@ public class ScrapperIntegrationTest {
         var responseLinkList = getLinks(DEFAULT_CHAT_ID);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkDelete.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
+        assertLinkResponse(responseLinkDelete, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseLinkList.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseLinkList.getBody().getLinks()).isEmpty();
     }
@@ -138,7 +139,7 @@ public class ScrapperIntegrationTest {
         var responseLinkList = getLinks(DEFAULT_CHAT_ID);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseLinkList.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseLinkList.getBody().getLinks())
                 .hasSize(1)
@@ -167,7 +168,7 @@ public class ScrapperIntegrationTest {
 
         assertApiError(() -> getLinks(DEFAULT_CHAT_ID), HttpStatus.NOT_FOUND);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseChatDelete.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
@@ -187,8 +188,8 @@ public class ScrapperIntegrationTest {
         var responseLinkList = getLinks(DEFAULT_CHAT_ID);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd2.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
+        assertLinkResponse(responseLinkAdd2, URI.create(STACKOVERFLOW_LINK), List.of());
         assertThat(responseLinkList.getBody().getLinks())
                 .hasSize(2)
                 .extracting(link -> link.getUrl().orElseThrow())
@@ -209,8 +210,8 @@ public class ScrapperIntegrationTest {
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseSecondChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseSecondLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
+        assertLinkResponse(responseSecondLinkAdd, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseLinkList.getBody().getLinks())
                 .hasSize(1)
                 .first()
@@ -240,7 +241,7 @@ public class ScrapperIntegrationTest {
 
         assertApiError(this::addLinkDefault, HttpStatus.CONFLICT);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
     }
 
     @Test
@@ -255,22 +256,21 @@ public class ScrapperIntegrationTest {
 
     @Test
     @Timeout(100)
-    void addLinkWithTagsAndFiltersSendsReceivesThem() {
+    void addLinkWithTagsSendsReceivesThem() {
         List<String> tags = List.of("tag1", "tag2");
-        List<String> filters = List.of("filter1", "filter2");
         AddLinkRequest addLinkRequest =
-                new AddLinkRequest().link(URI.create(DEFAULT_LINK)).tags(tags).filters(filters);
+                new AddLinkRequest().link(URI.create(DEFAULT_LINK)).tags(tags);
 
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
         var responseLinkAdd = addLink(DEFAULT_CHAT_ID, addLinkRequest);
         var responseLinkList = getLinks(DEFAULT_CHAT_ID);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), tags);
         assertThat(responseLinkList.getBody().getLinks()).hasSize(1).first().satisfies(link -> {
             assertThat(link.getUrl()).isEqualTo(Optional.of(URI.create(DEFAULT_LINK)));
             assertThat(link.getTags()).containsExactlyElementsOf(tags);
-            assertThat(link.getFilters()).containsExactlyElementsOf(filters);
+            assertThat(link.getFilters()).isEmpty();
         });
     }
 
@@ -278,6 +278,15 @@ public class ScrapperIntegrationTest {
         assertThatThrownBy(request).isInstanceOfSatisfying(HttpClientErrorException.class, exception -> {
             assertThat(exception.getStatusCode()).isEqualTo(expectedStatus);
         });
+    }
+
+    private void assertLinkResponse(ResponseEntity<LinkResponse> response, URI expectedUri, List<String> expectedTags) {
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().getId()).isPresent();
+        assertThat(response.getBody().getUrl()).contains(expectedUri);
+        assertThat(response.getBody().getTags()).containsExactlyElementsOf(expectedTags);
+        assertThat(response.getBody().getFilters()).isEmpty();
     }
 
     private ResponseEntity<Void> registerChat(String chatID) {
@@ -296,7 +305,7 @@ public class ScrapperIntegrationTest {
                 .toBodilessEntity();
     }
 
-    private ResponseEntity<Void> addLink(String chatID, AddLinkRequest addLinkRequest) {
+    private ResponseEntity<LinkResponse> addLink(String chatID, AddLinkRequest addLinkRequest) {
         return restClient
                 .method(HttpMethod.POST)
                 .uri(LinksApiController.PATH_LINKS_POST)
@@ -304,10 +313,10 @@ public class ScrapperIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(addLinkRequest)
                 .retrieve()
-                .toBodilessEntity();
+                .toEntity(LinkResponse.class);
     }
 
-    private ResponseEntity<Void> deleteLink(String chatID, RemoveLinkRequest removeLinkRequest) {
+    private ResponseEntity<LinkResponse> deleteLink(String chatID, RemoveLinkRequest removeLinkRequest) {
         return restClient
                 .method(HttpMethod.DELETE)
                 .uri(LinksApiController.PATH_LINKS_DELETE)
@@ -315,14 +324,14 @@ public class ScrapperIntegrationTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(removeLinkRequest)
                 .retrieve()
-                .toBodilessEntity();
+                .toEntity(LinkResponse.class);
     }
 
-    private ResponseEntity<Void> addLinkDefault() {
+    private ResponseEntity<LinkResponse> addLinkDefault() {
         return addLink(DEFAULT_CHAT_ID, ADD_DEFAULT_LINK_REQUEST);
     }
 
-    private ResponseEntity<Void> deleteLinkDefault() {
+    private ResponseEntity<LinkResponse> deleteLinkDefault() {
         return deleteLink(DEFAULT_CHAT_ID, DELETE_DEFAULT_LINK_REQUEST);
     }
 

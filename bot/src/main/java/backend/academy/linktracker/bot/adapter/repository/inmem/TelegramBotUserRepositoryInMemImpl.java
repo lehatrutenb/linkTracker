@@ -1,15 +1,17 @@
 package backend.academy.linktracker.bot.adapter.repository.inmem;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.entity.TelegramBotUser;
 import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
+@ConditionalOnProperty(name = "app.data.access-type", havingValue = "IN_MEM")
 public class TelegramBotUserRepositoryInMemImpl implements TelegramBotUserRepository {
     private final Map<Long, TelegramBotUser> telegramBotUsers = new HashMap<>();
 

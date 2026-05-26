@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class BotChatID implements Serializable {
+public class TelegramBotChatID implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 

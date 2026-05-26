@@ -100,7 +100,6 @@ public class UpdatesScrapperHTTPController {
     }
 
     public <T> T doRequest(Supplier<ResponseEntity<T>> request, String entityName) throws DomainException {
-
         try {
             return request.get().getBody();
         } catch (HttpClientErrorException exception) {

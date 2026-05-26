@@ -83,8 +83,7 @@ public class LinksApiController {
                     Long tgChatId,
             @Parameter(name = "RemoveLinkRequest", description = "", required = true) @Valid @RequestBody
                     RemoveLinkRequest removeLinkRequest) {
-        scrapperFacade.deleteLinkScheduling(removeLinkRequest, tgChatId);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(scrapperFacade.deleteLinkScheduling(removeLinkRequest, tgChatId), HttpStatus.OK);
     }
 
     public static final String PATH_LINKS_GET = "/links";

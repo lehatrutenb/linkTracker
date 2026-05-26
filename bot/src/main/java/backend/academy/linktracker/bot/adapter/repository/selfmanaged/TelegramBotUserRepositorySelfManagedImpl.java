@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapter.repository.selfmanaged;
 
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotUserEntity;
-import backend.academy.linktracker.bot.core.entities.TelegramBotUser;
+import backend.academy.linktracker.bot.core.entity.TelegramBotUser;
 import backend.academy.linktracker.bot.core.port.TelegramBotUserRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

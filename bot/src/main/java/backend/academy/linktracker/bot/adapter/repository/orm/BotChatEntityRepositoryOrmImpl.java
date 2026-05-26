@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
-import backend.academy.linktracker.bot.core.entities.BotChat;
-import backend.academy.linktracker.bot.core.entities.BotChatID;
+import backend.academy.linktracker.bot.core.entity.BotChat;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
 import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;

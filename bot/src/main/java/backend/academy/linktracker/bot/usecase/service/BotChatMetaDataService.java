@@ -1,8 +1,8 @@
-package backend.academy.linktracker.bot.usecase.services;
+package backend.academy.linktracker.bot.usecase.service;
 
-import backend.academy.linktracker.bot.adapter.controller.LinkTracerTelegramBotReplier;
-import backend.academy.linktracker.bot.core.entities.BotChat;
-import backend.academy.linktracker.bot.core.entities.BotChatID;
+import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
+import backend.academy.linktracker.bot.core.entity.BotChat;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
 import backend.academy.linktracker.bot.core.port.BotChatEntityRepository;
 import java.util.Map;
 import java.util.Optional;
@@ -17,7 +17,7 @@ public class BotChatMetaDataService {
     private final ApplicationContext applicationContext;
     private final BotChatEntityRepository repository;
 
-    public Optional<LinkTracerTelegramBotReplier> getReplyService(BotChatID chatID) {
+    public Optional<LinkTracerTelegramBotClient> getReplyService(BotChatID chatID) {
         var replyServiceQualifier = repository.getBotChat(chatID);
         if (replyServiceQualifier.isEmpty()) {
             return Optional.empty();
@@ -28,7 +28,7 @@ public class BotChatMetaDataService {
                         .value()
                         .equals(replyServiceQualifier.orElseThrow().getReplyService()))
                 .map(Map.Entry::getValue)
-                .map(replier -> (LinkTracerTelegramBotReplier) replier)
+                .map(LinkTracerTelegramBotClient.class::cast)
                 .findAny();
     }
 

@@ -8,58 +8,36 @@ import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
-import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import java.util.Arrays;
 import java.util.Optional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/list")
-public class ListMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class ListMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     public static final String BASIC_REPLY = "Список отслеживаемых ссылок:\n";
     public static final String NO_LINKS_TRACKED_URL_REPLY = "В данный момент ссылки не отслеживаются";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
     private final ScrapperUpdatesService updatesService;
     private final CancelMessageHandler cancelMessageHandler;
-    private final LinkTracerTelegramBotClient linkTracerTelegramBotReplier;
+    private final LinkTracerTelegramBotClient telegramBotClient;
 
-    @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
-        if (!event.getMessage().message().strip().startsWith("/list")) {
-            return;
-        }
-        TelegramBotMessage message = event.getMessage();
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /list user command");
-
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        // Skip command to get tag
-        var tag = Arrays.stream(message.message().strip().split(" "))
-                .skip(1)
-                .findFirst()
-                .map(LinkTag::new);
-
-        try {
-            var response = updatesService.listLinks(message.chat().id());
-            linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), getReply(response, tag));
-        } catch (NotFoundException e) {
-            linkTracerTelegramBotReplier.sendMessage(
-                    event.getMessage().chat().id().getNumericID(), NO_LINKS_TRACKED_URL_REPLY);
-        } catch (Exception e) {
-            cancelMessageHandler.onBotError(event, true);
-        } finally {
-            eventsStateWatcher.markEventAsDone(event.getEventID());
-        }
+    public ListMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            ScrapperUpdatesService updatesService,
+            CancelMessageHandler cancelMessageHandler,
+            LinkTracerTelegramBotClient telegramBotClient) {
+        super(eventsStateWatcher, commandsSharedStateService, null);
+        this.updatesService = updatesService;
+        this.cancelMessageHandler = cancelMessageHandler;
+        this.telegramBotClient = telegramBotClient;
     }
 
     public String getReply(ListLinksResponse response, Optional<LinkTag> tag) {
@@ -81,7 +59,29 @@ public class ListMessageHandler implements ApplicationListener<LinkTracerNewMess
     }
 
     @Override
-    public boolean supportsAsyncExecution() {
-        return false;
+    public void processEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/list")) {
+            return;
+        }
+        TelegramBotMessage message = event.getMessage();
+        log.atInfo().log("Handle /list user command");
+
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
+        // Skip command to get tag
+        var tag = Arrays.stream(message.message().strip().split(" "))
+                .skip(1)
+                .findFirst()
+                .map(LinkTag::new);
+
+        try {
+            var response = updatesService.listLinks(message.chat().getId());
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), getReply(response, tag));
+        } catch (NotFoundException e) {
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), NO_LINKS_TRACKED_URL_REPLY);
+        } catch (Exception e) {
+            cancelMessageHandler.processBotError(event, true);
+        } finally {
+            eventsStateWatcher.markEventAsDone(event.getEventID());
+        }
     }
 }

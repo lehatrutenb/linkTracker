@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.entity.Event;
+import backend.academy.linktracker.bot.core.enumeration.EventState;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

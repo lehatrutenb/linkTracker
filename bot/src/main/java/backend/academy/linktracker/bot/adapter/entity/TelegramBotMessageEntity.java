@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessageID;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

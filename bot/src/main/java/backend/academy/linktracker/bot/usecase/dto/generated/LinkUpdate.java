@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/dtos/models/LinkUpdateRequest.java
-package backend.academy.linktracker.bot.usecase.dtos.models;
-========
 package backend.academy.linktracker.bot.usecase.dto.generated;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/dto/generated/LinkUpdate.java
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,7 +17,7 @@ import java.util.Optional;
         value = "org.openapitools.codegen.languages.SpringCodegen",
         date = "2026-04-05T12:43:50.364860284Z[Etc/UTC]",
         comments = "Generator version: 7.21.0-SNAPSHOT")
-public class LinkUpdateRequest {
+public class LinkUpdate {
 
     private Optional<Long> id = Optional.empty();
 
@@ -32,7 +28,7 @@ public class LinkUpdateRequest {
     @Valid
     private List<Long> tgChatIds = new ArrayList<>();
 
-    public LinkUpdateRequest id(Long id) {
+    public LinkUpdate id(Long id) {
         this.id = Optional.ofNullable(id);
         return this;
     }
@@ -51,7 +47,7 @@ public class LinkUpdateRequest {
         this.id = id;
     }
 
-    public LinkUpdateRequest url(URI url) {
+    public LinkUpdate url(URI url) {
         this.url = Optional.ofNullable(url);
         return this;
     }
@@ -71,7 +67,7 @@ public class LinkUpdateRequest {
         this.url = url;
     }
 
-    public LinkUpdateRequest description(String description) {
+    public LinkUpdate description(String description) {
         this.description = Optional.ofNullable(description);
         return this;
     }
@@ -90,12 +86,12 @@ public class LinkUpdateRequest {
         this.description = description;
     }
 
-    public LinkUpdateRequest tgChatIds(List<Long> tgChatIds) {
+    public LinkUpdate tgChatIds(List<Long> tgChatIds) {
         this.tgChatIds = tgChatIds;
         return this;
     }
 
-    public LinkUpdateRequest addTgChatIdsItem(Long tgChatIdsItem) {
+    public LinkUpdate addTgChatIdsItem(Long tgChatIdsItem) {
         if (this.tgChatIds == null) {
             this.tgChatIds = new ArrayList<>();
         }
@@ -125,7 +121,7 @@ public class LinkUpdateRequest {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LinkUpdateRequest linkUpdate = (LinkUpdateRequest) o;
+        LinkUpdate linkUpdate = (LinkUpdate) o;
         return Objects.equals(this.id, linkUpdate.id)
                 && Objects.equals(this.url, linkUpdate.url)
                 && Objects.equals(this.description, linkUpdate.description)

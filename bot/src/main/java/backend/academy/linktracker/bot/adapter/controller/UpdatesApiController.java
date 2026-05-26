@@ -1,14 +1,9 @@
 package backend.academy.linktracker.bot.adapter.controller;
 
 import backend.academy.linktracker.bot.usecase.LinkTracerFacade;
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApi.java
-import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
-import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
-========
 import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.LinkUpdate;
 import backend.academy.linktracker.bot.usecase.exception.RequestBodyFieldValidationException;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApiController.java
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -62,12 +57,8 @@ public class UpdatesApiController {
             consumes = {"application/json"})
     public ResponseEntity<Void> updatesPost(
             @Parameter(name = "LinkUpdate", description = "", required = true) @Valid @RequestBody
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApi.java
-            LinkUpdateRequest linkUpdate) {
-========
                     LinkUpdate linkUpdate)
             throws RequestBodyFieldValidationException {
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApiController.java
         facade.processScrapperUpdates(List.of(linkUpdate));
         return new ResponseEntity<>(HttpStatus.OK); // TODO No error handling
     }

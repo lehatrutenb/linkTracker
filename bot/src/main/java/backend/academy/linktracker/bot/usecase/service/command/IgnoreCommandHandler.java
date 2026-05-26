@@ -1,52 +1,35 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/commands/IgnoreCommandHandler.java
-package backend.academy.linktracker.bot.usecase.services.commands;
-
-import backend.academy.linktracker.bot.core.entities.CommandHandler;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.usecase.events.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
-import backend.academy.linktracker.bot.usecase.services.UserChatStateMachineConcurrentService;
-========
 package backend.academy.linktracker.bot.usecase.service.command;
 
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
-import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
+import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/command/IgnoreCommandHandler.java
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/ignore", showToUser = false)
 @Profile("test")
-public class IgnoreCommandHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
-    private final EventsStateWatcher eventsStateWatcher;
-    private final ApplicationContext applicationContext;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
+public class IgnoreCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
 
-    @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
-        if (!event.getMessage().message().strip().startsWith("/ignore")) {
-            return;
-        }
-        TelegramBotMessage message = event.getMessage();
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /ignore user command");
-
-        // Not update shared state to have real stub event
-        eventsStateWatcher.markEventAsDone(event.getEventID());
+    public IgnoreCommandHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
     }
 
     @Override
-    public boolean supportsAsyncExecution() {
-        return false;
+    public void processEvent(LinkTracerNewMessageEvent event) {
+        if (!event.getMessage().message().strip().startsWith("/ignore")) {
+            return;
+        }
+        log.atInfo().log("Handle /ignore user command");
+
+        // Not update shared state to have real stub event
+        eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 }

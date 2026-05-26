@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.BotChat;
-import backend.academy.linktracker.bot.core.entities.BotChatID;
+import backend.academy.linktracker.bot.core.entity.BotChat;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;

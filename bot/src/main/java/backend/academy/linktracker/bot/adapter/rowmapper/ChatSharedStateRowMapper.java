@@ -1,7 +1,7 @@
 package backend.academy.linktracker.bot.adapter.rowmapper;
 
 import backend.academy.linktracker.bot.adapter.entity.ChatSharedStateEntity;
-import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
+import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,31 +42,3 @@ public class ChatSharedStateRowMapper implements ResultSetExtractor<List<ChatSha
         return entity;
     }
 }
-
-/*
-@Override
-   public List<LinkUpdateEntity> extractData(ResultSet rs) throws SQLException, DataAccessException {
-       Map<Long, LinkUpdateEntity> map = new HashMap<>();
-       while (rs.next()) {
-           var curEntity = mapRow(rs);
-           if (!map.containsKey(curEntity.getId())) {
-               map.put(curEntity.getId(), curEntity);
-           }
-           map.get(curEntity.getId()).getTgChatIDs().addAll(curEntity.getTgChatIDs());
-       }
-       return map.values().stream().toList();
-   }
-
-   private LinkUpdateEntity mapRow(ResultSet rs) throws SQLException {
-       var entity = new LinkUpdateEntity();
-       var eventIDEntity = new EventIDEntity();
-       eventIDEntity.setId(rs.getLong("event_id"));
-       eventIDEntity.setOwnerIDType(OwnerIDType.valueOf(rs.getString("event_owner_id_type")));
-
-       entity.setId(rs.getLong("id"));
-       entity.setEventID(eventIDEntity);
-       entity.setUrl(rs.getString("url"));
-       entity.setDescription(rs.getString("description"));
-       entity.setTgChatIDs(new ArrayList<>(List.of(rs.getLong("bot_chat_id"))));
-       return entity;
-   } */

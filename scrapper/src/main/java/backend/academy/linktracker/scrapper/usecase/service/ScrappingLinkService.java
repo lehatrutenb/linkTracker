@@ -1,10 +1,12 @@
 package backend.academy.linktracker.scrapper.usecase.service;
 
-import backend.academy.linktracker.scrapper.adapter.repository.ScrappingLinksRepository;
-import backend.academy.linktracker.scrapper.core.domain.factories.ScrapperLinkFactory;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecase.exception.DuplicateEntityException;
 import backend.academy.linktracker.scrapper.usecase.exception.LinkNotFoundException;
@@ -15,6 +17,8 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
@@ -23,13 +27,19 @@ public class ScrappingLinkService {
     private final ScrappingLinksRepository linksRepository;
     private final ScrappingLinkMetaDataRepository metaDataRepository;
 
-    public void deleteLinkForLinkListener(ScrapperLinkMetaDataID metaDataID) {
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public ScrapperLinkMetaData deleteLinkForLinkListener(ScrapperLinkMetaDataID metaDataID) {
+        var metaData = metaDataRepository.readLinkMetaData(metaDataID);
+        if (metaData.isEmpty()) {
+            throw new LinkNotFoundException(metaDataID.linkID().uri());
+        }
         metaDataRepository.deleteLinkMetaData(
                 metaDataID); // TODO won't work if run in parallel - need to do as atomic op
-        /*if (listenerRepository.readScrapperLinkListener(linkID).isEmpty()) {
-            linksRepository.deleteScrapperLink(linkID);
-        }*/
+        if (metaDataRepository.readScrapperLinkListeners(metaDataID.linkID()).isEmpty()) {
+            linksRepository.deleteScrapperLink(metaDataID.linkID());
+        }
         // TODO Currently dont need, but its better to use some scheduling task for it, not check on every request
+        return metaData.orElseThrow();
     }
 
     @Transactional
@@ -51,6 +61,14 @@ public class ScrappingLinkService {
 
     public Optional<ScrapperLink> getLink(URI uri) {
         return linksRepository.readScrapperLinkByURI(uri);
+    }
+
+    public Optional<ScrapperLinkID> readScrapperLinkIDByURI(URI uri) {
+        return linksRepository.readScrapperLinkIDByURI(uri);
+    }
+
+    public ScrapperLinkID getScrapperLinkIDByURI(URI uri) {
+        return readScrapperLinkIDByURI(uri).orElseThrow(() -> new LinkNotFoundException(uri));
     }
 
     public Collection<ScrapperLinkListener> getListenersOfLink(ScrapperLinkID scrapperLinkID) {

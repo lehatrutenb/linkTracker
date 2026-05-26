@@ -33,7 +33,11 @@ public class ScrapperLinkMetaDataEntityRowMapper implements ResultSetExtractor<L
         metaDataIDEntity.setListenerID(rs.getLong("listener_id"));
 
         entity.setId(metaDataIDEntity);
-        entity.setTags(new ArrayList<>(List.of(new ScrapperLinkMetaDataEntity.TagEntity(rs.getString("tag_name")))));
+        entity.setTags(new ArrayList<>());
+        var tagName = rs.getString("tag_name");
+        if (tagName != null) {
+            entity.getTags().add(new ScrapperLinkMetaDataEntity.TagEntity(tagName));
+        }
         return entity;
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/exceptions/RequestBodyFieldValidationException.java
-package backend.academy.linktracker.bot.usecase.exceptions;
-========
 package backend.academy.linktracker.bot.usecase.exception;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/exception/RequestBodyFieldValidationException.java
 
 import java.io.Serial;
 import lombok.Getter;

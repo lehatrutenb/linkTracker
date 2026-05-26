@@ -10,11 +10,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RefreshScope
+@ConditionalOnProperty(name = "app.data.access-type", havingValue = "IN_MEM")
 public class ScrappingLinksRepositoryInMemImpl implements ScrappingLinksRepository, ScrappingLinkListenerRepository {
     private final Set<ScrapperLink> scrapperLinks = new HashSet<>();
     private final Set<ScrapperLinkListener> scrapperLinkListeners = new HashSet<>();

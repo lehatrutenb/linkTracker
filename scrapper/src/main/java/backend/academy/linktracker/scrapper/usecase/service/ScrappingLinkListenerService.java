@@ -1,8 +1,8 @@
 package backend.academy.linktracker.scrapper.usecase.service;
 
-import backend.academy.linktracker.scrapper.adapter.repository.ScrappingLinksRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.enums.ScrapperLinkListenerType;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import backend.academy.linktracker.scrapper.usecase.exception.DuplicateEntityException;
 import backend.academy.linktracker.scrapper.usecase.exception.ListenerNotFoundException;
 import java.util.Optional;

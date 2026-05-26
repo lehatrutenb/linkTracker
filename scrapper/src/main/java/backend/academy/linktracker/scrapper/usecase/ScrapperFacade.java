@@ -1,10 +1,13 @@
 package backend.academy.linktracker.scrapper.usecase;
 
+import backend.academy.linktracker.scrapper.core.entities.ScrapperFatLink;
+import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
 import backend.academy.linktracker.scrapper.core.enums.ScrapperLinkListenerType;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.LinkResponse;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.RemoveLinkRequest;
+import backend.academy.linktracker.scrapper.usecase.exception.LinkNotFoundException;
 import backend.academy.linktracker.scrapper.usecase.exception.ScrappingURIValidationException;
 import backend.academy.linktracker.scrapper.usecase.mapper.LinksApiMapper;
 import backend.academy.linktracker.scrapper.usecase.service.ScheduleUpdatesOnLinksService;
@@ -25,14 +28,17 @@ public class ScrapperFacade {
     private final ScrappingLinkListenerService linkListenersService;
     private final ScrapperLinkMetaDataService metaDataService;
     private final ScheduleUpdatesOnLinksService scheduleLinksService;
-    private final ScrappingLinksRepository linksRepository; // TODO rm and move to stateful mapper
 
-    public void deleteLinkScheduling(RemoveLinkRequest request, Long tgChatID) {
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public LinkResponse deleteLinkScheduling(RemoveLinkRequest request, Long tgChatID) {
         var listener =
-                linkListenersService.getLinkListener(tgChatID, ScrapperLinkListenerType.TELEGRAM_CHAT_LISTENER);
-        var link = linksService.readScrapperLinkIDByURI(request.getLink().orElseThrow());
-        linksService.deleteLinkForLinkListener(
-                new ScrapperLinkMetaDataID(new ScrapperLinkID(link.uri(), link.id()), listener.listenerID()));
+                linkListenersService.getLinkListenerOrThrow(tgChatID, ScrapperLinkListenerType.TELEGRAM_CHAT_LISTENER);
+        var uri = request.getLink().orElseThrow();
+        var linkID = linksService.getScrapperLinkIDByURI(uri);
+        var link = linksService.getLink(uri).orElseThrow(() -> new LinkNotFoundException(uri));
+        var metaData =
+                linksService.deleteLinkForLinkListener(new ScrapperLinkMetaDataID(linkID, listener.listenerID()));
+        return LinksApiMapper.map(new ScrapperFatLink(link, metaData));
     }
 
     public ListLinksResponse getSchedulingLinks(Long tgChatID) {

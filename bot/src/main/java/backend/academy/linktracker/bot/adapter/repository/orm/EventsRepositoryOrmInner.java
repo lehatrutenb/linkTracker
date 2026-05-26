@@ -2,8 +2,8 @@ package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.EventEntity;
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.enumeration.EventState;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;

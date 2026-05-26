@@ -1,24 +1,12 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/EventsStateWatcher.java
-package backend.academy.linktracker.bot.usecase.services;
-
-import backend.academy.linktracker.bot.common.TimeUtils;
-import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
-import backend.academy.linktracker.bot.core.port.EventsRepository;
-import backend.academy.linktracker.bot.property.TelegramLinkTrackerProperties;
-========
 package backend.academy.linktracker.bot.usecase.service;
 
-import backend.academy.linktracker.bot.adapter.repository.EventsRepository;
 import backend.academy.linktracker.bot.core.entity.Event;
 import backend.academy.linktracker.bot.core.entity.EventID;
 import backend.academy.linktracker.bot.core.enumeration.EventState;
 import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
+import backend.academy.linktracker.bot.core.port.EventsRepository;
 import backend.academy.linktracker.bot.property.TelegramLinkTrackerProperties;
 import java.time.Instant;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/EventsStateWatcher.java
 import java.util.Collection;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +20,7 @@ public class EventsStateWatcher {
     private final TelegramLinkTrackerProperties telegramLinkTrackerProperties;
 
     public boolean toProcessEvent(EventID eventId) {
-        var event = eventsRepository.getEvent(eventId);
+        var event = eventsRepository.readEvent(eventId);
         return event.isEmpty()
                 || event.orElseThrow()
                         .state()
@@ -40,7 +28,7 @@ public class EventsStateWatcher {
     }
 
     public boolean isEventDone(EventID eventId) {
-        var event = eventsRepository.getEvent(eventId);
+        var event = eventsRepository.readEvent(eventId);
         return event.isPresent() && event.orElseThrow().state().equals(EventState.DONE);
     }
 
@@ -53,22 +41,18 @@ public class EventsStateWatcher {
     }
 
     public void markEventAsProcessing(EventID eventId) {
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/services/EventsStateWatcher.java
-        eventsRepository.insertEvent(new Event(eventId, EventState.PROCESSING, timeUtils.now()));
-========
-        eventsRepository.updateEvent(new Event(eventId, EventState.PROCESSING, now()));
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/service/EventsStateWatcher.java
+        eventsRepository.createEvent(new Event(eventId, EventState.PROCESSING, now()));
     }
 
     public Collection<Event> getElderlyProcessingEvents(OwnerIDType ownerIDType) {
-        return eventsRepository.getEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
+        return eventsRepository.readEventsByOwnerTypeAndEventStateWhereUpdatedAtLessThan(
                 ownerIDType,
                 EventState.PROCESSING,
                 now().minus(telegramLinkTrackerProperties.getUpdateNotifierBeforeRetry()));
     }
 
-    public Optional<EventID> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
-        return eventsRepository.getNumericLastOfPrefixOfDoneByOwnerType(type);
+    public Optional<Event> getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType type) {
+        return eventsRepository.readNumericLastOfPrefixOfDoneByOwnerType(type);
     }
 
     private Instant now() {

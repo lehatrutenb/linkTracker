@@ -1,11 +1,11 @@
 package backend.academy.linktracker.scrapper.usecase.service;
 
-import backend.academy.linktracker.scrapper.adapter.repository.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperFatLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;
+import backend.academy.linktracker.scrapper.core.port.ScrappingLinkMetaDataRepository;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
 import java.util.Collection;
 import java.util.List;
@@ -22,9 +22,7 @@ public class ScrapperLinkMetaDataService {
 
     public ScrapperFatLink addMetaData(AddLinkRequest addLinkRequest, Long listenerID, ScrapperLink scrapperLink) {
         var metaData = new ScrapperLinkMetaData(
-                new ScrapperLinkMetaDataID(scrapperLink.getId(), listenerID),
-                addLinkRequest.getTags(),
-                addLinkRequest.getFilters());
+                new ScrapperLinkMetaDataID(scrapperLink.getId(), listenerID), addLinkRequest.getTags(), List.of());
         metaDataRepository.createLinkMetaData(metaData);
         return new ScrapperFatLink(scrapperLink, metaData);
     }

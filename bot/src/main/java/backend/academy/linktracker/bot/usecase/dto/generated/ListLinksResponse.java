@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/dtos/models/ListLinksResponse.java
-package backend.academy.linktracker.bot.usecase.dtos.models;
-========
 package backend.academy.linktracker.bot.usecase.dto.generated;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/dto/generated/ListLinksResponse.java
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;

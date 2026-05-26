@@ -2,9 +2,9 @@ package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.TelegramBotMessageEntity;
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
-import backend.academy.linktracker.bot.core.entities.TelegramBotMessageID;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessageID;
 import backend.academy.linktracker.bot.core.port.TelegramBotMessagesRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;

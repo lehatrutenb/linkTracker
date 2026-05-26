@@ -2,9 +2,9 @@ package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.adapter.entity.LinkUpdateEntity;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.LinkUpdate;
-import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.entity.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.ScrapperLinkUpdate;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
@@ -23,23 +23,23 @@ public class ScrapperLinkUpdatesRepositoryOrmImpl implements ScrapperLinkUpdates
     private final ScrapperLinkUpdatesRepositoryOrmInner repository;
 
     @Override
-    public Optional<LinkUpdate> readLinkUpdate(EventID id) {
+    public Optional<ScrapperLinkUpdate> readLinkUpdate(EventID id) {
         return repository.readLinkUpdate(new EventIDEntity(id)).map(LinkUpdateEntity::toDomain);
     }
 
     @Override
-    public Optional<LinkUpdate> readLinkUpdate(LinkUpdateID id) {
+    public Optional<ScrapperLinkUpdate> readLinkUpdate(LinkUpdateID id) {
         return repository.findById(LinkUpdateEntity.getID(id)).map(LinkUpdateEntity::toDomain);
     }
 
     @Override
-    public LinkUpdate createLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
+    public ScrapperLinkUpdate createLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate) {
         return repository.save(new LinkUpdateEntity(linkUpdate, eventID)).toDomain();
     }
 
     @Override
     @Transactional
-    public LinkUpdate updateLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
+    public ScrapperLinkUpdate updateLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate) {
         return repository.save(new LinkUpdateEntity(linkUpdate, eventID)).toDomain();
     }
 

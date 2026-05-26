@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +30,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 @RequiredArgsConstructor
 public class TelegramBotTestUtils {
+    private static final Duration DEFAULT_MAX_WAIT_TIME = Duration.ofSeconds(100);
+
     private final String wiremockScenario;
     private final Collection<String> botMessagesSummator = new ArrayList<>();
+    private String lastState;
+    private long lastMessageId = 0;
 
     public List<LoggedRequest> getSendMessageRequests() {
         return getAllServeEvents().stream()
@@ -47,7 +50,12 @@ public class TelegramBotTestUtils {
                 .atMost(maxWaitTime)
                 .pollInterval(Duration.ofMillis(200))
                 .until(this::getSendMessageRequests, requests -> requests.size() >= amtUpdatesToWait);
+        log.atInfo().addKeyValue("total responses amount", gotRequests.size()).log("Got expected bot responses");
         return gotRequests.reversed().stream().limit(amtUpdatesToWait).toList();
+    }
+
+    public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait) {
+        return waitAndGetBotResponses(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME);
     }
 
     public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait, Duration maxWaitTime) {
@@ -58,6 +66,10 @@ public class TelegramBotTestUtils {
                 .map(UriComponents::getQueryParams)
                 .map(qMap -> qMap.getFirst("text"))
                 .toList();
+    }
+
+    public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait) {
+        return waitAndGetBotResponsesByChatID(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME);
     }
 
     public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait, Duration maxWaitTime) {
@@ -88,21 +100,17 @@ public class TelegramBotTestUtils {
             }""", String.join(",", botMessagesSummator)));
     }
 
-    @RequiredArgsConstructor
-    public static class Message {
-        private long chatID = 1;
-        private long updateID = 1;
-        private long messageID = 1;
-        private final String messageText;
-
-        public Message(long chatID, String messageText) {
-            this.chatID = chatID;
-            this.messageText = messageText;
+    public record Message(long chatID, long updateID, long messageID, String messageText) {
+        public Message(String messageText) {
+            this(1, 1, 1, messageText);
         }
 
-        private void setMessageID(long messageID) {
-            this.messageID = messageID;
-            this.updateID = messageID;
+        public Message(long messageID, String messageText) {
+            this(1, messageID, messageID, messageText);
+        }
+
+        public Message(long chatID, long messageID, String messageText) {
+            this(chatID, messageID, messageID, messageText);
         }
     }
 
@@ -131,12 +139,8 @@ public class TelegramBotTestUtils {
                                 """, message.messageID, message.messageID, message.chatID, message.messageText));
     }
 
-    private String lastState;
-    private long lastMessageId = 0;
-
     public void writeMessageToBot(String fromState, String toState, Message message) {
         lastState = toState;
-        message.setMessageID(lastMessageId);
         lastMessageId++;
         addUpdateEvent(message);
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
@@ -148,8 +152,10 @@ public class TelegramBotTestUtils {
                 .willSetStateTo(toState));
     }
 
-    public void repeatLastMessage(String fromState, String toState) {
-        addUpdateEvent(new Message(lastMessageId + 1, "/ignore"));
+    public void repeatLastMessage(
+            String fromState, String toState, long messageId) { // TODO use inside writeMessageToBot
+        lastState = toState;
+        addUpdateEvent(new Message(messageId, "/ignore"));
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
                 .inScenario(wiremockScenario)
                 .whenScenarioStateIs(fromState)
@@ -159,24 +165,35 @@ public class TelegramBotTestUtils {
                 .willSetStateTo(toState));
     }
 
+    public void repeatLastMessage(String fromState, String toState) {
+        repeatLastMessage(fromState, toState, lastMessageId + 1);
+    }
+
     public void repeatLastMessageLastState() {
-        assert lastState != null;
-        addUpdateEvent(new Message(lastMessageId + 1, "/ignore"));
-        stubFor(post(urlMatching("/bot/.*/getUpdates"))
-                .inScenario(wiremockScenario)
-                .whenScenarioStateIs(lastState)
-                .willReturn(writeMessageToBot(aResponse()
-                        .withStatus(200)
-                        .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
-                .willSetStateTo(lastState));
+        if (lastState == null) {
+            throw new IllegalStateException("No previous bot state to repeat");
+        }
+        repeatLastMessage(lastState, lastState, lastMessageId + 1);
     }
 
     public void trackURL(TrackURLRequest request) {
-        var hash = UUID.randomUUID().toString().substring(0, 3);
-        writeMessageToBot(request.inState, "track_command_resieved" + hash, new Message(request.chatID, "/track"));
+        var hash = java.util.UUID.randomUUID().toString().substring(0, 3);
         writeMessageToBot(
-                "track_command_resieved" + hash, "url_resieved" + hash, new Message(request.chatID, request.validURL));
-        writeMessageToBot("url_resieved" + hash, "tags_resieved", new Message(request.chatID, request.tags));
+                request.inState(),
+                "track_command_resieved" + hash,
+                new Message(request.chatID(), nextMessageID(), "/track"));
+        writeMessageToBot(
+                "track_command_resieved" + hash,
+                "url_resieved" + hash,
+                new Message(request.chatID(), nextMessageID(), request.validURL()));
+        writeMessageToBot(
+                "url_resieved" + hash,
+                request.outState(),
+                new Message(request.chatID(), nextMessageID(), request.tags()));
+    }
+
+    private long nextMessageID() {
+        return lastMessageId + 1;
     }
 
     public record TrackURLRequest(String inState, String outState, String validURL, String tags, int chatID) {

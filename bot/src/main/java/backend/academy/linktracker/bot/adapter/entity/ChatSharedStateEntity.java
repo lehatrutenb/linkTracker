@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.adapter.entity;
 
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.ChatSharedState;
-import backend.academy.linktracker.bot.core.enums.ChatCommandFlowState;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.ChatSharedState;
+import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

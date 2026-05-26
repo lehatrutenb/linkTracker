@@ -1,57 +1,57 @@
 package backend.academy.linktracker.bot.usecase.service.command;
 
-import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
 import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
+import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 @CommandHandler(command = "/cancel")
-public class CancelMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class CancelMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     public static final String BASIC_REPLY = "";
     public static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final LinkTracerTelegramBotClient linkTracerTelegramBotReplier;
+    public CancelMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            BotChatMetaDataService replyServiceMatcher) {
+        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (!event.getMessage().message().strip().startsWith("/cancel")) {
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle /cancel user command");
+        log.atInfo().log("Handle /cancel user command");
 
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
-        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
+        replyServiceMatcher
+                .getReplyService(event.getMessage().chat().getId())
+                .orElseThrow()
+                .sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
-    public void onBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
+    public void processBotError(LinkTracerNewMessageEvent event, boolean sendClientMessage) {
         TelegramBotMessage message = event.getMessage();
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle bot internal error");
+        log.atError().log("Handle bot internal error");
 
-        commandsSharedStateService.setChatSharedState(message.chat().id(), new ChatSharedState());
+        commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
 
         if (sendClientMessage) {
-            linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), ERROR_REPLY);
+            replyServiceMatcher
+                    .getReplyService(event.getMessage().chat().getId())
+                    .orElseThrow()
+                    .sendMessage(message.chat().getId().getNumericID(), ERROR_REPLY);
         }
         eventsStateWatcher.markEventAsDone(event.getEventID());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

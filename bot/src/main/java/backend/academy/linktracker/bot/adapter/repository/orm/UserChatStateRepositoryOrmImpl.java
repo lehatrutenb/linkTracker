@@ -1,8 +1,8 @@
 package backend.academy.linktracker.bot.adapter.repository.orm;
 
 import backend.academy.linktracker.bot.adapter.entity.ChatSharedStateEntity;
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.ChatSharedState;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

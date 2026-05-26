@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/usecase/events/LinkTracerNewMessageEvent.java
-package backend.academy.linktracker.bot.usecase.events;
-========
 package backend.academy.linktracker.bot.usecase.event;
->>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/event/LinkTracerNewMessageEvent.java
 
 import backend.academy.linktracker.bot.core.entity.EventID;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;

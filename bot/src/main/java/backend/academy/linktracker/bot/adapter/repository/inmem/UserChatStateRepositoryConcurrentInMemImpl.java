@@ -1,16 +1,18 @@
 package backend.academy.linktracker.bot.adapter.repository.inmem;
 
-import backend.academy.linktracker.bot.core.entities.BotChatID;
-import backend.academy.linktracker.bot.core.entities.ChatSharedState;
+import backend.academy.linktracker.bot.core.entity.BotChatID;
+import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.port.UserChatStateRepository;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
+@ConditionalOnProperty(name = "app.data.access-type", havingValue = "IN_MEM")
 public class UserChatStateRepositoryConcurrentInMemImpl implements UserChatStateRepository {
     private final ConcurrentMap<String, ChatSharedState> currentCommandFlowStates = new ConcurrentHashMap<>();
 

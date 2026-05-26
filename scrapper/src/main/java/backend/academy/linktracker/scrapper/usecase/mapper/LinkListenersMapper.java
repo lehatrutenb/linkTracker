@@ -10,6 +10,6 @@ public class LinkListenersMapper {
         if (chatID == null) {
             throw new IllegalArgumentException("Chat ID is null");
         }
-        return new ScrapperLinkListener(chatID.toString(), listenerType);
+        return new ScrapperLinkListener(chatID, listenerType);
     }
 }

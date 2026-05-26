@@ -4,48 +4,53 @@ import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClien
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.CommandsLoggingBuilder;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class UnknownMessageHandler implements ApplicationListener<LinkTracerNewMessageEvent> {
+public class UnknownMessageHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
     private static final String BASIC_REPLY =
-            "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд.";
+            "В данный момент произвольное сообщение не ожидалось. Воспользуйтесь /help, чтобы посмотреть список доступных команд."; // TODO check if it makes sense to move to storage
 
-    private final EventsStateWatcher eventsStateWatcher;
-    private final UserChatStateMachineConcurrentService commandsSharedStateService;
-    private final LinkTracerTelegramBotClient linkTracerTelegramBotReplier;
+    private final LinkTracerTelegramBotClient telegramBotClient;
+
+    public UnknownMessageHandler(
+            EventsStateWatcher eventsStateWatcher,
+            UserChatStateMachineConcurrentService commandsSharedStateService,
+            LinkTracerTelegramBotClient telegramBotClient) {
+        super(eventsStateWatcher, commandsSharedStateService, null);
+        this.telegramBotClient = telegramBotClient;
+    }
 
     @Override
-    public void onApplicationEvent(LinkTracerNewMessageEvent event) {
+    public int getOrder() {
+        return HIGHEST_PRECEDENCE;
+    }
+
+    @Override
+    public void processEvent(LinkTracerNewMessageEvent event) {
         if (event.getMessage().message().strip().startsWith("/")) {
             return;
         }
         TelegramBotMessage message = event.getMessage();
 
-        if (commandsSharedStateService.getChatSharedState(message.chat().id()).getCommandFlowState()
+        if (commandsSharedStateService
+                        .getChatSharedState(message.chat().getId())
+                        .getCommandFlowState()
                 == ChatCommandFlowState.WAITING_USER_INPUT) {
             return;
         }
 
-        CommandsLoggingBuilder.buildLoggingMessage(message).log("Handle unexpected user message");
+        log.atInfo() // TODO Check how to move such logging to shared part
+                .addKeyValue("chat id", message.chat().getId())
+                .addKeyValue("message id", message.id())
+                .addKeyValue("message date", message.date())
+                .log("Handle unexpected user message");
 
-        linkTracerTelegramBotReplier.sendMessage(message.chat().id().getNumericID(), BASIC_REPLY);
+        telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
-    }
-
-    @Override
-    public boolean supportsAsyncExecution() {
-        return false;
     }
 }

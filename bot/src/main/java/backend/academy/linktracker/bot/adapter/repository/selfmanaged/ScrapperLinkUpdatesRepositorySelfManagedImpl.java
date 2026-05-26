@@ -4,9 +4,9 @@ import backend.academy.linktracker.bot.adapter.entity.BotChatEntity;
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.adapter.entity.LinkUpdateEntity;
 import backend.academy.linktracker.bot.adapter.rowmapper.LinkUpdateEntityRowMapper;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.LinkUpdate;
-import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.entity.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.ScrapperLinkUpdate;
 import backend.academy.linktracker.bot.core.port.ScrapperLinkUpdatesRepository;
 import jakarta.transaction.Transactional;
 import java.util.Optional;
@@ -26,7 +26,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     private final JdbcClient client;
 
     @Override
-    public Optional<LinkUpdate> readLinkUpdate(EventID id) {
+    public Optional<ScrapperLinkUpdate> readLinkUpdate(EventID id) {
         return client
                 .sql("""
                 SELECT *
@@ -44,7 +44,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
     }
 
     @Override
-    public Optional<LinkUpdate> readLinkUpdate(LinkUpdateID id) {
+    public Optional<ScrapperLinkUpdate> readLinkUpdate(LinkUpdateID id) {
         return client.sql("""
                 SELECT *
                 FROM link_update lu
@@ -58,7 +58,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
 
     @Override
     @Transactional
-    public LinkUpdate createLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
+    public ScrapperLinkUpdate createLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate) {
         var entity = new LinkUpdateEntity(linkUpdate, eventID);
         client.sql("""
             INSERT INTO link_update
@@ -87,7 +87,7 @@ public class ScrapperLinkUpdatesRepositorySelfManagedImpl implements ScrapperLin
 
     @Override
     @Transactional
-    public LinkUpdate updateLinkUpdate(EventID eventID, LinkUpdate linkUpdate) {
+    public ScrapperLinkUpdate updateLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate) {
         var entity = new LinkUpdateEntity(linkUpdate, eventID);
         var updatedEntity = client
                 .sql("""

@@ -1,18 +1,18 @@
 package backend.academy.linktracker.bot.core.port;
 
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.entities.LinkUpdate;
-import backend.academy.linktracker.bot.core.entities.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.entity.LinkUpdateID;
+import backend.academy.linktracker.bot.core.entity.ScrapperLinkUpdate;
 import java.util.Optional;
 
 public interface ScrapperLinkUpdatesRepository {
-    Optional<LinkUpdate> readLinkUpdate(EventID id);
+    Optional<ScrapperLinkUpdate> readLinkUpdate(EventID id);
 
-    Optional<LinkUpdate> readLinkUpdate(LinkUpdateID id);
+    Optional<ScrapperLinkUpdate> readLinkUpdate(LinkUpdateID id);
 
-    LinkUpdate createLinkUpdate(EventID eventID, LinkUpdate linkUpdate);
+    ScrapperLinkUpdate createLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate);
 
-    LinkUpdate updateLinkUpdate(EventID eventID, LinkUpdate linkUpdate);
+    ScrapperLinkUpdate updateLinkUpdate(EventID eventID, ScrapperLinkUpdate linkUpdate);
 
     void deleteLinkUpdate(LinkUpdateID id);
 }

@@ -2,7 +2,7 @@ package backend.academy.linktracker.bot.adapter.rowmapper;
 
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
 import backend.academy.linktracker.bot.adapter.entity.LinkUpdateEntity;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package backend.academy.linktracker.bot.adapter.repository.inmem;
 
-import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.entity.Event;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.enumeration.EventState;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.EventsRepository;
 import java.time.Instant;
 import java.util.Collection;
@@ -11,11 +11,13 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Repository;
 
 @RefreshScope
 @Repository
+@ConditionalOnProperty(name = "app.data.access-type", havingValue = "IN_MEM")
 @RequiredArgsConstructor
 public class EventsRepositoryInMemImpl implements EventsRepository {
     Map<EventID, Event> events = new ConcurrentHashMap<>();

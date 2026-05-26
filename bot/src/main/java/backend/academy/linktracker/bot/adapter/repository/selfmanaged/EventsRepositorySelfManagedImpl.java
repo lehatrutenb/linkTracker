@@ -2,10 +2,10 @@ package backend.academy.linktracker.bot.adapter.repository.selfmanaged;
 
 import backend.academy.linktracker.bot.adapter.entity.EventEntity;
 import backend.academy.linktracker.bot.adapter.entity.EventIDEntity;
-import backend.academy.linktracker.bot.core.entities.Event;
-import backend.academy.linktracker.bot.core.entities.EventID;
-import backend.academy.linktracker.bot.core.enums.EventState;
-import backend.academy.linktracker.bot.core.enums.OwnerIDType;
+import backend.academy.linktracker.bot.core.entity.Event;
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.enumeration.EventState;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
 import backend.academy.linktracker.bot.core.port.EventsRepository;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -80,7 +80,7 @@ public class EventsRepositorySelfManagedImpl implements EventsRepository {
                 .sql(
                         "SELECT * FROM event WHERE owner_id_type = :owner_id_type AND state = :state AND updated_at < :max_updated_at")
                 .param("owner_id_type", ownerIDType.toString())
-                .param("state", EventState.DONE.toString())
+                .param("state", eventState.toString())
                 .param("max_updated_at", Timestamp.from(maxUpdatedAt)) // TODO check if timestamp is fine enough
                 .query(EventEntity.class)
                 .list()
