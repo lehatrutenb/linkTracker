@@ -42,6 +42,7 @@ test:
     - name: docker:29.0.1-dind
       alias: docker
   variables:
+    APP_TELEGRAM_LINK_TRACKER_DEBUG: "false"
     DOCKER_HOST: tcp://docker:2376
     DOCKER_TLS_CERTDIR: "/certs"
     DOCKER_TLS_VERIFY: 1
