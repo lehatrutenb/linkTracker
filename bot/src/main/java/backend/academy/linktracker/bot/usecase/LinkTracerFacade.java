@@ -1,7 +1,6 @@
 package backend.academy.linktracker.bot.usecase;
 
 import backend.academy.linktracker.bot.core.entities.BotChat;
-import backend.academy.linktracker.bot.core.entities.Event;
 import backend.academy.linktracker.bot.core.entities.EventID;
 import backend.academy.linktracker.bot.core.entities.TelegramBotMessage;
 import backend.academy.linktracker.bot.core.enums.OwnerIDType;
@@ -15,6 +14,19 @@ import backend.academy.linktracker.bot.usecase.mappers.TelegramUpdatesMapper;
 import backend.academy.linktracker.bot.usecase.services.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.services.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.services.TelegramBotMessagesOrderService;
+========
+import backend.academy.linktracker.bot.core.entity.EventID;
+import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
+import backend.academy.linktracker.bot.core.enumeration.OwnerIDType;
+import backend.academy.linktracker.bot.usecase.dto.generated.LinkUpdate;
+import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
+import backend.academy.linktracker.bot.usecase.exception.RequestBodyFieldValidationException;
+import backend.academy.linktracker.bot.usecase.mapper.ScrapperEventsMapper;
+import backend.academy.linktracker.bot.usecase.mapper.TelegramUpdatesMapper;
+import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
+import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesHandleService;
+import backend.academy.linktracker.bot.usecase.service.TelegramBotMessagesOrderService;
+>>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/usecase/LinkTracerFacade.java
 import com.pengrad.telegrambot.model.Update;
 import jakarta.transaction.Transactional;
 import java.util.Collection;
@@ -40,17 +52,17 @@ public class LinkTracerFacade {
     private final TransactionTemplate transactionTemplate;
 
     // Need transactional here not to be inconsistent between event and message states
+
     /**
      *
      * @param updates
-     * @param replyServiceQualifier
      * @return last fully processed eventID on prefix if exists such
      */
-    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates, Qualifier replyServiceQualifier) {
+    public Optional<Integer> processLinkTrackerUpdates(Collection<Update> updates) {
         messagesOrderService.clear();
         updates.stream().filter(update -> update.message() != null).forEach(update -> {
             transactionTemplate.executeWithoutResult(
-                    status -> this.processLinkTrackerUpdate(update, replyServiceQualifier));
+                    status -> this.processLinkTrackerUpdate(update));
         });
         return eventsStateWatcher
                 .getNumericLastOfPrefixOfDoneByOwnerType(OwnerIDType.LINK_TRACKER)
@@ -59,9 +71,9 @@ public class LinkTracerFacade {
     }
 
     @Transactional
-    private void processLinkTrackerUpdate(Update update, Qualifier replyServiceQualifier) {
+    private void processLinkTrackerUpdate(Update update) {
         EventID eventId = TelegramUpdatesMapper.mapLinkTrackerUpdateId(update.updateId());
-        TelegramBotMessage message = TelegramUpdatesMapper.map(update, replyServiceQualifier);
+        TelegramBotMessage message = TelegramUpdatesMapper.map(update);
 
         if (eventsStateWatcher.toProcessEvent(eventId)) {
             if (messagesOrderService.toProcessMessage(message)) {
@@ -78,7 +90,7 @@ public class LinkTracerFacade {
                 }
                 if (botChatsRepository.getBotChat(message.chat().getId()).isEmpty()) {
                     botChatsRepository.createBotChat(
-                            new BotChat(message.chat().getId(), replyServiceQualifier.value())); // TODO map in mapper
+                            new BotChat(message.chat().getId())); // TODO map in mapper
                 }
                 message = botMessagesRepository.createMessage(message);
                 eventsStateWatcher.markEventAsProcessing(eventId);
@@ -93,14 +105,14 @@ public class LinkTracerFacade {
         }
     }
 
-    public void processScrapperUpdates(Collection<LinkUpdateRequest> updates) {
+    public void processScrapperUpdates(Collection<LinkUpdateRequest> updates) throws RequestBodyFieldValidationException {
         updates.forEach(update -> {
             transactionTemplate.executeWithoutResult(status -> processScrapperUpdate(update));
         });
     }
 
     @Transactional
-    private void processScrapperUpdate(LinkUpdateRequest update) {
+    private void processScrapperUpdate(LinkUpdateRequest update) throws RequestBodyFieldValidationException {
         EventID eventId = TelegramUpdatesMapper.mapScrapperUpdateId(
                 update.getId().orElseThrow(() -> RequestBodyFieldValidationException.ofEmptyError("update", "id")));
         if (eventsStateWatcher.toProcessEvent(eventId)) {

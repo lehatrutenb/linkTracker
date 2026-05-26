@@ -28,7 +28,6 @@
         <module>ai-agent</module>
         <module>bot</module>
         <module>build-report-aggregate</module>
-        <module>common</module>
         <module>integration-tests</module>
         <module>scrapper</module>
     </modules>
@@ -326,6 +325,7 @@
                         </rulesets>
                         <excludes>
                             <exclude>**/models/*.java</exclude>
+                            <exclude>**/generated/*.java</exclude>
                         </excludes>
                     </configuration>
                     <dependencies>

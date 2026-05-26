@@ -1,6 +1,6 @@
 package backend.academy.linktracker.scrapper.configuration;
 
-import backend.academy.linktracker.scrapper.properties.SnowflakeProperties;
+import backend.academy.linktracker.scrapper.property.SnowflakeProperties;
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;
 import org.springframework.context.annotation.Bean;

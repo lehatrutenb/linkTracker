@@ -1,0 +1,74 @@
+package backend.academy.linktracker.bot.adapter.controller;
+
+import backend.academy.linktracker.bot.usecase.LinkTracerFacade;
+<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApi.java
+import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecase.dtos.models.LinkUpdateRequest;
+========
+import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecase.dto.generated.LinkUpdate;
+import backend.academy.linktracker.bot.usecase.exception.RequestBodyFieldValidationException;
+>>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApiController.java
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Validated
+@Tag(name = "updates", description = "the updates API")
+@RequiredArgsConstructor
+@Controller
+public class UpdatesApiController {
+    private final LinkTracerFacade facade;
+
+    public static final String PATH_UPDATES_POST = "/updates";
+    /**
+     * POST /updates : Отправить обновление
+     *
+     * @param linkUpdate  (required)
+     * @return Обновление обработано (status code 200)
+     *         or Некорректные параметры запроса (status code 400)
+     */
+    @Operation(
+            operationId = "updatesPost",
+            summary = "Отправить обновление",
+            responses = {
+                @ApiResponse(responseCode = "200", description = "Обновление обработано"),
+                @ApiResponse(
+                        responseCode = "400",
+                        description = "Некорректные параметры запроса",
+                        content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ApiErrorResponse.class))
+                        })
+            })
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = PATH_UPDATES_POST,
+            produces = {"application/json"},
+            consumes = {"application/json"})
+    public ResponseEntity<Void> updatesPost(
+            @Parameter(name = "LinkUpdate", description = "", required = true) @Valid @RequestBody
+<<<<<<<< HEAD:.bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApi.java
+            LinkUpdateRequest linkUpdate) {
+========
+                    LinkUpdate linkUpdate)
+            throws RequestBodyFieldValidationException {
+>>>>>>>> HW2:bot/src/main/java/backend/academy/linktracker/bot/adapter/controller/UpdatesApiController.java
+        facade.processScrapperUpdates(List.of(linkUpdate));
+        return new ResponseEntity<>(HttpStatus.OK); // TODO No error handling
+    }
+}

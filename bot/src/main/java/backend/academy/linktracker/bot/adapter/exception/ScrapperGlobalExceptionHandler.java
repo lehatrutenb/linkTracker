@@ -1,10 +1,10 @@
 package backend.academy.linktracker.bot.adapter.exception;
 
-import backend.academy.linktracker.bot.usecase.dtos.models.ApiErrorResponse;
-import backend.academy.linktracker.bot.usecase.exceptions.ConflictException;
-import backend.academy.linktracker.bot.usecase.exceptions.DomainException;
-import backend.academy.linktracker.bot.usecase.exceptions.NotFoundException;
-import backend.academy.linktracker.bot.usecase.exceptions.ValidationException;
+import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
+import backend.academy.linktracker.bot.usecase.exception.ConflictException;
+import backend.academy.linktracker.bot.usecase.exception.DomainException;
+import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
+import backend.academy.linktracker.bot.usecase.exception.ValidationException;
 import java.util.Arrays;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
