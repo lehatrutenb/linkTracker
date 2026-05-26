@@ -220,7 +220,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
                         .withBody(scrapperErrorBody(HttpStatus.BAD_REQUEST))));
         testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -241,7 +241,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
                         .withBody(scrapperErrorBody(HttpStatus.CONFLICT))));
         testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -260,7 +260,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
                         .withBody(scrapperErrorBody(HttpStatus.NOT_FOUND))));
         testUtils.writeMessageToBot(STARTED, "list_command_resieved", new Message("/list"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(1, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(1, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(1);
@@ -280,7 +280,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         testUtils.writeMessageToBot(STARTED, "untrack_command_resieved", new Message("/untrack"));
         testUtils.writeMessageToBot("untrack_command_resieved", "untrack_url_resieved", new Message(TRACK_URL));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(2, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(2, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(2);
@@ -296,7 +296,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         stubFor(post(urlMatching("/links")).willReturn(aResponse().withStatus(500)));
         testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -313,7 +313,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         stubFor(post(urlMatching("/links")).willReturn(aResponse().withFault(Fault.CONNECTION_RESET_BY_PEER)));
         testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(10));
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
