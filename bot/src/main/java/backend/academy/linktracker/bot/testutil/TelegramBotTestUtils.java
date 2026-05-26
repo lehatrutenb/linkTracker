@@ -98,6 +98,12 @@ public class TelegramBotTestUtils {
             this.messageText = messageText;
         }
 
+        public Message(long chatID, long updateID, String messageText) {
+            this.chatID = chatID;
+            setMessageID(updateID);
+            this.messageText = messageText;
+        }
+
         private void setMessageID(long messageID) {
             this.messageID = messageID;
             this.updateID = messageID;
@@ -126,7 +132,7 @@ public class TelegramBotTestUtils {
                                     "text": "%s"
                                   }
                                 }
-                                """, message.messageID, message.messageID, message.chatID, message.messageText));
+                                """, message.updateID, message.messageID, message.chatID, message.messageText));
     }
 
     private String lastState;
@@ -147,7 +153,7 @@ public class TelegramBotTestUtils {
     }
 
     public void repeatLastMessage(String fromState, String toState) {
-        addUpdateEvent(new Message(lastMessageId + 1, "/ignore"));
+        addUpdateEvent(new Message(1, lastMessageId + 1, "/ignore")); // ChatID is not really mnatter in repeat messages
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
                 .inScenario(wiremockScenario)
                 .whenScenarioStateIs(fromState)
@@ -159,7 +165,7 @@ public class TelegramBotTestUtils {
 
     public void repeatLastMessageLastState() {
         assert lastState != null;
-        addUpdateEvent(new Message(lastMessageId + 1, "/ignore"));
+        addUpdateEvent(new Message(1, lastMessageId + 1, "/ignore")); // ChatID is not really mnatter in repeat messages
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
                 .inScenario(wiremockScenario)
                 .whenScenarioStateIs(lastState)

@@ -12,14 +12,21 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @RequiredArgsConstructor
-@RefreshScope
 public class LinkTracerUserEventClient implements UpdatesListener {
     private final TelegramBot telegramBot;
     private final LinkTracerFacade linkTracerFacade;
 
     @PostConstruct
     private void setEventListener() {
+        startListener();
+    }
+
+    public void startListener() {
         telegramBot.setUpdatesListener(this);
+    }
+
+    public void stopListener() {
+        telegramBot.removeGetUpdatesListener();
     }
 
     @Override

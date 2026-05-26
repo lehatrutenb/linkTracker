@@ -10,6 +10,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.stubbing.Scenario.STARTED;
 
+import backend.academy.linktracker.bot.adapter.client.LinkTracerUserEventClient;
 import backend.academy.linktracker.bot.adapter.controller.UpdatesApiController;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
@@ -64,6 +65,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     private TelegramBotInitStateSetterService telegramBotInitStateSetterService;
 
     @Autowired
+    private LinkTracerUserEventClient linkTracerUserEventController;
+
+    @Autowired
     private LinkTracerFacade linkTracerFacade;
 
     @Autowired
@@ -85,12 +89,15 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @AfterEach
     void setupAfterEach() {
+        linkTracerUserEventController.stopListener();
+        
         WireMock.reset();
         WireMock.resetAllRequests();
         WireMock.resetAllScenarios();
         WireMock.resetToDefault();
 
         refreshScope.refreshAll();
+        linkTracerUserEventController.startListener();
     }
 
     @Test
