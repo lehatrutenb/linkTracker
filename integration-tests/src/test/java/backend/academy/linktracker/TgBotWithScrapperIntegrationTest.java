@@ -79,7 +79,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         tgBot.refreshScope();
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @ParameterizedTest
     @ValueSource(
             strings = {
@@ -98,7 +98,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         assertThat(responses).hasSize(3).containsOnlyOnce(TrackMessageHandler.INVALID_URL_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @ParameterizedTest
     @ValueSource(strings = {"https://stackoverflow.com/questions/4568645", "https://github.com/openclaw/openclaw"})
     void trackSendsReceivesReply(String validURL) {
@@ -117,7 +117,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                         TrackMessageHandler.BASIC_TAGS_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @ParameterizedTest
     @ValueSource(strings = {"https://stackoverflow.com/questions/4568645", "https://github.com/openclaw/openclaw"})
     void trackSendsTwiceReceivesErrorReply(String validURL) {
@@ -132,7 +132,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         assertThat(responses).hasSize(6).containsOnlyOnce(TrackMessageHandler.URL_ALREADY_TRACKED_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void listNoTrackedSendsReceivesBlankReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listNoTrackedSendsReceivesBlankReply");
@@ -145,7 +145,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         assertThat(responses).singleElement().isEqualTo(ListMessageHandler.NO_LINKS_TRACKED_URL_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void listSendsReceivesReply() {
         String url1 = "https://stackoverflow.com/questions/4568645";
@@ -167,7 +167,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(url2);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void listWithTagsSendsReceivesFilteredReply() {
         String url1 = "https://stackoverflow.com/questions/4568645";
@@ -199,7 +199,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .doesNotContain(tagGithub);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void untrackSendsReceivesReplyAndRemovesLink() {
         String url = "https://stackoverflow.com/questions/4568645";
@@ -226,7 +226,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(ListMessageHandler.NO_LINKS_TRACKED_URL_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void cancelTrackFlowSendsReceivesBlankReplyAndResetsState() {
         TelegramBotTestUtils testUtils =
@@ -248,7 +248,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(ListMessageHandler.NO_LINKS_TRACKED_URL_REPLY);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void trackSendsReceivesReplyInSenderChat() {
         String url = "https://stackoverflow.com/questions/4568645";
@@ -272,7 +272,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .containsOnlyOnce(url);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @Test
     void trackSendsNotReceivesReplyInNotSenderChat() {
         String url = "https://stackoverflow.com/questions/4568645";

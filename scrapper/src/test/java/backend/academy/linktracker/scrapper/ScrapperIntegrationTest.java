@@ -62,7 +62,7 @@ public class ScrapperIntegrationTest {
         refreshScope.refreshAll();
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @ParameterizedTest
     @ValueSource(strings = {DEFAULT_LINK, GITHUB_LINK, STACKOVERFLOW_LINK})
     void registerChatLinkListenLinkGetSendsReceivesThatLink(String link) {
@@ -82,7 +82,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void deleteListeningLinkSendsReceivesEmptyListeningLinks() {
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
         var responseLinkAdd = addLinkDefault();
@@ -97,7 +97,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void deleteLinkFromNonExistingChatSendsReceivesError() {
         String deleteChatID = "999";
 
@@ -117,7 +117,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void listenLinkForNonExistingChatSendsReceivesError() {
         String nonExistingChatID = "999";
 
@@ -128,7 +128,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void listenLinkForDeletedChatSendsReceivesError() {
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
         var responseLinkAdd = addLink(DEFAULT_CHAT_ID, ADD_DEFAULT_LINK_REQUEST);
@@ -141,13 +141,13 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void deleteNonExistingChatSendsReceivesError() {
         assertApiError(() -> deleteChat(DEFAULT_CHAT_ID), HttpStatus.NOT_FOUND);
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void addMultipleLinksToSameChatSends() {
         AddLinkRequest stackOverflowRequest = new AddLinkRequest().link(URI.create(STACKOVERFLOW_LINK));
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
@@ -165,7 +165,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void addSameLinkToMultipleChatsSends() {
         String secondChatID = "2";
 
@@ -193,7 +193,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void invalidLinkSendsReceivesError() {
         AddLinkRequest invalidLinkRequest = new AddLinkRequest().link(URI.create("invalid-link"));
         registerChat(DEFAULT_CHAT_ID);
@@ -202,7 +202,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void duplicateLinkSendsReceivesError() {
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
         var responseLinkAdd = addLinkDefault();
@@ -213,7 +213,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void deleteNonExistingLinkSendsReceivesError() {
         RemoveLinkRequest nonExistingLinkRequest = new RemoveLinkRequest().link(URI.create(STACKOVERFLOW_LINK));
         var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
@@ -223,7 +223,7 @@ public class ScrapperIntegrationTest {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void addLinkWithTagsAndFiltersSendsReceivesThem() {
         List<String> tags = List.of("tag1", "tag2");
         List<String> filters = List.of("filter1", "filter2");

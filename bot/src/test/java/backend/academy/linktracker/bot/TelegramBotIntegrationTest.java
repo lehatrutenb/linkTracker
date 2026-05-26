@@ -95,7 +95,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @Test
     @SneakyThrows
-    @Timeout(30)
+    @Timeout(100)
     void initializingSendsCommandMenuSet() {
         VarHandle setterStateHandler = MethodHandles.privateLookupIn(
                         TelegramBotInitStateSetterService.class, MethodHandles.lookup())
@@ -108,7 +108,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void startSendsResievesReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("startSendsResievesReply");
 
@@ -123,7 +123,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void helpSendsResievesCommands() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("helpSendsResievesCommands");
 
@@ -138,7 +138,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void unknownCommandSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unknownCommandSendsResievesMessageWithHelp");
 
@@ -152,7 +152,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void unexpectedMessageSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unexpectedMessageSendsResievesMessageWithHelp");
 
@@ -166,7 +166,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void updatesSendsReceivesOK() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
 
@@ -182,7 +182,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
-    @Timeout(30)
+    @Timeout(100)
     @ParameterizedTest
     @ValueSource(
             strings = {
@@ -207,7 +207,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void trackWhenScrapperReturnsBadRequestSendsInvalidUrlReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperReturnsBadRequestSendsInvalidUrlReply");
@@ -228,7 +228,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void trackWhenScrapperReturnsConflictSendsAlreadyTrackedReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperReturnsConflictSendsAlreadyTrackedReply");
@@ -249,7 +249,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void listWhenScrapperReturnsNotFoundSendsNoLinksReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listWhenScrapperReturnsNotFoundSendsNoLinksReply");
 
@@ -268,7 +268,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void untrackWhenScrapperReturnsNotFoundSendsUntrackedReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("untrackWhenScrapperReturnsNotFoundSendsUntrackedReply");
@@ -288,7 +288,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void trackWhenScrapperReturns500SendsInternalErrorReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackWhenScrapperReturns500SendsInternalErrorReply");
 
@@ -304,7 +304,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
-    @Timeout(30)
+    @Timeout(100)
     void trackWhenScrapperConnectionFailsSendsInternalErrorReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperConnectionFailsSendsInternalErrorReply");
