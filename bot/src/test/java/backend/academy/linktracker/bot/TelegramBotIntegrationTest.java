@@ -90,7 +90,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @AfterEach
     void setupAfterEach() {
         linkTracerUserEventController.stopListener();
-        
+
         WireMock.reset();
         WireMock.resetAllRequests();
         WireMock.resetAllScenarios();

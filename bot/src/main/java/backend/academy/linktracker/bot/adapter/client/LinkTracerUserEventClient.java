@@ -7,7 +7,6 @@ import com.pengrad.telegrambot.model.Update;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
 
 @Controller
