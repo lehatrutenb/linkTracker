@@ -43,7 +43,7 @@ public class TelegramBotTestUtils {
     public Collection<LoggedRequest> waitAndGetUpdates(int amtUpdatesToWait, Duration maxWaitTime) {
         List<LoggedRequest> gotRequests = Awaitility.await()
                 .atMost(maxWaitTime)
-                .pollInterval(Duration.ofMillis(200))
+                .pollInterval(Duration.ofSeconds(1))
                 .until(this::getSendMessageRequests, requests -> requests.size() >= amtUpdatesToWait);
         return gotRequests.reversed().stream().limit(amtUpdatesToWait).toList();
     }

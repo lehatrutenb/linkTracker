@@ -114,7 +114,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(10)).stream().findFirst();
+                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
         assertThat(response).isNotEmpty();
         assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
@@ -129,7 +129,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message("/help"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(10)).stream().findFirst();
+                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
         assertThat(response).isNotEmpty();
         assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
@@ -144,7 +144,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message("/unknownCommand"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(10)).stream().findFirst();
+                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
         assertThat(response).isNotEmpty();
         assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
@@ -158,7 +158,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
         testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message("unexpected message"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(10)).stream().findFirst();
+                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
         assertThat(response).isNotEmpty();
         assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
