@@ -14,10 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

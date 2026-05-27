@@ -5,7 +5,6 @@ import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.CommandsMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
@@ -25,10 +24,9 @@ public class HelpCommandHandler extends GeneralCommandHandler<LinkTracerNewMessa
     public HelpCommandHandler(
             EventsStateWatcher eventsStateWatcher,
             UserChatStateMachineConcurrentService commandsSharedStateService,
-            BotChatMetaDataService replyServiceMatcher,
             CommandsMetaDataService commandsMetaDataService,
             LinkTracerTelegramBotClient telegramBotClient) {
-        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.commandsMetaDataService = commandsMetaDataService;
         this.telegramBotClient = telegramBotClient;
     }

@@ -2,7 +2,6 @@ package backend.academy.linktracker.bot.usecase.service.command;
 
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +15,8 @@ import org.springframework.stereotype.Service;
 public class IgnoreCommandHandler extends GeneralCommandHandler<LinkTracerNewMessageEvent> {
 
     public IgnoreCommandHandler(
-            EventsStateWatcher eventsStateWatcher,
-            UserChatStateMachineConcurrentService commandsSharedStateService,
-            BotChatMetaDataService replyServiceMatcher) {
-        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+            EventsStateWatcher eventsStateWatcher, UserChatStateMachineConcurrentService commandsSharedStateService) {
+        super(eventsStateWatcher, commandsSharedStateService);
     }
 
     @Override

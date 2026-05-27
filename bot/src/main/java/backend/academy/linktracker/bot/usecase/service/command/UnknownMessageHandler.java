@@ -21,7 +21,7 @@ public class UnknownMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
             EventsStateWatcher eventsStateWatcher,
             UserChatStateMachineConcurrentService commandsSharedStateService,
             LinkTracerTelegramBotClient telegramBotClient) {
-        super(eventsStateWatcher, commandsSharedStateService, null);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.telegramBotClient = telegramBotClient;
     }
 

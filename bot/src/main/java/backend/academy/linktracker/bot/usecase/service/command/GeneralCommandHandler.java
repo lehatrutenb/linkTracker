@@ -1,7 +1,6 @@
 package backend.academy.linktracker.bot.usecase.service.command;
 
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.transaction.event.TransactionalApplicationListener;
 public abstract class GeneralCommandHandler<T extends ApplicationEvent> implements TransactionalApplicationListener<T> {
     protected final EventsStateWatcher eventsStateWatcher;
     protected final UserChatStateMachineConcurrentService commandsSharedStateService;
-    protected final BotChatMetaDataService replyServiceMatcher;
 
     @Override
     public void onApplicationEvent(T event) {

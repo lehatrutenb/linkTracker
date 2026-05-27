@@ -1,10 +1,10 @@
 package backend.academy.linktracker.bot.usecase.service.command;
 
+import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
 import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
-import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,11 +17,14 @@ public class CancelMessageHandler extends GeneralCommandHandler<LinkTracerNewMes
     public static final String BASIC_REPLY = "";
     public static final String ERROR_REPLY = "Не получилось выполнить указанную команду из-за внутренней ошибки";
 
+    private final LinkTracerTelegramBotClient telegramBotClient;
+
     public CancelMessageHandler(
             EventsStateWatcher eventsStateWatcher,
             UserChatStateMachineConcurrentService commandsSharedStateService,
-            BotChatMetaDataService replyServiceMatcher) {
-        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+            LinkTracerTelegramBotClient telegramBotClient) {
+        super(eventsStateWatcher, commandsSharedStateService);
+        this.telegramBotClient = telegramBotClient;
     }
 
     @Override
@@ -33,10 +36,7 @@ public class CancelMessageHandler extends GeneralCommandHandler<LinkTracerNewMes
         log.atInfo().log("Handle /cancel user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
+        telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 
@@ -47,10 +47,7 @@ public class CancelMessageHandler extends GeneralCommandHandler<LinkTracerNewMes
         commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
 
         if (sendClientMessage) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(message.chat().getId().getNumericID(), ERROR_REPLY);
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), ERROR_REPLY);
         }
         eventsStateWatcher.markEventAsDone(event.getEventID());
     }

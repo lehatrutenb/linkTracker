@@ -34,7 +34,7 @@ public class ListMessageHandler extends GeneralCommandHandler<LinkTracerNewMessa
             ScrapperUpdatesService updatesService,
             CancelMessageHandler cancelMessageHandler,
             LinkTracerTelegramBotClient telegramBotClient) {
-        super(eventsStateWatcher, commandsSharedStateService, null);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.updatesService = updatesService;
         this.cancelMessageHandler = cancelMessageHandler;
         this.telegramBotClient = telegramBotClient;

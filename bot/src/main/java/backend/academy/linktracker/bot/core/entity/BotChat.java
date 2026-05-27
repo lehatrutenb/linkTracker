@@ -9,5 +9,4 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class BotChat {
     private final BotChatID id;
-    private final String replyService;
 }

@@ -25,20 +25,24 @@ import backend.academy.linktracker.bot.usecase.dto.generated.ApiErrorResponse;
 import backend.academy.linktracker.bot.usecase.dto.generated.LinkResponse;
 import backend.academy.linktracker.bot.usecase.exception.BadOuterRequestException;
 import backend.academy.linktracker.bot.usecase.exception.ConflictException;
-import backend.academy.linktracker.bot.usecase.exception.DomainException;
 import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
 import backend.academy.linktracker.bot.usecase.exception.OuterServiceInnerException;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesService;
+import backend.academy.linktracker.bot.usecase.service.TelegramBotInitStateSetterService;
 import backend.academy.linktracker.bot.usecase.service.command.CancelMessageHandler;
 import backend.academy.linktracker.bot.usecase.service.command.ListMessageHandler;
 import backend.academy.linktracker.bot.usecase.service.command.TrackMessageHandler;
 import backend.academy.linktracker.bot.usecase.service.command.UntrackMessageHandler;
 import com.pengrad.telegrambot.model.Update;
+import io.netty.handler.codec.http.HttpHeaderNames;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.VarHandle;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.List;
 import java.util.function.Supplier;
+import lombok.SneakyThrows;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,12 +54,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.web.client.HttpClientErrorException;
@@ -70,11 +74,9 @@ import org.wiremock.spring.EnableWireMock;
 @ActiveProfiles("test")
 @EnableWireMock
 @Testcontainers
-@DirtiesContext(
-        classMode =
-                DirtiesContext.ClassMode
-                        .AFTER_EACH_TEST_METHOD) // Need cause has repository bean that serves requests statuses
 class TelegramBotIntegrationTest implements WithAssertions {
+    private static final String TRACK_URL = "https://stackoverflow.com/questions/4568645";
+
     RestClient restClient;
 
     @Container
@@ -88,12 +90,23 @@ class TelegramBotIntegrationTest implements WithAssertions {
     private LinkTracerUserEventClient linkTracerUserEventController;
 
     @Autowired
+    private TelegramBotInitStateSetterService telegramBotInitStateSetterService;
+
+    @Autowired
     private LinkTracerFacade linkTracerFacade;
 
     @MockitoBean
     private ScrapperUpdatesService scrapperUpdatesService;
 
+    @Autowired
+    private RefreshScope refreshScope;
+
     void setupWireMock() {
+        stubFor(post(urlMatching(".*/getUpdates"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader(HttpHeaderNames.CONTENT_TYPE.toString(), MediaType.APPLICATION_JSON_VALUE)
+                        .withBody("{\"ok\":true,\"result\":[]}")));
         stubFor(post(urlMatching(".*/setMyCommands")) // TODO maybe don't need such format but just
                 .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
         stubFor(
@@ -114,6 +127,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         resetAllScenarios();
         resetToDefault();
         setupWireMock();
+        refreshScope.refreshAll();
 
         jdbcClient
                 .sql(
@@ -129,9 +143,15 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void initializingSendsCommandMenuSet() throws InterruptedException {
-        Thread.sleep(3000);
+    void initializingSendsCommandMenuSet() {
+        VarHandle setterStateHandler = MethodHandles.privateLookupIn(
+                        TelegramBotInitStateSetterService.class, MethodHandles.lookup())
+                .findVarHandle(TelegramBotInitStateSetterService.class, "isStateInited", boolean.class);
+
+        setterStateHandler.set(telegramBotInitStateSetterService, false);
+        telegramBotInitStateSetterService.initState();
 
         verify(postRequestedFor(urlMatching(".*/setMyCommands")));
     }
@@ -141,7 +161,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void startSendsResievesReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("startSendsResievesReply");
 
-        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(1, "/start"));
+        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
         var response =
                 testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
@@ -156,7 +176,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void helpSendsResievesCommands() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("helpSendsResievesCommands");
 
-        testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message(1, "/help"));
+        testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message("/help"));
         var response =
                 testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
@@ -171,7 +191,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void unknownCommandSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unknownCommandSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message(1, "/unknownCommand"));
+        testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message("/unknownCommand"));
         var response =
                 testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
@@ -185,7 +205,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void unexpectedMessageSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unexpectedMessageSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message(1, "unexpected message"));
+        testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message("unexpected message"));
         var response =
                 testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
 
@@ -195,24 +215,21 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void updatesSendsReceivesOK() throws DomainException {
+    void updatesSendsReceivesOK() {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenReturn(new LinkResponse().id(1L));
-
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("updatesSendsReceivesOK");
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, "https://test.com"));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
-        testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
+        var chatID = TelegramBotTestUtils.getFreeChatID();
 
+        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(chatID, "/start"));
+        testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100));
         var response = restClient
                 .method(HttpMethod.POST)
                 .uri(UpdatesApiController.PATH_UPDATES_POST)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}")
+                .body("{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[" + chatID + "]}")
                 .retrieve()
                 .toBodilessEntity();
 
@@ -221,24 +238,20 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @Timeout(100)
     @ParameterizedTest
+    @SneakyThrows
     @ValueSource(
             strings = {
                 "{\"id\":1,\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[\"wrongChatID\"]}",
                 "{\"url\":\"https://test.com\",\"description\":\"Test\",\"tgChatIds\":[1]}",
                 "{}"
             })
-    void invalidUpdatesSendsReceivesError(String invalidUpdateBody) throws DomainException {
+    void invalidUpdatesSendsReceivesError(String invalidUpdateBody) {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenReturn(new LinkResponse().id(1L));
-
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("invalidUpdatesSendsReceivesError");
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, "https://test.com"));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
-        testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
+        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
+        testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100));
         Supplier<?> doResponse = () -> restClient
                 .method(HttpMethod.POST)
                 .uri(UpdatesApiController.PATH_UPDATES_POST)
@@ -253,14 +266,15 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void trackWhenScrapperReturnsBadRequestSendsInvalidUrlReply() throws DomainException {
+    void trackWhenScrapperReturnsBadRequestSendsInvalidUrlReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperReturnsBadRequestSendsInvalidUrlReply");
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new BadOuterRequestException("trackLink", "test error"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", "https://test.com", "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
         var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
@@ -270,14 +284,15 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void trackWhenScrapperReturnsConflictSendsAlreadyTrackedReply() throws DomainException {
+    void trackWhenScrapperReturnsConflictSendsAlreadyTrackedReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperReturnsConflictSendsAlreadyTrackedReply");
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new ConflictException("trackLink", "test error"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", "https://test.com", "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
         var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
@@ -287,8 +302,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void listWhenScrapperReturnsNotFoundSendsNoLinksReply() throws DomainException {
+    void listWhenScrapperReturnsNotFoundSendsNoLinksReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listWhenScrapperReturnsNotFoundSendsNoLinksReply");
         when(scrapperUpdatesService.listLinks(any())).thenThrow(new NotFoundException("listLinks", "test error"));
 
@@ -302,18 +318,19 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void untrackWhenScrapperReturnsNotFoundSendsUntrackedReply() throws DomainException {
+    void untrackWhenScrapperReturnsNotFoundSendsUntrackedReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("untrackWhenScrapperReturnsNotFoundSendsUntrackedReply");
         when(scrapperUpdatesService.untrackLink(any(), anyString()))
                 .thenThrow(new NotFoundException("untrackLink", "test error"));
+        var chatID = TelegramBotTestUtils.getFreeChatID();
 
-        testUtils.writeMessageToBot(STARTED, "untrack_command_resieved", new Message("/untrack"));
-        testUtils.writeMessageToBot(
-                "untrack_command_resieved", "untrack_url_resieved", new Message(2, "https://test.com"));
+        testUtils.writeMessageToBot(STARTED, "untrack_command_resieved", new Message(chatID, "/untrack"));
+        testUtils.writeMessageToBot("untrack_command_resieved", "untrack_url_resieved", new Message(chatID, TRACK_URL));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(2);
+        var responses = testUtils.waitAndGetBotResponses(2, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(2);
@@ -321,15 +338,16 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void trackWhenScrapperReturns500SendsInternalErrorReply() throws DomainException {
+    void trackWhenScrapperReturns500SendsInternalErrorReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackWhenScrapperReturns500SendsInternalErrorReply");
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new OuterServiceInnerException(new ApiErrorResponse().description("test error")));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", "https://test.com", "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3);
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -337,16 +355,17 @@ class TelegramBotIntegrationTest implements WithAssertions {
     }
 
     @Test
+    @SneakyThrows
     @Timeout(100)
-    void trackWhenScrapperConnectionFailsSendsInternalErrorReply() throws DomainException {
+    void trackWhenScrapperConnectionFailsSendsInternalErrorReply() {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("trackWhenScrapperConnectionFailsSendsInternalErrorReply");
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new RuntimeException("connection reset"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", "https://test.com", "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3);
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);

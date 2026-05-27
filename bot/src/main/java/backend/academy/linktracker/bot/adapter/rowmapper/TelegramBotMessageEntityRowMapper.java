@@ -19,7 +19,6 @@ public class TelegramBotMessageEntityRowMapper implements RowMapper<TelegramBotM
 
         var chatEntity = new BotChatEntity();
         chatEntity.setId(rs.getLong("chat_id"));
-        chatEntity.setReplyService(rs.getString("reply_service"));
         entity.setChat(chatEntity);
 
         var userEntity = new TelegramBotUserEntity();

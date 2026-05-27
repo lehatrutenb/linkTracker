@@ -32,7 +32,7 @@ public class UntrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMe
             ScrapperUpdatesService scrapper,
             CancelMessageHandler cancelMessageHandler,
             LinkTracerTelegramBotClient telegramBotClient) { // TODO :(
-        super(eventsStateWatcher, commandsSharedStateService, null);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.scrapper = scrapper;
         this.cancelMessageHandler = cancelMessageHandler;
         this.telegramBotClient = telegramBotClient;

@@ -30,7 +30,7 @@ public class LinkTracerUserEventClient implements UpdatesListener {
 
     @Override
     public int process(List<Update> list) {
-        var lastProcessedID = linkTracerFacade.processLinkTrackerUpdates(list, LinkTracerTelegramBotClient.QUALIFIER);
+        var lastProcessedID = linkTracerFacade.processLinkTrackerUpdates(list);
         return lastProcessedID.orElse(CONFIRMED_UPDATES_NONE);
     }
 }

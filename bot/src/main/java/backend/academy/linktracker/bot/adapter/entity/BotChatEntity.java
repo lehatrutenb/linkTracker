@@ -18,11 +18,8 @@ public class BotChatEntity {
     @Id
     private long id;
 
-    private String replyService;
-
     public BotChatEntity(BotChat botChat) {
         id = getID(botChat.getId());
-        replyService = botChat.getReplyService();
     }
 
     public static long getID(BotChatID id) {
@@ -30,7 +27,7 @@ public class BotChatEntity {
     }
 
     public BotChat toDomain() {
-        return new BotChat(toDomainID(), replyService);
+        return new BotChat(toDomainID());
     }
 
     public BotChatID toDomainID() {

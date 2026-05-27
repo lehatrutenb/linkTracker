@@ -1,5 +1,6 @@
 package backend.academy.linktracker.bot.usecase.service.command;
 
+import backend.academy.linktracker.bot.adapter.client.LinkTracerTelegramBotClient;
 import backend.academy.linktracker.bot.core.entity.ChatSharedState;
 import backend.academy.linktracker.bot.core.entity.CommandHandler;
 import backend.academy.linktracker.bot.core.entity.TelegramBotMessage;
@@ -7,7 +8,6 @@ import backend.academy.linktracker.bot.core.enumeration.ChatCommandFlowState;
 import backend.academy.linktracker.bot.usecase.event.LinkTracerNewMessageEvent;
 import backend.academy.linktracker.bot.usecase.exception.BadOuterRequestException;
 import backend.academy.linktracker.bot.usecase.exception.ConflictException;
-import backend.academy.linktracker.bot.usecase.service.BotChatMetaDataService;
 import backend.academy.linktracker.bot.usecase.service.EventsStateWatcher;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesService;
 import backend.academy.linktracker.bot.usecase.service.UserChatStateMachineConcurrentService;
@@ -16,10 +16,6 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-/**
- * Public methods and fields started with `_` for testing purposes only.
- * Do not use in production code.
- */
 @Slf4j
 @Service
 @CommandHandler(command = "/track")
@@ -36,16 +32,18 @@ public class TrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMess
 
     private final ScrapperUpdatesService scrapper;
     private final CancelMessageHandler cancelMessageHandler;
+    private final LinkTracerTelegramBotClient telegramBotClient;
 
     public TrackMessageHandler(
             EventsStateWatcher eventsStateWatcher,
             UserChatStateMachineConcurrentService commandsSharedStateService,
-            BotChatMetaDataService replyServiceMatcher,
             ScrapperUpdatesService scrapper,
-            CancelMessageHandler cancelMessageHandler) { // TODO :(
-        super(eventsStateWatcher, commandsSharedStateService, replyServiceMatcher);
+            CancelMessageHandler cancelMessageHandler,
+            LinkTracerTelegramBotClient telegramBotClient) { // TODO :(
+        super(eventsStateWatcher, commandsSharedStateService);
         this.scrapper = scrapper;
         this.cancelMessageHandler = cancelMessageHandler;
+        this.telegramBotClient = telegramBotClient;
     }
 
     public void handleTags(LinkTracerNewMessageEvent event) {
@@ -81,10 +79,7 @@ public class TrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMess
     public void handleUrlSet(LinkTracerNewMessageEvent event, TelegramBotMessage message, ChatSharedState sharedState) {
         commandsSharedStateService.setChatSharedState(
                 message.chat().getId(), sharedState.withProcessingCommandStep(1).withProcessingMessage(message));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), BASIC_URL_REPLY);
+        telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_URL_REPLY);
     }
 
     public void handleTagsSet(
@@ -98,20 +93,11 @@ public class TrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMess
                     tags,
                     List.of()); // TODO add check on empty proc msgs
             commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(message.chat().getId().getNumericID(), BASIC_TAGS_REPLY);
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_TAGS_REPLY);
         } catch (BadOuterRequestException e) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(message.chat().getId().getNumericID(), INVALID_URL_REPLY);
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), INVALID_URL_REPLY);
         } catch (ConflictException e) {
-            replyServiceMatcher
-                    .getReplyService(event.getMessage().chat().getId())
-                    .orElseThrow()
-                    .sendMessage(message.chat().getId().getNumericID(), URL_ALREADY_TRACKED_REPLY);
+            telegramBotClient.sendMessage(message.chat().getId().getNumericID(), URL_ALREADY_TRACKED_REPLY);
         } catch (Exception e) {
             log.atError().setCause(e).log("Failed to handle /track tags");
             cancelMessageHandler.processBotError(event, true);
@@ -141,10 +127,7 @@ public class TrackMessageHandler extends GeneralCommandHandler<LinkTracerNewMess
                         .withCommandFlowState(ChatCommandFlowState.WAITING_USER_INPUT)
                         .withProcessingCommand("/track")
                         .withProcessingCommandStep(0));
-        replyServiceMatcher
-                .getReplyService(event.getMessage().chat().getId())
-                .orElseThrow()
-                .sendMessage(message.chat().getId().getNumericID(), BASIC_TRACK_REPLY);
+        telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_TRACK_REPLY);
         eventsStateWatcher.markEventAsDone(event.getEventID());
     }
 }

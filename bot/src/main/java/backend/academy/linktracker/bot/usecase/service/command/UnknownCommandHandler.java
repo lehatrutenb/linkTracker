@@ -23,10 +23,10 @@ public class UnknownCommandHandler extends GeneralCommandHandler<LinkTracerNewMe
 
     public UnknownCommandHandler(
             EventsStateWatcher eventsStateWatcher,
-            CommandsMetaDataService commandsMetaDataService,
             UserChatStateMachineConcurrentService commandsSharedStateService,
+            CommandsMetaDataService commandsMetaDataService,
             LinkTracerTelegramBotClient telegramBotClient) {
-        super(eventsStateWatcher, commandsSharedStateService, null);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.commandsMetaDataService = commandsMetaDataService;
         this.telegramBotClient = telegramBotClient;
     }

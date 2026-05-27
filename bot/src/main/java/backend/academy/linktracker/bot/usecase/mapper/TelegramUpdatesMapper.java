@@ -18,7 +18,7 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class TelegramUpdatesMapper {
-    public static TelegramBotMessage map(Update update, String replyServiceQualifier) {
+    public static TelegramBotMessage map(Update update) {
         var message = update.message();
         if (message == null) {
             throw new IllegalArgumentException("Message is null");
@@ -27,7 +27,7 @@ public class TelegramUpdatesMapper {
                 message.text() == null ? "" : message.text(),
                 mapMessageID(update),
                 mapInstant(message.date()),
-                mapToChat(update, replyServiceQualifier),
+                mapToChat(update),
                 map(message.from()));
     }
 
@@ -112,10 +112,10 @@ public class TelegramUpdatesMapper {
         return new TelegramBotUser(user.id(), user.username(), user.firstName(), user.isBot());
     }
 
-    public static BotChat mapToChat(Update update, String replyServiceQualifier) {
+    public static BotChat mapToChat(Update update) {
         if (update == null) {
             throw new IllegalArgumentException("Update is null");
         }
-        return new BotChat(mapBotChatID(update), replyServiceQualifier);
+        return new BotChat(mapBotChatID(update));
     }
 }

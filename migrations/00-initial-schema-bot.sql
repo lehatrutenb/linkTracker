@@ -6,8 +6,7 @@ CREATE TABLE telegram_bot_user (
 );
 
 CREATE TABLE bot_chat (
-    id BIGINT PRIMARY KEY,
-    reply_service VARCHAR(255) NOT NULL
+    id BIGINT PRIMARY KEY
 );
 
 CREATE TABLE chat_shared_state (

@@ -58,7 +58,6 @@ public class TelegramBotMessagesRepositorySelfManagedImpl implements TelegramBot
                 me.message_id as message_id,
                 me.message as message,
                 me.date as date,
-                bc.reply_service as reply_service,
                 bc.id as chat_id,
                 bu.id as user_id,
                 bu.first_name as first_name,
@@ -87,7 +86,6 @@ public class TelegramBotMessagesRepositorySelfManagedImpl implements TelegramBot
                         )
                         SELECT
                             inserted.*,
-                            bc.reply_service as reply_service,
                             bc.id as chat_id,
                             bu.id as user_id,
                             bu.first_name as first_name,

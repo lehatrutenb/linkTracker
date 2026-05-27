@@ -32,20 +32,18 @@ public class BotChatEntityRepositorySelfManagedImpl implements BotChatEntityRepo
     @Override
     public BotChat createBotChat(BotChat botChat) {
         var entity = new BotChatEntity(botChat);
-        return client.sql("INSERT INTO bot_chat (id,reply_service) VALUES (:id,:reply_service) RETURNING *")
+        return client.sql("INSERT INTO bot_chat (id) VALUES (:id) RETURNING *")
                 .param("id", entity.getId())
-                .param("reply_service", entity.getReplyService())
                 .query(BotChatEntity.class)
                 .single()
                 .toDomain();
     }
 
     @Override
-    public BotChat updateBotChat(BotChat botChat) {
+    public BotChat updateBotChat(BotChat botChat) { // :)
         var entity = new BotChatEntity(botChat);
-        return client.sql("UPDATE bot_chat SET reply_service = :reply_service WHERE id = :id RETURNING *")
+        return client.sql("UPDATE bot_chat SET id = :id WHERE id = :id RETURNING *")
                 .param("id", entity.getId())
-                .param("reply_service", entity.getReplyService())
                 .query(BotChatEntity.class)
                 .single()
                 .toDomain();

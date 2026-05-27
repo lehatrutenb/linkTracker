@@ -15,11 +15,14 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import backend.academy.linktracker.bot.BotApplication;
 import backend.academy.linktracker.bot.adapter.client.LinkTracerUserEventClient;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
+import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
 import backend.academy.linktracker.bot.usecase.service.ScrapperUpdatesHandleService;
 import backend.academy.linktracker.bot.usecase.service.command.ListMessageHandler;
 import backend.academy.linktracker.bot.usecase.service.command.TrackMessageHandler;
 import backend.academy.linktracker.bot.usecase.service.command.UntrackMessageHandler;
 import backend.academy.linktracker.scrapper.ScrapperApplication;
+import io.netty.handler.codec.http.HttpHeaderNames;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import org.assertj.core.api.InstanceOfAssertFactories;
@@ -35,6 +38,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.Ordered;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -47,6 +51,9 @@ import org.wiremock.spring.EnableWireMock;
 @ActiveProfiles("test")
 @EnableWireMock
 class TgBotWithScrapperIntegrationTest implements WithAssertions {
+    private static final String SCRAPPER_API_PATH = "http://localhost:18081";
+    private static final String BOT_API_PATH = "http://localhost:18080";
+
     @RegisterExtension
     static SharedPostgresContainer postgresContainer = new SharedPostgresContainer();
 
@@ -54,12 +61,21 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     private JdbcClient jdbcClient;
 
     @RegisterExtension
-    static StatefulApplicationTestExtension tgBot =
-            new DatasourcedApplicationTestExtension(BotApplication.class, postgresContainer, "--server.port=0");
+    static StatefulApplicationTestExtension tgBot = new DatasourcedApplicationTestExtension(
+            BotApplication.class,
+            postgresContainer,
+            "--server.port=18080",
+            "--app.scrapper.api-path=" + SCRAPPER_API_PATH);
 
     @RegisterExtension
-    static StatefulApplicationTestExtension scrapper =
-            new DatasourcedApplicationTestExtension(ScrapperApplication.class, postgresContainer, "--server.port=0");
+    static StatefulApplicationTestExtension scrapper = new DatasourcedApplicationTestExtension(
+            ScrapperApplication.class,
+            postgresContainer,
+            "--server.port=18081",
+            "--app.scrapper.api-path=" + BOT_API_PATH);
+
+    @Value("${wiremock.server.baseUrl}")
+    private String wiremockBaseUrl;
 
     @DynamicPropertySource
     static void postgresProperties(DynamicPropertyRegistry registry) { // Add to use jdbcClient
@@ -134,12 +150,9 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     void trackSendsInvalidURLReceivesErrorReply(String invalidURL) {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsInvalidURLReceivesErrorReply");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, invalidURL));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
-        var responses = testUtils.waitAndGetBotResponses(3);
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", invalidURL, "-"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3).containsOnlyOnce(TrackMessageHandler.INVALID_URL_REPLY);
@@ -151,12 +164,9 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     void trackSendsReceivesReply(String validURL) {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsReceivesReply");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, validURL));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
-        var responses = testUtils.waitAndGetBotResponses(3);
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", validURL, "-"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses)
@@ -173,16 +183,9 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     void trackSendsTwiceReceivesErrorReply(String validURL) {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsTwiceReceivesErrorReply");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, validURL));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.writeMessageToBot(
-                "tags_resieved", "track_command_resieved2", new TelegramBotTestUtils.Message(4, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved2", "url_resieved2", new TelegramBotTestUtils.Message(5, validURL));
-        testUtils.writeMessageToBot("url_resieved2", "tags_resieved2", new TelegramBotTestUtils.Message(6, "-"));
-        testUtils.repeatLastMessage("tags_resieved2", "tags_resieved2", 7);
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", validURL, "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest("tags_resieved", "tags_resieved2", validURL, "-"));
+        testUtils.repeatLastMessageLastState();
         var responses = testUtils.waitAndGetBotResponses(6);
 
         assertThat(responses).isNotEmpty();
@@ -194,9 +197,9 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     void listNoTrackedSendsReceivesBlankReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listNoTrackedSendsReceivesBlankReply");
 
-        testUtils.writeMessageToBot(STARTED, "list_command_resieved", new TelegramBotTestUtils.Message(1, "/list"));
-        testUtils.repeatLastMessage("list_command_resieved", "list_command_resieved", 2);
-        var responses = testUtils.waitAndGetBotResponses(1);
+        testUtils.writeMessageToBot(STARTED, "list_command_resieved", new TelegramBotTestUtils.Message("/list"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(1, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).singleElement().isEqualTo(ListMessageHandler.NO_LINKS_TRACKED_URL_REPLY);
@@ -209,22 +212,16 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         String url2 = "https://github.com/openclaw/openclaw";
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listSendsReceivesReply");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, url1));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.writeMessageToBot(
-                "tags_resieved", "track_command_resieved2", new TelegramBotTestUtils.Message(4, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved2", "url_resieved2", new TelegramBotTestUtils.Message(5, url2));
-        testUtils.writeMessageToBot("url_resieved2", "tags_resieved2", new TelegramBotTestUtils.Message(6, "-"));
-        testUtils.writeMessageToBot(
-                "tags_resieved2", "list_command_resieved", new TelegramBotTestUtils.Message(7, "/list"));
-        testUtils.repeatLastMessage("list_command_resieved", "list_command_resieved", 8);
-        var responses = testUtils.waitAndGetBotResponses(7);
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", url1, "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest("tags_resieved", "tags_resieved2", url2, "-"));
+        testUtils.writeMessageToBot(STARTED, "list_command_resieved", new TelegramBotTestUtils.Message(1, "/list"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(7, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
-        assertThat(assertThat(responses).hasSize(7).last().actual())
+        assertThat(responses)
+                .hasSize(7)
+                .asString()
                 .containsOnlyOnce(ListMessageHandler.BASIC_REPLY)
                 .containsOnlyOnce(url1)
                 .containsOnlyOnce(url2);
@@ -239,25 +236,22 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         String tagGithub = "tagGithub";
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listWithTagsSendsReceivesFilteredReply");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
+        testUtils.trackURL(
+                new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", url1, tagStackOverflowToList));
+        testUtils.trackURL(
+                new TelegramBotTestUtils.TrackURLRequest("tags_resieved", "tags_resieved2", url2, tagGithub));
         testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, url1));
-        testUtils.writeMessageToBot(
-                "url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, tagStackOverflowToList));
-        testUtils.writeMessageToBot(
-                "tags_resieved", "track_command_resieved2", new TelegramBotTestUtils.Message(4, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved2", "url_resieved2", new TelegramBotTestUtils.Message(5, url2));
-        testUtils.writeMessageToBot("url_resieved2", "tags_resieved2", new TelegramBotTestUtils.Message(6, tagGithub));
-        testUtils.writeMessageToBot(
-                "tags_resieved2",
+                STARTED,
                 "list_command_resieved",
-                new TelegramBotTestUtils.Message(7, "/list " + tagStackOverflowToList));
-        testUtils.repeatLastMessage("list_command_resieved", "list_command_resieved", 8);
-        var responses = testUtils.waitAndGetBotResponses(7);
+                new TelegramBotTestUtils.Message(1, "/list " + tagStackOverflowToList));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(7, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
-        assertThat(assertThat(responses).hasSize(7).last().actual())
+        assertThat(responses)
+                .hasSize(7)
+                .last()
+                .asString()
                 .containsOnlyOnce(ListMessageHandler.BASIC_REPLY)
                 .containsOnlyOnce(url1)
                 .containsOnlyOnce(tagStackOverflowToList)
@@ -271,17 +265,15 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         String url = "https://stackoverflow.com/questions/4568645";
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("untrackSendsReceivesReplyAndRemovesLink");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot("track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, url));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", url, "-"));
         testUtils.writeMessageToBot(
-                "tags_resieved", "untrack_command_resieved", new TelegramBotTestUtils.Message(4, "/untrack"));
+                "tags_resieved", "untrack_command_resieved", new TelegramBotTestUtils.Message("/untrack"));
         testUtils.writeMessageToBot(
-                "untrack_command_resieved", "untrack_url_resieved", new TelegramBotTestUtils.Message(5, url));
+                "untrack_command_resieved", "untrack_url_resieved", new TelegramBotTestUtils.Message(url));
         testUtils.writeMessageToBot(
-                "untrack_url_resieved", "list_command_resieved", new TelegramBotTestUtils.Message(6, "/list"));
-        testUtils.repeatLastMessage("list_command_resieved", "list_command_resieved", 7);
-        var responses = testUtils.waitAndGetBotResponses(6);
+                "untrack_url_resieved", "list_command_resieved", new TelegramBotTestUtils.Message("/list"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(6, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses)
@@ -300,13 +292,13 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         TelegramBotTestUtils testUtils =
                 new TelegramBotTestUtils("cancelTrackFlowSendsReceivesBlankReplyAndResetsState");
 
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
+        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message("/track"));
         testUtils.writeMessageToBot(
-                "track_command_resieved", "cancel_command_resieved", new TelegramBotTestUtils.Message(2, "/cancel"));
+                "track_command_resieved", "cancel_command_resieved", new TelegramBotTestUtils.Message("/cancel"));
         testUtils.writeMessageToBot(
-                "cancel_command_resieved", "list_command_resieved", new TelegramBotTestUtils.Message(3, "/list"));
-        testUtils.repeatLastMessage("list_command_resieved", "list_command_resieved", 4);
-        var responses = testUtils.waitAndGetBotResponses(3);
+                "cancel_command_resieved", "list_command_resieved", new TelegramBotTestUtils.Message("/list"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses)
@@ -319,22 +311,23 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     @Timeout(100)
     @Test
     void trackSendsReceivesReplyInSenderChat() {
-        String url = "https://stackoverflow.com/questions/4568645"; // TODO Add github too
+        String url = "https://stackoverflow.com/questions/4568645";
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("trackSendsReceivesReplyInSenderChat");
 
         stubFor(get(urlMatching(".*/stack-overflow-api/.*/questions/.*/answers.*"))
                 .willReturn(aResponse()
                         .withStatus(200)
-                        .withHeader("Content-Type", APPLICATION_JSON_VALUE)
+                        .withHeader(HttpHeaderNames.CONTENT_TYPE.toString(), APPLICATION_JSON_VALUE)
                         .withBodyFile("exampleStackOverflowGetAnswersResponse.json")));
-        testUtils.writeMessageToBot(STARTED, "track_command_resieved", new TelegramBotTestUtils.Message(1, "/track"));
-        testUtils.writeMessageToBot("track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(2, url));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(3, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 4);
-        var responses = testUtils.waitAndGetBotResponses(4);
+        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", url, "-"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponses(4, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
-        assertThat(assertThat(responses).hasSize(4).last().actual())
+        assertThat(responses)
+                .hasSize(4)
+                .last()
+                .asString()
                 .matches(ScrapperUpdatesHandleService.BASIC_REPLY.replace("%s", ".*"))
                 .containsOnlyOnce(url);
     }
@@ -348,17 +341,13 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
         stubFor(get(urlMatching(".*/stack-overflow-api/.*/questions/.*/answers.*"))
                 .willReturn(aResponse()
                         .withStatus(200)
-                        .withHeader("Content-Type", APPLICATION_JSON_VALUE)
+                        .withHeader(HttpHeaderNames.CONTENT_TYPE.toString(), APPLICATION_JSON_VALUE)
                         .withBodyFile("exampleStackOverflowGetAnswersResponse.json")));
-        testUtils.writeMessageToBot(
-                STARTED, "start_command_resieved", new TelegramBotTestUtils.Message(2, 1, "/start"));
-        testUtils.writeMessageToBot(
-                "start_command_resieved", "track_command_resieved", new TelegramBotTestUtils.Message(1, 2, "/track"));
-        testUtils.writeMessageToBot(
-                "track_command_resieved", "url_resieved", new TelegramBotTestUtils.Message(1, 3, url));
-        testUtils.writeMessageToBot("url_resieved", "tags_resieved", new TelegramBotTestUtils.Message(1, 4, "-"));
-        testUtils.repeatLastMessage("tags_resieved", "tags_resieved", 5);
-        var responses = testUtils.waitAndGetBotResponsesByChatID(10);
+        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(2, "/start"));
+        testUtils.trackURL(
+                new TelegramBotTestUtils.TrackURLRequest("start_command_resieved", "tags_resieved", url, "-"));
+        testUtils.repeatLastMessageLastState();
+        var responses = testUtils.waitAndGetBotResponsesByChatID(10, Duration.ofSeconds(100));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses)

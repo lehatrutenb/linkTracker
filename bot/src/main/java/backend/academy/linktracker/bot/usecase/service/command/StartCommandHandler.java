@@ -22,7 +22,7 @@ public class StartCommandHandler extends GeneralCommandHandler<LinkTracerNewMess
             EventsStateWatcher eventsStateWatcher,
             UserChatStateMachineConcurrentService commandsSharedStateService,
             LinkTracerTelegramBotClient telegramBotClient) {
-        super(eventsStateWatcher, commandsSharedStateService, null);
+        super(eventsStateWatcher, commandsSharedStateService);
         this.telegramBotClient = telegramBotClient;
     }
 
@@ -32,8 +32,7 @@ public class StartCommandHandler extends GeneralCommandHandler<LinkTracerNewMess
             return;
         }
         TelegramBotMessage message = event.getMessage();
-        log.atInfo()
-                .log("Handle /start user command");
+        log.atInfo().log("Handle /start user command");
 
         commandsSharedStateService.setChatSharedState(message.chat().getId(), new ChatSharedState());
         telegramBotClient.sendMessage(message.chat().getId().getNumericID(), BASIC_REPLY);
