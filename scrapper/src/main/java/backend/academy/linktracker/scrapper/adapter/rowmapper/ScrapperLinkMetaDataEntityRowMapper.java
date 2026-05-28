@@ -1,7 +1,7 @@
-package backend.academy.linktracker.scrapper.adapters.rowmapper;
+package backend.academy.linktracker.scrapper.adapter.rowmapper;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

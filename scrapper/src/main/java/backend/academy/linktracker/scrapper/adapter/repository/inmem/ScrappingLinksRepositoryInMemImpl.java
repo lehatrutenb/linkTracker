@@ -1,4 +1,4 @@
-package backend.academy.linktracker.scrapper.adapters.repository.inmem;
+package backend.academy.linktracker.scrapper.adapter.repository.inmem;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;

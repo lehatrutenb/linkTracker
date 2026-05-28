@@ -1,10 +1,10 @@
-package backend.academy.linktracker.scrapper.adapters.repository.orm;
+package backend.academy.linktracker.scrapper.adapter.repository.orm;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListenerEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkListenerEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
 import java.util.List;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.context.config.annotation.RefreshScope;

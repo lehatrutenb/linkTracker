@@ -1,7 +1,7 @@
-package backend.academy.linktracker.scrapper.adapters.repository.orm;
+package backend.academy.linktracker.scrapper.adapter.repository.orm;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkIDEntity;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinksRepository;

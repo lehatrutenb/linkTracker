@@ -1,11 +1,11 @@
-package backend.academy.linktracker.scrapper.adapters.repository.orm;
+package backend.academy.linktracker.scrapper.adapter.repository.orm;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkIDEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListenerEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkMetaDataEntity.TagEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkListenerEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity.ScrapperLinkMetaDataIDEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkMetaDataEntity.TagEntity;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLink;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkID;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;

@@ -1,6 +1,6 @@
-package backend.academy.linktracker.scrapper.adapters.repository.selfmanaged;
+package backend.academy.linktracker.scrapper.adapter.repository.selfmanaged;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListenerEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkListenerEntity;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import java.util.Optional;

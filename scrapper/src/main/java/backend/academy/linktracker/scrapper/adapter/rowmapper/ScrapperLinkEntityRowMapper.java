@@ -1,6 +1,6 @@
-package backend.academy.linktracker.scrapper.adapters.rowmapper;
+package backend.academy.linktracker.scrapper.adapter.rowmapper;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkEntity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;

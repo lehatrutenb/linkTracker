@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.awaitility.Awaitility;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.web.util.UriComponents;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Slf4j
@@ -49,50 +49,57 @@ public class TelegramBotTestUtils {
         return lastMessageId - 1;
     }
 
-    public List<LoggedRequest> getSendMessageRequests() {
-        return getAllServeEvents().stream()
+    private MultiValueMap<String, String> getQueryParams(LoggedRequest request) {
+        return UriComponentsBuilder.fromUriString(
+                        "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
+                .build()
+                .getQueryParams();
+    }
+
+    public List<LoggedRequest> getSendMessageRequests(List<Long> allowedChatIDs) {
+        var res = getAllServeEvents().stream()
                 .map(ServeEvent::getRequest)
                 .filter(request ->
                         urlMatching(".*/sendMessage").match(request.getUrl()).isExactMatch())
+                .filter(request -> {
+                    var chatID = getQueryParams(request).get("chat_id");
+                    return chatID != null && allowedChatIDs.contains(Long.parseLong(chatID.getFirst()));
+                })
                 .toList();
+        return res;
     }
 
-    public Collection<LoggedRequest> waitAndGetUpdates(int amtUpdatesToWait, Duration maxWaitTime) {
+    public Collection<LoggedRequest> waitAndGetUpdates(
+            int amtUpdatesToWait, Duration maxWaitTime, List<Long> allowedChatIDs) {
         List<LoggedRequest> gotRequests = Awaitility.await()
                 .atMost(maxWaitTime)
                 .pollInterval(Duration.ofSeconds(1))
-                .until(this::getSendMessageRequests, requests -> requests.size() >= amtUpdatesToWait);
+                .until(() -> getSendMessageRequests(allowedChatIDs), requests -> requests.size() >= amtUpdatesToWait);
         log.atInfo().addKeyValue("total responses amount", gotRequests.size()).log("Got expected bot responses");
         return gotRequests.reversed().stream().limit(amtUpdatesToWait).toList();
     }
 
-    public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait) {
-        return waitAndGetBotResponses(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME);
+    public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait, List<Long> allowedChatIDs) {
+        return waitAndGetBotResponses(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME, allowedChatIDs);
     }
 
-    public Collection<String> waitAndGetBotResponses(int amtUpdatesToWait, Duration maxWaitTime) {
-        return waitAndGetUpdates(amtUpdatesToWait, maxWaitTime).stream()
-                .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
-                .map(UriComponentsBuilder::fromUriString)
-                .map(UriComponentsBuilder::build)
-                .map(UriComponents::getQueryParams)
-                .map(qMap -> qMap.getFirst("text"))
+    public Collection<String> waitAndGetBotResponses(
+            int amtUpdatesToWait, Duration maxWaitTime, List<Long> allowedChatIDs) {
+        return waitAndGetUpdates(amtUpdatesToWait, maxWaitTime, allowedChatIDs).stream()
+                .map(request -> getQueryParams(request).getFirst("text"))
                 .toList();
     }
 
-    public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait) {
-        return waitAndGetBotResponsesByChatID(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME);
+    public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait, List<Long> allowedChatIDs) {
+        return waitAndGetBotResponsesByChatID(amtUpdatesToWait, DEFAULT_MAX_WAIT_TIME, allowedChatIDs);
     }
 
-    public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(int amtUpdatesToWait, Duration maxWaitTime) {
-        return waitAndGetUpdates(amtUpdatesToWait, maxWaitTime).stream()
-                .map(request -> "?" + URLDecoder.decode(request.getBodyAsString(), StandardCharsets.UTF_8))
-                .map(UriComponentsBuilder::fromUriString)
-                .map(UriComponentsBuilder::build)
-                .map(UriComponents::getQueryParams)
+    public Map<String, Stream<String>> waitAndGetBotResponsesByChatID(
+            int amtUpdatesToWait, Duration maxWaitTime, List<Long> allowedChatIDs) {
+        return waitAndGetUpdates(amtUpdatesToWait, maxWaitTime, allowedChatIDs).stream()
                 .collect(Collectors.toMap(
-                        query -> query.getFirst("chat_id"),
-                        query -> Stream.of(query.getFirst("text")),
+                        request -> getQueryParams(request).getFirst("chat_id"),
+                        request -> Stream.of(getQueryParams(request).getFirst("text")),
                         Stream::concat));
     }
 
@@ -159,7 +166,7 @@ public class TelegramBotTestUtils {
                                 """, message.updateID, message.messageID, message.chatID, message.chatID, message.messageText));
     }
 
-    public void writeMessageToBot(String fromState, String toState, Message message) {
+    public long writeMessageToBot(String fromState, String toState, Message message) {
         lastState = toState;
         addUpdateEvent(message);
         stubFor(post(urlMatching("/bot/.*/getUpdates"))
@@ -169,6 +176,7 @@ public class TelegramBotTestUtils {
                         .withStatus(200)
                         .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)))
                 .willSetStateTo(toState));
+        return message.chatID;
     }
 
     public void repeatLastMessageLastState() {
@@ -184,7 +192,7 @@ public class TelegramBotTestUtils {
                 .willSetStateTo(lastState));
     }
 
-    public void trackURL(TrackURLRequest request) {
+    public long trackURL(TrackURLRequest request) {
         var hash = java.util.UUID.randomUUID().toString().substring(0, 3);
         writeMessageToBot(request.inState(), "track_command_resieved" + hash, new Message(request.chatID(), "/track"));
         writeMessageToBot(
@@ -192,6 +200,7 @@ public class TelegramBotTestUtils {
                 "url_resieved" + hash,
                 new Message(request.chatID(), request.validURL()));
         writeMessageToBot("url_resieved" + hash, request.outState(), new Message(request.chatID(), request.tags()));
+        return request.chatID();
     }
 
     public record TrackURLRequest(String inState, String outState, String validURL, String tags, long chatID) {

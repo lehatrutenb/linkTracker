@@ -1,6 +1,6 @@
-package backend.academy.linktracker.scrapper.adapters.repository.orm;
+package backend.academy.linktracker.scrapper.adapter.repository.orm;
 
-import backend.academy.linktracker.scrapper.adapters.entity.ScrapperLinkListenerEntity;
+import backend.academy.linktracker.scrapper.adapter.entity.ScrapperLinkListenerEntity;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkListener;
 import backend.academy.linktracker.scrapper.core.port.ScrappingLinkListenerRepository;
 import jakarta.transaction.Transactional;

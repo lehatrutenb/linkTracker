@@ -1,4 +1,4 @@
-package backend.academy.linktracker.scrapper.adapters.entity;
+package backend.academy.linktracker.scrapper.adapter.entity;
 
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaData;
 import backend.academy.linktracker.scrapper.core.entities.ScrapperLinkMetaDataID;

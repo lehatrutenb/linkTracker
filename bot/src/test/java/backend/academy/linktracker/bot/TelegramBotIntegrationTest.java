@@ -37,9 +37,6 @@ import com.pengrad.telegrambot.model.Update;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.List;
 import java.util.function.Supplier;
 import lombok.SneakyThrows;
@@ -161,14 +158,12 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void startSendsResievesReply() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("startSendsResievesReply");
 
-        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
+        var chatID = testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
+                testUtils.waitAndGetBotResponses(1, List.of(chatID)).stream().findFirst();
 
-        assertThat(response).isNotEmpty();
-        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
-                .contains("/help")
-                .contains("Добро пожаловать!");
+        assertThat(response).isPresent();
+        assertThat(response.orElseThrow()).contains("/help").contains("Добро пожаловать!");
     }
 
     @Test
@@ -176,14 +171,12 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void helpSendsResievesCommands() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("helpSendsResievesCommands");
 
-        testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message("/help"));
+        var chatID = testUtils.writeMessageToBot(STARTED, "help_command_resieved", new Message("/help"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
+                testUtils.waitAndGetBotResponses(1, List.of(chatID)).stream().findFirst();
 
-        assertThat(response).isNotEmpty();
-        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
-                .contains("/help")
-                .contains("/start");
+        assertThat(response).isPresent();
+        assertThat(response.orElseThrow()).contains("/help").contains("/start");
     }
 
     @Test
@@ -191,13 +184,12 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void unknownCommandSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unknownCommandSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message("/unknownCommand"));
+        var chatID = testUtils.writeMessageToBot(STARTED, "unknown_command_resieved", new Message("/unknownCommand"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
+                testUtils.waitAndGetBotResponses(1, List.of(chatID)).stream().findFirst();
 
-        assertThat(response).isNotEmpty();
-        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
-                .contains("/help");
+        assertThat(response).isPresent();
+        assertThat(response.orElseThrow()).contains("/help");
     }
 
     @Test
@@ -205,13 +197,13 @@ class TelegramBotIntegrationTest implements WithAssertions {
     void unexpectedMessageSendsResievesMessageWithHelp() {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("unexpectedMessageSendsResievesMessageWithHelp");
 
-        testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message("unexpected message"));
+        var chatID =
+                testUtils.writeMessageToBot(STARTED, "unexpected_message_resieved", new Message("unexpected message"));
         var response =
-                testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100)).stream().findFirst();
+                testUtils.waitAndGetBotResponses(1, List.of(chatID)).stream().findFirst();
 
-        assertThat(response).isNotEmpty();
-        assertThat(URLDecoder.decode(response.orElseThrow().getBodyAsString(), StandardCharsets.UTF_8))
-                .contains("/help");
+        assertThat(response).isPresent();
+        assertThat(response.orElseThrow()).contains("/help");
     }
 
     @Test
@@ -224,7 +216,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         var chatID = TelegramBotTestUtils.getFreeChatID();
 
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(chatID, "/start"));
-        testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100));
+        testUtils.waitAndGetBotResponses(1, List.of(chatID));
         var response = restClient
                 .method(HttpMethod.POST)
                 .uri(UpdatesApiController.PATH_UPDATES_POST)
@@ -250,8 +242,8 @@ class TelegramBotIntegrationTest implements WithAssertions {
                 .thenReturn(new LinkResponse().id(1L));
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("invalidUpdatesSendsReceivesError");
 
-        testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
-        testUtils.waitAndGetUpdates(1, Duration.ofSeconds(100));
+        var chatID = testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message("/start"));
+        testUtils.waitAndGetBotResponses(1, List.of(chatID));
         Supplier<?> doResponse = () -> restClient
                 .method(HttpMethod.POST)
                 .uri(UpdatesApiController.PATH_UPDATES_POST)
@@ -274,9 +266,10 @@ class TelegramBotIntegrationTest implements WithAssertions {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new BadOuterRequestException("trackLink", "test error"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
+        var chatID =
+                testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(3, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -292,9 +285,10 @@ class TelegramBotIntegrationTest implements WithAssertions {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new ConflictException("trackLink", "test error"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
+        var chatID =
+                testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(3, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -308,9 +302,9 @@ class TelegramBotIntegrationTest implements WithAssertions {
         TelegramBotTestUtils testUtils = new TelegramBotTestUtils("listWhenScrapperReturnsNotFoundSendsNoLinksReply");
         when(scrapperUpdatesService.listLinks(any())).thenThrow(new NotFoundException("listLinks", "test error"));
 
-        testUtils.writeMessageToBot(STARTED, "list_command_resieved", new Message("/list"));
+        var chatID = testUtils.writeMessageToBot(STARTED, "list_command_resieved", new Message("/list"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(1, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(1, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(1);
@@ -330,7 +324,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
         testUtils.writeMessageToBot(STARTED, "untrack_command_resieved", new Message(chatID, "/untrack"));
         testUtils.writeMessageToBot("untrack_command_resieved", "untrack_url_resieved", new Message(chatID, TRACK_URL));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(2, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(2, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(2);
@@ -345,9 +339,10 @@ class TelegramBotIntegrationTest implements WithAssertions {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new OuterServiceInnerException(new ApiErrorResponse().description("test error")));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
+        var chatID =
+                testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(3, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
@@ -363,9 +358,10 @@ class TelegramBotIntegrationTest implements WithAssertions {
         when(scrapperUpdatesService.trackLink(any(), anyString(), anyList(), anyList()))
                 .thenThrow(new RuntimeException("connection reset"));
 
-        testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
+        var chatID =
+                testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", TRACK_URL, "-"));
         testUtils.repeatLastMessageLastState();
-        var responses = testUtils.waitAndGetBotResponses(3, Duration.ofSeconds(100));
+        var responses = testUtils.waitAndGetBotResponses(3, List.of(chatID));
 
         assertThat(responses).isNotEmpty();
         assertThat(responses).hasSize(3);
