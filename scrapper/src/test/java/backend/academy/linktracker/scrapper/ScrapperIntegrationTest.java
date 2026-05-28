@@ -42,7 +42,6 @@ import org.wiremock.spring.EnableWireMock;
 @ActiveProfiles("test")
 @EnableWireMock
 @Testcontainers
-@TestInstance(Lifecycle.PER_CLASS)
 public class ScrapperIntegrationTest {
     private static final String DEFAULT_LINK = "https://github.com/openclaw/openclaw";
     private static final String GITHUB_LINK = "https://github.com/openclaw/openclaw";
@@ -51,19 +50,19 @@ public class ScrapperIntegrationTest {
     private static final RemoveLinkRequest DELETE_DEFAULT_LINK_REQUEST =
             new RemoveLinkRequest().link(URI.create(DEFAULT_LINK));
 
-    private RestClient restClient;
+    private static RestClient restClient;
 
     @Container
     @ServiceConnection
     private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
     @BeforeAll
-    void setupBeforeAll(@Value("${local.server.port}") String linkTrackerAppPort) {
+    static void setupBeforeAll(@Value("${local.server.port}") String linkTrackerAppPort) {
         restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
     }
 
     @BeforeEach
-    static void setupBeforeEach() {
+    void setupBeforeEach() {
         reset();
         resetAllRequests();
         resetAllScenarios();
