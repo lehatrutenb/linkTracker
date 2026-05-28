@@ -76,7 +76,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     }
 
     // TODO Move to bot test config?
-    void setupWireMock() {
+    static void setupWireMock() {
         stubFor(post(urlMatching(".*/setMyCommands"))
                 .atPriority(Integer.MAX_VALUE)
                 .willReturn(aResponse().withStatus(200).withBody("{\"ok\":true,\"result\":true}")));
@@ -91,7 +91,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     }
 
     @BeforeEach
-    void setupBeforeEach() {
+    static void setupBeforeEach() {
         reset();
         resetAllRequests();
         resetAllScenarios();

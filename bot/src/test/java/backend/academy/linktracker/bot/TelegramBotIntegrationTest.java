@@ -42,6 +42,8 @@ import lombok.SneakyThrows;
 import org.assertj.core.api.WithAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -67,6 +69,7 @@ import org.wiremock.spring.EnableWireMock;
 @ActiveProfiles("test")
 @EnableWireMock
 @Testcontainers
+@TestInstance(Lifecycle.PER_CLASS)
 class TelegramBotIntegrationTest implements WithAssertions {
     private static final String TRACK_URL = "https://stackoverflow.com/questions/4568645";
 
@@ -85,7 +88,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @MockitoBean
     private ScrapperUpdatesService scrapperUpdatesService;
 
-    void setupWireMock() {
+    static void setupWireMock() {
         stubFor(post(urlMatching(".*/getUpdates"))
                 .willReturn(aResponse()
                         .withStatus(200)
