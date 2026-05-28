@@ -91,7 +91,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
     }
 
     @BeforeEach
-    static void setupBeforeEach() {
+    void setupBeforeEach() {
         reset();
         resetAllRequests();
         resetAllScenarios();

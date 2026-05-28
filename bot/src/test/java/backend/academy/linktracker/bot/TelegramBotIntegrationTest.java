@@ -40,10 +40,9 @@ import java.util.List;
 import java.util.function.Supplier;
 import lombok.SneakyThrows;
 import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -69,15 +68,14 @@ import org.wiremock.spring.EnableWireMock;
 @ActiveProfiles("test")
 @EnableWireMock
 @Testcontainers
-@TestInstance(Lifecycle.PER_CLASS)
 class TelegramBotIntegrationTest implements WithAssertions {
     private static final String TRACK_URL = "https://stackoverflow.com/questions/4568645";
 
-    RestClient restClient;
+    static RestClient restClient;
 
     @Container
     @ServiceConnection
-    private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
+    static PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
     @Autowired
     private TelegramBotInitStateSetterService telegramBotInitStateSetterService;
@@ -88,7 +86,7 @@ class TelegramBotIntegrationTest implements WithAssertions {
     @MockitoBean
     private ScrapperUpdatesService scrapperUpdatesService;
 
-    static void setupWireMock() {
+    void setupWireMock() {
         stubFor(post(urlMatching(".*/getUpdates"))
                 .willReturn(aResponse()
                         .withStatus(200)
@@ -105,15 +103,18 @@ class TelegramBotIntegrationTest implements WithAssertions {
                                                 "{\"ok\":true,\"result\":{\"message_id\":1,\"chat\":{\"id\":123},\"date\":1234567890,\"text\":\"\"}}")));
     }
 
+    @BeforeAll
+    static void setupBeforeAll(@Value("${local.server.port}") String linkTrackerAppPort) {
+        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
+    }
+
     @BeforeEach
-    void setupBeforeEach(@Value("${local.server.port}") String linkTrackerAppPort) {
+    void setupBeforeEach() {
         reset();
         resetAllRequests();
         resetAllScenarios();
         resetToDefault();
         setupWireMock();
-
-        restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
     }
 
     @Test
