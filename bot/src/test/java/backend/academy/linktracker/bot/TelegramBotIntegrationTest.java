@@ -16,7 +16,6 @@ import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import backend.academy.linktracker.bot.adapter.client.LinkTracerUserEventClient;
 import backend.academy.linktracker.bot.adapter.controller.UpdatesApiController;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils;
 import backend.academy.linktracker.bot.testutil.TelegramBotTestUtils.Message;
@@ -41,7 +40,6 @@ import java.util.List;
 import java.util.function.Supplier;
 import lombok.SneakyThrows;
 import org.assertj.core.api.WithAssertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -51,12 +49,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.web.client.HttpClientErrorException;
@@ -81,12 +77,6 @@ class TelegramBotIntegrationTest implements WithAssertions {
     private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
     @Autowired
-    private JdbcClient jdbcClient;
-
-    @Autowired
-    private LinkTracerUserEventClient linkTracerUserEventController;
-
-    @Autowired
     private TelegramBotInitStateSetterService telegramBotInitStateSetterService;
 
     @Autowired
@@ -94,9 +84,6 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @MockitoBean
     private ScrapperUpdatesService scrapperUpdatesService;
-
-    @Autowired
-    private RefreshScope refreshScope;
 
     void setupWireMock() {
         stubFor(post(urlMatching(".*/getUpdates"))
@@ -117,26 +104,13 @@ class TelegramBotIntegrationTest implements WithAssertions {
 
     @BeforeEach
     void setupBeforeEach(@Value("${local.server.port}") String linkTrackerAppPort) {
-        linkTracerUserEventController.stopListener();
-
         reset();
         resetAllRequests();
         resetAllScenarios();
         resetToDefault();
         setupWireMock();
-        refreshScope.refreshAll();
 
-        jdbcClient
-                .sql(
-                        "TRUNCATE TABLE telegram_bot_user,bot_chat,chat_shared_state,event,link_update,telegram_bot_message,shared_state_messages_mapping,link_update_bot_chats_mapping CASCADE")
-                .update();
         restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
-        linkTracerUserEventController.startListener();
-    }
-
-    @AfterEach
-    void teardownAfterEach() {
-        linkTracerUserEventController.stopListener();
     }
 
     @Test

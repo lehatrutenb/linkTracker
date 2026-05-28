@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.RequiredArgsConstructor;
@@ -35,18 +36,16 @@ public class TelegramBotTestUtils {
     private final String wiremockScenario;
     private final Collection<String> botMessagesSummator = new ArrayList<>();
     private String lastState;
-    private static long lastMessageId = 0;
-    private static long lastChatID = 0;
+    private static AtomicLong lastMessageId = new AtomicLong(0);
+    private static AtomicLong lastChatID = new AtomicLong(0);
 
     // Will provide globally unique IDs
     public static long getFreeChatID() {
-        lastChatID++;
-        return lastChatID - 1;
+        return lastChatID.incrementAndGet();
     }
 
     public static long getFreeMessageID() {
-        lastMessageId++;
-        return lastMessageId - 1;
+        return lastMessageId.incrementAndGet();
     }
 
     private MultiValueMap<String, String> getQueryParams(LoggedRequest request) {

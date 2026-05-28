@@ -5,11 +5,13 @@ import backend.academy.linktracker.scrapper.usecase.wrapper.OuterServiceScrapper
 import java.util.Collection;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ScheduleUpdatesOnLinksService {
     private final List<OuterServiceScrapper> scrappers;
     private final ScrappingLinkService linkListenersService;
@@ -22,10 +24,14 @@ public class ScheduleUpdatesOnLinksService {
             var toScrap = linksToListen.stream().filter(scrapper::checkCanScrap).toList();
 
             toScrap.forEach(link -> {
-                var updates = scrapper.scrap(link.getUri(), link.getUpdatedAt());
-                publishService.publishUpdates(updates.getLeft(), link);
-                linkListenersService.setFreshUpdatedTag(
-                        link, updates.getRight()); // Set new time only after successful send
+                try {
+                    var updates = scrapper.scrap(link.getUri(), link.getUpdatedAt());
+                    publishService.publishUpdates(updates.getLeft(), link);
+                    linkListenersService.setFreshUpdatedTag(
+                            link, updates.getRight()); // Set new time only after successful send
+                } catch (Exception e) {
+                    log.error("Error scraping updates for link: {}", link.getUri(), e);
+                }
             });
         });
     }

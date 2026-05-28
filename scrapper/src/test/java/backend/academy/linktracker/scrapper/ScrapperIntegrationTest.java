@@ -7,33 +7,26 @@ import static com.github.tomakehurst.wiremock.client.WireMock.resetToDefault;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import backend.academy.linktracker.scrapper.adapter.controller.LinksApiController;
-import backend.academy.linktracker.scrapper.adapter.controller.TgChatApiController;
+import backend.academy.linktracker.scrapper.testutil.ScrapperTestUtil;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.AddLinkRequest;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.LinkResponse;
-import backend.academy.linktracker.scrapper.usecase.dto.generated.ListLinksResponse;
 import backend.academy.linktracker.scrapper.usecase.dto.generated.RemoveLinkRequest;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
-import org.springframework.cloud.context.scope.refresh.RefreshScope;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
@@ -48,9 +41,6 @@ import org.wiremock.spring.EnableWireMock;
 @EnableWireMock
 @Testcontainers
 public class ScrapperIntegrationTest {
-
-    private static final String TG_CHAT_HEADER_NAME = "Tg-Chat-Id";
-    private static final String DEFAULT_CHAT_ID = "1";
     private static final String DEFAULT_LINK = "https://github.com/openclaw/openclaw";
     private static final String GITHUB_LINK = "https://github.com/openclaw/openclaw";
     private static final String STACKOVERFLOW_LINK = "https://stackoverflow.com/questions/4568645";
@@ -60,48 +50,33 @@ public class ScrapperIntegrationTest {
 
     private RestClient restClient;
 
-    @Autowired
-    private RefreshScope refreshScope;
-
     @Container
     @ServiceConnection
     private static final PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:18-alpine");
 
-    @Autowired
-    private JdbcClient jdbcClient;
-
-    @BeforeEach
-    void setupBeforeEach(@Value("${local.server.port}") String linkTrackerAppPort) {
-        reset();
-        resetAllRequests();
-        resetAllScenarios();
-        resetToDefault();
-
-        jdbcClient
-                .sql(
-                        "TRUNCATE TABLE link_listener, scrapper_link, link_metadata, link_tag, link_metadata_tags_mapping CASCADE")
-                .update();
-
+    @BeforeAll
+    void setupBeforeAll(@Value("${local.server.port}") String linkTrackerAppPort) {
         restClient = RestClient.create("http://localhost:" + linkTrackerAppPort);
     }
 
-    @AfterEach
-    void teardownAfterEach() {
+    @BeforeEach
+    void setupBeforeEach() {
         reset();
         resetAllRequests();
         resetAllScenarios();
         resetToDefault();
-        refreshScope.refreshAll();
     }
 
     @Timeout(100)
     @ParameterizedTest
     @ValueSource(strings = {DEFAULT_LINK, GITHUB_LINK, STACKOVERFLOW_LINK})
     void registerChatLinkListenLinkGetSendsReceivesThatLink(String link) {
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
         AddLinkRequest addLinkRequest = new AddLinkRequest().link(URI.create(link));
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLink(DEFAULT_CHAT_ID, addLinkRequest);
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
+
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(addLinkRequest);
+        var responseLinkList = scrapperTestUtil.getLinks();
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(link), List.of());
@@ -116,10 +91,12 @@ public class ScrapperIntegrationTest {
     @Test
     @Timeout(100)
     void deleteListeningLinkSendsReceivesEmptyListeningLinks() {
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLinkDefault();
-        var responseLinkDelete = deleteLinkDefault();
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseLinkDelete = scrapperTestUtil.deleteLink(DELETE_DEFAULT_LINK_REQUEST);
+        var responseLinkList = scrapperTestUtil.getLinks();
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
@@ -131,14 +108,18 @@ public class ScrapperIntegrationTest {
     @Test
     @Timeout(100)
     void deleteLinkFromNonExistingChatSendsReceivesError() {
-        String deleteChatID = "999";
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+        ScrapperTestUtil scrapperTestUtilNoLinkAdd = new ScrapperTestUtil(restClient);
 
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLinkDefault();
-        assertApiError(() -> deleteLink(deleteChatID, DELETE_DEFAULT_LINK_REQUEST), HttpStatus.NOT_FOUND);
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseChatRegisterNoLinkAdd = scrapperTestUtilNoLinkAdd.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseLinkList = scrapperTestUtil.getLinks();
+        assertApiError(() -> scrapperTestUtilNoLinkAdd.deleteLink(DELETE_DEFAULT_LINK_REQUEST), HttpStatus.NOT_FOUND);
+        scrapperTestUtil = new ScrapperTestUtil(restClient);
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseChatRegisterNoLinkAdd.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseLinkList.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseLinkList.getBody().getLinks())
@@ -151,22 +132,25 @@ public class ScrapperIntegrationTest {
     @Test
     @Timeout(100)
     void listenLinkForNonExistingChatSendsReceivesError() {
-        String nonExistingChatID = "999";
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+        ScrapperTestUtil scrapperTestUtilNoRegister = new ScrapperTestUtil(restClient);
 
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
+        var responseChatRegister = scrapperTestUtil.registerChat();
 
-        assertApiError(() -> addLink(nonExistingChatID, ADD_DEFAULT_LINK_REQUEST), HttpStatus.NOT_FOUND);
+        assertApiError(() -> scrapperTestUtilNoRegister.addLink(ADD_DEFAULT_LINK_REQUEST), HttpStatus.NOT_FOUND);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
     @Timeout(100)
     void listenLinkForDeletedChatSendsReceivesError() {
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLink(DEFAULT_CHAT_ID, ADD_DEFAULT_LINK_REQUEST);
-        var responseChatDelete = deleteChat(DEFAULT_CHAT_ID);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
 
-        assertApiError(() -> getLinks(DEFAULT_CHAT_ID), HttpStatus.NOT_FOUND);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseChatDelete = scrapperTestUtil.deleteChat();
+
+        assertApiError(() -> scrapperTestUtil.getLinks(), HttpStatus.NOT_FOUND);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
         assertThat(responseChatDelete.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -175,17 +159,20 @@ public class ScrapperIntegrationTest {
     @Test
     @Timeout(100)
     void deleteNonExistingChatSendsReceivesError() {
-        assertApiError(() -> deleteChat(DEFAULT_CHAT_ID), HttpStatus.NOT_FOUND);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+        assertApiError(() -> scrapperTestUtil.deleteChat(), HttpStatus.NOT_FOUND);
     }
 
     @Test
     @Timeout(100)
     void addMultipleLinksToSameChatSends() {
         AddLinkRequest stackOverflowRequest = new AddLinkRequest().link(URI.create(STACKOVERFLOW_LINK));
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLinkDefault();
-        var responseLinkAdd2 = addLink(DEFAULT_CHAT_ID, stackOverflowRequest);
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseLinkAdd2 = scrapperTestUtil.addLink(stackOverflowRequest);
+        var responseLinkList = scrapperTestUtil.getLinks();
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
@@ -199,14 +186,15 @@ public class ScrapperIntegrationTest {
     @Test
     @Timeout(100)
     void addSameLinkToMultipleChatsSends() {
-        String secondChatID = "2";
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
+        ScrapperTestUtil scrapperTestUtilSecondChat = new ScrapperTestUtil(restClient);
 
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseSecondChatRegister = registerChat(secondChatID);
-        var responseLinkAdd = addLinkDefault();
-        var responseSecondLinkAdd = addLink(secondChatID, ADD_DEFAULT_LINK_REQUEST);
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
-        var responseSecondLinkList = getLinks(secondChatID);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseSecondChatRegister = scrapperTestUtilSecondChat.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseSecondLinkAdd = scrapperTestUtilSecondChat.addLink(ADD_DEFAULT_LINK_REQUEST);
+        var responseLinkList = scrapperTestUtil.getLinks();
+        var responseSecondLinkList = scrapperTestUtilSecondChat.getLinks();
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseSecondChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -228,18 +216,22 @@ public class ScrapperIntegrationTest {
     @Timeout(100)
     void invalidLinkSendsReceivesError() {
         AddLinkRequest invalidLinkRequest = new AddLinkRequest().link(URI.create("invalid-link"));
-        registerChat(DEFAULT_CHAT_ID);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
 
-        assertApiError(() -> addLink(DEFAULT_CHAT_ID, invalidLinkRequest), HttpStatus.BAD_REQUEST);
+        scrapperTestUtil.registerChat();
+
+        assertApiError(() -> scrapperTestUtil.addLink(invalidLinkRequest), HttpStatus.BAD_REQUEST);
     }
 
     @Test
     @Timeout(100)
     void duplicateLinkSendsReceivesError() {
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLinkDefault();
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
 
-        assertApiError(this::addLinkDefault, HttpStatus.CONFLICT);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST);
+
+        assertApiError(() -> scrapperTestUtil.addLink(ADD_DEFAULT_LINK_REQUEST), HttpStatus.CONFLICT);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), List.of());
     }
@@ -248,9 +240,11 @@ public class ScrapperIntegrationTest {
     @Timeout(100)
     void deleteNonExistingLinkSendsReceivesError() {
         RemoveLinkRequest nonExistingLinkRequest = new RemoveLinkRequest().link(URI.create(STACKOVERFLOW_LINK));
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
 
-        assertApiError(() -> deleteLink(DEFAULT_CHAT_ID, nonExistingLinkRequest), HttpStatus.NOT_FOUND);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+
+        assertApiError(() -> scrapperTestUtil.deleteLink(nonExistingLinkRequest), HttpStatus.NOT_FOUND);
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
@@ -260,10 +254,11 @@ public class ScrapperIntegrationTest {
         List<String> tags = List.of("tag1", "tag2");
         AddLinkRequest addLinkRequest =
                 new AddLinkRequest().link(URI.create(DEFAULT_LINK)).tags(tags);
+        ScrapperTestUtil scrapperTestUtil = new ScrapperTestUtil(restClient);
 
-        var responseChatRegister = registerChat(DEFAULT_CHAT_ID);
-        var responseLinkAdd = addLink(DEFAULT_CHAT_ID, addLinkRequest);
-        var responseLinkList = getLinks(DEFAULT_CHAT_ID);
+        var responseChatRegister = scrapperTestUtil.registerChat();
+        var responseLinkAdd = scrapperTestUtil.addLink(addLinkRequest);
+        var responseLinkList = scrapperTestUtil.getLinks();
 
         assertThat(responseChatRegister.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertLinkResponse(responseLinkAdd, URI.create(DEFAULT_LINK), tags);
@@ -287,60 +282,5 @@ public class ScrapperIntegrationTest {
         assertThat(response.getBody().getUrl()).contains(expectedUri);
         assertThat(response.getBody().getTags()).containsExactlyElementsOf(expectedTags);
         assertThat(response.getBody().getFilters()).isEmpty();
-    }
-
-    private ResponseEntity<Void> registerChat(String chatID) {
-        return restClient
-                .method(HttpMethod.POST)
-                .uri(TgChatApiController.PATH_TG_CHAT_ID_POST, chatID)
-                .retrieve()
-                .toBodilessEntity();
-    }
-
-    private ResponseEntity<Void> deleteChat(String chatID) {
-        return restClient
-                .method(HttpMethod.DELETE)
-                .uri(TgChatApiController.PATH_TG_CHAT_ID_DELETE, chatID)
-                .retrieve()
-                .toBodilessEntity();
-    }
-
-    private ResponseEntity<LinkResponse> addLink(String chatID, AddLinkRequest addLinkRequest) {
-        return restClient
-                .method(HttpMethod.POST)
-                .uri(LinksApiController.PATH_LINKS_POST)
-                .header(TG_CHAT_HEADER_NAME, chatID)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(addLinkRequest)
-                .retrieve()
-                .toEntity(LinkResponse.class);
-    }
-
-    private ResponseEntity<LinkResponse> deleteLink(String chatID, RemoveLinkRequest removeLinkRequest) {
-        return restClient
-                .method(HttpMethod.DELETE)
-                .uri(LinksApiController.PATH_LINKS_DELETE)
-                .header(TG_CHAT_HEADER_NAME, chatID)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(removeLinkRequest)
-                .retrieve()
-                .toEntity(LinkResponse.class);
-    }
-
-    private ResponseEntity<LinkResponse> addLinkDefault() {
-        return addLink(DEFAULT_CHAT_ID, ADD_DEFAULT_LINK_REQUEST);
-    }
-
-    private ResponseEntity<LinkResponse> deleteLinkDefault() {
-        return deleteLink(DEFAULT_CHAT_ID, DELETE_DEFAULT_LINK_REQUEST);
-    }
-
-    private ResponseEntity<ListLinksResponse> getLinks(String chatID) {
-        return restClient
-                .method(HttpMethod.GET)
-                .uri(LinksApiController.PATH_LINKS_GET)
-                .header(TG_CHAT_HEADER_NAME, chatID)
-                .retrieve()
-                .toEntity(ListLinksResponse.class);
     }
 }
