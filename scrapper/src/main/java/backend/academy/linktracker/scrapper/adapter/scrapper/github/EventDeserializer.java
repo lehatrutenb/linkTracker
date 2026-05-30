@@ -2,7 +2,6 @@ package backend.academy.linktracker.scrapper.adapter.scrapper.github;
 
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.Actor;
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.Event;
-import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.EventPayload;
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.EventRepo;
 import java.time.OffsetDateTime;
 import java.util.Optional;

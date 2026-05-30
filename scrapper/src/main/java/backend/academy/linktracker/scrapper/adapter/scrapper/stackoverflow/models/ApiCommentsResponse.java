@@ -1,9 +1,5 @@
 package backend.academy.linktracker.scrapper.adapter.scrapper.stackoverflow.models;
 
-import java.net.URI;
-import java.util.Objects;
-import backend.academy.linktracker.scrapper.adapter.scrapper.stackoverflow.models.Comment;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;

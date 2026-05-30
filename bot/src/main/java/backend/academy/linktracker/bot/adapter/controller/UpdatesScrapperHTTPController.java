@@ -13,7 +13,6 @@ import backend.academy.linktracker.bot.usecase.exception.NotFoundException;
 import backend.academy.linktracker.bot.usecase.exception.OuterServiceInnerException;
 import java.util.function.Supplier;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -103,9 +102,13 @@ public class UpdatesScrapperHTTPController {
         try {
             return request.get().getBody();
         } catch (HttpClientErrorException exception) {
-            MDC.put("status text", exception.getStatusText());
-            MDC.put("status code", String.valueOf(exception.getStatusCode().value()));
-            MDC.put("message", exception.getMessage());
+            log.atError()
+                    .addKeyValue("status text", exception.getStatusText())
+                    .addKeyValue(
+                            "status code",
+                            String.valueOf(exception.getStatusCode().value()))
+                    .addKeyValue("message", exception.getMessage())
+                    .log("Got error response from scrapper");
             ApiErrorResponse response = exception.getResponseBodyAs(ApiErrorResponse.class);
             switch (exception.getStatusCode()) {
                 case HttpStatus.BAD_REQUEST:
@@ -121,16 +124,17 @@ public class UpdatesScrapperHTTPController {
                     throw new RuntimeException(exception);
             }
         } catch (HttpServerErrorException exception) {
-            MDC.put("status text", exception.getStatusText());
-            MDC.put("status code", String.valueOf(exception.getStatusCode().value()));
-            MDC.put("message", exception.getMessage());
+            log.atError()
+                    .addKeyValue("status text", exception.getStatusText())
+                    .addKeyValue(
+                            "status code",
+                            String.valueOf(exception.getStatusCode().value()))
+                    .addKeyValue("message", exception.getMessage())
+                    .log("Got error response from scrapper");
             throw new OuterServiceInnerException(exception.getResponseBodyAs(ApiErrorResponse.class));
         } catch (RestClientException exception) {
-            MDC.put("message", exception.getMessage());
+            log.atError().addKeyValue("message", exception.getMessage()).log("Got error response from scrapper");
             throw new RuntimeException(exception);
-        } finally {
-            log.atError().log("Got error response from scrapper");
-            MDC.clear();
         }
     }
 }

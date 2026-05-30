@@ -54,18 +54,18 @@ public class ScheduleUpdatesOnLinksService {
     }
 
     public void scrapOneLink(ScrapperLink link) { // Scrappers fine work concurrenty so no risk
-        runningTasks.incrementAndGet();
-
         try {
-            var scrapper = scrappers.stream().filter(srp -> srp.checkCanScrap(link)).findFirst().orElseThrow(); // Should check before that link is scrappable so current state will be broken on on such found
+            var scrapper = scrappers.stream()
+                    .filter(srp -> srp.checkCanScrap(link))
+                    .findFirst()
+                    .orElseThrow(); // Should check before that link is scrappable so current state will be broken on on
+            // such found
             var updates = scrapper.scrap(link.getUri(), link.getUpdatedAt());
             publishService.publishUpdates(updates.getLeft(), link);
             linkListenersService.setFreshUpdatedTag(
-                link, updates.getRight()); // Set new time only after successful send
+                    link, updates.getRight()); // Set new time only after successful send
         } catch (Exception e) {
             log.error("Error scraping updates for link: {}", link.getUri(), e);
-        } finally {
-            runningTasks.decrementAndGet();
         }
     }
 

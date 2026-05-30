@@ -21,7 +21,11 @@ public class ScrapperTestUtil {
 
     public ScrapperTestUtil(RestClient restClient) {
         this.restClient = restClient;
-        this.chatID = globalChatID.incrementAndGet();
+        this.chatID = getFreeChatID();
+    }
+
+    public long getFreeChatID() {
+        return globalChatID.incrementAndGet();
     }
 
     public ResponseEntity<Void> registerChat(long chatID) {

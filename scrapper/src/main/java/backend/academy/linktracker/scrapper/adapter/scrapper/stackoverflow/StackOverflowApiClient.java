@@ -10,6 +10,7 @@ import backend.academy.linktracker.scrapper.property.StackoverflowProperties;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkStackOverflowUpdateEvent;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEventDescription;
 import backend.academy.linktracker.scrapper.usecase.service.ScrapperRateLimitService;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

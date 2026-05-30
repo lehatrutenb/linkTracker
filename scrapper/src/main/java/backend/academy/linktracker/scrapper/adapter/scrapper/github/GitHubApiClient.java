@@ -9,7 +9,6 @@ import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEvent;
 import backend.academy.linktracker.scrapper.usecase.dto.ScrapperLinkUpdateEventDescription;
 import backend.academy.linktracker.scrapper.usecase.service.ScrapperRateLimitService;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;

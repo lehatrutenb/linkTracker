@@ -34,7 +34,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.Ordered;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.simple.JdbcClient;
@@ -297,7 +296,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader(HttpHeaderNames.CONTENT_TYPE.toString(), APPLICATION_JSON_VALUE)
-                        .withBodyFile("exampleStackOverflowGetAnswersResponse.json")));
+                        .withBodyFile("exampleStackOverflowGetAnswerResponse.json")));
         var chatID = testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(STARTED, "tags_resieved", url, "-"));
         testUtils.repeatLastMessageLastState();
         var responses = testUtils.waitAndGetBotResponses(4, List.of(chatID));
@@ -307,7 +306,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .hasSize(4)
                 .last()
                 .asString()
-                .matches(ScrapperUpdatesHandleService.BASIC_REPLY.replace("%s", ".*"))
+                .matches("(?s)" + ScrapperUpdatesHandleService.BASIC_REPLY.replace("%s:\n%s", ".*"))
                 .containsOnlyOnce(url);
     }
 
@@ -323,7 +322,7 @@ class TgBotWithScrapperIntegrationTest implements WithAssertions {
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader(HttpHeaderNames.CONTENT_TYPE.toString(), APPLICATION_JSON_VALUE)
-                        .withBodyFile("exampleStackOverflowGetAnswersResponse.json")));
+                        .withBodyFile("exampleStackOverflowGetAnswerResponse.json")));
         testUtils.writeMessageToBot(STARTED, "start_command_resieved", new Message(chatIDSender, "/start"));
         testUtils.trackURL(new TelegramBotTestUtils.TrackURLRequest(
                 "start_command_resieved", "tags_resieved", url, "-", chatIDNotSender));

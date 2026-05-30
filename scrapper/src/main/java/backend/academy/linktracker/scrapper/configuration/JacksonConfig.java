@@ -1,9 +1,7 @@
 package backend.academy.linktracker.scrapper.configuration;
 
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.EventDeserializer;
-import backend.academy.linktracker.scrapper.adapter.scrapper.github.ProblematicClassDeserializer;
 import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.Event;
-import backend.academy.linktracker.scrapper.adapter.scrapper.github.models.EventPayload;
 import backend.academy.linktracker.scrapper.usecase.deserializer.CustomURIDeserializer;
 import java.net.URI;
 import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
